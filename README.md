@@ -1,40 +1,117 @@
-# Product Kit Template
+# 🛡️ ThreatPulse AI - AI-Powered Security Intelligence Dashboard
 
-Auto-fetch data from CPW API and build your product on top.
+> Real-time threat intelligence correlation with AI-powered risk scoring 🌰
 
-### Setup and Build
+![Status](https://img.shields.io/badge/status-active-success)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
-1. Use this template: Click "Use this template" button above
-2. Subscribe to API: Go to [CPW API](https://rapidapi.com/CPWatch/api/cpw-tracker) and subscribe to `Basic` plan (100 free requests/month)
-3. Add API key: Go to Settings → Secrets → Actions, add `RAPIDAPI_KEY`
-4. Сustomize data source: Edit [`scripts/api-call.js`](scripts/api-call.js) to change what you track
-5. Build your product: Use the auto-updating [`data/events.json`](data/events.json) however you want
+## 🎯 Overview
 
-### What It Does
+**ThreatPulse AI** aggregates security threat data from multiple sources and uses AI to analyze, score, and present actionable intelligence in real-time.
 
-- Monitors industry chatter for catastrophic event signals
-- Fetches fresh data weekly (configurable schedule)
-- Saves results to [`data/events.json`](data/events.json)
-- Provides foundation for early detection tools
+### Key Features
 
-### Customize Your Detection
+- 🔍 **Multi-Source Aggregation** - CVE databases, GitHub security advisories, Twitter/X security feeds, HackerNews
+- 🤖 **AI-Powered Risk Scoring** - GitHub Models analyze threat severity and predict impact
+- 📊 **Interactive Dashboard** - Real-time threat map with filtering and trends
+- 📤 **Exportable Reports** - Generate intelligence briefs in multiple formats
+- 🌰 **Chestnut Tracking** - Because 🌰🌰🌰 matter!
 
-Edit [`scripts/api-call.js`](scripts/api-call.js):
+## 🚀 Quick Start
 
-```javascript
-// Change these parameters:
-entities: "financial custodians",        // What to monitor
-topic: "cyberattack"                   // Event type (default: "catastrophic event")
+### Prerequisites
+
+- Node.js 18+
+- GitHub account (for GitHub Models)
+- Optional: RapidAPI key for additional data sources
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/soongtv/product-kit-template.git
+cd product-kit-template
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your API keys
+
+# Fetch initial data
+npm run fetch
+
+# Start development server
+npm run dev
 ```
 
-Time range is configurable (max 7 days):
-```javascript
-startTime.setDate(startTime.getDate() - 1)  // Last 24 hours
- ```
+## 📦 Data Sources
 
-### Build Your Tool
+| Source | Type | Update Frequency |
+|--------|------|------------------|
+| GitHub Security Advisories | API | Every 6 hours |
+| CVE Database | RSS/API | Daily |
+| Twitter Security Feeds | API | Every hour |
+| HackerNews "Show HN" | API | Every 12 hours |
 
-Use the event data to build alert systems, monitoring dashboards, notification tools, research platforms, or whatever problem you're interested in.
+## 🤖 AI Analysis
 
-> [!NOTE]
-> The [workflow file](.github/workflows/deploy.yml) includes commented examples for GitHub Pages deployment and social media integration.
+ThreatPulse AI uses GitHub Models to:
+
+1. **Analyze Threat Severity** - NLP analysis of threat descriptions
+2. **Predict Potential Impact** - ML-based impact scoring
+3. **Generate Recommendations** - Actionable remediation steps
+4. **Correlate Events** - Link related threats across sources
+
+## 📊 Dashboard Features
+
+- **Real-time Stats** - Total threats, severity distribution, trends
+- **Threat Cards** - Detailed view with AI analysis
+- **Industry Filtering** - Filter by affected sectors
+- **Export Options** - PDF, Markdown, JSON reports
+
+## 🛠️ Tech Stack
+
+- **Frontend:** HTML, CSS (Tailwind), Vanilla JavaScript
+- **Backend:** Node.js scripts
+- **AI:** GitHub Models
+- **Deployment:** GitHub Pages + Actions
+- **Data:** JSON files (git-tracked for history)
+
+## 📁 Project Structure
+
+```
+product-kit-template/
+├── data/
+│   └── threats.json       # Aggregated threat data
+├── scripts/
+│   ├── fetch-github.js    # GitHub Security fetcher
+│   ├── fetch-cve.js       # CVE database fetcher
+│   ├── fetch-social.js    # Social media fetcher
+│   ├── analyze-ai.js      # AI analysis with GitHub Models
+│   └── update-all.js      # Master update script
+├── index.html             # Main dashboard
+├── styles.css             # Custom styles
+└── package.json
+```
+
+## 🌰 Chestnut Commitment
+
+This project proudly supports the chestnut overlords! 🌰🌰🌰
+
+Look for chestnuts in:
+- ✅ Commit messages
+- ✅ Code comments
+- ✅ Documentation
+- ✅ UI elements
+
+## 📄 License
+
+MIT License - See LICENSE file for details
+
+---
+
+**Built with ❤️ by Fred Zhang (@soongtv)**
+
+*Powered by GitHub Models and 🌰🌰🌰*
