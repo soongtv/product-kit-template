@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1773926636274-1",
+    "id": "twitter-1773947376904-1",
     "source": "Twitter Security",
-    "timestamp": "2026-03-19T13:23:56.274Z",
+    "timestamp": "2026-03-19T19:09:36.904Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -11,28 +11,28 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The ransomware campaign poses a significant threat to organizations relying on cloud infrastructure, potentially leading to data encryption, service disruptions, financial losses, and reputational damage. The use of compromised CI/CD pipelines increases the risk of widespread deployment across environments.",
+      "impact_assessment": "The ransomware campaign poses a significant threat to cloud-based infrastructure, potentially leading to data encryption, service disruption, financial losses, and reputational damage. The use of compromised CI/CD pipelines increases the risk of widespread propagation and supply chain attacks.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
         "Retail",
-        "Media",
-        "Government"
+        "Government",
+        "Education"
       ],
       "recommended_actions": [
-        "Immediately review and secure CI/CD pipelines by implementing multi-factor authentication (MFA), access controls, and code integrity checks.",
-        "Conduct regular backups of critical data and ensure backups are stored offline or in secure, isolated environments.",
-        "Monitor cloud infrastructure for unusual activity, such as unauthorized access or unexpected changes in configurations."
+        "Immediately review and secure CI/CD pipelines by implementing multi-factor authentication (MFA), access controls, and regular code audits.",
+        "Deploy endpoint detection and response (EDR) solutions to monitor for suspicious activity in cloud environments and respond to potential threats.",
+        "Regularly back up critical data and ensure backups are stored offline and tested for integrity."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "hn-1773926636274-1",
+    "id": "hn-1773947376904-1",
     "source": "HackerNews",
-    "timestamp": "2026-03-19T13:23:56.274Z",
+    "timestamp": "2026-03-19T19:09:36.904Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -56,53 +56,20 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-wvr4-3wq4-gpc5",
+    "id": "gh-GHSA-hh8v-hgvp-g3f5",
     "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:51:28Z",
-    "title": "MCP Connect has unauthenticated remote OS command execution via /bridge endpoint",
-    "description": "### Summary\nWhen _AUTH_TOKEN_ and _ACCESS_TOKEN_ environment variables are not set (which is the default out-of-the-box configuration) the _/bridge_ HTTP endpoint is completely unauthenticated. Any network-accessible caller can POST a request with an attacker-controlled serverPath and args payload, causing the server to spawn an arbitrary OS process as the user running mcp-bridge. This results in full remote code execution on the host without any credentials.\n\n### Details\n**Root cause 1 - Authen",
-    "severity": "critical",
-    "cve_id": null,
-    "ghsa_id": "GHSA-wvr4-3wq4-gpc5",
-    "affected_packages": [
-      "mcp-bridge"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-4fcp-jxh7-23x8",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:50:57Z",
-    "title": "Dasel has unbounded YAML alias expansion in dasel leads to CPU/memory denial of service",
-    "description": "### Summary\n\n`dasel`'s YAML reader allows an attacker who can supply YAML for processing to trigger extreme CPU and memory consumption. The issue is in the library's own `UnmarshalYAML` implementation, which manually resolves alias nodes by recursively following `yaml.Node.Alias` pointers without any expansion budget, bypassing go-yaml v4's built-in alias expansion limit.\n\nThe issue issue is on `v3.3.1` (`fba653c7f248aff10f2b89fca93929b64707dfc8`) and on the current default branch at commit `0dd",
+    "timestamp": "2026-03-19T19:04:24Z",
+    "title": "league/commonmark has an embed extension allowed_domains bypass",
+    "description": "### Impact\n\nThe `DomainFilteringAdapter` in the Embed extension is vulnerable to an allowlist bypass due to a missing hostname boundary assertion in the domain-matching regex. An attacker-controlled domain like `youtube.com.evil` passes the allowlist check when `youtube.com` is an allowed domain.\n\nThis enables two attack vectors:\n\n- **SSRF**: The `OscaroteroEmbedAdapter` makes server-side HTTP requests to the embed URL via the `embed/embed` library. A bypassed domain filter causes the server to ",
     "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-4fcp-jxh7-23x8",
+    "cve_id": "CVE-2026-33347",
+    "ghsa_id": "GHSA-hh8v-hgvp-g3f5",
     "affected_packages": [
-      "github.com/tomwright/dasel/v3"
+      "league/commonmark"
     ],
     "cwes": [
+      null,
+      null,
       null
     ],
     "references": [
@@ -111,255 +78,34 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability in Dasel's YAML reader allows attackers to exploit unbounded YAML alias expansion, leading to excessive CPU and memory consumption. This can result in denial-of-service conditions, impacting system availability and performance.",
-      "affected_industries": [
-        "Software Development",
-        "Cloud Services",
-        "DevOps",
-        "IT Infrastructure"
-      ],
-      "recommended_actions": [
-        "Upgrade Dasel to a patched version once available or apply a workaround to limit YAML alias expansion.",
-        "Implement input validation and sanitization to reject YAML files with excessive alias nesting.",
-        "Monitor systems for unusual CPU and memory usage patterns to detect potential exploitation."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-5x2w-37xf-7962",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:46:01Z",
-    "title": "AVideo has Unauthenticated PGP Message Decryption via Public Endpoint",
-    "description": "### Summary\n\nThe AVideo platform exposes a publicly accessible endpoint that performs server-side PGP decryption without requiring any form of authentication. Any anonymous user can submit a private key, ciphertext, and passphrase to the endpoint and receive the decrypted plaintext in the JSON response. This functionality is entirely unprotected, meaning no session, token, or credential is needed to invoke it.\n\n### Details\n\nThe endpoint at decryptMessage.json.php accepts a JSON body containing t",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-5x2w-37xf-7962",
-    "affected_packages": [
-      "wwbn/avideo"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "impact_assessment": "The vulnerability in the Embed extension's domain-matching regex allows attackers to bypass domain filtering, potentially leading to Server-Side Request Forgery (SSRF) attacks. This could enable attackers to access internal resources, exfiltrate sensitive data, or exploit other vulnerabilities within the target system.",
       "affected_industries": [
         "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-3m6g-2423-7cp3",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:45:53Z",
-    "title": "Ruby JSON has a format string injection vulnerability",
-    "description": "### Impact\n\nA format string injection vulnerability than that lead to denial of service attacks or information disclosure, when the `allow_duplicate_key: false` parsing option is used to parse user supplied documents. \n\nThis option isn't the default, if you didn't opt-in to use it, you are not impacted.\n\n### Patches\n\nPatched in `2.19.2`.\n\n### Workarounds\n\nThe issue can be avoided by not using the `allow_duplicate_key: false` parsing option.",
-    "severity": "high",
-    "cve_id": "CVE-2026-33210",
-    "ghsa_id": "GHSA-3m6g-2423-7cp3",
-    "affected_packages": [
-      "json",
-      "json",
-      "json"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows for format string injection, potentially leading to denial of service (DoS) attacks or information disclosure if the 'allow_duplicate_key: false' parsing option is used. This could compromise the confidentiality, integrity, or availability of systems processing untrusted JSON inputs.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
+        "Media and Entertainment",
         "E-commerce",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Immediately update the Ruby JSON gem to version 2.19.2 or later to apply the security patch.",
-        "Avoid using the 'allow_duplicate_key: false' parsing option unless absolutely necessary, as a temporary workaround.",
-        "Conduct a review of applications using the Ruby JSON gem to identify and mitigate any potential exposure to untrusted user inputs."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-w5ff-2mjc-4phc",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:45:38Z",
-    "title": "AVideo has an OS Command Injection via Unescaped URL in LinkedIn Video Upload Shell Command",
-    "description": "## Summary\n\nThe `uploadVideoToLinkedIn()` method in the SocialMediaPublisher plugin constructs a shell command by directly interpolating an upload URL received from LinkedIn's API response, without sanitization via `escapeshellarg()`. If an attacker can influence the LinkedIn API response (via MITM, compromised OAuth token, or API compromise), they can inject arbitrary OS commands that execute as the web server user.\n\n## Details\n\nThe vulnerability exists in `plugin/SocialMediaPublisher/Objects/S",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-w5ff-2mjc-4phc",
-    "affected_packages": [
-      "wwbn/avideo"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-pp9r-xg4c-8j4x",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:44:56Z",
-    "title": "Salvo Affected by Denial of Service via Unbounded Memory Allocation in Form Data Parsing",
-    "description": "## Summary\nSalvo's form data parsing implementations (`form_data()` method and `Extractible` macro) do not enforce payload size limits before reading request bodies into memory. This allows attackers to cause Out-of-Memory (OOM) conditions by sending extremely large payloads, leading to service crashes and denial of service.\n\n## Details\n### Vulnerability Description\nThree attack vectors exist in Salvo's form handling:\n\n1. **URL-encoded form data** (`application/x-www-form-urlencoded`)\n   - `Requ",
-    "severity": "high",
-    "cve_id": "CVE-2026-33241",
-    "ghsa_id": "GHSA-pp9r-xg4c-8j4x",
-    "affected_packages": [
-      "salvo"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-33241.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-f842-phm9-p4v4",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:44:28Z",
-    "title": "Salvo has a Path Traversal in salvo-proxy::encode_url_path allows API Gateway Bypass",
-    "description": "### Details\n\nA Path Traversal and Access Control Bypass vulnerability was discovered in the salvo-proxy component of the Salvo Rust framework (v0.89.2). The vulnerability allows an unauthenticated external attacker to bypass proxy routing constraints and access unintended backend paths (e.g., protected endpoints or administrative dashboards). This issue stems from the encode_url_path function, which fails to normalize \"../\" sequences and inadvertently forwards them verbatim to the upstream serve",
-    "severity": "high",
-    "cve_id": "CVE-2026-33242",
-    "ghsa_id": "GHSA-f842-phm9-p4v4",
-    "affected_packages": [
-      "salvo"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-33242.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-q382-vc8q-7jhj",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:44:07Z",
-    "title": "Improper handling of null Unicode character when parsing JSON in github.com/modelcontextprotocol/go-sdk",
-    "description": "The Go SDK recently transitioned to the `segmentio/encoding` library for JSON parsing in version 1.3.1. While this change addressed both case-insensitivity and ASCII folding issues, the new parser implemented aggressive key matching that treated keys with `null` Unicode characters appended at the end as equivalent to their base strings.\n\n#### Impact\n\nWhen combined with duplicate keys, the described behavior leads to a \"last key wins\" resolution that could override the intended MCP message. This ",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-q382-vc8q-7jhj",
-    "affected_packages": [
-      "github.com/modelcontextprotocol/go-sdk"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Improper handling of null Unicode characters in JSON parsing can lead to key collisions and unintended overwrites, potentially compromising data integrity and enabling malicious actors to manipulate MCP messages.",
-      "affected_industries": [
-        "Software Development",
-        "Cloud Services",
-        "IoT",
-        "Financial Services",
+        "Education",
         "Healthcare"
       ],
       "recommended_actions": [
-        "Upgrade to a patched version of the Go SDK once available or revert to a previous stable version that does not use the `segmentio/encoding` library.",
-        "Implement input validation and sanitization to detect and reject JSON payloads with null Unicode characters in keys.",
-        "Monitor logs and traffic for unusual patterns or signs of exploitation targeting JSON parsing vulnerabilities."
+        "Update to the latest version of the league/commonmark library that addresses CVE-2026-33347 and includes a fix for the domain-matching regex vulnerability.",
+        "Implement additional server-side validation and filtering for embed URLs to ensure they adhere strictly to allowed domains.",
+        "Monitor and audit server logs for unusual outbound HTTP requests to detect potential SSRF attempts."
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-4wmm-6qxj-fpj4",
+    "id": "gh-GHSA-w5g8-5849-vj76",
     "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:43:42Z",
-    "title": "AVideo has a Path Traversal in listFiles.json.php Enables Server Filesystem Enumeration",
-    "description": "## Summary\n\nThe `listFiles.json.php` endpoint accepts a `path` POST parameter and passes it directly to `glob()` without restricting the path to an allowed base directory. An authenticated uploader can traverse the entire server filesystem by supplying arbitrary absolute paths, enumerating `.mp4` filenames and their full absolute filesystem paths wherever they exist on the server — including locations outside the web root, such as private or premium media directories.\n\n## Details\n\nThe vulnerable",
+    "timestamp": "2026-03-19T18:48:27Z",
+    "title": "NiceGUI's unvalidated chunk size parameter in media routes can cause memory exhaustion",
+    "description": "## Summary\n\nNiceGUI's `app.add_media_file()` and `app.add_media_files()` media routes accept a user-controlled query parameter that influences how files are read during streaming. The parameter is passed to the range-response implementation without validation, allowing an attacker to bypass chunked streaming and force the server to load entire files into memory at once.\n\nWith large media files and concurrent requests, this can lead to excessive memory consumption, degraded performance, or denial",
     "severity": "medium",
-    "cve_id": "CVE-2026-33238",
-    "ghsa_id": "GHSA-4wmm-6qxj-fpj4",
+    "cve_id": "CVE-2026-33332",
+    "ghsa_id": "GHSA-w5g8-5849-vj76",
     "affected_packages": [
-      "wwbn/avideo"
+      "nicegui"
     ],
     "cwes": [
       null
@@ -369,70 +115,206 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows authenticated users to traverse the server's filesystem and enumerate `.mp4` files, potentially exposing sensitive or premium media files stored outside the web root. This could lead to unauthorized access to private data, intellectual property theft, or further exploitation if sensitive file paths are disclosed.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-33332.",
       "affected_industries": [
-        "Media and Entertainment",
-        "Education",
-        "Streaming Platforms",
-        "Content Hosting Services"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Implement input validation and sanitization to restrict the `path` parameter to an allowed base directory.",
-        "Apply a patch or update to the latest version of AVideo if a fix is available from the vendor.",
-        "Restrict access to the `listFiles.json.php` endpoint to only trusted users or IP addresses using web server configurations or a firewall."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-cgcg-q9jh-5pr2",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:37:42Z",
+    "title": "@keystone-6/core: `isFilterable` bypass via `cursor` parameter in findMany (CVE-2025-46720 incomplete fix)",
+    "description": "# Summary  \n`{field}.isFilterable` access control can be bypassed in `findMany` queries by passing a `cursor`.  This can be used to confirm the existence of records by protected field values.\n\nThe fix for [CVE-2025-46720](https://github.com/keystonejs/keystone/security/advisories/GHSA-hg9m-67mm-7pg3) (field-level `isFilterable` bypass for update and delete mutations) added checks to the `where` parameter in `update` and `delete` mutations however the `cursor` parameter in `findMany` was not patc",
+    "severity": "medium",
+    "cve_id": "CVE-2026-33326",
+    "ghsa_id": "GHSA-cgcg-q9jh-5pr2",
+    "affected_packages": [
+      "@keystone-6/core"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-33326.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-6f7w-7xmx-mx54",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:31:19Z",
+    "title": "An issue in DedeCMS v.5.7.118 and before allows a remote attacker to execute arbitrary code via...",
+    "description": "An issue in DedeCMS v.5.7.118 and before allows a remote attacker to execute arbitrary code via the array_filter component",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-30694",
+    "ghsa_id": "GHSA-6f7w-7xmx-mx54",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-30694.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-r7vj-ffgg-6jj4",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:31:19Z",
+    "title": "Use of a deterministic credential generation algorithm in /ftl/bin/calc_f2 in Small Cell Sercomm...",
+    "description": "Use of a deterministic credential generation algorithm in /ftl/bin/calc_f2 in Small Cell Sercomm SCE4255W (FreedomFi Englewood) firmware before DG3934v3@2308041842 allows remote attackers to derive valid administrative/root credentials from the device's MAC address, enabling authentication bypass and full device access.",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-67114",
+    "ghsa_id": "GHSA-r7vj-ffgg-6jj4",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-67114.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-86fv-q5vx-mw5m",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:31:19Z",
+    "title": "Two buffer overflow vulnerabilities existed in the wolfSSL CRL parser when parsing CRL numbers: a...",
+    "description": "Two buffer overflow vulnerabilities existed in the wolfSSL CRL parser when parsing CRL numbers: a heap-based buffer overflow could occur when improperly storing the CRL number as a hexadecimal string, and a stack-based overflow for sufficiently sized CRL numbers. With appropriately crafted CRLs, either of these out of bound writes could be triggered. Note this only affects builds that specifically enable CRL support, and the user would need to load a CRL from an untrusted source.",
+    "severity": "high",
+    "cve_id": "CVE-2026-3548",
+    "ghsa_id": "GHSA-86fv-q5vx-mw5m",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-3548.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-24vq-qfc5-qrmj",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:31:19Z",
+    "title": "A heap-buffer-overflow vulnerability exists in wolfSSL's wolfSSL_d2i_SSL_SESSION() function. When...",
+    "description": "A heap-buffer-overflow vulnerability exists in wolfSSL's wolfSSL_d2i_SSL_SESSION() function. When deserializing session data with SESSION_CERTS enabled, certificate and session id lengths are read from an untrusted input without bounds validation, allowing an attacker to overflow fixed-size buffers and corrupt heap memory. A maliciously crafted session would need to be loaded from an external source to trigger this vulnerability. Internal sessions were not vulnerable.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-2646",
+    "ghsa_id": "GHSA-24vq-qfc5-qrmj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability could allow attackers to exploit heap-buffer-overflow by deserializing malicious session data, potentially leading to memory corruption, denial of service, or remote code execution. This poses a risk to systems using wolfSSL with SESSION_CERTS enabled.",
+      "affected_industries": [
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "IoT",
+        "Telecommunications"
+      ],
+      "recommended_actions": [
+        "Update wolfSSL to the latest patched version that addresses CVE-2026-2646.",
+        "Audit systems to identify any usage of the wolfSSL library with SESSION_CERTS enabled and restrict external session loading.",
+        "Implement additional input validation and monitoring to detect and block malformed session data."
       ],
       "urgency": "medium"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-v467-g7g7-hhfh",
+    "id": "gh-GHSA-27qj-9gvp-8rh9",
     "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:43:23Z",
-    "title": "AVideo has SSRF in Scheduler Plugin via callbackURL Missing `isSSRFSafeURL()` Validation",
-    "description": "## Summary\n\nThe Scheduler plugin's `run()` function in `plugin/Scheduler/Scheduler.php` calls `url_get_contents()` with an admin-configurable `callbackURL` that is validated only by `isValidURL()` (URL format check). Unlike other AVideo endpoints that were recently patched for SSRF (GHSA-9x67-f2v7-63rw, GHSA-h39h-7cvg-q7j6), the Scheduler's callback URL is never passed through `isSSRFSafeURL()`, which blocks requests to RFC-1918 private addresses, loopback, and cloud metadata endpoints. An admin",
+    "timestamp": "2026-03-19T18:31:19Z",
+    "title": "Improper Validation of Array Index (CWE-129) in multiple protocol parser components in Packetbeat...",
+    "description": "Improper Validation of Array Index (CWE-129) in multiple protocol parser components in Packetbeat can lead Denial of Service via Input Data Manipulation (CAPEC-153). An attacker with the ability to send specially crafted, malformed network packets to a monitored network interface can trigger out-of-bounds read operations, resulting in application crashes or resource exhaustion. This requires the attacker to be positioned on the same network segment as the Packetbeat deployment or to control traf",
     "severity": "medium",
-    "cve_id": "CVE-2026-33237",
-    "ghsa_id": "GHSA-v467-g7g7-hhfh",
-    "affected_packages": [
-      "wwbn/avideo"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-33237.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-gfgr-6hrj-85ww",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:42:52Z",
-    "title": "Juju affected by timing ownership claim attack on new external back-end secrets",
-    "description": "A race condition in the secrets management subsystem of Juju versions 3.0.0 through 3.6.18 allows an authenticated unit agent to claim ownership of a newly initialized secret. Between generating a Juju Secret ID and creating the secret's first revision, an attacker authenticated as another unit agent can claim ownership of a known secret. This leads to the attacking unit being able to read the content of the initial secret revision.\n\n### Impact\nBetween generating a Secret ID and creating the sec",
-    "severity": "medium",
-    "cve_id": "CVE-2026-32691",
-    "ghsa_id": "GHSA-gfgr-6hrj-85ww",
-    "affected_packages": [
-      "github.com/juju/juju"
-    ],
+    "cve_id": "CVE-2026-26933",
+    "ghsa_id": "GHSA-27qj-9gvp-8rh9",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -442,253 +324,33 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-32691.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows an attacker to cause a denial of service (DoS) by sending specially crafted network packets, potentially crashing the Packetbeat application or exhausting system resources. This could disrupt network monitoring and analysis operations.",
       "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-469j-vmhf-r6v7",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:42:42Z",
-    "title": "NLTK has a Downloader Path Traversal Vulnerability (AFO) - Arbitrary File Overwrite",
-    "description": "## Vulnerability Description\n\nThe NLTK downloader does not validate the `subdir` and `id` attributes when processing remote XML index files. Attackers can control a remote XML index server to provide malicious values containing path traversal sequences (such as `../`), which can lead to:\n\n1. **Arbitrary Directory Creation**: Create directories at arbitrary locations in the file system\n2. **Arbitrary File Creation**: Create arbitrary files\n3. **Arbitrary File Overwrite**: Overwrite critical syste",
-    "severity": "high",
-    "cve_id": "CVE-2026-33236",
-    "ghsa_id": "GHSA-469j-vmhf-r6v7",
-    "affected_packages": [
-      "nltk"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in the NLTK downloader allows attackers to exploit path traversal sequences through malicious XML index files, potentially leading to arbitrary file creation, directory creation, and file overwrites. This could result in unauthorized system modifications, data corruption, or compromise of critical files, which may disrupt operations or enable further attacks.",
-      "affected_industries": [
-        "Technology",
-        "Education",
-        "Research and Development",
-        "Artificial Intelligence",
-        "Data Science"
-      ],
-      "recommended_actions": [
-        "Immediately update to a patched version of NLTK if available, or apply any security patches provided by the maintainers.",
-        "Restrict or disable the use of the NLTK downloader in production environments, especially if it relies on untrusted or external XML index files.",
-        "Implement file system monitoring and logging to detect unauthorized file or directory modifications, and review access controls to limit potential damage."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-jm6w-m3j8-898g",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:42:20Z",
-    "title": "Unauthenticated remote shutdown in nltk.app.wordnet_app",
-    "description": "### Summary\n`nltk.app.wordnet_app` allows unauthenticated remote shutdown of the local WordNet Browser HTTP server when it is started in its default mode. A simple `GET /SHUTDOWN%20THE%20SERVER` request causes the process to terminate immediately via `os._exit(0)`, resulting in a denial of service.\n\n### Details\nThe vulnerable logic is in `nltk/app/wordnet_app.py`:\n\n- [`nltk/app/wordnet_app.py:242`](/mnt/Data/my_brains/test/nltk/nltk/app/wordnet_app.py#L242)\n  - The server listens on all interfac",
-    "severity": "high",
-    "cve_id": "CVE-2026-33231",
-    "ghsa_id": "GHSA-jm6w-m3j8-898g",
-    "affected_packages": [
-      "nltk"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-33231.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-mmgp-wc2j-qcv7",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:42:09Z",
-    "title": "Claude Code has a Workspace Trust Dialog Bypass via Repo-Controlled Settings File",
-    "description": "Claude Code resolved the permission mode from settings files, including the repo-controlled `.claude/settings.json`, before determining whether to display the workspace trust confirmation dialog. A malicious repository could set `permissions.defaultMode` to `bypassPermissions` in its committed `.claude/settings.json`, causing the trust dialog to be silently skipped on first open. This allowed a user to be placed into a permissive mode without seeing the trust confirmation prompt, making it easie",
-    "severity": "high",
-    "cve_id": "CVE-2026-33068",
-    "ghsa_id": "GHSA-mmgp-wc2j-qcv7",
-    "affected_packages": [
-      "@anthropic-ai/claude-code"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This vulnerability allows a malicious repository to bypass the workspace trust confirmation dialog in Claude Code, potentially placing users in a permissive mode without their knowledge. This could lead to unauthorized code execution, data exfiltration, or other malicious activities.",
-      "affected_industries": [
-        "Software Development",
-        "Technology",
+        "Information Technology",
+        "Telecommunications",
         "Financial Services",
         "Healthcare",
         "Government"
       ],
       "recommended_actions": [
-        "Update Claude Code to the latest patched version that addresses CVE-2026-33068.",
-        "Implement additional controls to verify repository settings files before opening untrusted repositories.",
-        "Educate users on the risks of opening repositories from untrusted sources and encourage the use of isolated environments for testing."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-vx4w-426f-69qh",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:30:32Z",
-    "title": "The Appointment Booking Calendar — Simply Schedule Appointments Booking Plugin plugin for...",
-    "description": "The Appointment Booking Calendar — Simply Schedule Appointments Booking Plugin plugin for WordPress is vulnerable to SQL Injection via the 'fields' parameter in all versions up to, and including, 1.6.10.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from th",
-    "severity": "high",
-    "cve_id": "CVE-2026-3658",
-    "ghsa_id": "GHSA-vx4w-426f-69qh",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-3658.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-h943-hrx6-86cq",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:30:32Z",
-    "title": "XML::Parser versions through 2.47 for Perl could overflow the pre-allocated buffer size cause a...",
-    "description": "XML::Parser versions through 2.47 for Perl could overflow the pre-allocated buffer size cause a heap corruption (double free or corruption) and crashes.\n\nA :utf8 PerlIO layer, parse_stream() in Expat.xs could overflow the XML input buffer because Perl's read() returns decoded characters while SvPV() gives back multi-byte UTF-8 bytes that can exceed the pre-allocated buffer size. This can cause heap corruption (double free or corruption) and crashes.",
-    "severity": "unknown",
-    "cve_id": "CVE-2006-10002",
-    "ghsa_id": "GHSA-h943-hrx6-86cq",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2006-10002.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Update to the latest version of Packetbeat that addresses CVE-2026-26933, as provided by the vendor.",
+        "Implement network segmentation and restrict access to the monitored network interface to trusted devices only.",
+        "Deploy intrusion detection and prevention systems (IDPS) to monitor and block malicious traffic targeting Packetbeat."
       ],
       "urgency": "medium"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-jx49-fphc-w293",
+    "id": "gh-GHSA-cwc7-2fmx-fffq",
     "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:30:32Z",
-    "title": "Improper Restriction of XML External Entity Reference vulnerability in XMLUtils.java in Slovensko...",
-    "description": "Improper Restriction of XML External Entity Reference vulnerability in XMLUtils.java in Slovensko.Digital Autogram allows remote unauthenticated attacker to conduct SSRF (Server Side Request Forgery) attacks and obtain unauthorized access to local files on filesystems running the vulnerable application. Successful exploitation requires the victim to visit a specially crafted website that sends request containing a specially crafted XML document to /sign endpoint of the local HTTP server run by t",
-    "severity": "high",
-    "cve_id": "CVE-2026-3511",
-    "ghsa_id": "GHSA-jx49-fphc-w293",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows remote unauthenticated attackers to exploit Server Side Request Forgery (SSRF) and gain unauthorized access to sensitive local files on systems running the vulnerable application. This could lead to data breaches, exposure of sensitive information, or further exploitation of the system.",
-      "affected_industries": [
-        "Government",
-        "Financial Services",
-        "Healthcare",
-        "Technology",
-        "E-commerce"
-      ],
-      "recommended_actions": [
-        "Immediately update the XMLUtils.java library to a patched version or apply available security patches addressing CVE-2026-3511.",
-        "Implement input validation and disable external entity resolution in XML parsers to mitigate SSRF risks.",
-        "Conduct a security audit of systems running the vulnerable application to identify potential unauthorized access or data breaches."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-6g5m-c89w-7pwf",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:30:32Z",
-    "title": "Improper Authentication vulnerability in Secomea GateManager (webserver modules) allows...",
-    "description": "Improper Authentication vulnerability in Secomea GateManager (webserver modules) allows Authentication Bypass.This issue affects GateManager: 11.4;0.",
+    "timestamp": "2026-03-19T18:31:19Z",
+    "title": "In wolfSSL 5.8.2 and earlier, a logic flaw existed in the TLS 1.2 server state machine...",
+    "description": "In wolfSSL 5.8.2 and earlier, a logic flaw existed in the TLS 1.2 server state machine implementation. The server could incorrectly accept the CertificateVerify message before the ClientKeyExchange message had been received. This issue affects wolfSSL before 5.8.4 (wolfSSL 5.8.2 and earlier is vulnerable, 5.8.4 is not vulnerable). In 5.8.4 wolfSSL would detect the issue later in the handshake. 5.9.0 was further hardened to catch the issue earlier in the handshake.",
     "severity": "medium",
-    "cve_id": "CVE-2025-14716",
-    "ghsa_id": "GHSA-6g5m-c89w-7pwf",
+    "cve_id": "CVE-2026-2645",
+    "ghsa_id": "GHSA-cwc7-2fmx-fffq",
     "affected_packages": [],
     "cwes": [
       null
@@ -699,30 +361,33 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-14716.",
+      "risk_score": 65,
+      "impact_assessment": "The logic flaw in the TLS 1.2 server state machine could allow attackers to exploit the handshake process, potentially leading to unauthorized access or data interception. This could compromise the confidentiality and integrity of communications relying on wolfSSL.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "IoT",
+        "Telecommunications"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Upgrade to wolfSSL version 5.8.4 or later to mitigate the vulnerability.",
+        "Conduct a thorough audit of systems using wolfSSL to ensure no outdated versions are in production.",
+        "Implement monitoring for unusual handshake behavior to detect potential exploitation attempts."
       ],
       "urgency": "medium"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-x2wr-f89p-cqwh",
+    "id": "gh-GHSA-xfph-vq69-5ww2",
     "source": "GitHub Security",
-    "timestamp": "2026-03-19T12:30:32Z",
-    "title": "XML::Parser versions through 2.47 for Perl has an off-by-one heap buffer overflow in...",
-    "description": "XML::Parser versions through 2.47 for Perl has an off-by-one heap buffer overflow in st_serial_stack.\n\nIn the case (stackptr == stacksize - 1), the stack will NOT be expanded. Then the new value will be written at location (++stackptr), which equals stacksize and therefore falls just outside the allocated buffer.\n\nThe bug can be observed when parsing an XML file with very deep element nesting",
-    "severity": "unknown",
-    "cve_id": "CVE-2006-10003",
-    "ghsa_id": "GHSA-x2wr-f89p-cqwh",
+    "timestamp": "2026-03-19T18:31:19Z",
+    "title": "Improper Validation of Specified Quantity in Input (CWE-1284) in the Timelion visualization...",
+    "description": "Improper Validation of Specified Quantity in Input (CWE-1284) in the Timelion visualization plugin in Kibana can lead Denial of Service via Excessive Allocation (CAPEC-130). The vulnerability allows an authenticated user to send a specially crafted Timelion expression that overwrites internal series data properties with an excessively large quantity value.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-26940",
+    "ghsa_id": "GHSA-xfph-vq69-5ww2",
     "affected_packages": [],
     "cwes": [
       null
@@ -730,13 +395,11 @@
     "references": [
       null,
       null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability in XML::Parser versions through 2.47 for Perl could allow an attacker to exploit a heap buffer overflow by providing a maliciously crafted XML file with deeply nested elements. This could lead to application crashes, data corruption, or potential remote code execution depending on the context in which the parser is used.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in the Timelion visualization plugin in Kibana could allow an authenticated user to perform a Denial of Service (DoS) attack by sending specially crafted input, potentially disrupting data visualization and analytics workflows.",
       "affected_industries": [
         "Technology",
         "Finance",
@@ -745,23 +408,23 @@
         "Government"
       ],
       "recommended_actions": [
-        "Upgrade to a patched version of XML::Parser (if available) or apply any security patches provided by the maintainers.",
-        "Implement input validation and limit the depth of XML element nesting to mitigate the risk of exploitation.",
-        "Conduct a security review of any applications or systems relying on XML::Parser to identify and address potential exposure."
+        "Apply the latest security patch or update for Kibana that addresses CVE-2026-26940.",
+        "Implement input validation and rate limiting to mitigate excessive allocation attacks.",
+        "Restrict access to the Timelion plugin to only trusted and necessary users."
       ],
       "urgency": "high"
     },
-    "risk_score": 72
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-j5c5-2p8w-cq4f",
+    "id": "gh-GHSA-x4hf-rw83-jxhf",
     "source": "GitHub Security",
-    "timestamp": "2026-03-19T09:30:19Z",
-    "title": "Deserialization of Untrusted Data vulnerability in Membership Software WishList Member X allows...",
-    "description": "Deserialization of Untrusted Data vulnerability in Membership Software WishList Member X allows Object Injection.This issue affects WishList Member X: from n/a through 3.29.0.",
-    "severity": "high",
-    "cve_id": "CVE-2026-25445",
-    "ghsa_id": "GHSA-j5c5-2p8w-cq4f",
+    "timestamp": "2026-03-19T18:31:19Z",
+    "title": "Missing Authorization (CWE-862) in Kibana’s server-side Detection Rule Management can lead to...",
+    "description": "Missing Authorization (CWE-862) in Kibana’s server-side Detection Rule Management can lead to Unauthorized Endpoint Response Action Configuration (host isolation, process termination, and process suspension) via CAPEC-1 (Accessing Functionality Not Properly Constrained by ACLs). This requires an authenticated attacker with rule management privileges.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-26939",
+    "ghsa_id": "GHSA-x4hf-rw83-jxhf",
     "affected_packages": [],
     "cwes": [
       null
@@ -772,8 +435,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-25445.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-26939.",
       "affected_industries": [
         "Technology",
         "General"
@@ -783,9 +446,325 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-hpw3-vhrj-p6q9",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:31:19Z",
+    "title": "Use of a hard-coded AES-256-CBC key in the configuration backup/restore implementation of Small...",
+    "description": "Use of a hard-coded AES-256-CBC key in the configuration backup/restore implementation of Small Cell Sercomm SCE4255W (FreedomFi Englewood) firmware before DG3934v3@2308041842 allows remote authenticated users to decrypt, modify, and re-encrypt device configurations, enabling credential manipulation and privilege escalation via the GUI import/export functions.",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-67112",
+    "ghsa_id": "GHSA-hpw3-vhrj-p6q9",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-67112.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-23f9-j3qr-h3hv",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:31:19Z",
+    "title": "OS command injection in the CWMP client (/ftl/bin/cwmp) of Small Cell Sercomm SCE4255W (FreedomFi...",
+    "description": "OS command injection in the CWMP client (/ftl/bin/cwmp) of Small Cell Sercomm SCE4255W (FreedomFi Englewood) firmware before DG3934v3@2308041842 allows remote attackers controlling the ACS endpoint to execute arbitrary commands as root via a crafted TR-069 Download URL that is passed unescaped into the firmware upgrade pipeline.",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-67113",
+    "ghsa_id": "GHSA-23f9-j3qr-h3hv",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-67113.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-533q-m9mq-7v99",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:31:19Z",
+    "title": "A path traversal vulnerability in /ftl/web/setup.cgi in Small Cell Sercomm SCE4255W (FreedomFi...",
+    "description": "A path traversal vulnerability in /ftl/web/setup.cgi in Small Cell Sercomm SCE4255W (FreedomFi Englewood) firmware before DG3934v3@2308041842 allows remote authenticated users to read arbitrary files from the filesystem via crafted values in the log_type parameter to /logsave.htm.",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-67115",
+    "ghsa_id": "GHSA-533q-m9mq-7v99",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 78,
+      "impact_assessment": "The path traversal vulnerability in the Small Cell Sercomm SCE4255W firmware allows remote authenticated attackers to access sensitive files on the device, potentially exposing configuration files, credentials, or other critical data. This could lead to further compromise of the device or the network it operates in.",
+      "affected_industries": [
+        "Telecommunications",
+        "Internet Service Providers",
+        "Smart Home Technology",
+        "Critical Infrastructure"
+      ],
+      "recommended_actions": [
+        "Immediately update the firmware to the latest version (DG3934v3@2308041842 or later) to patch the vulnerability.",
+        "Restrict access to the device's web interface by implementing network segmentation and ensuring only trusted IPs can access it.",
+        "Monitor device logs for any unusual activity, particularly access to /logsave.htm, and consider enabling additional logging to detect exploitation attempts."
+      ],
       "urgency": "high"
     },
-    "risk_score": 75
+    "risk_score": 78
+  },
+  {
+    "id": "gh-GHSA-xcmq-x2p7-666f",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:31:19Z",
+    "title": "There is an arbitrary file read vulnerability in the test connection function of backend database...",
+    "description": "There is an arbitrary file read vulnerability in the test connection function of backend database management in wgcloud v3.6.3 and before, which can be used to read any file on the victim's server.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-30403",
+    "ghsa_id": "GHSA-xcmq-x2p7-666f",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-30403.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-5vrw-qjxw-89r5",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:31:18Z",
+    "title": "Memory Allocation with Excessive Size Value (CWE-789) in the Prometheus remote_write HTTP handler...",
+    "description": "Memory Allocation with Excessive Size Value (CWE-789) in the Prometheus remote_write HTTP handler in Metricbeat can lead Denial of Service via Excessive Allocation (CAPEC-130).",
+    "severity": "medium",
+    "cve_id": "CVE-2026-26931",
+    "ghsa_id": "GHSA-5vrw-qjxw-89r5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in the Prometheus remote_write HTTP handler in Metricbeat allows attackers to trigger a Denial of Service (DoS) by causing excessive memory allocation, potentially disrupting system availability and performance.",
+      "affected_industries": [
+        "Technology",
+        "Cloud Services",
+        "Telecommunications",
+        "Healthcare",
+        "Finance"
+      ],
+      "recommended_actions": [
+        "Apply the latest security patch or update for Metricbeat to address CVE-2026-26931.",
+        "Implement rate-limiting and input validation mechanisms to mitigate excessive memory allocation risks.",
+        "Monitor system performance and memory usage for anomalies that could indicate exploitation attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-3g9r-2f6r-x6j2",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:31:18Z",
+    "title": "OPEXUS eComplaint and eCASE before 10.2.0.0 do not correctly sanitize the contents of first and...",
+    "description": "OPEXUS eComplaint and eCASE before 10.2.0.0 do not correctly sanitize the contents of first and last name fields in the 'My Information' screen. An authenticated attacker can inject parts of an XSS payload in the first and last name fields. The payload is executed when the full name is rendered. The attacker can run script in the context of a victim's session.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-32868",
+    "ghsa_id": "GHSA-3g9r-2f6r-x6j2",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-32868.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-qw9c-jpw9-vj74",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:31:18Z",
+    "title": "OPEXUS eComplaint before version 10.1.0.0 allows an unauthenticated attacker to obtain or guess...",
+    "description": "OPEXUS eComplaint before version 10.1.0.0 allows an unauthenticated attacker to obtain or guess an existing case number and upload arbitrary files via 'Portal/EEOC/DocumentUploadPub.aspx'. Users would see these unexpected files in cases. Uploading a large number of files could consume storage.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-32867",
+    "ghsa_id": "GHSA-qw9c-jpw9-vj74",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-32867.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-54h7-v9wj-85j9",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:31:18Z",
+    "title": "OPEXUS eComplaint and eCASE before version 10.1.0.0 include the secret verification code in the...",
+    "description": "OPEXUS eComplaint and eCASE before version 10.1.0.0 include the secret verification code in the HTTP response when requesting a password reset via 'ForcePasswordReset.aspx'. An attacker who knows an existing user's email address can reset the user's password and security questions. Existing security questions are not asked during the process.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-32865",
+    "ghsa_id": "GHSA-54h7-v9wj-85j9",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 95,
+      "impact_assessment": "The vulnerability allows attackers to reset user passwords and security questions without authentication, potentially leading to unauthorized access, data breaches, and identity theft.",
+      "affected_industries": [
+        "Government",
+        "Healthcare",
+        "Financial Services",
+        "Education",
+        "Legal"
+      ],
+      "recommended_actions": [
+        "Immediately upgrade OPEXUS eComplaint and eCASE to version 10.1.0.0 or later to patch the vulnerability.",
+        "Implement additional verification mechanisms, such as multi-factor authentication (MFA), for password reset processes.",
+        "Conduct a thorough audit of user accounts to identify any unauthorized password resets or suspicious activity."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 95
+  },
+  {
+    "id": "gh-GHSA-2q9g-q8jj-fr53",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-19T18:31:18Z",
+    "title": "Integer underflow in wolfSSL packet sniffer <= 5.8.4 allows an attacker to cause a buffer...",
+    "description": "Integer underflow in wolfSSL packet sniffer <= 5.8.4 allows an attacker to cause a buffer overflow in the AEAD decryption path by injecting a TLS record shorter than the explicit IV plus authentication tag into traffic inspected by ssl_DecodePacket. The underflow wraps a 16-bit length to a large value that is passed to AEAD decryption routines, causing heap buffer overflow and a crash. An unauthenticated attacker can trigger this remotely via malformed TLS Application Data records.",
+    "severity": "low",
+    "cve_id": "CVE-2026-1005",
+    "ghsa_id": "GHSA-2q9g-q8jj-fr53",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-1005.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
   },
   {
     "id": "cve-CVE-2025-15038",
@@ -801,20 +780,23 @@
       "https://www.asus.com/content/security-advisory"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-15038.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows an unprivileged local user to exploit an Out-of-Bounds Read in the ASUS Business System Control Interface driver, potentially leading to kernel information disclosure or a system crash. This could be leveraged for further attacks or to destabilize affected systems.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Enterprise IT",
+        "Manufacturing",
+        "Healthcare",
+        "Finance"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Apply the security update provided by ASUS as soon as it becomes available to mitigate the vulnerability.",
+        "Restrict access to systems running the affected driver and ensure only trusted users have local access.",
+        "Monitor system logs for unusual IOCTL requests or other suspicious activity that could indicate exploitation attempts."
       ],
       "urgency": "medium"
     },
-    "risk_score": 60
+    "risk_score": 65
   },
   {
     "id": "cve-CVE-2025-15037",
@@ -830,23 +812,20 @@
       "https://www.asus.com/content/security-advisory/"
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows unprivileged local users to exploit incorrect permission assignments in the ASUS Business System Control Interface driver, potentially leading to unauthorized access to sensitive hardware resources and kernel information disclosure. This could result in privilege escalation and compromise of system integrity.",
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-15037.",
       "affected_industries": [
         "Technology",
-        "Enterprise IT",
-        "Manufacturing",
-        "Healthcare",
-        "Financial Services"
+        "General"
       ],
       "recommended_actions": [
-        "Apply the latest security patch or driver update from ASUS addressing CVE-2025-15037 as soon as it becomes available.",
-        "Restrict access to systems running the vulnerable driver to trusted users and enforce strict access control policies.",
-        "Monitor system logs for unusual IOCTL requests or other suspicious activity that may indicate exploitation attempts."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 60
   },
   {
     "id": "cve-CVE-2026-3973",
