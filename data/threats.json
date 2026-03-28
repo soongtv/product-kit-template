@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1774666169213-1",
+    "id": "twitter-1774681713567-1",
     "source": "Twitter Security",
-    "timestamp": "2026-03-28T02:49:29.213Z",
+    "timestamp": "2026-03-28T07:08:33.567Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,14 +13,77 @@
     "risk_score": null
   },
   {
-    "id": "hn-1774666169213-1",
+    "id": "hn-1774681713567-1",
     "source": "HackerNews",
-    "timestamp": "2026-03-28T02:49:29.213Z",
+    "timestamp": "2026-03-28T07:08:33.567Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
     "references": [
       "https://news.ycombinator.com/item?id=123"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-x7f7-7836-w8h5",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-28T06:30:24Z",
+    "title": "The Oxygen Theme theme for WordPress is vulnerable to Server-Side Request Forgery in all versions...",
+    "description": "The Oxygen Theme theme for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 6.0.8 via the laborator_calc_route AJAX action. This makes it possible for unauthenticated attackers to make web requests to arbitrary locations originating from the web application and can be used to query and modify information from internal services.",
+    "severity": "high",
+    "cve_id": "CVE-2025-12886",
+    "ghsa_id": "GHSA-x7f7-7836-w8h5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-v474-g846-5m4r",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-28T06:30:24Z",
+    "title": "The Restaurant Cafeteria WordPress theme through 0.4.6 exposes insecure admin-ajax actions...",
+    "description": "The Restaurant Cafeteria WordPress theme through 0.4.6 exposes insecure admin-ajax actions without nonce or capability checks, allowing any logged-in user, like subscriber, to perform privileged operations. An attacker can install and activate a  from a user-supplied URL, leading to arbitrary PHP code execution, and also import demo content that rewrites site configuration, including Restaurant Cafeteria WordPress theme through 0.4.6_mods, pages, menus, and front page settings.",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-15445",
+    "ghsa_id": "GHSA-v474-g846-5m4r",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-v8h4-7xcp-85r6",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-28T03:31:25Z",
+    "title": "The SureForms – Contact Form, Payment Form & Other Custom Form Builder plugin for WordPress is...",
+    "description": "The SureForms – Contact Form, Payment Form & Other Custom Form Builder plugin for WordPress is vulnerable to Payment Amount Bypass in all versions up to, and including, 2.5.2. This is due to the create_payment_intent() function performing a payment validation solely based on the value of a user-controlled parameter. This makes it possible for unauthenticated attackers to bypass configured form payment-amount validation and create underpriced payment/subscription intents by setting form_id to 0.",
+    "severity": "high",
+    "cve_id": "CVE-2026-4987",
+    "ghsa_id": "GHSA-v8h4-7xcp-85r6",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": null,
     "risk_score": null
@@ -418,79 +481,6 @@
       null
     ],
     "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3rh2-v3gr-35p9",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-27T22:26:05Z",
-    "title": "MinIO is Vulnerable to SSE Metadata Injection via Replication Headers",
-    "description": "## Impact\n\n_What kind of vulnerability is it? Who is impacted?_\n\nA flaw in `extractMetadataFromMime()` allows any authenticated user with `s3:PutObject` permission to inject internal server-side encryption metadata into objects by sending crafted `X-Minio-Replication-*` headers on a normal PutObject request. The server unconditionally maps these headers to `X-Minio-Internal-*` encryption metadata without verifying that the request is a legitimate replication request. Objects written this way car",
-    "severity": "high",
-    "cve_id": "CVE-2026-34204",
-    "ghsa_id": "GHSA-3rh2-v3gr-35p9",
-    "affected_packages": [
-      "github.com/minio/minio"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-27v5-c462-wpq7",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-27T22:23:52Z",
-    "title": "path-to-regexp vulnerable to Regular Expression Denial of Service via multiple wildcards",
-    "description": "### Impact\n\nWhen using multiple wildcards, combined with at least one parameter, a regular expression can be generated that is vulnerable to ReDoS. This backtracking vulnerability requires the second wildcard to be somewhere other than the end of the path.\n\n**Unsafe examples:**\n\n```\n/*foo-*bar-:baz\n/*a-:b-*c-:d\n/x/*a-:b/*c/y\n```\n\n**Safe examples:**\n\n```\n/*foo-:bar\n/*foo-:bar-*baz\n```\n\n### Patches\n\nUpgrade to version `8.4.0`.\n\n### Workarounds\n\nIf developers are using multiple wildcard parameters,",
-    "severity": "medium",
-    "cve_id": "CVE-2026-4923",
-    "ghsa_id": "GHSA-27v5-c462-wpq7",
-    "affected_packages": [
-      "path-to-regexp"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-j3q9-mxjg-w52f",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-27T22:23:27Z",
-    "title": "path-to-regexp vulnerable to Denial of Service via sequential optional groups",
-    "description": "### Impact\n\nA bad regular expression is generated any time you have multiple sequential optional groups (curly brace syntax), such as `{a}{b}{c}:z`. The generated regex grows exponentially with the number of groups, causing denial of service.\n\n### Patches\n\nFixed in version 8.4.0.\n\n### Workarounds\n\nLimit the number of sequential optional groups in route patterns. Avoid passing user-controlled input as route patterns.",
-    "severity": "high",
-    "cve_id": "CVE-2026-4926",
-    "ghsa_id": "GHSA-j3q9-mxjg-w52f",
-    "affected_packages": [
-      "path-to-regexp"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
       null,
       null,
       null
