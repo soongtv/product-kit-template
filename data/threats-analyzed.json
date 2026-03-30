@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1774878714739-1",
+    "id": "twitter-1774897887341-1",
     "source": "Twitter Security",
-    "timestamp": "2026-03-30T13:51:54.739Z",
+    "timestamp": "2026-03-30T19:11:27.341Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,29 +10,25 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The ransomware campaign poses a significant threat to organizations relying on cloud infrastructure, potentially leading to service disruptions, data breaches, and financial losses. The use of compromised CI/CD pipelines increases the risk of widespread and rapid deployment of the ransomware.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
       "affected_industries": [
         "Technology",
-        "Finance",
-        "Healthcare",
-        "Retail",
-        "Manufacturing",
-        "Government"
+        "General"
       ],
       "recommended_actions": [
-        "Immediately review and secure CI/CD pipelines by implementing multi-factor authentication (MFA), access controls, and regular security audits.",
-        "Deploy endpoint detection and response (EDR) solutions to monitor and mitigate potential ransomware activities in cloud environments.",
-        "Ensure regular backups of critical data are stored offline or in secure, immutable storage, and test recovery procedures to minimize downtime."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "hn-1774878714739-1",
+    "id": "hn-1774897887341-1",
     "source": "HackerNews",
-    "timestamp": "2026-03-30T13:51:54.739Z",
+    "timestamp": "2026-03-30T19:11:27.341Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -56,286 +52,138 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-xqmp-fxgv-xvq5",
+    "id": "gh-GHSA-39mp-545q-w789",
     "source": "GitHub Security",
-    "timestamp": "2026-03-30T13:04:03Z",
-    "title": "libp2p-gossipsub: Remote crash via unchecked Instant overflow in heartbeat backoff expiry handling",
-    "description": "## Description\n### Summary\nThe Rust libp2p Gossipsub implementation contains a remotely reachable panic in `backoff` expiry handling.  \nAfter a peer sends a crafted `PRUNE` control message with an attacker-controlled, near-maximum `backoff` value, the value is accepted and stored as an `Instant` near the representable upper bound. On a later heartbeat, the implementation performs unchecked `Instant + Duration` arithmetic (`backoff_time + slack`), which can overflow and panic with:\n`overflow when",
-    "severity": "high",
-    "cve_id": "CVE-2026-34219",
-    "ghsa_id": "GHSA-xqmp-fxgv-xvq5",
+    "timestamp": "2026-03-30T19:06:22Z",
+    "title": "OpenClaw: Non-owner command-authorized sender can change the owner-only `/send` session delivery policy",
+    "description": "> Fixed in OpenClaw 2026.3.24, the current shipping release.\n\n**Title**  \nNon-owner command-authorized sender can change the owner-only `/send` session delivery policy\n\n**CWE**  \nCWE-285 Improper Authorization\n\n**CVSS v3.1**  \nCVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L  \nBase score: **5.4 (Medium)**\n\n**Severity Assessment**  \nMedium. This is a real owner-only authorization bypass, but the demonstrated impact is limited to persistent mutation of the current session’s delivery policy rather than",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-39mp-545q-w789",
     "affected_packages": [
-      "libp2p-gossipsub"
+      "openclaw"
     ],
     "cwes": [
-      null,
       null
     ],
     "references": [
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-xp9r-prpg-373r",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-30T19:05:11Z",
+    "title": "OpenClaw: `browser.request` still allows `POST /reset-profile` through the `operator.write` surface",
+    "description": "> Fixed in OpenClaw 2026.3.24, the current shipping release.\n\n# Title\n\n`browser.request` still allows `POST /reset-profile` through the `operator.write` surface in OpenClaw `v2026.3.22` after `GHSA-vmhq-cqm9-6p7q`\n\n## Severity Assessment\n\nHigh\n\nCWE:\n\n- `CWE-863: Incorrect Authorization`\n\nProposed CVSS v3.1:\n\n- `8.1` (`CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:H`)\n\nAn authenticated caller who only has access to the scoped Gateway method `browser.request` on the `operator.write` surface can still",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-xp9r-prpg-373r",
+    "affected_packages": [
+      "openclaw"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in the Rust libp2p Gossipsub implementation allows remote attackers to cause a panic by exploiting unchecked arithmetic operations. This can lead to denial-of-service (DoS) attacks, disrupting peer-to-peer communications and potentially impacting systems relying on decentralized protocols.",
+      "risk_score": 81,
+      "impact_assessment": "The vulnerability allows an authenticated user with limited permissions to reset user profiles via unauthorized POST requests, potentially leading to data loss, service disruption, or unauthorized configuration changes.",
       "affected_industries": [
-        "Blockchain and Cryptocurrency",
-        "Decentralized Applications (DApps)",
-        "Peer-to-Peer Networking",
-        "IoT and Edge Computing"
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Telecommunications"
       ],
       "recommended_actions": [
-        "Upgrade to the latest patched version of the Rust libp2p Gossipsub library that addresses CVE-2026-34219.",
-        "Implement input validation to sanitize and restrict attacker-controlled values, particularly for `PRUNE` control messages.",
-        "Monitor network traffic for unusual or malicious activity targeting the Gossipsub protocol, and deploy mitigations such as rate-limiting or anomaly detection."
+        "Immediately update OpenClaw to version 2026.3.24 or later to patch the vulnerability.",
+        "Audit and restrict access to the `operator.write` surface to minimize exposure to unauthorized users.",
+        "Implement monitoring and logging for suspicious activity related to the `browser.request` method to detect potential exploitation."
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 81
   },
   {
-    "id": "gh-GHSA-83jv-37p5-gc2r",
+    "id": "gh-GHSA-vqvg-86cc-cg83",
     "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:27Z",
-    "title": "Navicat for Oracle 12.1.15 contains a denial of service vulnerability that allows local attackers...",
-    "description": "Navicat for Oracle 12.1.15 contains a denial of service vulnerability that allows local attackers to crash the application by supplying an excessively long string in the password field. Attackers can paste a buffer of 550 repeated characters into the password parameter during Oracle connection configuration to trigger an application crash.",
+    "timestamp": "2026-03-30T18:59:16Z",
+    "title": "OpenClaw: Mutating internal `/allowlist` chat commands missed `operator.admin` scope enforcement",
+    "description": "> Fixed in OpenClaw 2026.3.24, the current shipping release.\n\n**Title**  \nMutating internal `/allowlist` chat commands missed `operator.admin` scope enforcement\n\n**CWE**  \nCWE-862 Missing Authorization\n\n**CVSS v3.1**  \nCVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:H/A:N  \nBase score: **6.5 (Medium)**\n\n**Severity Assessment**  \nMedium. This is a real authorization flaw in OpenClaw’s internal control plane. The issue does not require host access, trusted local state tampering, or multi-tenant assumptions",
     "severity": "medium",
-    "cve_id": "CVE-2019-25653",
-    "ghsa_id": "GHSA-83jv-37p5-gc2r",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-vqvg-86cc-cg83",
+    "affected_packages": [
+      "openclaw"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2019-25653.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in OpenClaw allows unauthorized users with limited privileges to mutate internal `/allowlist` chat commands without proper enforcement of the `operator.admin` scope. This could lead to unauthorized modifications to access control lists, potentially enabling privilege escalation or unauthorized access.",
       "affected_industries": [
         "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-74q7-8ffv-3j46",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:27Z",
-    "title": "Rejected reason: Reserved for EastLink case, but no need for CVE anymore",
-    "description": "Rejected reason: Reserved for EastLink case, but no need for CVE anymore",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-4425",
-    "ghsa_id": "GHSA-74q7-8ffv-3j46",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-4425.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-qc7g-9546-gc47",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:27Z",
-    "title": "SmartFTP Client 9.0.2615.0 contains a denial of service vulnerability that allows local attackers...",
-    "description": "SmartFTP Client 9.0.2615.0 contains a denial of service vulnerability that allows local attackers to crash the application by supplying an excessively long string in the Host field. Attackers can paste a buffer of 300 repeated characters into the Host connection parameter to trigger an application crash.",
-    "severity": "medium",
-    "cve_id": "CVE-2018-25234",
-    "ghsa_id": "GHSA-qc7g-9546-gc47",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 45,
-      "impact_assessment": "The vulnerability allows local attackers to crash the SmartFTP Client application by exploiting a denial of service condition, potentially disrupting workflows but without remote exploitation or data compromise.",
-      "affected_industries": [
-        "IT Services",
-        "Software Development",
-        "Media and Communications",
+        "Telecommunications",
+        "Financial Services",
+        "Healthcare",
         "E-commerce"
       ],
       "recommended_actions": [
-        "Update SmartFTP Client to the latest version if a patch is available.",
-        "Restrict local access to trusted users to minimize the risk of exploitation.",
-        "Monitor vendor advisories for any updates or patches addressing CVE-2018-25234."
+        "Upgrade to OpenClaw version 2026.3.24 or later, as the issue is resolved in this release.",
+        "Conduct an audit of `/allowlist` usage and access logs to identify any unauthorized modifications prior to patching.",
+        "Implement additional monitoring and alerting for sensitive commands like `/allowlist` to detect anomalous activity."
       ],
       "urgency": "medium"
     },
-    "risk_score": 45
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-r26r-6m7m-c35r",
+    "id": "gh-GHSA-94pw-c6m8-p9p9",
     "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:27Z",
-    "title": "Device Monitoring Studio 8.10.00.8925 contains a denial of service vulnerability that allows...",
-    "description": "Device Monitoring Studio 8.10.00.8925 contains a denial of service vulnerability that allows local attackers to crash the application by supplying an excessively long string to the server connection dialog. Attackers can trigger the crash by entering a malformed server name or address containing repeated characters through the Tools menu Connect to New Server interface.",
-    "severity": "medium",
-    "cve_id": "CVE-2019-25655",
-    "ghsa_id": "GHSA-r26r-6m7m-c35r",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2019-25655.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-7423-48c4-v7wf",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:27Z",
-    "title": "Softros LAN Messenger 9.2 contains a denial of service vulnerability that allows local attackers...",
-    "description": "Softros LAN Messenger 9.2 contains a denial of service vulnerability that allows local attackers to crash the application by supplying an excessively long string to the custom log files location field. Attackers can input a buffer of 2000 characters in the Log Files Location custom path parameter to trigger a crash when the OK button is clicked.",
-    "severity": "medium",
-    "cve_id": "CVE-2018-25232",
-    "ghsa_id": "GHSA-7423-48c4-v7wf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 45,
-      "impact_assessment": "The vulnerability allows local attackers to crash the Softros LAN Messenger application, potentially disrupting communication within an organization. However, it does not allow remote exploitation or privilege escalation, limiting its overall impact.",
-      "affected_industries": [
-        "Corporate IT",
-        "Healthcare",
-        "Education",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Update to the latest version of Softros LAN Messenger if a patch is available to address CVE-2018-25232.",
-        "Restrict physical and local access to trusted personnel to minimize the risk of exploitation.",
-        "Implement monitoring to detect and respond to unusual application crashes or behavior."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 45
-  },
-  {
-    "id": "gh-GHSA-x4g8-cm9x-f937",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:27Z",
-    "title": "NetworkActiv Web Server 4.0 contains a buffer overflow vulnerability in the username field of the...",
-    "description": "NetworkActiv Web Server 4.0 contains a buffer overflow vulnerability in the username field of the Security options that allows local attackers to crash the application by supplying an excessively long string. Attackers can trigger a denial of service by entering a crafted username value exceeding the expected buffer size through the Set username interface.",
-    "severity": "medium",
-    "cve_id": "CVE-2018-25235",
-    "ghsa_id": "GHSA-x4g8-cm9x-f937",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2018-25235.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-rj7r-w646-cjw4",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:27Z",
-    "title": "Core FTP/SFTP Server 1.2 contains a buffer overflow vulnerability that allows attackers to crash...",
-    "description": "Core FTP/SFTP Server 1.2 contains a buffer overflow vulnerability that allows attackers to crash the service by supplying an excessively long string in the User domain field. Attackers can paste a malicious payload containing 7000 bytes of data into the domain configuration to trigger an application crash and deny service.",
+    "timestamp": "2026-03-30T18:52:38Z",
+    "title": "OpenClaw: Gateway operator.write Can Reach Admin-Class Channel Allowlist Persistence via chat.send",
+    "description": "> Fixed in OpenClaw 2026.3.24, the current shipping release.\n\n## Summary\n\nThe shared `/allowlist` command persists channel authorization config through `writeConfigFile(...)` but does not re-validate gateway client scopes for internal gateway callers. Because `chat.send` is intentionally reachable to `operator.write` callers and still creates a generic command-authorized internal context, an authenticated write-scoped gateway client can indirectly mutate channel `allowFrom` and `groupAllowFrom` ",
     "severity": "high",
-    "cve_id": "CVE-2019-25654",
-    "ghsa_id": "GHSA-rj7r-w646-cjw4",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-94pw-c6m8-p9p9",
+    "affected_packages": [
+      "openclaw"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2019-25654.",
+      "impact_assessment": "Potential security vulnerability with high severity. ",
       "affected_industries": [
         "Technology",
         "General"
@@ -350,67 +198,63 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-v466-77r2-7589",
+    "id": "gh-GHSA-m3mh-3mpg-37hw",
     "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:27Z",
-    "title": "WebDrive 18.00.5057 contains a denial of service vulnerability that allows local attackers to...",
-    "description": "WebDrive 18.00.5057 contains a denial of service vulnerability that allows local attackers to crash the application by supplying an excessively long string in the username field during Secure WebDAV connection setup. Attackers can input a buffer-overflow payload of 5000 bytes in the username parameter and trigger a connection test to cause the application to crash.",
-    "severity": "medium",
-    "cve_id": "CVE-2018-25233",
-    "ghsa_id": "GHSA-v466-77r2-7589",
-    "affected_packages": [],
+    "timestamp": "2026-03-30T18:52:09Z",
+    "title": "OpenClaw has an Arbitrary Malicious Code Execution Vulnerability",
+    "description": "> Fixed in OpenClaw 2026.3.24, the current shipping release.\n\n### Summary\nDuring the installation phase of OpenClaw local plugins/hooks, the Git executable can be hijacked by a project-level .npmrc file, leading to arbitrary code execution during installation.\n\n### Details\nPlease note that the source code locations mentioned below are based on version openclaw-2026.3.13-1, but the issue has been confirmed to still exist in the current latest version, 2026.3.23.\n\nWhen installing a local plugin di",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-m3mh-3mpg-37hw",
+    "affected_packages": [
+      "openclaw"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 55,
-      "impact_assessment": "The vulnerability allows local attackers to crash the WebDrive application, potentially disrupting workflows and causing temporary denial of service. However, exploitation requires local access, limiting the scope of the threat.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
       "affected_industries": [
-        "IT Services",
-        "Cloud Storage Providers",
-        "Enterprise Software"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Update to the latest version of WebDrive to ensure the vulnerability is patched.",
-        "Implement input validation and sanitization to prevent buffer overflow attacks.",
-        "Restrict local access to trusted users and monitor for unusual activity."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 55
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-8q3v-mp8g-6w48",
+    "id": "gh-GHSA-68f8-9mhj-h2mp",
     "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:27Z",
-    "title": "HeidiSQL 9.5.0.5196 contains a denial of service vulnerability that allows local attackers to...",
-    "description": "HeidiSQL 9.5.0.5196 contains a denial of service vulnerability that allows local attackers to crash the application by supplying an excessively long file path in the logging preferences. Attackers can input a buffer-overflow payload through the SQL log file path field in Preferences > Logging to trigger an application crash.",
+    "timestamp": "2026-03-30T18:41:15Z",
+    "title": "OpenClaw has a Gateway HTTP /v1/models Route Bypasses Operator Read Scope",
+    "description": "> Fixed in OpenClaw 2026.3.24, the current shipping release.\n\n## Summary\n\nThe OpenAI-compatible HTTP endpoint `/v1/models` accepts bearer auth but does not enforce operator method scopes.\n\nIn contrast, the WebSocket RPC path enforces `operator.read` for `models.list`.\n\nA caller connected with `operator.approvals` (no read scope) is rejected for `models.list` (`missing scope: operator.read`) but can still enumerate model metadata through HTTP `/v1/models`.\n\nConfirmed on current `main` at commit `",
     "severity": "medium",
-    "cve_id": "CVE-2018-25231",
-    "ghsa_id": "GHSA-8q3v-mp8g-6w48",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-68f8-9mhj-h2mp",
+    "affected_packages": [
+      "openclaw"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2018-25231.",
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
       "affected_industries": [
         "Technology",
         "General"
@@ -425,200 +269,17 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-4853-2382-frfw",
+    "id": "gh-GHSA-w6m8-cqvj-pg5v",
     "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:26Z",
-    "title": "Free IP Switcher 3.1 contains a buffer overflow vulnerability that allows local attackers to...",
-    "description": "Free IP Switcher 3.1 contains a buffer overflow vulnerability that allows local attackers to crash the application by supplying an excessively long string in the Computer Name field. Attackers can paste a malicious payload into the Computer Name input field and click Activate to trigger a denial of service condition that crashes the application.",
+    "timestamp": "2026-03-30T18:32:03Z",
+    "title": "OpenClaw has incomplete Fix for CVE-2026-32011: Feishu Webhook Pre-Auth Body Parsing DoS (Slow-Body / Slowloris Variant)",
+    "description": "> Fixed in OpenClaw 2026.3.24, the current shipping release.\n\n# Advisory Details\n\n**Title**: Incomplete Fix for CVE-2026-32011: Feishu Webhook Pre-Auth Body Parsing DoS (Slow-Body / Slowloris Variant)\n\n**Description**:\n\n### Summary\n\nThe patch for CVE-2026-32011 tightened pre-auth body parsing limits (from 1MB/30s to 64KB/5s) across several webhook handlers. However, the **Feishu extension's webhook handler** was not included in the patch and still accepts request bodies with the old permissive l",
     "severity": "medium",
-    "cve_id": "CVE-2018-25230",
-    "ghsa_id": "GHSA-4853-2382-frfw",
-    "affected_packages": [],
-    "cwes": [
-      null
+    "cve_id": null,
+    "ghsa_id": "GHSA-w6m8-cqvj-pg5v",
+    "affected_packages": [
+      "openclaw"
     ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2018-25230.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-rghm-p4mw-93h3",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:26Z",
-    "title": "A sensitive information exposure vulnerability exists in ArthurFiorette steam-trader 2.1.1. An...",
-    "description": "A sensitive information exposure vulnerability exists in ArthurFiorette steam-trader 2.1.1. An unauthenticated attacker can send a request to the /users API endpoint to retrieve highly sensitive Steam account data, including the account username, password, identity secret, and shared secret. In addition, application logs expose authentication artifacts such as access tokens, refresh tokens, and session identifiers. This information allows an attacker to generate valid Steam Guard (2FA) codes, hi",
-    "severity": "critical",
-    "cve_id": "CVE-2026-5128",
-    "ghsa_id": "GHSA-rghm-p4mw-93h3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 95,
-      "impact_assessment": "This vulnerability allows unauthenticated attackers to access sensitive Steam account data, including credentials, two-factor authentication secrets, and session tokens. Exploitation could lead to account takeovers, unauthorized transactions, and potential financial or reputational damage to users and organizations utilizing the application.",
-      "affected_industries": [
-        "Gaming",
-        "E-commerce",
-        "Technology",
-        "Entertainment"
-      ],
-      "recommended_actions": [
-        "Immediately update or patch the application to address the vulnerability in the /users API endpoint and secure sensitive data exposure.",
-        "Revoke and regenerate all exposed authentication artifacts, including access tokens, refresh tokens, and session identifiers.",
-        "Implement logging best practices to ensure sensitive information is not stored or exposed in application logs."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 95
-  },
-  {
-    "id": "gh-GHSA-vhgc-p69c-hp2h",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:26Z",
-    "title": "NetSetMan 4.7.1 contains a buffer overflow vulnerability in the Workgroup feature that allows...",
-    "description": "NetSetMan 4.7.1 contains a buffer overflow vulnerability in the Workgroup feature that allows local attackers to crash the application by supplying oversized input. Attackers can create a malicious configuration file with excessive data and paste it into the Workgroup field to trigger a denial of service condition.",
-    "severity": "medium",
-    "cve_id": "CVE-2018-25228",
-    "ghsa_id": "GHSA-vhgc-p69c-hp2h",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2018-25228.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-mv2c-2q2x-3x5v",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:26Z",
-    "title": "FTPShell Server 6.83 contains a buffer overflow vulnerability that allows local attackers to...",
-    "description": "FTPShell Server 6.83 contains a buffer overflow vulnerability that allows local attackers to crash the application by supplying an excessively long string in the account name field. Attackers can trigger a denial of service by pasting a 417-byte payload into the 'Account name to ban' parameter within the Manage FTP Accounts interface.",
-    "severity": "medium",
-    "cve_id": "CVE-2018-25226",
-    "ghsa_id": "GHSA-mv2c-2q2x-3x5v",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2018-25226.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-gp26-36x8-p39m",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:26Z",
-    "title": "BulletProof FTP Server 2019.0.0.50 contains a denial of service vulnerability in the SMTP...",
-    "description": "BulletProof FTP Server 2019.0.0.50 contains a denial of service vulnerability in the SMTP configuration interface that allows local attackers to crash the application by supplying an oversized string. Attackers can input a buffer of 257 'A' characters in the SMTP Server field and trigger a crash by clicking the Test button.",
-    "severity": "medium",
-    "cve_id": "CVE-2018-25229",
-    "ghsa_id": "GHSA-gp26-36x8-p39m",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 45,
-      "impact_assessment": "The vulnerability allows local attackers to crash the BulletProof FTP Server application by exploiting a denial of service (DoS) flaw in the SMTP configuration interface. This could disrupt operations and require manual intervention to restore services, but it does not allow remote exploitation or data exfiltration.",
-      "affected_industries": [
-        "IT Services",
-        "Web Hosting",
-        "Small and Medium Businesses (SMBs) using FTP servers"
-      ],
-      "recommended_actions": [
-        "Update to the latest version of BulletProof FTP Server if a patch is available.",
-        "Restrict local access to the server to trusted personnel only to minimize the risk of exploitation.",
-        "Implement monitoring and logging to detect unusual activity or application crashes for faster incident response."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 45
-  },
-  {
-    "id": "gh-GHSA-7x64-vh67-7fgv",
-    "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:26Z",
-    "title": "AL-KO Robolinho Update Software has hard-coded AWS Access and Secret keys that allow anyone to...",
-    "description": "AL-KO Robolinho Update Software has hard-coded AWS Access and Secret keys that allow anyone to access AL-KO's AWS bucket. Using the keys directly might give the attacker greater access than the app itself. Key grants AT LEAST read access to some of the objects in bucket.\n\nThe vendor was notified early about this vulnerability, but didn't respond with the details of vulnerability or vulnerable version range. Only versions 8.0.21.0610 was tested and confirmed as vulnerable, other versions were not",
-    "severity": "medium",
-    "cve_id": "CVE-2026-1612",
-    "ghsa_id": "GHSA-7x64-vh67-7fgv",
-    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -629,30 +290,65 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The hard-coded AWS access and secret keys in the AL-KO Robolinho Update Software could allow unauthorized access to AL-KO's AWS bucket. This may lead to data exposure, unauthorized data manipulation, or potential escalation of privileges if the keys provide broader access than initially observed.",
+      "impact_assessment": "The incomplete fix for CVE-2026-32011 leaves the Feishu webhook handler vulnerable to a Slow-Body/Slowloris-style Denial of Service (DoS) attack. This could allow attackers to exhaust server resources by sending slow, incomplete HTTP requests, potentially impacting availability of services relying on the Feishu webhook integration.",
       "affected_industries": [
-        "Smart Home Devices",
-        "IoT",
-        "Consumer Electronics"
+        "Technology",
+        "Enterprise Collaboration Platforms",
+        "Software-as-a-Service (SaaS)",
+        "Cloud Services"
       ],
       "recommended_actions": [
-        "Immediately rotate and revoke the exposed AWS access and secret keys to prevent unauthorized access.",
-        "Implement secure coding practices to avoid hard-coding sensitive credentials in software and use environment variables or secure secret management solutions instead.",
-        "Conduct a comprehensive security audit of all versions of the software to identify and address similar vulnerabilities."
+        "Immediately apply rate-limiting and connection timeout policies at the web server or API gateway level to mitigate Slow-Body/Slowloris attacks.",
+        "Contact the OpenClaw development team to confirm when a complete fix will be released and monitor for updates.",
+        "Conduct a security audit of all webhook handlers, particularly those integrated with Feishu, to identify and mitigate similar vulnerabilities."
       ],
       "urgency": "high"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-qjcw-r4cf-vp97",
+    "id": "gh-GHSA-p4x4-rw25-ghm6",
     "source": "GitHub Security",
-    "timestamp": "2026-03-30T12:32:26Z",
-    "title": "Valentina Studio 9.0.4 contains a denial of service vulnerability that allows local attackers to...",
-    "description": "Valentina Studio 9.0.4 contains a denial of service vulnerability that allows local attackers to crash the application by supplying an excessively long string in the Host field. Attackers can trigger the crash by pasting a 256-byte buffer of repeated characters into the Host parameter during server connection attempts.",
-    "severity": "medium",
-    "cve_id": "CVE-2018-25227",
-    "ghsa_id": "GHSA-qjcw-r4cf-vp97",
+    "timestamp": "2026-03-30T18:31:18Z",
+    "title": "OpenAirInterface V2.2.0 AMF crashes when it fails to decode the message. Not all decode failures...",
+    "description": "OpenAirInterface V2.2.0 AMF crashes when it fails to decode the message. Not all decode failures result in a crash. But the crash is consistent for particular inputs. An example input in hex stream is 80 00 00 0E 00 00 01 00 0F 80 02 02 40 00 58 00 01 88.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-30077",
+    "ghsa_id": "GHSA-p4x4-rw25-ghm6",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "The vulnerability in OpenAirInterface V2.2.0 AMF allows for a crash when decoding specific malformed messages. This could lead to denial-of-service (DoS) attacks, disrupting critical network functions in environments relying on OpenAirInterface for 5G core network implementations.",
+      "affected_industries": [
+        "Telecommunications",
+        "Internet Service Providers",
+        "5G Infrastructure Providers"
+      ],
+      "recommended_actions": [
+        "Update to the latest patched version of OpenAirInterface V2.2.0 or apply any available security patches addressing CVE-2026-30077.",
+        "Implement input validation and sanitization mechanisms to detect and reject malformed messages before processing.",
+        "Monitor network traffic for anomalous patterns that could indicate exploitation attempts and enable logging to identify potential attack vectors."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-g7c4-wv7q-gcc6",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-30T18:31:18Z",
+    "title": "The iconv() function in the GNU C Library versions 2.43 and earlier may crash due to an assertion...",
+    "description": "The iconv() function in the GNU C Library versions 2.43 and earlier may crash due to an assertion failure when converting inputs from the IBM1390 or IBM1399 character sets, which may be used to remotely crash an application.\n\n\n\nThis vulnerability can be trivially mitigated by removing the IBM1390 and IBM1399 character sets from systems that do not need them.",
+    "severity": "high",
+    "cve_id": "CVE-2026-4046",
+    "ghsa_id": "GHSA-g7c4-wv7q-gcc6",
     "affected_packages": [],
     "cwes": [
       null
@@ -661,13 +357,46 @@
       null,
       null,
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "The vulnerability in the iconv() function of the GNU C Library could allow remote attackers to crash applications by exploiting an assertion failure when converting inputs from specific character sets (IBM1390 or IBM1399). This may lead to denial-of-service (DoS) conditions in affected systems.",
+      "affected_industries": [
+        "Technology",
+        "Telecommunications",
+        "Financial Services",
+        "Healthcare",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately assess whether IBM1390 and IBM1399 character sets are required on your systems. If not, remove them to mitigate the risk.",
+        "Apply patches or updates to the GNU C Library as soon as they are available to address CVE-2026-4046.",
+        "Implement monitoring and logging to detect unusual crashes or behavior in applications using the iconv() function."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-qx64-h3hh-3vhj",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-30T18:31:18Z",
+    "title": "A cross-session information disclosure vulnerability exists in the awesome-llm-apps project in...",
+    "description": "A cross-session information disclosure vulnerability exists in the awesome-llm-apps project in commit e46690f99c3f08be80a9877fab52acacf7ab8251 (2026-01-19). The affected Streamlit-based GitHub MCP Agent stores user-supplied API tokens in process-wide environment variables using os.environ without proper session isolation. Because Streamlit serves multiple concurrent users from a single Python process, credentials provided by one user remain accessible to subsequent unauthenticated users. An atta",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-29872",
+    "ghsa_id": "GHSA-qx64-h3hh-3vhj",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2018-25227.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-29872.",
       "affected_industries": [
         "Technology",
         "General"
@@ -682,14 +411,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-6vhj-8f7g-v7f7",
+    "id": "gh-GHSA-v2pm-mwvh-p9w7",
     "source": "GitHub Security",
-    "timestamp": "2026-03-30T09:31:29Z",
-    "title": "An integer overflow vulnerability in the HTTP chunked transfer encoding parser in tinyproxy up to...",
-    "description": "An integer overflow vulnerability in the HTTP chunked transfer encoding parser in tinyproxy up to and including version 1.11.3 allows an unauthenticated remote attacker to cause a denial of service (DoS). The issue occurs because chunk size values are parsed using strtol() without properly validating overflow conditions (e.g., errno == ERANGE). A crafted chunk size such as 0x7fffffffffffffff (LONG_MAX) bypasses the existing validation check (chunklen < 0), leading to a signed integer overflow du",
-    "severity": "high",
-    "cve_id": "CVE-2026-3945",
-    "ghsa_id": "GHSA-6vhj-8f7g-v7f7",
+    "timestamp": "2026-03-30T18:31:18Z",
+    "title": "A flaw has been found in SourceCodester RSS Feed Parser 1.0. Affected by this issue is the...",
+    "description": "A flaw has been found in SourceCodester RSS Feed Parser 1.0. Affected by this issue is the function file_get_contents. This manipulation causes server-side request forgery. The attack is possible to be carried out remotely. The exploit has been published and may be used.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-5126",
+    "ghsa_id": "GHSA-v2pm-mwvh-p9w7",
     "affected_packages": [],
     "cwes": [
       null
@@ -704,8 +433,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-3945.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-5126.",
       "affected_industries": [
         "Technology",
         "General"
@@ -715,19 +444,210 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 75
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-2vwv-vqpv-v8vc",
+    "id": "gh-GHSA-hg3w-jvvc-86cf",
     "source": "GitHub Security",
-    "timestamp": "2026-03-30T09:31:29Z",
-    "title": "A flaw was found in libarchive. On 32-bit systems, an integer overflow vulnerability exists in...",
-    "description": "A flaw was found in libarchive. On 32-bit systems, an integer overflow vulnerability exists in the zisofs block pointer allocation logic. A remote attacker can exploit this by providing a specially crafted ISO9660 image, which can lead to a heap buffer overflow. This could potentially allow for arbitrary code execution on the affected system.",
+    "timestamp": "2026-03-30T18:31:18Z",
+    "title": "A vulnerability was detected in raine consult-llm-mcp up to 2.5.3. Affected by this vulnerability...",
+    "description": "A vulnerability was detected in raine consult-llm-mcp up to 2.5.3. Affected by this vulnerability is the function child_process.execSync of the file src/server.ts. The manipulation of the argument git_diff.base_ref/git_diff.files results in os command injection. The attack is only possible with local access. The exploit is now public and may be used. Upgrading to version 2.5.4 addresses this issue. The patch is identified as 4abf297b34e5e8a9cb364b35f52c5f0ca1d599d3. Upgrading the affected compon",
+    "severity": "medium",
+    "cve_id": "CVE-2026-5125",
+    "ghsa_id": "GHSA-hg3w-jvvc-86cf",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows for OS command injection via the child_process.execSync function in src/server.ts, potentially enabling attackers with local access to execute arbitrary commands. This could lead to unauthorized system modifications, data exfiltration, or further exploitation of the system.",
+      "affected_industries": [
+        "Technology",
+        "Software Development",
+        "Cloud Services",
+        "Consulting Firms"
+      ],
+      "recommended_actions": [
+        "Upgrade to version 2.5.4 of raine consult-llm-mcp to apply the patch identified as 4abf297b34e5e8a9cb364b35f52c5f0ca1d599d3.",
+        "Restrict local access to trusted users only and monitor for any unusual activity in systems running the vulnerable software.",
+        "Conduct a security audit to identify any potential exploitation of this vulnerability and ensure all systems are updated."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-rx2c-j693-rp5c",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-30T18:31:18Z",
+    "title": "Smoothwall Express versions prior to 3.1 Update 13 contain a reflected cross-site scripting...",
+    "description": "Smoothwall Express versions prior to 3.1 Update 13 contain a reflected cross-site scripting vulnerability in the /redirect.cgi endpoint due to improper sanitation of the url parameter. Attackers can craft malicious URLs with javascript: schemes that execute arbitrary JavaScript in victims' browsers when clicked through the unsanitized link.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-27508",
+    "ghsa_id": "GHSA-rx2c-j693-rp5c",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-27508.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-688c-h9c2-ffwg",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-30T18:31:18Z",
+    "title": "A security vulnerability has been detected in osrg GoBGP up to 4.3.0. Affected is the function...",
+    "description": "A security vulnerability has been detected in osrg GoBGP up to 4.3.0. Affected is the function BGPHeader.DecodeFromBytes of the file pkg/packet/bgp/bgp.go of the component BGP Header Handler. The manipulation leads to improper access controls. Remote exploitation of the attack is possible. The attack is considered to have high complexity. The exploitability is told to be difficult. The identifier of the patch is f0f24a2a901cbf159260698211ab15c583ced131. To fix this issue, it is recommended to de",
+    "severity": "medium",
+    "cve_id": "CVE-2026-5124",
+    "ghsa_id": "GHSA-688c-h9c2-ffwg",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in the BGP Header Handler of osrg GoBGP up to version 4.3.0 could allow improper access controls, potentially enabling unauthorized access or manipulation of BGP routing information. While the exploit is considered complex and difficult to execute, successful exploitation could disrupt network routing and lead to data interception or denial of service.",
+      "affected_industries": [
+        "Telecommunications",
+        "Internet Service Providers (ISPs)",
+        "Cloud Service Providers",
+        "Financial Services",
+        "Government and Defense"
+      ],
+      "recommended_actions": [
+        "Upgrade to the latest patched version of osrg GoBGP that includes the fix (commit ID: f0f24a2a901cbf159260698211ab15c583ced131).",
+        "Conduct a thorough review of network configurations and access controls to ensure proper security measures are in place.",
+        "Monitor network traffic for unusual or unauthorized BGP activity and implement intrusion detection systems to identify potential exploitation attempts."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-m763-9mqf-95rq",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-30T18:31:17Z",
+    "title": "A weakness has been identified in osrg GoBGP up to 4.3.0. This impacts the function...",
+    "description": "A weakness has been identified in osrg GoBGP up to 4.3.0. This impacts the function DecodeFromBytes of the file pkg/packet/bgp/bgp.go. Executing a manipulation of the argument data[1] can lead to off-by-one. The attack may be launched remotely. Attacks of this nature are highly complex. The exploitability is said to be difficult. This patch is called 67c059413470df64bc20801c46f64058e88f800f. A patch should be applied to remediate this issue.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-5123",
+    "ghsa_id": "GHSA-m763-9mqf-95rq",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-5123.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-qg39-5q45-4gcc",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-30T18:31:17Z",
+    "title": "A user with access to the cluster with a limited set of privilege actions can trigger a crash of...",
+    "description": "A user with access to the cluster with a limited set of privilege actions can trigger a crash of a mongod process during the limited and unpredictable window when the cluster is being promoted from a replica set to a sharded cluster. This may cause a denial of service by taking down the primary of the replica set.\n\nThis issue affects MongoDB Server v8.2 versions prior to 8.2.2, MongoDB Server v8.0 versions between 8.0.18, MongoDB Server v7.0 versions between 7.0.31.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-5170",
+    "ghsa_id": "GHSA-qg39-5q45-4gcc",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-5170.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-72gm-vcvr-mjgq",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-30T18:31:17Z",
+    "title": "MRCMS V3.1.2 contains an unauthenticated directory enumeration vulnerability in the file...",
+    "description": "MRCMS V3.1.2 contains an unauthenticated directory enumeration vulnerability in the file management module. The /admin/file/list.do endpoint lacks authentication controls and proper input validation, allowing remote attackers to enumerate directory contents on the server without any credentials.",
     "severity": "unknown",
-    "cve_id": "CVE-2026-5121",
-    "ghsa_id": "GHSA-2vwv-vqpv-v8vc",
+    "cve_id": "CVE-2026-29909",
+    "ghsa_id": "GHSA-72gm-vcvr-mjgq",
     "affected_packages": [],
     "cwes": [],
     "references": [
@@ -737,33 +657,30 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 78,
-      "impact_assessment": "The vulnerability in libarchive could allow a remote attacker to execute arbitrary code on 32-bit systems by exploiting a heap buffer overflow, potentially leading to system compromise or unauthorized access.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-29909.",
       "affected_industries": [
         "Technology",
-        "Healthcare",
-        "Finance",
-        "Government",
-        "Education"
+        "General"
       ],
       "recommended_actions": [
-        "Apply the latest security patches or updates for libarchive as soon as they are released by the vendor.",
-        "Implement input validation and filtering mechanisms to prevent the processing of untrusted or malicious ISO9660 images.",
-        "Monitor systems for unusual activity or signs of exploitation, and consider implementing additional runtime protections such as Address Space Layout Randomization (ASLR) and stack canaries."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 78
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-hvj3-h37v-8xmq",
+    "id": "gh-GHSA-7455-x3qx-74xc",
     "source": "GitHub Security",
-    "timestamp": "2026-03-30T09:31:28Z",
-    "title": "Gigabyte Control Center developed by GIGABYTE has an Arbitrary File Write vulnerability. When the...",
-    "description": "Gigabyte Control Center developed by GIGABYTE has an Arbitrary File Write vulnerability. When the pairing feature is enabled, unauthenticated remote attackers can write arbitrary files to any location on the underlying operating system, leading to arbitrary code execution or privilege escalation.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-4415",
-    "ghsa_id": "GHSA-hvj3-h37v-8xmq",
+    "timestamp": "2026-03-30T18:31:17Z",
+    "title": "Smoothwall Express versions prior to 3.1 Update 13 contain a stored cross-site scripting...",
+    "description": "Smoothwall Express versions prior to 3.1 Update 13 contain a stored cross-site scripting vulnerability in the /cgi-bin/vpnmain.cgi script due to improper sanitation of the VPN_IP parameter. Authenticated attackers can inject arbitrary JavaScript through VPN configuration settings that executes when the affected page is viewed by other users.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-26352",
+    "ghsa_id": "GHSA-7455-x3qx-74xc",
     "affected_packages": [],
     "cwes": [
       null
@@ -775,8 +692,77 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-4415.",
+      "risk_score": 65,
+      "impact_assessment": "The stored cross-site scripting (XSS) vulnerability allows authenticated attackers to inject malicious JavaScript into VPN configuration settings. This could lead to session hijacking, data theft, or unauthorized actions performed on behalf of other users who view the affected page.",
+      "affected_industries": [
+        "Education",
+        "Healthcare",
+        "Small and Medium Businesses",
+        "Nonprofit Organizations"
+      ],
+      "recommended_actions": [
+        "Update Smoothwall Express to version 3.1 Update 13 or later to patch the vulnerability.",
+        "Review and sanitize user inputs in the VPN configuration settings to prevent injection attacks.",
+        "Implement Content Security Policy (CSP) headers to mitigate the impact of potential XSS attacks."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-wh9f-6qqx-hhhv",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-30T18:31:17Z",
+    "title": "In KubePlus 4.1.4, the mutating webhook and kubeconfiggenerator components have an SSRF...",
+    "description": "In KubePlus 4.1.4, the mutating webhook and kubeconfiggenerator components have an SSRF vulnerability when processing the chartURL field of ResourceComposition resources. The field is only URL-encoded without validating the target address. More critically, when kubeconfiggenerator uses wget to download charts, the chartURL is directly concatenated into the command, allowing attackers to inject wget's `--header` option to achieve arbitrary HTTP header injection.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-29954",
+    "ghsa_id": "GHSA-wh9f-6qqx-hhhv",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The SSRF vulnerability in KubePlus 4.1.4 allows attackers to manipulate the chartURL field, potentially leading to unauthorized access to internal systems, data exfiltration, and arbitrary HTTP header injection via wget commands. This poses a significant risk to environments using Kubernetes for resource composition and management.",
+      "affected_industries": [
+        "Cloud Computing",
+        "Software Development",
+        "IT Services",
+        "DevOps"
+      ],
+      "recommended_actions": [
+        "Immediately update KubePlus to a patched version if available, or apply mitigations such as disabling the vulnerable components.",
+        "Implement strict input validation and sanitization for the chartURL field to prevent malicious payloads.",
+        "Restrict network access to internal resources and monitor for unusual activity originating from Kubernetes components."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-qj64-x78v-v8w2",
+    "source": "GitHub Security",
+    "timestamp": "2026-03-30T18:31:17Z",
+    "title": "A Reflected Cross-Site Scripting (XSS) vulnerability exists in SourceCodester Sales and Inventory...",
+    "description": "A Reflected Cross-Site Scripting (XSS) vulnerability exists in SourceCodester Sales and Inventory System 1.0. The vulnerability is located in the add_category.php file via the \"msg\" parameter. The application fails to sanitize the input, allowing remote attackers to inject arbitrary web script or HTML via a crafted URL.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-30557",
+    "ghsa_id": "GHSA-qj64-x78v-v8w2",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-30557.",
       "affected_industries": [
         "Technology",
         "General"
@@ -786,9 +772,9 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "medium"
     },
-    "risk_score": 90
+    "risk_score": 50
   },
   {
     "id": "cve-CVE-2025-10679",
@@ -841,21 +827,20 @@
       "https://www.sourcecodester.com/"
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The identified SQL injection vulnerability in SourceCodester Sales and Inventory System 1.0 could allow attackers to manipulate database queries, potentially leading to unauthorized data access, data leakage, or database corruption. Since the exploit is publicly available, the risk of exploitation is heightened.",
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-4572.",
       "affected_industries": [
-        "Retail",
-        "Small and Medium Enterprises",
-        "E-commerce"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately apply input validation and sanitization for the 'searchtxt' parameter to prevent SQL injection.",
-        "Update or patch the SourceCodester Sales and Inventory System to the latest version if a fix is available.",
-        "Implement a web application firewall (WAF) to detect and block malicious HTTP POST requests targeting this vulnerability."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 60
   },
   {
     "id": "cve-CVE-2026-4571",
@@ -875,20 +860,22 @@
       "https://www.sourcecodester.com/"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-4571.",
+      "risk_score": 70,
+      "impact_assessment": "The vulnerability allows attackers to perform SQL injection via the 'searchtxt' parameter in HTTP POST requests, potentially leading to unauthorized data access, data exfiltration, or database manipulation. Since the exploit is publicly available, the risk of exploitation is significantly increased.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Retail",
+        "Small and Medium Enterprises (SMEs)",
+        "E-commerce",
+        "Inventory Management Software Providers"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately apply input validation and sanitization for the 'searchtxt' parameter to prevent SQL injection attacks.",
+        "Update the SourceCodester Sales and Inventory System to the latest patched version, if available, or contact the vendor for a security patch.",
+        "Implement a Web Application Firewall (WAF) to detect and block malicious SQL injection attempts."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 60
+    "risk_score": 70
   },
   {
     "id": "cve-CVE-2026-4570",
