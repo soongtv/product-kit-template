@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1775156817385-1",
+    "id": "twitter-1775185055870-1",
     "source": "Twitter Security",
-    "timestamp": "2026-04-02T19:06:57.385Z",
+    "timestamp": "2026-04-03T02:57:35.870Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1775156817385-1",
+    "id": "hn-1775185055870-1",
     "source": "HackerNews",
-    "timestamp": "2026-04-02T19:06:57.385Z",
+    "timestamp": "2026-04-03T02:57:35.870Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,78 +26,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-q4qf-9j86-f5mh",
+    "id": "gh-GHSA-9gp8-hjxr-6f34",
     "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:44:49Z",
-    "title": "Rack:: Static header_rules bypass via URL-encoded paths",
-    "description": "## Summary\n\n`Rack::Static#applicable_rules` evaluates several `header_rules` types against the raw URL-encoded `PATH_INFO`, while the underlying file-serving path is decoded before the file is served. As a result, a request for a URL-encoded variant of a static path can serve the same file without the headers that `header_rules` were intended to apply.\n\nIn deployments that rely on `Rack::Static` to attach security-relevant response headers to static content, this can allow an attacker to bypass ",
+    "timestamp": "2026-04-03T02:57:00Z",
+    "title": "OpenClaw: Host exec environment overrides miss proxy, TLS, Docker, and Git TLS controls",
+    "description": "## Summary\nHost exec environment overrides miss proxy, TLS, Docker, and Git TLS controls\n\n## Current Maintainer Triage\n- Status: open\n- Normalized severity: medium\n- Assessment: Real in shipped v2026.3.28: host exec env policy still missed proxy, TLS, Docker, and Git TLS variables until 4d912e0451 on 2026-03-31; maintainers already accepted it and the fix is unreleased.\n\n## Affected Packages / Versions\n- Package: `openclaw` (npm)\n- Latest published npm version: `2026.3.31`\n- Vulnerable version r",
     "severity": "medium",
-    "cve_id": "CVE-2026-34786",
-    "ghsa_id": "GHSA-q4qf-9j86-f5mh",
-    "affected_packages": [
-      "rack",
-      "rack",
-      "rack"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-h2jq-g4cq-5ppq",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:44:25Z",
-    "title": "Rack::Static prefix matching can expose unintended files under the static root",
-    "description": "## Summary\n\n`Rack::Static` determines whether a request should be served as a static file using a simple string prefix check. When configured with URL prefixes such as `\"/css\"`, it matches any request path that begins with that string, including unrelated paths such as `\"/css-config.env\"` or `\"/css-backup.sql\"`.\n\nAs a result, files under the static root whose names merely share the configured prefix may be served unintentionally, leading to information disclosure.\n\n## Details\n\n`Rack::Static#rout",
-    "severity": "high",
-    "cve_id": "CVE-2026-34785",
-    "ghsa_id": "GHSA-h2jq-g4cq-5ppq",
-    "affected_packages": [
-      "rack",
-      "rack",
-      "rack"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3hfp-gqgh-xc5g",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:36:10Z",
-    "title": "Axios supply chain attack - dependency in @lightdash/cli may resolve to compromised axios versions",
-    "description": "### Impact\n\nA supply chain attack on the `axios` npm package (versions 1.14.1 and 0.30.4) introduced a malicious transitive dependency (`plain-crypto-js@4.2.1`) that deploys a cross-platform remote access trojan (RAT) on macOS, Windows, and Linux. The attacker compromised the primary axios maintainer's npm account to publish the malicious versions.\n\nThe malicious versions were live on npm for approximately 3 hours (00:21 UTC to 03:29 UTC on March 31, 2026) before being removed.\n\nThe `@lightdash/",
-    "severity": "critical",
     "cve_id": null,
-    "ghsa_id": "GHSA-3hfp-gqgh-xc5g",
+    "ghsa_id": "GHSA-9gp8-hjxr-6f34",
     "affected_packages": [
-      "@lightdash/cli"
+      "openclaw"
     ],
     "cwes": [
-      null,
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -107,25 +50,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-658g-p7jg-wx5g",
+    "id": "gh-GHSA-hhff-fj5f-qg48",
     "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:34:04Z",
-    "title": "Axios npm Supply Chain Incident Impacting @usebruno/cli",
-    "description": "### **Impact**\n\nThis is a **supply chain attack** involving compromised versions of the `axios` npm package, which introduced a hidden dependency deploying a cross-platform Remote Access Trojan (RAT).\n\nUsers of **@usebruno/cli** who ran `npm install` between **00:21 UTC and ~03:30 UTC on March 31, 2026** may have been impacted.\n\nPotential impact includes:\n\n* Execution of a malicious `postinstall` script\n* Remote Access Trojan (RAT) installation\n* Exfiltration of credentials and sensitive data\n\n*",
-    "severity": "critical",
-    "cve_id": "CVE-2026-34841",
-    "ghsa_id": "GHSA-658g-p7jg-wx5g",
+    "timestamp": "2026-04-03T02:56:20Z",
+    "title": "OpenClaw runs Discord audio preflight transcription before member authorization",
+    "description": "## Summary\nDiscord audio preflight transcription before member authorization\n\n## Current Maintainer Triage\n- Status: narrow\n- Normalized severity: medium\n- Assessment: v2026.3.28 still runs Discord audio preflight before member allowlist rejection, but this is the same pre-auth resource-consumption class and not the high-severity auth-bypass framing in the draft.\n\n## Affected Packages / Versions\n- Package: `openclaw` (npm)\n- Latest published npm version: `2026.3.31`\n- Vulnerable version range: `",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-hhff-fj5f-qg48",
     "affected_packages": [
-      "@usebruno/cli"
+      "openclaw"
     ],
     "cwes": [
-      null,
-      null,
       null
     ],
     "references": [
-      null,
-      null,
       null,
       null,
       null,
@@ -135,21 +74,22 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-rrm6-76xm-g8j5",
+    "id": "gh-GHSA-mhr7-2xmv-4c4q",
     "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:39Z",
-    "title": "A vulnerability was identified in Newgen OmniDocs up to 12.0.00. Affected by this vulnerability...",
-    "description": "A vulnerability was identified in Newgen OmniDocs up to 12.0.00. Affected by this vulnerability is an unknown functionality of the file /omnidocs/GetWebApiConfiguration. The manipulation of the argument connectionDetails leads to information disclosure. The attack is possible to be carried out remotely. The attack is considered to have high complexity. The exploitation appears to be difficult. The exploit is publicly available and might be used. The vendor was contacted early about this disclosu",
+    "timestamp": "2026-04-03T02:55:08Z",
+    "title": "OpenClaw: HTTP operator endpoints lack browser-origin validation in trusted-proxy mode",
+    "description": "## Summary\nHTTP operator endpoints lack browser-origin validation in trusted-proxy mode\n\n## Current Maintainer Triage\n- Status: narrow\n- Normalized severity: medium\n- Assessment: This is a real trusted-proxy HTTP CSRF or browser-origin gap in released tags, but it is not critical because it depends on identity-bearing trusted-proxy browser deployments rather than the shared-secret HTTP operator model.\n\n## Affected Packages / Versions\n- Package: `openclaw` (npm)\n- Latest published npm version: `2",
     "severity": "medium",
-    "cve_id": "CVE-2026-5413",
-    "ghsa_id": "GHSA-rrm6-76xm-g8j5",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-mhr7-2xmv-4c4q",
+    "affected_packages": [
+      "openclaw"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
-      null,
-      null,
       null,
       null,
       null,
@@ -159,24 +99,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-9m2v-hc5g-5jpv",
+    "id": "gh-GHSA-p464-m8x6-vhv8",
     "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:39Z",
-    "title": "A vulnerability was identified in krayin laravel-crm up to 2.2. Impacted is the function...",
-    "description": "A vulnerability was identified in krayin laravel-crm up to 2.2. Impacted is the function composeMail of the file packages/Webkul/Admin/tests/e2e-pw/tests/mail/inbox.spec.ts of the component Activities Module/Notes Module. The manipulation leads to cross site scripting. Remote exploitation of the attack is possible. The exploit is publicly available and might be used. The identifier of the patch is 73ed28d466bf14787fdb86a120c656a4af270153. To fix this issue, it is recommended to deploy a patch.",
+    "timestamp": "2026-04-03T02:54:38Z",
+    "title": "OpenClaw: MS Teams webhook parses body before JWT validation, enabling unauthenticated resource exhaustion",
+    "description": "## Summary\nMS Teams webhook parses body before JWT validation, enabling unauthenticated resource exhaustion\n\n## Current Maintainer Triage\n- Status: open\n- Normalized severity: medium\n- Assessment: v2026.3.28 still parses Teams JSON after only a Bearer-prefix gate and before real JWT validation, and the auth-before-parse fix is not yet shipped.\n\n## Affected Packages / Versions\n- Package: `openclaw` (npm)\n- Latest published npm version: `2026.3.31`\n- Vulnerable version range: `<=2026.3.28`\n- Patch",
     "severity": "medium",
-    "cve_id": "CVE-2026-5370",
-    "ghsa_id": "GHSA-9m2v-hc5g-5jpv",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-p464-m8x6-vhv8",
+    "affected_packages": [
+      "openclaw"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -186,92 +123,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-hjjg-pcj6-3vjj",
+    "id": "gh-GHSA-57gh-m6rq-54cf",
     "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:39Z",
-    "title": "A security flaw has been discovered in Newgen OmniDocs up to 12.0.00. Affected by this issue is...",
-    "description": "A security flaw has been discovered in Newgen OmniDocs up to 12.0.00. Affected by this issue is some unknown functionality of the file /omnidocs/WebApiRequestRedirection. The manipulation of the argument DocumentId results in improper control of resource identifiers. The attack may be performed from remote. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-5414",
-    "ghsa_id": "GHSA-hjjg-pcj6-3vjj",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-f6c7-fj8h-5898",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:39Z",
-    "title": "OpenSSH before 10.3 mishandles the authorized_keys principals option in uncommon scenarios...",
-    "description": "OpenSSH before 10.3 mishandles the authorized_keys principals option in uncommon scenarios involving a principals list in conjunction with a Certificate Authority that makes certain use of comma characters.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-35414",
-    "ghsa_id": "GHSA-f6c7-fj8h-5898",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-5838-6jpq-5chp",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:39Z",
-    "title": "A vulnerability was determined in projectworlds Car Rental Project 1.0. The affected element is...",
-    "description": "A vulnerability was determined in projectworlds Car Rental Project 1.0. The affected element is an unknown function of the file /login.php of the component Parameter Handler. This manipulation of the argument uname causes sql injection. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-5368",
-    "ghsa_id": "GHSA-5838-6jpq-5chp",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-hx8v-fm8j-mj2j",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:38Z",
-    "title": "A stack-based buffer overflow vulnerability was identified in TP-Link Tapo C520WS v2.6 within a...",
-    "description": "A stack-based buffer overflow vulnerability was identified in TP-Link Tapo C520WS v2.6 within a configuration handling component due to insufficient input validation.  An attacker can exploit this vulnerability by supplying an excessively long value for a vulnerable configuration parameter, resulting in a stack overflow.\n\nSuccessful exploitation results in Denial-of-Service (DoS) condition, leading to a service crash or device reboot, impacting availability.",
+    "timestamp": "2026-04-03T02:53:58Z",
+    "title": "OpenClaw: Self-Whitelisting in appendLocalMediaParentRoots Allows Arbitrary File Read & Credential Exfiltration",
+    "description": "## Summary\nMedia Local Roots Self-Whitelisting in `appendLocalMediaParentRoots` Allows Model-Initiated Arbitrary Host File Read and Credential Exfiltration\n\n## Current Maintainer Triage\n- Status: narrow\n- Normalized severity: medium\n- Assessment: v2026.3.28 still self-whitelists media parent dirs in src/media/local-roots.ts, but only after config already permits tool-fs root expansion, so the impact is narrower than the default-critical framing.\n\n## Affected Packages / Versions\n- Package: `openc",
     "severity": "high",
-    "cve_id": "CVE-2026-34122",
-    "ghsa_id": "GHSA-hx8v-fm8j-mj2j",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-57gh-m6rq-54cf",
+    "affected_packages": [
+      "openclaw"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
       null,
       null,
       null
@@ -280,64 +146,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-v6p2-mjh5-mvpm",
+    "id": "gh-GHSA-68v4-hmwv-f43h",
     "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:38Z",
-    "title": "A heap-based buffer overflow vulnerability was identified in TP-Link Tapo C520WS v2.6 in the HTTP...",
-    "description": "A heap-based buffer overflow vulnerability was identified in TP-Link Tapo C520WS v2.6 in the HTTP POST body parsing logic due to missing validation of remaining buffer capacity after dynamic allocation, due to insufficient boundary validation when handling externally supplied HTTP input.  An attacker\non the same network segment could trigger heap memory corruption conditions by\nsending crafted payloads that cause write operations beyond allocated buffer\nboundaries.  Successful exploitation\ncause",
-    "severity": "high",
-    "cve_id": "CVE-2026-34118",
-    "ghsa_id": "GHSA-v6p2-mjh5-mvpm",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-phg3-8rj7-h8r5",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:38Z",
-    "title": "Local privilege escalation due to DLL hijacking vulnerability. The following products are...",
-    "description": "Local privilege escalation due to DLL hijacking vulnerability. The following products are affected: Acronis True Image (Windows) before build 42902.",
+    "timestamp": "2026-04-03T02:49:40Z",
+    "title": "OpenClaw: Media download follows cross-origin redirects with Authorization headers intact",
+    "description": "## Summary\nMedia download follows cross-origin redirects with Authorization headers intact\n\n## Current Maintainer Triage\n- Status: open\n- Normalized severity: medium\n- Assessment: Shipped v2026.3.28 media downloads forwarded Authorization across cross-origin redirects, a real in-scope credential-leak class that fits medium.\n\n## Affected Packages / Versions\n- Package: `openclaw` (npm)\n- Latest published npm version: `2026.3.31`\n- Vulnerable version range: `<=2026.3.28`\n- Patched versions: `>= 202",
     "severity": "medium",
-    "cve_id": "CVE-2026-27774",
-    "ghsa_id": "GHSA-phg3-8rj7-h8r5",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-68v4-hmwv-f43h",
+    "affected_packages": [
+      "openclaw"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-v93f-5rx7-jm73",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:38Z",
-    "title": "In OpenSSH before 10.3, command execution can occur via shell metacharacters in a username within...",
-    "description": "In OpenSSH before 10.3, command execution can occur via shell metacharacters in a username within a command line. This requires a scenario where the username on the command line is untrusted, and also requires a non-default configurations of % in ssh_config.",
-    "severity": "low",
-    "cve_id": "CVE-2026-35386",
-    "ghsa_id": "GHSA-v93f-5rx7-jm73",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
       null,
       null,
       null,
@@ -347,16 +170,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-m7f4-p6pg-38mf",
+    "id": "gh-GHSA-cwf8-44x6-32c2",
     "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:38Z",
-    "title": "A heap-based buffer overflow vulnerability was identified in TP-Link Tapo C520WS v2.6 within the...",
-    "description": "A heap-based buffer overflow vulnerability was identified in TP-Link Tapo C520WS v2.6 within the asynchronous parsing of local video stream content due to\ninsufficient alignment and validation of buffer boundaries when processing streaming inputs.An attacker\non the same network segment could trigger heap memory corruption conditions by\nsending crafted payloads that cause write operations beyond allocated buffer\nboundaries.  Successful exploitation\ncauses a Denial-of-Service (DoS) condition, caus",
+    "timestamp": "2026-04-03T02:49:14Z",
+    "title": "OpenClaw: OpenShell Mirror Sync — Sandbox Escape via Unrestricted File Sync + Symlink Traversal",
+    "description": "## Summary\nOpenShell Mirror Sync: Sandbox Escape via Unrestricted File Sync + Symlink Traversal\n\n## Current Maintainer Triage\n- Status: narrow\n- Normalized severity: high\n- Assessment: v2026.3.28 still has the mirror-boundary bug because shipped c02ee8 only excluded hooks while unreleased 3b9dab is the first full symlink-free upload and download hardening.\n\n## Affected Packages / Versions\n- Package: `openclaw` (npm)\n- Latest published npm version: `2026.3.31`\n- Vulnerable version range: `<=2026.",
     "severity": "high",
-    "cve_id": "CVE-2026-34120",
-    "ghsa_id": "GHSA-m7f4-p6pg-38mf",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-cwf8-44x6-32c2",
+    "affected_packages": [
+      "openclaw"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
@@ -370,20 +196,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-9mqg-m9h5-3xhj",
+    "id": "gh-GHSA-qcj9-wwgw-6gm8",
     "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:38Z",
-    "title": "A denial-of-service vulnerability was identified in TP-Link Tapo C520WS v2.6 within the HTTP...",
-    "description": "A denial-of-service vulnerability was identified in TP-Link Tapo C520WS v2.6 within the HTTP request path parsing logic. The implementation enforces length restrictions on the raw request path but does not account for path expansion performed during normalization.  An attacker on the adjacent network may send a crafted HTTP request to cause buffer overflow and memory corruption, leading to system interruption or device reboot.",
+    "timestamp": "2026-04-03T02:47:57Z",
+    "title": "OpenClaw: Workspace `.env` can override the bundled plugin trust root",
+    "description": "## Summary\nWorkspace `.env` can override the bundled plugin trust root\n\n## Current Maintainer Triage\n- Status: open\n- Normalized severity: high\n- Assessment: v2026.3.28 still lets workspace .env override OPENCLAW_BUNDLED_PLUGINS_DIR, but critical is too high because exploitation still depends on attacker-controlled workspace loading, not a universal remote break.\n\n## Affected Packages / Versions\n- Package: `openclaw` (npm)\n- Latest published npm version: `2026.3.31`\n- Vulnerable version range: `",
     "severity": "high",
-    "cve_id": "CVE-2026-34124",
-    "ghsa_id": "GHSA-9mqg-m9h5-3xhj",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-qcj9-wwgw-6gm8",
+    "affected_packages": [
+      "openclaw"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -393,22 +220,24 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-25v3-gpg9-m4p7",
+    "id": "gh-GHSA-jfqg-hf23-qpw2",
     "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:38Z",
-    "title": "A heap-based buffer overflow vulnerability was identified in TP-Link Tapo C520WS v2.6 within the...",
-    "description": "A heap-based buffer overflow vulnerability was identified in TP-Link Tapo C520WS v2.6 within the HTTP parsing\nloop\nwhen appending segmented request bodies without\ncontinuous write‑boundary verification, due to insufficient boundary validation when handling externally supplied HTTP input.  An attacker\non the same network segment could trigger heap memory corruption conditions by\nsending crafted payloads that cause write operations beyond allocated buffer\nboundaries.  Successful exploitation\ncause",
+    "timestamp": "2026-04-03T02:46:56Z",
+    "title": "Electron: Context Isolation bypass via contextBridge VideoFrame transfer",
+    "description": "### Impact\nApps that pass `VideoFrame` objects (from the WebCodecs API) across the `contextBridge` are vulnerable to a context isolation bypass. An attacker who can execute JavaScript in the main world (for example, via XSS) can use a bridged `VideoFrame` to gain access to the isolated world, including any Node.js APIs exposed to the preload script.\n\nApps are only affected if a preload script returns, resolves, or passes a `VideoFrame` object to the main world via `contextBridge.exposeInMainWorl",
     "severity": "high",
-    "cve_id": "CVE-2026-34119",
-    "ghsa_id": "GHSA-25v3-gpg9-m4p7",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-34780",
+    "ghsa_id": "GHSA-jfqg-hf23-qpw2",
+    "affected_packages": [
+      "electron",
+      "electron",
+      "electron"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
-      null,
-      null,
-      null,
       null,
       null
     ],
@@ -416,27 +245,24 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-qpxw-qvw5-7292",
+    "id": "gh-GHSA-5rqw-r77c-jp79",
     "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:38Z",
-    "title": "A vulnerability has been found in Free5GC 4.2.0. The affected element is an unknown function of...",
-    "description": "A vulnerability has been found in Free5GC 4.2.0. The affected element is an unknown function of the component aper. Such manipulation leads to type confusion. The attack may be launched remotely. This attack is characterized by high complexity. The exploitability is described as difficult. The exploit has been disclosed to the public and may be used. The name of the patch is 26205eb01705754b7b902ad6c4b613c96c881e29. It is best practice to apply a patch to resolve this issue.",
+    "timestamp": "2026-04-03T02:46:16Z",
+    "title": "Electron: AppleScript injection in app.moveToApplicationsFolder on macOS",
+    "description": "### Impact\nOn macOS, `app.moveToApplicationsFolder()` used an AppleScript fallback path that did not properly handle certain characters in the application bundle path. Under specific conditions, a crafted launch path could lead to arbitrary AppleScript execution when the user accepted the move-to-Applications prompt.\n\nApps are only affected if they call `app.moveToApplicationsFolder()`. Apps that do not use this API are not affected.\n\n### Workarounds\nThere are no app side workarounds, developers",
     "severity": "medium",
-    "cve_id": "CVE-2026-5360",
-    "ghsa_id": "GHSA-qpxw-qvw5-7292",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-34779",
+    "ghsa_id": "GHSA-5rqw-r77c-jp79",
+    "affected_packages": [
+      "electron",
+      "electron",
+      "electron",
+      "electron"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null
     ],
@@ -444,20 +270,25 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-r5hg-g2g5-9h8f",
+    "id": "gh-GHSA-xj5x-m3f3-5x3h",
     "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:38Z",
-    "title": "Local privilege escalation due to DLL hijacking vulnerability. The following products are...",
-    "description": "Local privilege escalation due to DLL hijacking vulnerability. The following products are affected: Acronis True Image (Windows) before build 42902.",
+    "timestamp": "2026-04-03T02:44:59Z",
+    "title": "Electron: Service worker can spoof executeJavaScript IPC replies",
+    "description": "### Impact\nA service worker running in a session could spoof reply messages on the internal IPC channel used by `webContents.executeJavaScript()` and related methods, causing the main-process promise to resolve with attacker-controlled data.\n\nApps are only affected if they have service workers registered and use the result of `webContents.executeJavaScript()` (or `webFrameMain.executeJavaScript()`) in security-sensitive decisions.\n\n### Workarounds\nDo not trust the return value of `webContents.ex",
     "severity": "medium",
-    "cve_id": "CVE-2026-28728",
-    "ghsa_id": "GHSA-r5hg-g2g5-9h8f",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-34778",
+    "ghsa_id": "GHSA-xj5x-m3f3-5x3h",
+    "affected_packages": [
+      "electron",
+      "electron",
+      "electron",
+      "electron"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
-      null,
       null,
       null
     ],
@@ -465,20 +296,24 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-2ph3-3852-f6r9",
+    "id": "gh-GHSA-r5p7-gp4j-qhrx",
     "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:38Z",
-    "title": "Local privilege escalation due to insecure folder permissions. The following products are...",
-    "description": "Local privilege escalation due to insecure folder permissions. The following products are affected: Acronis True Image (Windows) before build 42902.",
+    "timestamp": "2026-04-03T02:44:26Z",
+    "title": "Electron: Incorrect origin passed to permission request handler for iframe requests",
+    "description": "### Impact\nWhen an iframe requests `fullscreen`, `pointerLock`, `keyboardLock`, `openExternal`, or `media` permissions, the origin passed to `session.setPermissionRequestHandler()` was the top-level page's origin rather than the requesting iframe's origin. Apps that grant permissions based on the origin parameter or `webContents.getURL()` may inadvertently grant permissions to embedded third-party content.\n\nThe correct requesting URL remains available via `details.requestingUrl`. Apps that alrea",
     "severity": "medium",
-    "cve_id": "CVE-2026-33271",
-    "ghsa_id": "GHSA-2ph3-3852-f6r9",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-34777",
+    "ghsa_id": "GHSA-r5p7-gp4j-qhrx",
+    "affected_packages": [
+      "electron",
+      "electron",
+      "electron",
+      "electron"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null
     ],
@@ -486,21 +321,24 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-xg3m-c464-j5fh",
+    "id": "gh-GHSA-3c8v-cfp5-9885",
     "source": "GitHub Security",
-    "timestamp": "2026-04-02T18:31:38Z",
-    "title": "An issue was discovered in Mbed TLS versions from 2.19.0 up to 3.6.5, Mbed TLS 4.0.0....",
-    "description": "An issue was discovered in Mbed TLS versions from 2.19.0 up to 3.6.5, Mbed TLS 4.0.0. Insufficient protection of serialized SSL context or session structures allows an attacker who can modify the serialized structures to induce memory corruption, leading to arbitrary code execution. This is caused by Incorrect Use of Privileged APIs.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-34877",
-    "ghsa_id": "GHSA-xg3m-c464-j5fh",
-    "affected_packages": [],
+    "timestamp": "2026-04-03T02:43:59Z",
+    "title": "Electron: Out-of-bounds read in second-instance IPC on macOS and Linux",
+    "description": "### Impact\nOn macOS and Linux, apps that call `app.requestSingleInstanceLock()` were vulnerable to an out-of-bounds heap read when parsing a crafted second-instance message. Leaked memory could be delivered to the app's `second-instance` event handler.\n\nThis issue is limited to processes running as the same user as the Electron app.\n\nApps that do not call `app.requestSingleInstanceLock()` are not affected. Windows is not affected by this issue.\n\n### Workarounds\nThere are no app side workarounds,",
+    "severity": "medium",
+    "cve_id": "CVE-2026-34776",
+    "ghsa_id": "GHSA-3c8v-cfp5-9885",
+    "affected_packages": [
+      "electron",
+      "electron",
+      "electron",
+      "electron"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
       null,
       null
     ],
@@ -508,302 +346,465 @@
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-4826",
+    "id": "gh-GHSA-xwr5-m59h-vwqr",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-03T02:43:05Z",
+    "title": "Electron: nodeIntegrationInWorker not correctly scoped in shared renderer processes",
+    "description": "### Impact\nThe `nodeIntegrationInWorker` webPreference was not correctly scoped in all configurations. In certain process-sharing scenarios, workers spawned in frames configured with `nodeIntegrationInWorker: false` could still receive Node.js integration.\n\nApps are only affected if they enable `nodeIntegrationInWorker`. Apps that do not use `nodeIntegrationInWorker` are not affected.\n\n### Workarounds\nAvoid enabling `nodeIntegrationInWorker` in apps that also open child windows or embed content ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-34775",
+    "ghsa_id": "GHSA-xwr5-m59h-vwqr",
+    "affected_packages": [
+      "electron",
+      "electron",
+      "electron",
+      "electron"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-532v-xpq5-8h95",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-03T02:42:27Z",
+    "title": "Electron: Use-after-free in offscreen child window paint callback",
+    "description": "### Impact\nApps that use offscreen rendering and allow child windows via `window.open()` may be vulnerable to a use-after-free. If the parent offscreen `WebContents` is destroyed while a child window remains open, subsequent paint frames on the child dereference freed memory, which may lead to a crash or memory corruption.\n\nApps are only affected if they use offscreen rendering (`webPreferences.offscreen: true`) and their `setWindowOpenHandler` permits child windows. Apps that do not use offscre",
+    "severity": "high",
+    "cve_id": "CVE-2026-34774",
+    "ghsa_id": "GHSA-532v-xpq5-8h95",
+    "affected_packages": [
+      "electron",
+      "electron",
+      "electron"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-mwmh-mq4g-g6gr",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-03T02:41:52Z",
+    "title": "Electron: Registry key path injection in app.setAsDefaultProtocolClient on Windows",
+    "description": "### Impact\nOn Windows, `app.setAsDefaultProtocolClient(protocol)` did not validate the protocol name before writing to the registry. Apps that pass untrusted input as the protocol name may allow an attacker to write to arbitrary subkeys under `HKCU\\Software\\Classes\\`, potentially hijacking existing protocol handlers.\n\nApps are only affected if they call `app.setAsDefaultProtocolClient()` with a protocol name derived from external or untrusted input. Apps that use a hardcoded protocol name are no",
+    "severity": "medium",
+    "cve_id": "CVE-2026-34773",
+    "ghsa_id": "GHSA-mwmh-mq4g-g6gr",
+    "affected_packages": [
+      "electron",
+      "electron",
+      "electron",
+      "electron"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-9w97-2464-8783",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-03T02:41:23Z",
+    "title": "Electron: Use-after-free in download save dialog callback",
+    "description": "### Impact\nApps that allow downloads and programmatically destroy sessions may be vulnerable to a use-after-free. If a session is torn down while a native save-file dialog is open for a download, dismissing the dialog dereferences freed memory, which may lead to a crash or memory corruption.\n\nApps that do not destroy sessions at runtime, or that do not permit downloads, are not affected.\n\n### Workarounds\nAvoid destroying sessions while a download save dialog may be open. Cancel pending downloads",
+    "severity": "medium",
+    "cve_id": "CVE-2026-34772",
+    "ghsa_id": "GHSA-9w97-2464-8783",
+    "affected_packages": [
+      "electron",
+      "electron",
+      "electron",
+      "electron"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-8337-3p73-46f4",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-03T02:40:24Z",
+    "title": "Electron: Use-after-free in WebContents fullscreen, pointer-lock, and keyboard-lock permission callbacks",
+    "description": "### Impact\nApps that register an asynchronous `session.setPermissionRequestHandler()` may be vulnerable to a use-after-free when handling fullscreen, pointer-lock, or keyboard-lock permission requests. If the requesting frame navigates or the window closes while the permission handler is pending, invoking the stored callback dereferences freed memory, which may lead to a crash or memory corruption.\n\nApps that do not set a permission request handler, or whose handler responds synchronously, are n",
+    "severity": "high",
+    "cve_id": "CVE-2026-34771",
+    "ghsa_id": "GHSA-8337-3p73-46f4",
+    "affected_packages": [
+      "electron",
+      "electron",
+      "electron",
+      "electron"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-jjp3-mq3x-295m",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-03T02:39:52Z",
+    "title": "Electron: Use-after-free in PowerMonitor on Windows and macOS",
+    "description": "### Impact\nApps that use the `powerMonitor` module may be vulnerable to a use-after-free. After the native `PowerMonitor` object is garbage-collected, the associated OS-level resources (a message window on Windows, a shutdown handler on macOS) retain dangling references. A subsequent session-change event (Windows) or system shutdown (macOS) dereferences freed memory, which may lead to a crash or memory corruption.\n\nAll apps that access `powerMonitor` events (`suspend`, `resume`, `lock-screen`, e",
+    "severity": "high",
+    "cve_id": "CVE-2026-34770",
+    "ghsa_id": "GHSA-jjp3-mq3x-295m",
+    "affected_packages": [
+      "electron",
+      "electron",
+      "electron",
+      "electron"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-9wfr-w7mm-pc7f",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-03T02:39:15Z",
+    "title": "Electron: Renderer command-line switch injection via undocumented commandLineSwitches webPreference",
+    "description": "### Impact\nAn undocumented `commandLineSwitches` webPreference allowed arbitrary switches to be appended to the renderer process command line. Apps that construct `webPreferences` by spreading untrusted configuration objects may inadvertently allow an attacker to inject switches that disable renderer sandboxing or web security controls.\n\nApps are only affected if they construct `webPreferences` from external or untrusted input without an allowlist. Apps that use a fixed, hardcoded `webPreference",
+    "severity": "high",
+    "cve_id": "CVE-2026-34769",
+    "ghsa_id": "GHSA-9wfr-w7mm-pc7f",
+    "affected_packages": [
+      "electron",
+      "electron",
+      "electron",
+      "electron"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-33721",
     "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:41.750",
-    "title": "CVE-2026-4826 - A vulnerability was determined in SourceCodester Sales and Inventory System 1.0. This vulnerability ",
-    "description": "A vulnerability was determined in SourceCodester Sales and Inventory System 1.0. This vulnerability affects unknown code of the file /update_stock.php of the component HTTP GET Parameter Handler. This manipulation of the argument sid causes sql injection. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized.",
+    "timestamp": "2026-03-27T01:16:19.670",
+    "title": "CVE-2026-33721 - MapServer is a system for developing web-based GIS applications. Starting in version 4.2 and prior t",
+    "description": "MapServer is a system for developing web-based GIS applications. Starting in version 4.2 and prior to version 8.6.1, a heap-buffer-overflow write in MapServer’s SLD (Styled Layer Descriptor) parser lets a remote, unauthenticated attacker crash the MapServer process by sending a crafted SLD with more than 100 Threshold elements inside a ColorMap/Categorize structure (commonly reachable via WMS GetMap with SLD_BODY). Version 8.6.1 patches the issue.",
     "severity": "medium",
-    "cve_id": "CVE-2026-4826",
-    "cvss_score": 6.3,
+    "cve_id": "CVE-2026-33721",
+    "cvss_score": 5.3,
+    "affected_products": [
+      "cpe:2.3:a:osgeo:mapserver:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://github.com/MapServer/MapServer/releases/tag/rel-8-6-1",
+      "https://github.com/MapServer/MapServer/security/advisories/GHSA-cv4m-mr84-fgjp"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-33718",
+    "source": "NVD CVE",
+    "timestamp": "2026-03-27T01:16:19.483",
+    "title": "CVE-2026-33718 - OpenHands is software for AI-driven development. Starting in version 1.5.0, a Command Injection vuln",
+    "description": "OpenHands is software for AI-driven development. Starting in version 1.5.0, a Command Injection vulnerability exists in the `get_git_diff()` method at `openhands/runtime/utils/git_handler.py:134`. The `path` parameter from the `/api/conversations/{conversation_id}/git/diff` API endpoint is passed unsanitized to a shell command, allowing authenticated attackers to execute arbitrary commands in the agent sandbox. The user is already allowed to instruct the agent to execute commands, but this bypasses the normal channels. Version 1.5.0 fixes the issue.",
+    "severity": "high",
+    "cve_id": "CVE-2026-33718",
+    "cvss_score": 7.6,
     "affected_products": [],
     "references": [
-      "https://github.com/meifukun/Web-Security-PoCs/blob/main/Inventory-System/SQLi-UpdateStock-sid.md",
-      "https://vuldb.com/?ctiid.353126",
-      "https://vuldb.com/?id.353126",
-      "https://vuldb.com/?submit.775177",
-      "https://www.sourcecodester.com/"
+      "https://docs.python.org/3/library/shlex.html#shlex.quote",
+      "https://docs.python.org/3/library/subprocess.html#security-considerations",
+      "https://github.com/OpenHands/OpenHands/pull/13051",
+      "https://github.com/OpenHands/OpenHands/security/advisories/GHSA-7h8w-hj9j-8rjw",
+      "https://owasp.org/www-community/attacks/Command_Injection"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-4758",
+    "id": "cve-CVE-2026-33701",
     "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:41.570",
-    "title": "CVE-2026-4758 - The WP Job Portal plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient ",
-    "description": "The WP Job Portal plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the 'WPJOBPORTALcustomfields::removeFileCustom' function in all versions up to, and including, 2.4.9. This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is deleted (such as wp-config.php).",
+    "timestamp": "2026-03-27T01:16:19.313",
+    "title": "CVE-2026-33701 - OpenTelemetry Java Instrumentation provides OpenTelemetry auto-instrumentation and instrumentation l",
+    "description": "OpenTelemetry Java Instrumentation provides OpenTelemetry auto-instrumentation and instrumentation libraries for Java. In versions prior to 2.26.1, the RMI instrumentation registered a custom endpoint that deserialized incoming data without applying serialization filters. On JDK version 16 and earlier, an attacker with network access to a JMX or RMI port on an instrumented JVM could exploit this to potentially achieve remote code execution. All three of the following conditions must be true to exploit this vulnerability: First, OpenTelemetry Java instrumentation is attached as a Java agent (`-javaagent`) on Java 16 or earlier. Second, JMX/RMI port has been explicitly configured via `-Dcom.sun.management.jmxremote.port` and is network-reachable. Third, gadget-chain-compatible library is present on the classpath. This results in arbitrary remote code execution with the privileges of the user running the instrumented JVM. For JDK >= 17, no action is required, but upgrading is strongly encouraged. For JDK < 17, upgrade to version 2.26.1 or later. As a workaround, set the system property `-Dotel.instrumentation.rmi.enabled=false` to disable the RMI integration.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-33701",
+    "cvss_score": 9.8,
+    "affected_products": [
+      "cpe:2.3:a:linuxfoundation:opentelemetry_instrumentation_for_java:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://github.com/open-telemetry/opentelemetry-java-instrumentation/commit/9cf4fbaaa9e79226142b2ed42a6f6b4ac0be2197",
+      "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/tag/v2.26.1",
+      "https://github.com/open-telemetry/opentelemetry-java-instrumentation/security/advisories/GHSA-xw7x-h9fj-p2c7"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-33699",
+    "source": "NVD CVE",
+    "timestamp": "2026-03-27T01:16:19.147",
+    "title": "CVE-2026-33699 - pypdf is a free and open-source pure-python PDF library. Versions prior to 6.9.2 have a vulnerabilit",
+    "description": "pypdf is a free and open-source pure-python PDF library. Versions prior to 6.9.2 have a vulnerability in which an attacker can craft a PDF which leads to an infinite loop. This requires reading a file in non-strict mode. This has been fixed in pypdf 6.9.2. If users cannot upgrade yet, consider applying the changes from the patch manually.",
     "severity": "high",
-    "cve_id": "CVE-2026-4758",
+    "cve_id": "CVE-2026-33699",
+    "cvss_score": 7.5,
+    "affected_products": [
+      "cpe:2.3:a:pypdf_project:pypdf:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://github.com/py-pdf/pypdf/pull/3693",
+      "https://github.com/py-pdf/pypdf/releases/tag/6.9.2",
+      "https://github.com/py-pdf/pypdf/security/advisories/GHSA-87mj-5ggw-8qc3"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-33693",
+    "source": "NVD CVE",
+    "timestamp": "2026-03-27T01:16:18.983",
+    "title": "CVE-2026-33693 - Lemmy is a link aggregator and forum for the fediverse. Prior to version 0.7.0-beta.9, the `v4_is_in",
+    "description": "Lemmy is a link aggregator and forum for the fediverse. Prior to version 0.7.0-beta.9, the `v4_is_invalid()` function in `activitypub-federation-rust` (`src/utils.rs`) does not check for `Ipv4Addr::UNSPECIFIED` (0.0.0.0). An unauthenticated attacker controlling a remote domain can point it to 0.0.0.0, bypass the SSRF protection introduced by the fix for CVE-2025-25194 (GHSA-7723-35v7-qcxw), and reach localhost services on the target server. Version 0.7.0-beta.9 patches the issue.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-33693",
+    "cvss_score": 6.5,
+    "affected_products": [],
+    "references": [
+      "https://github.com/LemmyNet/activitypub-federation-rust/commit/4ae8532b17bc35755240b7f55d4a5b7665351599",
+      "https://github.com/LemmyNet/lemmy/security/advisories/GHSA-q537-8fr5-cw35",
+      "https://github.com/advisories/GHSA-7723-35v7-qcxw"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-4905",
+    "source": "NVD CVE",
+    "timestamp": "2026-03-27T00:16:24.393",
+    "title": "CVE-2026-4905 - A vulnerability was found in Tenda AC5 15.03.06.47. Impacted is the function formWifiWpsOOB of the f",
+    "description": "A vulnerability was found in Tenda AC5 15.03.06.47. Impacted is the function formWifiWpsOOB of the file /goform/WifiWpsOOB of the component POST Request Handler. Performing a manipulation of the argument index results in stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit has been made public and could be used.",
+    "severity": "high",
+    "cve_id": "CVE-2026-4905",
     "cvss_score": 8.8,
+    "affected_products": [
+      "cpe:2.3:o:tenda:ac5_firmware:15.03.06.47:*:*:*:*:*:*:*",
+      "cpe:2.3:h:tenda:ac5:1.0:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://lavender-bicycle-a5a.notion.site/Tenda_AC5_WifiWpsOOB_index-32053a41781f8096a9b6e48177c25eb0?source=copy_link",
+      "https://vuldb.com/?ctiid.353656",
+      "https://vuldb.com/?id.353656",
+      "https://vuldb.com/?submit.777393",
+      "https://www.tenda.com.cn/"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-4904",
+    "source": "NVD CVE",
+    "timestamp": "2026-03-27T00:16:24.170",
+    "title": "CVE-2026-4904 - A vulnerability has been found in Tenda AC5 15.03.06.47. This issue affects the function formSetCfm ",
+    "description": "A vulnerability has been found in Tenda AC5 15.03.06.47. This issue affects the function formSetCfm of the file /goform/setcfm of the component POST Request Handler. Such manipulation of the argument funcpara1 leads to stack-based buffer overflow. The attack may be launched remotely. The exploit has been disclosed to the public and may be used.",
+    "severity": "high",
+    "cve_id": "CVE-2026-4904",
+    "cvss_score": 8.8,
+    "affected_products": [
+      "cpe:2.3:o:tenda:ac5_firmware:15.03.06.47:*:*:*:*:*:*:*",
+      "cpe:2.3:h:tenda:ac5:1.0:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://lavender-bicycle-a5a.notion.site/Tenda_AC5_setcfm_funcpara1-32053a41781f8073a4d6ef8076abe644?source=copy_link",
+      "https://vuldb.com/?ctiid.353655",
+      "https://vuldb.com/?id.353655",
+      "https://vuldb.com/?submit.777381",
+      "https://www.tenda.com.cn/"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-33945",
+    "source": "NVD CVE",
+    "timestamp": "2026-03-27T00:16:23.633",
+    "title": "CVE-2026-33945 - Incus is a system container and virtual machine manager. Incus instances have an option to provide c",
+    "description": "Incus is a system container and virtual machine manager. Incus instances have an option to provide credentials to systemd in the guest. For containers, this is handled through a shared directory. Prior to version 6.23.0, an attacker can set a configuration key named something like `systemd.credential.../../../../../../root/.bashrc` to cause Incus to write outside of the `credentials` directory associated with the container. This makes use of the fact that the Incus syntax for such credentials is `systemd.credential.XYZ` where `XYZ` can itself contain more periods. While it's not possible to read any data this way, it's possible to write to arbitrary files as root, enabling both privilege escalation and denial of service attacks. Version 6.23.0 fixes the issue.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-33945",
+    "cvss_score": 9.9,
+    "affected_products": [
+      "cpe:2.3:a:linuxcontainers:incus:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://github.com/lxc/incus/security/advisories/GHSA-q4q8-7f2j-9h9f"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-33898",
+    "source": "NVD CVE",
+    "timestamp": "2026-03-27T00:16:23.333",
+    "title": "CVE-2026-33898 - Incus is a system container and virtual machine manager. Prior to version 6.23.0, the web server spa",
+    "description": "Incus is a system container and virtual machine manager. Prior to version 6.23.0, the web server spawned by `incus webui` incorrectly validates the authentication token such that an invalid value will be accepted. `incus webui` runs a local web server on a random localhost port. For authentication, it provides the user with a URL containing an authentication token. When accessed with that token, Incus creates a cookie persisting that token without needing to include it in subsequent HTTP requests. While the Incus client correctly validates the value of the cookie, it does not correctly validate the token when passed int the URL.\nThis allows for an attacker able to locate and talk to the temporary web server on localhost to have as much access to Incus as the user who ran `incus webui`. This can lead to privilege escalation by another local user or an access to the user's Incus instances and possibly system resources by a remote attack able to trick the local user into interacting with the Incus UI web server. Version 6.23.0 patches the issue.",
+    "severity": "high",
+    "cve_id": "CVE-2026-33898",
+    "cvss_score": 8.8,
+    "affected_products": [
+      "cpe:2.3:a:linuxcontainers:incus:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://github.com/lxc/incus/security/advisories/GHSA-453r-g2pg-cxxq"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-33697",
+    "source": "NVD CVE",
+    "timestamp": "2026-03-27T00:16:23.133",
+    "title": "CVE-2026-33697 - Cocos AI is a confidential computing system for AI. The current implementation of attested TLS (aTLS",
+    "description": "Cocos AI is a confidential computing system for AI. The current implementation of attested TLS (aTLS) in CoCoS is vulnerable to a relay attack affecting all versions from v0.4.0 through v0.8.2. This vulnerability is present in both the AMD SEV-SNP and Intel TDX deployment targets supported by CoCoS. In the affected design, an attacker may be able to extract the ephemeral TLS private key used during the intra-handshake attestation. Because the attestation evidence is bound to the ephemeral key but not to the TLS channel, possession of that key is sufficient to relay or divert the attested TLS session. A client will accept the connection under false assumptions about the endpoint it is communicating with — the attestation report cannot distinguish the genuine attested service from the attacker's relay. This undermines the intended authentication guarantees of attested TLS. A successful attack may allow an attacker to impersonate an attested CoCoS service and access data or operations that the client intended to send only to the genuine attested endpoint. Exploitation requires the attacker to first extract the ephemeral TLS private key, which is possible through physical access to the server hardware, transient execution attacks, or side-channel attacks. Note that the aTLS implementation was fully redesigned in v0.7.0, but the redesign does not address this vulnerability. The relay attack weakness is architectural and affects all releases in the v0.4.0–v0.8.2 range. This vulnerability class was formally analyzed and demonstrated across multiple attested TLS implementations, including CoCoS, by researchers whose findings were disclosed to the IETF TLS Working Group. Formal verification was conducted using ProVerif. As of time of publication, there is no patch available. No complete workaround is available. The following hardening measures reduce but do not eliminate the risk: Keep TEE firmware and microcode up to date to reduce the key-extraction surface; define strict attestation policies that validate all available report fields, including firmware versions, TCB levels, and platform configuration registers; and/or enable mutual aTLS with CA-signed certificates where deployment architecture permits.",
+    "severity": "high",
+    "cve_id": "CVE-2026-33697",
+    "cvss_score": 7.5,
     "affected_products": [],
     "references": [
-      "https://plugins.trac.wordpress.org/browser/wp-job-portal/tags/2.4.9/includes/classes/customfields.php#L1558",
-      "https://plugins.trac.wordpress.org/browser/wp-job-portal/tags/2.5.0/includes/classes/customfields.php?rev=3490490#L1558",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/e96f31e0-4b2e-4ea1-a3e5-fd7452a2fea9?source=cve"
+      "https://github.com/ultravioletrs/cocos/security/advisories/GHSA-vfgg-mvxx-mgg7"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-34056",
+    "id": "cve-CVE-2026-29071",
     "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:41.400",
-    "title": "CVE-2026-34056 - OpenEMR is a free and open source electronic health records and medical practice management applicat",
-    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. A Broken Access Control vulnerability in OpenEMR up to and including version 8.0.0.3 allows low-privilege users to view and download Ensora eRx error logs without proper authorization checks. This flaw compromises system confidentiality by exposing sensitive information, potentially leading to unauthorized data disclosure and misuse. As of time of publication, no known patches versions are available.",
-    "severity": "high",
-    "cve_id": "CVE-2026-34056",
-    "cvss_score": 7.7,
+    "timestamp": "2026-03-27T00:16:22.983",
+    "title": "CVE-2026-29071 - Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. P",
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to version 0.8.6, any authenticated user can read other users' private memories via `/api/v1/retrieval/query/collection`. Version 0.8.6 patches the issue.",
+    "severity": "low",
+    "cve_id": "CVE-2026-29071",
+    "cvss_score": 3.1,
     "affected_products": [
-      "cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*"
+      "cpe:2.3:a:openwebui:open_webui:*:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://github.com/openemr/openemr/releases/tag/v8_0_0_3",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-6qg7-6jf3-xrfh"
+      "https://github.com/open-webui/open-webui/security/advisories/GHSA-w9f8-gxf9-rhvw"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-34055",
+    "id": "cve-CVE-2026-29070",
     "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:41.227",
-    "title": "CVE-2026-34055 - OpenEMR is a free and open source electronic health records and medical practice management applicat",
-    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Prior to version 8.0.0.3, the legacy patient notes functions in `library/pnotes.inc.php` perform updates and deletes using `WHERE id = ?` without verifying that the note belongs to a patient the user is authorized to access. Multiple web UI callers pass user-controlled note IDs directly to these functions. This is the same class of vulnerability as CVE-2026-25745 (REST API IDOR), but affects the web UI code paths. Version 8.0.0.3 patches the issue.",
-    "severity": "high",
-    "cve_id": "CVE-2026-34055",
-    "cvss_score": 8.1,
+    "timestamp": "2026-03-27T00:16:22.823",
+    "title": "CVE-2026-29070 - Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. P",
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to version 0.8.6, an access control check is missing when deleting a file from a knowledge base. The only check being done is that the user has write access to the knowledge base (or is admin), but NOT that the file actually belongs to this knowledge base. It is thus possible to delete arbitrary files from arbitrary knowledge bases (as long as one knows the file id). Version 0.8.6 patches the issue.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-29070",
+    "cvss_score": 5.4,
     "affected_products": [
-      "cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*"
+      "cpe:2.3:a:openwebui:open_webui:*:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://github.com/openemr/openemr/commit/214c9b4585a6f1c8c22750172d47f0e258fec0bf",
-      "https://github.com/openemr/openemr/releases/tag/v8_0_0_3",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-8gj5-r8vm-mghq"
+      "https://github.com/open-webui/open-webui/security/advisories/GHSA-26gm-93rw-cchf"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-34053",
+    "id": "cve-CVE-2026-28788",
     "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:41.057",
-    "title": "CVE-2026-34053 - OpenEMR is a free and open source electronic health records and medical practice management applicat",
-    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Prior to version 8.0.0.3, missing authorization in the AJAX deletion endpoint `interface/forms/procedure_order/handle_deletions.php` allows any authenticated user, regardless of role, to irreversibly delete procedure orders, answers, and specimens belonging to any patient in the system. Version 8.0.0.3 patches the issue.",
+    "timestamp": "2026-03-27T00:16:22.673",
+    "title": "CVE-2026-28788 - Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. P",
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to version 0.8.6, any authenticated user can overwrite any file's content by ID through the `POST /api/v1/retrieval/process/files/batch` endpoint. The endpoint performs no ownership check, so a regular user with read access to a shared knowledge base can obtain file UUIDs via `GET /api/v1/knowledge/{id}/files` and then overwrite those files, escalating from read to write. The overwritten content is served to the LLM via RAG, meaning the attacker controls what the model tells other users. Version 0.8.6 patches the issue.",
     "severity": "high",
-    "cve_id": "CVE-2026-34053",
+    "cve_id": "CVE-2026-28788",
     "cvss_score": 7.1,
     "affected_products": [
-      "cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*"
+      "cpe:2.3:a:openwebui:open_webui:*:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://github.com/openemr/openemr/commit/7a16b731af7d34ffd92155fe2a5692fa1a67858e",
-      "https://github.com/openemr/openemr/releases/tag/v8_0_0_3",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-3vvq-pfq6-pw98",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-3vvq-pfq6-pw98"
+      "https://github.com/open-webui/open-webui/security/advisories/GHSA-jjp7-g2jw-wh3j"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-34051",
+    "id": "cve-CVE-2026-28786",
     "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:40.850",
-    "title": "CVE-2026-34051 - OpenEMR is a free and open source electronic health records and medical practice management applicat",
-    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Versions prior to 8.0.0.3 have an improper access control on the Import/Export functionality, allowing unauthorized users to perform import and export actions through direct request manipulation despite UI restrictions. This can lead to unauthorized data access, bulk data extraction, and manipulation of system data. Version 8.0.0.3 contains a fix.",
+    "timestamp": "2026-03-27T00:16:22.503",
+    "title": "CVE-2026-28786 - Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. P",
+    "description": "Open WebUI is a self-hosted artificial intelligence platform designed to operate entirely offline. Prior to version 0.8.6, an unsanitized filename field in the speech-to-text transcription endpoint allows any authenticated non-admin user to trigger a `FileNotFoundError` whose message — including the server's absolute `DATA_DIR` path — is returned verbatim in the HTTP 400 response body, confirming information disclosure on all default deployments. Version 0.8.6 patches the issue.",
     "severity": "medium",
-    "cve_id": "CVE-2026-34051",
-    "cvss_score": 5.4,
-    "affected_products": [
-      "cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/openemr/openemr/commit/81c097f7852fc60d45adf6c13baa86cd0a1b400b",
-      "https://github.com/openemr/openemr/releases/tag/v8_0_0_3",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-54m8-wpg9-9665"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-33934",
-    "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:40.290",
-    "title": "CVE-2026-33934 - OpenEMR is a free and open source electronic health records and medical practice management applicat",
-    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Versions prior to 8.0.0.3 have a missing authorization check in `portal/sign/lib/show-signature.php` that allows any authenticated patient portal user to retrieve the drawn signature image of any staff member by supplying an arbitrary `user` value in the POST body. The companion write endpoint (`save-signature.php`) was already hardened against this same issue, but the read endpoint was not updated to match. Version 8.0.0.3 patches the issue.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-33934",
+    "cve_id": "CVE-2026-28786",
     "cvss_score": 4.3,
     "affected_products": [
-      "cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*"
+      "cpe:2.3:a:openwebui:open_webui:*:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://github.com/openemr/openemr/commit/ae7ee1872d2e6300b165e24687cc90cf6847a4e5",
-      "https://github.com/openemr/openemr/releases/tag/v8_0_0_3",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-w9w5-7x6h-657q"
+      "https://github.com/open-webui/open-webui/security/advisories/GHSA-vvxm-vxmr-624h",
+      "https://github.com/open-webui/open-webui/security/advisories/GHSA-vvxm-vxmr-624h"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-33933",
+    "id": "cve-CVE-2026-27893",
     "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:40.120",
-    "title": "CVE-2026-33933 - OpenEMR is a free and open source electronic health records and medical practice management applicat",
-    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Starting in version 7.0.2.1 and prior to version 8.0.0.3, a reflected cross-site scripting (XSS) vulnerability in the custom template editor allows an attacker to execute arbitrary JavaScript in an authenticated staff member's browser session by sending them a crafted URL. The attacker does not need an OpenEMR account. Version 8.0.0.3 patches the issue.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-33933",
-    "cvss_score": 6.1,
-    "affected_products": [
-      "cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/openemr/openemr/commit/d5c8d49ef19983472b2d7db0dbebd2dac9d6a200",
-      "https://github.com/openemr/openemr/commit/de9b6eb0da574430e8223c014cf4a05b0adc29d8",
-      "https://github.com/openemr/openemr/releases/tag/v8_0_0_3",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-9qh7-cfq4-j7c3",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-9qh7-cfq4-j7c3"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-33932",
-    "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:39.953",
-    "title": "CVE-2026-33932 - OpenEMR is a free and open source electronic health records and medical practice management applicat",
-    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Prior to version 8.0.0.3, a stored cross-site scripting vulnerability in the CCDA document preview allows an attacker who can upload or send a CCDA document to execute arbitrary JavaScript in a clinician's browser session when the document is previewed. The XSL stylesheet sanitizes attributes for all other narrative elements but not for `linkHtml`, allowing `href=\"javascript:...\"` and event handler attributes to pass through unchanged. Version 8.0.0.3 patches the issue.",
+    "timestamp": "2026-03-27T00:16:22.333",
+    "title": "CVE-2026-27893 - vLLM is an inference and serving engine for large language models (LLMs). Starting in version 0.10.1",
+    "description": "vLLM is an inference and serving engine for large language models (LLMs). Starting in version 0.10.1 and prior to version 0.18.0, two model implementation files hardcode `trust_remote_code=True` when loading sub-components, bypassing the user's explicit `--trust-remote-code=False` security opt-out. This enables remote code execution via malicious model repositories even when the user has explicitly disabled remote code trust. Version 0.18.0 patches the issue.",
     "severity": "high",
-    "cve_id": "CVE-2026-33932",
-    "cvss_score": 7.6,
-    "affected_products": [
-      "cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/openemr/openemr/commit/95e6078889b5399b12b59117f998560cd94bd47d",
-      "https://github.com/openemr/openemr/releases/tag/v8_0_0_3",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-g77x-9p3x-2j8f"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-33931",
-    "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:39.787",
-    "title": "CVE-2026-33931 - OpenEMR is a free and open source electronic health records and medical practice management applicat",
-    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Prior to version 8.0.0.3, an Insecure Direct Object Reference (IDOR) vulnerability in the patient portal payment page allows any authenticated portal patient to access other patients' payment records — including invoice/billing data (PHI) and payment card metadata — by manipulating the `recid` query parameter in `portal/portal_payment.php`. Version 8.0.0.3 patches the issue.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-33931",
-    "cvss_score": 6.5,
-    "affected_products": [
-      "cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/openemr/openemr/commit/7bf30e0ec5587f80c19094d58df09d46ac328806",
-      "https://github.com/openemr/openemr/releases/tag/v8_0_0_3",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-hf37-5rp9-j27j"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-33918",
-    "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:39.627",
-    "title": "CVE-2026-33918 - OpenEMR is a free and open source electronic health records and medical practice management applicat",
-    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Prior to version 8.0.0.3, the billing file-download endpoint `interface/billing/get_claim_file.php` only verifies that the caller has a valid session and CSRF token, but does not check any ACL permissions. This allows any authenticated OpenEMR user — regardless of whether they have billing privileges — to download and permanently delete electronic claim batch files containing protected health information (PHI). Version 8.0.0.3 patches the issue.",
-    "severity": "high",
-    "cve_id": "CVE-2026-33918",
-    "cvss_score": 7.6,
-    "affected_products": [
-      "cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/openemr/openemr/commit/f6d98d0102df0a8f131be560d9208fb65fba6188",
-      "https://github.com/openemr/openemr/releases/tag/v8_0_0_3",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-g3p5-5grq-m65m"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-33917",
-    "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:39.470",
-    "title": "CVE-2026-33917 - OpenEMR is a free and open source electronic health records and medical practice management applicat",
-    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Versions prior to 8.0.0.3 contais a SQL injection vulnerability in the ajax_save CAMOS form that can be exploited by authenticated attackers. The vulnerability exists due to insufficient input validation in the ajax_save page in the CAMOS form. Version 8.0.0.3 patches the issue.",
-    "severity": "high",
-    "cve_id": "CVE-2026-33917",
+    "cve_id": "CVE-2026-27893",
     "cvss_score": 8.8,
     "affected_products": [
-      "cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*"
+      "cpe:2.3:a:vllm:vllm:*:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://github.com/openemr/openemr/commit/4d48821d18e4125508d8217c43b09233c7f7e17f",
-      "https://github.com/openemr/openemr/releases/tag/v8_0_0_3",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-r6xq-mfwf-wgq8",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-r6xq-mfwf-wgq8"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-33915",
-    "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:39.303",
-    "title": "CVE-2026-33915 - OpenEMR is a free and open source electronic health records and medical practice management applicat",
-    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Prior to version 8.0.0.3, five insurance company REST API routes are missing the `RestConfig::request_authorization_check()` call that every other data-modifying route in the standard API uses. This allows any authenticated API user to create and modify insurance company records even if their OpenEMR user account does not have administrative ACL permissions. Version 8.0.0.3 patches the issue.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-33915",
-    "cvss_score": 5.4,
-    "affected_products": [
-      "cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/openemr/openemr/commit/976d2a85f024a730955578597a82c083067a72b4",
-      "https://github.com/openemr/openemr/releases/tag/v8_0_0_3",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-ww94-26v7-x4gp"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-33914",
-    "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:39.137",
-    "title": "CVE-2026-33914 - OpenEMR is a free and open source electronic health records and medical practice management applicat",
-    "description": "OpenEMR is a free and open source electronic health records and medical practice management application. Prior to version 8.0.0.3, the PostCalendar module contains a blind SQL injection vulnerability in the `categoriesUpdate` administrative function. The `dels` POST parameter is read via `pnVarCleanFromInput()`, which only strips HTML tags and performs no SQL escaping. The value is then interpolated directly into a raw SQL `DELETE` statement that is executed unsanitized via Doctrine DBAL's `executeStatement()`. Version 8.0.0.3 patches the issue.",
-    "severity": "high",
-    "cve_id": "CVE-2026-33914",
-    "cvss_score": 7.2,
-    "affected_products": [
-      "cpe:2.3:a:open-emr:openemr:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/openemr/openemr/commit/1b851fc9af84f181ad7a84210a168d0d568cd442",
-      "https://github.com/openemr/openemr/releases/tag/v8_0_0_3",
-      "https://github.com/openemr/openemr/security/advisories/GHSA-rq3v-38x5-3rm5"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-30892",
-    "source": "NVD CVE",
-    "timestamp": "2026-03-26T00:16:38.953",
-    "title": "CVE-2026-30892 - crun is an open source OCI Container Runtime fully written in C. In versions 1.19 through 1.26, the ",
-    "description": "crun is an open source OCI Container Runtime fully written in C. In versions 1.19 through 1.26, the  `crun exec` option `-u` (`--user`) is incorrectly parsed. The value `1` is interpreted as UID 0 and GID 0 when it should have been UID 1 and  GID 0. The process thus runs with higher privileges than expected. Version 1.27 patches the issue.",
-    "severity": "none",
-    "cve_id": "CVE-2026-30892",
-    "cvss_score": null,
-    "affected_products": [
-      "cpe:2.3:a:crun_project:crun:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/containers/crun/commit/1bd7f42446999b0e76bc3d575392e05c943b0b01",
-      "https://github.com/containers/crun/releases/tag/1.27",
-      "https://github.com/containers/crun/security/advisories/GHSA-4vg2-xjqj-7chj"
+      "https://github.com/vllm-project/vllm/commit/00bd08edeee5dd4d4c13277c0114a464011acf72",
+      "https://github.com/vllm-project/vllm/pull/36192",
+      "https://github.com/vllm-project/vllm/security/advisories/GHSA-7972-pg2x-xr59"
     ],
     "ai_analysis": null,
     "risk_score": null
