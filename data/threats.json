@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1776281926972-1",
+    "id": "twitter-1776310482693-1",
     "source": "Twitter Security",
-    "timestamp": "2026-04-15T19:38:46.972Z",
+    "timestamp": "2026-04-16T03:34:42.693Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1776281926972-1",
+    "id": "hn-1776310482693-1",
     "source": "HackerNews",
-    "timestamp": "2026-04-15T19:38:46.972Z",
+    "timestamp": "2026-04-16T03:34:42.693Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,113 +26,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-xphw-cqx3-667j",
+    "id": "gh-GHSA-6v5j-prr3-phf9",
     "source": "GitHub Security",
-    "timestamp": "2026-04-15T19:24:54Z",
-    "title": "thin-vec: Use-After-Free and Double Free in IntoIter::drop When Element Drop Panics",
-    "description": "### Summary\n\nA **Double Free / Use-After-Free (UAF)** vulnerability has been identified in the `IntoIter::drop` and `ThinVec::clear` implementations of the `thin_vec` crate.\nBoth vulnerabilities share the same root cause and can trigger memory corruption using only safe Rust code — no `unsafe` blocks required.\nUndefined Behavior has been confirmed via **Miri** and **AddressSanitizer (ASAN)**.\n\n---\n\n### Details\n\nBoth vulnerabilities share the same root cause. When a **panic occurs** during sequen",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-xphw-cqx3-667j",
-    "affected_packages": [
-      "thin-vec"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-247c-9743-5963",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-15T19:24:41Z",
-    "title": "Fastify has a Body Schema Validation Bypass via Leading Space in Content-Type Header",
-    "description": "### Summary\nA validation bypass vulnerability exists in Fastify v5.x where request body validation schemas specified via `schema.body.content` can be completely circumvented by prepending a single space character (`\\x20`) to the `Content-Type` header. The body is still parsed correctly as JSON (or any other content type), but schema validation is entirely skipped.\nThis is a regression introduced by commit [`f3d2bcb`](https://github.com/fastify/fastify/commit/f3d2bcb3963cd570a582e5d39aab01a9ae692",
-    "severity": "high",
-    "cve_id": "CVE-2026-33806",
-    "ghsa_id": "GHSA-247c-9743-5963",
-    "affected_packages": [
-      "fastify"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-pxq7-h93f-9jrg",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-15T19:24:13Z",
-    "title": "OAuth2 Proxy has an Authentication Bypass via Fragment Confusion in skip_auth_routes and skip_auth_regex",
-    "description": "### Impact\n\nA configuration-dependent authentication bypass exists in OAuth2 Proxy.\n\nDeployments are affected when all of the following are true:\n\n* Use of `skip_auth_routes` or the legacy `skip_auth_regex` * Use of patterns that can be widened by attacker-controlled suffixes,    such as `^/foo/.*/bar$` causing potential exposure of `/foo/secret` * Protected upstream applications that interpret `#` as a fragment delimiter    or otherwise route the request to the protected base path\n\nIn deploymen",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-pxq7-h93f-9jrg",
-    "affected_packages": [
-      "github.com/oauth2-proxy/oauth2-proxy/v7"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-c5c4-8r6x-56w3",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-15T19:23:54Z",
-    "title": "OAuth2 Proxy has an Authorization Bypass in Email Domain Validation via Malformed Multi-@ Email Claims",
-    "description": "### Impact\n\nAn authorization bypass exists in OAuth2 Proxy as part of the `email_domain` enforcement option. An attacker may be able to authenticate with an email claim such as `attacker@evil.com@company.com` and satisfy an allowed domain check for `company.com`, even though the claim is not a valid email address.\n\nThe issue **ONLY** affects deployments that rely on `email_domain` restrictions and accept email claim values from identity providers or claim mappings that do not strictly enforce no",
-    "severity": "medium",
-    "cve_id": "CVE-2026-40574",
-    "ghsa_id": "GHSA-c5c4-8r6x-56w3",
-    "affected_packages": [
-      "github.com/oauth2-proxy/oauth2-proxy/v7"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-7x63-xv5r-3p2x",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-15T19:21:06Z",
-    "title": "OAuth2 Proxy has an Authentication Bypass via X-Forwarded-Uri Header Spoofing",
-    "description": "### Impact\n\nA configuration-dependent authentication bypass exists in OAuth2 Proxy.\n\nDeployments are affected when all of the following are true:\n\n* OAuth2 Proxy is configured with `--reverse-proxy`\n* and at least one rule is defined with `--skip_auth_routes` or the legacy `--skip-auth-regex`\n\nOAuth2 Proxy may trust a client-supplied `X-Forwarded-Uri` header when `--reverse-proxy` is enabled and `--skip-auth-route` or `--skip-auth-regex` is configured. An attacker can spoof this header so OAuth2",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "MailGates/MailAudit developed by Openfind has a Stack-based Buffer Overflow vulnerability,...",
+    "description": "MailGates/MailAudit developed by Openfind has a Stack-based Buffer Overflow vulnerability, allowing unauthenticated remote attackers to control the program's execution flow and execute arbitrary code.",
     "severity": "critical",
-    "cve_id": "CVE-2026-40575",
-    "ghsa_id": "GHSA-7x63-xv5r-3p2x",
-    "affected_packages": [
-      "github.com/oauth2-proxy/oauth2-proxy/v7"
-    ],
+    "cve_id": "CVE-2026-6350",
+    "ghsa_id": "GHSA-6v5j-prr3-phf9",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null
     ],
@@ -140,18 +48,15 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-xmj9-7625-f634",
+    "id": "gh-GHSA-99qg-46r6-v9px",
     "source": "GitHub Security",
-    "timestamp": "2026-04-15T19:19:50Z",
-    "title": "Data Sharing Framework has an Inverted Time Comparison in OIDC JWKS and Token Cache",
-    "description": "### Affected Components\n- DSF FHIR Server with enabled [bearer-token authentication](https://dsf.dev/operations/v2.1.0/fhir/oidc.html) or [back-channel logout](https://dsf.dev/operations/v2.1.0/fhir/oidc.html).\n- DSF BPE Server with enabled [bearer-token authentication](https://dsf.dev/operations/v2.1.0/bpe/oidc.html) or [back-channel logout](https://dsf.dev/operations/v2.1.0/bpe/oidc.html).\n- DSF BPE Server API v2 process plugins using [FHIR client connections](https://dsf.dev/operations/v2.1.0",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "The WP Shortcodes Plugin — Shortcodes Ultimate plugin for WordPress is vulnerable to Stored Cross...",
+    "description": "The WP Shortcodes Plugin — Shortcodes Ultimate plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'su_box' shortcode in all versions up to, and including, 7.4.9 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
     "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-xmj9-7625-f634",
-    "affected_packages": [
-      "dev.dsf:dsf-bpe-process-api-v2",
-      "dev.dsf:dsf-bpe-server"
-    ],
+    "cve_id": "CVE-2026-3885",
+    "ghsa_id": "GHSA-99qg-46r6-v9px",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -165,64 +70,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-gj7p-595x-qwf5",
+    "id": "gh-GHSA-vmw6-xgxq-pw9v",
     "source": "GitHub Security",
-    "timestamp": "2026-04-15T19:19:43Z",
-    "title": "Data Sharing Framework is Missing Session Timeout for OIDC Sessions",
-    "description": "### Affected Components\nDSF FHIR Server with enabled [OIDC authentication](https://dsf.dev/operations/v2.1.0/fhir/oidc.html).\nDSF BPE Server with enabled [OIDC authentication](https://dsf.dev/operations/v2.1.0/bpe/oidc.html).\n\n### Summary\nOIDC-authenticated sessions had no configured maximum inactivity timeout. Sessions persisted indefinitely after login, even after the OIDC access token expired.\n\n### Impact\nIf a user logs in via OIDC and leaves their browser without explicitly logging out, the ",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "An Incorrect Permission Assignment for Critical Resource vulnerability in the ASUS DriverHub...",
+    "description": "An Incorrect Permission Assignment for Critical Resource vulnerability in the ASUS DriverHub update process allows privilege escalation due to improper protection of required execution resources during the validation phase, permitting a local user to make unprivileged modifications. This allows the altered resource to pass system checks and be executed with elevated privileges upon a user-initiated update.\nRefer to the 'Security Update for ASUS DriverHub' section on the ASUS Security Advisory fo",
     "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-gj7p-595x-qwf5",
-    "affected_packages": [
-      "dev.dsf:dsf-common-jetty",
-      "dev.dsf:dsf-fhir-server",
-      "dev.dsf:dsf-bpe-server"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-43fj-qp3h-hrh5",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-15T18:57:50Z",
-    "title": "Sync-in Server has Username Enumeration via Timing Attack",
-    "description": "### Summary\nThe `/api/auth/login` endpoint contains a logic flaw that allows unauthenticated remote attackers to enumerate valid usernames by measuring the application's response time.\n\n### Details\nThe logic flaw can be located at the below point in source:\nhttps://github.com/Sync-in/server/blob/7868bb2b3025f92e6c38087456304758713971b2/backend/src/applications/users/services/users-queries.service.ts#L91-L95\n\nEndpoints used for authentication should respond to the user with a consistent cadence, ",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-43fj-qp3h-hrh5",
-    "affected_packages": [
-      "@sync-in/server"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-hv5g-26jg-pc45",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-15T18:31:58Z",
-    "title": "Velociraptor versions prior to 0.76.3 contain a vulnerability in the query() plugin which allows...",
-    "description": "Velociraptor versions prior to 0.76.3 contain a vulnerability in the query() plugin which allows access to all orgs with the user's current ACL token. This allows an authenticated GUI user with access in one org, to use the query() plugin, in a notebook cell, to run VQL queries on other orgs which they may not have access to. The user's permissions in the other org are\nthe same as the permissions they have in the org containing the notebook.",
-    "severity": "high",
-    "cve_id": "CVE-2026-6290",
-    "ghsa_id": "GHSA-hv5g-26jg-pc45",
+    "cve_id": "CVE-2026-1880",
+    "ghsa_id": "GHSA-vmw6-xgxq-pw9v",
     "affected_packages": [],
     "cwes": [
       null
@@ -236,35 +91,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-rqjr-7g3f-hx8c",
+    "id": "gh-GHSA-3r49-76f3-pf2m",
     "source": "GitHub Security",
-    "timestamp": "2026-04-15T18:31:58Z",
-    "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')...",
-    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in HashThemes Mini Ajax Cart for WooCommerce allows Stored XSS.This issue affects Mini Ajax Cart for WooCommerce: from n/a through 1.3.4.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6370",
-    "ghsa_id": "GHSA-rqjr-7g3f-hx8c",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-6m6h-8f8v-r7j4",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-15T18:31:58Z",
-    "title": "A vulnerability in Cisco ISE and Cisco ISE-PIC could allow an authenticated, remote attacker to...",
-    "description": "A vulnerability in Cisco ISE and Cisco ISE-PIC could allow an authenticated, remote attacker to execute arbitrary commands on the underlying operating system of an affected device. To exploit this vulnerability, the attacker must have valid administrative credentials.\n\nThis vulnerability is due to insufficient validation of user-supplied input. An attacker could exploit this vulnerability by sending a crafted HTTP request to an affected device. A successful exploit could allow the attacker to ob",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "Creolabs Gravity before 0.9.6 contains a heap buffer overflow vulnerability in the...",
+    "description": "Creolabs Gravity before 0.9.6 contains a heap buffer overflow vulnerability in the gravity_vm_exec function that allows attackers to write out-of-bounds memory by crafting scripts with many string literals at global scope. Attackers can exploit insufficient bounds checking in gravity_fiber_reassign() to corrupt heap metadata and achieve arbitrary code execution in applications that evaluate untrusted scripts.",
     "severity": "critical",
-    "cve_id": "CVE-2026-20147",
-    "ghsa_id": "GHSA-6m6h-8f8v-r7j4",
+    "cve_id": "CVE-2026-40504",
+    "ghsa_id": "GHSA-3r49-76f3-pf2m",
     "affected_packages": [],
     "cwes": [
       null
@@ -272,23 +106,6 @@
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-j452-xhg8-qg39",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-15T18:31:58Z",
-    "title": "JavaScript is vulnerable to prototype pollution in Mafintosh's protocol-buffers-schema Version 3...",
-    "description": "JavaScript is vulnerable to prototype pollution in Mafintosh's protocol-buffers-schema Version 3.6.0, where an attacker may alter the application logic, bypass security checks, cause a DoS or achieve remote code execution.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-5758",
-    "ghsa_id": "GHSA-j452-xhg8-qg39",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
       null,
       null,
       null,
@@ -298,19 +115,20 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-fjg2-h4xx-5w8c",
+    "id": "gh-GHSA-wc72-m63f-4pcv",
     "source": "GitHub Security",
-    "timestamp": "2026-04-15T18:31:58Z",
-    "title": "A vulnerability in the Desktop Agent functionality of Cisco Webex Contact Center could have...",
-    "description": "A vulnerability in the Desktop Agent functionality of Cisco Webex Contact Center could have allowed an unauthenticated, remote attacker to conduct cross-site scripting attacks. Cisco has addressed this vulnerability in the Cisco Webex Contact Center service, and no customer action is needed.\n\n This vulnerability existed because HTML and script content was not properly handled. Prior to this vulnerability being addressed, an attacker could have exploited this vulnerability by persuading a user to",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "The WP YouTube Lyte plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the...",
+    "description": "The WP YouTube Lyte plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's 'lyte' shortcode in all versions up to, and including, 1.7.29 due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
     "severity": "medium",
-    "cve_id": "CVE-2026-20170",
-    "ghsa_id": "GHSA-fjg2-h4xx-5w8c",
+    "cve_id": "CVE-2026-3299",
+    "ghsa_id": "GHSA-wc72-m63f-4pcv",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
@@ -319,19 +137,45 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-hh5g-g7m5-5vxv",
+    "id": "gh-GHSA-v352-gq4q-9qjf",
     "source": "GitHub Security",
-    "timestamp": "2026-04-15T18:31:58Z",
-    "title": "A vulnerability in the integration of single sign-on (SSO) with Control Hub in Cisco Webex...",
-    "description": "A vulnerability in the integration of single sign-on (SSO) with Control Hub in Cisco Webex Services could have allowed an unauthenticated, remote attacker to impersonate any user within the service.\n\nThis vulnerability existed because of improper certificate validation. Prior to this vulnerability being addressed, an attacker could have exploited this vulnerability by connecting to a service endpoint and supplying a crafted token. A successful exploit could have allowed the attacker to gain unau",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "radare2 before 9236f44, when configured on UNIX without SSL, allows command injection via a PDB...",
+    "description": "radare2 before 9236f44, when configured on UNIX without SSL, allows command injection via a PDB name to rabin2 -PP. NOTE: although users are supposed to use the latest version from git (not a release), the date range for the vulnerable code was less than a week, occurring after 6.1.2 but before 6.1.3.",
+    "severity": "high",
+    "cve_id": "CVE-2026-41015",
+    "ghsa_id": "GHSA-v352-gq4q-9qjf",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-wxm2-x9x9-x5mj",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "Luanti 5 before 5.15.2, when LuaJIT is used, allows a Lua sandbox escape via a crafted mod.",
+    "description": "Luanti 5 before 5.15.2, when LuaJIT is used, allows a Lua sandbox escape via a crafted mod.",
     "severity": "critical",
-    "cve_id": "CVE-2026-20184",
-    "ghsa_id": "GHSA-hh5g-g7m5-5vxv",
+    "cve_id": "CVE-2026-40959",
+    "ghsa_id": "GHSA-wxm2-x9x9-x5mj",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null
@@ -340,19 +184,65 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-rpqw-j963-73gh",
+    "id": "gh-GHSA-6v58-5584-rv99",
     "source": "GitHub Security",
-    "timestamp": "2026-04-15T18:31:58Z",
-    "title": "A vulnerability in the CLI of Cisco ThousandEyes Enterprise Agent could allow an authenticated,...",
-    "description": "A vulnerability in the CLI of Cisco ThousandEyes Enterprise Agent could allow an authenticated, local attacker with low privileges to overwrite arbitrary files on the local system of an affected device.\n\nThis vulnerability is due to improper access controls on files that are on the local file system&nbsp;of an affected device. An attacker could exploit this vulnerability by placing a symbolic link in a specific location on the local file system. A successful exploit could allow the attacker to b",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "Luanti 5 before 5.15.2 sometimes allows unintended access to an insecure environment. If at least...",
+    "description": "Luanti 5 before 5.15.2 sometimes allows unintended access to an insecure environment. If at least one mod is listed as secure.trusted_mods or secure.http_mods, then a crafted mod can intercept the request for the insecure environment or HTTP API, and also receive access to it.",
+    "severity": "high",
+    "cve_id": "CVE-2026-40960",
+    "ghsa_id": "GHSA-6v58-5584-rv99",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-hx2j-xhcm-gv72",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "The \niSherlock developed by HGiga  has an OS Command Injection vulnerability, allowing...",
+    "description": "The \niSherlock developed by HGiga  has an OS Command Injection vulnerability, allowing unauthenticated local attackers to inject arbitrary OS commands and execute them on the server.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-6349",
+    "ghsa_id": "GHSA-hx2j-xhcm-gv72",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-hj44-m5xv-x75q",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "MuPDF mutool does not sanitize PDF metadata fields before writing them to terminal output,...",
+    "description": "MuPDF mutool does not sanitize PDF metadata fields before writing them to terminal output, allowing attackers to inject arbitrary ANSI escape sequences through crafted PDF metadata. Attackers can embed malicious ANSI escape codes in PDF metadata that are passed unsanitized to the terminal when running mutool info, enabling them to clear the terminal display and render arbitrary text for social engineering attacks such as presenting fake prompts or spoofed commands.",
     "severity": "medium",
-    "cve_id": "CVE-2026-20161",
-    "ghsa_id": "GHSA-rpqw-j963-73gh",
+    "cve_id": "CVE-2026-40505",
+    "ghsa_id": "GHSA-hj44-m5xv-x75q",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
@@ -361,14 +251,58 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-hwpg-c95h-3gc7",
+    "id": "gh-GHSA-mgwx-w2xc-pjq7",
     "source": "GitHub Security",
-    "timestamp": "2026-04-15T18:31:58Z",
-    "title": "Missing Authorization vulnerability in Plisio Accept Cryptocurrencies with Plisio allows...",
-    "description": "Missing Authorization vulnerability in Plisio Accept Cryptocurrencies with Plisio allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Accept Cryptocurrencies with Plisio: from n/a through 2.0.5.",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "MailGates/MailAudit developed by Openfind has a CRLF Injection vulnerability, allowing...",
+    "description": "MailGates/MailAudit developed by Openfind has a CRLF Injection vulnerability, allowing unauthenticated remote attackers to exploit this vulnerability to read system files.",
     "severity": "high",
-    "cve_id": "CVE-2026-6372",
-    "ghsa_id": "GHSA-hwpg-c95h-3gc7",
+    "cve_id": "CVE-2026-6351",
+    "ghsa_id": "GHSA-mgwx-w2xc-pjq7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-ppm7-9255-8gmf",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "WinMatrix agent developed by Simopro Technology has a Missing Authentication vulnerability,...",
+    "description": "WinMatrix agent developed by Simopro Technology has a Missing Authentication vulnerability, allowing authenticated local attackers to execute arbitrary code with SYSTEM privileges on the local machine as well as on all hosts within the environment where the agent is installed.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-6348",
+    "ghsa_id": "GHSA-ppm7-9255-8gmf",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-49h6-4qj3-4f42",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "A Download of Code Without Integrity Check vulnerability in the update modules in ASUS Member...",
+    "description": "A Download of Code Without Integrity Check vulnerability in the update modules in ASUS Member Center(华硕大厅) allows a local user to achieve privilege escalation to Administrator via exploitation of a Time-of-check Time-of-use (TOC-TOU) during the update process, where an unexpected payload is substituted for a legitimate one immediately after download, and subsequently executed with administrative privileges upon user consent.\nRefer to the 'Security Update for ASUS Member Center' section on the AS",
+    "severity": "medium",
+    "cve_id": "CVE-2026-3428",
+    "ghsa_id": "GHSA-49h6-4qj3-4f42",
     "affected_packages": [],
     "cwes": [
       null
@@ -382,34 +316,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-w8qq-gx58-7qgx",
+    "id": "gh-GHSA-fwhx-4vqr-m9gj",
     "source": "GitHub Security",
-    "timestamp": "2026-04-15T18:31:58Z",
-    "title": "Incorrect access control in the config.php component of Slah v1.5.0 and below allows...",
-    "description": "Incorrect access control in the config.php component of Slah v1.5.0 and below allows unauthenticated attackers to access sensitive information, including active session credentials.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-30994",
-    "ghsa_id": "GHSA-w8qq-gx58-7qgx",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-7h37-949c-f3gp",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-15T18:31:58Z",
-    "title": "Slah CMS v1.5.0 and below was discovered to contain a SQL injection vulnerability via the id...",
-    "description": "Slah CMS v1.5.0 and below was discovered to contain a SQL injection vulnerability via the id parameter in the vereador_ver.php endpoint.",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "OpenHarness prior to commit dd1d235 contains a path traversal vulnerability that allows remote...",
+    "description": "OpenHarness prior to commit dd1d235 contains a path traversal vulnerability that allows remote gateway users with chat access to read arbitrary files by supplying path traversal sequences to the /memory show slash command. Attackers can manipulate the path input parameter to escape the project memory directory and access sensitive files accessible to the OpenHarness process without filesystem containment validation.",
     "severity": "high",
-    "cve_id": "CVE-2026-30995",
-    "ghsa_id": "GHSA-7h37-949c-f3gp",
+    "cve_id": "CVE-2026-40503",
+    "ghsa_id": "GHSA-fwhx-4vqr-m9gj",
     "affected_packages": [],
     "cwes": [
       null
@@ -418,342 +332,458 @@
       null,
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-g4ww-j67q-3j45",
+    "id": "gh-GHSA-48wr-p98v-9w5h",
     "source": "GitHub Security",
-    "timestamp": "2026-04-15T18:31:58Z",
-    "title": "Slah CMS v1.5.0 and below was discovered to contain a remote code execution (RCE) vulnerability...",
-    "description": "Slah CMS v1.5.0 and below was discovered to contain a remote code execution (RCE) vulnerability in the session() function at config.php. This vulnerability is exploitable via a crafted input.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-30993",
-    "ghsa_id": "GHSA-g4ww-j67q-3j45",
+    "timestamp": "2026-04-16T03:31:06Z",
+    "title": "FFmpeg before 8.1 has an integer overflow and resultant out-of-bounds write via CENC (Common...",
+    "description": "FFmpeg before 8.1 has an integer overflow and resultant out-of-bounds write via CENC (Common Encryption) subsample data to libavformat/mov.c.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-40962",
+    "ghsa_id": "GHSA-48wr-p98v-9w5h",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-7rhq-9q45-5gm4",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-16T03:31:05Z",
+    "title": "radare2 prior to version 6.1.4 contains a command injection vulnerability in the PDB parser's...",
+    "description": "radare2 prior to version 6.1.4 contains a command injection vulnerability in the PDB parser's print_gvars() function that allows attackers to execute arbitrary commands by embedding a newline byte in the PE section header name field. Attackers can craft a malicious PDB file with specially crafted section names to inject r2 commands that are executed when the idp command processes the file.",
+    "severity": "high",
+    "cve_id": "CVE-2026-40499",
+    "ghsa_id": "GHSA-7rhq-9q45-5gm4",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
       null,
       null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-m5qg-w79h-6284",
+    "id": "gh-GHSA-9w66-jgph-vx6j",
     "source": "GitHub Security",
-    "timestamp": "2026-04-15T18:31:58Z",
-    "title": "An issue in the file handling logic of the component download.php of SAC-NFe v2.0.02 allows...",
-    "description": "An issue in the file handling logic of the component download.php of SAC-NFe v2.0.02 allows attackers to execute a directory traversal and read arbitrary files from the system via a crafted GET request.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-30996",
-    "ghsa_id": "GHSA-m5qg-w79h-6284",
+    "timestamp": "2026-04-16T03:31:05Z",
+    "title": "OpenHarness prior to commit dd1d235 contains a command injection vulnerability that allows remote...",
+    "description": "OpenHarness prior to commit dd1d235 contains a command injection vulnerability that allows remote gateway users with chat access to invoke sensitive administrative commands by exploiting insufficient distinction between local-only and remote-safe commands in the gateway handler. Attackers can execute administrative commands such as /permissions full_auto through remote chat sessions to change permission modes of a running OpenHarness instance without operator authorization.",
+    "severity": "high",
+    "cve_id": "CVE-2026-40502",
+    "ghsa_id": "GHSA-9w66-jgph-vx6j",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-32280",
+    "id": "gh-GHSA-6f54-qjvm-wwq3",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-16T01:37:21Z",
+    "title": "wger has Stored XSS via Unescaped License Attribution Fields",
+    "description": "# Stored XSS via Unescaped License Attribution Fields\n\n## Summary\n\nThe `AbstractLicenseModel.attribution_link` property in `wger/utils/models.py` constructs HTML strings by directly interpolating user-controlled fields (`license_author`, `license_title`, `license_object_url`, `license_author_url`, `license_derivative_source_url`) without any escaping. The resulting HTML is rendered in the ingredient view template using Django's `|safe` filter, which disables auto-escaping. An authenticated user ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-40353",
+    "ghsa_id": "GHSA-6f54-qjvm-wwq3",
+    "affected_packages": [
+      "wger"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-xppv-4jrx-qf8m",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-16T01:35:16Z",
+    "title": "wger has Broken Access Control in Global Gym Configuration Update Endpoint",
+    "description": "## Summary\n\nwger exposes a global configuration edit endpoint at `/config/gym-config/edit` implemented by `GymConfigUpdateView`. The view declares `permission_required = 'config.change_gymconfig'` but does not enforce it because it inherits `WgerFormMixin` (ownership-only checks) instead of the project’s permission-enforcing mixin (`WgerPermissionMixin`) .\n\nThe edited object is a singleton (`GymConfig(pk=1)`) and the model does not implement `get_owner_object()`, so `WgerFormMixin` skips ownersh",
+    "severity": "high",
+    "cve_id": "CVE-2026-40474",
+    "ghsa_id": "GHSA-xppv-4jrx-qf8m",
+    "affected_packages": [
+      "wger"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-5vjq-5jmg-39xq",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-16T01:34:39Z",
+    "title": "Renovate affected by remote code execution was possible using the bazel-module or bazelisk managers, when using lockFileMaintenance",
+    "description": "When using [`lockFileMaintenance`](https://docs.renovatebot.com/configuration-options/#lockfilemaintenance) using the [bazel-module](https://docs.renovatebot.com/modules/manager/bazel-module/) or [bazelisk](https://docs.renovatebot.com/modules/manager/bazelisk/) managers between Renovate [43.65.0](https://github.com/renovatebot/renovate/releases/tag/43.65.0) (2026-03-12) and [43.102.11](https://github.com/renovatebot/renovate/releases/tag/43.102.11) (2026-04-02), there was the opportunity for re",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-5vjq-5jmg-39xq",
+    "affected_packages": [
+      "renovate"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-3574",
     "source": "NVD CVE",
-    "timestamp": "2026-04-08T02:16:03.247",
-    "title": "CVE-2026-32280 - During chain building, the amount of work that is done is not correctly limited when a large number ",
-    "description": "During chain building, the amount of work that is done is not correctly limited when a large number of intermediate certificates are passed in VerifyOptions.Intermediates, which can lead to a denial of service. This affects both direct users of crypto/x509 and users of crypto/tls.",
-    "severity": "high",
-    "cve_id": "CVE-2026-32280",
-    "cvss_score": 7.5,
+    "timestamp": "2026-04-09T04:17:10.990",
+    "title": "CVE-2026-3574 - The Experto Dashboard for WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Script",
+    "description": "The Experto Dashboard for WooCommerce plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's settings fields (including 'Navigation Font Size', 'Navigation Font Weight', 'Heading Font Size', 'Heading Font Weight', 'Text Font Size', and 'Text Font Weight') in all versions up to and including 1.0.4. This is due to insufficient input sanitization (no sanitize callback in register_setting()) and missing output escaping (no esc_attr() in the field_callback() printf output) on user-supplied values. This makes it possible for authenticated attackers, with Administrator-level access and above, to inject arbitrary web scripts in the plugin settings page that will execute whenever a user accesses the settings page. This only affects multi-site installations and installations where unfiltered_html has been disabled.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-3574",
+    "cvss_score": 4.4,
     "affected_products": [],
     "references": [
-      "https://go.dev/cl/758320",
-      "https://go.dev/issue/78282",
-      "https://groups.google.com/g/golang-announce/c/0uYbvbPZRWU",
-      "https://pkg.go.dev/vuln/GO-2026-4947"
+      "https://plugins.trac.wordpress.org/browser/experto-custom-dashboard/tags/1.0.1/admin/class-ewc-admin.php#L312",
+      "https://plugins.trac.wordpress.org/browser/experto-custom-dashboard/tags/1.0.1/admin/class-ewc-admin.php#L361",
+      "https://plugins.trac.wordpress.org/browser/experto-custom-dashboard/trunk/admin/class-ewc-admin.php#L312",
+      "https://plugins.trac.wordpress.org/browser/experto-custom-dashboard/trunk/admin/class-ewc-admin.php#L361",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3491768%40experto-custom-dashboard&new=3491768%40experto-custom-dashboard",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/a070f19e-9f65-499d-87c0-65be12d4be84?source=cve"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-27144",
+    "id": "cve-CVE-2026-3568",
     "source": "NVD CVE",
-    "timestamp": "2026-04-08T02:16:03.130",
-    "title": "CVE-2026-27144 - The compiler is meant to unwrap pointers which are the operands of a memory move; a no-op interface ",
-    "description": "The compiler is meant to unwrap pointers which are the operands of a memory move; a no-op interface conversion prevented the compiler from making the correct determination about non-overlapping moves, potentially leading to memory corruption at runtime.",
-    "severity": "high",
-    "cve_id": "CVE-2026-27144",
-    "cvss_score": 7.1,
+    "timestamp": "2026-04-09T04:16:59.177",
+    "title": "CVE-2026-3568 - The MStore API plugin for WordPress is vulnerable to  Insecure Direct Object Reference in all versio",
+    "description": "The MStore API plugin for WordPress is vulnerable to  Insecure Direct Object Reference in all versions up to, and including, 4.18.3. This is due to the update_user_profile() function in controllers/flutter-user.php processing the 'meta_data' JSON parameter without any allowlist, blocklist, or validation of meta keys. The function reads raw JSON from php://input (line 1012), decodes it (line 1013), authenticates the user via cookie validation (line 1015), and then directly iterates over the user-supplied meta_data array passing arbitrary keys and values to update_user_meta() (line 1080) with no sanitization or restrictions. This makes it possible for authenticated attackers, with Subscriber-level access and above, to modify arbitrary user meta fields on their own accounts, including sensitive fields like wp_user_level (to escalate to administrator-level legacy checks), plugin-specific authorization flags (e.g., _wpuf_user_active, aiowps_account_status), and billing/profile fields with unsanitized values (potentially enabling Stored XSS in admin contexts). Note that wp_capabilities cannot be directly exploited this way because it requires a serialized array value, but wp_user_level (a simple integer) and numerous plugin-specific meta keys are exploitable.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-3568",
+    "cvss_score": 4.3,
     "affected_products": [],
     "references": [
-      "https://go.dev/cl/763764",
-      "https://go.dev/issue/78371",
-      "https://groups.google.com/g/golang-announce/c/0uYbvbPZRWU",
-      "https://pkg.go.dev/vuln/GO-2026-4867"
+      "https://plugins.trac.wordpress.org/browser/mstore-api/tags/4.18.3/controllers/flutter-user.php#L1012",
+      "https://plugins.trac.wordpress.org/browser/mstore-api/tags/4.18.3/controllers/flutter-user.php#L1078",
+      "https://plugins.trac.wordpress.org/browser/mstore-api/tags/4.18.3/controllers/flutter-user.php#L1080",
+      "https://plugins.trac.wordpress.org/browser/mstore-api/trunk/controllers/flutter-user.php#L1012",
+      "https://plugins.trac.wordpress.org/browser/mstore-api/trunk/controllers/flutter-user.php#L1078",
+      "https://plugins.trac.wordpress.org/browser/mstore-api/trunk/controllers/flutter-user.php#L1080",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3494266%40mstore-api&new=3494266%40mstore-api&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/a77bc126-4dbd-4a26-b98c-946341d4282f?source=cve"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-27143",
+    "id": "cve-CVE-2026-5832",
     "source": "NVD CVE",
-    "timestamp": "2026-04-08T02:16:03.017",
-    "title": "CVE-2026-27143 - Arithmetic over induction variables in loops were not correctly checked for underflow or overflow. A",
-    "description": "Arithmetic over induction variables in loops were not correctly checked for underflow or overflow. As a result, the compiler would allow for invalid indexing to occur at runtime, potentially leading to memory corruption.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-27143",
-    "cvss_score": 9.8,
+    "timestamp": "2026-04-09T02:16:18.327",
+    "title": "CVE-2026-5832 - A weakness has been identified in atototo api-lab-mcp up to 0.2.1. This affects the function analyze",
+    "description": "A weakness has been identified in atototo api-lab-mcp up to 0.2.1. This affects the function analyze_api_spec/generate_test_scenarios/test_http_endpoint of the file src/mcp/http-server.ts of the component HTTP Interface. This manipulation of the argument source/url causes server-side request forgery. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+    "severity": "high",
+    "cve_id": "CVE-2026-5832",
+    "cvss_score": 7.3,
     "affected_products": [],
     "references": [
-      "https://go.dev/cl/763765",
-      "https://go.dev/issue/78333",
-      "https://groups.google.com/g/golang-announce/c/0uYbvbPZRWU",
-      "https://pkg.go.dev/vuln/GO-2026-4868"
+      "https://github.com/BruceJqs/public_exp/issues/6",
+      "https://github.com/atototo/api-lab-mcp/",
+      "https://github.com/atototo/api-lab-mcp/issues/4",
+      "https://vuldb.com/submit/789765",
+      "https://vuldb.com/vuln/356288",
+      "https://vuldb.com/vuln/356288/cti"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-27140",
+    "id": "cve-CVE-2026-5831",
     "source": "NVD CVE",
-    "timestamp": "2026-04-08T02:16:02.887",
-    "title": "CVE-2026-27140 - SWIG file names containing 'cgo' and well-crafted payloads could lead to code smuggling and arbitrar",
-    "description": "SWIG file names containing 'cgo' and well-crafted payloads could lead to code smuggling and arbitrary code execution at build time due to trust layer bypass.",
+    "timestamp": "2026-04-09T02:16:18.110",
+    "title": "CVE-2026-5831 - A security flaw has been discovered in Agions taskflow-ai up to 2.1.8. This impacts an unknown funct",
+    "description": "A security flaw has been discovered in Agions taskflow-ai up to 2.1.8. This impacts an unknown function of the file src/mcp/server/handlers.ts of the component terminal_execute. Performing a manipulation results in os command injection. The attack is possible to be carried out remotely. Upgrading to version 2.1.9 will fix this issue. The patch is named c1550b445b9f24f38c4414e9a545f5f79f23a0fe. Upgrading the affected component is recommended. The vendor was contacted early, responded in a very professional manner and quickly released a fixed version of the affected product.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-5831",
+    "cvss_score": 6.3,
+    "affected_products": [],
+    "references": [
+      "https://github.com/Agions/taskflow-ai/",
+      "https://github.com/Agions/taskflow-ai/commit/c1550b445b9f24f38c4414e9a545f5f79f23a0fe",
+      "https://github.com/Agions/taskflow-ai/issues/2",
+      "https://github.com/Agions/taskflow-ai/releases/tag/v2.1.9",
+      "https://vuldb.com/submit/789515",
+      "https://vuldb.com/vuln/356278",
+      "https://vuldb.com/vuln/356278/cti"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-5830",
+    "source": "NVD CVE",
+    "timestamp": "2026-04-09T02:16:17.920",
+    "title": "CVE-2026-5830 - A vulnerability was identified in Tenda AC15 15.03.05.18. This affects the function websGetVar of th",
+    "description": "A vulnerability was identified in Tenda AC15 15.03.05.18. This affects the function websGetVar of the file /goform/SysToolChangePwd. Such manipulation of the argument oldPwd/newPwd/cfmPwd leads to stack-based buffer overflow. The attack can be executed remotely. The exploit is publicly available and might be used.",
     "severity": "high",
-    "cve_id": "CVE-2026-27140",
+    "cve_id": "CVE-2026-5830",
     "cvss_score": 8.8,
     "affected_products": [],
     "references": [
-      "https://go.dev/cl/763768",
-      "https://go.dev/issue/78335",
-      "https://groups.google.com/g/golang-announce/c/0uYbvbPZRWU",
-      "https://pkg.go.dev/vuln/GO-2026-4871"
+      "https://files.catbox.moe/xrk8jb.zip",
+      "https://vuldb.com/submit/789178",
+      "https://vuldb.com/vuln/356277",
+      "https://vuldb.com/vuln/356277/cti",
+      "https://www.tenda.com.cn/"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2025-14732",
+    "id": "cve-CVE-2026-5829",
     "source": "NVD CVE",
-    "timestamp": "2026-04-08T02:16:02.667",
-    "title": "CVE-2025-14732 - The Elementor Website Builder – More Than Just a Page Builder plugin for WordPress is vulnerable to ",
-    "description": "The Elementor Website Builder – More Than Just a Page Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via several widget parameters in all versions up to, and including, 3.35.5 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-    "severity": "medium",
-    "cve_id": "CVE-2025-14732",
-    "cvss_score": 6.4,
+    "timestamp": "2026-04-09T02:16:17.727",
+    "title": "CVE-2026-5829 - A vulnerability was determined in code-projects Simple IT Discussion Forum 1.0. The impacted element",
+    "description": "A vulnerability was determined in code-projects Simple IT Discussion Forum 1.0. The impacted element is an unknown function of the file /pages/content.php. This manipulation of the argument post_id causes sql injection. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized.",
+    "severity": "high",
+    "cve_id": "CVE-2026-5829",
+    "cvss_score": 7.3,
     "affected_products": [],
     "references": [
-      "https://plugins.trac.wordpress.org/browser/elementor/trunk/modules/wp-rest/classes/elementor-post-meta.php#L67",
-      "https://plugins.trac.wordpress.org/changeset?old_path=/elementor/tags/3.35.5&new_path=/elementor/tags/3.35.6",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/20232d70-72b2-47b7-ac7e-ad07892864ef?source=cve"
+      "https://code-projects.org/",
+      "https://github.com/lonelyuan/vunls/issues/6",
+      "https://vuldb.com/submit/788338",
+      "https://vuldb.com/vuln/356276",
+      "https://vuldb.com/vuln/356276/cti"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-4788",
+    "id": "cve-CVE-2026-5828",
     "source": "NVD CVE",
-    "timestamp": "2026-04-08T01:16:41.220",
-    "title": "CVE-2026-4788 - IBM Tivoli Netcool Impact 7.1.0.0 through 7.1.0.37 stores sensitive information in log files that co",
-    "description": "IBM Tivoli Netcool Impact 7.1.0.0 through 7.1.0.37 stores sensitive information in log files that could be read by a local user.",
+    "timestamp": "2026-04-09T02:16:17.533",
+    "title": "CVE-2026-5828 - A vulnerability was found in code-projects Simple IT Discussion Forum 1.0. The affected element is a",
+    "description": "A vulnerability was found in code-projects Simple IT Discussion Forum 1.0. The affected element is an unknown function of the file /functions/addcomment.php. The manipulation of the argument postid results in sql injection. The attack may be launched remotely. The exploit has been made public and could be used.",
     "severity": "high",
-    "cve_id": "CVE-2026-4788",
-    "cvss_score": 8.4,
-    "affected_products": [
-      "cpe:2.3:a:ibm:tivoli_netcool\\/impact:*:*:*:*:*:*:*:*"
-    ],
+    "cve_id": "CVE-2026-5828",
+    "cvss_score": 7.3,
+    "affected_products": [],
     "references": [
-      "https://www.ibm.com/support/pages/node/7268267"
+      "https://code-projects.org/",
+      "https://github.com/lonelyuan/vunls/issues/7",
+      "https://vuldb.com/submit/788337",
+      "https://vuldb.com/vuln/356275",
+      "https://vuldb.com/vuln/356275/cti"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-3357",
+    "id": "cve-CVE-2026-4326",
     "source": "NVD CVE",
-    "timestamp": "2026-04-08T01:16:41.057",
-    "title": "CVE-2026-3357 - IBM Langflow Desktop 1.6.0 through 1.8.2 Langflow could allow an authenticated user to execute arbit",
-    "description": "IBM Langflow Desktop 1.6.0 through 1.8.2 Langflow could allow an authenticated user to execute arbitrary code on the system, caused by an insecure default setting which permits the deserialization of untrusted data in the FAISS component.",
+    "timestamp": "2026-04-09T02:16:16.530",
+    "title": "CVE-2026-4326 - The Vertex Addons for Elementor plugin for WordPress is vulnerable to Missing Authorization in all v",
+    "description": "The Vertex Addons for Elementor plugin for WordPress is vulnerable to Missing Authorization in all versions up to and including 1.6.4. This is due to improper authorization enforcement in the activate_required_plugins() function. Specifically, the current_user_can('install_plugins') capability check does not terminate execution when it fails — it only sets an error message variable while allowing the plugin installation and activation code to execute. The error response is only sent after the installation and activation have already completed. This makes it possible for authenticated attackers, with Subscriber-level access and above, to install and activate arbitrary plugins from the WordPress.",
     "severity": "high",
-    "cve_id": "CVE-2026-3357",
+    "cve_id": "CVE-2026-4326",
     "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:langflow:langflow:*:*:*:*:*:*:*:*"
-    ],
+    "affected_products": [],
     "references": [
-      "https://www.ibm.com/support/pages/node/7268428"
+      "https://plugins.trac.wordpress.org/browser/addons-for-elementor-builder/tags/1.6.4/app/Ajax.php#L229",
+      "https://plugins.trac.wordpress.org/browser/addons-for-elementor-builder/tags/1.6.4/app/Ajax.php#L232",
+      "https://plugins.trac.wordpress.org/browser/addons-for-elementor-builder/tags/1.6.4/app/Ajax.php#L264",
+      "https://plugins.trac.wordpress.org/browser/addons-for-elementor-builder/tags/1.6.4/app/Ajax.php#L278",
+      "https://plugins.trac.wordpress.org/browser/addons-for-elementor-builder/trunk/app/Ajax.php#L229",
+      "https://plugins.trac.wordpress.org/browser/addons-for-elementor-builder/trunk/app/Ajax.php#L232",
+      "https://plugins.trac.wordpress.org/browser/addons-for-elementor-builder/trunk/app/Ajax.php#L264",
+      "https://plugins.trac.wordpress.org/browser/addons-for-elementor-builder/trunk/app/Ajax.php#L278",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3491143%40addons-for-elementor-builder&new=3491143%40addons-for-elementor-builder&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/1bb409f0-ccbd-4dfa-b097-b29ee539daa3?source=cve"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-1346",
+    "id": "cve-CVE-2026-5827",
     "source": "NVD CVE",
-    "timestamp": "2026-04-08T01:16:40.750",
-    "title": "CVE-2026-1346 - IBM Verify Identity Access Container 11.0 through 11.0.2 and IBM Security Verify Access Container 10",
-    "description": "IBM Verify Identity Access Container 11.0 through 11.0.2 and IBM Security Verify Access Container 10.0 through 10.0.9.1 and IBM Verify Identity Access 11.0 through 11.0.2 and IBM Security Verify Access 10.0 through 10.0.9.1 could allow a locally authenticated user to escalate their privileges to root due to execution with unnecessary privileges than required.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-1346",
-    "cvss_score": 9.3,
-    "affected_products": [
-      "cpe:2.3:a:ibm:security_verify_access:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:ibm:security_verify_access_container:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:ibm:verify_identity_access:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:ibm:verify_identity_access_container:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.ibm.com/support/pages/node/7268253"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-1343",
-    "source": "NVD CVE",
-    "timestamp": "2026-04-08T01:16:40.503",
-    "title": "CVE-2026-1343 - IBM Verify Identity Access Container 11.0 through 11.0.2 and IBM Security Verify Access Container 10",
-    "description": "IBM Verify Identity Access Container 11.0 through 11.0.2 and IBM Security Verify Access Container 10.0 through 10.0.9.1 and IBM Verify Identity Access 11.0 through 11.0.2 and IBM Security Verify Access 10.0 through 10.0.9.1 allows an attacker to contact internal authentication endpoints which are protected by the Reverse Proxy.",
+    "timestamp": "2026-04-09T01:16:50.380",
+    "title": "CVE-2026-5827 - A vulnerability has been found in code-projects Simple IT Discussion Forum 1.0. Impacted is an unkno",
+    "description": "A vulnerability has been found in code-projects Simple IT Discussion Forum 1.0. Impacted is an unknown function of the file /question-function.php. The manipulation of the argument content leads to sql injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.",
     "severity": "high",
-    "cve_id": "CVE-2026-1343",
-    "cvss_score": 7.2,
-    "affected_products": [
-      "cpe:2.3:a:ibm:security_verify_access:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:ibm:security_verify_access_container:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:ibm:verify_identity_access:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:ibm:verify_identity_access_container:*:*:*:*:*:*:*:*"
-    ],
+    "cve_id": "CVE-2026-5827",
+    "cvss_score": 7.3,
+    "affected_products": [],
     "references": [
-      "https://www.ibm.com/support/pages/node/7268253"
+      "https://code-projects.org/",
+      "https://github.com/lonelyuan/vunls/issues/8",
+      "https://vuldb.com/submit/788336",
+      "https://vuldb.com/vuln/356274",
+      "https://vuldb.com/vuln/356274/cti"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-5747",
+    "id": "cve-CVE-2026-5826",
     "source": "NVD CVE",
-    "timestamp": "2026-04-08T00:16:05.657",
-    "title": "CVE-2026-5747 - An out-of-bounds write issue in the virtio PCI transport in Amazon Firecracker 1.13.0 through 1.14.3",
-    "description": "An out-of-bounds write issue in the virtio PCI transport in Amazon Firecracker 1.13.0 through 1.14.3 and 1.15.0 on x86_64 and aarch64 might allow a local guest user with root privileges to crash the Firecracker VMM process or potentially execute arbitrary code on the host via modification of virtio queue configuration registers after device activation. Achieving code execution on the host requires additional preconditions, such as the use of a custom guest kernel or specific snapshot configurations.\n\nTo remediate this, users should upgrade to Firecracker 1.14.4 or 1.15.1 and later.",
+    "timestamp": "2026-04-09T01:16:50.187",
+    "title": "CVE-2026-5826 - A flaw has been found in code-projects Simple IT Discussion Forum 1.0. This issue affects some unkno",
+    "description": "A flaw has been found in code-projects Simple IT Discussion Forum 1.0. This issue affects some unknown processing of the file /edit-category.php. Executing a manipulation of the argument Category can lead to cross site scripting. The attack can be launched remotely. The exploit has been published and may be used.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-5826",
+    "cvss_score": 4.3,
+    "affected_products": [],
+    "references": [
+      "https://code-projects.org/",
+      "https://github.com/lonelyuan/vunls/issues/9",
+      "https://vuldb.com/submit/788335",
+      "https://vuldb.com/vuln/356273",
+      "https://vuldb.com/vuln/356273/cti"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-5825",
+    "source": "NVD CVE",
+    "timestamp": "2026-04-09T01:16:49.150",
+    "title": "CVE-2026-5825 - A vulnerability was detected in code-projects Simple Laundry System 1.0. This vulnerability affects ",
+    "description": "A vulnerability was detected in code-projects Simple Laundry System 1.0. This vulnerability affects unknown code of the file /delmemberinfo.php. Performing a manipulation of the argument userid results in cross site scripting. The attack can be initiated remotely. The exploit is now public and may be used.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-5825",
+    "cvss_score": 4.3,
+    "affected_products": [],
+    "references": [
+      "https://code-projects.org/",
+      "https://github.com/lonelyuan/vunls/issues/10",
+      "https://vuldb.com/submit/788334",
+      "https://vuldb.com/vuln/356272",
+      "https://vuldb.com/vuln/356272/cti"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-5824",
+    "source": "NVD CVE",
+    "timestamp": "2026-04-09T00:16:21.280",
+    "title": "CVE-2026-5824 - A security vulnerability has been detected in code-projects Simple Laundry System 1.0. This affects ",
+    "description": "A security vulnerability has been detected in code-projects Simple Laundry System 1.0. This affects an unknown part of the file /userchecklogin.php. Such manipulation of the argument userid leads to sql injection. It is possible to launch the attack remotely. The exploit has been disclosed publicly and may be used.",
     "severity": "high",
-    "cve_id": "CVE-2026-5747",
-    "cvss_score": 7.5,
+    "cve_id": "CVE-2026-5824",
+    "cvss_score": 7.3,
     "affected_products": [],
     "references": [
-      "https://aws.amazon.com/security/security-bulletins/2026-015-aws/",
-      "https://github.com/firecracker-microvm/firecracker/releases/tag/v1.14.4",
-      "https://github.com/firecracker-microvm/firecracker/releases/tag/v1.15.1",
-      "https://github.com/firecracker-microvm/firecracker/security/advisories/GHSA-776c-mpj7-jm3r"
+      "https://code-projects.org/",
+      "https://github.com/lonelyuan/vunls/issues/1",
+      "https://vuldb.com/submit/788302",
+      "https://vuldb.com/vuln/356271",
+      "https://vuldb.com/vuln/356271/cti"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-4406",
+    "id": "cve-CVE-2026-5823",
     "source": "NVD CVE",
-    "timestamp": "2026-04-08T00:16:05.490",
-    "title": "CVE-2026-4406 - The Gravity Forms plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the `form",
-    "description": "The Gravity Forms plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the `form_ids` parameter in the `gform_get_config` AJAX action in all versions up to, and including, 2.9.30. This is due to the `GFCommon::send_json()` method outputting JSON-encoded data wrapped in HTML comment delimiters using `echo` and `wp_die()`, which serves the response with a `Content-Type: text/html` header instead of `application/json`. The `wp_json_encode()` function does not HTML-encode angle brackets within JSON string values, allowing injected HTML/script tags in `form_ids` array values to be parsed and executed by the browser. The required `config_nonce` is generated with `wp_create_nonce('gform_config_ajax')` and is publicly embedded on every page that renders a Gravity Forms form, making it identical for all unauthenticated visitors within the same 12-hour nonce tick. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link. This vulnerability cannot be exploited against users who are authenticated on the target system, but could be used to alter the target page.",
+    "timestamp": "2026-04-09T00:16:21.087",
+    "title": "CVE-2026-5823 - A weakness has been identified in itsourcecode Construction Management System 1.0. Affected by this ",
+    "description": "A weakness has been identified in itsourcecode Construction Management System 1.0. Affected by this issue is some unknown functionality of the file /borrowed_tool_report.php. This manipulation of the argument Home causes sql injection. It is possible to initiate the attack remotely. The exploit has been made available to the public and could be used for attacks.",
     "severity": "medium",
-    "cve_id": "CVE-2026-4406",
-    "cvss_score": 4.7,
+    "cve_id": "CVE-2026-5823",
+    "cvss_score": 6.3,
     "affected_products": [],
     "references": [
-      "https://docs.gravityforms.com/gravityforms-change-log/",
-      "https://plugins.trac.wordpress.org/browser/gravityforms/trunk/common.php#L8267",
-      "https://plugins.trac.wordpress.org/browser/gravityforms/trunk/includes/config/class-gf-config-collection.php#L56",
-      "https://plugins.trac.wordpress.org/browser/gravityforms/trunk/includes/config/class-gf-config-service-provider.php#L144",
-      "https://plugins.trac.wordpress.org/browser/gravityforms/trunk/includes/config/items/class-gf-config-global.php#L22",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/4126d452-65a9-48f5-a3f5-5be1b8fff80c?source=cve"
+      "https://github.com/ltranquility/cve_submit/issues/14",
+      "https://itsourcecode.com/",
+      "https://vuldb.com/submit/788299",
+      "https://vuldb.com/vuln/356270",
+      "https://vuldb.com/vuln/356270/cti"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-4401",
+    "id": "cve-CVE-2026-5815",
     "source": "NVD CVE",
-    "timestamp": "2026-04-08T00:16:05.323",
-    "title": "CVE-2026-4401 - The Download Monitor plugin for WordPress is vulnerable to Cross-Site Request Forgery in the `action",
-    "description": "The Download Monitor plugin for WordPress is vulnerable to Cross-Site Request Forgery in the `actions_handler()` and `bulk_actions_handler()` methods in `class-dlm-downloads-path.php` in all versions up to, and including, 5.1.10. This is due to missing nonce verification on these functions. This makes it possible for unauthenticated attackers to delete, disable, or enable approved download paths via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-4401",
-    "cvss_score": 5.4,
-    "affected_products": [],
-    "references": [
-      "https://plugins.trac.wordpress.org/browser/download-monitor/tags/5.1.8/src/Admin/DownloadPaths/class-dlm-downloads-path.php#L427",
-      "https://plugins.trac.wordpress.org/browser/download-monitor/tags/5.1.8/src/Admin/DownloadPaths/class-dlm-downloads-path.php#L495",
-      "https://plugins.trac.wordpress.org/browser/download-monitor/trunk/src/Admin/DownloadPaths/class-dlm-downloads-path.php#L427",
-      "https://plugins.trac.wordpress.org/browser/download-monitor/trunk/src/Admin/DownloadPaths/class-dlm-downloads-path.php#L495",
-      "https://plugins.trac.wordpress.org/changeset?old_path=/download-monitor/tags/5.1.10&new_path=/download-monitor/tags/5.1.11#file11",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/33d70481-4652-44f4-99cf-67cc1ffab66a?source=cve"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-4394",
-    "source": "NVD CVE",
-    "timestamp": "2026-04-08T00:16:05.147",
-    "title": "CVE-2026-4394 - The Gravity Forms plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Credit C",
-    "description": "The Gravity Forms plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Credit Card field's 'Card Type' sub-field (`input_<id>.4`) in all versions up to, and including, 2.9.30. This is due to the `get_value_entry_detail()` method in the `GF_Field_CreditCard` class outputting the card type value without escaping, combined with `get_value_save_entry()` accepting and storing unsanitized user input for the `input_<id>.4` parameter. The Card Type field is not rendered on the frontend form (it is normally derived from the card number), but the backend submission parser blindly accepts it if included in the POST request. This makes it possible for unauthenticated attackers to inject arbitrary web scripts that execute when an administrator views the form entry in the WordPress dashboard.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-4394",
-    "cvss_score": 6.1,
-    "affected_products": [],
-    "references": [
-      "https://docs.gravityforms.com/gravityforms-change-log/",
-      "https://plugins.trac.wordpress.org/browser/gravityforms/tags/2.9.25/includes/fields/class-gf-field-creditcard.php#L516",
-      "https://plugins.trac.wordpress.org/browser/gravityforms/tags/2.9.25/includes/fields/class-gf-field-creditcard.php#L577",
-      "https://plugins.trac.wordpress.org/browser/gravityforms/trunk/includes/fields/class-gf-field-creditcard.php#L516",
-      "https://plugins.trac.wordpress.org/browser/gravityforms/trunk/includes/fields/class-gf-field-creditcard.php#L577",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/6f38d7b7-6df6-47a2-a9ba-87ef1f039e44?source=cve"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-2263",
-    "source": "NVD CVE",
-    "timestamp": "2026-04-08T00:16:04.980",
-    "title": "CVE-2026-2263 - The Hustle – Email Marketing, Lead Generation, Optins, Popups plugin for WordPress is vulnerable to ",
-    "description": "The Hustle – Email Marketing, Lead Generation, Optins, Popups plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the 'hustle_module_converted' AJAX action in all versions up to, and including, 7.8.10.2. This makes it possible for unauthenticated attackers to forge conversion tracking events for any Hustle module, including draft modules that are never displayed to users, thereby manipulating marketing analytics and conversion statistics.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-2263",
-    "cvss_score": 5.3,
-    "affected_products": [],
-    "references": [
-      "https://plugins.trac.wordpress.org/browser/wordpress-popup/tags/7.8.9.3/inc/front/hustle-module-front-ajax.php#L1047",
-      "https://plugins.trac.wordpress.org/browser/wordpress-popup/tags/7.8.9.3/inc/front/hustle-module-front-ajax.php#L32",
-      "https://plugins.trac.wordpress.org/browser/wordpress-popup/tags/7.8.9.3/inc/front/hustle-module-front.php#L311",
-      "https://plugins.trac.wordpress.org/changeset?old_path=/wordpress-popup/tags/7.8.10.2&new_path=/wordpress-popup/tags/7.8.11",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/2305462c-0a00-4423-8dc2-e32628c4864d?source=cve"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-1342",
-    "source": "NVD CVE",
-    "timestamp": "2026-04-08T00:16:03.860",
-    "title": "CVE-2026-1342 - IBM Verify Identity Access Container 11.0 through 11.0.2 and IBM Security Verify Access Container 10",
-    "description": "IBM Verify Identity Access Container 11.0 through 11.0.2 and IBM Security Verify Access Container 10.0 through 10.0.9.1 and IBM Verify Identity Access 11.0 through 11.0.2 and IBM Security Verify Access 10.0 through 10.0.9.1 could allow a locally authenticated user to execute malicious scripts from outside of its control sphere.",
+    "timestamp": "2026-04-09T00:16:20.863",
+    "title": "CVE-2026-5815 - A vulnerability was detected in D-Link DIR-645 1.01/1.02/1.03. Impacted is the function hedwigcgi_ma",
+    "description": "A vulnerability was detected in D-Link DIR-645 1.01/1.02/1.03. Impacted is the function hedwigcgi_main of the file /cgi-bin/hedwig.cgi. The manipulation results in stack-based buffer overflow. The attack can be launched remotely. The exploit is now public and may be used. This vulnerability only affects products that are no longer supported by the maintainer.",
     "severity": "high",
-    "cve_id": "CVE-2026-1342",
-    "cvss_score": 8.5,
-    "affected_products": [
-      "cpe:2.3:a:ibm:security_verify_access:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:ibm:security_verify_access_container:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:ibm:verify_identity_access:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:ibm:verify_identity_access_container:*:*:*:*:*:*:*:*"
-    ],
+    "cve_id": "CVE-2026-5815",
+    "cvss_score": 8.8,
+    "affected_products": [],
     "references": [
-      "https://www.ibm.com/support/pages/node/7268253"
+      "https://github.com/Pers1st0/CVE/blob/main/stack-based%20buffer%20overflow%20vulnerability%20exists%20in%20the%20hedwig.cgi%20of%20D-Link%20DIR-645.md",
+      "https://github.com/Pers1st0/CVE/blob/main/stack-based%20buffer%20overflow%20vulnerability%20exists%20in%20the%20hedwig.cgi%20of%20D-Link%20DIR-645.md#poc",
+      "https://vuldb.com/submit/788298",
+      "https://vuldb.com/vuln/356263",
+      "https://vuldb.com/vuln/356263/cti",
+      "https://www.dlink.com/"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-5814",
+    "source": "NVD CVE",
+    "timestamp": "2026-04-09T00:16:19.827",
+    "title": "CVE-2026-5814 - A security vulnerability has been detected in PHPGurukul Online Course Registration 3.1. This issue ",
+    "description": "A security vulnerability has been detected in PHPGurukul Online Course Registration 3.1. This issue affects some unknown processing of the file /admin/check_availability.php. The manipulation of the argument regno leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed publicly and may be used.",
+    "severity": "high",
+    "cve_id": "CVE-2026-5814",
+    "cvss_score": 7.3,
+    "affected_products": [],
+    "references": [
+      "https://github.com/f1rstb100d/CVE/issues/21",
+      "https://phpgurukul.com/",
+      "https://vuldb.com/submit/787698",
+      "https://vuldb.com/vuln/356262",
+      "https://vuldb.com/vuln/356262/cti"
     ],
     "ai_analysis": null,
     "risk_score": null
