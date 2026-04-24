@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1777038958175-1",
+    "id": "twitter-1777057521782-1",
     "source": "Twitter Security",
-    "timestamp": "2026-04-24T13:55:58.175Z",
+    "timestamp": "2026-04-24T19:05:21.782Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1777038958175-1",
+    "id": "hn-1777057521782-1",
     "source": "HackerNews",
-    "timestamp": "2026-04-24T13:55:58.175Z",
+    "timestamp": "2026-04-24T19:05:21.782Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,14 +52,55 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-r3x8-5j74-9fg2",
+    "id": "gh-GHSA-3f6j-24pw-57fm",
     "source": "GitHub Security",
-    "timestamp": "2026-04-24T12:30:27Z",
-    "title": "AdaptiveGRC is vulnerable to Stored XSS via text type fields across the forms. Authenticated...",
-    "description": "AdaptiveGRC is vulnerable to Stored XSS via text type fields across the forms. Authenticated attacker can replace the value of the text field in the HTTP POST request. Improper parameter validation by the server results in arbitrary JavaScript execution in the victim's browser.\nCritically, this may allow the attacker to obtain the administrator authentication token and perform arbitrary actions with administrative privileges, which could lead to further compromise.\n\nThis issue occurs in versions",
-    "severity": "low",
-    "cve_id": "CVE-2026-4313",
-    "ghsa_id": "GHSA-r3x8-5j74-9fg2",
+    "timestamp": "2026-04-24T18:31:12Z",
+    "title": "BridgeHead FileStore versions prior to 24A (released in early 2024) expose the Apache Axis2...",
+    "description": "BridgeHead FileStore versions prior to 24A (released in early 2024) expose the Apache Axis2 administration module on network-accessible endpoints with default credentials that allows unauthenticated remote attackers to execute arbitrary OS commands. Attackers can authenticate to the admin console using default credentials, upload a malicious Java archive as a web service, and execute arbitrary commands on the host via SOAP requests to the deployed service.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-39920",
+    "ghsa_id": "GHSA-3f6j-24pw-57fm",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 95,
+      "impact_assessment": "The vulnerability in BridgeHead FileStore allows unauthenticated remote attackers to execute arbitrary OS commands, potentially leading to full system compromise, data breaches, ransomware deployment, or lateral movement within the network. Exploitation is trivial due to the use of default credentials and exposed endpoints.",
+      "affected_industries": [
+        "Healthcare",
+        "Finance",
+        "Government",
+        "Education",
+        "Technology"
+      ],
+      "recommended_actions": [
+        "Immediately upgrade to BridgeHead FileStore version 24A or later to mitigate the vulnerability.",
+        "Disable or restrict access to the Apache Axis2 administration module by implementing network segmentation and firewall rules.",
+        "Audit all systems for unauthorized access or malicious activity, especially focusing on systems running vulnerable versions of BridgeHead FileStore."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 95
+  },
+  {
+    "id": "gh-GHSA-rx88-8j23-4qxx",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-24T18:31:11Z",
+    "title": "A Broken Access Control vulnerability exists in ClassroomIO v0.1.13 where an authenticated low...",
+    "description": "A Broken Access Control vulnerability exists in ClassroomIO v0.1.13 where an authenticated low-privileged \"student\" user can access unauthorized course-level information by modifying intercepted API requests. Changing a captured POST request to a GET request against the /rest/v1/course PostgREST endpoint results in disclosure of sensitive information including other students details, tutor/admin profiles, and internal course metadata.",
+    "severity": "medium",
+    "cve_id": "CVE-2025-67259",
+    "ghsa_id": "GHSA-rx88-8j23-4qxx",
     "affected_packages": [],
     "cwes": [
       null
@@ -71,38 +112,187 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 78,
-      "impact_assessment": "The vulnerability allows an authenticated attacker to exploit stored XSS via text fields, potentially leading to arbitrary JavaScript execution in the victim's browser. This could result in the theft of administrator authentication tokens and unauthorized actions with administrative privileges, escalating to a full system compromise.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows low-privileged users to access sensitive course-level information, including personal data of students, tutor/admin profiles, and internal course metadata. This could lead to privacy violations, data breaches, and potential misuse of sensitive information.",
       "affected_industries": [
-        "Financial Services",
-        "Healthcare",
-        "Government",
-        "Retail",
-        "Technology"
+        "Education Technology",
+        "Online Learning Platforms",
+        "Corporate Training Providers"
       ],
       "recommended_actions": [
-        "Immediately patch the affected AdaptiveGRC software to the latest version or apply any security updates provided by the vendor.",
-        "Implement input validation and sanitization on all user-supplied data to prevent malicious scripts from being stored or executed.",
-        "Conduct a security audit to identify and address any other potential vulnerabilities in the application."
+        "Implement strict server-side access control checks to validate user permissions for all API endpoints.",
+        "Sanitize and validate API requests to prevent unauthorized method changes (e.g., POST to GET).",
+        "Deploy patches or updates to ClassroomIO v0.1.13 to address the vulnerability and notify affected users."
       ],
       "urgency": "high"
     },
-    "risk_score": 78
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-rv45-r523-m576",
+    "id": "gh-GHSA-fv9m-8cwh-9rgj",
     "source": "GitHub Security",
-    "timestamp": "2026-04-24T12:30:27Z",
-    "title": "P4 Server versions prior to 2026.1 are configured with insecure default settings that, when...",
-    "description": "P4 Server versions prior to 2026.1 are configured with insecure default settings that, when exposed to untrusted networks, allow unauthenticated attackers to create arbitrary user accounts, enumerate existing users, authenticate to accounts with no password set, and access depot contents via the built-in 'remote' user. These default settings, taken together, can lead to unauthorized access to source code repositories and other managed assets. The 2026.1 release, expected in May 2026, enforces se",
-    "severity": "high",
-    "cve_id": "CVE-2026-6043",
-    "ghsa_id": "GHSA-rv45-r523-m576",
+    "timestamp": "2026-04-24T18:31:11Z",
+    "title": "A client-side authorization flaw in Lightspeed Classroom v5.1.2.1763770643 allows unauthenticated...",
+    "description": "A client-side authorization flaw in Lightspeed Classroom v5.1.2.1763770643 allows unauthenticated attackers to impersonate users by bypassing integrity checks and abusing client-generated authorization tokens, leading to unauthorized control and monitoring of student devices.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-30368",
+    "ghsa_id": "GHSA-fv9m-8cwh-9rgj",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-30368.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-g4q3-wpfp-jw92",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-24T18:31:11Z",
+    "title": "In Mahara before 24.04.10 and 25 before 25.04.1, an institution administrator or institution...",
+    "description": "In Mahara before 24.04.10 and 25 before 25.04.1, an institution administrator or institution support administrator on a multi-tenanted site can masquerade as an institution member in an institution for which they are not an administrator, if they also have the 'Site staff' role.",
+    "severity": "medium",
+    "cve_id": "CVE-2025-59308",
+    "ghsa_id": "GHSA-g4q3-wpfp-jw92",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-59308.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-rrjr-v56m-ww88",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-24T16:39:55Z",
+    "title": "ParquetSharp: Possible Stack Overflow When Reading a ParquetFile with Large Decimal Type Width",
+    "description": "`DecimalConverter.ReadDecimal` makes a stackalloc using what might be an attacker-supplied value. If an attacker declares a decimal column with some unreasonable width, this could lead to a stack overflow. In a service environment, this would potentially take down a service.\n\nThis affects applications using ParquetSharp to read untrusted Parquet files in a network service.",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-rrjr-v56m-ww88",
+    "affected_packages": [
+      "ParquetSharp"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-xvv6-p4wf-mvx7",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-24T16:39:15Z",
+    "title": "TYPO3 CMS Stores Cleartext Password in User Settings Module",
+    "description": "### Problem\nThe backend user settings module (`SetupModuleController`) incorrectly conflates entity data (like passwords or email address) with user-interface settings (like theme, display options) when persisting changes. As a result, passwords were stored in cleartext in the `uc` and `user_settings` fields of the `be_users` database table.\n\nThe cleartext data was only persisted if users changed their credentials in the backend user settings module when the TYPO3 14.2.0 release was used (not in",
+    "severity": "high",
+    "cve_id": "CVE-2026-6553",
+    "ghsa_id": "GHSA-xvv6-p4wf-mvx7",
+    "affected_packages": [
+      "typo3/cms-backend"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows cleartext storage of passwords in the database, exposing sensitive credentials to unauthorized access if the database is compromised. This could lead to privilege escalation, data breaches, or unauthorized system access.",
+      "affected_industries": [
+        "Web Development",
+        "E-commerce",
+        "Media and Publishing",
+        "Education",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately update TYPO3 CMS to the latest patched version that resolves CVE-2026-6553.",
+        "Audit the database for cleartext passwords and enforce password hashing using secure algorithms (e.g., bcrypt or Argon2).",
+        "Implement strict access controls and monitoring for the `be_users` database table to detect unauthorized access or modifications."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-6jwx-7vp4-9847",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-24T16:37:53Z",
+    "title": "Traefik has an StripPrefixRegex Middleware Authorization Bypass via Path/RawPath Desync",
+    "description": "## Summary\n\nThere is a high severity authentication bypass vulnerability in Traefik's `StripPrefixRegex` middleware when used in combination with `ForwardAuth`, `BasicAuth`, or `DigestAuth`.\n\nThe middleware matches the regex against the decoded URL path but uses the resulting byte length to slice the percent-encoded raw path. When a dot (or multiple dots) appears in the prefix portion of the URL, the raw path after stripping becomes a dot-segment (e.g. `/./admin/secret`).\n\n`ForwardAuth` receives",
+    "severity": "high",
+    "cve_id": "CVE-2026-40912",
+    "ghsa_id": "GHSA-6jwx-7vp4-9847",
+    "affected_packages": [
+      "github.com/traefik/traefik/v3",
+      "github.com/traefik/traefik/v3",
+      "github.com/traefik/traefik/v2",
+      "github.com/traefik/traefik"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
       null,
       null,
       null,
@@ -110,7 +300,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-6043.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-40912.",
       "affected_industries": [
         "Technology",
         "General"
@@ -125,504 +315,181 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-mr6m-xj7v-3cv3",
+    "id": "gh-GHSA-rp7v-4384-hfrp",
     "source": "GitHub Security",
-    "timestamp": "2026-04-24T12:30:27Z",
-    "title": "Improper Input Validation, Improper Control of Generation of Code ('Code Injection')...",
-    "description": "Improper Input Validation, Improper Control of Generation of Code ('Code Injection') vulnerability in Apache ActiveMQ, Apache ActiveMQ Broker, Apache ActiveMQ All.\n\nAn authenticated attacker can use the admin web console page to construct a malicious broker name that bypasses name validation to include an xbean binding that can be later used by a VM transport to load a remote Spring XML application.\nThe attacker can then use the DestinationView mbean to send a message to trigger a VM transport c",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-41044",
-    "ghsa_id": "GHSA-mr6m-xj7v-3cv3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This vulnerability allows an authenticated attacker to exploit improper input validation and code injection in Apache ActiveMQ, potentially enabling remote code execution (RCE). This could lead to unauthorized access, data breaches, or full system compromise.",
-      "affected_industries": [
-        "Financial Services",
-        "Healthcare",
-        "Retail",
-        "Technology",
-        "Telecommunications"
-      ],
-      "recommended_actions": [
-        "Immediately upgrade to the latest patched version of Apache ActiveMQ to mitigate the vulnerability.",
-        "Restrict access to the admin web console page to trusted IPs and authenticated users only.",
-        "Implement input validation and sanitization for all user inputs to prevent malicious payloads."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-72mv-wwvm-vgp5",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-24T12:30:27Z",
-    "title": "Incorrect Authorization vulnerability in Apache DolphinScheduler allows authenticated users with...",
-    "description": "Incorrect Authorization vulnerability in Apache DolphinScheduler allows authenticated users with system login permissions to use tenants that are not defined on the platform during workflow execution.\n\nThis issue affects Apache DolphinScheduler versions prior to 3.4.1. \n\nUsers are recommended to upgrade to version 3.4.1, which fixes this issue.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-23902",
-    "ghsa_id": "GHSA-72mv-wwvm-vgp5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-23902.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-w3w2-mpp5-92gm",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-24T12:30:27Z",
-    "title": "Improper Input Validation, Improper Control of Generation of Code ('Code Injection')...",
-    "description": "Improper Input Validation, Improper Control of Generation of Code ('Code Injection') vulnerability in Apache ActiveMQ Broker, Apache ActiveMQ All, Apache ActiveMQ.\n\n\n\nAn authenticated attacker may bypass the fix in CVE-2026-34197 by adding a connector using an HTTP Discovery transport via BrokerView.addNetworkConnector or BrokerView.addConnector through Jolokia if the activemq-http module is on the classpath.\nA malicious HTTP endpoint can return a VM transport through the HTTP URI which will byp",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-40466",
-    "ghsa_id": "GHSA-w3w2-mpp5-92gm",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-40466.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-f786-9c63-8xr8",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-24T12:30:27Z",
-    "title": "Deserialization of Untrusted Data vulnerability in Apache DolphinScheduler RPC module.\n\nThis...",
-    "description": "Deserialization of Untrusted Data vulnerability in Apache DolphinScheduler RPC module.\n\nThis issue affects Apache DolphinScheduler: \n\nVersion >= 3.2.0 and < 3.3.1.\n\nAttackers who can access the Master or Worker nodes can compromise the system by creating a StandardRpcRequest, injecting a malicious class type into it, and sending RPC requests to the DolphinScheduler Master/Worker nodes.\nUsers are recommended to upgrade to version [3.3.1], which fixes the issue.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-62233",
-    "ghsa_id": "GHSA-f786-9c63-8xr8",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to execute arbitrary code on Apache DolphinScheduler Master or Worker nodes by exploiting deserialization of untrusted data. This could lead to full system compromise, data breaches, or disruption of critical workflows.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Manufacturing",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Immediately upgrade Apache DolphinScheduler to version 3.3.1 or later to mitigate the vulnerability.",
-        "Restrict network access to the Master and Worker nodes to trusted IPs only, reducing the attack surface.",
-        "Implement monitoring and logging on RPC requests to detect and respond to suspicious activity."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-2jp3-2923-9h52",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-24T12:30:27Z",
-    "title": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) vulnerability in...",
-    "description": "Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS) vulnerability in Apache ActiveMQ, Apache ActiveMQ Web.\n\nAn authenticated attacker can show malicious content when browsing queues in the web console by overriding the content type to be HTML (instead of XML) and by injecting HTML into a JMS selector field.\n\nThis issue affects Apache ActiveMQ: before 5.19.6, from 6.0.0 before 6.2.5; Apache ActiveMQ Web: before 5.19.6, from 6.0.0 before 6.2.5.\n\nUsers are recommended to u",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-41043",
-    "ghsa_id": "GHSA-2jp3-2923-9h52",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-41043.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-rhxq-26gm-p3gp",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-24T09:30:30Z",
-    "title": "The HubSpot All-In-One Marketing - Forms, Popups, Live Chat plugin for WordPress is vulnerable to...",
-    "description": "The HubSpot All-In-One Marketing - Forms, Popups, Live Chat plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 11.3.32 via the leadin/public/admin/class-adminconstants.php file. This makes it possible for authenticated attackers, with Contributor-level access and above, to extract a list of all installed plugins and their versions which can be leveraged for reconnaissance and further attacks.",
-    "severity": "medium",
-    "cve_id": "CVE-2025-11762",
-    "ghsa_id": "GHSA-rhxq-26gm-p3gp",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 55,
-      "impact_assessment": "The vulnerability allows authenticated users with Contributor-level access or higher to extract sensitive information about installed plugins and their versions. This information can be used for reconnaissance, enabling attackers to identify and exploit other vulnerabilities in the system.",
-      "affected_industries": [
-        "E-commerce",
-        "Media and Publishing",
-        "Education",
-        "Healthcare",
-        "Small and Medium Businesses"
-      ],
-      "recommended_actions": [
-        "Update the HubSpot All-In-One Marketing plugin to the latest patched version as soon as it becomes available.",
-        "Restrict Contributor-level access to only trusted users and review user roles and permissions regularly.",
-        "Monitor logs for unusual activity, such as unauthorized access or plugin enumeration attempts, and implement a Web Application Firewall (WAF) to block such behavior."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 55
-  },
-  {
-    "id": "gh-GHSA-66v8-c34p-jmrm",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-24T09:30:30Z",
-    "title": "A client holding only a read JWT scope can still register itself as a signal provider through the...",
-    "description": "A client holding only a read JWT scope can still register itself as a signal provider through the production kuksa.val.v2 OpenProviderStream API by sending ProvideSignalRequest.\n\n1. Obtain any valid token with only read scope.\n2. Connect to the normal production gRPC API (kuksa.val.v2).\n3. Open OpenProviderStream.\n4. Send ProvideSignalRequest for a target signal ID.\n5. Wait for the broker to forward GetProviderValueRequest.\n6. Reply with attacker-controlled GetProviderValueResponse.\n7. Other cli",
+    "timestamp": "2026-04-24T16:37:12Z",
+    "title": "k8sGPT has Prompt Injection through its k8sGPT-Operator",
+    "description": "### Summary\nIn the auto-remediation pipeline, `object_to_execution.go` was deserializing the AI-generated YAML directly into a Deployment object, but there was lack of validation from the original Deployment object.\n\n### Details\nThis issue was fixed after coordination with Alex Jones.\n\n### PoC\nTo minimize the impact, the PoC of this vulnerability wasn't released, but was shared with the maintainers.",
     "severity": "high",
-    "cve_id": "CVE-2026-6272",
-    "ghsa_id": "GHSA-66v8-c34p-jmrm",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-rp7v-4384-hfrp",
+    "affected_packages": [
+      "github.com/k8sgpt-ai/k8sgpt"
+    ],
     "cwes": [
+      null,
+      null,
       null
     ],
     "references": [
-      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows an attacker with only a read JWT scope to escalate privileges and register as a signal provider. This could lead to unauthorized data manipulation, signal spoofing, and potential disruption of systems relying on the signal data. The attack could compromise the integrity and reliability of critical systems.",
+      "impact_assessment": "The vulnerability in k8sGPT's auto-remediation pipeline allows for prompt injection attacks, which could lead to unauthorized execution of malicious code, deployment of rogue resources, or compromise of Kubernetes clusters. This poses significant risks to the integrity and security of affected systems.",
       "affected_industries": [
-        "Automotive",
-        "IoT",
+        "Cloud Computing",
+        "DevOps and CI/CD",
+        "Technology and Software Development",
         "Telecommunications",
-        "Industrial Automation",
-        "Healthcare"
+        "Healthcare",
+        "Finance"
       ],
       "recommended_actions": [
-        "Implement stricter validation and enforcement of JWT scopes in the OpenProviderStream API to ensure only authorized clients can register as signal providers.",
-        "Perform a comprehensive review of access control mechanisms and patch the kuksa.val.v2 API to prevent privilege escalation vulnerabilities.",
-        "Monitor and log all ProvideSignalRequest activities to detect and respond to suspicious behavior promptly."
+        "Immediately update to the latest patched version of k8sGPT and k8sGPT-Operator to ensure the vulnerability is mitigated.",
+        "Implement strict validation and sanitization of AI-generated YAML configurations before deserialization to prevent malicious payloads.",
+        "Conduct a thorough review of Kubernetes cluster configurations and monitor for any unauthorized deployments or changes."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "gh-GHSA-x2pj-x7hv-qm35",
+    "id": "gh-GHSA-q5hj-mxqh-vv77",
     "source": "GitHub Security",
-    "timestamp": "2026-04-24T09:30:30Z",
-    "title": "The Liaison Site Prober plugin for WordPress is vulnerable to Information Exposure in all...",
-    "description": "The Liaison Site Prober plugin for WordPress is vulnerable to Information Exposure in all versions up to and including 1.2.1 via the /wp-json/site-prober/v1/logs REST API endpoint. The permissions_read() permission callback unconditionally returns true (via __return_true()) instead of checking for appropriate capabilities. This makes it possible for unauthenticated attackers to retrieve sensitive audit log data including IP addresses, user IDs, usernames, login/logout events, failed login attemp",
-    "severity": "medium",
-    "cve_id": "CVE-2026-3569",
-    "ghsa_id": "GHSA-x2pj-x7hv-qm35",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-3569.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-rfwp-57wg-5x36",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-24T09:30:30Z",
-    "title": "The ITERAS plugin for WordPress is vulnerable to Stored Cross-Site Scripting via multiple...",
-    "description": "The ITERAS plugin for WordPress is vulnerable to Stored Cross-Site Scripting via multiple shortcodes (iteras-ordering, iteras-signup, iteras-paywall-login, iteras-selfservice) in all versions up to and including 1.8.2. This is due to insufficient input sanitization and output escaping in the combine_attributes() function. The function directly concatenates shortcode attribute values into JavaScript code within <script> tags using double-quoted string interpolation (line 489: '\"'.$key.'\": \"'.$val",
-    "severity": "medium",
-    "cve_id": "CVE-2026-4078",
-    "ghsa_id": "GHSA-rfwp-57wg-5x36",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-4078.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-g4r7-2w2r-848v",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-24T09:30:30Z",
-    "title": "The Taqnix plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to...",
-    "description": "The Taqnix plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.0.3. This is due to a missing nonce verification in the taqnix_delete_my_account() function, where the check_ajax_referer() call is explicitly commented out on line 883. This makes it possible for unauthenticated attackers to trick a logged-in non-administrator user into deleting their own account via a forged request granted they can trick the user into performing an action such a",
-    "severity": "medium",
-    "cve_id": "CVE-2026-3565",
-    "ghsa_id": "GHSA-g4r7-2w2r-848v",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-3565.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-p4r4-xvrq-gvmc",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-24T09:30:30Z",
-    "title": "Tempo queries with large limits can cause large memory allocations which can impact the...",
-    "description": "Tempo queries with large limits can cause large memory allocations which can impact the availability of the service, depending on its deployment strategy.\n\nMitigation can be done by setting max_result_limit in the search config, e.g. to 262144 (2^18).",
+    "timestamp": "2026-04-24T16:34:03Z",
+    "title": "Claude Code: Trust Dialog Bypass via Git Worktree Spoofing Allows Arbitrary Code Execution",
+    "description": "Claude Code used the git worktree `commondir` file when determining folder trust but did not validate its contents. By crafting a repository with a `commondir` file pointing to a path the victim had previously trusted, an attacker could bypass the trust dialog and immediately execute malicious hooks defined in `.claude/settings.json`. Exploiting this required the victim to clone a malicious repository and run Claude Code within it, and for the attacker to know or guess a path the victim had alre",
     "severity": "high",
-    "cve_id": "CVE-2026-21728",
-    "ghsa_id": "GHSA-p4r4-xvrq-gvmc",
-    "affected_packages": [],
-    "cwes": [],
+    "cve_id": "CVE-2026-40068",
+    "ghsa_id": "GHSA-q5hj-mxqh-vv77",
+    "affected_packages": [
+      "@anthropic-ai/claude-code"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
     "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-40068.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-5m6w-wvh7-57vm",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-24T16:32:34Z",
+    "title": "Traefik: Pre-authentication decision bypass due to forwarded alias spoofing",
+    "description": "## Summary\n\nThere is a high severity authentication bypass vulnerability in Traefik's `ForwardAuth` and snippet-based authentication middleware. Traefik's forwarded-header sanitization logic targets only canonical header names (e.g., `X-Forwarded-Proto`) and does not strip or normalize alias variants that use underscores instead of dashes (e.g., `X_Forwarded_Proto`). These unsanitized alias headers are forwarded intact to the authentication backend. When the backend normalizes underscore and das",
+    "severity": "high",
+    "cve_id": "CVE-2026-39858",
+    "ghsa_id": "GHSA-5m6w-wvh7-57vm",
+    "affected_packages": [
+      "github.com/traefik/traefik/v3",
+      "github.com/traefik/traefik/v3",
+      "github.com/traefik/traefik/v2",
+      "github.com/traefik/traefik"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-39858.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-6384-m2mw-rf54",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-24T16:31:24Z",
+    "title": "Traefik's ForwardAuth trustForwardHeader=false allows spoofed X-Forwarded-Prefix to bypass authentication",
+    "description": "## Summary\n\nThere is a high-severity authentication bypass vulnerability in Traefik's `ForwardAuth` middleware when `trustForwardHeader=false` is configured and Traefik is deployed behind a trusted upstream proxy.\n\nWhile `X-Forwarded-*` headers (such as `X-Forwarded-For`, `X-Forwarded-Host`, and `X-Forwarded-Proto`) from trusted context are correctly rebuilt, it does not strip or rebuild `X-Forwarded-Prefix`, leaving any attacker-supplied value intact in the subrequest forwarded to the authentic",
+    "severity": "high",
+    "cve_id": "CVE-2026-35051",
+    "ghsa_id": "GHSA-6384-m2mw-rf54",
+    "affected_packages": [
+      "github.com/traefik/traefik/v3",
+      "github.com/traefik/traefik/v3",
+      "github.com/traefik/traefik/v2",
+      "github.com/traefik/traefik"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers or misconfigured queries to cause excessive memory consumption, potentially leading to service outages or degraded performance. This could disrupt operations and availability, particularly in environments with high query loads or insufficient resource controls.",
+      "impact_assessment": "This vulnerability allows attackers to bypass authentication mechanisms in systems using Traefik's ForwardAuth middleware with 'trustForwardHeader=false' when deployed behind a trusted upstream proxy. This could lead to unauthorized access to sensitive resources or systems.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
         "E-commerce",
+        "Government",
         "Telecommunications"
       ],
       "recommended_actions": [
-        "Set the 'max_result_limit' parameter in the search configuration to a safe value, such as 262144 (2^18), to prevent excessive memory allocations.",
-        "Monitor and audit query patterns to identify and mitigate any abusive or misconfigured queries that could exploit this vulnerability.",
-        "Apply any available patches or updates from the vendor addressing CVE-2026-21728 to ensure the system is protected."
+        "Immediately update Traefik to a patched version that addresses CVE-2026-35051, if available.",
+        "Implement strict validation and sanitization of 'X-Forwarded-*' headers, especially 'X-Forwarded-Prefix', in the upstream proxy or middleware.",
+        "Review and reconfigure Traefik deployments to ensure 'trustForwardHeader=false' is used only in environments where upstream proxies are fully trusted and properly configured."
       ],
       "urgency": "high"
     },
     "risk_score": 85
   },
   {
-    "id": "gh-GHSA-cc2v-9v42-3c8q",
+    "id": "gh-GHSA-xhj4-g6w8-2xjw",
     "source": "GitHub Security",
-    "timestamp": "2026-04-24T09:30:29Z",
-    "title": "Delta Electronics AS320T has no checking of the length of the buffer with the directory name\n\n...",
-    "description": "Delta Electronics AS320T has no checking of the length of the buffer with the directory name\n\n vulnerability.",
+    "timestamp": "2026-04-24T16:25:54Z",
+    "title": "go-zserio has Unbounded Memory Allocation for All Platforms",
+    "description": "### Impact\n\nWhen deserializing arrays, strings or bytes (blob) types zserio first reads the size of the variable, and then allocates sufficient memory to load data. Since the size is always trusted this can be abused by creating a data file with a large size value, causing the zserio runtime to allocate large amounts of memory.\n\n### Patches\n\nPlease apply [this commit](https://github.com/woven-by-toyota/go-zserio/commit/39ef1decde7e9766207794d396018776b33c6e45).\n\n### Workarounds\n\n- Do not accept ",
     "severity": "critical",
-    "cve_id": "CVE-2026-1951",
-    "ghsa_id": "GHSA-cc2v-9v42-3c8q",
-    "affected_packages": [],
-    "cwes": [
-      null
+    "cve_id": null,
+    "ghsa_id": "GHSA-xhj4-g6w8-2xjw",
+    "affected_packages": [
+      "github.com/woven-planet/go-zserio"
     ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-1951.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-598w-79v9-4m2g",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-24T09:30:29Z",
-    "title": "Delta Electronics AS320T has denial of service via the undocumented subfunction vulnerability.",
-    "description": "Delta Electronics AS320T has denial of service via the undocumented subfunction vulnerability.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-1952",
-    "ghsa_id": "GHSA-598w-79v9-4m2g",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-1952.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-wv29-5pf5-8fp6",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-24T09:30:29Z",
-    "title": "Delta Electronics AS320T has \nNo checking of the length of the buffer with the file name...",
-    "description": "Delta Electronics AS320T has \nNo checking of the length of the buffer with the file name vulnerability.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-1950",
-    "ghsa_id": "GHSA-wv29-5pf5-8fp6",
-    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -633,49 +500,46 @@
     ],
     "ai_analysis": {
       "risk_score": 92,
-      "impact_assessment": "The vulnerability in Delta Electronics AS320T allows for potential buffer overflow attacks due to improper validation of the file name length. This could lead to arbitrary code execution, system crashes, or unauthorized access, posing significant risks to industrial and operational environments.",
+      "impact_assessment": "The vulnerability in go-zserio allows attackers to exploit unbounded memory allocation by crafting malicious data files with large size values. This can lead to denial-of-service (DoS) attacks, system crashes, or potential exploitation for further attacks, especially in systems that rely on deserialization of untrusted data.",
       "affected_industries": [
-        "Manufacturing",
-        "Energy",
-        "Utilities",
-        "Transportation",
-        "Healthcare"
+        "Automotive",
+        "IoT",
+        "Software Development",
+        "Embedded Systems",
+        "Telecommunications"
       ],
       "recommended_actions": [
-        "Immediately apply any available patches or updates from Delta Electronics to address the vulnerability.",
-        "Implement network segmentation to limit access to the affected devices and reduce the attack surface.",
-        "Conduct a thorough security audit of systems using Delta Electronics AS320T to identify potential exploitation and mitigate risks."
+        "Immediately apply the patch provided in the commit: https://github.com/woven-by-toyota/go-zserio/commit/39ef1decde7e9766207794d396018776b33c6e45 to mitigate the vulnerability.",
+        "Implement input validation and size checks before deserializing data to prevent untrusted or malformed inputs from being processed.",
+        "Conduct a security review of all systems using go-zserio to identify potential exposure and ensure secure configurations."
       ],
       "urgency": "critical"
     },
     "risk_score": 92
   },
   {
-    "id": "gh-GHSA-f4r3-xfjm-5x8p",
+    "id": "gh-GHSA-cwq5-8pvq-j65j",
     "source": "GitHub Security",
-    "timestamp": "2026-04-24T06:31:17Z",
-    "title": "The Royal Elementor Addons plugin for WordPress is vulnerable to Stored Cross-Site Scripting via...",
-    "description": "The Royal Elementor Addons plugin for WordPress is vulnerable to Stored Cross-Site Scripting via image captions in the Image Grid/Slider/Carousel widget in versions up to and including 1.7.1056. This is due to insufficient output escaping in the render_post_thumbnail() function, where wp_kses_post() is used instead of esc_attr() for the alt attribute context. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will",
-    "severity": "medium",
-    "cve_id": "CVE-2026-5428",
-    "ghsa_id": "GHSA-f4r3-xfjm-5x8p",
-    "affected_packages": [],
+    "timestamp": "2026-04-24T16:25:11Z",
+    "title": "Zserio Runtime: Integer Overflow in BitStreamReader and Unbounded Memory Allocation in Deserialization",
+    "description": "## Summary\n\n### Unbounded Memory Allocation (all platforms)\n\nA crafted payload as small as 4-5 bytes can force memory allocations of up to 16 GB, crashing any process with an OOM error (Denial of Service).\n\n**Affected code (C++):**\n- `cpp/runtime/src/zserio/Array.h` (line 1029) — `m_rawArray.reserve(readLength)` with unchecked `readLength`\n- `cpp/runtime/src/zserio/BitStreamReader.h` (lines 249, 281) — `value.reserve(len)` with unchecked `len`\n\n**Affected code (Java):**\n- `java/runtime/src/zseri",
+    "severity": "high",
+    "cve_id": "CVE-2026-33524",
+    "ghsa_id": "GHSA-cwq5-8pvq-j65j",
+    "affected_packages": [
+      "io.github.ndsev:zserio-runtime"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-5428.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-33524.",
       "affected_industries": [
         "Technology",
         "General"
@@ -684,81 +548,35 @@
         "Review affected systems",
         "Apply security patches if available",
         "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-qfjv-r2q6-x287",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-24T06:31:17Z",
-    "title": "The Booking Calendar Contact Form plugin for WordPress is vulnerable to Insecure Direct Object...",
-    "description": "The Booking Calendar Contact Form plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 1.2.63 via the dex_bccf_admin_int_calendar_list.inc.php file due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with Subscriber-level access and above, to takeover other user's calendars and view user data associated with the calendar.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6810",
-    "ghsa_id": "GHSA-qfjv-r2q6-x287",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows authenticated attackers with minimal privileges (Subscriber-level access or higher) to exploit insecure direct object references, potentially leading to unauthorized access to user data and control over other users' calendars. This could result in data breaches, privacy violations, and operational disruptions.",
-      "affected_industries": [
-        "Hospitality",
-        "Event Management",
-        "Education",
-        "Healthcare",
-        "Small and Medium Businesses using WordPress"
-      ],
-      "recommended_actions": [
-        "Update the Booking Calendar Contact Form plugin to a patched version as soon as it becomes available.",
-        "Restrict access to Subscriber-level accounts and audit existing user permissions to minimize exposure.",
-        "Implement web application firewall (WAF) rules to detect and block exploitation attempts targeting this vulnerability."
       ],
       "urgency": "high"
     },
-    "risk_score": 65
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-hpvr-gqf8-j82g",
+    "id": "gh-GHSA-82j2-j2ch-gfr8",
     "source": "GitHub Security",
-    "timestamp": "2026-04-24T06:31:17Z",
-    "title": "The BetterDocs plugin for WordPress is vulnerable to Missing Authorization in versions up to and...",
-    "description": "The BetterDocs plugin for WordPress is vulnerable to Missing Authorization in versions up to and including 4.3.11. This is due to a missing capability check in the generate_openai_content_callback() function, which relies solely on a nonce rather than verifying user permissions. This makes it possible for authenticated attackers, with subscriber-level access and above, to trigger OpenAI API calls using the site's configured API key with arbitrary user-controlled prompts, leading to unauthorized ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6393",
-    "ghsa_id": "GHSA-hpvr-gqf8-j82g",
-    "affected_packages": [],
+    "timestamp": "2026-04-24T16:20:17Z",
+    "title": "rustls-webpki: Denial of service via panic on malformed CRL BIT STRING",
+    "description": "### Summary\n\n`bit_string_flags()` in `src/der.rs` panics with an index-out-of-bounds when given a BIT STRING whose content is exactly `[0x00]` (one byte: zero padding bits, zero data bytes). This is reachable through the public API `BorrowedCertRevocationList::from_der()` via the `issuingDistributionPoint` CRL extension.\n\n**Precondition**: CRL checking is opt-in in rustls-webpki. This vulnerability affects only applications that explicitly pass `RevocationOptions` to `verify_for_usage()` and loa",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-82j2-j2ch-gfr8",
+    "affected_packages": [
+      "rustls-webpki",
+      "rustls-webpki"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6393.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
       "affected_industries": [
         "Technology",
         "General"
@@ -768,38 +586,33 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-36m8-qf73-626j",
+    "id": "gh-GHSA-4f9j-vr4p-642r",
     "source": "GitHub Security",
-    "timestamp": "2026-04-24T06:31:17Z",
-    "title": "The ExactMetrics – Google Analytics Dashboard for WordPress plugin for WordPress is vulnerable to...",
-    "description": "The ExactMetrics – Google Analytics Dashboard for WordPress plugin for WordPress is vulnerable to Missing Authorization in versions up to and including 9.1.2. This is due to missing capability checks in the get_ads_access_token() and reset_experience() AJAX handlers. While the mi-admin-nonce is localized on all admin pages (including profile.php which subscribers can access), and while other similar AJAX endpoints in the same class properly check for the exactmetrics_save_settings capability, th",
-    "severity": "medium",
-    "cve_id": "CVE-2026-5488",
-    "ghsa_id": "GHSA-36m8-qf73-626j",
-    "affected_packages": [],
+    "timestamp": "2026-04-24T16:18:52Z",
+    "title": "Budibase auth session cookies are set with httpOnly:false — any XSS can lead to full account takeover",
+    "description": "### Summary\n\nThe `budibase:auth` cookie containing the JWT session token is set with `httpOnly: false` at `packages/backend-core/src/utils/utils.ts:218`. JavaScript can read this cookie via `document.cookie`. Given that Budibase has had XSS vulnerabilities (GHSA-gp5x-2v54-v2q5 — stored XSS via unsanitized entity names, published April 2, 2026), this means every XSS becomes a full account takeover — the attacker steals the JWT and has persistent access to the victim's account.\n\nThe cookie also la",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-4f9j-vr4p-642r",
+    "affected_packages": [
+      "@budibase/backend-core"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-5488.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
       "affected_industries": [
         "Technology",
         "General"
@@ -809,9 +622,196 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-jv9x-w4gm-hwcm",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-24T16:17:35Z",
+    "title": "Kimai has Missing Object-Level Authorization in the Team API",
+    "description": "### Summary\nThe Team API endpoints use #[IsGranted('edit_team')] instead of #[IsGranted('edit', 'team')], causing Symfony TeamVoter to abstain from voting. This removes entity-level ownership checks on team operations, allowing any user with the edit_team permission to modify any team, not just teams they are authorized to manage.\n\n### Details\nAll 8 team association endpoints in src/API/TeamController.php (lines 177, 201, 229, 252, 275, 298, 321, 339) use #[IsGranted('edit_team')] with a single ",
+    "severity": "low",
+    "cve_id": "CVE-2026-41498",
+    "ghsa_id": "GHSA-jv9x-w4gm-hwcm",
+    "affected_packages": [
+      "kimai/kimai"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 45,
+      "impact_assessment": "The missing object-level authorization in the Team API allows users with the 'edit_team' permission to modify any team, bypassing entity-level ownership checks. This could lead to unauthorized modifications, data integrity issues, and potential privilege escalation within the application.",
+      "affected_industries": [
+        "Project Management",
+        "Time Tracking Software",
+        "Small and Medium Businesses (SMBs)",
+        "Enterprise Software"
+      ],
+      "recommended_actions": [
+        "Update the Team API endpoints to use #[IsGranted('edit', 'team')] to enforce entity-level ownership checks.",
+        "Conduct a thorough review of all authorization logic across the application to identify and fix similar vulnerabilities.",
+        "Deploy patches to affected systems and notify users of the update to ensure they apply the fix promptly."
+      ],
       "urgency": "medium"
     },
-    "risk_score": 50
+    "risk_score": 45
+  },
+  {
+    "id": "gh-GHSA-r75f-5x8p-qvmc",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-24T16:17:07Z",
+    "title": "LiteLLM has SQL Injection in Proxy API key verification",
+    "description": "### Impact\n\nA database query used during proxy API key checks mixed the caller-supplied key value into the query text instead of passing it as a separate parameter. An unauthenticated attacker could send a specially crafted `Authorization` header to any LLM API route (for example `POST /chat/completions`) and reach this query through the proxy's error-handling path.\n\nAn attacker could read data from the proxy's database and may be able to modify it, leading to unauthorised access to the proxy an",
+    "severity": "critical",
+    "cve_id": null,
+    "ghsa_id": "GHSA-r75f-5x8p-qvmc",
+    "affected_packages": [
+      "litellm"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-vvf7-6rmr-m29q",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-24T16:15:28Z",
+    "title": "Dgraph: Unauthenticated Admin Token Disclosure Leading to Authentication Bypass via /debug/vars",
+    "description": "### Summary\nDgraph `v25.3.2` still exposes the process command line through the unauthenticated `/debug/vars` endpoint on Alpha. Because the admin token is commonly supplied via the `--security \"token=...\"` startup flag, an unauthenticated attacker can retrieve that token and replay it in the `X-Dgraph-AuthToken` header to access admin-only endpoints.\n\nThis is a variant of the previously fixed `/debug/pprof/cmdline` issue, but the current fix is incomplete because it blocks only `/debug/pprof/cm",
+    "severity": "critical",
+    "cve_id": "CVE-2026-41492",
+    "ghsa_id": "GHSA-vvf7-6rmr-m29q",
+    "affected_packages": [
+      "github.com/dgraph-io/dgraph/v25",
+      "github.com/dgraph-io/dgraph/v24",
+      "github.com/dgraph-io/dgraph"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 92,
+      "impact_assessment": "This vulnerability allows unauthenticated attackers to retrieve the admin token from the /debug/vars endpoint in Dgraph v25.3.2. Using this token, attackers can bypass authentication and gain unauthorized access to admin-only endpoints, potentially leading to data breaches, privilege escalation, and unauthorized system control.",
+      "affected_industries": [
+        "Technology",
+        "Healthcare",
+        "Finance",
+        "E-commerce",
+        "Government",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Immediately update Dgraph to a patched version that addresses this vulnerability, or apply any available hotfixes from the vendor.",
+        "Restrict access to the /debug/vars endpoint using network-level controls such as firewalls or access control lists (ACLs).",
+        "Rotate the admin token and other sensitive credentials to mitigate potential misuse if the token has already been exposed."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 92
+  },
+  {
+    "id": "gh-GHSA-mw35-8rx3-xf9r",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-24T16:15:00Z",
+    "title": "Ray: Remote Code Execution via Parquet Arrow Extension Type Deserialization",
+    "description": "# Remote Code Execution via Parquet Arrow Extension Type Deserialization\n\n## Summary\n\nRay Data registers custom Arrow extension types (`ray.data.arrow_tensor`, `ray.data.arrow_tensor_v2`, `ray.data.arrow_variable_shaped_tensor`) globally in PyArrow. When PyArrow reads a Parquet file containing one of these extension types, it calls `__arrow_ext_deserialize__` on the field's metadata bytes. Ray's implementation passes these bytes directly to `cloudpickle.loads()`, achieving arbitrary code executi",
+    "severity": "high",
+    "cve_id": "CVE-2026-41486",
+    "ghsa_id": "GHSA-mw35-8rx3-xf9r",
+    "affected_packages": [
+      "ray"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41486.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-qc5p-3mg5-9fh8",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-24T16:11:28Z",
+    "title": "Avo: Broken Access Control Through Unauthorized Execution of Arbitrary Action Classes Across Resources",
+    "description": "### Summary\n\nA critical Broken Access Control vulnerability was identified in the `ActionsController` of the Avo framework (v3.x). Due to insecure action lookup logic, an authenticated user can execute any Action class (descendants of `Avo::BaseAction`) on any resource, even if the action is not registered for that specific resource. This leads to Privilege Escalation and unauthorized data manipulation across the entire application.\n\n### Details\n\nThe vulnerability exists in the `action_class` me",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-qc5p-3mg5-9fh8",
+    "affected_packages": [
+      "avo"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
   },
   {
     "id": "cve-CVE-2026-3330",
@@ -834,23 +834,23 @@
       "https://www.wordfence.com/threat-intel/vulnerabilities/id/5e383b8a-27e5-4b35-8d11-6e4102255d44?source=cve"
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to execute SQL injection attacks, potentially leading to unauthorized access to sensitive data, database manipulation, or complete compromise of the affected WordPress site.",
+      "risk_score": 70,
+      "impact_assessment": "The vulnerability allows attackers to execute SQL Injection, potentially exposing sensitive data, compromising database integrity, and enabling unauthorized access to WordPress websites using the affected plugin.",
       "affected_industries": [
         "E-commerce",
         "Media and Publishing",
         "Education",
-        "Nonprofits",
-        "Small and Medium Businesses"
+        "Small and Medium Businesses",
+        "Nonprofit Organizations"
       ],
       "recommended_actions": [
-        "Immediately update the Form Maker by 10Web plugin to a patched version, or disable it if no patch is available.",
-        "Implement a web application firewall (WAF) to detect and block SQL injection attempts.",
-        "Conduct a security audit of the website to identify and remediate any potential unauthorized access or data breaches."
+        "Update the Form Maker by 10Web plugin to the latest patched version as soon as it becomes available.",
+        "Implement web application firewall (WAF) rules to detect and block SQL Injection attempts.",
+        "Audit and sanitize user inputs at the application level to prevent direct SQL query concatenation."
       ],
       "urgency": "high"
     },
-    "risk_score": 65
+    "risk_score": 70
   },
   {
     "id": "cve-CVE-2026-5052",
@@ -866,20 +866,23 @@
       "https://discuss.hashicorp.com/t/hcsec-2026-06-vault-vulnerable-to-server-side-request-forgery-in-acme-challenge-validation-via-attacker-controlled-dns/77343"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-5052.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in Vault's PKI engine's ACME validation allows HTTP-01 and TLS-ALPN-01 challenge requests to target local network resources. This could lead to unauthorized access to sensitive internal systems or information disclosure within the local network.",
       "affected_industries": [
+        "Financial Services",
+        "Healthcare",
         "Technology",
-        "General"
+        "Government",
+        "E-commerce"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Upgrade Vault to the fixed versions: Community Edition 2.0.0 or Enterprise 2.0.0, 1.21.5, 1.20.10, or 1.19.16, as applicable.",
+        "Restrict access to Vault's PKI engine to trusted networks and implement strict network segmentation to limit exposure.",
+        "Regularly monitor and audit Vault logs for any suspicious activity related to ACME validation requests."
       ],
       "urgency": "medium"
     },
-    "risk_score": 60
+    "risk_score": 65
   },
   {
     "id": "cve-CVE-2026-4666",
@@ -902,23 +905,20 @@
       "https://www.wordfence.com/threat-intel/vulnerabilities/id/049ffab1-677d-4112-9f1d-092ee01299f1?source=cve"
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows unauthorized users to modify forum settings, potentially enabling guest posting and other unintended behaviors. This could lead to spam, malicious content distribution, or unauthorized access to sensitive data.",
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-4666.",
       "affected_industries": [
-        "Blogging",
-        "Media and Publishing",
-        "E-commerce",
-        "Education",
-        "Nonprofits"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Update the wpForo Forum plugin to a patched version as soon as it becomes available.",
-        "Implement a Web Application Firewall (WAF) to monitor and block malicious requests targeting the vulnerability.",
-        "Restrict access to the WordPress admin panel and monitor logs for suspicious activity related to the 'post_edit' action."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 60
   },
   {
     "id": "cve-CVE-2026-4525",
