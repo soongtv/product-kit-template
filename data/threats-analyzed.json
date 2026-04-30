@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1777558512680-1",
+    "id": "twitter-1777578241125-1",
     "source": "Twitter Security",
-    "timestamp": "2026-04-30T14:15:12.680Z",
+    "timestamp": "2026-04-30T19:44:01.125Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,25 +10,29 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "risk_score": 85,
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code, leading to potential data encryption, service disruption, and financial losses.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Financial Services",
+        "Healthcare",
+        "E-commerce",
+        "Media and Entertainment",
+        "Government"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately audit and secure CI/CD pipelines by implementing strict access controls, multi-factor authentication, and regular code integrity checks.",
+        "Ensure robust backup strategies are in place, with backups stored offline and tested for recovery.",
+        "Deploy advanced threat detection and monitoring tools to identify and respond to anomalous activities in cloud environments."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
-    "id": "hn-1777558512680-1",
+    "id": "hn-1777578241125-1",
     "source": "HackerNews",
-    "timestamp": "2026-04-30T14:15:12.680Z",
+    "timestamp": "2026-04-30T19:44:01.125Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,19 +56,162 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-qh5j-h84r-q47c",
+    "id": "gh-GHSA-4625-4j76-fww9",
     "source": "GitHub Security",
-    "timestamp": "2026-04-30T12:33:12Z",
-    "title": "LEX Baza Dokumentów is vulnerable to DOM-based XSS in \"em\" cookie parameter. The application...",
-    "description": "LEX Baza Dokumentów is vulnerable to DOM-based XSS in \"em\" cookie parameter. The application unsafely\nprocesses the parameter on the client side, allowing an attacker to execute arbitrary\nJavaScript in the context of the victim's browser.\nAn attacker with ability to set a cookie can perform a more severe attack, so we evaluate the impact and risk of exploitation as minimal. However, the vendor considered this a vulnerability and released a security patch.\n\nThis issue was fixed in version 1.3.4.",
+    "timestamp": "2026-04-30T18:34:30Z",
+    "title": "OpenTelemetry's disk retry default temp path enables local blob injection via OTLP Exporter",
+    "description": "### Summary\n\nThe OTLP disk retry feature in `OpenTelemetry.Exporter.OpenTelemetryProtocol` silently fell back to `Path.GetTempPath()` when `OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY=disk` was set but `OTEL_DOTNET_EXPERIMENTAL_OTLP_DISK_RETRY_DIRECTORY_PATH` was not configured.\n\nThe exporter stored and loaded `*.blob` files under fixed, signal-named subdirectories (`traces`, `metrics`, `logs`) beneath that shared temporary root path.\n\nOn multi-user systems where the temporary directory is accessible to",
     "severity": "medium",
-    "cve_id": "CVE-2026-1493",
-    "ghsa_id": "GHSA-qh5j-h84r-q47c",
+    "cve_id": "CVE-2026-42191",
+    "ghsa_id": "GHSA-4625-4j76-fww9",
+    "affected_packages": [
+      "OpenTelemetry.Exporter.OpenTelemetryProtocol"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows local users on multi-user systems to inject malicious blob files into the temporary directory used by OpenTelemetry's OTLP disk retry feature. This could lead to unauthorized data manipulation, potential data corruption, or exploitation of downstream systems relying on the tampered data.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Telecommunications"
+      ],
+      "recommended_actions": [
+        "Ensure the `OTEL_DOTNET_EXPERIMENTAL_OTLP_DISK_RETRY_DIRECTORY_PATH` environment variable is explicitly configured to a secure, user-specific directory with restricted permissions.",
+        "Apply the latest patches or updates for the OpenTelemetry library to mitigate the vulnerability (CVE-2026-42191).",
+        "Restrict access to shared temporary directories on multi-user systems and implement monitoring to detect unauthorized file modifications."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-89xq-gx5r-754j",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-30T18:30:33Z",
+    "title": "A stored cross-site scripting (XSS) vulnerability in the /api/blade-desk/notice/submit endpoint...",
+    "description": "A stored cross-site scripting (XSS) vulnerability in the /api/blade-desk/notice/submit endpoint of SpringBlade v4.8.0 allows attackers to execute arbitrary web scripts or HTML via injecting a crafted input into the content parameter.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-36763",
+    "ghsa_id": "GHSA-89xq-gx5r-754j",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-36763.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-6mrw-vx77-335c",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-30T18:30:33Z",
+    "title": "An XML external entity (XXE) vulnerability in the /designer/loadReport endpoint of SpringBlade v4...",
+    "description": "An XML external entity (XXE) vulnerability in the /designer/loadReport endpoint of SpringBlade v4.8.0 allows authenticated attackers to execute arbitrary code via injecting a crafted payload.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-36765",
+    "ghsa_id": "GHSA-6mrw-vx77-335c",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-36765.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-fqcw-2xhj-p63g",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-30T18:30:33Z",
+    "title": "Multiple authenticated cross-site scripting (XSS) vulnerabilities in the...",
+    "description": "Multiple authenticated cross-site scripting (XSS) vulnerabilities in the XssHttpServletRequestWrapper class of shopizer v3.2.5 allows attackers to execute arbitrary web scripts or HTML via injecting a crafted payload into the getInputStream() or getReader() functions.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-36766",
+    "ghsa_id": "GHSA-fqcw-2xhj-p63g",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-36766.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-3rqj-4qqw-jgwr",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-30T18:30:33Z",
+    "title": "A flaw was found in gnutls. A remote attacker could exploit this vulnerability by presenting a...",
+    "description": "A flaw was found in gnutls. A remote attacker could exploit this vulnerability by presenting a specially crafted Online Certificate Status Protocol (OCSP) response during a TLS handshake. Due to a logic error in how gnutls processes multi-record OCSP responses, a client with OCSP verification enabled may incorrectly accept a revoked server certificate, potentially leading to a compromise of trust.",
+    "severity": "low",
+    "cve_id": "CVE-2026-3832",
+    "ghsa_id": "GHSA-3rqj-4qqw-jgwr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
       null,
       null,
       null,
@@ -72,35 +219,37 @@
     ],
     "ai_analysis": {
       "risk_score": 45,
-      "impact_assessment": "The vulnerability allows attackers to execute arbitrary JavaScript in the victim's browser, potentially leading to data theft, session hijacking, or unauthorized actions within the application. However, exploitation requires the ability to set a cookie, reducing the likelihood of widespread impact.",
+      "impact_assessment": "The vulnerability in gnutls allows a remote attacker to exploit a logic error in OCSP response processing, potentially causing clients to trust revoked server certificates. This could lead to man-in-the-middle attacks or unauthorized access to sensitive data.",
       "affected_industries": [
-        "Legal",
-        "Government",
-        "Corporate"
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Technology",
+        "Government"
       ],
       "recommended_actions": [
-        "Upgrade LEX Baza Dokumentów to version 1.3.4 or later to mitigate the vulnerability.",
-        "Implement Content Security Policy (CSP) headers to reduce the risk of malicious script execution.",
-        "Educate users on the importance of applying security patches promptly."
+        "Apply the latest security patches or updates for gnutls as soon as they are available.",
+        "Disable OCSP verification temporarily if it is not critical to operations, until a patch is applied.",
+        "Monitor network traffic for suspicious TLS handshakes and implement additional certificate validation mechanisms."
       ],
       "urgency": "medium"
     },
     "risk_score": 45
   },
   {
-    "id": "gh-GHSA-v5v4-gvc3-q8x8",
+    "id": "gh-GHSA-6rgh-57xm-37v8",
     "source": "GitHub Security",
-    "timestamp": "2026-04-30T12:33:12Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: some missing...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ncifs: some missing initializations on replay\n\nIn several places in the code, we have a label to signify\nthe start of the code where a request can be replayed if\nnecessary. However, some of these places were missing the\nnecessary reinitializations of certain local variables\nbefore replay.\n\nThis change makes sure that these variables get initialized\nafter the label.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-31693",
-    "ghsa_id": "GHSA-v5v4-gvc3-q8x8",
+    "timestamp": "2026-04-30T18:30:33Z",
+    "title": "A flaw was found in gnutls. This vulnerability occurs because gnutls performs case-sensitive...",
+    "description": "A flaw was found in gnutls. This vulnerability occurs because gnutls performs case-sensitive comparisons of `nameConstraints` labels, specifically for `dNSName` (DNS) or `rfc822Name` (email) constraints within `excludedSubtrees` or `permittedSubtrees`. A remote attacker can exploit this by crafting a leaf certificate with casing differences in the Subject Alternative Name (SAN), leading to a policy bypass where a certificate that should be rejected is instead accepted. This could result in unaut",
+    "severity": "medium",
+    "cve_id": "CVE-2026-3833",
+    "ghsa_id": "GHSA-6rgh-57xm-37v8",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      null,
-      null,
       null,
       null,
       null,
@@ -109,32 +258,32 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability in the Linux kernel's CIFS implementation could allow attackers to exploit improperly initialized variables during request replays, potentially leading to data corruption, unauthorized access, or denial of service in systems relying on CIFS for file sharing.",
+      "impact_assessment": "This vulnerability in gnutls allows a remote attacker to bypass certificate validation policies by exploiting case-sensitive comparisons in name constraints. This could lead to unauthorized access, data interception, or man-in-the-middle attacks, particularly in systems relying on gnutls for secure communications.",
       "affected_industries": [
-        "Cloud Service Providers",
-        "Enterprise IT",
-        "Telecommunications",
+        "Finance",
         "Healthcare",
-        "Finance"
+        "E-commerce",
+        "Technology",
+        "Government"
       ],
       "recommended_actions": [
-        "Apply the latest Linux kernel patches that address CVE-2026-31693 to ensure the vulnerability is resolved.",
-        "Audit systems using CIFS for file sharing to identify potential exposure and mitigate risks.",
-        "Monitor system logs for unusual activity related to CIFS operations and implement additional security measures such as network segmentation."
+        "Update gnutls to the latest patched version that addresses CVE-2026-3833.",
+        "Conduct a thorough review of systems and applications relying on gnutls for certificate validation to ensure compliance with updated security policies.",
+        "Monitor network traffic for signs of exploitation, such as unauthorized or unexpected certificate usage."
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-97p2-62hq-g269",
+    "id": "gh-GHSA-f5w4-7ccj-5m75",
     "source": "GitHub Security",
-    "timestamp": "2026-04-30T12:33:12Z",
-    "title": "Dancer::Session::Abstract versions through 1.3522 for Perl generates session ids insecurely.\n\nThe...",
-    "description": "Dancer::Session::Abstract versions through 1.3522 for Perl generates session ids insecurely.\n\nThe session id is generated from summing the character codepoints of the absolute pathname with the process id, the epoch time and calls to the built-in rand() function to return a number between 0 and 999-billion, and concatenating that result three times.\n\nThe path name might be known or guessed by an attacker, especially for applications known to be written using Dancer with standard installation loc",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-5080",
-    "ghsa_id": "GHSA-97p2-62hq-g269",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "A path traversal vulnerability in the /content/images/add endpoint of shopizer v3.2.5 allows...",
+    "description": "A path traversal vulnerability in the /content/images/add endpoint of shopizer v3.2.5 allows attackers write arbitrary files to any writeable path via a crafted POST request.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-36767",
+    "ghsa_id": "GHSA-f5w4-7ccj-5m75",
     "affected_packages": [],
     "cwes": [
       null
@@ -146,8 +295,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-5080.",
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-36767.",
       "affected_industries": [
         "Technology",
         "General"
@@ -157,22 +306,26 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "critical"
     },
-    "risk_score": 50
+    "risk_score": 90
   },
   {
-    "id": "gh-GHSA-xpxm-p6f4-j2mf",
+    "id": "gh-GHSA-8mvw-jrmp-qqqj",
     "source": "GitHub Security",
-    "timestamp": "2026-04-30T12:33:12Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtnetlink: add missing...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nrtnetlink: add missing netlink_ns_capable() check for peer netns\n\nrtnl_newlink() lacks a CAP_NET_ADMIN capability check on the peer\nnetwork namespace when creating paired devices (veth, vxcan,\nnetkit). This allows an unprivileged user with a user namespace\nto create interfaces in arbitrary network namespaces, including\ninit_net.\n\nAdd a netlink_ns_capable() check for CAP_NET_ADMIN in the peer\nnamespace before allowing device cre",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-31692",
-    "ghsa_id": "GHSA-xpxm-p6f4-j2mf",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "Synway SMG Gateway Management Software contains an OS command injection vulnerability in the...",
+    "description": "Synway SMG Gateway Management Software contains an OS command injection vulnerability in the RADIUS configuration endpoint at /en/9-2radius.php where the radius_address POST parameter is split and interpolated directly into a sed command without sanitization. An unauthenticated remote attacker can inject arbitrary shell commands by submitting a POST request with crafted radius_address, radius_address2, shared_secret2, source_ip, timeout, or retry parameters along with save=1 and enable_radius=1 ",
+    "severity": "critical",
+    "cve_id": "CVE-2025-71284",
+    "ghsa_id": "GHSA-8mvw-jrmp-qqqj",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
+      null,
+      null,
       null,
       null,
       null,
@@ -180,8 +333,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-31692.",
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2025-71284.",
       "affected_industries": [
         "Technology",
         "General"
@@ -191,19 +344,19 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "critical"
     },
-    "risk_score": 50
+    "risk_score": 90
   },
   {
-    "id": "gh-GHSA-75mc-5wvp-r4qm",
+    "id": "gh-GHSA-hx7p-cx9f-w67g",
     "source": "GitHub Security",
-    "timestamp": "2026-04-30T12:33:12Z",
-    "title": "The Five Star Restaurant Reservations plugin for WordPress is vulnerable to a payment bypass via...",
-    "description": "The Five Star Restaurant Reservations plugin for WordPress is vulnerable to a payment bypass via PHP type juggling in versions up to, and including, 2.7.16 This is due to the valid_payment() function using a PHP loose comparison (==) between the attacker-controlled payment_id POST parameter and the booking's stripe_payment_intent_id property. When an unauthenticated attacker submits a request to the nopriv AJAX handler rtb_stripe_pmt_succeed before the Stripe payment intent has been created for ",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "A Server-Side Request Forgery (SSRF) in the /ureport/datasource/testConnection endpoint of...",
+    "description": "A Server-Side Request Forgery (SSRF) in the /ureport/datasource/testConnection endpoint of SpringBlade v4.8.0 allows authenticated attackers to scan internal resources via a crafted GET request.",
     "severity": "medium",
-    "cve_id": "CVE-2026-6498",
-    "ghsa_id": "GHSA-75mc-5wvp-r4qm",
+    "cve_id": "CVE-2026-36764",
+    "ghsa_id": "GHSA-hx7p-cx9f-w67g",
     "affected_packages": [],
     "cwes": [
       null
@@ -212,16 +365,11 @@
       null,
       null,
       null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6498.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-36764.",
       "affected_industries": [
         "Technology",
         "General"
@@ -236,98 +384,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-3c28-g28m-gm93",
+    "id": "gh-GHSA-cgx3-h5r7-pff8",
     "source": "GitHub Security",
-    "timestamp": "2026-04-30T12:33:12Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen/privcmd: fix double free...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxen/privcmd: fix double free via VMA splitting\n\nprivcmd_vm_ops defines .close (privcmd_close), but neither .may_split\nnor .open. When userspace does a partial munmap() on a privcmd mapping,\nthe kernel splits the VMA via __split_vma(). Since may_split is NULL,\nthe split is allowed. vm_area_dup() copies vm_private_data (a pages\narray allocated in alloc_empty_pages()) into the new VMA without any\nfixup, because there is no .open c",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-31787",
-    "ghsa_id": "GHSA-3c28-g28m-gm93",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability involves a double free issue in the Linux kernel's xen/privcmd module, which could lead to memory corruption, potential privilege escalation, or denial of service attacks. Exploitation could allow attackers to destabilize systems or execute arbitrary code.",
-      "affected_industries": [
-        "Cloud Computing",
-        "Hosting Providers",
-        "Telecommunications",
-        "Enterprise IT"
-      ],
-      "recommended_actions": [
-        "Update to the latest Linux kernel version where the vulnerability has been patched (check for CVE-2026-31787 fixes).",
-        "Audit systems running Xen hypervisors to ensure they are not exposed to untrusted users or workloads.",
-        "Implement additional monitoring to detect unusual activity related to memory management or VMA operations."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-7p99-gmjx-2f7r",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-30T12:33:12Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nBuffer overflow in drivers...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBuffer overflow in drivers/xen/sys-hypervisor.c\n\nThe build id returned by HYPERVISOR_xen_version(XENVER_build_id) is\nneither NUL terminated nor a string.\n\nThe first causes a buffer overflow as sprintf in buildid_show will\nread and copy till it finds a NUL.\n\n00000000  f4 91 51 f4 dd 38 9e 9d  65 47 52 eb 10 71 db 50  |..Q..8..eGR..q.P|\n00000010  b9 a8 01 42 6f 2e 32                              |...Bo.2|\n00000017\n\nSo use a memcp",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-31786",
-    "ghsa_id": "GHSA-7p99-gmjx-2f7r",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The buffer overflow vulnerability in the Linux kernel's Xen hypervisor driver could allow attackers to exploit memory corruption, potentially leading to privilege escalation, denial of service, or arbitrary code execution.",
-      "affected_industries": [
-        "Cloud Computing",
-        "Hosting Providers",
-        "Telecommunications",
-        "Enterprise IT"
-      ],
-      "recommended_actions": [
-        "Update to the latest Linux kernel version that includes the patch for CVE-2026-31786.",
-        "Conduct a thorough review of systems using Xen hypervisor and apply mitigations, such as disabling unnecessary hypervisor features.",
-        "Monitor system logs for unusual activity and implement intrusion detection systems to identify potential exploitation attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-6438-jwc8-2c68",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-30T12:33:12Z",
-    "title": "NULL pointer dereference vulnerability in ASR1903 in ASR Lapwing_Linux on Linux (ims_client...",
-    "description": "NULL pointer dereference vulnerability in ASR1903 in ASR Lapwing_Linux on Linux (ims_client modules) allows Pointer Manipulation.\n\n This vulnerability is associated with program files sip/utils/src/sipuri.c.",
-    "severity": "high",
-    "cve_id": "CVE-2026-42800",
-    "ghsa_id": "GHSA-6438-jwc8-2c68",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "Cross Site Scripting vulnerability in RafyMrX TOKO-ONLINE-ROTI v.1.0 allows a remote attacker to...",
+    "description": "Cross Site Scripting vulnerability in RafyMrX TOKO-ONLINE-ROTI v.1.0 allows a remote attacker to execute arbitrary code via the detail_produk.php component",
+    "severity": "medium",
+    "cve_id": "CVE-2026-38940",
+    "ghsa_id": "GHSA-cgx3-h5r7-pff8",
     "affected_packages": [],
     "cwes": [
       null
@@ -338,8 +402,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-42800.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-38940.",
       "affected_industries": [
         "Technology",
         "General"
@@ -349,161 +413,58 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 75
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-c366-5342-rpxc",
+    "id": "gh-GHSA-32px-ccfx-cxq3",
     "source": "GitHub Security",
-    "timestamp": "2026-04-30T12:33:12Z",
-    "title": "In JetBrains IntelliJ IDEA before 2024.3.7.1, \n2025.1.7.1,\n2025.2.6.2,  \n2025.3.4.1, \n2026.1.1...",
-    "description": "In JetBrains IntelliJ IDEA before 2024.3.7.1, \n2025.1.7.1,\n2025.2.6.2,  \n2025.3.4.1, \n2026.1.1 reading arbitrary local files was possible via built-in web server",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "An issue in Krayin CRM v.2.1.5 and fixed in v.2.1.6 allows a remote attacker to execute arbitrary...",
+    "description": "An issue in Krayin CRM v.2.1.5 and fixed in v.2.1.6 allows a remote attacker to execute arbitrary code via the compose email function",
     "severity": "high",
-    "cve_id": "CVE-2026-41882",
-    "ghsa_id": "GHSA-c366-5342-rpxc",
+    "cve_id": "CVE-2026-36340",
+    "ghsa_id": "GHSA-32px-ccfx-cxq3",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows unauthorized access to arbitrary local files via the built-in web server in JetBrains IntelliJ IDEA, potentially exposing sensitive information such as credentials, configuration files, or intellectual property.",
+      "impact_assessment": "The vulnerability in Krayin CRM v.2.1.5 allows remote attackers to execute arbitrary code via the compose email function, potentially leading to unauthorized access, data breaches, or full system compromise.",
       "affected_industries": [
-        "Software Development",
-        "Technology",
-        "Financial Services",
-        "Healthcare",
-        "Government"
+        "Customer Relationship Management",
+        "Sales",
+        "Marketing",
+        "Small and Medium Enterprises (SMEs)",
+        "Technology"
       ],
       "recommended_actions": [
-        "Immediately update JetBrains IntelliJ IDEA to the latest patched version (2024.3.7.1, 2025.1.7.1, 2025.2.6.2, 2025.3.4.1, or 2026.1.1) to mitigate the vulnerability.",
-        "Conduct a review of access logs to identify any unauthorized access attempts or suspicious activity that may have exploited this vulnerability.",
-        "Implement network segmentation and restrict access to the built-in web server to trusted IP ranges to minimize exposure."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-x8mh-94wc-33gv",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-30T12:33:11Z",
-    "title": "Apache Airflow's SMTP provider `SmtpHook` called Python's `smtplib.SMTP.starttls()` without an...",
-    "description": "Apache Airflow's SMTP provider `SmtpHook` called Python's `smtplib.SMTP.starttls()` without an SSL context, so no certificate validation was performed on the TLS upgrade. A man-in-the-middle between the Airflow worker and the SMTP server could present a self-signed certificate, complete the STARTTLS upgrade, and capture the SMTP credentials sent during the subsequent `login()` call. Users are advised to upgrade to the `apache-airflow-providers-smtp` version that contains the fix.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-41016",
-    "ghsa_id": "GHSA-x8mh-94wc-33gv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-41016.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-7vxr-7vxq-j68j",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-30T09:30:25Z",
-    "title": "Incorrect packet validation allowed unbounded recursion parsing SCTP chunk parameters.  This can...",
-    "description": "Incorrect packet validation allowed unbounded recursion parsing SCTP chunk parameters.  This can eventually result in a stack overflow and panic.\n\nRemote attackers can craft packets which cause affected systems to panic.  This affects any system where pf is configured to process traffic, independent of the configured ruleset.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-7164",
-    "ghsa_id": "GHSA-7vxr-7vxq-j68j",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-7164.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-5xgh-84j5-pq8w",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-30T09:30:25Z",
-    "title": "Out-of-bounds read vulnerability in ASR Kestrel (nr_fw modules) allows Overflow Buffers.\n\n This...",
-    "description": "Out-of-bounds read vulnerability in ASR Kestrel (nr_fw modules) allows Overflow Buffers.\n\n This vulnerability is associated with program files Code/Nr/nr_fw/RA/src/NrPwrCtrl.C.\n\n\n\nThis issue affects Kestrel: before 2026/02/10.",
-    "severity": "high",
-    "cve_id": "CVE-2026-42799",
-    "ghsa_id": "GHSA-5xgh-84j5-pq8w",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The out-of-bounds read vulnerability in ASR Kestrel's nr_fw modules could allow attackers to exploit overflow buffers, potentially leading to unauthorized access, data leakage, or system crashes. This could compromise the integrity and availability of affected systems.",
-      "affected_industries": [
-        "Telecommunications",
-        "Automotive",
-        "IoT (Internet of Things)",
-        "Aerospace"
-      ],
-      "recommended_actions": [
-        "Immediately update ASR Kestrel firmware to the latest version released after 2026/02/10 to mitigate the vulnerability.",
-        "Conduct a thorough vulnerability assessment of systems using ASR Kestrel to identify and address potential exploitation risks.",
-        "Implement monitoring and intrusion detection systems to detect any suspicious activity targeting the nr_fw modules."
+        "Immediately upgrade to Krayin CRM v.2.1.6 or the latest available version to patch the vulnerability.",
+        "Conduct a thorough review of system logs to identify any signs of exploitation or unauthorized access.",
+        "Implement Web Application Firewall (WAF) rules to monitor and block suspicious activity targeting the compose email function."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "gh-GHSA-wq83-w9r6-h456",
+    "id": "gh-GHSA-hw83-j72w-q54c",
     "source": "GitHub Security",
-    "timestamp": "2026-04-30T09:30:25Z",
-    "title": "When processing the header of an incoming message, libnv failed to properly validate the message...",
-    "description": "When processing the header of an incoming message, libnv failed to properly validate the message size.\n\nThe lack of validation allows a malicious program to write outside the bounds of a heap allocation.  This can trigger a crash or system panic, and it may be possible for an unprivileged user to exploit the bug to elevate their privileges.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-35547",
-    "ghsa_id": "GHSA-wq83-w9r6-h456",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "An issue in the fileMd5 parameter in the /a/file/upload endpoint of JeeSite v5.15.1 allows...",
+    "description": "An issue in the fileMd5 parameter in the /a/file/upload endpoint of JeeSite v5.15.1 allows authenticated attackers with file upload permissions to execute a path traversal and write arbitrary files with whitelisted suffixes to arbitrary filesystem locations while chunked upload is enabled.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-36760",
+    "ghsa_id": "GHSA-hw83-j72w-q54c",
     "affected_packages": [],
     "cwes": [
       null
@@ -511,11 +472,12 @@
     "references": [
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-35547.",
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-36760.",
       "affected_industries": [
         "Technology",
         "General"
@@ -525,121 +487,19 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "critical"
     },
-    "risk_score": 50
+    "risk_score": 90
   },
   {
-    "id": "gh-GHSA-gfv8-jx4x-32h7",
+    "id": "gh-GHSA-g99j-cq2q-3xrv",
     "source": "GitHub Security",
-    "timestamp": "2026-04-30T09:30:25Z",
-    "title": "When exchanging data over a socket, libnv uses select(2) to wait for data to arrive.  However, it...",
-    "description": "When exchanging data over a socket, libnv uses select(2) to wait for data to arrive.  However, it does not verify whether the provided socket descriptor fits in select(2)'s file descriptor set size limit of FD_SETSIZE (1024).\n\nAn attacker who is able to force a libnv application to allocate large file descriptors, e.g., by opening many descriptors and executing a program which is not careful to close them upon startup, can trigger stack corruption.  If the target application is setuid-root, then",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-39457",
-    "ghsa_id": "GHSA-gfv8-jx4x-32h7",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-39457.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-7jcv-x7mf-56q8",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-30T09:30:25Z",
-    "title": "An operator precedence bug in the kernel results in a scenario where a buffer overflow causes...",
-    "description": "An operator precedence bug in the kernel results in a scenario where a buffer overflow causes attacker-controlled data to overwrite adjacent execve(2) argument buffers.\n\nThe bug may be exploitable by an unprivileged user to obtain superuser privileges.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-7270",
-    "ghsa_id": "GHSA-7jcv-x7mf-56q8",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-7270.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-6r9j-w82p-v45p",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-30T09:30:25Z",
-    "title": "As dhclient is building an environment to pass to dhclient-script, it may need to resize the...",
-    "description": "As dhclient is building an environment to pass to dhclient-script, it may need to resize the array of string pointers.  The code which expands the array incorrectly calculates its new size when requesting memory, resulting in a heap buffer overrun.\n\nA specially crafted packet can cause dhclient to overrun its buffer of environment entries.  This can result in a crash, but it may be possible to leverage this bug to achieve remote code execution.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-42512",
-    "ghsa_id": "GHSA-6r9j-w82p-v45p",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-42512.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-r6mg-v3f6-8v7r",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-30T09:30:25Z",
-    "title": "SMB2 protocol dissector crash in Wireshark 4.6.0 to 4.6.4 and 4.4.0 to 4.4.14 allows denial of...",
-    "description": "SMB2 protocol dissector crash in Wireshark 4.6.0 to 4.6.4 and 4.4.0 to 4.4.14 allows denial of service",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6867",
-    "ghsa_id": "GHSA-r6mg-v3f6-8v7r",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "Weaver (Fanwei) E-office versions prior to 10.0_20221201 contain an unauthenticated arbitrary...",
+    "description": "Weaver (Fanwei) E-office versions prior to 10.0_20221201 contain an unauthenticated arbitrary file upload vulnerability in the OfficeServer.php endpoint that allows remote attackers to upload malicious files by sending multipart POST requests with arbitrary filenames and disguised content types. Attackers can upload PHP webshells to the Document directory and execute them via HTTP GET requests to achieve remote code execution as the web server user. Exploitation evidence was first observed by th",
+    "severity": "critical",
+    "cve_id": "CVE-2022-50993",
+    "ghsa_id": "GHSA-g99j-cq2q-3xrv",
     "affected_packages": [],
     "cwes": [
       null
@@ -648,78 +508,41 @@
       null,
       null,
       null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in the SMB2 protocol dissector of Wireshark could allow attackers to crash the application, leading to denial of service. This could disrupt network analysis and diagnostics, impacting organizations relying on Wireshark for monitoring and troubleshooting.",
+      "risk_score": 95,
+      "impact_assessment": "The vulnerability allows unauthenticated attackers to upload and execute malicious files on the server, potentially leading to full remote code execution. This could result in data breaches, unauthorized access, and complete system compromise.",
       "affected_industries": [
-        "Information Technology",
-        "Telecommunications",
-        "Financial Services",
+        "Government",
         "Healthcare",
-        "Government"
+        "Finance",
+        "Education",
+        "Technology",
+        "Small and Medium Enterprises (SMEs)"
       ],
       "recommended_actions": [
-        "Update Wireshark to the latest patched version that addresses CVE-2026-6867.",
-        "Restrict access to Wireshark systems and ensure only trusted users can interact with network data.",
-        "Monitor network traffic for unusual activity that may indicate exploitation attempts."
+        "Immediately update Weaver (Fanwei) E-office to version 10.0_20221201 or later to patch the vulnerability.",
+        "Conduct a thorough review of server logs to identify any signs of exploitation or unauthorized access.",
+        "Implement a web application firewall (WAF) to monitor and block malicious multipart POST requests targeting the vulnerable endpoint."
       ],
-      "urgency": "medium"
+      "urgency": "critical"
     },
-    "risk_score": 65
+    "risk_score": 95
   },
   {
-    "id": "gh-GHSA-56rm-3mr5-jfrm",
+    "id": "gh-GHSA-r8pw-53pg-996h",
     "source": "GitHub Security",
-    "timestamp": "2026-04-30T09:30:25Z",
-    "title": "WebSocket protocol dissector crash in Wireshark 4.6.0 to 4.6.4 and 4.4.0 to 4.4.14 allows denial...",
-    "description": "WebSocket protocol dissector crash in Wireshark 4.6.0 to 4.6.4 and 4.4.0 to 4.4.14 allows denial of service",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6869",
-    "ghsa_id": "GHSA-56rm-3mr5-jfrm",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "An issue in the fileEntityId parameter in the /a/file/upload endpoint of JeeSite v5.15.1 allows...",
+    "description": "An issue in the fileEntityId parameter in the /a/file/upload endpoint of JeeSite v5.15.1 allows authenticated attackers with file upload permissions to execute a path traversal and write arbitrary files with whitelisted suffixes to arbitrary filesystem locations.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-36762",
+    "ghsa_id": "GHSA-r8pw-53pg-996h",
     "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in the WebSocket protocol dissector in Wireshark could allow attackers to crash the application, leading to a denial of service. This may disrupt network analysis and diagnostics, particularly for organizations relying on Wireshark for critical network monitoring.",
-      "affected_industries": [
-        "Telecommunications",
-        "IT Services",
-        "Financial Services",
-        "Healthcare",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Update Wireshark to the latest patched version to mitigate the vulnerability.",
-        "Limit exposure by restricting access to Wireshark systems and ensuring they are used in secure environments.",
-        "Monitor application logs for unusual activity or crashes that could indicate exploitation attempts."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-f67r-cw3c-gfg6",
-    "source": "GitHub Security",
-    "timestamp": "2026-04-30T09:30:25Z",
-    "title": "BEEP protocol dissector crash in Wireshark 4.6.0 to 4.6.4 and 4.4.0 to 4.4.14 allows denial of...",
-    "description": "BEEP protocol dissector crash in Wireshark 4.6.0 to 4.6.4 and 4.4.0 to 4.4.14 allows denial of service",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6538",
-    "ghsa_id": "GHSA-f67r-cw3c-gfg6",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "cwes": [],
     "references": [
       null,
       null,
@@ -728,7 +551,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6538.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-36762.",
       "affected_industries": [
         "Technology",
         "General"
@@ -743,26 +566,71 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-p7qv-vx32-p4gg",
+    "id": "gh-GHSA-jmrh-f3j8-q3c4",
     "source": "GitHub Security",
-    "timestamp": "2026-04-30T09:30:25Z",
-    "title": "ColorOS Assistant has an unauthenticated start-download channel, leading to file path traversal.",
-    "description": "ColorOS Assistant has an unauthenticated start-download channel, leading to file path traversal.",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "CryptPad 2025.3.1 allows unbounded WebSocket frame flood. A remote, unauthenticated attacker can...",
+    "description": "CryptPad 2025.3.1 allows unbounded WebSocket frame flood. A remote, unauthenticated attacker can significantly degrade or deny service for all users of a CryptPad instance. Fixed in 2026.2.2.",
     "severity": "high",
-    "cve_id": "CVE-2026-22070",
-    "ghsa_id": "GHSA-p7qv-vx32-p4gg",
+    "cve_id": "CVE-2025-51846",
+    "ghsa_id": "GHSA-jmrh-f3j8-q3c4",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows a remote, unauthenticated attacker to flood WebSocket frames, potentially causing significant service degradation or denial of service for all users of a CryptPad instance.",
+      "affected_industries": [
+        "Technology",
+        "Education",
+        "Healthcare",
+        "Government",
+        "Financial Services"
+      ],
+      "recommended_actions": [
+        "Immediately update CryptPad to version 2026.2.2 or later to patch the vulnerability.",
+        "Implement rate-limiting or WebSocket traffic monitoring to detect and mitigate abnormal activity.",
+        "Review and strengthen network-level protections, such as firewalls and intrusion detection systems, to reduce exposure to potential attacks."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-vgv3-vw5h-8gfj",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "Weaver (Fanwei) E-cology 9.5 versions prior to 10.52 contain an arbitrary file read vulnerability...",
+    "description": "Weaver (Fanwei) E-cology 9.5 versions prior to 10.52 contain an arbitrary file read vulnerability in the XmlRpcServlet interface at the XML-RPC endpoint that allows unauthenticated remote attackers to read arbitrary files by supplying file paths to the WorkflowService.getAttachment and WorkflowService.LoadTemplateProp methods. Attackers can exploit these methods without authentication to retrieve sensitive files including system configuration files and database credentials from the server. Explo",
+    "severity": "high",
+    "cve_id": "CVE-2022-50992",
+    "ghsa_id": "GHSA-vgv3-vw5h-8gfj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-22070.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2022-50992.",
       "affected_industries": [
         "Technology",
         "General"
@@ -775,6 +643,151 @@
       "urgency": "high"
     },
     "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-f2h9-j9g6-4www",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "A Cross-Site Request Forgery (CSRF) vulnerability exists in the web management interface of the U...",
+    "description": "A Cross-Site Request Forgery (CSRF) vulnerability exists in the web management interface of the U-SPEED N300 Rounter V1.0.0. The device does not implement CSRF protection mechanisms such as anti-CSRF tokens or strict Origin/Referer validation for administrative API endpoints. An attacker can craft a malicious webpage that sends forged HTTP requests to configuration endpoints. If an authenticated administrator visits the malicious webpage, the victim's browser automatically includes the valid ses",
+    "severity": "high",
+    "cve_id": "CVE-2026-36960",
+    "ghsa_id": "GHSA-f2h9-j9g6-4www",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-36960.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-v5cr-c793-7mvp",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "A stored cross-site scripting (XSS) vulnerability in the /msg/msgInner/save endpoint of JeeSite...",
+    "description": "A stored cross-site scripting (XSS) vulnerability in the /msg/msgInner/save endpoint of JeeSite v5.15.1 allows attackers to execute arbitrary web scripts or HTML via injecting a crafted input into the msgContent parameter.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-36761",
+    "ghsa_id": "GHSA-v5cr-c793-7mvp",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The stored XSS vulnerability in the /msg/msgInner/save endpoint of JeeSite v5.15.1 allows attackers to inject malicious scripts into the application, which can then be executed in the context of other users. This can lead to data theft, account compromise, or unauthorized actions performed on behalf of the victim.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Apply the latest security patch or update JeeSite to a version where this vulnerability is resolved.",
+        "Sanitize and validate all user inputs, particularly the 'msgContent' parameter, to prevent malicious script injection.",
+        "Implement Content Security Policy (CSP) headers to mitigate the impact of XSS attacks."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-g26f-rq6w-xmpj",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "Cross Site Scripting vulnerability in andrewtch88 mvc-ecommerce v.1.0 allows a remote attacker to...",
+    "description": "Cross Site Scripting vulnerability in andrewtch88 mvc-ecommerce v.1.0 allows a remote attacker to execute arbitrary code and obtain sensitive information via the product_catalogue.php component",
+    "severity": "medium",
+    "cve_id": "CVE-2026-38939",
+    "ghsa_id": "GHSA-g26f-rq6w-xmpj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-38939.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-cmj5-x3xf-69wq",
+    "source": "GitHub Security",
+    "timestamp": "2026-04-30T18:30:32Z",
+    "title": "A flaw in GnuTLS DTLS handshake parsing allows malformed fragments with zero length and non-zero...",
+    "description": "A flaw in GnuTLS DTLS handshake parsing allows malformed fragments with zero length and non-zero offset, leading to an integer underflow during reassembly and resulting in an out-of-bounds read. This issue is remotely exploitable and may cause information disclosure or denial of service.",
+    "severity": "high",
+    "cve_id": "CVE-2026-33845",
+    "ghsa_id": "GHSA-cmj5-x3xf-69wq",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in GnuTLS DTLS handshake parsing can be exploited remotely, potentially leading to information disclosure or denial of service. This poses a significant risk to systems relying on GnuTLS for secure communications.",
+      "affected_industries": [
+        "Telecommunications",
+        "Financial Services",
+        "Healthcare",
+        "Government",
+        "Technology"
+      ],
+      "recommended_actions": [
+        "Immediately apply the latest security patches or updates provided by the GnuTLS maintainers to address CVE-2026-33845.",
+        "Conduct a thorough review of systems and applications using GnuTLS to identify and mitigate potential exposure.",
+        "Implement network monitoring and intrusion detection systems to identify and respond to potential exploitation attempts."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
   },
   {
     "id": "cve-CVE-2026-5926",
@@ -790,23 +803,20 @@
       "https://www.ibm.com/support/pages/node/7269372"
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The use of weaker than expected cryptographic algorithms in IBM Verify Identity Access and IBM Security Verify Access containers could allow attackers to decrypt highly sensitive information, potentially leading to data breaches, unauthorized access, and exposure of confidential data.",
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-5926.",
       "affected_industries": [
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Retail",
-        "Technology"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update to the latest patched version of IBM Verify Identity Access and IBM Security Verify Access containers, if available.",
-        "Conduct a security audit to identify and mitigate any potential exposure of sensitive data due to this vulnerability.",
-        "Implement strong compensating controls, such as network segmentation and enhanced monitoring, to detect and prevent unauthorized access."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 75
+    "risk_score": 60
   },
   {
     "id": "cve-CVE-2026-4919",
@@ -856,20 +866,20 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability in IBM Guardium Data Protection 12.1 allows an administrative user to inject arbitrary JavaScript into the Web UI, potentially leading to credential disclosure and unauthorized access within a trusted session. This could compromise sensitive data and administrative control of the system.",
+      "impact_assessment": "The vulnerability allows an administrative user to inject arbitrary JavaScript code into the Web UI, potentially leading to credential disclosure and unauthorized access to sensitive data within a trusted session. This could compromise the integrity and confidentiality of the system.",
       "affected_industries": [
-        "Financial Services",
+        "Finance",
         "Healthcare",
-        "Government",
         "Retail",
+        "Government",
         "Technology"
       ],
       "recommended_actions": [
-        "Apply the latest security patches or updates provided by IBM to address CVE-2026-4918.",
-        "Restrict administrative access to trusted personnel and implement multi-factor authentication (MFA) for all administrative accounts.",
-        "Conduct a security review of user inputs and sanitize any inputs that could be used to inject malicious scripts."
+        "Apply the latest security patch or update provided by IBM for Guardium Data Protection 12.1 to mitigate the vulnerability.",
+        "Restrict administrative access to trusted personnel and enforce strong authentication mechanisms, such as multi-factor authentication (MFA).",
+        "Conduct a review of user activity logs to identify any suspicious or unauthorized actions that may indicate exploitation of the vulnerability."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
     "risk_score": 65
   },
