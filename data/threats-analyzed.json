@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1778125808083-1",
+    "id": "twitter-1778143494505-1",
     "source": "Twitter Security",
-    "timestamp": "2026-05-07T03:50:08.083Z",
+    "timestamp": "2026-05-07T08:44:54.505Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1778125808083-1",
+    "id": "hn-1778143494505-1",
     "source": "HackerNews",
-    "timestamp": "2026-05-07T03:50:08.083Z",
+    "timestamp": "2026-05-07T08:44:54.505Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -37,227 +37,30 @@
     ],
     "ai_analysis": {
       "risk_score": 20,
-      "impact_assessment": "The open-source vulnerability scanner itself poses minimal risk; however, if improperly configured or exploited, it could expose sensitive dependency data or provide attackers with insights into unpatched vulnerabilities.",
+      "impact_assessment": "The open-source vulnerability scanner itself poses minimal direct risk, but it could be leveraged by malicious actors to identify exploitable vulnerabilities in outdated or unpatched systems if misused. Additionally, there is a potential risk if the tool contains unverified or insecure code.",
       "affected_industries": [
         "Technology",
         "Software Development",
         "Cybersecurity"
       ],
       "recommended_actions": [
-        "Evaluate the tool's source code and security practices before implementation to ensure it aligns with organizational security policies.",
-        "Run the tool in a controlled environment and avoid exposing sensitive project details to external systems.",
-        "Monitor for updates or patches to the tool itself, as it may gain attention from malicious actors due to its popularity."
+        "Evaluate the tool's source code and ensure it adheres to secure coding practices before deploying it in production environments.",
+        "Educate users on the proper and ethical use of vulnerability scanning tools to prevent misuse.",
+        "Monitor the tool's updates and community feedback to stay informed about any emerging security concerns."
       ],
       "urgency": "low"
     },
     "risk_score": 20
   },
   {
-    "id": "gh-GHSA-375f-4r2h-f99j",
+    "id": "gh-GHSA-p78j-pm32-q3pf",
     "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:47:29Z",
-    "title": "Bandit trusts client-supplied URI scheme on plaintext connections",
-    "description": "### Summary\nBandit reflects the client-supplied URI scheme into `conn.scheme` without verifying the actual transport. Over a plaintext HTTP/1.1 connection (or h2c), an unauthenticated attacker can send an absolute-form request target like `GET https://victim/path HTTP/1.1` and the application observes `conn.scheme = :https` even though no TLS was negotiated. Any downstream Plug logic that trusts `conn.scheme` as a security signal — `Plug.SSL`'s \"already secure, don't redirect\" branch, `secure: t",
-    "severity": "medium",
-    "cve_id": "CVE-2026-39807",
-    "ghsa_id": "GHSA-375f-4r2h-f99j",
-    "affected_packages": [
-      "bandit"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-39807.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-c67r-gc9j-2qf7",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:46:31Z",
-    "title": "Bandit is vulnerable to CL.CL request smuggling via unrejected duplicate `Content-Length` header",
-    "description": "### Summary\n\nBandit is vulnerable to CL.CL HTTP request smuggling: it silently accepts requests with two `Content-Length` headers whose values differ, takes the first value, and dispatches the body bytes as a second pipelined request on the same keep-alive connection. RFC 9110 §5.3 prohibits multiple lines for singleton fields like `Content-Length`, and RFC 9112 §6.3 item 5 requires the recipient to treat invalid `Content-Length` as an unrecoverable framing error. When Bandit sits behind a proxy",
-    "severity": "medium",
-    "cve_id": "CVE-2026-39805",
-    "ghsa_id": "GHSA-c67r-gc9j-2qf7",
-    "affected_packages": [
-      "bandit"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows HTTP request smuggling attacks, which can lead to unauthorized access, data leakage, or manipulation of backend systems. Attackers could exploit this to bypass security controls, perform cache poisoning, or execute malicious requests.",
-      "affected_industries": [
-        "Technology",
-        "E-commerce",
-        "Financial Services",
-        "Healthcare",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Update Bandit to the latest patched version that resolves CVE-2026-39805, ensuring compliance with RFC standards for handling `Content-Length` headers.",
-        "Implement strict input validation and rejection of malformed HTTP requests at the proxy or load balancer level to mitigate the risk of request smuggling.",
-        "Conduct a security audit of your HTTP handling infrastructure to identify and address potential vulnerabilities related to request parsing."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-pf94-94m9-536p",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:43:45Z",
-    "title": "Bandit Buffers Unbounded WebSocket Continuation Frames, Allowing Unauthenticated Memory Exhaustion",
-    "description": "### Summary\nA single unauthenticated WebSocket client can exhaust server memory in any Bandit-fronted application that accepts WebSocket connections. The fragmented-message reassembly path appends every `Continuation{fin: false}` frame's payload to a per-connection iolist with no cumulative size cap, so a peer that streams continuation frames indefinitely (never setting `fin=1`) grows BEAM heap linearly until the OS or a supervisor kills the process. `max_frame_size` only bounds individual frame",
+    "timestamp": "2026-05-07T06:31:43Z",
+    "title": "The WP-Optimize – Cache, Compress images, Minify & Clean database to boost page speed &...",
+    "description": "The WP-Optimize – Cache, Compress images, Minify & Clean database to boost page speed & performance plugin for WordPress is vulnerable to arbitrary file deletion due to insufficient file path validation in the unscheduled_original_file_deletion function in all versions up to, and including, 4.5.2 This makes it possible for authenticated attackers, with author-level access and above, to delete arbitrary files on the server, which can easily lead to remote code execution when the right file is del",
     "severity": "high",
-    "cve_id": "CVE-2026-42786",
-    "ghsa_id": "GHSA-pf94-94m9-536p",
-    "affected_packages": [
-      "bandit"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-42786.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-frh3-6pv6-rc8j",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:36:13Z",
-    "title": "Bandit's unbounded WebSocket inflate causes BEAM OOM with a single frame",
-    "description": "### Summary\n\nWhen a Bandit-fronted server has explicitly enabled WebSocket permessage-deflate (`compress: true`), an unauthenticated client can OOM the BEAM with a single ~6 MiB WebSocket frame. Bandit's inflate step has no output-size cap, so a small high-ratio compressed frame (e.g. zeros, ~1024:1 ratio) decompresses unbounded into the connection process before any application code runs. Phoenix and LiveView are **not** vulnerable by default — they ship with `compress: false`. Affected apps ar",
-    "severity": "high",
-    "cve_id": "CVE-2026-39804",
-    "ghsa_id": "GHSA-frh3-6pv6-rc8j",
-    "affected_packages": [
-      "bandit"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-39804.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-vxvc-cg7j-rwqj",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:34:13Z",
-    "title": "gittuf's policy can be rolled back to prior valid versions",
-    "description": "## Summary\n\nAn attacker with push access to gittuf's Reference State Log (RSL) can roll back the current policy to any previous policy trusted by the current set of root keys.\n\n## Impact\n\ngittuf determines the policy to load by inspecting the RSL. Except for the very first policy (which is automatically trusted given gittuf's TOFU model, or verified against manually specified keys), whenever an RSL entry that points to a new policy is encountered, gittuf validates that this policy is trusted. Th",
-    "severity": "medium",
-    "cve_id": "CVE-2026-44544",
-    "ghsa_id": "GHSA-vxvc-cg7j-rwqj",
-    "affected_packages": [
-      "github.com/gittuf/gittuf"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "An attacker with push access to gittuf's Reference State Log (RSL) can exploit the rollback vulnerability to enforce outdated or insecure policies, potentially bypassing security measures and introducing vulnerabilities into the system.",
-      "affected_industries": [
-        "Software Development",
-        "DevOps",
-        "Cloud Infrastructure",
-        "Technology Services"
-      ],
-      "recommended_actions": [
-        "Implement stricter access controls and monitoring for push access to the Reference State Log (RSL) to prevent unauthorized changes.",
-        "Introduce version pinning or forward-only policy validation to ensure policies cannot be rolled back to older versions.",
-        "Regularly audit and validate the integrity of the RSL to detect and respond to unauthorized modifications promptly."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-62w9-2w47-xvhj",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:31:21Z",
-    "title": "The Forminator Forms plugin for WordPress is vulnerable to Missing Authorization in versions up...",
-    "description": "The Forminator Forms plugin for WordPress is vulnerable to Missing Authorization in versions up to and including 1.51.1. This is due to the `processRequest()` method in `Forminator_Admin_Module_Edit_Page` (admin/abstracts/class-admin-module-edit-page.php) dispatching sensitive module-management actions — including export, delete, clone, delete-entries, publish/draft, and bulk variants — after only a nonce check, without ever verifying that the current user holds the `manage_forminator_modules` c",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6222",
-    "ghsa_id": "GHSA-62w9-2w47-xvhj",
+    "cve_id": "CVE-2026-7252",
+    "ghsa_id": "GHSA-p78j-pm32-q3pf",
     "affected_packages": [],
     "cwes": [
       null
@@ -272,11 +75,119 @@
       null,
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in the Forminator Forms plugin allows unauthorized users to perform sensitive actions such as exporting, deleting, cloning, or publishing forms. This could lead to data breaches, loss of critical information, or unauthorized modifications to website content.",
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in the WP-Optimize plugin allows authenticated attackers with author-level access or higher to delete arbitrary files on the server. This can lead to critical issues such as remote code execution, website defacement, or complete compromise of the affected WordPress site.",
+      "affected_industries": [
+        "E-commerce",
+        "Media and Publishing",
+        "Education",
+        "Nonprofits",
+        "Small and Medium Businesses"
+      ],
+      "recommended_actions": [
+        "Immediately update the WP-Optimize plugin to the latest patched version (if available) or disable it until a fix is released.",
+        "Restrict user roles and permissions to minimize the number of accounts with author-level access or higher.",
+        "Monitor server logs for suspicious activity, such as unauthorized file deletions, and implement file integrity monitoring."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-v547-m6pg-pf7w",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-07T06:31:42Z",
+    "title": "An authenticated user can crash mongod when running $rankFusion or $scoreFusion with an empty...",
+    "description": "An authenticated user can crash mongod when running $rankFusion or $scoreFusion with an empty pipeline on a view.\n\nWhen resolving a view, the server inspects the aggregation pipeline to determine whether it begins with an Atlas Search stage. For $rankFusion and $scoreFusion, this inspection reads the first element on each stage’s input pipeline array without first verifying that the array is non-empty. Supplying an empty pipeline causes a null pointer dereference and crashes the server.\n\nThis is",
+    "severity": "high",
+    "cve_id": "CVE-2026-8063",
+    "ghsa_id": "GHSA-v547-m6pg-pf7w",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-8063.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-6j7r-xh37-g6x3",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-07T06:31:42Z",
+    "title": "The Slider Revolution plugin for WordPress is vulnerable to Arbitrary File Upload in versions 7.0...",
+    "description": "The Slider Revolution plugin for WordPress is vulnerable to Arbitrary File Upload in versions 7.0.0 to 7.0.10 via the '_get_media_url' and '_check_file_path' function. This is due to insufficient file type validation. This makes it possible for authenticated attackers, with subscriber-level access and above, to upload files that may be executable, which makes remote code execution possible. The vulnerability was partially patched in version 7.0.10 and fully patched in version 7.0.11.",
+    "severity": "high",
+    "cve_id": "CVE-2026-6692",
+    "ghsa_id": "GHSA-6j7r-xh37-g6x3",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-6692.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-89cx-53rv-jcx8",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-07T06:31:42Z",
+    "title": "The BetterDocs Pro plugin for WordPress is vulnerable to SQL Injection via the ...",
+    "description": "The BetterDocs Pro plugin for WordPress is vulnerable to SQL Injection via the `get_current_letter_docs` and `docs_sort_by_letter` AJAX actions in all versions up to, and including, 3.7.0. This is due to the `limit` POST parameter being interpolated directly into a SQL query string before being passed to `$wpdb->prepare()`, which only parameterizes other variables. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used",
+    "severity": "high",
+    "cve_id": "CVE-2026-4348",
+    "ghsa_id": "GHSA-89cx-53rv-jcx8",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The SQL Injection vulnerability in the BetterDocs Pro plugin for WordPress allows unauthenticated attackers to execute arbitrary SQL queries. This can lead to unauthorized access to sensitive database information, data exfiltration, data corruption, or even full compromise of the WordPress site.",
       "affected_industries": [
         "E-commerce",
         "Media and Publishing",
@@ -285,101 +196,28 @@
         "Small and Medium Businesses"
       ],
       "recommended_actions": [
-        "Update the Forminator Forms plugin to the latest patched version as soon as it becomes available.",
-        "Restrict access to the WordPress admin panel to trusted users only and monitor for unusual activity.",
-        "Implement a Web Application Firewall (WAF) to detect and block unauthorized actions targeting the plugin."
+        "Immediately update the BetterDocs Pro plugin to a patched version once it becomes available. If no patch is available, temporarily disable the plugin to mitigate the risk.",
+        "Implement a web application firewall (WAF) to detect and block malicious SQL injection attempts targeting the vulnerable endpoints.",
+        "Regularly review and monitor web server logs for unusual activity, such as unexpected SQL queries or unauthorized access attempts."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 65
+    "risk_score": 85
   },
   {
-    "id": "gh-GHSA-94jg-w625-jq92",
+    "id": "gh-GHSA-v9xc-5wqq-j4p4",
     "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:31:21Z",
-    "title": "Tor before 0.4.9.7 has an out-of-bounds read when an END, a TRUNCATE, or a TRUNCATED cell lacks a...",
-    "description": "Tor before 0.4.9.7 has an out-of-bounds read when an END, a TRUNCATE, or a TRUNCATED cell lacks a reason in its payload, aka TROVE-2026-011.",
-    "severity": "low",
-    "cve_id": "CVE-2026-44597",
-    "ghsa_id": "GHSA-94jg-w625-jq92",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-44597.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-2jfv-r29r-j6wr",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:31:21Z",
-    "title": "ZTE ZX297520V3 BootROM contains a vulnerability that allows arbitrary memory writes via USB....",
-    "description": "ZTE ZX297520V3 BootROM contains a vulnerability that allows arbitrary memory writes via USB. Attackers can exploit the lack of target address validation in the USB download mode to write data to any location in BootROM runtime memory, thereby overwriting the stack, hijacking the execution flow, bypassing the Secure Boot signature verification mechanism, and achieving unauthorized code execution.",
+    "timestamp": "2026-05-07T06:31:42Z",
+    "title": "The Forminator Forms plugin for WordPress is vulnerable to Missing Authorization in versions up...",
+    "description": "The Forminator Forms plugin for WordPress is vulnerable to Missing Authorization in versions up to and including 1.53.0. This is due to the listen_for_saving_export_schedule() function in library/class-export.php failing to perform a capability check before saving the scheduled export configuration, unlike the parallel listen_for_csv_export() function which correctly verifies user permissions. This makes it possible for authenticated attackers with subscriber-level access to configure a schedule",
     "severity": "medium",
-    "cve_id": "CVE-2026-40003",
-    "ghsa_id": "GHSA-2jfv-r29r-j6wr",
+    "cve_id": "CVE-2026-6214",
+    "ghsa_id": "GHSA-v9xc-5wqq-j4p4",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-40003.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-x96p-55v7-jmrq",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:31:21Z",
-    "title": "The Appointment Booking Calendar plugin for WordPress is vulnerable to Missing Authorization in...",
-    "description": "The Appointment Booking Calendar plugin for WordPress is vulnerable to Missing Authorization in versions up to and including 1.6.10.6. This is due to a flawed authorization logic in the nonce_permissions_check() method combined with the public exposure of a site-wide reusable nonce. The plugin exposes a public_nonce value through the /wp-json/ssa/v1/embed-inner endpoint, which is accessible to unauthenticated users. The appointment deletion endpoint at /wp-json/ssa/v1/appointments/{id}/delete an",
-    "severity": "medium",
-    "cve_id": "CVE-2026-4807",
-    "ghsa_id": "GHSA-x96p-55v7-jmrq",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
       null,
       null,
       null,
@@ -391,31 +229,32 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows unauthenticated users to exploit a missing authorization flaw, potentially enabling them to delete appointments without proper permissions. This could disrupt business operations, lead to data integrity issues, and damage customer trust.",
+      "impact_assessment": "The vulnerability allows authenticated attackers with minimal access (subscriber-level) to configure scheduled exports, potentially leading to unauthorized data exposure or manipulation of export schedules. This could compromise sensitive information depending on the plugin's usage.",
       "affected_industries": [
-        "Healthcare",
+        "E-commerce",
+        "Media and Publishing",
         "Education",
-        "Small and Medium Businesses",
-        "Professional Services"
+        "Healthcare",
+        "Small Businesses"
       ],
       "recommended_actions": [
-        "Immediately update the Appointment Booking Calendar plugin to a patched version (if available) or disable the plugin temporarily if no update is provided.",
-        "Implement a Web Application Firewall (WAF) to block unauthorized access to the vulnerable endpoints.",
-        "Audit and monitor appointment-related activity logs for any unauthorized deletions or suspicious behavior."
+        "Update the Forminator Forms plugin to the latest version as soon as a patch is released.",
+        "Restrict subscriber-level access and review user roles to minimize exposure.",
+        "Monitor scheduled export configurations for any unauthorized changes."
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-7cv5-2ch3-g323",
+    "id": "gh-GHSA-m47q-4224-6rvc",
     "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:31:21Z",
-    "title": "Tor before 0.4.9.7 mishandles accounting of the conflux out-of-order queue during the clearing of...",
-    "description": "Tor before 0.4.9.7 mishandles accounting of the conflux out-of-order queue during the clearing of a queue.",
+    "timestamp": "2026-05-07T06:31:42Z",
+    "title": "Tor before 0.4.9.7 has an out-of-bounds read by one byte via a malformed BEGIN cell, aka TROVE...",
+    "description": "Tor before 0.4.9.7 has an out-of-bounds read by one byte via a malformed BEGIN cell, aka TROVE-2026-007.",
     "severity": "low",
-    "cve_id": "CVE-2026-44600",
-    "ghsa_id": "GHSA-7cv5-2ch3-g323",
+    "cve_id": "CVE-2026-44603",
+    "ghsa_id": "GHSA-m47q-4224-6rvc",
     "affected_packages": [],
     "cwes": [
       null
@@ -430,7 +269,7 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-44600.",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-44603.",
       "affected_industries": [
         "Technology",
         "General"
@@ -445,14 +284,14 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-rprm-6mg6-r8fm",
+    "id": "gh-GHSA-323g-q36v-hmmc",
     "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:31:21Z",
-    "title": "Tor before 0.4.9.7 can attempt or accept BEGIN_DIR via conflux legs, aka TROVE-2026-008.",
-    "description": "Tor before 0.4.9.7 can attempt or accept BEGIN_DIR via conflux legs, aka TROVE-2026-008.",
+    "timestamp": "2026-05-07T06:31:42Z",
+    "title": "Tor before 0.4.9.7 has a NULL pointer dereference when a CERT cell is received out of order, aka...",
+    "description": "Tor before 0.4.9.7 has a NULL pointer dereference when a CERT cell is received out of order, aka TROVE-2026-006.",
     "severity": "low",
-    "cve_id": "CVE-2026-44599",
-    "ghsa_id": "GHSA-rprm-6mg6-r8fm",
+    "cve_id": "CVE-2026-44602",
+    "ghsa_id": "GHSA-323g-q36v-hmmc",
     "affected_packages": [],
     "cwes": [
       null
@@ -467,7 +306,7 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-44599.",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-44602.",
       "affected_industries": [
         "Technology",
         "General"
@@ -482,17 +321,52 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-mmpx-jh39-wrv6",
+    "id": "gh-GHSA-fc55-xrcv-x657",
     "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:29:43Z",
-    "title": "FileBrowser Vulnerable to Stored XSS via SVG File in Public Share (Missing CSP Header)",
-    "description": "## Summary\n\nFileBrowser Quantum serves inline SVG files without a `Content-Security-Policy` header, allowing embedded JavaScript in SVG files to execute when accessed via public share links.\n\nVerified on v1.3.0-stable.\n\n## Affected product\n\n- **Product:** FileBrowser Quantum (`gtsteffaniak/filebrowser`)\n- **Verified version:** v1.3.0-stable\n- **Docker image:** gtstef/filebrowser:latest\n- **Affected endpoint:** `GET /public/api/resources/download?hash=HASH&inline=true`\n- **CWE:** CWE-79 — Cross-s",
+    "timestamp": "2026-05-07T06:31:42Z",
+    "title": "Tor before 0.4.9.7, when circuit queue memory pressure exists, can experience a client crash...",
+    "description": "Tor before 0.4.9.7, when circuit queue memory pressure exists, can experience a client crash because of a double close of a circuit, aka TROVE-2026-009.",
+    "severity": "low",
+    "cve_id": "CVE-2026-44601",
+    "ghsa_id": "GHSA-fc55-xrcv-x657",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-44601.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-j6hh-h3cf-c2hf",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-07T06:31:41Z",
+    "title": "When enabling trace logging in Spring Cloud Config Server sensitive information was placed in...",
+    "description": "When enabling trace logging in Spring Cloud Config Server sensitive information was placed in plain text in the logs.\nSpring Cloud Config 3.1.x: affected from 3.1.0 through 3.1.13 (inclusive); upgrade to 3.1.14 or greater (Enterprise Support Only). Spring Cloud Config 4.1.x: affected from 4.1.0 through 4.1.9 (inclusive); upgrade to 4.1.10 or greater (Enterprise Support Only). Spring Cloud Config 4.2.x: affected from 4.2.0 through 4.2.6 (inclusive); upgrade to 4.2.7 or greater (Enterprise Support",
     "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-mmpx-jh39-wrv6",
-    "affected_packages": [
-      "github.com/gtsteffaniak/filebrowser"
-    ],
+    "cve_id": "CVE-2026-41004",
+    "ghsa_id": "GHSA-j6hh-h3cf-c2hf",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -503,7 +377,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41004.",
       "affected_industries": [
         "Technology",
         "General"
@@ -518,17 +392,15 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-fwj3-42wh-8673",
+    "id": "gh-GHSA-6g23-24mc-hx6x",
     "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:28:06Z",
-    "title": "FileBrowser Public Share DELETE API Path Traversal Allows Unauthenticated Arbitrary File Deletion",
-    "description": "### **Summary**\n\nAttacker-controlled path input is joined with a trusted base path prior to sanitization, allowing traversal sequences (e.g., ../) to escape the intended shared directory. As a result, an unauthenticated attacker possessing a valid public share hash with delete permissions enabled can delete arbitrary files outside the shared directory within the share owner’s configured storage scope.\n\n### **Affected Components**\n\n**Two distinct vulnerable code paths:**\n\n1. Stable versions (e.g.",
+    "timestamp": "2026-05-07T06:31:41Z",
+    "title": "Spring Cloud Config allows applications to serve arbitrary text and binary files through the...",
+    "description": "Spring Cloud Config allows applications to serve arbitrary text and binary files through the spring-cloud-config-server module. A malicious user, or attacker, can send a request using a specially crafted URL that can lead to a directory traversal attack.\nSpring Cloud Config 3.1.x: affected from 3.1.0 through 3.1.13 (inclusive); upgrade to 3.1.14 or greater (Enterprise Support Only). Spring Cloud Config 4.1.x: affected from 4.1.0 through 4.1.9 (inclusive); upgrade to 4.1.10 or greater (Enterprise",
     "severity": "critical",
-    "cve_id": "CVE-2026-44542",
-    "ghsa_id": "GHSA-fwj3-42wh-8673",
-    "affected_packages": [
-      "github.com/gtsteffaniak/filebrowser"
-    ],
+    "cve_id": "CVE-2026-40982",
+    "ghsa_id": "GHSA-6g23-24mc-hx6x",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -539,47 +411,45 @@
     ],
     "ai_analysis": {
       "risk_score": 92,
-      "impact_assessment": "This vulnerability allows unauthenticated attackers to delete arbitrary files outside the intended shared directory, potentially causing data loss, service disruption, and compromising system integrity.",
+      "impact_assessment": "The vulnerability allows attackers to perform directory traversal attacks, potentially exposing sensitive files and data stored on the server. This could lead to unauthorized access, data breaches, and compromise of critical systems.",
       "affected_industries": [
+        "Finance",
+        "Healthcare",
+        "Retail",
         "Technology",
-        "Cloud Storage Providers",
-        "Web Hosting Services",
-        "Media and Entertainment",
-        "Healthcare"
+        "Government",
+        "Manufacturing"
       ],
       "recommended_actions": [
-        "Immediately update FileBrowser to a patched version that addresses CVE-2026-44542.",
-        "Disable public share functionality or restrict delete permissions until a fix is applied.",
-        "Implement strict access controls and monitor logs for unauthorized file deletion activity."
+        "Immediately upgrade Spring Cloud Config to version 3.1.14 or greater for 3.1.x, or version 4.1.10 or greater for 4.1.x.",
+        "Implement strict input validation and sanitization to prevent exploitation of directory traversal vulnerabilities.",
+        "Monitor server logs for unusual activity or requests targeting the vulnerable module, and apply intrusion detection mechanisms."
       ],
       "urgency": "critical"
     },
     "risk_score": 92
   },
   {
-    "id": "gh-GHSA-x35m-3gp4-4fh5",
+    "id": "gh-GHSA-2mh5-3cw6-hrrq",
     "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:21:53Z",
-    "title": "etcd RBAC bypass allows unauthorized data access via PrevKv/lease attachment in nested transaction Put requests",
-    "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\nA vulnerability in etcd allows read access via PrevKv, or lease attachment in Put requests within transaction operations, to bypass RBAC authorization checks. An authenticated user without sufficient read or lease-related permissions may be able to access unauthorized data or attach leases by invoking transaction operations with these features enabled.\n\nKubernetes does not rely on etcd’s built-in authentication and authorization. I",
-    "severity": "low",
-    "cve_id": "CVE-2026-44283",
-    "ghsa_id": "GHSA-x35m-3gp4-4fh5",
-    "affected_packages": [
-      "go.etcd.io/etcd/v3",
-      "go.etcd.io/etcd/v3",
-      "go.etcd.io/etcd"
-    ],
+    "timestamp": "2026-05-07T06:31:41Z",
+    "title": "When using Google Secrets Manager as a backend for the Spring Cloud Config server a client can...",
+    "description": "When using Google Secrets Manager as a backend for the Spring Cloud Config server a client can craft a request to the config server potentially exposing secrets from unintended GCP projects.\nSpring Cloud Config 3.1.x: affected from 3.1.0 through 3.1.13 (inclusive); upgrade to 3.1.14 or greater (Enterprise Support Only). Spring Cloud Config 4.1.x: affected from 4.1.0 through 4.1.9 (inclusive); upgrade to 4.1.10 or greater (Enterprise Support Only). Spring Cloud Config 4.2.x: affected from 4.2.0 t",
+    "severity": "high",
+    "cve_id": "CVE-2026-40981",
+    "ghsa_id": "GHSA-2mh5-3cw6-hrrq",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-44283.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-40981.",
       "affected_industries": [
         "Technology",
         "General"
@@ -589,24 +459,21 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "low"
+      "urgency": "high"
     },
-    "risk_score": 25
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-fqph-j6v6-jvgx",
+    "id": "gh-GHSA-53wr-r4p3-wrc5",
     "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:15:46Z",
-    "title": "docling-graph has SSRF via Missing Internal IP Validation in URLInputHandler",
-    "description": "### Impact\n\nThe `URLInputHandler` class in `docling_graph/core/input/handlers.py` makes HTTP requests to user-supplied URLs without validating whether the target resolves to a private, loopback, or link-local IP address. The `URLValidator` only checks for a valid scheme and non-empty `netloc`, performing no IP-level validation. Additionally, `requests.head()` was called with `allow_redirects=True`, allowing an attacker to redirect requests to internal endpoints via an intermediary URL.\n\nAn attac",
+    "timestamp": "2026-05-07T06:31:41Z",
+    "title": "There exists an openssl.cnf privilege escalation vulnerability in ZTE Cloud PC client uSmartview....",
+    "description": "There exists an openssl.cnf privilege escalation vulnerability in ZTE Cloud PC client uSmartview. An attacker can execute arbitrary code locally and escalate privileges.",
     "severity": "medium",
-    "cve_id": "CVE-2026-44520",
-    "ghsa_id": "GHSA-fqph-j6v6-jvgx",
-    "affected_packages": [
-      "docling-graph"
-    ],
+    "cve_id": "CVE-2026-40004",
+    "ghsa_id": "GHSA-53wr-r4p3-wrc5",
+    "affected_packages": [],
     "cwes": [
-      null,
       null
     ],
     "references": [
@@ -616,7 +483,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-44520.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-40004.",
       "affected_industries": [
         "Technology",
         "General"
@@ -631,147 +498,220 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-w5p8-4jcx-2j6r",
+    "id": "gh-GHSA-86wq-234q-r6wg",
     "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:13:57Z",
-    "title": "imageproc: integer overflow in kernel size check leads to out-of-bounds read",
-    "description": "A bounds verification of a slice storage of a 2-dimensional matrix's coefficients (a kernel) would compare the total size against the product of individual dimensions. This would erroneously cast *after* the multiplication and consequently fail to detect possible violations when overflow occurs.\n\nAfterwards, the individual sizes were trusted to properly constrain coordinates within the matrix to indices valid for the underlying storage. With a crafted `Kernel` object, certain combinations of coo",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-w5p8-4jcx-2j6r",
-    "affected_packages": [
-      "imageproc",
-      "imageproc",
-      "imageproc",
-      "imageproc"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows an attacker to exploit an integer overflow during kernel size checks, leading to out-of-bounds reads. This can result in potential information disclosure, application crashes, or undefined behavior, depending on the context in which the vulnerable library is used.",
-      "affected_industries": [
-        "Software Development",
-        "Machine Learning",
-        "Image Processing",
-        "Healthcare (if medical imaging is involved)",
-        "Media and Entertainment"
-      ],
-      "recommended_actions": [
-        "Update to the latest patched version of the 'imageproc' library, if available, to address the vulnerability.",
-        "Implement input validation to ensure kernel dimensions and sizes are within safe bounds before processing.",
-        "Conduct a security review of dependent applications to identify potential exposure to this vulnerability."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-qg8r-f7x3-25f7",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:10:13Z",
-    "title": "imageproc: Out-of-bounds read via NaN coordinates in bilinear/bicubic sampling",
-    "description": "A bounds check was performed in floating points before a cast to the index passed to an unchecked access function. This checked considered `NaN` cases improperly, causing them to succeed the check instead of failing it. The floating point coordinate is under caller control by passing a selected projection matrix.\n\nCarefully controlling the coordinates of an image with no data and one non-zero dimension provides an arbitrary read primitive in the first 32-bits of address space with a Bilinear sam",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-qg8r-f7x3-25f7",
-    "affected_packages": [
-      "imageproc",
-      "imageproc",
-      "imageproc",
-      "imageproc"
-    ],
+    "timestamp": "2026-05-07T06:31:41Z",
+    "title": "The base directory (`spring.cloud.config.server.git.basedir`) used by the Spring Cloud Config...",
+    "description": "The base directory (`spring.cloud.config.server.git.basedir`) used by the Spring Cloud Config Server to clone Git repositories to is susceptible to time-of-check-time-of-use (TOCTOU) attacks.\nSpring Cloud Config 3.1.x: affected from 3.1.0 through 3.1.13 (inclusive); upgrade to 3.1.14 or greater (Enterprise Support Only). Spring Cloud Config 4.1.x: affected from 4.1.0 through 4.1.9 (inclusive); upgrade to 4.1.10 or greater (Enterprise Support Only). Spring Cloud Config 4.2.x: affected from 4.2.0 ",
+    "severity": "high",
+    "cve_id": "CVE-2026-41002",
+    "ghsa_id": "GHSA-86wq-234q-r6wg",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-5qv7-j6w5-fr4m",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:03:48Z",
-    "title": "imageproc has fragile bounds check when sampling from image",
-    "description": "A read of pixels was coded as modifying coordinates to lie within the image bounds. It would calculate a coordinate by adding a constant to an input and taking the minimum of the resulting coordinate and 'dimension - 1'. This would not protect against malicious inputs that could overflow the addition. Following the tricked bounds check, the image could then be sampled at multiple differently calculated coordinates that exceeded the bounds.",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-5qv7-j6w5-fr4m",
-    "affected_packages": [
-      "imageproc",
-      "imageproc",
-      "imageproc"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in the imageproc library's bounds checking mechanism could allow attackers to exploit out-of-bounds memory reads. This may lead to information disclosure, application crashes, or potential remote code execution if combined with other vulnerabilities.",
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in Spring Cloud Config Server's handling of the base directory (`spring.cloud.config.server.git.basedir`) can allow attackers to exploit time-of-check-time-of-use (TOCTOU) weaknesses, potentially leading to unauthorized access or manipulation of sensitive configuration files. This could compromise application integrity and data security.",
       "affected_industries": [
-        "Technology",
-        "Media and Entertainment",
+        "Financial Services",
         "Healthcare",
-        "E-commerce",
-        "Gaming"
+        "Retail",
+        "Technology",
+        "Government"
       ],
       "recommended_actions": [
-        "Update to the latest version of the imageproc library once a patch is released to address the bounds checking vulnerability.",
-        "Implement input validation and sanitization to prevent malicious inputs from triggering overflow conditions.",
-        "Conduct a security review of all dependencies and libraries in use to identify and mitigate similar vulnerabilities."
+        "Upgrade Spring Cloud Config to the latest patched versions: 3.1.14 or greater for 3.1.x, 4.1.10 or greater for 4.1.x, and ensure updates for 4.2.x as they become available.",
+        "Implement strict access controls and monitoring for the base directory to detect and prevent unauthorized modifications.",
+        "Conduct a thorough security audit of systems using Spring Cloud Config to identify potential exploitation of this vulnerability."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 65
+    "risk_score": 85
   },
   {
-    "id": "gh-GHSA-vwx9-7qcf-gg7f",
+    "id": "gh-GHSA-98h9-4798-4q5v",
     "source": "GitHub Security",
-    "timestamp": "2026-05-07T03:02:28Z",
-    "title": "ShellHub has cross-tenant IDOR in `GET /api/namespaces/:tenant` via API Key bypasses  membership check",
-    "description": "## Summary\n`GET /api/namespaces/:tenant` returns the full namespace object — including the members list (user IDs, e-mails, roles), settings, and device counts — to any caller authenticated by an **API Key**, for any tenant, regardless of the API Key's own tenant scope.\n\nThe handler conditionally skips the membership check when the user ID (`X-ID`) is absent, which is exactly the case for API Key authentication.\n\n## Affected versions\nShellHub Community v0.24.1 (validated).\n\n## Root cause\n`api/ro",
-    "severity": "medium",
-    "cve_id": "CVE-2026-44426",
-    "ghsa_id": "GHSA-vwx9-7qcf-gg7f",
+    "timestamp": "2026-05-07T05:31:17Z",
+    "title": "Diffusers has a `trust_remote_code` bypass via `custom_pipeline` and local custom components",
+    "description": "### Impact\n\nA `trust_remote_code` bypass in `DiffusionPipeline.from_pretrained` allows arbitrary remote code execution despite the user passing `trust_remote_code=False` (or omitting it, which is the default). The vulnerability has three variants, all sharing the same root cause — the `trust_remote_code` gate was implemented inside `DiffusionPipeline.download()` rather than at the actual dynamic-module load site, so any code path that bypassed or short-circuited `download()` also bypassed the se",
+    "severity": "high",
+    "cve_id": "CVE-2026-44513",
+    "ghsa_id": "GHSA-98h9-4798-4q5v",
     "affected_packages": [
-      "github.com/shellhub-io/shellhub"
+      "diffusers"
     ],
     "cwes": [
       null
     ],
     "references": [
       null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows arbitrary remote code execution, enabling attackers to execute malicious code on affected systems despite security settings intended to prevent such actions. This can lead to data breaches, system compromise, or unauthorized access.",
+      "affected_industries": [
+        "Technology",
+        "Artificial Intelligence",
+        "Healthcare",
+        "Finance",
+        "Retail"
+      ],
+      "recommended_actions": [
+        "Immediately update to the latest patched version of the Diffusers library that addresses CVE-2026-44513.",
+        "Audit systems using the Diffusers library to identify any potential exploitation of this vulnerability and mitigate risks.",
+        "Implement strict network controls to limit the ability of remote code execution and monitor for suspicious activity."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-jfg9-48mv-9qgx",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-07T05:14:14Z",
+    "title": "Netty MQTT: Resource exhaustion in MqttDecoder",
+    "description": "### Impact\nThe MQTT 5 header Properties section is parsed and buffered _before_ any message size limit is applied.\n\nSpecifically, in `MqttDecoder`, the `decodeVariableHeader()` method is called before the `bytesRemainingBeforeVariableHeader > maxBytesInMessage` check. The `decodeVariableHeader()` can call other methods which will call `decodeProperties()`. Effectively, Netty does not apply any limits to the size of the properties being decoded.\n\nAdditionally, because `MqttDecoder` extends `Repla",
+    "severity": "medium",
+    "cve_id": "CVE-2026-44248",
+    "ghsa_id": "GHSA-jfg9-48mv-9qgx",
+    "affected_packages": [
+      "io.netty:netty-codec-mqtt",
+      "io.netty:netty-codec-mqtt"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in Netty's MQTT decoder allows attackers to exploit the lack of size limits on the properties section, potentially leading to resource exhaustion (e.g., memory overflows or denial of service). This could disrupt systems relying on MQTT for communication, particularly in environments with high message throughput.",
+      "affected_industries": [
+        "IoT (Internet of Things)",
+        "Telecommunications",
+        "Smart Home Devices",
+        "Industrial Automation",
+        "Cloud Services"
+      ],
+      "recommended_actions": [
+        "Upgrade to a patched version of Netty that addresses CVE-2026-44248 and enforces size limits on MQTT properties.",
+        "Implement application-level message size validation to mitigate the risk of resource exhaustion until a patch is applied.",
+        "Monitor MQTT traffic for unusual patterns or spikes that could indicate exploitation attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-8hg8-63c5-gwmx",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-07T05:13:21Z",
+    "title": "vm2 NodeVM `nesting: true` bypasses `require: false` allowing sandbox escape and arbitrary OS command execution",
+    "description": "### Summary\n\nWhen a `NodeVM` is created with `nesting: true`, sandbox code can unconditionally `require('vm2')` regardless of the outer VM's `require` configuration — including `require: false`. With access to `vm2`, the sandbox constructs a new inner `NodeVM` with its own unrestricted `require` settings and executes arbitrary OS commands on the host. Any application that runs untrusted code inside a `NodeVM` with `nesting: true` is fully compromised.\n\n### Details\n\nThe vulnerability is in how th",
+    "severity": "critical",
+    "cve_id": "CVE-2026-44007",
+    "ghsa_id": "GHSA-8hg8-63c5-gwmx",
+    "affected_packages": [
+      "vm2"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-44007.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-cp6g-6699-wx9c",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-07T04:33:37Z",
+    "title": "vm2 has a NodeVM require.root bypass via symlink traversal that allows sandbox escape",
+    "description": "## Summary\nNodeVM's `require.root` path restriction can be bypassed using filesystem symlinks, allowing sandboxed code to load modules from outside the allowed root directory in host context. Because path validation uses `path.resolve()` (which does not dereference symlinks) but module loading uses Node's native `require()` (which does), an attacker can load arbitrary host-realm modules and achieve remote code execution.\n\n## Severity\n**High** (CVSS 3.1: 8.5)\n\n`CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:C/C:",
+    "severity": "high",
+    "cve_id": "CVE-2026-43998",
+    "ghsa_id": "GHSA-cp6g-6699-wx9c",
+    "affected_packages": [
+      "vm2"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-43998.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-wp5r-2gw5-m7q7",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-07T04:32:56Z",
+    "title": "vm2's Transformer Fast-Path Bypass Exposes Internal State Variable",
+    "description": "### Summary\nvm2's code transformer has a performance optimization that skips AST analysis when the code does not contain `catch`, `import`, or `async` keywords. This fast-path bypass allows sandboxed code to directly access the internal `VM2_INTERNAL_STATE_DO_NOT_USE_OR_PROGRAM_WILL_FAIL` variable, which exposes internal security functions (`handleException`, `wrapWith`, `import`).\n\n### Details\nIn `lib/transformer.js:55-57`, a regex check `/\\b(?:catch|import|async)\\b/` determines whether AST tra",
+    "severity": "medium",
+    "cve_id": "CVE-2026-44003",
+    "ghsa_id": "GHSA-wp5r-2gw5-m7q7",
+    "affected_packages": [
+      "vm2"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-44426.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-44003.",
       "affected_industries": [
         "Technology",
         "General"
@@ -786,16 +726,54 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-q2qq-hmj6-3wpp",
+    "id": "gh-GHSA-v27g-jcqj-v8rw",
     "source": "GitHub Security",
-    "timestamp": "2026-05-07T02:59:48Z",
-    "title": "hickory-proto vulnerable to CPU exhaustion during message encoding due to O(n²) name compression",
-    "description": "During message encoding, `hickory-proto`'s `BinEncoder` stores pointers to labels that are candidates for name compression in a `Vec<(usize, Vec<u8>)>`. The name compression logic then searches for matches with a linear scan.\n\nA malicious message with many records can both introduce many candidate labels, and invoke this linear scan many times. This can amplify CPU exhaustion in DoS attacks.\n\nThis is similar to [CVE-2024-8508](https://www.nlnetlabs.nl/downloads/unbound/CVE-2024-8508.txt).\n\n### R",
+    "timestamp": "2026-05-07T04:30:10Z",
+    "title": "vm2 is Vulnerable to Host File Path Disclosure via Stack Trace Information Leak",
+    "description": "### Summary\nvm2's `CallSite` wrapper class (intended as a safe wrapper for V8's native CallSite) blocks `getThis()` and `getFunction()` to prevent host object leakage, but allows `getFileName()` to return unsanitized host absolute paths. Any sandboxed code can extract the full directory structure, library paths, and framework versions of the host server.\n\n### Details\nIn `lib/setup-sandbox.js:436-466`, the `CallSite` class overrides `getThis()` and `getFunction()` with `undefined` to prevent host",
     "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-q2qq-hmj6-3wpp",
+    "cve_id": "CVE-2026-44002",
+    "ghsa_id": "GHSA-v27g-jcqj-v8rw",
     "affected_packages": [
-      "hickory-proto"
+      "vm2"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows sandboxed code to disclose sensitive host file paths, potentially exposing directory structures, library paths, and framework versions. This could aid attackers in reconnaissance and increase the likelihood of further exploitation.",
+      "affected_industries": [
+        "Technology",
+        "Web Hosting",
+        "Cloud Services",
+        "Software Development"
+      ],
+      "recommended_actions": [
+        "Update vm2 to the latest patched version as soon as it becomes available.",
+        "Restrict access to the sandbox environment and monitor for unusual activity or file path disclosures.",
+        "Implement additional logging and intrusion detection systems to identify potential exploitation attempts."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-mpf8-4hx2-7cjg",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-07T04:29:22Z",
+    "title": "vm2 Host Promise Resolution Preserves Object Identity Across Sandbox Boundary",
+    "description": "### Summary\n\nA sandbox boundary violation in **vm2** allows host object identity to cross into the sandbox through host Promise resolution.\n\nWhen a host-side Promise that resolves to a host object is exposed to the sandbox, the value delivered to the sandbox `.then()` callback preserves host identity. This allows the sandbox to interact with the host object directly, including:\n\n- Performing identity checks using host-side `WeakMap`\n- Mutating host object state from inside the sandbox\n\nThis beha",
+    "severity": "medium",
+    "cve_id": "CVE-2026-44000",
+    "ghsa_id": "GHSA-mpf8-4hx2-7cjg",
+    "affected_packages": [
+      "vm2"
     ],
     "cwes": [
       null,
@@ -808,7 +786,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-44000.",
       "affected_industries": [
         "Technology",
         "General"
@@ -875,18 +853,18 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "This vulnerability allows a rogue DHCP server to inject arbitrary dhclient.conf directives, potentially leading to remote code execution as root. This could compromise system integrity, enable privilege escalation, and facilitate lateral movement within a network.",
+      "impact_assessment": "This vulnerability allows a rogue DHCP server to inject arbitrary dhclient.conf directives, potentially leading to remote code execution as root. This could compromise system integrity, data confidentiality, and availability.",
       "affected_industries": [
         "Telecommunications",
         "Cloud Service Providers",
         "Enterprise IT",
-        "IoT Device Manufacturers",
-        "Government and Defense"
+        "Internet Service Providers",
+        "Government"
       ],
       "recommended_actions": [
-        "Apply patches or updates provided by your operating system vendor to mitigate CVE-2026-42511.",
-        "Configure network environments to restrict unauthorized DHCP servers and implement DHCP snooping where possible.",
-        "Monitor and audit DHCP-related logs for unusual activity or rogue server attempts."
+        "Apply patches or updates provided by the vendor to address CVE-2026-42511 immediately.",
+        "Configure network environments to prevent unauthorized DHCP servers from being introduced, such as using DHCP snooping or static IP configurations.",
+        "Monitor and audit DHCP-related logs and configurations to detect any signs of exploitation or suspicious activity."
       ],
       "urgency": "critical"
     },
@@ -943,18 +921,15 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Exploitation of this vulnerability allows unauthenticated attackers to access sensitive files on the application server and adjacent network shares, potentially leading to data breaches and unauthorized access to internal services.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2024-39847.",
       "affected_industries": [
         "Technology",
-        "Finance",
-        "Healthcare",
-        "Retail",
-        "Manufacturing"
+        "General"
       ],
       "recommended_actions": [
-        "Apply the latest security patch or update provided by the vendor to mitigate the vulnerability.",
-        "Implement strict network segmentation to limit access to SOAP endpoints and adjacent network shares.",
-        "Monitor and log all SOAP endpoint activity for signs of unauthorized access or exploitation attempts."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "high"
     },
