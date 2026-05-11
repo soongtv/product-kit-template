@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1778513356800-1",
+    "id": "twitter-1778529498784-1",
     "source": "Twitter Security",
-    "timestamp": "2026-05-11T15:29:16.800Z",
+    "timestamp": "2026-05-11T19:58:18.784Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -11,28 +11,29 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure can lead to significant disruptions, data breaches, and financial losses. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code across multiple systems, potentially impacting business continuity and data integrity.",
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code, potentially leading to data encryption, service disruption, and financial losses.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
         "Retail",
         "Manufacturing",
-        "Government"
+        "Government",
+        "Education"
       ],
       "recommended_actions": [
-        "Conduct an immediate review and hardening of CI/CD pipelines, including implementing multi-factor authentication (MFA) and restricting access to critical systems.",
-        "Deploy advanced endpoint detection and response (EDR) solutions to monitor and mitigate ransomware activity in real-time.",
-        "Ensure regular backups of critical data are performed and stored offline, and test recovery processes to minimize downtime in case of an attack."
+        "Conduct an immediate review of CI/CD pipelines to identify and remediate any unauthorized access or misconfigurations.",
+        "Implement robust monitoring and anomaly detection tools to identify suspicious activities in cloud environments.",
+        "Ensure regular backups of critical data are performed and stored securely offline to mitigate the impact of ransomware attacks."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "hn-1778513356800-1",
+    "id": "hn-1778529498784-1",
     "source": "HackerNews",
-    "timestamp": "2026-05-11T15:29:16.800Z",
+    "timestamp": "2026-05-11T19:58:18.784Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -56,28 +57,30 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-qfxw-v8qx-vj3v",
+    "id": "gh-GHSA-p6fr-rxq7-xcg8",
     "source": "GitHub Security",
-    "timestamp": "2026-05-11T15:18:47Z",
-    "title": "Ella Core Vulnerable to UE Downlink Redirection via Forged PDUSessionResourceSetupResponse",
-    "description": "## Summary\n\nA radio with a valid NG Setup can send a forged PDUSessionResourceSetupResponse carrying any UE's AMF-UE-NGAP-ID. Ella Core does not verify the message arrived on the SCTP association bound to that UE's logical NG-connection, then creates a GTP tunnel towards that radio.\n\n## Impact\n\nDownlink user-plane traffic for the targeted UE is redirected to the attacker's radio.\n\n## Fix\n\nUE context lookups are now scoped to the sending radio's SCTP association.",
+    "timestamp": "2026-05-11T19:40:43Z",
+    "title": "MantisBT Vulnerable to Stored XSS in File Download",
+    "description": "Using *show_inline=1* parameter and a valid *file_show_inline_token* CSRF token on file_download.php, an attacker can execute code by uploading a crafted XHTML attachment referencing a JavaScript attachment.\n\n### Impact\nCross-site scripting\n\n### Patches\n- 26647b2e68ba30b9d7987d4e03d7a16416684bc2\n\n### Workarounds\nNone\n\n### Credits\nThanks to siunam (Tang Cheuk Hei) for discovering and responsibly reporting the issue.",
     "severity": "high",
-    "cve_id": "CVE-2026-44473",
-    "ghsa_id": "GHSA-qfxw-v8qx-vj3v",
+    "cve_id": "CVE-2026-44657",
+    "ghsa_id": "GHSA-p6fr-rxq7-xcg8",
     "affected_packages": [
-      "github.com/ellanetworks/core"
+      "mantisbt/mantisbt"
     ],
     "cwes": [
-      null,
       null
     ],
     "references": [
+      null,
+      null,
+      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-44473.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-44657.",
       "affected_industries": [
         "Technology",
         "General"
@@ -92,56 +95,96 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-8p4x-wr7x-3788",
+    "id": "gh-GHSA-7mqj-8gj2-cg59",
     "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:57:43Z",
-    "title": "python-liquid: Absolute paths escape filesystem loader search path",
-    "description": "### Impact\nThe built-in `FileSystemLoader` and `CachingFileSystemLoader` do not guard against reading files outside their search paths when given an absolute path to resolve. This allows malicious template authors to load and render arbitrary files via the `{% include %}` and `{% render %}` tags. Targeted files would need to contain valid Liquid markup and be readable by the application process.\n\n### Patches\nThe issue is fixed in version 2.2.0 with the inclusion of a `template_path.is_absolute()",
+    "timestamp": "2026-05-11T19:40:29Z",
+    "title": "MantisBT has Stored XSS on Move Attachments Admin Page",
+    "description": "Unescaped Project Name allows an attacker that can set it (which typically requires manager or administrator access level) to inject HTML in Move Attachments admin page.\n\n### Impact\nCross-site scripting (XSS).\nThis is mitigated by Content Security Policy which restricts scripts execution.\n\n### Patches\n- 5cb4b469295889f5d2b01677c9bf82c143e0fdaa\n\n### Workarounds\nNone",
     "severity": "high",
-    "cve_id": "CVE-2026-45017",
-    "ghsa_id": "GHSA-8p4x-wr7x-3788",
+    "cve_id": "CVE-2026-44655",
+    "ghsa_id": "GHSA-7mqj-8gj2-cg59",
     "affected_packages": [
-      "python-liquid"
+      "mantisbt/mantisbt"
     ],
     "cwes": [
       null
     ],
     "references": [
       null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-44655.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-pv5w-4p9q-p3v2",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:40:15Z",
+    "title": "Kysely: JSON-path traversal injection via unsanitized path-leg metacharacters in `JSONPathBuilder.key()` / `.at()`",
+    "description": "## Summary\n\nKysely 0.28.12 added a `sanitizeStringLiteral()` call inside `DefaultQueryCompiler.visitJSONPathLeg` (commit `0a602bf`, PR #1727) to fix CVE-2026-32763 (`GHSA-wmrf-hv6w-mr66`). The fix only doubles single quotes (`'` → `''`); it does **not** escape JSON-path metacharacters (`.`, `[`, `]`, `*`, `**`, `?`). When attacker-controlled input flows into `eb.ref(col, '->$').key(input)` or `.at(input)` — including type-safe code where the JSON column is shaped like `Record<string, T>` so `K e",
+    "severity": "high",
+    "cve_id": "CVE-2026-44635",
+    "ghsa_id": "GHSA-pv5w-4p9q-p3v2",
+    "affected_packages": [
+      "kysely"
+    ],
+    "cwes": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to exploit the FileSystemLoader and CachingFileSystemLoader in python-liquid to access and render arbitrary files outside the intended search path. This could lead to unauthorized access to sensitive data, leakage of confidential information, or potential lateral movement within the application environment.",
+      "impact_assessment": "The vulnerability in Kysely allows for JSON-path traversal injection, which can lead to unauthorized data access, data manipulation, or potential privilege escalation. This poses a significant risk to applications that rely on Kysely for database queries, especially when handling user-controlled input.",
       "affected_industries": [
-        "Software Development",
-        "E-commerce",
-        "Financial Services",
+        "Technology",
+        "Finance",
         "Healthcare",
+        "E-commerce",
+        "Government",
         "Education"
       ],
       "recommended_actions": [
-        "Upgrade to python-liquid version 2.2.0 or later, as the issue is patched in this version.",
-        "Audit and restrict file permissions to ensure sensitive files are not accessible by the application process.",
-        "Implement input validation and sanitize template inputs to prevent malicious template injection."
+        "Immediately update to a patched version of Kysely (if available) or apply any recommended mitigations provided by the maintainers.",
+        "Implement strict input validation and sanitization for any user-controlled data passed to `JSONPathBuilder.key()` or `.at()` methods.",
+        "Conduct a security review of your application to identify and mitigate any potential exploitation vectors related to this vulnerability."
       ],
       "urgency": "high"
     },
     "risk_score": 85
   },
   {
-    "id": "gh-GHSA-88q9-cmp2-c2vq",
+    "id": "gh-GHSA-fj2m-qvh9-jq4q",
     "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:53:25Z",
-    "title": "oxidize-pdf: NaN/inf bypass in colour content-stream emission causes PDF rejection (DoS)",
-    "description": "### Impact\n\n  `oxidize-pdf` defines `Color` as a `pub enum` with public tuple-struct variants `Rgb(f64, f64, f64)`, `Gray(f64)`, and `Cmyk(f64, f64, f64, f64)`. The constructors `Color::rgb`, `Color::gray`, and `Color::cmyk` clamp incoming\n  components to `[0.0, 1.0]`, but because the variants are `pub`, callers can construct values directly without going through the constructors:\n\n  ```rust\n  let safe   = Color::rgb(f64::NAN, 0.5, 0.5);   // clamps NaN to 0.0\n  let attack = Color::Rgb(f64::NAN,",
+    "timestamp": "2026-05-11T19:40:07Z",
+    "title": "local-deep-research is Vulnerable to HTML Injection via Unescaped User Input in PDF Export (`pdf_service.py:_markdown_to_html`)",
+    "description": "## Summary\n\n`PDFService._markdown_to_html()` constructs an HTML document by interpolating user-controlled values — specifically `title` (sourced from `research.title` or `research.query`) and `metadata` key-value pairs — directly into an f-string without any HTML escaping. An authenticated attacker can craft a research query containing HTML special characters to inject arbitrary HTML tags into the document processed by WeasyPrint during PDF export. This injection can be chained to trigger a Serv",
     "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-88q9-cmp2-c2vq",
+    "cve_id": "CVE-2026-43979",
+    "ghsa_id": "GHSA-fj2m-qvh9-jq4q",
     "affected_packages": [
-      "oxidize-pdf",
-      "OxidizePdf.NET",
-      "oxidize-pdf"
+      "local-deep-research"
     ],
     "cwes": [
       null,
@@ -149,11 +192,15 @@
     ],
     "references": [
       null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-43979.",
       "affected_industries": [
         "Technology",
         "General"
@@ -168,27 +215,28 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-mf9v-mfxr-j63j",
+    "id": "gh-GHSA-g8f2-4f4f-5jqw",
     "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:51:45Z",
-    "title": "urllib3: Decompression-bomb safeguards bypassed in parts of the streaming API",
-    "description": "### Impact\n\nurllib3's [streaming API](https://urllib3.readthedocs.io/en/2.7.0/advanced-usage.html#streaming-and-i-o) is designed for the efficient handling of large HTTP responses by reading the content in chunks, rather than loading the entire response body into memory at once.\n\nurllib3 can perform decompression based on the HTTP `Content-Encoding` header (e.g., `gzip`, `deflate`, `br`, or `zstd`). When using the streaming API since version 2.6.0, the library decompresses only the necessary byt",
-    "severity": "high",
-    "cve_id": "CVE-2026-44432",
-    "ghsa_id": "GHSA-mf9v-mfxr-j63j",
+    "timestamp": "2026-05-11T19:40:00Z",
+    "title": "SandboxJS has a sandbox escape via Function.caller leakage of internal call op",
+    "description": "### Summary\nSandbox-defined functions expose `Function.caller`, allowing sandboxed code to recover the internal `LispType.Call` runtime callback. That callback can then be invoked with attacker-controlled fake context and obj values to extract blocked host statics, recover the real host Function constructor, and execute arbitrary host JavaScript.\n### Details\nIn [executorUtils.ts](https://github.com/nyariv/SandboxJS/blob/1e6785658c94f5f2fb8e4a02cfcf1e7821b8be7f/src/executor/executorUtils.ts#L239-",
+    "severity": "critical",
+    "cve_id": "CVE-2026-43898",
+    "ghsa_id": "GHSA-g8f2-4f4f-5jqw",
     "affected_packages": [
-      "urllib3"
+      "@nyariv/sandboxjs"
     ],
     "cwes": [
       null
     ],
     "references": [
       null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-44432.",
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-43898.",
       "affected_industries": [
         "Technology",
         "General"
@@ -197,377 +245,22 @@
         "Review affected systems",
         "Apply security patches if available",
         "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-qccp-gfcp-xxvc",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:51:20Z",
-    "title": "urllib3: Sensitive headers forwarded across origins in proxied low-level redirects",
-    "description": "### Impact\n\nWhen following cross-origin redirects for requests made using urllib3’s high-level APIs, such as `urllib3.request()`, `PoolManager.request()`, and `ProxyManager.request()`, sensitive headers — `Authorization`, `Cookie`, and `Proxy-Authorization` (defined in `Retry.DEFAULT_REMOVE_HEADERS_ON_REDIRECT`) — are stripped by default, as expected.\n\nHowever, cross-origin redirects followed from the low-level API via `ProxyManager.connection_from_url().urlopen(..., assert_same_host=False)` sti",
-    "severity": "high",
-    "cve_id": "CVE-2026-44431",
-    "ghsa_id": "GHSA-qccp-gfcp-xxvc",
-    "affected_packages": [
-      "urllib3"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows sensitive headers such as Authorization, Cookie, and Proxy-Authorization to be forwarded across origins during low-level API redirects in urllib3. This could lead to unauthorized access, session hijacking, or data leakage if exploited by attackers.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Update urllib3 to the latest patched version that addresses CVE-2026-44431.",
-        "Review and audit applications using urllib3 to identify and mitigate any reliance on low-level APIs that may expose sensitive headers.",
-        "Implement additional security controls, such as strict origin validation and monitoring for unauthorized access attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-w94c-4vhp-22gx",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:50:36Z",
-    "title": "@vitejs/plugin-rsc has a Denial of Service Vulnerability in React Server Components",
-    "description": "### Impact\n\n`@vitejs/plugin-rsc` vendors `react-server-dom-webpack`, which contained a vulnerability in versions prior to 19.2.6. See details in React repository's advisory https://github.com/facebook/react/security/advisories/GHSA-rv78-f8rc-xrxh\n\n### Patches\n\nUpgrade immediately to `@vitejs/plugin-rsc@0.5.26` or later.",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-w94c-4vhp-22gx",
-    "affected_packages": [
-      "@vitejs/plugin-rsc"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in @vitejs/plugin-rsc could allow attackers to exploit React Server Components, potentially leading to a Denial of Service (DoS) attack. This could disrupt application availability and impact user experience.",
-      "affected_industries": [
-        "Technology",
-        "E-commerce",
-        "Media and Entertainment",
-        "Healthcare",
-        "Financial Services"
-      ],
-      "recommended_actions": [
-        "Immediately upgrade to @vitejs/plugin-rsc version 0.5.26 or later to mitigate the vulnerability.",
-        "Conduct a thorough review of your application dependencies to ensure no other vulnerable versions of react-server-dom-webpack are in use.",
-        "Implement monitoring and logging to detect and respond to any unusual traffic patterns that could indicate a DoS attempt."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-8h8q-6873-q5fj",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:50:27Z",
-    "title": "Next.js Vulnerable to Denial of Service with Server Components",
-    "description": "A vulnerability affects certain React Server Components packages for versions 19.x and frameworks that use the affected packages, including Next.js 13.x, 14.x, 15.x, and 16.x using the App Router. The issue is tracked upstream as [CVE-2026-23870](https://github.com/facebook/react/security/advisories/GHSA-rv78-f8rc-xrxh). \n\nA specially crafted HTTP request can be sent to any App Router Server Function endpoint that, when deserialized, may trigger excessive CPU usage. This can result in denial of ",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-8h8q-6873-q5fj",
-    "affected_packages": [
-      "next",
-      "next"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-rv78-f8rc-xrxh",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:50:07Z",
-    "title": "Facebook React has a Denial of Service Vulnerability in React Server Components",
-    "description": "## Impact\n\nA denial of service vulnerability could be triggered by sending specially crafted HTTP requests to server function endpoints, this could lead to out-of-memory exceptions or excessive CPU usage.\n\nWe recommend updating immediately.\n\nThe vulnerability exists in versions 19.0.0 through 19.0.5, 19.1.0 through 19.1.6, and 19.2.0 through 19.2.5 of:\n\n[react-server-dom-webpack](https://www.npmjs.com/package/react-server-dom-webpack)\n[react-server-dom-parcel](https://www.npmjs.com/package/react",
-    "severity": "high",
-    "cve_id": "CVE-2026-23870",
-    "ghsa_id": "GHSA-rv78-f8rc-xrxh",
-    "affected_packages": [
-      "react-server-dom-parcel",
-      "react-server-dom-turbopack",
-      "react-server-dom-webpack",
-      "react-server-dom-parcel",
-      "react-server-dom-turbopack",
-      "react-server-dom-webpack",
-      "react-server-dom-parcel",
-      "react-server-dom-turbopack",
-      "react-server-dom-webpack"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-23870.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-389r-gv7p-r3rp",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:48:12Z",
-    "title": "go-git's improper parsing of specially crafted objects may lead to inconsistent interpretation compared to upstream Git",
-    "description": "### Impact\n`go-git` may parse malformed Git objects in a way that differs from upstream Git. When `commit` or `tag` objects contain ambiguous or malformed headers, `go-git`’s decoded representation may expose values differently from how Git itself would interpret or reject the same object.\n\nAdditionally, `go-git`’s commit signing and verification logic operates over commit data reconstructed from `go-git`’s parsed representation rather than the original raw object bytes. As a result, `go-git` ma",
-    "severity": "high",
-    "cve_id": "CVE-2026-45022",
-    "ghsa_id": "GHSA-389r-gv7p-r3rp",
-    "affected_packages": [
-      "github.com/go-git/go-git/v6",
-      "github.com/go-git/go-git/v5"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-45022.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-587r-mc96-6f2p",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:45:08Z",
-    "title": "GuardDog has a blind GitHub URL rewrite in remote project scanning causes SSRF and `GH_TOKEN` exfiltration",
-    "description": "# Summary\nThe programmatic remote project scanning path rewrites attacker-controlled repository URLs using a blind string replacement and then sends the caller's GitHub credentials with the resulting request. This allows an attacker who can influence the scanned repository URL to trigger SSRF and capture the `GH_TOKEN` used by GuardDog.\n\n# Description\n`ProjectScanner.scan_remote()` takes a `url`, `branch`, and `requirements_name`, then constructs a raw GitHub URL by calling:\n\n```python\ngithubuse",
-    "severity": "high",
-    "cve_id": "CVE-2026-44971",
-    "ghsa_id": "GHSA-587r-mc96-6f2p",
-    "affected_packages": [
-      "guarddog"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in GuardDog's remote project scanning allows attackers to perform Server-Side Request Forgery (SSRF) and exfiltrate sensitive GitHub credentials (`GH_TOKEN`). This could lead to unauthorized access to private repositories, data leaks, and potential compromise of CI/CD pipelines.",
-      "affected_industries": [
-        "Software Development",
-        "Technology",
-        "DevOps",
-        "Cloud Services"
-      ],
-      "recommended_actions": [
-        "Immediately update GuardDog to a patched version that addresses the blind URL rewrite vulnerability.",
-        "Revoke and regenerate all GitHub tokens (`GH_TOKEN`) that may have been exposed to prevent unauthorized access.",
-        "Implement strict input validation and sanitization for repository URLs in all project scanning workflows."
       ],
       "urgency": "critical"
     },
-    "risk_score": 85
+    "risk_score": 90
   },
   {
-    "id": "gh-GHSA-m5p4-gvpx-4mvr",
+    "id": "gh-GHSA-pw5x-2mf9-3xc8",
     "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:43:43Z",
-    "title": "GuardDog: Unsanitized human-readable scan output allows terminal escape injection from malicious package content",
-    "description": "# Summary\nGuardDog includes attacker-controlled filenames, file locations, messages, and code snippets in its default human-readable output without escaping terminal control characters. A malicious package can therefore inject ANSI or OSC escape sequences into analyst terminals or CI logs.\n\n# Description\nThe finding formatter stores file paths and snippets from scanned content:\n\n```python\nlocation = file_path + \":\" + str(start_line)\nfinding = {\n    \"location\": location,\n    \"code\": code,\n    \"me",
-    "severity": "medium",
-    "cve_id": "CVE-2026-44972",
-    "ghsa_id": "GHSA-m5p4-gvpx-4mvr",
-    "affected_packages": [
-      "guarddog"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-44972.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-q8w6-w55c-ccv5",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:42:46Z",
-    "title": "Keylime has a hardcoded attestation challenge nonce that allows replay attacks",
-    "description": "## CVE-2026-6420: Hardcoded attestation challenge nonce allows replay attacks\n\n### Impact\n\nThe `CertificationParameters.generate_challenge()` method in the push attestation protocol uses a hardcoded challenge nonce instead of generating a cryptographically random value. This removes the nonce-based replay protection from TPM quote attestation.\n\nAn attacker with root access on a monitored agent node can exploit this by stockpiling valid TPM quotes (using `tpm2_quote` with the known nonce) before ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6420",
-    "ghsa_id": "GHSA-q8w6-w55c-ccv5",
-    "affected_packages": [
-      "keylime"
-    ],
-    "cwes": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6420.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-q7rr-3cgh-j5r3",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:42:10Z",
-    "title": "Prometheus exporter process crash via malformed HTTP request",
-    "description": "## Summary\n\nA single malformed HTTP request crashes any Node.js process running the OpenTelemetry JS Prometheus exporter. The metrics endpoint (default `0.0.0.0:9464`) has no error handling around URL parsing, so a request with an invalid URI causes an uncaught `TypeError` that terminates the process.\n\n**You are affected by this vulnerability if either of the following apply to your application:**\n\n* you directly use `@opentelemetry/exporter-prometheus` in your code through its built-in server.\n",
+    "timestamp": "2026-05-11T19:39:43Z",
+    "title": "MantisBT has a Private Bugnote Attachment Content Leak via REST API",
+    "description": "A missing authorization check in MantisBT's file visibility function allows any authenticated user (REPORTER+) to download attachments on private bugnotes they should not be able to access, via the REST API endpoint GET /api/rest/issues/{id}/files and SOAP API mc_issue_attachment_get endpoint.\n\n### Impact\n- REPORTER (access level 25) can view file attachments that were uploaded to private bugnotes by DEVELOPER/MANAGER/ADMIN users\n- Private bugnotes are intended for internal developer discussion;",
     "severity": "high",
-    "cve_id": "CVE-2026-44902",
-    "ghsa_id": "GHSA-q7rr-3cgh-j5r3",
+    "cve_id": "CVE-2026-42071",
+    "ghsa_id": "GHSA-pw5x-2mf9-3xc8",
     "affected_packages": [
-      "@opentelemetry/exporter-prometheus",
-      "@opentelemetry/sdk-node",
-      "@opentelemetry/auto-instrumentations-node"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows a single malformed HTTP request to crash Node.js processes using the OpenTelemetry JS Prometheus exporter, potentially leading to denial of service (DoS) for affected applications. This could disrupt monitoring services and dependent systems, causing operational downtime.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Telecommunications",
-        "Cloud Service Providers"
-      ],
-      "recommended_actions": [
-        "Update to the latest version of the `@opentelemetry/exporter-prometheus` package as soon as a patched release is available.",
-        "Implement input validation and error handling for HTTP requests to the Prometheus metrics endpoint to mitigate the risk of malformed requests causing crashes.",
-        "Restrict access to the Prometheus metrics endpoint (e.g., using firewalls or network policies) to trusted sources only."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-g588-cjg3-6g78",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:40:17Z",
-    "title": "Steamworks game clients/servers using P2P authentication vulnerable to denial of service",
-    "description": "Processing the raw `ValidateAuthTicketResponse_t` callback data panics when the `m_eAuthSessionResponse` field is `k_EAuthSessionResponseAuthTicketNetworkIdentityFailure`. This can lead to denial of service in game clients and servers using the `begin_authentication_session` API to authenticate players if a malicious game client sends an authentication ticket with a network identity that does not match that of the verifier.",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-g588-cjg3-6g78",
-    "affected_packages": [
-      "steamworks"
+      "mantisbt/mantisbt"
     ],
     "cwes": [
       null
@@ -575,230 +268,563 @@
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-hgqw-6m45-hw5f",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:28:30Z",
-    "title": "Streamlink has an arbitrary local file read via file:// URI in HLS and DASH",
-    "description": "## Summary\n\nStreamlink's HLS and DASH parsers do not validate the URI scheme of segment entries and other resources. A remote `.m3u8` HLS playlist or `.mpd` DASH manifest can list `file:///path/to/file` as a segment, and streamlink will read that local file and write its contents to the output stream.\n\nConfirmed on streamlink 8.3.0 (latest release at time of report).\n\n## Description\n\nSegment URIs from an HLS playlist or DASH manifest are passed to the worker without any scheme check. The underly",
-    "severity": "medium",
-    "cve_id": "CVE-2026-44353",
-    "ghsa_id": "GHSA-hgqw-6m45-hw5f",
-    "affected_packages": [
-      "streamlink"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
       null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-44353.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-w2pm-x38x-jp44",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:27:37Z",
-    "title": "Dockerfile command injection via envs[*].name in bentofile.yaml (sibling fix-bypass of CVE-2026-33744 and CVE-2026-35043)",
-    "description": "# BentoML `envs[*].name` Dockerfile command injection — sibling of CVE-2026-33744 / CVE-2026-35043\n\nA malicious `bentofile.yaml` containing a newline-injected value in `envs[*].name` produces unquoted `RUN` directives in the BentoML-generated Dockerfile. When the victim runs `bentoml containerize` on the imported bento, those `RUN` directives execute on the host during `docker build`. Verified end-to-end on `bentoml==1.4.38`.\n\n## Vulnerable code\n\n`src/bentoml/_internal/container/frontend/dockerf",
-    "severity": "high",
-    "cve_id": "CVE-2026-44346",
-    "ghsa_id": "GHSA-w2pm-x38x-jp44",
-    "affected_packages": [
-      "bentoml"
-    ],
-    "cwes": [
       null,
-      null
-    ],
-    "references": [
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "This vulnerability allows attackers to inject malicious commands into Dockerfiles generated by BentoML via a manipulated 'bentofile.yaml' file. If exploited, it could lead to unauthorized code execution on the host machine during the Docker build process, potentially compromising the host system and its environment.",
+      "impact_assessment": "The vulnerability allows unauthorized access to sensitive attachments on private bugnotes, potentially exposing internal discussions, proprietary information, or confidential data. This could lead to data leaks, reputational damage, or exploitation of disclosed information.",
       "affected_industries": [
-        "Technology",
-        "Cloud Services",
-        "DevOps",
         "Software Development",
-        "Data Science and Machine Learning"
+        "Technology",
+        "IT Services",
+        "Open Source Projects"
       ],
       "recommended_actions": [
-        "Immediately update BentoML to a patched version if available, or apply any provided mitigations to sanitize inputs in 'bentofile.yaml'.",
-        "Implement strict validation and sanitization of user-provided inputs, particularly for 'envs[*].name' fields in 'bentofile.yaml'.",
-        "Restrict permissions for Docker build processes and isolate build environments to minimize potential impact of malicious code execution."
+        "Apply the latest patch or upgrade to the version of MantisBT that resolves CVE-2026-42071.",
+        "Restrict access to the REST and SOAP API endpoints using network-level controls or authentication mechanisms until the vulnerability is fixed.",
+        "Audit logs for any unauthorized access to private bugnote attachments and investigate potential data exposure."
       ],
       "urgency": "high"
     },
     "risk_score": 85
   },
   {
-    "id": "gh-GHSA-78f9-r8mh-4xm2",
+    "id": "gh-GHSA-pq86-j2c2-47f6",
     "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:27:06Z",
-    "title": "BentoML Dockerfile command injection via docker.base_image (sister of pending GHSA-w2pm-x38x-jp44 / CVE-2026-33744 / CVE-2026-35043)",
-    "description": "The same Dockerfile template that mishandles `envs[*].name` (pending GHSA-w2pm-x38x-jp44) also interpolates `docker.base_image` raw with no escaping, newline filtering, or validation. A malicious bento.yaml with a multi-line `docker.base_image` value smuggles arbitrary Dockerfile directives into the generated Dockerfile, and `bentoml containerize` then runs `docker build` which executes the injected `RUN` directives on the victim host.\n\n## Vulnerable code\n\n`src/bentoml/_internal/container/fronte",
-    "severity": "high",
-    "cve_id": "CVE-2026-44345",
-    "ghsa_id": "GHSA-78f9-r8mh-4xm2",
-    "affected_packages": [
-      "bentoml"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-44345.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-hmjq-crxp-7rjw",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:25:49Z",
-    "title": "Open WebUI has inconsistent authorization controls within memories API",
-    "description": "### Summary\n\nAuthorization controls surrounding the memories API were inconsistent, resulting in the ability of a standard user to delete, restore, and view the contents of other users' memories.\n\n\n### Details\n\nUsing a newly created non-admin user with no existing memories, it is possible to view existing memories via `POST /api/v1/memories/query`. See below under the PoC section, where a call to `GET /api/v1/memories/` returns `[]` (as expected) but a call to `POST /api/v1/memories/query` revea",
-    "severity": "high",
-    "cve_id": "CVE-2026-44570",
-    "ghsa_id": "GHSA-hmjq-crxp-7rjw",
-    "affected_packages": [
-      "open-webui"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The inconsistent authorization controls in the memories API allow unauthorized users to access, delete, and restore sensitive data belonging to other users. This could lead to data breaches, privacy violations, and potential exploitation of sensitive information.",
-      "affected_industries": [
-        "Technology",
-        "Healthcare",
-        "Finance",
-        "Education",
-        "E-commerce"
-      ],
-      "recommended_actions": [
-        "Implement strict role-based access controls (RBAC) and ensure consistent authorization checks across all API endpoints, including the memories API.",
-        "Perform a comprehensive security audit of the entire API to identify and remediate similar vulnerabilities.",
-        "Deploy monitoring and logging mechanisms to detect unauthorized API access and respond to potential breaches in real-time."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-j643-x8pv-8m67",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:07:21Z",
-    "title": "Dozzle's Cross-Site WebSocket Hijacking (CSWSH) on exec/attach endpointsbypasses authentication",
-    "description": "## Summary\n\nThe WebSocket upgrader for the `/exec` and `/attach` endpoints uses `CheckOrigin: func(r *http.Request) bool { return true }`, accepting upgrade requests from any origin. Combined with the JWT cookie using `SameSite: Lax`, this enables Cross-Site WebSocket Hijacking (CSWSH) — **even when authentication is properly configured**.\n\nAn attacker hosting a page on a same-site origin (e.g., a sibling subdomain, or another service on localhost) can initiate a WebSocket connection to the exec",
-    "severity": "high",
-    "cve_id": "CVE-2026-44985",
-    "ghsa_id": "GHSA-j643-x8pv-8m67",
-    "affected_packages": [
-      "github.com/amir20/dozzle"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-44985.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-jgj3-r8hr-9pjw",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-11T14:05:24Z",
-    "title": "Open WebUI's Improper Authorization in Standard Channels Allows Message Updates with Read Permission",
-    "description": "## Vulnerability Description\n\nIn standard channels (i.e., channels whose `channel.type` is neither `group` nor `dm`), the endpoint\n\n`POST /api/v1/channels/{channel_id}/messages/{message_id}/update` can be accessed with **read permission only**.\n\nWhen `access_control` is set to `None`, the authorization check `has_access(..., type=\"read\")` evaluates to `True`, allowing users who are **not the message owner** to update messages.\n\nAs a result, unauthorized modification of other users’ messages is p",
+    "timestamp": "2026-05-11T19:39:31Z",
+    "title": "MantisBT: Authorization Bypass in Bugnote Editing via Issue Update API",
+    "description": "The mc_issue_update() function in MantisBT allows users having *update_bug_threshold* access (UPDATER, with default settings) to edit, change view state, and modify time tracking on bugnotes belonging to other users — bypassing the default DEVELOPER (level 55) threshold required by the dedicated mc_issue_note_update() function.\n\n### Impact\n1. UPDATER can edit notes by DEVELOPER/MANAGER/ADMIN — bypassing the DEVELOPER threshold\n2. UPDATER can change private notes to public — exposing confidential",
     "severity": "medium",
-    "cve_id": "CVE-2026-44571",
-    "ghsa_id": "GHSA-jgj3-r8hr-9pjw",
+    "cve_id": "CVE-2026-42070",
+    "ghsa_id": "GHSA-pq86-j2c2-47f6",
     "affected_packages": [
-      "open-webui"
+      "mantisbt/mantisbt"
     ],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows users with UPDATER-level permissions to bypass authorization checks and modify bugnotes, potentially exposing sensitive information or altering critical data without proper oversight.",
+      "affected_industries": [
+        "Software Development",
+        "IT Services",
+        "Technology Consulting",
+        "Bug Tracking Platforms"
+      ],
+      "recommended_actions": [
+        "Apply the latest patch or update for MantisBT that addresses CVE-2026-42070.",
+        "Restrict UPDATER-level access to trusted users and review permission configurations.",
+        "Monitor bugnote changes and implement logging to detect unauthorized modifications."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-j7v9-f46r-2rp4",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:39:22Z",
+    "title": "MantisBT is Vulnerable to Reflected XSS in Rendering Dynamic Custom Textarea Field",
+    "description": "Lack of validation of filter_target parameter on return_dynamic_filters.php (normally used as an AJAX in View Issues Page) allows an attacker to inject arbitrary HTML if the target is a TEXTAREA custom field.\n\n### Impact\nCross-site scripting (XSS)\n\n### Patches\n- c885af13f0b8596714ffe11df757c09f35fbd8f4\n\n### Workarounds\nNone\n\n### Credits\n\nThanks to siunam (Tang Cheuk Hei) for discovering and responsibly reporting the issue.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41897",
+    "ghsa_id": "GHSA-j7v9-f46r-2rp4",
+    "affected_packages": [
+      "mantisbt/mantisbt"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-44571.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41897.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-87f9-hvmw-gh4p",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:37:00Z",
+    "title": "Mermaid: Improper sanitization of configuration leads to CSS injection",
+    "description": "### Impact\n\nMermaid's default configuration allows injecting CSS that applies outside of the Mermaid diagram via the `fontFamily`, `themeCSS`, and `altFontFamily` configuration options.\n\nLive demo: [mermaid.live](https://mermaid.live/edit#pako:eNpNjktLxDAUhf9KvFBR6JS-60QQfODKlUvJ5k6TtsEmKTHFGUP-u-mI6Nmdy3fOPR56wwVQSBIvtXSUeAaD0e4ZlZxPDChhcLxFfwiEauOuLq_9Afv30ZpVczpaITS5kGox1qF2gfSeBwYhJAnThAyz-ewntI68vG5-0z3Z7e7IA9OQwmglB-rsKlJQwircLPgNZeAmocTPAi4GXGfHgOkQYwvqN2PUbzJuGSegA84f0a0LRyeeJI4W_xChubCP",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41159",
+    "ghsa_id": "GHSA-87f9-hvmw-gh4p",
+    "affected_packages": [
+      "mermaid",
+      "mermaid"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41159.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-6m6c-36f7-fhxh",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:36:55Z",
+    "title": "Mermaid Gantt Charts are vulnerable to an Infinite Loop DoS",
+    "description": "### Impact\n\nMermaid v11.14.0 and earlier are vulnerable to a denial-of-service attack when rendering gantt charts, if they use the [`excludes` attribute](https://mermaid.js.org/syntax/gantt.html?#excludes) to exclude all dates.\n\nExample:\n\n```\ngantt\n  excludes monday,tuesday,wednesday,thursday,friday,saturday,sunday\n  DoS :2025-01-01, 1d\n```\n\n`mermaid.parse` is unaffected, unless you then call the `ganttDb.getTasks()` (which is called when rendering a diagram).\n\n### Patches\n\nThis has been patched",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41150",
+    "ghsa_id": "GHSA-6m6c-36f7-fhxh",
+    "affected_packages": [
+      "mermaid",
+      "mermaid"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 55,
+      "impact_assessment": "The vulnerability allows attackers to cause a denial-of-service (DoS) condition by exploiting an infinite loop when rendering Gantt charts with the 'excludes' attribute. This could disrupt services relying on Mermaid for diagram generation, affecting system availability.",
+      "affected_industries": [
+        "Software Development",
+        "Education",
+        "Project Management",
+        "Technology Services"
+      ],
+      "recommended_actions": [
+        "Upgrade Mermaid to version 11.14.1 or later, where the vulnerability has been patched.",
+        "Audit applications using Mermaid to ensure they are not vulnerable to this specific DoS scenario.",
+        "Implement input validation to restrict or sanitize the use of the 'excludes' attribute in Gantt charts."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 55
+  },
+  {
+    "id": "gh-GHSA-ghcm-xqfw-q4vr",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:36:46Z",
+    "title": "Mermaid: Improper sanitization of `classDef` in state diagrams leads to HTML injection",
+    "description": "### Impact\n\nUnder the default configuration, Mermaid state diagram's `classDef` allow DOM injection that escapes the SVG, although `<script>` tags are removed, preventing XSS.\n\n#### Proof-of-concept\n\n```\nstateDiagram-v2\n  classDef xss fill:red</style></svg><style>*{x:x;y:y;overflow:visible!important;contain:none!important;transform:none!important;filter:none!important;clip-path:none!important}</style><div style=\"x:x;y:y;color:red;font:5em/1 monospace;display:grid;place-items:center;z-index:21474",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41149",
+    "ghsa_id": "GHSA-ghcm-xqfw-q4vr",
+    "affected_packages": [
+      "mermaid",
+      "mermaid"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41149.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-xcj9-5m2h-648r",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:36:41Z",
+    "title": "Mermaid: Improper sanitization of `classDefs` in diagrams leads to CSS injection",
+    "description": "### Details\n\nThe state diagram and any other diagram type that routes user-controlled style strings through createCssStyles parser for Mermaid v11.14.0 and earlier captures `classDef` values with an unrestricted regex:\n\n```jison\n// packages/mermaid/src/diagrams/state/parser/stateDiagram.jison:83\n<CLASSDEFID>[^\\n]*   { this.popState(); return 'CLASSDEF_STYLEOPTS' }\n```\n\nThe value passes unsanitized through `addStyleClass()` -> `createCssStyles()` -> `style.innerHTML` (mermaidAPI.ts:418). A `}` in",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41148",
+    "ghsa_id": "GHSA-xcj9-5m2h-648r",
+    "affected_packages": [
+      "mermaid",
+      "mermaid"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41148.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-f633-865q-2mhh",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:35:05Z",
+    "title": "MantisBT is Vulnerable to Stored XSS in Saved-Filter Owner Column",
+    "description": "Incorrect escaping of a saved filter's owner allows an attacker to inject arbitrary HTML on systems where $g_show_user_realname = ON.\n\n### Impact\nCross-site scripting (XSS).\n\nNote that By default, only users with *Manager* access level or above can save their filters publicly\n\n### Patches\n- 44f490bcf20fd491c1b8f3fc9dd041d8c2a30010\n\n### Workarounds\n- Prevent display of users' real name (set `$g_ show_user_realname = OFF;` in configuration)\n- Restrict ability to store filters (set $`g_stored_query",
+    "severity": "high",
+    "cve_id": "CVE-2026-40607",
+    "ghsa_id": "GHSA-f633-865q-2mhh",
+    "affected_packages": [
+      "mantisbt/mantisbt"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 78,
+      "impact_assessment": "The vulnerability allows attackers to execute stored cross-site scripting (XSS) attacks by injecting arbitrary HTML into the Saved-Filter Owner column. This could lead to session hijacking, data theft, or unauthorized actions performed on behalf of affected users, particularly those with elevated privileges.",
+      "affected_industries": [
+        "Software Development",
+        "Technology Services",
+        "Project Management",
+        "Bug Tracking and Issue Management"
+      ],
+      "recommended_actions": [
+        "Apply the patch provided in commit 44f490bcf20fd491c1b8f3fc9dd041d8c2a30010 to fix the vulnerability.",
+        "Set `$g_show_user_realname = OFF;` in the configuration to prevent the display of real names as a temporary workaround.",
+        "Restrict the ability to store filters publicly by setting `$g_stored_query_create_threshold` to a higher access level than 'Manager', if possible."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 78
+  },
+  {
+    "id": "gh-GHSA-6jh4-47v2-4g37",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:35:01Z",
+    "title": "MantisBT has Potential Referer-Based Reflected HTML Injection / XSS in Tag Update Page",
+    "description": "Improper escaping of the redirection page (retrieved from the request's *Referer* header) allows an attacker to inject HTML.\n\nWhile this is generally not directly actionable as modern browsers will URL-encode special characters, on some specific server configurations this could poison the cache, leading to cross-site scripting.\n\n### Impact\nCross-site scripting (XSS).\n\n### Patches\n- b1ebc57763f104eb5f541b7b4d1ce6948168abd9\n\n### Workarounds\nNone\n\n### Credits\nThanks to siunam (Tang Cheuk Hei) for d",
+    "severity": "medium",
+    "cve_id": "CVE-2026-40598",
+    "ghsa_id": "GHSA-6jh4-47v2-4g37",
+    "affected_packages": [
+      "mantisbt/mantisbt"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-40598.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-9c3j-xm6v-j7j3",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:34:48Z",
+    "title": "MantisBT has a Content Security Policy bypass via attachments",
+    "description": "Given any pre-existing XSS / HTML injection vulnerability, an attacker can bypass the Content Security Policy's _script-src_ directive by uploading a crafted attachment to any issue that, when accessed via the _file_download.php_ link, will be downloaded with a valid JavaScript MIME type resulting in script execution.\n\nThe uploaded payload must be sniffed as a valid JavaScript MIME type by PHP finfo (see file_create_finfo() API function). Non-JavaScript MIME types will not get imported in a `<sc",
+    "severity": "high",
+    "cve_id": "CVE-2026-40597",
+    "ghsa_id": "GHSA-9c3j-xm6v-j7j3",
+    "affected_packages": [
+      "mantisbt/mantisbt"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-40597.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-j3v9-553h-x28j",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:34:38Z",
+    "title": "MantisBT is Vulnerable to XSS leading to account takeover via updating a user's font family preference",
+    "description": "Any authenticated user can inject arbitrary HTML via updating their account's font family.\n\n### Impact\nCross-site scripting.\nThe injected payload will be reflected in every MantisBT page.\n\nLeveraging another vulnerability (CSP bypass, see [GHSA-9c3j-xm6v-j7j3](https://github.com/mantisbt/mantisbt/security/advisories/GHSA-9c3j-xm6v-j7j3)), the attacker could achieve account takeover.\n\n### Patches\n- 9e8409cdd979eba86ef532756fc47c1d8112d22d\n\n### Workarounds\nNone\n\n### Credits\nThanks to siunam (Tang ",
+    "severity": "high",
+    "cve_id": "CVE-2026-40596",
+    "ghsa_id": "GHSA-j3v9-553h-x28j",
+    "affected_packages": [
+      "mantisbt/mantisbt"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows an authenticated user to inject arbitrary HTML via the font family preference, leading to persistent cross-site scripting (XSS). Combined with a CSP bypass (GHSA-9c3j-xm6v-j7j3), this could result in account takeover, compromising sensitive user data and potentially enabling further attacks.",
+      "affected_industries": [
+        "Technology",
+        "Software Development",
+        "Project Management",
+        "Open Source Communities"
+      ],
+      "recommended_actions": [
+        "Immediately apply the patch provided in commit 9e8409cdd979eba86ef532756fc47c1d8112d22d to mitigate the vulnerability.",
+        "Conduct a thorough review of CSP configurations to ensure they are properly implemented and cannot be bypassed.",
+        "Educate users and administrators about the potential risks of this vulnerability and encourage them to update their MantisBT installations promptly."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-qj6w-v29q-4rgx",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:34:32Z",
+    "title": "MantisBT is Vulnerable to Stored XSS in Custom Field Textarea Values",
+    "description": "Improper escaping of a textarea custom field's contents in the Update Issue page (bug_update_page.php) allows an attacker to inject HTML and, if CSP settings permit, execute arbitrary JavaScript when the page is loaded.\n\n### Impact\nSession theft leading to admin account takeover, full project data access.\n\n- Precondition: A textarea-type custom field must be configured for the project\n- Attacker: Authenticated user with bug report permission (low privilege)\n- Victim: Any user viewing the bug edi",
+    "severity": "medium",
+    "cve_id": "CVE-2026-39960",
+    "ghsa_id": "GHSA-qj6w-v29q-4rgx",
+    "affected_packages": [
+      "mantisbt/mantisbt"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows an authenticated low-privilege user to inject malicious JavaScript into a custom textarea field, which can execute when viewed by another user. This could lead to session theft, administrative account compromise, and unauthorized access to sensitive project data.",
+      "affected_industries": [
+        "Software Development",
+        "Technology Services",
+        "Project Management Platforms"
+      ],
+      "recommended_actions": [
+        "Update to the latest patched version of MantisBT that addresses CVE-2026-39960.",
+        "Implement a strict Content Security Policy (CSP) to mitigate the risk of JavaScript execution.",
+        "Audit and sanitize all custom field inputs to ensure proper escaping of user-provided data."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-5vpg-rj7q-qpw2",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:34:28Z",
+    "title": "Yii 2: Local file inclusion via view parameter name collision",
+    "description": "The core view rendering method `View::renderPhpFile()` calls `extract($_params_, EXTR_OVERWRITE)` before the `require` statement that includes the view file. A caller-controlled parameter named `_file_` in the `$params` array overwrites the internal local variable that specifies which file is included — enabling a Local File Inclusion primitive.\n\n### Impact\n\n- Local File Inclusion (arbitrary file read via non-PHP files)\n- Potential RCE if attacker can write PHP files via a separate primitive\n- I",
+    "severity": "high",
+    "cve_id": "CVE-2026-39850",
+    "ghsa_id": "GHSA-5vpg-rj7q-qpw2",
+    "affected_packages": [
+      "yiisoft/yii2"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-39850.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-crmx-4p49-46m2",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:33:10Z",
+    "title": "MantisBT: Bugnote Revision Page Leaks Private Issue Metadata After Issue Access Is Revoked",
+    "description": "MantisBT allows a bugnote author to access the note's Revisions page after losing access to the parent private issue.\n\n### Impact\nDisclosure of the private Issue's Id and Summary. The bugnote full revision body remains secure.\n\n### Patches\n- 71df1f67e05b2050cd4bd87839e6cc13747cf03f\n\n### Workarounds\nNone\n\n### Credits \nThanks to Vishal Shukla for discovering and responsibly reporting the issue.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-34970",
+    "ghsa_id": "GHSA-crmx-4p49-46m2",
+    "affected_packages": [
+      "mantisbt/mantisbt"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-34970.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-h4x5-gvx6-3rwc",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-11T19:33:06Z",
+    "title": "MantisBT has an Authorization Bypass that Allows Uploading Attachments to Private Issues via REST API",
+    "description": "### Impact\nMantisBT allows an authenticated user to upload attachments to private Issues they are not authorized to access.\n\n### Patches\n- b262b4d2835b81394d75356dead66e52a6275206\n\n### Workarounds\nNone.\n\n### Credits\nThanks to Vishal Shukla for discovering and responsibly reporting the issue.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-34754",
+    "ghsa_id": "GHSA-h4x5-gvx6-3rwc",
+    "affected_packages": [
+      "mantisbt/mantisbt"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-34754.",
       "affected_industries": [
         "Technology",
         "General"
@@ -866,15 +892,15 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to execute arbitrary JavaScript in the context of the victim's browser, potentially leading to session hijacking, credential theft, or unauthorized actions on behalf of the victim. This could compromise sensitive data and user trust.",
+      "impact_assessment": "This vulnerability allows attackers to execute arbitrary JavaScript in the context of the user's browser, potentially leading to session hijacking, credential theft, or unauthorized actions on behalf of the user. It poses a significant risk to systems relying on the GeoVision LPC2011/LPC2211 web interface.",
       "affected_industries": [
         "Surveillance and Security Systems",
+        "Critical Infrastructure",
         "Retail",
-        "Transportation",
-        "Critical Infrastructure"
+        "Transportation and Logistics"
       ],
       "recommended_actions": [
-        "Apply the latest firmware or software patches provided by GeoVision to address the vulnerability.",
+        "Apply the latest security patch or firmware update from GeoVision to address the vulnerability.",
         "Implement input validation and sanitization on the web interface to prevent malicious scripts from being executed.",
         "Educate users to avoid clicking on suspicious or unexpected URLs, especially those containing query parameters."
       ],
@@ -900,18 +926,18 @@
     ],
     "ai_analysis": {
       "risk_score": 92,
-      "impact_assessment": "The vulnerability allows attackers to intercept broadcast packets and potentially extract device credentials, enabling unauthorized access to GeoVision devices. This could lead to unauthorized control, data theft, or disruption of operations.",
+      "impact_assessment": "The vulnerability allows attackers to intercept broadcast packets containing device credentials, potentially leading to unauthorized access to GeoVision devices and their privileged commands. This could result in data breaches, system manipulation, and further exploitation of connected devices.",
       "affected_industries": [
         "Surveillance and Security",
-        "Government Facilities",
-        "Critical Infrastructure",
+        "Government and Public Sector",
         "Retail",
-        "Healthcare"
+        "Healthcare",
+        "Critical Infrastructure"
       ],
       "recommended_actions": [
-        "Update GeoVision GV-IP Device Utility to the latest patched version as soon as a fix is released.",
-        "Implement network segmentation to isolate GeoVision devices from untrusted networks and limit exposure to broadcast packets.",
-        "Enable encrypted communication protocols (e.g., HTTPS or VPN) for device management and authentication where possible."
+        "Immediately update GeoVision GV-IP Device Utility to the latest patched version if available, or contact the vendor for mitigation guidance.",
+        "Restrict network access to GeoVision devices by implementing VLAN segmentation and limiting broadcast traffic exposure.",
+        "Monitor network traffic for unusual broadcast activity and implement intrusion detection systems to identify potential exploitation attempts."
       ],
       "urgency": "critical"
     },
