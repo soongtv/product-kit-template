@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1778835525376-1",
+    "id": "twitter-1778855117069-1",
     "source": "Twitter Security",
-    "timestamp": "2026-05-15T08:58:45.376Z",
+    "timestamp": "2026-05-15T14:25:17.069Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,29 +10,25 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services, potentially leading to data encryption, service disruption, and financial losses due to ransom payments or downtime.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
       "affected_industries": [
         "Technology",
-        "Finance",
-        "Healthcare",
-        "Retail",
-        "Government",
-        "Education"
+        "General"
       ],
       "recommended_actions": [
-        "Implement strict access controls and monitor CI/CD pipelines for unauthorized changes or suspicious activity.",
-        "Regularly back up critical data and ensure backups are stored in isolated, secure environments to prevent ransomware encryption.",
-        "Deploy advanced endpoint detection and response (EDR) tools to identify and mitigate ransomware activity in real-time."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "hn-1778835525376-1",
+    "id": "hn-1778855117069-1",
     "source": "HackerNews",
-    "timestamp": "2026-05-15T08:58:45.376Z",
+    "timestamp": "2026-05-15T14:25:17.069Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -40,8 +36,355 @@
       "https://news.ycombinator.com/item?id=123"
     ],
     "ai_analysis": {
+      "risk_score": 20,
+      "impact_assessment": "The open-source vulnerability scanner itself poses minimal direct risk, but improper use or reliance on it without validation could lead to missed vulnerabilities or false positives. Additionally, if the tool is compromised or contains malicious code, it could introduce risks to users' environments.",
+      "affected_industries": [
+        "Technology",
+        "Software Development",
+        "Cybersecurity"
+      ],
+      "recommended_actions": [
+        "Conduct a thorough code review of the tool before integrating it into your workflows.",
+        "Use the tool as a supplementary measure alongside other established vulnerability scanning solutions.",
+        "Monitor the tool's repository and community feedback for updates, bug reports, or potential security concerns."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 20
+  },
+  {
+    "id": "gh-GHSA-8r2w-8p2v-h4g4",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Imager::File::GIF versions through 1.002 for Perl allow a heap out of bounds (OOB) write on...",
+    "description": "Imager::File::GIF versions through 1.002 for Perl allow a heap out of bounds (OOB) write on crafted multi-frame GIF files.\n\nImager::File::GIF's i_readgif_multi_low allocates a single per-row buffer GifRow sized for the GIF's global screen width 'SWidth' and reuses it across every image in the file.\n\nThe page-match branch validates Image.Width + Image.Left > SWidth before each DGifGetLine write, but the parallel skip-image branch at imgif.c:790-805 calls DGifGetLine(GifFile, GifRow, Width) with n",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-8454",
+    "ghsa_id": "GHSA-8r2w-8p2v-h4g4",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 78,
+      "impact_assessment": "The vulnerability in Imager::File::GIF versions through 1.002 for Perl allows a heap out-of-bounds write when processing crafted multi-frame GIF files. This could lead to application crashes, data corruption, or potential remote code execution if exploited.",
+      "affected_industries": [
+        "Web Development",
+        "Media and Entertainment",
+        "E-commerce",
+        "Software Development"
+      ],
+      "recommended_actions": [
+        "Upgrade to a patched version of Imager::File::GIF (if available) or apply any security patches provided by the maintainers.",
+        "Implement input validation and sanitization to reject or safely handle untrusted GIF files.",
+        "Monitor systems for suspicious activity or crashes related to GIF file processing and apply runtime protections where possible."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 78
+  },
+  {
+    "id": "gh-GHSA-j276-f994-hf7m",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Permission control vulnerability in the smart sensing service. Impact: Successful exploitation of...",
+    "description": "Permission control vulnerability in the smart sensing service. Impact: Successful exploitation of this vulnerability may affect service confidentiality.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41966",
+    "ghsa_id": "GHSA-j276-f994-hf7m",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41966.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-2c59-fqg7-rwrx",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Apache::Session::Generate::SHA256 versions before 1.3.19 for Perl create insecure session ids.\n...",
+    "description": "Apache::Session::Generate::SHA256 versions before 1.3.19 for Perl create insecure session ids.\n\nApache::Session::Generate::SHA256 generated session ids insecurely. The default session id generator returns a SHA-256 hash of the built-in rand() function, the epoch time, and the PID, that is hashed again. These are predictable, low-entropy sources. Predicable session ids could allow an attacker to gain access to systems.\n\nNote that version 1.3.19 has a fallback without warning to use insecure sessi",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-8503",
+    "ghsa_id": "GHSA-2c59-fqg7-rwrx",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-8503.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-mrjv-j4g7-xx5r",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Stack overflow vulnerability in the media platform. Impact: Successful exploitation of this...",
+    "description": "Stack overflow vulnerability in the media platform. Impact: Successful exploitation of this vulnerability may affect availability.",
+    "severity": "low",
+    "cve_id": "CVE-2026-41963",
+    "ghsa_id": "GHSA-mrjv-j4g7-xx5r",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
+      "impact_assessment": "The stack overflow vulnerability in the media platform could lead to a denial-of-service (DoS) condition, potentially affecting the availability of the platform.",
+      "affected_industries": [
+        "Media and Entertainment",
+        "Technology",
+        "Content Delivery Networks"
+      ],
+      "recommended_actions": [
+        "Apply the latest security patch provided by the vendor to address CVE-2026-41963.",
+        "Implement input validation and boundary checks to prevent stack overflow conditions.",
+        "Monitor system logs for unusual activity that may indicate exploitation attempts."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-qh29-mq6c-xg5v",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Permission control vulnerability in the security control module. Impact: Successful exploitation...",
+    "description": "Permission control vulnerability in the security control module. Impact: Successful exploitation of this vulnerability may affect service confidentiality.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41971",
+    "ghsa_id": "GHSA-qh29-mq6c-xg5v",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The permission control vulnerability in the security control module could allow unauthorized access, potentially compromising service confidentiality and exposing sensitive data.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce"
+      ],
+      "recommended_actions": [
+        "Apply the latest security patch or update addressing CVE-2026-41971 as soon as it becomes available.",
+        "Conduct a thorough review of permission control configurations to ensure proper access restrictions are in place.",
+        "Monitor system logs for unusual activity that may indicate exploitation attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-9694-5xfg-m7vr",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Permission control vulnerability in contacts. Impact: Successful exploitation of this...",
+    "description": "Permission control vulnerability in contacts. Impact: Successful exploitation of this vulnerability may affect availability.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41961",
+    "ghsa_id": "GHSA-9694-5xfg-m7vr",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41961.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-9wgr-ww7c-cg24",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Permission control vulnerability in the web. Impact: Successful exploitation of this...",
+    "description": "Permission control vulnerability in the web. Impact: Successful exploitation of this vulnerability may affect availability.",
+    "severity": "high",
+    "cve_id": "CVE-2026-41964",
+    "ghsa_id": "GHSA-9wgr-ww7c-cg24",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41964.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-37mq-vvr9-ppr8",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Out-of-bounds write vulnerability in the distributed file system module. Impact: Successful...",
+    "description": "Out-of-bounds write vulnerability in the distributed file system module. Impact: Successful exploitation of this vulnerability may affect availability.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41970",
+    "ghsa_id": "GHSA-37mq-vvr9-ppr8",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41970.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-mmcj-637g-3xw4",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Permission control vulnerability in the manufacturability design module. Impact: Successful...",
+    "description": "Permission control vulnerability in the manufacturability design module. Impact: Successful exploitation of this vulnerability may affect availability.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41967",
+    "ghsa_id": "GHSA-mmcj-637g-3xw4",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41967.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-r3m7-p557-4m6j",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Permission control vulnerability in the app management and control module. Impact: Successful...",
+    "description": "Permission control vulnerability in the app management and control module. Impact: Successful exploitation of this vulnerability may affect service confidentiality.",
+    "severity": "low",
+    "cve_id": "CVE-2026-41962",
+    "ghsa_id": "GHSA-r3m7-p557-4m6j",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-41962.",
       "affected_industries": [
         "Technology",
         "General"
@@ -56,14 +399,117 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-g7c7-634v-gp3r",
+    "id": "gh-GHSA-rmrw-m86p-jc3w",
     "source": "GitHub Security",
-    "timestamp": "2026-05-15T06:30:29Z",
-    "title": "Unrestricted IP address binding in the AMD Device Metrics Exporter (ROCm ecosystem) could allow a...",
-    "description": "Unrestricted IP address binding in the AMD Device Metrics Exporter (ROCm ecosystem) could allow a remote attacker to perform unauthorized changes to the GPU configuration, potentially resulting in loss of availability",
-    "severity": "critical",
-    "cve_id": "CVE-2026-0481",
-    "ghsa_id": "GHSA-g7c7-634v-gp3r",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Use-After-Free (UAF) vulnerability in the web. Impact: Successful exploitation of this...",
+    "description": "Use-After-Free (UAF) vulnerability in the web. Impact: Successful exploitation of this vulnerability may affect availability.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41965",
+    "ghsa_id": "GHSA-rmrw-m86p-jc3w",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "A Use-After-Free (UAF) vulnerability could allow attackers to exploit memory corruption, potentially leading to application crashes, denial of service, or remote code execution, thereby affecting system availability.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Apply the latest security patches and updates for affected software as soon as they are available.",
+        "Conduct a thorough code review and memory management audit to identify and mitigate similar vulnerabilities.",
+        "Implement runtime protections such as Address Sanitizer (ASan) or Control Flow Integrity (CFI) to detect and prevent exploitation."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-h8pp-98px-h583",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Permission control vulnerability in the manufacturability design module. Impact: Successful...",
+    "description": "Permission control vulnerability in the manufacturability design module. Impact: Successful exploitation of this vulnerability may affect availability.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41968",
+    "ghsa_id": "GHSA-h8pp-98px-h583",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41968.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-7385-cj32-3rfx",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Permission control vulnerability in the projection module. Impact: Successful exploitation of...",
+    "description": "Permission control vulnerability in the projection module. Impact: Successful exploitation of this vulnerability may affect service confidentiality.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41969",
+    "ghsa_id": "GHSA-7385-cj32-3rfx",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The permission control vulnerability in the projection module could allow unauthorized access, potentially leading to a breach of service confidentiality and exposure of sensitive data.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately apply the latest security patch or update addressing CVE-2026-41969, if available.",
+        "Review and strengthen access control policies to minimize unauthorized access risks.",
+        "Conduct a security audit to identify and mitigate any other related vulnerabilities in the affected module."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-xp9m-hqhq-462q",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T12:30:31Z",
+    "title": "Permission control vulnerability in calls. Impact: Successful exploitation of this vulnerability...",
+    "description": "Permission control vulnerability in calls. Impact: Successful exploitation of this vulnerability may affect availability.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41960",
+    "ghsa_id": "GHSA-xp9m-hqhq-462q",
     "affected_packages": [],
     "cwes": [
       null
@@ -74,8 +520,223 @@
       null
     ],
     "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41960.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-3f5m-qf4w-pxwc",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T09:31:32Z",
+    "title": "The Notify Odoo plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions...",
+    "description": "The Notify Odoo plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.0.1. This is due to missing or incorrect nonce validation on the _updateSettings function. This makes it possible for unauthenticated attackers to change the Notify Odoo URL to an attacker-controlled URL and modify notification, tracking image, and allowed IP address settings via a forged request granted they can trick a site administrator into performing an action such as cli",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8425",
+    "ghsa_id": "GHSA-3f5m-qf4w-pxwc",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows unauthenticated attackers to modify critical settings in the Notify Odoo plugin, potentially redirecting notifications and sensitive data to an attacker-controlled URL. This could lead to data leaks, phishing attacks, or unauthorized access to restricted resources.",
+      "affected_industries": [
+        "E-commerce",
+        "Technology",
+        "Media",
+        "Small and Medium Businesses using WordPress"
+      ],
+      "recommended_actions": [
+        "Update the Notify Odoo plugin to a patched version as soon as it becomes available.",
+        "Implement a Web Application Firewall (WAF) to detect and block malicious requests targeting this vulnerability.",
+        "Educate administrators to avoid clicking on suspicious links or performing sensitive actions without verifying the source."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-5vxp-83xg-5c9f",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T09:31:32Z",
+    "title": "The Quick Playground plugin for WordPress is vulnerable to Path Traversal in versions up to and...",
+    "description": "The Quick Playground plugin for WordPress is vulnerable to Path Traversal in versions up to and including 1.3.3. This is due to insufficient path validation in the qckply_zip_theme() function, which appends a user-controlled 'stylesheet' parameter directly to the theme root directory path without sanitizing directory traversal sequences. This makes it possible for unauthenticated attackers to trigger the creation of a ZIP archive containing arbitrary files from the server's filesystem — includin",
+    "severity": "high",
+    "cve_id": "CVE-2026-6403",
+    "ghsa_id": "GHSA-5vxp-83xg-5c9f",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-6403.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-rm3r-35x9-jv93",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T09:31:32Z",
+    "title": "A supply chain attack compromised the official installation packages of DAEMON Tools Lite ...",
+    "description": "A supply chain attack compromised the official installation packages of DAEMON Tools Lite (Windows versions 12.5.0.2421 through 12.5.0.2434), distributed from the legitimate website daemon-tools.cc between approximately April 8, 2026, and May 5, 2026. Attackers gained unauthorized access to the vendor's (AVB Disc Soft) build or distribution infrastructure and trojanized three binaries: DTHelper.exe, DiscSoftBusServiceLite.exe, and DTShellHlp.exe. These files were digitally signed with the legiti",
+    "severity": "critical",
+    "cve_id": "CVE-2026-8398",
+    "ghsa_id": "GHSA-rm3r-35x9-jv93",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 92,
+      "impact_assessment": "The supply chain attack on DAEMON Tools Lite compromises the integrity of installation packages, potentially allowing attackers to execute malicious code on affected systems. This could lead to data breaches, ransomware deployment, or unauthorized access to sensitive systems.",
+      "affected_industries": [
+        "Technology",
+        "Gaming",
+        "Media and Entertainment",
+        "Education",
+        "Small and Medium Businesses (SMBs)"
+      ],
+      "recommended_actions": [
+        "Immediately revoke the compromised digital certificates and issue advisories to users to avoid using the affected versions (12.5.0.2421 through 12.5.0.2434).",
+        "Encourage users to uninstall the compromised versions and provide a clean, verified version of the software for download.",
+        "Conduct a thorough investigation of the vendor's build and distribution infrastructure to identify and remediate the breach, and implement stronger security measures such as code-signing certificate monitoring and multi-factor authentication for developers."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 92
+  },
+  {
+    "id": "gh-GHSA-wh75-4gj8-68pm",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T09:31:32Z",
+    "title": "The Classified Listing – AI-Powered Classified ads & Business Directory Plugin plugin for...",
+    "description": "The Classified Listing – AI-Powered Classified ads & Business Directory Plugin plugin for WordPress is vulnerable to unauthorized access in all versions up to, and including, 5.3.10. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to add arbitrary notes to any order and trigger unsolicited notification and moderation emails to listing owners without adminis",
+    "severity": "medium",
+    "cve_id": "CVE-2026-7563",
+    "ghsa_id": "GHSA-wh75-4gj8-68pm",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7563.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-6cpv-j32f-rqmr",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T09:31:32Z",
+    "title": "The Form Notify plugin for WordPress is vulnerable to Authentication Bypass in versions up to and...",
+    "description": "The Form Notify plugin for WordPress is vulnerable to Authentication Bypass in versions up to and including 1.1.10. This is due to the plugin trusting user-controlled cookie data to determine which WordPress account to authenticate after a LINE OAuth login. When LINE doesn't provide an email address (which is common), the plugin falls back to reading the 'form_notify_line_email' cookie value without verifying that the LINE account is associated with that email address. This makes it possible for",
+    "severity": "critical",
+    "cve_id": "CVE-2026-5229",
+    "ghsa_id": "GHSA-6cpv-j32f-rqmr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
       "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-0481.",
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-5229.",
       "affected_industries": [
         "Technology",
         "General"
@@ -90,87 +751,20 @@
     "risk_score": 90
   },
   {
-    "id": "gh-GHSA-626v-69jf-vxq8",
+    "id": "gh-GHSA-g3qj-jqcf-jg78",
     "source": "GitHub Security",
-    "timestamp": "2026-05-15T06:30:29Z",
-    "title": "Cross-site request forgery vulnerability exists in Musetheque V4 Information Disclosure for...",
-    "description": "Cross-site request forgery vulnerability exists in Musetheque V4 Information Disclosure for IPKNOWLEDGE V4L1 rev2203.0 and earlier. If a user views a malicious page while logged-in to the affected product, unexpected operations may be done.",
+    "timestamp": "2026-05-15T09:31:32Z",
+    "title": "The Frontend Admin by DynamiApps plugin for WordPress is vulnerable to Privilege Escalation in...",
+    "description": "The Frontend Admin by DynamiApps plugin for WordPress is vulnerable to Privilege Escalation in versions up to and including 3.28.36. This is due to insufficient authorization checks in the role field update mechanism combined with overly permissive capabilities for the admin_form post type. The admin_form custom post type uses 'capability_type' => 'page', which grants editors the ability to create and edit forms. When an editor creates an edit_user form, they can manipulate the form configuratio",
     "severity": "high",
-    "cve_id": "CVE-2026-28761",
-    "ghsa_id": "GHSA-626v-69jf-vxq8",
+    "cve_id": "CVE-2026-6228",
+    "ghsa_id": "GHSA-g3qj-jqcf-jg78",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to perform unauthorized operations on the affected product if a logged-in user visits a malicious page. This can lead to data manipulation, unauthorized access, or information disclosure.",
-      "affected_industries": [
-        "Technology",
-        "Education",
-        "Media",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Implement anti-CSRF tokens to validate requests and prevent unauthorized actions.",
-        "Advise users to avoid clicking on untrusted links while logged into the application.",
-        "Update Musetheque V4 to the latest version or apply any available patches addressing CVE-2026-28761."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-78q7-8wjv-6g7x",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T06:30:29Z",
-    "title": "An out of bounds read in the remote management firmware could allow a privileged attacker read a...",
-    "description": "An out of bounds read in the remote management firmware could allow a privileged attacker read a limited section of memory outside of established bounds potentially resulting in loss of confidentiality or availability.",
-    "severity": "low",
-    "cve_id": "CVE-2024-21950",
-    "ghsa_id": "GHSA-78q7-8wjv-6g7x",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2024-21950.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-9hm7-v4rj-6wqj",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T06:30:29Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: validate inherited...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: validate inherited ACE SID length\n\nsmb_inherit_dacl() walks the parent directory DACL loaded from the\nsecurity descriptor xattr. It verifies that each ACE contains the fixed\nSID header before using it, but does not verify that the variable-length\nSID described by sid.num_subauth is fully contained in the ACE.\n\nA malformed inheritable ACE can advertise more subauthorities than are\npresent in the ACE. compare_sids() may th",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-43490",
-    "ghsa_id": "GHSA-9hm7-v4rj-6wqj",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
       null,
       null,
       null,
@@ -180,43 +774,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "The vulnerability in the Linux kernel's ksmbd module could allow attackers to exploit improperly validated Access Control Entries (ACEs), potentially leading to privilege escalation or unauthorized access to sensitive data. This could compromise the integrity and confidentiality of systems relying on ksmbd for SMB file sharing.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Education",
-        "Retail"
-      ],
-      "recommended_actions": [
-        "Immediately apply the latest Linux kernel patches that address CVE-2026-43490.",
-        "Audit systems using ksmbd to ensure proper security configurations and monitor for any suspicious activity.",
-        "Implement network segmentation and restrict access to SMB services to trusted hosts only."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-r92r-8g7f-hqj2",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T06:30:29Z",
-    "title": "Improper isolation of VCN-JPEG HW register space could allow a malicious Guest Virtual Machine ...",
-    "description": "Improper isolation of VCN-JPEG HW register space could allow a malicious Guest Virtual Machine (VM) or a process to perform unauthorized access to the register space of the JPEG cores assigned a victim VM/process, potentially gaining arbitrary read/write access to the victim VM/process data.",
-    "severity": "high",
-    "cve_id": "CVE-2024-36323",
-    "ghsa_id": "GHSA-r92r-8g7f-hqj2",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2024-36323.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-6228.",
       "affected_industries": [
         "Technology",
         "General"
@@ -229,530 +787,6 @@
       "urgency": "high"
     },
     "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-cq4p-2r8m-83m6",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T06:30:29Z",
-    "title": "Cross-site scripting vulnerability exists in Musetheque V4 Information Disclosure for IPKNOWLEDGE...",
-    "description": "Cross-site scripting vulnerability exists in Musetheque V4 Information Disclosure for IPKNOWLEDGE V4L1 rev2203.0 and earlier. If a file containing malicious contents is uploaded, an arbitrary script may be executed on a user's web browser when viewing the administration page showing the information of the file.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-24662",
-    "ghsa_id": "GHSA-cq4p-2r8m-83m6",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-24662.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-q2m3-wr33-c5qp",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T06:30:29Z",
-    "title": "A race condition in the MxGPU-Virtualization driver’s ioctl path caused by concurrent...",
-    "description": "A race condition in the MxGPU-Virtualization driver’s ioctl path caused by concurrent unsynchronized access to the global variable amdgv_cmd in an unlocked ioctl handler could be exploited by an attacker to trigger a heap-based buffer overflow, potentially resulting in denial-of-service within the vulnerable system context.",
-    "severity": "low",
-    "cve_id": "CVE-2025-52532",
-    "ghsa_id": "GHSA-q2m3-wr33-c5qp",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2025-52532.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-hww5-54c3-f2vg",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T06:30:29Z",
-    "title": "Improper verification of cryptographic signature in the Radeon RGB tool could allow a malicious...",
-    "description": "Improper verification of cryptographic signature in the Radeon RGB tool could allow a malicious file placed in the installation directory to be run with elevated privileges potentially leading to arbitrary code execution.",
-    "severity": "high",
-    "cve_id": "CVE-2024-36334",
-    "ghsa_id": "GHSA-hww5-54c3-f2vg",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in the Radeon RGB tool allows for improper verification of cryptographic signatures, enabling a malicious actor to execute arbitrary code with elevated privileges. This could lead to system compromise, data exfiltration, or further exploitation.",
-      "affected_industries": [
-        "Gaming",
-        "Technology",
-        "Consumer Electronics",
-        "IT Services"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patch or update for the Radeon RGB tool as soon as it becomes available.",
-        "Restrict write permissions to the installation directory to prevent unauthorized file placement.",
-        "Monitor systems for unusual activity, especially processes running with elevated privileges, and implement application whitelisting."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-wrmr-crjv-w33g",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T06:30:29Z",
-    "title": "Improper isolation of shared resources within the CPU operation cache on Zen 2-based products...",
-    "description": "Improper isolation of shared resources within the CPU operation cache on Zen 2-based products could allow an attacker to corrupt instructions executed at a different privilege level, potentially resulting in privilege escalation.",
-    "severity": "high",
-    "cve_id": "CVE-2025-54518",
-    "ghsa_id": "GHSA-wrmr-crjv-w33g",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Improper isolation of shared CPU resources in Zen 2-based products could allow attackers to corrupt instructions executed at different privilege levels, leading to potential privilege escalation and unauthorized access.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Cloud Service Providers"
-      ],
-      "recommended_actions": [
-        "Apply firmware or microcode updates provided by the CPU vendor to mitigate the vulnerability.",
-        "Implement strict monitoring and logging of CPU activity to detect potential exploitation attempts.",
-        "Restrict access to systems running Zen 2-based CPUs and enforce least privilege principles for sensitive operations."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-hvrx-7h2h-759x",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T06:30:29Z",
-    "title": "A DLL hijacking vulnerability in the AMD Cleanup Utility could allow an attacker to achieve...",
-    "description": "A DLL hijacking vulnerability in the AMD Cleanup Utility could allow an attacker to achieve privilege escalation potentially resulting in arbitrary code execution.",
-    "severity": "high",
-    "cve_id": "CVE-2024-36333",
-    "ghsa_id": "GHSA-hvrx-7h2h-759x",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2024-36333.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-4f5c-wcxh-wgv3",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T03:30:37Z",
-    "title": "A buffer overflow vulnerability within AMD Sensor Fusion Hub Driver can allow a local attacker to...",
-    "description": "A buffer overflow vulnerability within AMD Sensor Fusion Hub Driver can allow a local attacker to write out of bounds, potentially resulting in denial of service or crash",
-    "severity": "medium",
-    "cve_id": "CVE-2025-29944",
-    "ghsa_id": "GHSA-4f5c-wcxh-wgv3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The buffer overflow vulnerability in the AMD Sensor Fusion Hub Driver could allow a local attacker to execute out-of-bounds writes, potentially causing a denial of service or system crash. This could disrupt operations and lead to downtime or data loss on affected systems.",
-      "affected_industries": [
-        "Technology",
-        "Manufacturing",
-        "Healthcare",
-        "Automotive",
-        "Consumer Electronics"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patch or driver update from AMD addressing CVE-2025-29944 as soon as it becomes available.",
-        "Restrict local access to systems running the AMD Sensor Fusion Hub Driver to trusted personnel only.",
-        "Monitor systems for unusual behavior or crashes and implement endpoint detection and response (EDR) solutions to identify potential exploitation attempts."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-84gc-54qf-v3jp",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T03:30:37Z",
-    "title": "Out of bounds write in AMD AMDGV_CMD_GET_DIAG_DATA ioctl handler could allow a local user to...",
-    "description": "Out of bounds write in AMD AMDGV_CMD_GET_DIAG_DATA ioctl handler could allow a local user to escalate privileges via remote code execution.",
-    "severity": "high",
-    "cve_id": "CVE-2025-54517",
-    "ghsa_id": "GHSA-84gc-54qf-v3jp",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-54517.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-w6gm-fvfm-9m36",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T03:30:37Z",
-    "title": "Improper handling of insufficient privileges in the AMD Secure Processor (ASP) could allow an...",
-    "description": "Improper handling of insufficient privileges in the AMD Secure Processor (ASP) could allow an attacker to provide an input value to a function without sufficient privileges and successfully write data, potentially resulting in loss of integrity of availability.",
-    "severity": "medium",
-    "cve_id": "CVE-2025-54511",
-    "ghsa_id": "GHSA-w6gm-fvfm-9m36",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-54511.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-jfvc-65m7-7mhv",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T03:30:37Z",
-    "title": "Insufficient parameter sanitization in TEE SOC Driver could allow an attacker to issue a...",
-    "description": "Insufficient parameter sanitization in TEE SOC Driver could allow an attacker to issue a malformed DRV_SOC_CMD_ID_SRIOV_CHECK_TA_COMPAT to cause incorrect shared memory mapping, potentially resulting in unexpected behavior.",
-    "severity": "low",
-    "cve_id": "CVE-2025-66660",
-    "ghsa_id": "GHSA-jfvc-65m7-7mhv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 35,
-      "impact_assessment": "The vulnerability in the TEE SOC Driver could lead to incorrect shared memory mapping, potentially causing unexpected behavior or system instability. While the severity is marked as low, exploitation could disrupt operations in systems relying on trusted execution environments.",
-      "affected_industries": [
-        "Semiconductor",
-        "IoT",
-        "Cloud Computing",
-        "Telecommunications"
-      ],
-      "recommended_actions": [
-        "Apply patches or updates provided by the vendor to address CVE-2025-66660.",
-        "Conduct a thorough review of system logs to identify any signs of exploitation or unusual activity.",
-        "Implement additional parameter validation checks in the driver to prevent malformed commands from being processed."
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 35
-  },
-  {
-    "id": "gh-GHSA-p7c5-wcmh-3ww2",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T03:30:37Z",
-    "title": "Use of uninitialized resource within the AMD Platform Management Framework (PMF) could allow an...",
-    "description": "Use of uninitialized resource within the AMD Platform Management Framework (PMF) could allow an attacker to read a uninitialized kernel memory resulting in loss of confidentiality or availability.",
-    "severity": "medium",
-    "cve_id": "CVE-2025-48513",
-    "ghsa_id": "GHSA-p7c5-wcmh-3ww2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in the AMD Platform Management Framework (PMF) could allow an attacker to exploit uninitialized kernel memory, potentially leading to unauthorized access to sensitive data or system instability, resulting in loss of confidentiality or availability.",
-      "affected_industries": [
-        "Technology",
-        "Cloud Service Providers",
-        "Enterprise IT",
-        "Consumer Electronics",
-        "Gaming and Entertainment"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patches or firmware updates provided by AMD to mitigate the vulnerability.",
-        "Implement strict access controls and monitoring to detect and prevent unauthorized access to systems running AMD PMF.",
-        "Conduct a thorough review of systems and applications utilizing AMD PMF to identify potential exposure and ensure compliance with security best practices."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-q6qj-wmmg-cc85",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T03:30:37Z",
-    "title": "Rapid7 Metasploit Pro is vulnerable to a local privilege escalation attack that allows users to...",
-    "description": "Rapid7 Metasploit Pro is vulnerable to a local privilege escalation attack that allows users to gain SYSTEM level control of a Windows host. Upon startup the metasploitPostgreSQL service the subsequent  postgres.exe service attempts to load an OpenSSL configuration file from a non-existent directory that is writable by standard users. By planting a crafted openssl.cnf file an attacker can trick the high-privilege service into executing arbitrary commands. This effectively permits an unprivileged",
-    "severity": "high",
-    "cve_id": "CVE-2026-7373",
-    "ghsa_id": "GHSA-q6qj-wmmg-cc85",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-7373.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-f3qw-fm2w-5856",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T03:30:37Z",
-    "title": "Improper access control between the Joint Test Action Group (JTAG) and Advanced Extensible...",
-    "description": "Improper access control between the Joint Test Action Group (JTAG) and Advanced Extensible Interface (AXI) could allow an attacker with physical access to read or overwrite the contents of cross-chip debug (XCD) registers potentially resulting in loss of data integrity or confidentiality.",
-    "severity": "medium",
-    "cve_id": "CVE-2025-0040",
-    "ghsa_id": "GHSA-f3qw-fm2w-5856",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-0040.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-gm2x-9p5x-p992",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T03:30:37Z",
-    "title": "Insufficient parameter sanitization in AMD Secure Processor (ASP) TEE SOC Driver could allow an...",
-    "description": "Insufficient parameter sanitization in AMD Secure Processor (ASP) TEE SOC Driver could allow an attacker to issue a malformed DRV_SOC_CMD_ID_LOAD_GFX_IP_FW SR-IOV command to cause out-of-bounds read, potentially resulting in SOC Driver memory contents exposure or an exception",
-    "severity": "medium",
-    "cve_id": "CVE-2025-66664",
-    "ghsa_id": "GHSA-gm2x-9p5x-p992",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-66664.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-jfhv-mg7w-4348",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T03:30:37Z",
-    "title": "Insecure default configuration state of DDR5 memory module by AGESA Bootloader Firmware could...",
-    "description": "Insecure default configuration state of DDR5 memory module by AGESA Bootloader Firmware could allow an attacker with local user privilege to abuse the unprotected PMIC interface to create a permanent denial of service condition or affect the integrity of the memory module.",
-    "severity": "medium",
-    "cve_id": "CVE-2025-48516",
-    "ghsa_id": "GHSA-jfhv-mg7w-4348",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-48516.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-qr28-7prp-37fx",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T03:30:37Z",
-    "title": "An out of bounds read within the AMD Platform Management Framework (PMF) could allow an attacker...",
-    "description": "An out of bounds read within the AMD Platform Management Framework (PMF) could allow an attacker to trigger a read of an arbitrary memory location potentially resulting in loss of availability or confidentiality.",
-    "severity": "medium",
-    "cve_id": "CVE-2025-29937",
-    "ghsa_id": "GHSA-qr28-7prp-37fx",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-29937.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
   },
   {
     "id": "cve-CVE-2026-41498",
@@ -773,15 +807,17 @@
     ],
     "ai_analysis": {
       "risk_score": 35,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-41498.",
+      "impact_assessment": "The vulnerability allows unauthorized users with the 'edit_team' permission to modify any team, bypassing entity-level ownership checks. This could lead to unauthorized changes to team configurations, potentially affecting operational integrity and data consistency.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Software Development",
+        "Project Management",
+        "Freelancing",
+        "Consulting"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Upgrade Kimai to version 2.54.0 or later to apply the patch addressing this vulnerability.",
+        "Review and audit user permissions to ensure that only authorized personnel have the 'edit_team' permission.",
+        "Monitor team modification logs for any unauthorized changes and take corrective action if necessary."
       ],
       "urgency": "low"
     },
@@ -806,18 +842,17 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows remote attackers to exploit an SQL injection flaw in the /admin/viewmsg.php file by manipulating the 'msgid' parameter. This could lead to unauthorized access to sensitive data, database compromise, or potential system takeover.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-8128.",
       "affected_industries": [
-        "E-commerce",
-        "Retail",
-        "Small and Medium Businesses"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately apply input validation and sanitization for the 'msgid' parameter to prevent SQL injection attacks.",
-        "Update or patch the SourceCodester SUP Online Shopping 1.0 software if a fix is available from the vendor.",
-        "Implement a Web Application Firewall (WAF) to detect and block malicious SQL injection attempts."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
     "risk_score": 85
   },
@@ -838,23 +873,22 @@
       "https://vuldb.com/vuln/361917/cti"
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in eladmin up to version 2.7 allows improper access controls via the Users API Endpoint, potentially enabling unauthorized access to sensitive user data or administrative functions. The exploit is publicly disclosed and can be executed remotely, increasing the likelihood of exploitation.",
+      "risk_score": 75,
+      "impact_assessment": "The vulnerability in eladmin's Users API Endpoint allows improper access controls, potentially enabling unauthorized access to sensitive user data or administrative functions. Since the exploit is publicly disclosed and can be executed remotely, the risk of exploitation is significant.",
       "affected_industries": [
         "Technology",
         "E-commerce",
         "Healthcare",
-        "Finance",
-        "Education"
+        "Finance"
       ],
       "recommended_actions": [
-        "Immediately upgrade eladmin to a patched version if available, or apply temporary mitigations such as disabling the affected endpoint.",
-        "Implement strict access controls and monitor API usage for unusual activity to detect potential exploitation attempts.",
-        "Engage with the project maintainers to confirm a timeline for a fix or consider migrating to an alternative solution if no response is received."
+        "Immediately apply access control policies at the API gateway level to restrict unauthorized access.",
+        "Monitor logs for unusual activity targeting the /rest/UserController.java endpoint and implement intrusion detection mechanisms.",
+        "Contact the project maintainers for updates or consider migrating to a more actively maintained framework if no patch is forthcoming."
       ],
       "urgency": "high"
     },
-    "risk_score": 65
+    "risk_score": 75
   },
   {
     "id": "cve-CVE-2026-8126",
