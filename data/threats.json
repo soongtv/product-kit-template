@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1778874536081-1",
+    "id": "twitter-1778903297939-1",
     "source": "Twitter Security",
-    "timestamp": "2026-05-15T19:48:56.081Z",
+    "timestamp": "2026-05-16T03:48:17.939Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1778874536081-1",
+    "id": "hn-1778903297939-1",
     "source": "HackerNews",
-    "timestamp": "2026-05-15T19:48:56.081Z",
+    "timestamp": "2026-05-16T03:48:17.939Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,130 +26,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-c3ch-22rq-xfwr",
+    "id": "gh-GHSA-4fcc-vrwx-v754",
     "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:35:38Z",
-    "title": "AVideo CVE-2026-43884 incomplete fix - six (or more) `isSSRFSafeURL()` call sites still discard the `$resolvedIP` out-param at master HEAD post-`603e7bf`",
-    "description": "CVE-2026-43884 fix `603e7bf` patched `EpgParser.php` and `plugin/AI/receiveAsync.json.php` to use `url_get_contents` (redirect-safe). Neither uses the `$resolvedIP` out-param of `isSSRFSafeURL()` for DNS pinning via `CURLOPT_RESOLVE`. Six+ other call sites still discard `$resolvedIP`, opening DNS-rebinding TOCTOU.\n\nReference correct pattern at `plugin/YPTWallet/YPTWallet.php:1071-1098`:\n\n```php\n$resolvedIP = null;\nif (isSSRFSafeURL($url, $resolvedIP)) {\n    curl_setopt($ch, CURLOPT_RESOLVE, [\"$h",
+    "timestamp": "2026-05-16T03:31:27Z",
+    "title": "The Essential Chat Support plugin for WordPress is vulnerable to authorization bypass in all...",
+    "description": "The Essential Chat Support plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 1.0.1. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to reset all plugin configuration settings — including general settings, display rules, custom CSS, and WooCommerce tab settings — to their defaults by sending a POST request with ecs_reset_settings=1.",
     "severity": "medium",
-    "cve_id": "CVE-2026-45619",
-    "ghsa_id": "GHSA-c3ch-22rq-xfwr",
-    "affected_packages": [
-      "WWBN/AVideo"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3mv2-vmwh-rwfx",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:34:57Z",
-    "title": "AVideo: 2FA toggle endpoint has no CSRF protection, letting an attacker page silently disable a logged-in victim's 2FA",
-    "description": "## Summary\n\n**Type:** Cross-site request forgery on the 2FA toggle. `plugin/LoginControl/set.json.php` accepts `POST type=set2FA value=false`, calls `LoginControl::setUser2FA(User::getId(), false)` on the session-authenticated user, and returns. There is no `forbidIfIsUntrustedRequest()` call, no `isTokenValid()` check, no `X-CSRF-Token`/`SameSite` enforcement, and no re-authentication step. A cross-origin page that the victim visits while logged into the AVideo dashboard issues the POST via a h",
-    "severity": "medium",
-    "cve_id": "CVE-2026-45610",
-    "ghsa_id": "GHSA-3mv2-vmwh-rwfx",
-    "affected_packages": [
-      "WWBN/AVideo"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-m5j4-7r85-2cj2",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:33:58Z",
-    "title": "AVideo: stored XSS via unescaped stream key in modeYoutubeLive.php class attribute",
-    "description": "## Summary\n\n**Type:** Stored cross-site scripting. The Live plugin's \"YouTube-style\" view renders the live transmission's stream key into an HTML class attribute by raw `echo`, without `htmlspecialchars()`. A `canStream` user can persist a key containing `\"` plus an event handler via `plugin/Live/saveLive.php`, and any visitor (logged in or anonymous) opening the stream's live page executes attacker JavaScript in the platform origin.\n**File:** `plugin/Live/view/modeYoutubeLive.php`, line 203.\n**",
-    "severity": "medium",
-    "cve_id": "CVE-2026-45580",
-    "ghsa_id": "GHSA-m5j4-7r85-2cj2",
-    "affected_packages": [
-      "WWBN/AVideo"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-xw67-cg5f-4m2r",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:32:36Z",
-    "title": "AVideo: OS command injection in on_publish.php execAsync via unescaped m3u8 URL",
-    "description": "## Summary\n\n**Type:** Classic shell-metacharacter injection. The YPTSocket notification branch in `plugin/Live/on_publish.php` builds an `execAsync()` command line by string concatenation, single-quoting each argument but never calling `escapeshellarg()`. A `'` in any of the three interpolated values (`$users_id`, `$m3u8`, `$obj->liveTransmitionHistory_id`) closes the quoted token and lets the attacker append arbitrary commands.\n**File:** `plugin/Live/on_publish.php`, line 267.\n**Root cause:** t",
-    "severity": "high",
-    "cve_id": "CVE-2026-45578",
-    "ghsa_id": "GHSA-xw67-cg5f-4m2r",
-    "affected_packages": [
-      "WWBN/AVideo"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-gqx7-6552-67hf",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:30:48Z",
-    "title": "Improper Verification of Cryptographic Signature in com.oviva.telematik:epa4all-client",
-    "description": "### Impact\nAn attacker who can MITM the TLS connection between the client and the IDP (within the TI network) can substitute a forged discovery document. The forged document redirects u ri_puk_idp_enc and uri_puk_idp_sig to attacker-controlled URLs. The client then encrypts the SMC-B-signed challenge response to the attacker's encryption key and POSTs it to the attacker's auth endpoint. This captures the signed authentication material.\n\n### Patches\n[#36](https://github.com/oviva-ag/epa4all-clien",
-    "severity": "high",
-    "cve_id": "CVE-2026-45575",
-    "ghsa_id": "GHSA-gqx7-6552-67hf",
-    "affected_packages": [
-      "com.oviva.telematik:epa4all-client"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-jrmh-3vm7-w5m4",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:30:35Z",
-    "title": "radare2 6.1.5 contains a use-after-free vulnerability in the gdbr_threads_list() function that...",
-    "description": "radare2 6.1.5 contains a use-after-free vulnerability in the gdbr_threads_list() function that allows remote attackers to trigger memory corruption by sending a valid qfThreadInfo response followed by a malformed qsThreadInfo response. Attackers can exploit this vulnerability through GDB remote debugging to cause a denial of service or potentially achieve code execution by manipulating thread list processing.",
-    "severity": "high",
-    "cve_id": "CVE-2026-8695",
-    "ghsa_id": "GHSA-jrmh-3vm7-w5m4",
+    "cve_id": "CVE-2026-8681",
+    "ghsa_id": "GHSA-4fcc-vrwx-v754",
     "affected_packages": [],
     "cwes": [
       null
@@ -159,25 +43,91 @@
       null,
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-x5pc-h62r-4rgx",
+    "id": "gh-GHSA-5cq6-9f97-wjwx",
     "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:30:35Z",
-    "title": "Trog::TOTP versions before 1.006 for Perl generate secrets using rand.\n\nSecrets were generated...",
-    "description": "Trog::TOTP versions before 1.006 for Perl generate secrets using rand.\n\nSecrets were generated using Perl's built-in rand function, which is predictable and unsuitable for security usage.",
+    "timestamp": "2026-05-16T00:31:11Z",
+    "title": "Crypt::DSA versions through 1.19 for Perl use 2-args open, allowing existing files to be modified.",
+    "description": "Crypt::DSA versions through 1.19 for Perl use 2-args open, allowing existing files to be modified.",
     "severity": "unknown",
-    "cve_id": "CVE-2026-46474",
-    "ghsa_id": "GHSA-x5pc-h62r-4rgx",
+    "cve_id": "CVE-2026-8704",
+    "ghsa_id": "GHSA-5cq6-9f97-wjwx",
     "affected_packages": [],
     "cwes": [
       null
     ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-r2q3-hjc8-7x6q",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-16T00:31:11Z",
+    "title": "Crypt::DSA versions before 1.20 for Perl generate seeds using rand.\n\nSeeds were generated using...",
+    "description": "Crypt::DSA versions before 1.20 for Perl generate seeds using rand.\n\nSeeds were generated using Perl's built-in rand function, which is predictable and unsuitable for security usage.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-8700",
+    "ghsa_id": "GHSA-r2q3-hjc8-7x6q",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-8j42-xqfj-g726",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T21:31:34Z",
+    "title": "radare2 6.1.5 contains a use-after-free vulnerability in the gdbr_pids_list() function within the...",
+    "description": "radare2 6.1.5 contains a use-after-free vulnerability in the gdbr_pids_list() function within the GDB client core that allows remote attackers to cause a denial of service or potentially execute arbitrary code by sending malformed thread information responses. Attackers can trigger the vulnerability by causing qsThreadInfo to fail after qfThreadInfo successfully allocates RDebugPid structures, resulting in double-free memory corruption when the error path attempts to clean up the list.",
+    "severity": "high",
+    "cve_id": "CVE-2026-8696",
+    "ghsa_id": "GHSA-8j42-xqfj-g726",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-m7f5-wrrg-p669",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T21:31:33Z",
+    "title": "ORSEE (Online Recruitment System for Economic Experiments) 3.1.0 contains an authenticated Remote...",
+    "description": "ORSEE (Online Recruitment System for Economic Experiments) 3.1.0 contains an authenticated Remote Code Execution vulnerability in the participant profile field processing subsystem. Certain field configurations accept values beginning with the prefix \"func:\" which are passed directly into an eval() call inside tagsets/participant.php and tagsets/options.php.",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-67031",
+    "ghsa_id": "GHSA-m7f5-wrrg-p669",
+    "affected_packages": [],
+    "cwes": [],
     "references": [
       null,
       null,
@@ -188,14 +138,56 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-ch4j-vcf5-58x5",
+    "id": "gh-GHSA-hw87-6jcq-9f8q",
     "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:30:34Z",
-    "title": "Cockpit CMS through version 2.14.0, patched in commit 72a83fc, contains a stored cross-site...",
-    "description": "Cockpit CMS through version 2.14.0, patched in commit 72a83fc, contains a stored cross-site scripting vulnerability in the Set field type's Display template option, where the template string is processed by the $interpolate function using new Function() and rendered via Vue's v-html directive without sanitization. An attacker with content/:models/manage permission can inject arbitrary JavaScript into the Display template, which executes in the browser of any user viewing the collection items lis",
+    "timestamp": "2026-05-15T21:31:33Z",
+    "title": "Mattermost versions 11.5.x <= 11.5.1, 10.11.x <= 10.11.13 fail to enforce the PostEditTimeLimit...",
+    "description": "Mattermost versions 11.5.x <= 11.5.1, 10.11.x <= 10.11.13 fail to enforce the PostEditTimeLimit on non-message post fields which allows an authenticated user to modify post file attachments, props, and pin status after the edit window has expired via the post patch and update API endpoints.. Mattermost Advisory ID: MMSA-2026-00631",
+    "severity": "low",
+    "cve_id": "CVE-2026-4053",
+    "ghsa_id": "GHSA-hw87-6jcq-9f8q",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-j76w-p754-g2w7",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T21:31:33Z",
+    "title": "Mattermost versions 11.5.x <= 11.5.1, 10.11.x <= 10.11.13, 11.4.x <= 11.4.3 Fail to validate the...",
+    "description": "Mattermost versions 11.5.x <= 11.5.1, 10.11.x <= 10.11.13, 11.4.x <= 11.4.3 Fail to validate the response body of proxied images, which allows a remote attacker to enact client-side DoS via an SVG file served from an attacker-controlled origin under a non-SVG Content-Type header (e.g. image/png) embedded in an og:image meta tag or Markdown image link.. Mattermost Advisory ID: MMSA-2026-00630",
     "severity": "medium",
-    "cve_id": "CVE-2026-23695",
-    "ghsa_id": "GHSA-ch4j-vcf5-58x5",
+    "cve_id": "CVE-2026-4054",
+    "ghsa_id": "GHSA-j76w-p754-g2w7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-w42g-jj8w-fj77",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T21:31:32Z",
+    "title": "phpMyFAQ before 4.1.2 contains a stored cross-site scripting vulnerability in Utils::parseUrl()...",
+    "description": "phpMyFAQ before 4.1.2 contains a stored cross-site scripting vulnerability in Utils::parseUrl() that allows authenticated users to inject JavaScript via malformed URLs in comments. Attackers can craft URLs with unescaped quotes to inject event handlers, stealing admin session cookies and achieving full application takeover when visitors view affected FAQ pages.",
+    "severity": "high",
+    "cve_id": "CVE-2026-46367",
+    "ghsa_id": "GHSA-w42g-jj8w-fj77",
     "affected_packages": [],
     "cwes": [
       null
@@ -210,14 +202,102 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-5m89-9vmq-75r8",
+    "id": "gh-GHSA-cqrw-j4qc-7f9w",
     "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:30:34Z",
-    "title": "An Improper Access Control vulnerability in several internal API endpoints for Google Cloud...",
-    "description": "An Improper Access Control vulnerability in several internal API endpoints for Google Cloud Application Integration prior to 2026-01-23 allows a remote, unauthenticated attacker to disclose sensitive internal information and execute arbitrary code using specially crafted HTTP requests to inadvertently exposed internal API endpoints.",
+    "timestamp": "2026-05-15T21:31:32Z",
+    "title": "phpMyFAQ before 4.1.2 contains an information disclosure vulnerability in the getIdFromSolutionId...",
+    "description": "phpMyFAQ before 4.1.2 contains an information disclosure vulnerability in the getIdFromSolutionId() method that lacks permission filtering, allowing unauthenticated attackers to enumerate restricted FAQ entries and read their titles via the /solution_id_{id}.html endpoint. Attackers can sequentially iterate solution IDs to discover all FAQs including those restricted to specific users or groups, leaking sensitive metadata through redirect Location headers and page canonical links.",
+    "severity": "high",
+    "cve_id": "CVE-2026-46366",
+    "ghsa_id": "GHSA-cqrw-j4qc-7f9w",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-478m-mrw4-qf2w",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T21:31:32Z",
+    "title": "phpMyFAQ before 4.1.2 contains a stored cross-site scripting vulnerability in search.twig where...",
+    "description": "phpMyFAQ before 4.1.2 contains a stored cross-site scripting vulnerability in search.twig where result.question and result.answerPreview are rendered with the raw filter, disabling autoescape protection. Attackers with FAQ editor privileges can inject HTML-entity-encoded payloads that bypass html_entity_decode(strip_tags()) processing in SearchController.php, executing arbitrary JavaScript in every visitor's browser context including administrators.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-46361",
+    "ghsa_id": "GHSA-478m-mrw4-qf2w",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-w9mj-gfrm-hj5x",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T21:31:32Z",
+    "title": "phpMyFAQ before 4.1.2 contains an authorization bypass vulnerability in...",
+    "description": "phpMyFAQ before 4.1.2 contains an authorization bypass vulnerability in AbstractAdministrationController::userHasPermission() that fails to terminate execution after sending a forbidden response. Attackers can access all permission-protected admin pages by requesting their URLs as authenticated users, exposing admin logs, user data, system information, and application configuration.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-46362",
+    "ghsa_id": "GHSA-w9mj-gfrm-hj5x",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-5h62-f8fg-4w7q",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T21:31:32Z",
+    "title": "phpMyFAQ before 4.1.2 contains a missing authorization vulnerability in the DELETE /admin/api...",
+    "description": "phpMyFAQ before 4.1.2 contains a missing authorization vulnerability in the DELETE /admin/api/content/tags/{tagId} endpoint that allows any authenticated user to delete tags. Any logged-in user, including regular frontend users, can delete arbitrary tags by sending a DELETE request with a valid session cookie, resulting in permanent data loss and disruption of FAQ organization.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-46365",
+    "ghsa_id": "GHSA-5h62-f8fg-4w7q",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-ch9q-c9mp-j5gq",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T21:31:32Z",
+    "title": "phpMyFAQ before 4.1.2 contains an unauthenticated SQL injection vulnerability in BuiltinCaptcha:...",
+    "description": "phpMyFAQ before 4.1.2 contains an unauthenticated SQL injection vulnerability in BuiltinCaptcha::garbageCollector() and BuiltinCaptcha::saveCaptcha() methods that interpolate unsanitized User-Agent headers into DELETE and INSERT queries. Unauthenticated attackers can exploit the public GET /api/captcha endpoint by crafting malicious User-Agent headers to perform time-based blind SQL injection, extracting sensitive data including user credentials, admin tokens, and SMTP credentials from the datab",
     "severity": "critical",
-    "cve_id": "CVE-2026-2031",
-    "ghsa_id": "GHSA-5m89-9vmq-75r8",
+    "cve_id": "CVE-2026-46364",
+    "ghsa_id": "GHSA-ch9q-c9mp-j5gq",
     "affected_packages": [],
     "cwes": [
       null
@@ -225,20 +305,22 @@
     "references": [
       null,
       null,
+      null,
+      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-2f54-v4hm-fx73",
+    "id": "gh-GHSA-p9wc-4pjv-rg82",
     "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:30:34Z",
-    "title": "Code injection in SQL code generation in Apache Flink 1.15.0 through 1.20.x and 2.0.0 through 2.x...",
-    "description": "Code injection in SQL code generation in Apache Flink 1.15.0 through 1.20.x and 2.0.0 through 2.x allows authenticated users with query submission privileges to execute arbitrary code on TaskManagers via maliciously crafted SQL queries. The vulnerability affects JSON functions (1.15.0+) and LIKE expressions with ESCAPE clauses (1.17.0+). User-controlled strings are interpolated into generated Java code without proper escaping, allowing attackers to break out of string literals and inject arbitra",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-35194",
-    "ghsa_id": "GHSA-2f54-v4hm-fx73",
+    "timestamp": "2026-05-15T21:31:32Z",
+    "title": "phpMyFAQ before 4.1.2 contains a sql injection vulnerability in CurrentUser::setTokenData that...",
+    "description": "phpMyFAQ before 4.1.2 contains a sql injection vulnerability in CurrentUser::setTokenData that allows authenticated attackers to execute arbitrary SQL by injecting malicious OAuth token claims. Attackers with Azure AD accounts containing SQL metacharacters in display names or JWT claims can break out of string literals and execute arbitrary database queries.",
+    "severity": "high",
+    "cve_id": "CVE-2026-46359",
+    "ghsa_id": "GHSA-p9wc-4pjv-rg82",
     "affected_packages": [],
     "cwes": [
       null
@@ -246,23 +328,22 @@
     "references": [
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-5hhf-xmfx-4vvr",
+    "id": "gh-GHSA-6626-79jh-5ccr",
     "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:29:31Z",
-    "title": "epa4all-client: TLS Certificate Validation Disabled in Production",
-    "description": "### Impact\nAn attacker on the network path between the ePA service and the Konnektor can present any TLS certificate (self-signed, expired, wrong CN) and intercept all SOAP traffic. This includes patient identifiers (KVNR), SMC-B card operations (authentication, signing),\ndocument content, and credential exchanges.\n\n### Patches\n[#36](https://github.com/oviva-ag/epa4all-client/pull/36)\n\n### Workarounds\nUse the library directly instead of the REST wrapper.\n\n### Resources\n- MS-OVIVA-EPA4ALL-771a78\n",
-    "severity": "high",
-    "cve_id": "CVE-2026-45574",
-    "ghsa_id": "GHSA-5hhf-xmfx-4vvr",
-    "affected_packages": [
-      "com.oviva.telematik:epa4all-client"
-    ],
+    "timestamp": "2026-05-15T21:31:32Z",
+    "title": "phpMyFAQ before 4.1.2 contains an improper restriction of excessive authentication attempts...",
+    "description": "phpMyFAQ before 4.1.2 contains an improper restriction of excessive authentication attempts vulnerability in the /admin/check endpoint, which accepts arbitrary user-id parameters without session binding or rate limiting. Unauthenticated attackers can brute-force any user's six-digit TOTP code by submitting POST requests with sequential token values, bypassing two-factor authentication to gain full administrative access.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-45010",
+    "ghsa_id": "GHSA-6626-79jh-5ccr",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -270,26 +351,22 @@
       null,
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-mq5j-pw29-jcv3",
+    "id": "gh-GHSA-wj3q-vw2v-3rj3",
     "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:25:34Z",
-    "title": "Microsoft APM: Windows absolute-path tar member overwrite during legacy-bundle probing in `apm install`",
-    "description": "### Summary\n\nMicrosoft APM contains a Windows-specific archive extraction boundary failure in the legacy-bundle probe used by `apm install <bundle>` on supported Python 3.10 and 3.11 runtimes. When `apm install` is given a local `.tar.gz` that is not recognized as a plugin-format bundle, APM probes whether it is a legacy `--format apm` bundle. On Python versions earlier than 3.12, that probe extracts untrusted tar members with raw `tar.extractall()` without rejecting Windows absolute member name",
+    "timestamp": "2026-05-15T21:31:32Z",
+    "title": "phpMyFAQ before 4.1.2 contains a stored cross-site scripting vulnerability in SvgSanitizer:...",
+    "description": "phpMyFAQ before 4.1.2 contains a stored cross-site scripting vulnerability in SvgSanitizer::decodeAllEntities() that limits recursive entity decoding to 5 iterations, allowing attackers to bypass sanitization. Authenticated users with FAQ_EDIT permission can upload malicious SVG files with deeply nested ampersand encoding around numeric HTML entities to reconstruct javascript: URLs, which execute arbitrary JavaScript when clicked by other users viewing the uploaded SVG.",
     "severity": "medium",
-    "cve_id": "CVE-2026-46383",
-    "ghsa_id": "GHSA-mq5j-pw29-jcv3",
-    "affected_packages": [
-      "apm-cli"
-    ],
+    "cve_id": "CVE-2026-46360",
+    "ghsa_id": "GHSA-wj3q-vw2v-3rj3",
+    "affected_packages": [],
     "cwes": [
-      null,
       null
     ],
     "references": [
@@ -302,44 +379,16 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-qxvm-r42f-5p8j",
+    "id": "gh-GHSA-9r8r-x3vg-6xh4",
     "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:17:19Z",
-    "title": "AVideo's Meet plugin: `uploadRecordedVideo.json.php` derives `users_id` from the uploaded filename and calls passwordless `User->login()`, allowing any caller with the Meet shared secret to obtain a session as arbitrary users including admin",
-    "description": "## Summary\n\n**Type:** Authorization-bypass via user-controlled identifier. The Meet plugin's recorded-video upload endpoint (`plugin/Meet/uploadRecordedVideo.json.php`) authenticates the caller using a single shared `Authorization: Bearer <secret>` against `$objM->secret`. Once that check passes, the endpoint reads the *target user identifier* from the uploaded file's `name` field, instantiates a `User` object with that ID, and calls `$userObject->login(true, true)` — the no-password / encoded-p",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-qxvm-r42f-5p8j",
-    "affected_packages": [
-      "WWBN/AVideo"
-    ],
-    "cwes": [
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-rc6v-5rmx-w5mv",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:13:57Z",
-    "title": "arnika is affected by medium-severity issues in UDP rotation, PQC handling, and KMS TLS",
-    "description": "### Summary\nThree medium-severity issues in arnika affecting the UDP key-rotation protocol, PQC key file handling, and KMS TLS client. All require specific preconditions to exploit and do not allow direct code execution or immediate key extraction. A self-contained PoC is attached.\n\n### Details\n1) ACK timestamp not validated: `udpserver.go:185`\n`udpClient()` verifies HMAC and packet type but never checks `ackPkt.Timestamp`. A MITM can capture one ACK, drop all subsequent DATA packets, and replay",
+    "timestamp": "2026-05-15T21:31:32Z",
+    "title": "phpMyFAQ before 4.1.2 contains an insufficient authorization vulnerability in admin-api routes...",
+    "description": "phpMyFAQ before 4.1.2 contains an insufficient authorization vulnerability in admin-api routes that allows authenticated ordinary users to access administrative endpoints by only checking login status instead of verifying backend privileges. Attackers with valid frontend user accounts can access sensitive backend operational information including dashboard versions, LDAP configuration, Elasticsearch statistics, and health-check data.",
     "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-rc6v-5rmx-w5mv",
-    "affected_packages": [
-      "github.com/arnika-project/arnika"
-    ],
+    "cve_id": "CVE-2026-45009",
+    "ghsa_id": "GHSA-9r8r-x3vg-6xh4",
+    "affected_packages": [],
     "cwes": [
-      null,
-      null,
       null
     ],
     "references": [
@@ -352,22 +401,44 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-vfvv-c25p-m7mm",
+    "id": "gh-GHSA-r3mq-4wxp-p8vq",
     "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:09:10Z",
-    "title": "rkyv: Panic safety bugs in `InlineVec::clear` and `SerVec::clear` enable arbitrary code execution",
-    "description": "`InlineVec::clear()` and `SerVec::clear()` in `rkyv` were not panic-safe. Both functions iterate over their elements and call `drop_in_place` on each, updating `self.len` only *after* the loop. If an element's `Drop` implementation panics during the loop, `self.len` is left at its original value.\n\nA subsequent invocation of `clear()` on the same container then re-visits the already-freed elements:\n\n- `InlineVec::clear()` is called again from `InlineVec`'s own `Drop` implementation when the value",
+    "timestamp": "2026-05-15T21:31:32Z",
+    "title": "Schlix CMS 2.2.6-6 contains a remote code execution vulnerability that allows authenticated...",
+    "description": "Schlix CMS 2.2.6-6 contains a remote code execution vulnerability that allows authenticated attackers to execute arbitrary PHP code by uploading malicious extension packages through the block manager. Attackers can upload a crafted ZIP file containing PHP code in the packageinfo.inc file and trigger execution by accessing the About tab of the installed extension.",
+    "severity": "high",
+    "cve_id": "CVE-2021-47964",
+    "ghsa_id": "GHSA-r3mq-4wxp-p8vq",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-rmqr-h98c-qg2m",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-15T21:31:32Z",
+    "title": "phpMyFAQ before 4.1.2 contains a path traversal vulnerability in Client::deleteClientFolder that...",
+    "description": "phpMyFAQ before 4.1.2 contains a path traversal vulnerability in Client::deleteClientFolder that allows admins with INSTANCE_DELETE permission to delete arbitrary directories. Attackers can submit traversal sequences like https://../../../<path> in the client URL parameter to recursively delete directories outside the intended clientFolder scope.",
     "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-vfvv-c25p-m7mm",
-    "affected_packages": [
-      "rkyv"
-    ],
+    "cve_id": "CVE-2026-45008",
+    "ghsa_id": "GHSA-rmqr-h98c-qg2m",
+    "affected_packages": [],
     "cwes": [
-      null,
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
@@ -376,421 +447,305 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-jrrg-99xh-5j2q",
+    "id": "gh-GHSA-h36g-93qx-rxgr",
     "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:07:51Z",
-    "title": "SimpleSAMLphp casserver FileSystemTicketStore path traversal allows out-of-ticket-directory read/unserialize and conditional deletion",
-    "description": "## Summary\n\n`simplesamlphp-module-casserver` builds file paths for the file-based CAS ticket store by directly concatenating the configured ticket directory with an attacker-controlled ticket identifier. Public CAS validation/proxy endpoints pass attacker-controlled `ticket` / `pgt` query parameters into this store.\n\nIn deployments using `FileSystemTicketStore`, a remote attacker can use path traversal sequences such as `../target.serialized` to make the CAS server read and unserialize files out",
-    "severity": "high",
-    "cve_id": "CVE-2026-46491",
-    "ghsa_id": "GHSA-jrrg-99xh-5j2q",
-    "affected_packages": [
-      "simplesamlphp/simplesamlphp-module-casserver"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-748w-hm6r-qc7v",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T18:01:03Z",
-    "title": "Authenticated Sharp users can download unrelated Laravel Storage objects through the generic download endpoint",
-    "description": "Sharp exposes a generic download endpoint that authorizes access only to the supplied Sharp entity instance, but then reads the target storage `disk` and `path` from request parameters.\n\nBecause the requested storage object is not bound to the authorized entity instance, an authenticated Sharp user who can view one valid record may use that record as an authorization anchor to download unrelated disk-relative objects from configured Laravel Storage disks.\n\nThe confirmed impact is authenticated d",
-    "severity": "high",
-    "cve_id": "CVE-2026-44692",
-    "ghsa_id": "GHSA-748w-hm6r-qc7v",
-    "affected_packages": [
-      "code16/sharp"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-44m2-crh7-f4q2",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T17:59:47Z",
-    "title": "Budibase: `PUT /api/datasources/:datasourceId` is protected only by `TABLE/READ` permission instead of builder access, allowing any authenticated app user to overwrite datasource connection parameters including host, port, and URL",
-    "description": "## Summary\n\nBudibase exposes a REST API for datasource management. The route `PUT /api/datasources/:datasourceId` is registered in the `authorizedRoutes` group with `TABLE/READ` permission. This is the same authorization level as the read endpoint (`GET /api/datasources/:datasourceId`). Every authenticated Budibase app user with the `BASIC` built-in role or higher carries `TABLE/WRITE` (and therefore `TABLE/READ`) permissions, and the datasource update controller performs no additional builder c",
-    "severity": "high",
-    "cve_id": "CVE-2026-45717",
-    "ghsa_id": "GHSA-44m2-crh7-f4q2",
-    "affected_packages": [
-      "@budibase/server"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-fgqv-jh4g-pvg2",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T17:53:08Z",
-    "title": "Budibase: SSRF Bypass via HTTP Redirect in REST Datasource Integration",
-    "description": "### Summary\n\nThe REST datasource integration follows HTTP redirects without re-checking the IP blacklist, allowing an authenticated Builder to access internal services (cloud metadata, databases) by redirecting through an attacker-controlled server. The same vulnerability class was already patched in automation steps (`fetchWithBlacklist` in `packages/server/src/automations/steps/utils.ts`) but the REST integration was missed.\n\n### Details\n\n**Vulnerable file:** `packages/server/src/integrations/",
-    "severity": "high",
-    "cve_id": "CVE-2026-45715",
-    "ghsa_id": "GHSA-fgqv-jh4g-pvg2",
-    "affected_packages": [
-      "@budibase/server"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-rpj4-7x2v-wjrf",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-15T17:47:10Z",
-    "title": "Budibase: SSRF in AI Extract File Automation Step via Missing IP Blacklist Validation",
-    "description": "## Vulnerability Details\n\n**CWE-918**: Server-Side Request Forgery (SSRF)\n\nThe `processUrlFile` function in `packages/server/src/automations/steps/ai/extract.ts` uses `fetch(fileUrl)` directly **without the IP blacklist validation** that is consistently applied to all other automation steps. This allows an authenticated user to trigger server-side requests to internal network addresses.\n\n### Vulnerable Code\n\n**`packages/server/src/automations/steps/ai/extract.ts` (lines 116, 139)**:\n\n```typescri",
-    "severity": "high",
-    "cve_id": "CVE-2026-45548",
-    "ghsa_id": "GHSA-rpj4-7x2v-wjrf",
-    "affected_packages": [
-      "@budibase/server"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-41498",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-08T04:16:14.617",
-    "title": "CVE-2026-41498 - Kimai is an open-source time tracking application. Prior to version 2.54.0, the Team API endpoints u",
-    "description": "Kimai is an open-source time tracking application. Prior to version 2.54.0, the Team API endpoints use #[IsGranted('edit_team')] instead of #[IsGranted('edit', 'team')], causing Symfony TeamVoter to abstain from voting. This removes entity-level ownership checks on team operations, allowing any user with the edit_team permission to modify any team, not just teams they are authorized to manage. This issue has been patched in version 2.54.0.",
-    "severity": "low",
-    "cve_id": "CVE-2026-41498",
-    "cvss_score": 3.3,
-    "affected_products": [
-      "cpe:2.3:a:kimai:kimai:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/kimai/kimai/releases/tag/2.54.0",
-      "https://github.com/kimai/kimai/security/advisories/GHSA-jv9x-w4gm-hwcm",
-      "https://github.com/kimai/kimai/security/advisories/GHSA-jv9x-w4gm-hwcm"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-8128",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-08T03:16:25.553",
-    "title": "CVE-2026-8128 - A vulnerability was found in SourceCodester SUP Online Shopping 1.0. The affected element is an unkn",
-    "description": "A vulnerability was found in SourceCodester SUP Online Shopping 1.0. The affected element is an unknown function of the file /admin/viewmsg.php. Performing a manipulation of the argument msgid results in sql injection. The attack is possible to be carried out remotely. The exploit has been made public and could be used.",
-    "severity": "high",
-    "cve_id": "CVE-2026-8128",
-    "cvss_score": 7.3,
-    "affected_products": [],
-    "references": [
-      "https://github.com/redshadowword-cell/CVE/issues/9",
-      "https://vuldb.com/submit/808772",
-      "https://vuldb.com/vuln/361918",
-      "https://vuldb.com/vuln/361918/cti",
-      "https://www.sourcecodester.com/"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-8127",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-08T03:16:25.350",
-    "title": "CVE-2026-8127 - A vulnerability has been found in eladmin up to 2.7. Impacted is the function checkLevel of the file",
-    "description": "A vulnerability has been found in eladmin up to 2.7. Impacted is the function checkLevel of the file /rest/UserController.java of the component Users API Endpoint. Such manipulation leads to improper access controls. The attack can be executed remotely. The exploit has been disclosed to the public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "timestamp": "2026-05-15T21:31:32Z",
+    "title": "phpMyFAQ before 4.1.2 contains a stored cross-site scripting vulnerability in FAQ creation and...",
+    "description": "phpMyFAQ before 4.1.2 contains a stored cross-site scripting vulnerability in FAQ creation and update endpoints that bypass sanitization through encode-decode cycles. The vulnerability allows authenticated attackers with FAQ_ADD permission to inject malicious script tags via question or answer parameters, which execute in every visitor's browser when FAQ content is rendered with the raw Twig filter.",
     "severity": "medium",
-    "cve_id": "CVE-2026-8127",
-    "cvss_score": 6.3,
-    "affected_products": [],
+    "cve_id": "CVE-2026-46363",
+    "ghsa_id": "GHSA-h36g-93qx-rxgr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://github.com/elunez/eladmin/issues/897",
-      "https://vuldb.com/submit/808771",
-      "https://vuldb.com/vuln/361917",
-      "https://vuldb.com/vuln/361917/cti"
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-8126",
+    "id": "cve-CVE-2026-42174",
     "source": "NVD CVE",
-    "timestamp": "2026-05-08T03:16:25.143",
-    "title": "CVE-2026-8126 - A flaw has been found in SourceCodester Comment System 1.0. This issue affects some unknown processi",
-    "description": "A flaw has been found in SourceCodester Comment System 1.0. This issue affects some unknown processing of the file post_comment.php. This manipulation of the argument Name causes sql injection. Remote exploitation of the attack is possible. The exploit has been published and may be used.",
-    "severity": "high",
-    "cve_id": "CVE-2026-8126",
-    "cvss_score": 7.3,
-    "affected_products": [],
-    "references": [
-      "https://github.com/redshadowword-cell/CVE/issues/7",
-      "https://vuldb.com/submit/808686",
-      "https://vuldb.com/vuln/361916",
-      "https://vuldb.com/vuln/361916/cti",
-      "https://www.sourcecodester.com/"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-6737",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-08T03:16:24.990",
-    "title": "CVE-2026-6737 - An Exposed IOCTL with Insufficient Access Control vulnerability in AsusPTPFilter allows a local user",
-    "description": "An Exposed IOCTL with Insufficient Access Control vulnerability in AsusPTPFilter allows a local user to bypass driver security mechanisms and obtain restricted touchpad information or render the touchpad unusable via crafted IOCTL requests.Refer to the '\nSecurity Update for ASUS Precision Touchpad ' section on the ASUS Security Advisory for more information.",
+    "timestamp": "2026-05-09T04:16:23.600",
+    "title": "CVE-2026-42174 - Kirby is an open-source content management system. Prior to versions 4.9.0 and 5.4.0, user avatar cr",
+    "description": "Kirby is an open-source content management system. Prior to versions 4.9.0 and 5.4.0, user avatar creation, replacement and deletion are not gated by user update permissions. This issue has been patched in versions 4.9.0 and 5.4.0.",
     "severity": "medium",
-    "cve_id": "CVE-2026-6737",
+    "cve_id": "CVE-2026-42174",
     "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://www.asus.com/security-advisory"
+      "https://github.com/getkirby/kirby/releases/tag/4.9.0",
+      "https://github.com/getkirby/kirby/releases/tag/5.4.0",
+      "https://github.com/getkirby/kirby/security/advisories/GHSA-39cp-6679-8xv2"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-3508",
+    "id": "cve-CVE-2026-42137",
     "source": "NVD CVE",
-    "timestamp": "2026-05-08T03:16:24.820",
-    "title": "CVE-2026-3508 - An Out-of-bounds Read vulnerability in the IOCTL handler in ASUS System Control Interface allows a l",
-    "description": "An Out-of-bounds Read vulnerability in the IOCTL handler in ASUS System Control Interface allows a local user to cause system crash (BSOD) via a read size that exceeds the buffer size.Refer to the '\nSecurity Update for MyASUS ' section on the ASUS Security Advisory for more information.",
+    "timestamp": "2026-05-09T04:16:22.653",
+    "title": "CVE-2026-42137 - Kirby is an open-source content management system. Prior to versions 4.9.0 and 5.4.0, `pages.access/",
+    "description": "Kirby is an open-source content management system. Prior to versions 4.9.0 and 5.4.0, `pages.access/list` and `files.access/list` permissions are not consistently checked in the Panel and REST API. This issue has been patched in versions 4.9.0 and 5.4.0.",
     "severity": "medium",
-    "cve_id": "CVE-2026-3508",
+    "cve_id": "CVE-2026-42137",
     "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://www.asus.com/security-advisory"
+      "https://github.com/getkirby/kirby/releases/tag/4.9.0",
+      "https://github.com/getkirby/kirby/releases/tag/5.4.0",
+      "https://github.com/getkirby/kirby/security/advisories/GHSA-85x2-r8xv-ww8c"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-8125",
+    "id": "cve-CVE-2026-42069",
     "source": "NVD CVE",
-    "timestamp": "2026-05-08T02:16:08.200",
-    "title": "CVE-2026-8125 - A vulnerability was detected in code-projects Simple Chat System 1.0. This vulnerability affects unk",
-    "description": "A vulnerability was detected in code-projects Simple Chat System 1.0. This vulnerability affects unknown code of the file sendMessage.php. The manipulation of the argument type/length/business parameter validity results in sql injection. The attack may be launched remotely. The exploit is now public and may be used.",
+    "timestamp": "2026-05-09T04:16:22.297",
+    "title": "CVE-2026-42069 - Kirby is an open-source content management system. Prior to versions 4.9.0 and 5.4.0, read access to",
+    "description": "Kirby is an open-source content management system. Prior to versions 4.9.0 and 5.4.0, read access to site, user and role information is not gated by permissions. This issue has been patched in versions 4.9.0 and 5.4.0.",
     "severity": "medium",
-    "cve_id": "CVE-2026-8125",
-    "cvss_score": 6.3,
+    "cve_id": "CVE-2026-42069",
+    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://code-projects.org/",
-      "https://github.com/MICHEY-Ben/cve/issues/1",
-      "https://vuldb.com/submit/808679",
-      "https://vuldb.com/vuln/361915",
-      "https://vuldb.com/vuln/361915/cti"
+      "https://github.com/getkirby/kirby/releases/tag/4.9.0",
+      "https://github.com/getkirby/kirby/releases/tag/5.4.0",
+      "https://github.com/getkirby/kirby/security/advisories/GHSA-2h7v-4372-f6x2"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-8124",
+    "id": "cve-CVE-2026-42051",
     "source": "NVD CVE",
-    "timestamp": "2026-05-08T02:16:08.000",
-    "title": "CVE-2026-8124 - A security vulnerability has been detected in GPAC up to 26.02.0. This affects the function sidx_box",
-    "description": "A security vulnerability has been detected in GPAC up to 26.02.0. This affects the function sidx_box_read of the file src/isomedia/box_code_base.c. The manipulation leads to allocation of resources. The attack must be carried out locally. The exploit has been disclosed publicly and may be used. The identifier of the patch is 442e2299530138d8f874fd885c565ba98a6318ba. It is suggested to install a patch to address this issue.",
-    "severity": "low",
-    "cve_id": "CVE-2026-8124",
-    "cvss_score": 3.3,
-    "affected_products": [
-      "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/gpac/gpac/",
-      "https://github.com/gpac/gpac/commit/442e2299530138d8f874fd885c565ba98a6318ba",
-      "https://github.com/gpac/gpac/issues/3519",
-      "https://vuldb.com/submit/808611",
-      "https://vuldb.com/vuln/361914",
-      "https://vuldb.com/vuln/361914/cti"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-8123",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-08T02:16:07.803",
-    "title": "CVE-2026-8123 - A vulnerability was determined in Open5GS up to 2.7.7. This impacts the function ogs_sbi_discovery_o",
-    "description": "A vulnerability was determined in Open5GS up to 2.7.7. This impacts the function ogs_sbi_discovery_option_add_snssais in the library /lib/sbi/message.c of the component NSSF. This manipulation causes denial of service. It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized. The project was informed of the problem early through an issue report but has not responded yet.",
+    "timestamp": "2026-05-09T04:16:22.110",
+    "title": "CVE-2026-42051 - Kirby is an open-source content management system. Prior to versions 4.9.0 and 5.4.0, the system API",
+    "description": "Kirby is an open-source content management system. Prior to versions 4.9.0 and 5.4.0, the system API endpoint leaks license data and installed version to authenticated users. This issue has been patched in versions 4.9.0 and 5.4.0.",
     "severity": "medium",
-    "cve_id": "CVE-2026-8123",
-    "cvss_score": 4.3,
-    "affected_products": [
-      "cpe:2.3:a:open5gs:open5gs:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/open5gs/open5gs/",
-      "https://github.com/open5gs/open5gs/issues/4436",
-      "https://vuldb.com/submit/808426",
-      "https://vuldb.com/vuln/361910",
-      "https://vuldb.com/vuln/361910/cti"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-8122",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-08T01:16:10.053",
-    "title": "CVE-2026-8122 - A vulnerability was found in Open5GS up to 2.7.7. This affects the function ogs_sbi_discovery_option",
-    "description": "A vulnerability was found in Open5GS up to 2.7.7. This affects the function ogs_sbi_discovery_option_add_service_names in the library /lib/sbi/message.c of the component NSSF. The manipulation results in denial of service. The attack may be performed from remote. The exploit has been made public and could be used. The project was informed of the problem early through an issue report but has not responded yet.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-8122",
-    "cvss_score": 4.3,
-    "affected_products": [
-      "cpe:2.3:a:open5gs:open5gs:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/open5gs/open5gs/",
-      "https://github.com/open5gs/open5gs/issues/4435",
-      "https://vuldb.com/submit/808425",
-      "https://vuldb.com/vuln/361909",
-      "https://vuldb.com/vuln/361909/cti"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-8121",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-08T01:16:09.860",
-    "title": "CVE-2026-8121 - A vulnerability has been found in Open5GS up to 2.7.7. The impacted element is the function ogs_sbi_",
-    "description": "A vulnerability has been found in Open5GS up to 2.7.7. The impacted element is the function ogs_sbi_parse_plmn_list in the library /lib/sbi/conv.c of the component NSSF. The manipulation leads to denial of service. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-8121",
-    "cvss_score": 4.3,
-    "affected_products": [
-      "cpe:2.3:a:open5gs:open5gs:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/open5gs/open5gs/",
-      "https://github.com/open5gs/open5gs/issues/4433",
-      "https://vuldb.com/submit/808422",
-      "https://vuldb.com/submit/808424",
-      "https://vuldb.com/vuln/361908",
-      "https://vuldb.com/vuln/361908/cti"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-8120",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-08T01:16:09.643",
-    "title": "CVE-2026-8120 - A flaw has been found in Open5GS up to 2.7.7. The affected element is the function nssf_nnrf_nsselec",
-    "description": "A flaw has been found in Open5GS up to 2.7.7. The affected element is the function nssf_nnrf_nsselection_handle_get_from_amf_or_vnssf of the file /src/nssf/nnssf-handler.c of the component NSSF. Executing a manipulation can lead to denial of service. The attack can be executed remotely. The exploit has been published and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-8120",
-    "cvss_score": 4.3,
-    "affected_products": [
-      "cpe:2.3:a:open5gs:open5gs:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/open5gs/open5gs/",
-      "https://github.com/open5gs/open5gs/issues/4432",
-      "https://vuldb.com/submit/808421",
-      "https://vuldb.com/vuln/361907",
-      "https://vuldb.com/vuln/361907/cti",
-      "https://vuldb.com/submit/808421"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-8119",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-08T01:16:08.367",
-    "title": "CVE-2026-8119 - A vulnerability was detected in Open5GS up to 2.7.7. Impacted is the function ogs_sbi_stream_find_by",
-    "description": "A vulnerability was detected in Open5GS up to 2.7.7. Impacted is the function ogs_sbi_stream_find_by_id in the library /lib/sbi/nghttp2-server.c of the component NSSF. Performing a manipulation results in denial of service. Attacking locally is a requirement. The exploit is now public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
-    "severity": "low",
-    "cve_id": "CVE-2026-8119",
-    "cvss_score": 3.3,
-    "affected_products": [
-      "cpe:2.3:a:open5gs:open5gs:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/open5gs/open5gs/",
-      "https://github.com/open5gs/open5gs/issues/4431",
-      "https://vuldb.com/submit/808420",
-      "https://vuldb.com/vuln/361906",
-      "https://vuldb.com/vuln/361906/cti"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-8117",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-08T00:16:10.320",
-    "title": "CVE-2026-8117 - A security vulnerability has been detected in SourceCodester Pizzafy Ecommerce System 1.0. This issu",
-    "description": "A security vulnerability has been detected in SourceCodester Pizzafy Ecommerce System 1.0. This issue affects some unknown processing of the file /admin/index.php. Such manipulation of the argument page leads to cross site scripting. The attack may be launched remotely. The exploit has been disclosed publicly and may be used.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-8117",
-    "cvss_score": 4.3,
+    "cve_id": "CVE-2026-42051",
+    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://github.com/redshadowword-cell/CVE/issues/5",
-      "https://vuldb.com/submit/808327",
-      "https://vuldb.com/vuln/361905",
-      "https://vuldb.com/vuln/361905/cti",
-      "https://www.sourcecodester.com/"
+      "https://github.com/getkirby/kirby/releases/tag/4.9.0",
+      "https://github.com/getkirby/kirby/releases/tag/5.4.0",
+      "https://github.com/getkirby/kirby/security/advisories/GHSA-x68m-c7jf-2572"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-8116",
+    "id": "cve-CVE-2026-41311",
     "source": "NVD CVE",
-    "timestamp": "2026-05-08T00:16:09.833",
-    "title": "CVE-2026-8116 - A weakness has been identified in huangjunsen0406 xiaozhi-mcphub up to 1.0.3. This vulnerability aff",
-    "description": "A weakness has been identified in huangjunsen0406 xiaozhi-mcphub up to 1.0.3. This vulnerability affects unknown code of the file src/controllers/dxtController.ts. This manipulation of the argument manifest.name causes path traversal. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks. The project was informed of the problem early through an issue report but has not responded yet.",
+    "timestamp": "2026-05-09T04:16:21.913",
+    "title": "CVE-2026-41311 - LiquidJS is a Shopify / GitHub Pages compatible template engine in pure JavaScript. Prior to version",
+    "description": "LiquidJS is a Shopify / GitHub Pages compatible template engine in pure JavaScript. Prior to version 10.25.7, a circular block reference in {% layout %} / {% block %} causes an infinite recursive loop, consuming all available memory (~4GB) and crashing the Node.js process with FATAL ERROR: JavaScript heap out of memory. This allows any user who can submit a Liquid template to perform a Denial of Service attack. This issue has been patched in version 10.25.7.",
+    "severity": "high",
+    "cve_id": "CVE-2026-41311",
+    "cvss_score": 7.5,
+    "affected_products": [
+      "cpe:2.3:a:liquidjs:liquidjs:*:*:*:*:*:node.js:*:*"
+    ],
+    "references": [
+      "https://github.com/harttle/liquidjs/commit/e2311dfd6e82f73509308aa8a3a1fafc92e226f0",
+      "https://github.com/harttle/liquidjs/releases/tag/v10.25.7",
+      "https://github.com/harttle/liquidjs/security/advisories/GHSA-4rc3-7j7w-m548",
+      "https://github.com/harttle/liquidjs/security/advisories/GHSA-4rc3-7j7w-m548"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-41163",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-09T04:16:21.167",
+    "title": "CVE-2026-41163 - bubblewrap is a low-level unprivileged sandboxing tool. From version 0.11.0 to before version 0.11.2",
+    "description": "bubblewrap is a low-level unprivileged sandboxing tool. From version 0.11.0 to before version 0.11.2, if bubblewrap is installed in setuid mode then the user can use ptrace to attach to bubblewrap and control the unprivileged part of the sandbox setup phase. This allows the attacker to arbitrarily use the privileged operations, and in particular the \"overlay mount\" operation, allowing the creation of overlay mounts which is otherwise not allowed in the setuid version of bubblewrap. This issue has been patched in version 0.11.2.",
     "severity": "medium",
-    "cve_id": "CVE-2026-8116",
-    "cvss_score": 6.3,
+    "cve_id": "CVE-2026-41163",
+    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://github.com/huangjunsen0406/xiaozhi-mcphub/",
-      "https://github.com/huangjunsen0406/xiaozhi-mcphub/issues/29",
-      "https://vuldb.com/submit/808260",
-      "https://vuldb.com/vuln/361904",
-      "https://vuldb.com/vuln/361904/cti"
+      "https://github.com/containers/bubblewrap/releases/tag/v0.11.2",
+      "https://github.com/containers/bubblewrap/security/advisories/GHSA-xq78-7hw4-5jvp"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-8207",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-09T03:16:16.227",
+    "title": "CVE-2026-8207 - Gibbon versions before v30.0.01 are affected by an authenticated SQL Injection vulnerability by abus",
+    "description": "Gibbon versions before v30.0.01 are affected by an authenticated SQL Injection vulnerability by abusing the  Tracking/graphing https://github.com/GibbonEdu/core/blob/c431e25fdc874adece5d2dc7e408e9aa2d1abadb/modules/Tracking/graphing.php#L145  feature. Successful exploitation requires Teacher or higher privileges. Exploitation could result in unintended read/write activities to the underlying database.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8207",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://github.com/GibbonEdu/core/releases/tag/v30.0.01",
+      "https://projectblack.io/blog/gibbon-v30-authenticated-sql-injection-and-rce/#sql-injectiongetting-warmed-up"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-7652",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-09T03:16:15.117",
+    "title": "CVE-2026-7652 - The LatePoint plugin for WordPress is vulnerable to Account Takeover via Weak Password Recovery Mech",
+    "description": "The LatePoint plugin for WordPress is vulnerable to Account Takeover via Weak Password Recovery Mechanism in the unauthenticated guest booking flow in versions up to, and including, 5.5.0 This is due to the save_connected_wordpress_user() function propagating a LatePoint customer's email address to its linked WordPress user account via wp_update_user() without any ownership verification, combined with the guest booking flow's ability to overwrite an existing customer's email through phone-based merge without authentication. This makes it possible for unauthenticated attackers to overwrite the email address of a non-super-admin WordPress user account that is not yet linked to a LatePoint customer, enabling full account takeover by subsequently triggering the standard WordPress password-reset flow to the attacker-controlled address granted the plugin is configured with WordPress user integration enabled, phone-based contact merging, and customer authentication disabled. Administrator accounts on single-site installs are not affected.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-7652",
+    "cvss_score": 5.3,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/latepoint.php#L1165",
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/lib/helpers/customer_helper.php#L238",
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/lib/helpers/steps_helper.php#L1940",
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.4.2/lib/helpers/steps_helper.php#L1972",
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.5.0/latepoint.php#L1165",
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.5.0/lib/helpers/customer_helper.php#L238",
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.5.0/lib/helpers/steps_helper.php#L1940",
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.5.0/lib/helpers/steps_helper.php#L1972",
+      "https://plugins.trac.wordpress.org/browser/latepoint/trunk/latepoint.php#L1165",
+      "https://plugins.trac.wordpress.org/browser/latepoint/trunk/lib/helpers/customer_helper.php#L238",
+      "https://plugins.trac.wordpress.org/browser/latepoint/trunk/lib/helpers/steps_helper.php#L1940",
+      "https://plugins.trac.wordpress.org/browser/latepoint/trunk/lib/helpers/steps_helper.php#L1972",
+      "https://plugins.trac.wordpress.org/changeset/3522933/latepoint/trunk/latepoint.php",
+      "https://plugins.trac.wordpress.org/changeset?old_path=%2Flatepoint/tags/5.5.0&new_path=%2Flatepoint/tags/5.5.1",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/bdaa32cd-a148-4554-9fd5-f5b0a5b2d1c3?source=cve"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-6667",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-09T01:16:09.287",
+    "title": "CVE-2026-6667 - PgBouncer before 1.25.2 did not perform an appropriate authorization check for the KILL_CLIENT admin",
+    "description": "PgBouncer before 1.25.2 did not perform an appropriate authorization check for the KILL_CLIENT admin command. All users with access to the administration console (which itself requires authorization) could run this command. It would have been correct to allow only users listed in the admin_users parameter.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-6667",
+    "cvss_score": 4.3,
+    "affected_products": [
+      "cpe:2.3:a:pgbouncer:pgbouncer:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://www.pgbouncer.org/changelog.html#pgbouncer-125x"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-6666",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-09T01:16:09.153",
+    "title": "CVE-2026-6666 - A possible null pointer reference in PgBouncer before 1.25.2 could lead to a crash, if a server send",
+    "description": "A possible null pointer reference in PgBouncer before 1.25.2 could lead to a crash, if a server sends an error response without SQLSTATE field.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-6666",
+    "cvss_score": 5.9,
+    "affected_products": [
+      "cpe:2.3:a:pgbouncer:pgbouncer:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://www.pgbouncer.org/changelog.html#pgbouncer-125x"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-6665",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-09T01:16:09.013",
+    "title": "CVE-2026-6665 - The SCRAM code in PgBouncer before 1.25.2 did not check the return value of strlcat() correctly when",
+    "description": "The SCRAM code in PgBouncer before 1.25.2 did not check the return value of strlcat() correctly when building the contents of the SCRAM client-final-message. A malicious backend that sends a SCRAM server-final-message with a long nonce can trigger a stack overflow.",
+    "severity": "high",
+    "cve_id": "CVE-2026-6665",
+    "cvss_score": 8.1,
+    "affected_products": [
+      "cpe:2.3:a:pgbouncer:pgbouncer:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://www.pgbouncer.org/changelog.html#pgbouncer-125x"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-6664",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-09T01:16:08.863",
+    "title": "CVE-2026-6664 - An integer overflow in network packet parsing code in PgBouncer before 1.25.2 bypasses a boundary ch",
+    "description": "An integer overflow in network packet parsing code in PgBouncer before 1.25.2 bypasses a boundary check and can lead to a crash. An unauthenticated remote attacker can crash PgBouncer with a malformed SCRAM authentication packet.",
+    "severity": "high",
+    "cve_id": "CVE-2026-6664",
+    "cvss_score": 7.5,
+    "affected_products": [
+      "cpe:2.3:a:pgbouncer:pgbouncer:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://www.pgbouncer.org/changelog.html#pgbouncer-125x"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-41705",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-09T01:16:08.690",
+    "title": "CVE-2026-41705 - Spring AI's MilvusVectorStore#doDelete(List) implementation is vulnerable to filter-expression injec",
+    "description": "Spring AI's MilvusVectorStore#doDelete(List) implementation is vulnerable to filter-expression injection via unsanitized document IDs.\nSpring AI 1.0.x: affected from 1.0.0 through latest 1.0.x; upgrade to 1.0.7 or greater. Spring AI 1.1.x: affected from 1.1.0 through latest 1.1.x; upgrade to 1.1.6 or greater.",
+    "severity": "high",
+    "cve_id": "CVE-2026-41705",
+    "cvss_score": 8.6,
+    "affected_products": [
+      "cpe:2.3:a:vmware:spring_ai:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_ai:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://spring.io/security/cve-2026-41705"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-44313",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-09T00:16:29.373",
+    "title": "CVE-2026-44313 - Linkwarden is a self-hosted, open-source collaborative bookmark manager to collect, organize and arc",
+    "description": "Linkwarden is a self-hosted, open-source collaborative bookmark manager to collect, organize and archive webpages. Prior to version 2.13.0, a Server-Side Request Forgery (SSRF) vulnerability in the fetchTitleAndHeaders function allows authenticated users to make arbitrary HTTP requests to internal services due to insufficient URL validation that only checks for \"http://\" or \"https://\" prefixes. This issue has been patched in version 2.13.0.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-44313",
+    "cvss_score": 9.1,
+    "affected_products": [],
+    "references": [
+      "https://github.com/linkwarden/linkwarden/security/advisories/GHSA-5qpc-x7rv-hvmp",
+      "https://github.com/linkwarden/linkwarden/security/advisories/GHSA-5qpc-x7rv-hvmp"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-42455",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-09T00:16:29.180",
+    "title": "CVE-2026-42455 - Linkwarden is a self-hosted, open-source collaborative bookmark manager to collect, organize and arc",
+    "description": "Linkwarden is a self-hosted, open-source collaborative bookmark manager to collect, organize and archive webpages. In versions 2.14.0 and prior, the archive upload endpoint (POST /api/v1/archives/[linkId]?format=4) accepts HTML files (text/html) without sanitizing JavaScript content. When the archive is later accessed via GET /api/v1/archives/[linkId]?format=4, the HTML is served with Content-Type: text/html from the Linkwarden origin, without any Content-Security-Policy header. This allows arbitrary JavaScript execution in the context of the authenticated Linkwarden sessio. At time of publication, there are no publicly available patches.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-42455",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://github.com/linkwarden/linkwarden/security/advisories/GHSA-fjvg-mch3-j3vg",
+      "https://github.com/linkwarden/linkwarden/security/advisories/GHSA-fjvg-mch3-j3vg"
     ],
     "ai_analysis": null,
     "risk_score": null
