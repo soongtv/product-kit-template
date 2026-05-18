@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1779119414954-1",
+    "id": "twitter-1779134091160-1",
     "source": "Twitter Security",
-    "timestamp": "2026-05-18T15:50:14.954Z",
+    "timestamp": "2026-05-18T19:54:51.160Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,781 +10,34 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "risk_score": 85,
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code, potentially leading to data encryption, service disruption, and financial losses.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Manufacturing",
+        "Media and Entertainment"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Conduct an immediate review and hardening of CI/CD pipelines, including access controls, credential management, and dependency scanning.",
+        "Implement robust backup strategies for critical cloud-based data and ensure backups are stored in isolated environments.",
+        "Deploy advanced threat detection and monitoring tools to identify unusual activity in cloud environments and CI/CD pipelines."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
-    "id": "hn-1779119414954-1",
+    "id": "hn-1779134091160-1",
     "source": "HackerNews",
-    "timestamp": "2026-05-18T15:50:14.954Z",
+    "timestamp": "2026-05-18T19:54:51.160Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
     "references": [
       "https://news.ycombinator.com/item?id=123"
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "The open-source vulnerability scanner itself does not pose a direct threat but could be exploited if malicious actors modify or distribute a compromised version. Additionally, over-reliance on automated tools without proper validation could lead to incomplete or inaccurate vulnerability assessments.",
-      "affected_industries": [
-        "Technology",
-        "Software Development",
-        "Cybersecurity"
-      ],
-      "recommended_actions": [
-        "Evaluate the tool's source code and verify its integrity before use to ensure it has not been tampered with.",
-        "Incorporate the tool as part of a broader vulnerability management program, rather than relying solely on it.",
-        "Monitor the tool's updates and community feedback regularly to stay informed about potential issues or improvements."
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-2m69-jmvh-6chr",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:39:33Z",
-    "title": "CI4MS: Stored XSS in Blog Content via Broken `html_purify` Validation Rule",
-    "description": "## Summary\n\nThe custom `html_purify` validation rule used to sanitize blog post bodies relies on by-reference mutation (`?string &$str`), but CodeIgniter 4's validator passes a local copy of the value, so the sanitized text is silently discarded. The Blog controller writes `$lanData['content']` directly into `blog_langs.content`, and the public template echoes it without escaping — yielding stored XSS executable in any visitor's browser, including the superadmin when previewing or editing posts.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-45138",
-    "ghsa_id": "GHSA-2m69-jmvh-6chr",
-    "affected_packages": [
-      "ci4-cms-erp/ci4ms"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability allows attackers to inject malicious JavaScript into blog content, which is then executed in the browser of any user viewing the content, including administrators. This could lead to session hijacking, data theft, or further exploitation of the application.",
-      "affected_industries": [
-        "Media and Publishing",
-        "E-commerce",
-        "Education",
-        "Corporate Blogging Platforms",
-        "Technology and SaaS"
-      ],
-      "recommended_actions": [
-        "Update the `html_purify` validation rule to ensure it properly sanitizes input by modifying the implementation to handle by-value inputs correctly.",
-        "Implement server-side output escaping for all user-generated content before rendering it in the browser to prevent execution of malicious scripts.",
-        "Conduct a security review of the entire application to identify and patch similar vulnerabilities in other input validation or output encoding mechanisms."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-5r97-79vw-qvm4",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:38:59Z",
-    "title": "Microsoft DirectX12: .spritefont multiply overflow only in 32-bit builds",
-    "description": "### Impact\nThe spritefont reader can be induced to perform a 32-bit overflow multiply that could in theory result in a RCE.\n\nThis impacts the use of the *DirectX Tool Kit* **SpriteFont** class file loading ctor if given untrusted data files.\n\n> Note this only applies to x86/ARM builds of the library. ARM64 and x64 native is not subject to this issue.\n\n### Patches\nThis bug has been fixed in the May 7, 2026 release. Alternatively, you can just update your copy of the reader as per [this commit](ht",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-5r97-79vw-qvm4",
-    "affected_packages": [
-      "directxtk12_desktop_win10",
-      "directxtk12_uwp"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-c55g-rp4x-fx84",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:38:15Z",
-    "title": "Microsoft DirectX: .spritefont multiply overflow only in 32-bit builds",
-    "description": "### Impact\nThe spritefont reader can be induced to perform a 32-bit overflow multiply that could in theory result in a RCE.\n\nThis impacts the use of the *DirectX Tool Kit* **SpriteFont** class file loading ctor if given untrusted data files.\n\n> Note this only applies to x86/ARM builds of the library. ARM64 and x64 native is not subject to this issue.\n\n### Patches\nThis bug has been fixed in the May 7, 2026 release. Alternatively, users can update their copy of the reader as per [this commit](http",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-c55g-rp4x-fx84",
-    "affected_packages": [
-      "directxtk_desktop_win10",
-      "directxtk_uwp"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-j5rm-v3vh-vx94",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:37:00Z",
-    "title": "eduMFA Passkeys: missing expiration flag may allow replay attacks and reuse of old challenges ",
-    "description": "### Impact\nIn eduMFA < 2.9.1 userless Passkey/WebAuthn challenges might be replayed and do not expire\n\n### Patches\nFixed in eduMFA >= 2.9.1 by adding validity information to the userless challenges.\n\n### Workarounds\nNo known workarounds besides disabling userless login altogether.",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-j5rm-v3vh-vx94",
-    "affected_packages": [
-      "edumfa"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-qq2p-4282-cfc5",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:36:18Z",
-    "title": "eduMFA: Incorrect InnoDB snapshot isolation possibly allows token reusage",
-    "description": "### Impact\n\nFor deployments using MySQL or MariaDB < 11.6.2 (or newer with innodb_snapshot_isolation=off) reusage of token values might be possible due to faulty transaction isolation inside the database. Exploiting this requires racing this transaction.\nAffected are all tokentypes whose values are only supposed to be used once, for example TOTP, HOTP and likely also WebAuthN.\n\n#### Affected Combinations:\n\n- MySQL (any version)\n- MariaDB with innodb_snapshot_isolation=OFF\n  - innodb_snapshot_iso",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-qq2p-4282-cfc5",
-    "affected_packages": [
-      "edumfa"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-74r7-3mjm-jc5v",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:35:42Z",
-    "title": "eduMFA: Unauthenticated Failcounter Increment on Resolver Tokens via /validate/check",
-    "description": "### Impact\nIf the resolver parameter is passed, but the user does not exist, all failcounters of tokens in that resolver will be increased.\n\n### Patches\nThis, along with other issues, was fixed in eduMFA v2.9.1.\n\n### Workarounds\nLimiting access to `/validate/check` to client applications (i.e. Shibboleth/FreeRADIUS) using an authorization policy with `api_key_required` or using e.g. the reverse proxy.",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-74r7-3mjm-jc5v",
-    "affected_packages": [
-      "edumfa"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 55,
-      "impact_assessment": "The vulnerability allows unauthenticated users to increment failcounters for all tokens in a resolver, potentially leading to account lockouts and denial of service for legitimate users. This could disrupt authentication services and impact operational continuity.",
-      "affected_industries": [
-        "Education",
-        "Research Institutions",
-        "Organizations using eduMFA for authentication"
-      ],
-      "recommended_actions": [
-        "Update to eduMFA v2.9.1 to apply the patch that resolves this vulnerability.",
-        "Implement an authorization policy to restrict access to the `/validate/check` endpoint, ensuring only trusted client applications (e.g., Shibboleth/FreeRADIUS) can access it.",
-        "Use a reverse proxy to enforce additional access controls and monitor traffic to the `/validate/check` endpoint for suspicious activity."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 55
-  },
-  {
-    "id": "gh-GHSA-pf9c-ch8r-2958",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:32:43Z",
-    "title": "Statamic CMS: Server-Side Request Forgery via Glide",
-    "description": "### Impact\n\nThe Glide image proxy's URL validation could be bypassed using an IP representation that wasn't normalized before the public-IP check. An unauthenticated user could cause the server to make HTTP requests to internal addresses — including loopback, private network, and cloud metadata endpoints.\n\nThis affects sites that pass user-supplied URLs to Glide. Sites running PHP 8.3 or newer are not affected.\n\n### Patches\n\nThis has been fixed in 5.73.22 and 6.18.1",
-    "severity": "medium",
-    "cve_id": "CVE-2026-45660",
-    "ghsa_id": "GHSA-pf9c-ch8r-2958",
-    "affected_packages": [
-      "statamic/cms",
-      "statamic/cms"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-45660.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-7wff-wpr6-vmhm",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:31:56Z",
-    "title": "ImageMagick: Heap Buffer Over-Read in IPTC encoder",
-    "description": "When writing an IPTC output file a malicious input file could cause an out of bounds read of a single byte.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-42326",
-    "ghsa_id": "GHSA-7wff-wpr6-vmhm",
-    "affected_packages": [
-      "Magick.NET-Q16-AnyCPU",
-      "Magick.NET-Q16-HDRI-AnyCPU",
-      "Magick.NET-Q16-HDRI-OpenMP-arm64",
-      "Magick.NET-Q16-HDRI-OpenMP-x64",
-      "Magick.NET-Q16-HDRI-arm64",
-      "Magick.NET-Q16-HDRI-x64",
-      "Magick.NET-Q16-HDRI-x86",
-      "Magick.NET-Q16-OpenMP-arm64",
-      "Magick.NET-Q16-OpenMP-x64",
-      "Magick.NET-Q16-arm64",
-      "Magick.NET-Q16-x64",
-      "Magick.NET-Q16-x86",
-      "Magick.NET-Q8-AnyCPU",
-      "Magick.NET-Q8-OpenMP-arm64",
-      "Magick.NET-Q8-OpenMP-x64",
-      "Magick.NET-Q8-arm64",
-      "Magick.NET-Q8-x64",
-      "Magick.NET-Q8-x86"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 55,
-      "impact_assessment": "The vulnerability in the ImageMagick IPTC encoder could allow attackers to exploit a heap buffer over-read, potentially leading to information disclosure or application crashes if a maliciously crafted file is processed.",
-      "affected_industries": [
-        "Media and Entertainment",
-        "Web Hosting and Content Delivery",
-        "E-commerce",
-        "Software Development"
-      ],
-      "recommended_actions": [
-        "Update ImageMagick to the latest patched version that addresses CVE-2026-42326.",
-        "Implement input validation and sanitization to detect and reject potentially malicious files before processing.",
-        "Monitor application logs for unusual crashes or behavior that could indicate exploitation attempts."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 55
-  },
-  {
-    "id": "gh-GHSA-h666-98mq-949j",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:30:38Z",
-    "title": "Dify version 1.14.1 and prior contain a path traversal vulnerability that allows authenticated...",
-    "description": "Dify version 1.14.1 and prior contain a path traversal vulnerability that allows authenticated users to manipulate requests forwarded to the Plugin Daemon's internal REST API by exploiting insufficient URL path sanitization. Attackers can traverse out of their authorized tenant path using unencoded dot sequences in task identifiers or manipulated filename parameters to access internal endpoints such as debug interfaces, requiring only knowledge of the victim tenant's UUID. NOTE: Dify Cloud allow",
-    "severity": "critical",
-    "cve_id": "CVE-2026-41948",
-    "ghsa_id": "GHSA-h666-98mq-949j",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-41948.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-jv3f-qwf9-wvq9",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:30:38Z",
-    "title": "Dify version 1.14.1 and prior contain an authorization bypass vulnerability in the file preview...",
-    "description": "Dify version 1.14.1 and prior contain an authorization bypass vulnerability in the file preview endpoint that allows any authenticated user to read up to 3,000 characters of any uploaded document across all tenants and workspaces using only the file's UUID. Attackers can access the /console/api/files/{file_id}/preview endpoint with an intercepted file UUID to extract sensitive content from documents without ownership or workspace permission verification. NOTE: Dify Cloud allows unauthenticated f",
-    "severity": "high",
-    "cve_id": "CVE-2026-41949",
-    "ghsa_id": "GHSA-jv3f-qwf9-wvq9",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41949.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-48v9-p8g8-55vg",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:30:38Z",
-    "title": "Dify version 1.14.1 and prior contains an authorization bypass vulnerability that allows...",
-    "description": "Dify version 1.14.1 and prior contains an authorization bypass vulnerability that allows authenticated editor users to set and enable trace configurations for any application regardless of tenant ownership. Attackers can exploit missing tenant ownership checks in the trace configuration endpoints to redirect all messages and responses from victim applications to attacker-controlled LLM trace providers. NOTE: Dify Cloud allows unauthenticated free self-registration, making account creation trivia",
-    "severity": "critical",
-    "cve_id": "CVE-2026-41947",
-    "ghsa_id": "GHSA-48v9-p8g8-55vg",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 92,
-      "impact_assessment": "The vulnerability allows attackers to bypass authorization checks and manipulate trace configurations for applications across tenants. This could lead to unauthorized access to sensitive data, redirection of application responses to attacker-controlled endpoints, and potential data breaches. The unauthenticated free self-registration feature further exacerbates the risk by enabling trivial account creation for exploitation.",
-      "affected_industries": [
-        "Software-as-a-Service (SaaS)",
-        "Cloud Service Providers",
-        "E-commerce",
-        "Healthcare",
-        "Financial Services",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Immediately patch Dify to the latest version that addresses CVE-2026-41947 and ensure tenant ownership checks are implemented in trace configuration endpoints.",
-        "Disable unauthenticated free self-registration or implement stricter verification mechanisms to prevent trivial account creation.",
-        "Conduct a security audit of applications using Dify to identify any unauthorized trace configurations and mitigate potential data exposure."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 92
-  },
-  {
-    "id": "gh-GHSA-f8mg-6wwh-9h6g",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:30:38Z",
-    "title": "An issue in prestashop upsshipping all versions through at least 2.4.0 allows a remote attacker...",
-    "description": "An issue in prestashop upsshipping all versions through at least 2.4.0 allows a remote attacker to obtain sensitive information via the /modules/upsshipping/logs/, and /modules/upsshipping/lib/UPSBaseApi.php components",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-39079",
-    "ghsa_id": "GHSA-f8mg-6wwh-9h6g",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-39079.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-9gx7-g5hv-xjjj",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:30:37Z",
-    "title": "A flaw was found in gnutls. A remote attacker could exploit an issue in the Datagram Transport...",
-    "description": "A flaw was found in gnutls. A remote attacker could exploit an issue in the Datagram Transport Layer Security (DTLS) packet reordering logic. The comparator function, responsible for ordering DTLS packets by sequence numbers, did not correctly handle packets with duplicate sequence numbers. This could lead to unstable packet ordering or undefined behavior, resulting in a denial of service.",
-    "severity": "high",
-    "cve_id": "CVE-2026-42009",
-    "ghsa_id": "GHSA-9gx7-g5hv-xjjj",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in gnutls could allow a remote attacker to disrupt the Datagram Transport Layer Security (DTLS) protocol, leading to potential denial of service (DoS) attacks. This could result in service interruptions, degraded performance, or system instability for affected applications relying on DTLS.",
-      "affected_industries": [
-        "Telecommunications",
-        "Financial Services",
-        "Healthcare",
-        "E-commerce",
-        "Cloud Service Providers",
-        "IoT and Embedded Systems"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patch or update for gnutls that addresses CVE-2026-42009 as soon as it becomes available.",
-        "Implement monitoring and logging for unusual DTLS traffic patterns to detect potential exploitation attempts.",
-        "Review and restrict network access to critical systems using DTLS to minimize exposure to remote attackers."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-53vh-ccq9-xwq5",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T15:30:37Z",
-    "title": "Offline Hospital Management System 5.3.0 allows remote code execution due to an improper Electron...",
-    "description": "Offline Hospital Management System 5.3.0 allows remote code execution due to an improper Electron renderer configuration. The application enables Node.js integration while disabling context isolation, allowing JavaScript executed in the renderer process to access Node.js APIs and execute arbitrary operating system commands.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-26462",
-    "ghsa_id": "GHSA-53vh-ccq9-xwq5",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-26462.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-5rv5-xj5j-3484",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T14:51:51Z",
-    "title": "Faraday has a possible incomplete fix for GHSA-33mh-2634-fwr2: protocol-relative URI objects still bypass host scoping",
-    "description": "## Summary\n\n`Faraday::Connection#build_exclusive_url` still allows protocol-relative host override when the request target is provided as a `URI` object instead of a `String`. This bypasses the February 2026 fix for `GHSA-33mh-2634-fwr2` and can redirect a request built from a fixed-base `Faraday::Connection` to an attacker-controlled host while preserving connection-scoped headers such as `Authorization`.\n\n## Affected Component\n\n- **Repository File(s)/Endpoint(s)**:\n  - `lib/faraday/connection.",
-    "severity": "low",
-    "cve_id": "CVE-2026-33637",
-    "ghsa_id": "GHSA-5rv5-xj5j-3484",
-    "affected_packages": [
-      "faraday"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-33637.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-5cvp-p7p4-mcx9",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T14:20:06Z",
-    "title": "Neotoma: Unauthenticated Inspector/API access via reverse-proxy loopback auth bypass",
-    "description": "Neotoma versions starting at v0.6.0 can treat public reverse-proxied requests as local when the app receives them over a loopback socket and no Bearer token is present.\n\nIn affected deployments, the REST auth middleware can resolve unauthenticated requests as the local development user, making the hosted Inspector and related API surface reachable without credentials.\n\nImpact: unauthorized access to production data exposed through the Inspector/API on affected deployments.\n\nAffected condition: a",
-    "severity": "medium",
-    "cve_id": "CVE-2026-45577",
-    "ghsa_id": "GHSA-5cvp-p7p4-mcx9",
-    "affected_packages": [
-      "neotoma"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-45577.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-q2pj-8v84-9mh5",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T14:19:26Z",
-    "title": "Arcane Backend: Unauthenticated reflected XSS via SVG color parameter enables admin account takeover",
-    "description": "## Summary\n\nThe unauthenticated `GET /api/app-images/logo` endpoint reflects a user-supplied `color` query parameter into the body of an SVG document via `strings.ReplaceAll` with no escaping. The substitution lands inside a `<style>` element of the embedded `logo.svg`, allowing an attacker to close the style block and inject executable `<script>` content. Because the response is served as `image/svg+xml` and Arcane sets no Content-Security-Policy or `X-Content-Type-Options` headers, navigating ",
-    "severity": "high",
-    "cve_id": "CVE-2026-45627",
-    "ghsa_id": "GHSA-q2pj-8v84-9mh5",
-    "affected_packages": [
-      "github.com/getarcaneapp/arcane/backend"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to execute reflected XSS attacks by injecting malicious scripts into SVG files. This can lead to admin account takeover, data exfiltration, and potential compromise of the entire application backend.",
-      "affected_industries": [
-        "Technology",
-        "E-commerce",
-        "Finance",
-        "Healthcare",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Implement proper input validation and escaping for the `color` query parameter to prevent injection attacks.",
-        "Set appropriate security headers, including `Content-Security-Policy` and `X-Content-Type-Options: nosniff`, to mitigate the impact of XSS vulnerabilities.",
-        "Conduct a thorough security audit of the application to identify and address similar vulnerabilities in other endpoints."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-9mvm-4gwg-v8mp",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T13:59:22Z",
-    "title": "Arcane Backend: OS Command Injection in Volume Browser ListDirectory via path query parameter",
-    "description": "## Summary\n\n`GET /environments/{id}/volumes/{volumeName}/browse` accepts a `path` query parameter that is passed to a shell command (`sh -c \"find … | while …\"`) inside an Arcane helper container. The path sanitiser blocks `../` traversal but does not strip Bourne-shell metacharacters such as `$()` or backticks, and `strconv.Quote` only escapes Go string metacharacters, not shell substitution sequences. Any authenticated user with access to a browseable volume can execute arbitrary commands insid",
-    "severity": "medium",
-    "cve_id": "CVE-2026-45626",
-    "ghsa_id": "GHSA-9mvm-4gwg-v8mp",
-    "affected_packages": [
-      "github.com/getarcaneapp/arcane/backend"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability allows authenticated users to execute arbitrary OS commands within the Arcane helper container, potentially leading to unauthorized access, data exfiltration, or lateral movement within the environment. This could compromise sensitive data and system integrity.",
-      "affected_industries": [
-        "Cloud Service Providers",
-        "Software Development",
-        "Data Storage and Backup",
-        "Enterprise IT",
-        "Managed Service Providers"
-      ],
-      "recommended_actions": [
-        "Implement strict input validation and sanitization for the `path` query parameter to block shell metacharacters such as `$()` and backticks.",
-        "Apply a patch or update to the affected software version as soon as the vendor releases a fix for CVE-2026-45626.",
-        "Restrict access to the vulnerable endpoint by implementing role-based access controls (RBAC) and monitoring authenticated user activity for suspicious behavior."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-7h26-hg47-p9hx",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T13:44:47Z",
-    "title": "Arcane Backend: Missing admin authorization on git repository endpoints allows non-admin users to exfiltrate stored Git credentials and tamper with GitOps configs",
-    "description": "## Summary\n\nArcane's huma-based REST API exposes nine endpoints under `/api/customize/git-repositories` and `/api/git-repositories/sync` for managing GitOps source repositories and their stored credentials. Eight of those endpoints (`list`, `create`, `get`, `update`, `delete`, `test`, `listBranches`, `browseFiles`) never call the `checkAdmin(ctx)` helper that every other admin-managed resource (container registries, environments, users, API keys, swarm, settings, system, notifications, events) u",
-    "severity": "critical",
-    "cve_id": "CVE-2026-45625",
-    "ghsa_id": "GHSA-7h26-hg47-p9hx",
-    "affected_packages": [
-      "github.com/getarcaneapp/arcane/backend"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-45625.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-97r8-rf7q-wmjw",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-18T13:43:50Z",
-    "title": "Sveltia CMS: Stored XSS in entry summary rendering via entity-decoded HTML",
-    "description": "### Impact\n\nA stored cross-site scripting (XSS) vulnerability affected entry summary rendering in Sveltia CMS.\n\nEntry summaries that allowed limited Markdown were parsed, sanitized, and then HTML entities were decoded. This order allowed specially crafted entity-encoded HTML, such as encoded tags or event handler attributes, to become active HTML after sanitization. When the resulting summary was rendered in the CMS UI, arbitrary JavaScript could execute in the browser of a user viewing the affe",
-    "severity": "low",
-    "cve_id": null,
-    "ghsa_id": "GHSA-97r8-rf7q-wmjw",
-    "affected_packages": [
-      "@sveltia/cms"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
     ],
     "ai_analysis": {
       "risk_score": 25,
@@ -801,6 +54,789 @@
       "urgency": "low"
     },
     "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-8x9c-mqxv-q2pp",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T19:20:19Z",
+    "title": "Microsoft Security Advisory CVE-2026-35433 – .NET Elevation of Privilege Vulnerability ",
+    "description": "## Executive Summary: \n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in .NET 8.0, .NET 9.0, and .NET 10.0. This advisory also provides guidance on what developers can do to update their applications to remove this vulnerability.\n\nImproper input validation in .NET allows an unauthorized attacker to elevate privileges locally. \n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/announcements/issues/398\n\n## CVSS Deta",
+    "severity": "high",
+    "cve_id": "CVE-2026-35433",
+    "ghsa_id": "GHSA-8x9c-mqxv-q2pp",
+    "affected_packages": [
+      "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
+      "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+      "Microsoft.WindowsDesktop.App.Runtime.win-x86",
+      "Microsoft.WindowsDesktop.App.Runtime.win-x86",
+      "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+      "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
+      "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
+      "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+      "Microsoft.WindowsDesktop.App.Runtime.win-x86"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35433.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-9v76-4qcc-frgh",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T19:10:59Z",
+    "title": "Microsoft Security Advisory CVE-2026-42899 – ASP.NET Core Denial of Service Vulnerability",
+    "description": "## Executive Summary: \n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in .NET 8.0, .NET 9.0, and .NET 10.0. This advisory also provides guidance on what developers can do to update their applications to remove this vulnerability.\n\nLoop with unreachable exit condition ('infinite loop') in ASP.NET Core allows an unauthorized attacker to deny service over a network.\n\n## Announcement\n\nAnnouncement for this issue can be found at https://github.com/dotnet/a",
+    "severity": "high",
+    "cve_id": "CVE-2026-42899",
+    "ghsa_id": "GHSA-9v76-4qcc-frgh",
+    "affected_packages": [
+      "Microsoft.AspNetCore.App.Runtime.win-arm",
+      "Microsoft.AspNetCore.App.Runtime.win-arm64",
+      "Microsoft.AspNetCore.App.Runtime.win-x64",
+      "Microsoft.AspNetCore.App.Runtime.win-x86",
+      "Microsoft.AspNetCore.App.Runtime.linux-arm",
+      "Microsoft.AspNetCore.App.Runtime.linux-arm64",
+      "Microsoft.AspNetCore.App.Runtime.linux-musl-arm",
+      "Microsoft.AspNetCore.App.Runtime.linux-musl-arm64",
+      "Microsoft.AspNetCore.App.Runtime.linux-musl-x64",
+      "Microsoft.AspNetCore.App.Runtime.linux-x64",
+      "Microsoft.AspNetCore.App.Runtime.osx-arm64",
+      "Microsoft.AspNetCore.App.Runtime.osx-x64",
+      "Microsoft.AspNetCore.App.Runtime.win-arm",
+      "Microsoft.AspNetCore.App.Runtime.win-arm",
+      "Microsoft.AspNetCore.App.Runtime.win-arm64",
+      "Microsoft.AspNetCore.App.Runtime.win-arm64",
+      "Microsoft.AspNetCore.App.Runtime.win-x64",
+      "Microsoft.AspNetCore.App.Runtime.win-x64",
+      "Microsoft.AspNetCore.App.Runtime.win-x86",
+      "Microsoft.AspNetCore.App.Runtime.win-x86",
+      "Microsoft.AspNetCore.App.Runtime.linux-arm",
+      "Microsoft.AspNetCore.App.Runtime.linux-arm",
+      "Microsoft.AspNetCore.App.Runtime.linux-arm64",
+      "Microsoft.AspNetCore.App.Runtime.linux-arm64",
+      "Microsoft.AspNetCore.App.Runtime.linux-musl-arm",
+      "Microsoft.AspNetCore.App.Runtime.linux-musl-arm",
+      "Microsoft.AspNetCore.App.Runtime.linux-musl-arm64",
+      "Microsoft.AspNetCore.App.Runtime.linux-musl-arm64",
+      "Microsoft.AspNetCore.App.Runtime.linux-musl-x64",
+      "Microsoft.AspNetCore.App.Runtime.linux-musl-x64",
+      "Microsoft.AspNetCore.App.Runtime.linux-x64",
+      "Microsoft.AspNetCore.App.Runtime.linux-x64",
+      "Microsoft.AspNetCore.App.Runtime.osx-arm64",
+      "Microsoft.AspNetCore.App.Runtime.osx-arm64",
+      "Microsoft.AspNetCore.App.Runtime.osx-x64",
+      "Microsoft.AspNetCore.App.Runtime.osx-x64"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-42899.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-rg75-q538-x34v",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T19:08:00Z",
+    "title": "Microsoft Security Advisory CVE-2026-32175 – .NET Core Tampering Vulnerability",
+    "description": "## Executive Summary: \n\nMicrosoft is releasing this security advisory to provide information about a vulnerability in .NET 8.0, .NET 9.0, and .NET 10.0. This advisory also provides guidance on what developers can do to update their applications to remove this vulnerability.  \n\nA tampering vulnerability exists when .NET Core improperly handles specially crafted files. An attacker who successfully exploited this vulnerability could write arbitrary files and directories to certain locations on a vu",
+    "severity": "high",
+    "cve_id": "CVE-2026-32175",
+    "ghsa_id": "GHSA-rg75-q538-x34v",
+    "affected_packages": [
+      "Microsoft.NetCore.App.Runtime.win-arm",
+      "Microsoft.NetCore.App.Runtime.win-arm",
+      "Microsoft.NetCore.App.Runtime.win-arm",
+      "Microsoft.NetCore.App.Runtime.win-arm64",
+      "Microsoft.NetCore.App.Runtime.win-arm64",
+      "Microsoft.NetCore.App.Runtime.win-arm64",
+      "Microsoft.NetCore.App.Runtime.win-x64",
+      "Microsoft.NetCore.App.Runtime.win-x64",
+      "Microsoft.NetCore.App.Runtime.win-x64",
+      "Microsoft.NetCore.App.Runtime.win-x86",
+      "Microsoft.NetCore.App.Runtime.win-x86",
+      "Microsoft.NetCore.App.Runtime.win-x86"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows attackers to tamper with .NET Core applications by writing arbitrary files and directories to specific locations. This could lead to unauthorized code execution, data corruption, or compromise of application integrity.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Immediately update to the latest patched versions of .NET Core (8.0, 9.0, and 10.0) as provided by Microsoft.",
+        "Conduct a thorough review of applications using .NET Core to identify and mitigate any potential exploitation of this vulnerability.",
+        "Implement monitoring and logging to detect any unauthorized file or directory modifications in affected systems."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-58qx-3vcg-4xpx",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T19:02:40Z",
+    "title": "ws: Uninitialized memory disclosure",
+    "description": "### Impact\n\nThe `websocket.close()` implementation is vulnerable to uninitialized memory disclosure when a `TypedArray` is passed as the reason argument.\n\n### Proof of concept\n\n```js\nimport { deepStrictEqual } from 'node:assert';\nimport { WebSocket, WebSocketServer } from 'ws';\n\nconst wss = new WebSocketServer(\n  { port: 0, skipUTF8Validation: true },\n  function () {\n    const { port } = wss.address();\n    const ws = new WebSocket(`ws://localhost:${port}`, {\n      skipUTF8Validation: true\n    })",
+    "severity": "medium",
+    "cve_id": "CVE-2026-45736",
+    "ghsa_id": "GHSA-58qx-3vcg-4xpx",
+    "affected_packages": [
+      "ws"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in the websocket.close() implementation could allow attackers to access uninitialized memory, potentially leaking sensitive information such as cryptographic keys, user data, or other confidential information. This could lead to data breaches or unauthorized access to sensitive systems.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Telecommunications"
+      ],
+      "recommended_actions": [
+        "Update to the latest version of the 'ws' library that addresses CVE-2026-45736 and ensures proper memory initialization.",
+        "Conduct a security review of applications using the 'ws' library to identify and mitigate potential data leakage risks.",
+        "Implement strict input validation and sanitization for all data passed to the websocket.close() method to prevent exploitation."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-3mjv-375j-6h92",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T19:01:59Z",
+    "title": "AVideo: Authenticated Arbitrary File Read in view/update.php",
+    "description": "### Summary\nview/update.php reads $_POST['updateFile'] as a relative path under updatedb/ and passes it to PHP's file() for line-by-line execution as part of a database migration. An authenticated administrator can abuse this to read arbitrary text files reachable from the web-server process — especially valuable on misconfigured deployments where /etc/passwd, .env, or other sibling-app configs are reachable relative to the AVideo directory.\n\n### Details\nview/update.php, lines 134-145 (excerpt):",
+    "severity": "medium",
+    "cve_id": "CVE-2026-45731",
+    "ghsa_id": "GHSA-3mjv-375j-6h92",
+    "affected_packages": [
+      "WWBN/AVideo"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-45731.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-52mp-27cf-fhvh",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:31Z",
+    "title": "Microsoft Edge (Chromium-based) Remote Code Execution Vulnerability",
+    "description": "Microsoft Edge (Chromium-based) Remote Code Execution Vulnerability",
+    "severity": "high",
+    "cve_id": "CVE-2026-45495",
+    "ghsa_id": "GHSA-52mp-27cf-fhvh",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-45495.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-gcm7-9phg-q97r",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:31Z",
+    "title": "Microsoft Edge (Chromium-based) Spoofing Vulnerability",
+    "description": "Microsoft Edge (Chromium-based) Spoofing Vulnerability",
+    "severity": "medium",
+    "cve_id": "CVE-2026-45494",
+    "ghsa_id": "GHSA-gcm7-9phg-q97r",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-45494.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-c6cv-85fc-cwmv",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:31Z",
+    "title": "Improper input validation in Microsoft Edge (Chromium-based) allows an unauthorized attacker to...",
+    "description": "Improper input validation in Microsoft Edge (Chromium-based) allows an unauthorized attacker to bypass a security feature over a network.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-45492",
+    "ghsa_id": "GHSA-c6cv-85fc-cwmv",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows an attacker to bypass a security feature in Microsoft Edge (Chromium-based), potentially leading to unauthorized access or exposure of sensitive data over a network. This could compromise user privacy and system integrity.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Government",
+        "Retail"
+      ],
+      "recommended_actions": [
+        "Apply the latest security patches and updates for Microsoft Edge as soon as they are released.",
+        "Implement network monitoring to detect and mitigate potential exploitation attempts.",
+        "Educate users about safe browsing practices and encourage them to update their browsers regularly."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-7x5q-37jc-hq6p",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:30Z",
+    "title": "DumbAssets through 1.0.11 contains a path traversal vulnerability in the POST /api/delete-file...",
+    "description": "DumbAssets through 1.0.11 contains a path traversal vulnerability in the POST /api/delete-file endpoint and filesToDelete array parameters that allows unauthenticated attackers to delete arbitrary files by supplying ../ sequences that bypass directory boundary validation. Attackers can exploit the optional and disabled-by-default authentication control to traverse outside the intended application directory and delete critical files such as server.js or package.json, causing complete denial of se",
+    "severity": "high",
+    "cve_id": "CVE-2026-45230",
+    "ghsa_id": "GHSA-7x5q-37jc-hq6p",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The path traversal vulnerability in DumbAssets through 1.0.11 allows unauthenticated attackers to delete arbitrary files on the server, potentially leading to a complete denial of service (DoS) or critical application failure. This could disrupt operations and compromise system integrity.",
+      "affected_industries": [
+        "Technology",
+        "E-commerce",
+        "Healthcare",
+        "Finance",
+        "Media and Entertainment"
+      ],
+      "recommended_actions": [
+        "Immediately upgrade DumbAssets to a patched version (if available) or apply any vendor-provided mitigations to address the vulnerability.",
+        "Implement strict input validation and sanitization on the 'filesToDelete' parameter to prevent path traversal attacks.",
+        "Enable and enforce authentication for all API endpoints, especially for sensitive operations like file deletion."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-5qv9-q5h2-c748",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:30Z",
+    "title": "NetBSD prior to commit ec8451e contains a race condition vulnerability in cryptodev_op() within...",
+    "description": "NetBSD prior to commit ec8451e contains a race condition vulnerability in cryptodev_op() within the opencrypto subsystem that allows local attackers to trigger a double-free condition by concurrently issuing CIOCCRYPT operations on the same session identifier on SMP systems. Attackers can exploit mutable per-operation state embedded in the csession struct to corrupt kernel heap memory.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-32848",
+    "ghsa_id": "GHSA-5qv9-q5h2-c748",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-32848.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-fhqm-w73x-978p",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:30Z",
+    "title": "Incorrect access control in the /uci/get/ endpoint of NOVUS AirGate 4G firmware v1.1.16 allows...",
+    "description": "Incorrect access control in the /uci/get/ endpoint of NOVUS AirGate 4G firmware v1.1.16 allows unauthenticated attackers to obtain administrator credentials via a crafted POST request.",
+    "severity": "unknown",
+    "cve_id": "CVE-2023-24215",
+    "ghsa_id": "GHSA-fhqm-w73x-978p",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2023-24215.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-rf6w-j5hg-8rcv",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:30Z",
+    "title": "NetBSD prior to commit ec8451e contains a signed integer overflow vulnerability in the...",
+    "description": "NetBSD prior to commit ec8451e contains a signed integer overflow vulnerability in the cryptodev_op() function in sys/opencrypto/cryptodev.c where the local variable iov_len is declared as a signed int but assigned from an unsigned cop->dst_len value, causing undefined behavior when cop->dst_len exceeds INT_MAX. A local attacker with access to /dev/crypto and a compression session type can exploit this vulnerability by providing a dst_len value exceeding INT_MAX to trigger a kernel panic through",
+    "severity": "medium",
+    "cve_id": "CVE-2026-32849",
+    "ghsa_id": "GHSA-rf6w-j5hg-8rcv",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-32849.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-wcm2-h52j-8wcv",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:30Z",
+    "title": "HSC MailInspector 5.3.3-7 has a Path Traversal vulnerability due to improper validation of user...",
+    "description": "HSC MailInspector 5.3.3-7 has a Path Traversal vulnerability due to improper validation of user-supplied input in the /tap/dw.php endpoint. The text parameter is used to construct file paths without adequate normalization or restriction to a safe base directory. A remote attacker can exploit this flaw to access arbitrary files on the underlying operating system, resulting in unauthorized disclosure of sensitive information.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-29963",
+    "ghsa_id": "GHSA-wcm2-h52j-8wcv",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The Path Traversal vulnerability in HSC MailInspector 5.3.3-7 allows remote attackers to access arbitrary files on the server, potentially leading to unauthorized disclosure of sensitive information such as credentials, configuration files, or private data.",
+      "affected_industries": [
+        "Finance",
+        "Healthcare",
+        "Government",
+        "Technology",
+        "E-commerce"
+      ],
+      "recommended_actions": [
+        "Apply the latest patch or update from the vendor to fix the vulnerability.",
+        "Implement input validation and sanitization on the 'text' parameter to prevent malicious file path manipulation.",
+        "Restrict access to the vulnerable endpoint (/tap/dw.php) using firewall rules or access control lists until the issue is resolved."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-qrv4-g78c-hphg",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:30Z",
+    "title": "HSC MailInspector 5.3.3-7 is vulnerable to Cross Site Scripting (XSS) in the /police...",
+    "description": "HSC MailInspector 5.3.3-7 is vulnerable to Cross Site Scripting (XSS) in the /police/WarningUrlPage.php endpoint due to improper neutralization of user-supplied input that uses alternate or obfuscated JavaScript syntax.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-29965",
+    "ghsa_id": "GHSA-qrv4-g78c-hphg",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-29965.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-v7q4-vccc-3jxg",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:30Z",
+    "title": "Creating a \"2dsphere_bucket\" index on a non-timeseries bucket collection will succeed, but any...",
+    "description": "Creating a \"2dsphere_bucket\" index on a non-timeseries bucket collection will succeed, but any subsequent attempt to insert a document which triggers updating that index will crash the server. A similar issue occurs when creating \"queryable_encrypted_range\" indices.\n\nThis issue affects MongoDB Server v7.0 versions prior to 7.0.32, v8.0 versions prior to 8.0.21 and v8.2 versions prior to 8.2.6",
+    "severity": "high",
+    "cve_id": "CVE-2026-8843",
+    "ghsa_id": "GHSA-v7q4-vccc-3jxg",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability can lead to server crashes when specific indices are created on non-timeseries bucket collections, potentially causing downtime and data unavailability. This poses a significant risk to operations relying on MongoDB for critical data storage and processing.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Telecommunications"
+      ],
+      "recommended_actions": [
+        "Upgrade MongoDB Server to the latest patched versions: v7.0.32, v8.0.21, or v8.2.6 to mitigate the vulnerability.",
+        "Audit existing MongoDB deployments to identify any non-timeseries bucket collections with '2dsphere_bucket' or 'queryable_encrypted_range' indices and address them immediately.",
+        "Implement monitoring and alerting systems to detect unusual server crashes or behavior related to index creation and document insertion."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-x835-6gm8-j3h4",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:30Z",
+    "title": "An attacker in a privileged network position may be able to leak sensitive information. A path...",
+    "description": "An attacker in a privileged network position may be able to leak sensitive information. A path handling issue was addressed with improved validation. This issue is fixed in PCC Release 5E290.3.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-20685",
+    "ghsa_id": "GHSA-x835-6gm8-j3h4",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-20685.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-m5jh-ppcv-76xr",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:30Z",
+    "title": "In tinyMQTT commit 6226ade15bd4f97be2d196352e64dd10937c1962 (2024-02-18), the broker mishandles...",
+    "description": "In tinyMQTT commit 6226ade15bd4f97be2d196352e64dd10937c1962 (2024-02-18), the broker mishandles protocol violations during CONNECT packet parsing. When receiving a CONNECT packet with a zero-length Client ID while CleanSession is set to 0, the broker correctly replies with a CONNACK return code 0x02 (Identifier Rejected) but fails to explicitly close the TCP connection. Since the surrounding connection teardown logic is not guaranteed to execute, each such invalid CONNECT attempt leaves the unde",
+    "severity": "high",
+    "cve_id": "CVE-2025-56352",
+    "ghsa_id": "GHSA-m5jh-ppcv-76xr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in tinyMQTT's CONNECT packet handling can lead to resource exhaustion due to unclosed TCP connections, potentially causing denial-of-service (DoS) conditions. Attackers could exploit this flaw to degrade service availability or disrupt operations of systems relying on the MQTT protocol.",
+      "affected_industries": [
+        "IoT",
+        "Smart Home Technology",
+        "Industrial Automation",
+        "Healthcare (IoT-enabled medical devices)",
+        "Telecommunications"
+      ],
+      "recommended_actions": [
+        "Upgrade to the latest version of tinyMQTT where the vulnerability is patched, or apply any available hotfixes addressing CVE-2025-56352.",
+        "Implement rate-limiting and connection timeout mechanisms at the network level to mitigate potential resource exhaustion attacks.",
+        "Monitor network traffic for anomalous patterns, such as repeated invalid CONNECT attempts, and block suspicious IP addresses."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-5ffh-v4jr-f65h",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:30Z",
+    "title": "Improper authentication in Azure Local Disconnected Operations allows an unauthorized attacker to...",
+    "description": "Improper authentication in Azure Local Disconnected Operations allows an unauthorized attacker to elevate privileges over a network.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-42822",
+    "ghsa_id": "GHSA-5ffh-v4jr-f65h",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-42822.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-cr85-g5v9-2m32",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:30Z",
+    "title": "OpENer v2.3-558-g1e99582 contains an out-of-bounds read vulnerability in the Common Packet Format...",
+    "description": "OpENer v2.3-558-g1e99582 contains an out-of-bounds read vulnerability in the Common Packet Format (CPF) parser, specifically in CreateCommonPacketFormatStructure() in source/src/enet_encap/cpf.c. A crafted ENIP/CPF message can supply an attacker-controlled item_count value that is not consistently validated against the remaining data_length of the CPF slice",
+    "severity": "medium",
+    "cve_id": "CVE-2026-38719",
+    "ghsa_id": "GHSA-cr85-g5v9-2m32",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-38719.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-f4gf-fpmw-hx46",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-18T18:31:30Z",
+    "title": "Thermo Fisher Scientific Torrent Suite Dx through 5.14.2 has a privilege escalation vulnerability...",
+    "description": "Thermo Fisher Scientific Torrent Suite Dx through 5.14.2 has a privilege escalation vulnerability that may allow an authenticated user with limited access privileges to gain unauthorized administrator-level privileges through exploitation of specific system interfaces.",
+    "severity": "high",
+    "cve_id": "CVE-2026-41085",
+    "ghsa_id": "GHSA-f4gf-fpmw-hx46",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The privilege escalation vulnerability in Thermo Fisher Scientific Torrent Suite Dx could allow attackers with limited access privileges to gain unauthorized administrator-level control, potentially compromising sensitive data, disrupting operations, or enabling further attacks.",
+      "affected_industries": [
+        "Healthcare",
+        "Biotechnology",
+        "Pharmaceuticals",
+        "Research Laboratories"
+      ],
+      "recommended_actions": [
+        "Immediately apply patches or updates provided by Thermo Fisher Scientific to address the vulnerability.",
+        "Restrict access to the affected system interfaces and monitor for unusual activity from authenticated users.",
+        "Conduct a thorough security audit of systems running Torrent Suite Dx to identify potential exploitation or unauthorized access."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
   },
   {
     "id": "cve-CVE-2026-8266",
@@ -822,22 +858,20 @@
       "https://vuldb.com/vuln/362563/cti"
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability in Open5GS allows remote attackers to exploit the gsm_build_pdu_session_establishment_accept function, potentially causing a denial of service (DoS) in the SMF component. This could disrupt mobile network operations, leading to service outages or degraded performance.",
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8266.",
       "affected_industries": [
-        "Telecommunications",
-        "Mobile Network Operators",
-        "IoT Service Providers",
-        "Critical Infrastructure relying on 5G"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update to a patched version of Open5GS if available, or apply temporary mitigations such as network segmentation to limit exposure.",
-        "Monitor network traffic for unusual patterns or signs of exploitation targeting the SMF component.",
-        "Engage with the Open5GS project maintainers to confirm a timeline for a fix and prepare for rapid deployment once available."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 75
+    "risk_score": 60
   },
   {
     "id": "cve-CVE-2026-8265",
@@ -860,20 +894,22 @@
       "https://www.tenda.com.cn/"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8265.",
+      "risk_score": 75,
+      "impact_assessment": "The vulnerability allows remote attackers to execute arbitrary OS commands via the get_log_file function, potentially leading to unauthorized access, data theft, or disruption of network operations.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Telecommunications",
+        "Consumer Electronics",
+        "Small and Medium Enterprises (SMEs)",
+        "Home Networking"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately apply firmware updates or patches provided by Tenda to mitigate the vulnerability.",
+        "Implement network segmentation to isolate vulnerable devices and reduce exposure to external threats.",
+        "Monitor network traffic for unusual activity and deploy intrusion detection systems (IDS) to identify exploitation attempts."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 60
+    "risk_score": 75
   },
   {
     "id": "cve-CVE-2026-8264",
@@ -896,22 +932,20 @@
       "https://www.tenda.com.cn/"
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "This vulnerability allows remote attackers to execute OS command injection via the affected function, potentially compromising the device and gaining unauthorized access to the network. It could lead to data breaches, network disruptions, or further exploitation of connected systems.",
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8264.",
       "affected_industries": [
-        "Telecommunications",
-        "Home Networking",
-        "Small and Medium Enterprises (SMEs)",
-        "Internet Service Providers (ISPs)"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update the firmware of Tenda AC6 devices to the latest version if a patch is available.",
-        "Implement network segmentation to isolate vulnerable devices from critical systems.",
-        "Monitor network traffic for unusual activity and consider disabling remote access to the device if not required."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 75
+    "risk_score": 60
   },
   {
     "id": "cve-CVE-2026-8263",
