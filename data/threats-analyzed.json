@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1779205271854-1",
+    "id": "twitter-1779220839051-1",
     "source": "Twitter Security",
-    "timestamp": "2026-05-19T15:41:11.854Z",
+    "timestamp": "2026-05-19T20:00:39.051Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1779205271854-1",
+    "id": "hn-1779220839051-1",
     "source": "HackerNews",
-    "timestamp": "2026-05-19T15:41:11.854Z",
+    "timestamp": "2026-05-19T20:00:39.051Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -37,82 +37,44 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
+      "impact_assessment": "The open-source vulnerability scanner itself does not pose a direct threat but could be exploited if malicious actors modify or distribute compromised versions. Additionally, reliance on such tools without proper validation might lead to false positives or negatives, impacting security operations.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Software Development",
+        "Cybersecurity"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Evaluate the tool's source code and verify its integrity before use.",
+        "Use the tool in conjunction with other security measures to ensure comprehensive vulnerability management.",
+        "Monitor for updates or reports of potential misuse or vulnerabilities in the tool itself."
       ],
       "urgency": "low"
     },
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-xmpw-2vmm-p4p6",
+    "id": "gh-GHSA-62q4-447f-wv8h",
     "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:40:44Z",
-    "title": "Malicious code in guardrails-ai 0.10.1 (supply chain compromise)",
-    "description": "### Impact\n\nOn May 11, 2026 at approximately 6:00 PM Pacific, an attacker published a malicious version of `guardrails-ai` (0.10.1) to PyPI.\n\n**Affected:** any user who installed `guardrails-ai==0.10.1` from PyPI on May 11, 2026.\n\nSecurity researchers identified the malicious package within approximately 2 hours of publication, and PyPI quarantined the repository. Based on our telemetry, we have observed no requests to Guardrails AI infrastructure originating from the malicious 0.10.1 version, a",
-    "severity": "critical",
-    "cve_id": "CVE-2026-45758",
-    "ghsa_id": "GHSA-xmpw-2vmm-p4p6",
-    "affected_packages": [
-      "guardrails-ai"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The malicious version of the 'guardrails-ai' package (0.10.1) could allow attackers to execute arbitrary code, exfiltrate sensitive data, or compromise systems that rely on the package. Although no exploitation has been detected, the potential for harm is significant due to the nature of supply chain attacks.",
-      "affected_industries": [
-        "Technology",
-        "Artificial Intelligence",
-        "Finance",
-        "Healthcare",
-        "E-commerce"
-      ],
-      "recommended_actions": [
-        "Immediately identify and uninstall 'guardrails-ai==0.10.1' from all environments and replace it with a secure version.",
-        "Conduct a thorough audit of systems where the malicious package was installed to detect any signs of compromise or unauthorized activity.",
-        "Implement stricter supply chain security measures, such as using dependency scanning tools and verifying the integrity of third-party packages before deployment."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-wg5x-3g47-v38r",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:40:13Z",
-    "title": "fabric-chaincode-java: TLS Private Key Password Disclosed in INFO Startup Logs in Chaincode-as-a-Service Mode",
-    "description": "When chaincode is deployed in chaincode-as-a-service mode with TLS enabled, the chaincode server INFO level logging includes the TLS private key password in plaintext. An attacker with access to the chaincode server logs could recover the TLS private key password. If the attacker can also obtain the TLS private key, they could impersonate the chaincode server.\n\n### Recommendation\n\n- Update to the fixed version of the chaincode runtime.\n- Redact or remove existing logs that contain the TLS privat",
+    "timestamp": "2026-05-19T20:00:29Z",
+    "title": "Regression in pymdownx.snippets reintroduces sibling-prefix path traversal bypass despite restrict_base_path",
+    "description": "# Summary\n\n`pymdownx.snippets` has a regression of the CVE-2023-32309 / GHSA-jh85-wwv9-24hv fix. With `restrict_base_path: True` (the default), the current `filename.startswith(base)` containment check does not enforce a directory boundary. As a result, a markdown snippet directive can read files from sibling paths that share the same prefix as `base_path`, such as `docs` vs `docs_internal`.\n\nThe regression was introduced in PR #2039 / commit `7c13bda5b7793b172efd1abb6712e156a83fe07d`, which rep",
     "severity": "medium",
-    "cve_id": "CVE-2026-45581",
-    "ghsa_id": "GHSA-wg5x-3g47-v38r",
+    "cve_id": "CVE-2026-46338",
+    "ghsa_id": "GHSA-62q4-447f-wv8h",
     "affected_packages": [
-      "org.hyperledger.fabric-chaincode-java:fabric-chaincode-shim"
+      "pymdown-extensions"
     ],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-45581.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-46338.",
       "affected_industries": [
         "Technology",
         "General"
@@ -127,16 +89,328 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-2v5f-5r6w-p67r",
+    "id": "gh-GHSA-22qr-rp27-j9wm",
     "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:39:55Z",
-    "title": "MCP Registry: OCI validator skips ownership check on upstream rate limits",
-    "description": "# OCI ownership validation fails open on upstream rate limits, allowing attacker to claim arbitrary public OCI images under their own namespace\n\nSeverity: Low (re-scored post-triage; see Maintainer triage note below)\nAffected: `modelcontextprotocol/registry` main branch at commit `fe0cb3b` (current HEAD as of 2026-05-09).\nLive deployment: `https://registry.modelcontextprotocol.io` (per repo README).\nRoute: GitHub private security advisory (per repo SECURITY.md).\n\n---\n\n## Title\n\nOCI ownership val",
-    "severity": "low",
-    "cve_id": "CVE-2026-45781",
-    "ghsa_id": "GHSA-2v5f-5r6w-p67r",
+    "timestamp": "2026-05-19T19:57:36Z",
+    "title": "PenPot MCP REPL server binds to 0.0.0.0 with unauthenticated /execute endpoint — RCE",
+    "description": "### Summary\n\nThe MCP module's `ReplServer` binds to all interfaces (`0.0.0.0:4403`) and exposes a `/execute` endpoint that runs arbitrary code with zero authentication. Anyone on the network can POST JavaScript and it runs on the server. The main `PenpotMcpServer` was partially fixed for a similar binding issue (#8683), but `ReplServer.ts` was missed.\n\n### Details\n\n`mcp/packages/server/src/ReplServer.ts:89`:\n\n```typescript\nthis.server = this.app.listen(this.port, () => {\n    // NO HOST ARGUMENT ",
+    "severity": "high",
+    "cve_id": "CVE-2026-45805",
+    "ghsa_id": "GHSA-22qr-rp27-j9wm",
     "affected_packages": [
-      "github.com/modelcontextprotocol/registry"
+      "@penpot/mcp"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-45805.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-2mgw-7q6p-8grg",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:56:17Z",
+    "title": "FPDI: Memory Exhaustion and Endless Loop in FPDI leads to Denial of Service",
+    "description": "### Impact\nThis is a significant Denial of Service (DoS) vulnerability. Any application that uses FPDI to process user-supplied PDF files is at risk. An attacker can upload a small, malicious PDF file that will cause the server-side script to crash due to memory exhaustion or a script time-out. Repeated attacks can lead to sustained service unavailability.\n\n### Patches\nFixed as of version 2.6.7\n\n### Workarounds\nNo.\n\n### References\nNo.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-45802",
+    "ghsa_id": "GHSA-2mgw-7q6p-8grg",
+    "affected_packages": [
+      "setasign/fpdi"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to exploit memory exhaustion and trigger an endless loop, resulting in a Denial of Service (DoS). This can disrupt services, degrade user experience, and potentially lead to financial losses for affected organizations.",
+      "affected_industries": [
+        "Technology",
+        "E-commerce",
+        "Financial Services",
+        "Healthcare",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Update FPDI to version 2.6.7 or higher to mitigate the vulnerability.",
+        "Implement input validation to restrict the processing of potentially malicious PDF files.",
+        "Monitor server logs for unusual activity, such as repeated PDF uploads or script time-outs, and establish rate-limiting mechanisms."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-7xpr-hc2w-34m9",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:54:50Z",
+    "title": "Wire: skipGroup() missing negative-length check allows 10-byte payload to crash any Wire-decoding service ",
+    "description": "# CVE-2026-45799\n\n## Maintainer summary\n\nWire's protobuf group-skipping logic did not reject negative lengths before skipping a\nlength-delimited field inside a group. A crafted protobuf payload could cause Wire to throw an\nunchecked runtime exception during decoding instead of the documented `IOException` /\n`ProtocolException` failure path.\n\nThis can crash services that decode untrusted protobuf payloads and only handle Wire's documented\nchecked decoding failures.\n\n## Affected artifacts\n\n### `co",
+    "severity": "high",
+    "cve_id": "CVE-2026-45799",
+    "ghsa_id": "GHSA-7xpr-hc2w-34m9",
+    "affected_packages": [
+      "com.squareup.wire:wire-runtime-jvm",
+      "com.squareup.wire:wire-runtime",
+      "com.squareup.wire:wire-runtime"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in Wire's protobuf decoding logic allows attackers to craft malicious payloads that can crash services relying on Wire for decoding. This could lead to denial-of-service (DoS) attacks, disrupting critical applications and services that handle untrusted protobuf data.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Telecommunications",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Update to the latest version of Wire that includes the fix for CVE-2026-45799 to ensure proper handling of negative-length checks in protobuf decoding.",
+        "Implement input validation and sanitization for all incoming protobuf payloads to detect and reject malformed or malicious data before processing.",
+        "Monitor systems for unusual activity or crashes related to protobuf decoding and establish incident response protocols to mitigate potential DoS attacks."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-686c-7vgv-v3fx",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:53:51Z",
+    "title": "Coder: Unauthenticated SSRF via Azure Instance Identity Endpoint",
+    "description": "## Summary\n\nUnauthenticated semi-blind Server-Side Request Forgery (SSRF) via the Azure instance identity endpoint (`POST /api/v2/workspaceagents/azure-instance-identity`). An external attacker can force the Coder server to issue HTTP GET requests to arbitrary internal or external hosts by submitting a crafted PKCS#7 signature. The server does not return the target's response body, but error messages in the API response reveal whether the target is reachable and what type of failure occurred.\n\n#",
+    "severity": "medium",
+    "cve_id": "CVE-2026-45796",
+    "ghsa_id": "GHSA-686c-7vgv-v3fx",
+    "affected_packages": [
+      "github.com/coder/coder/v2",
+      "github.com/coder/coder/v2",
+      "github.com/coder/coder/v2",
+      "github.com/coder/coder/v2",
+      "github.com/coder/coder/v2",
+      "github.com/coder/coder/v2",
+      "github.com/coder/coder"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "This vulnerability allows an attacker to exploit the Azure instance identity endpoint to perform semi-blind SSRF attacks. While the response body is not exposed, error messages can reveal whether internal or external hosts are reachable, potentially enabling reconnaissance of internal networks or targeting external systems.",
+      "affected_industries": [
+        "Cloud Service Providers",
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Implement strict input validation and sanitization to prevent malicious crafted PKCS#7 signatures from being processed.",
+        "Restrict network access to the Azure instance identity endpoint to only trusted sources and block unnecessary outbound requests from the server.",
+        "Apply patches or updates provided by the vendor to address CVE-2026-45796 as soon as they become available."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-9r33-xhw8-4qqp",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:51:51Z",
+    "title": "HAX CMS: Denial of Service using Malicious Import Request",
+    "description": "### Summary\n\nThe HAX CMS NodeJS application crashes when an authenticated attacker sends a specially crafted site creation request to the createSite endpoint. A single request is sufficient to take the entire application offline, requiring a manual server restart to restore service.\n\n### Details\n\nThe `createSite` remote import flow does **not** complete end-to-end. Instead, the server crashes before the outbound HTTP fetch happens.\n\nThe crash occurs because `createSite` passes a file object with",
+    "severity": "medium",
+    "cve_id": "CVE-2026-46357",
+    "ghsa_id": "GHSA-9r33-xhw8-4qqp",
+    "affected_packages": [
+      "@haxtheweb/haxcms-nodejs"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-46357.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-5qwm-7pvp-w988",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:50:57Z",
+    "title": "OpenMcdf: Uncatchable infinite loop in DirectoryTree.TryGetDirectoryEntry on crafted CFB directory cycle",
+    "description": "### Summary\nThe BST name-lookup loop in `DirectoryTree.TryGetDirectoryEntry` (`OpenMcdf/DirectoryTree.cs:35-46`) walks directory entries by repeatedly calling `directories.TryGetSibling(child, siblingType, validateColor)`. A crafted CFB file with cyclic Left/Right sibling links among directory entries - constructed so the per-step BST-order check in `TryGetSibling` (`DirectoryEntries.cs:84-85`) is satisfied at every step - drives this `while (child is not null)` loop forever. There is no cycle d",
+    "severity": "medium",
+    "cve_id": "CVE-2026-45785",
+    "ghsa_id": "GHSA-5qwm-7pvp-w988",
+    "affected_packages": [
+      "OpenMcdf"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-45785.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-phqj-4mhp-q6mq",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:50:11Z",
+    "title": "rust-openssl: Potential out-of-bounds write in `CipherCtxRef::cipher_update_inplace` for AES-KW-PAD ciphers",
+    "description": "`CipherCtxRef::cipher_update_inplace` incorrectly sized output buffers when used with AES key-wrap-with-padding ciphers (EVP_aes_{128,192,256}_wrap_pad). For a non-multiple-of-8 input, OpenSSL writes up to 7 bytes past the end of the caller's buffer or Vec, producing attacker-controllable heap corruption when the plaintext length is attacker-influenced.\n\nThis only impacts users using AES key-wrap-with-padding ciphers.\n\nThis method was missed in the fix for GHSA-xv59-967r-8726",
+    "severity": "medium",
+    "cve_id": "CVE-2026-45784",
+    "ghsa_id": "GHSA-phqj-4mhp-q6mq",
+    "affected_packages": [
+      "openssl"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-45784.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-hcf7-66rw-9f5r",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:49:52Z",
+    "title": "Trubo: Login callback CSRF/session fixation",
+    "description": "### Impact\n\nTurborepo's self-hosted login and SSO browser flows did not validate a CSRF state value on the localhost callback. While the CLI was waiting for authentication, a malicious web page could send a request to the local callback server with an attacker-controlled token. If accepted before the legitimate callback, the CLI could complete login with the wrong credentials.\n\nThis affects users authenticating the `turbo` CLI against self-hosted remote cache/auth endpoints. Vercel-hosted login ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-45773",
+    "ghsa_id": "GHSA-hcf7-66rw-9f5r",
+    "affected_packages": [
+      "turbo"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-45773.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-3qcw-2rhx-2726",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:46:44Z",
+    "title": "Turbo: Unexpected local code execution during Yarn Berry detection",
+    "description": "### Impact  \n\nTurborepo can be vulnerable to arbitrary code execution when run in untrusted repositories that contain malicious Yarn configuration. In affected versions, package manager detection executed `yarn --version` from the project directory, which could cause Yarn to load and execute a project-controlled `yarnPath` from `.yarnrc.yml`. An attacker who controls repository contents could cause code execution when a user or CI system runs affected `turbo`, `@turbo/codemod`, or `@turbo/worksp",
+    "severity": "low",
+    "cve_id": "CVE-2026-45772",
+    "ghsa_id": "GHSA-3qcw-2rhx-2726",
+    "affected_packages": [
+      "turbo",
+      "@turbo/codemod",
+      "@turbo/workspaces"
     ],
     "cwes": [
       null
@@ -148,34 +422,181 @@
     ],
     "ai_analysis": {
       "risk_score": 35,
-      "impact_assessment": "The vulnerability allows attackers to bypass ownership validation on upstream rate-limited public OCI images, potentially enabling them to claim and manipulate public images under their namespace. This could lead to supply chain attacks, where malicious images are distributed as legitimate ones.",
+      "impact_assessment": "The vulnerability allows arbitrary code execution in environments where Turborepo is used with untrusted repositories containing malicious Yarn configurations. This could lead to unauthorized code execution, potentially compromising systems or CI pipelines.",
       "affected_industries": [
         "Software Development",
-        "Cloud Services",
+        "Technology",
         "DevOps",
-        "Containerized Application Providers"
+        "Continuous Integration/Continuous Deployment (CI/CD)"
       ],
       "recommended_actions": [
-        "Implement stricter validation checks for OCI image ownership, even under rate-limited conditions, to ensure proper authentication and authorization.",
-        "Monitor and audit public OCI image namespaces for unauthorized changes or suspicious activity.",
-        "Notify users of the registry about the vulnerability and recommend verifying the integrity of any OCI images before use."
+        "Update to a patched version of Turborepo that addresses CVE-2026-45772 to prevent arbitrary code execution.",
+        "Avoid running Turborepo or related tools (`@turbo/codemod`, `@turbo/worksp`) in untrusted repositories or environments until the issue is resolved.",
+        "Implement strict repository trust policies and review `.yarnrc.yml` files for any suspicious `yarnPath` configurations before running Yarn commands."
       ],
-      "urgency": "medium"
+      "urgency": "low"
     },
     "risk_score": 35
   },
   {
-    "id": "gh-GHSA-c656-jcx2-7pqj",
+    "id": "gh-GHSA-g53w-w6mj-hrpp",
     "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:38:56Z",
-    "title": "zrok copy writes attacker-controlled WebDAV paths outside the destination root",
-    "description": "## Summary\n\nAlice runs `zrok2 copy` from a WebDAV or zrok drive controlled by Bob into a local filesystem target. Bob returns a DAV `href` such as `/../outside.txt`. The sync pipeline stores that path in the source inventory and passes it to `FilesystemTarget.WriteStream`, which joins it with the target root and creates the file outside Alice's selected directory.\n\n### Impact\nUsers given access to a zrok share may be able to traverse the directory tree arbitrarily with the sharing users credenti",
-    "severity": "high",
-    "cve_id": "CVE-2026-45576",
-    "ghsa_id": "GHSA-c656-jcx2-7pqj",
+    "timestamp": "2026-05-19T19:42:46Z",
+    "title": "MCP Gateway: Authority-injection and JWT/session bypass via the unauthenticated router hair-pin \"router-key\" / \"mcp-init-host\" path",
+    "description": "## Summary\n \nThe MCP router (ext_proc) exposes an `initialize`-method code path that, when a\nrequest carries an `mcp-init-host` header, bypasses the gateway JWT session\nvalidator and rewrites the upstream `:authority` header to whatever the caller\nchooses, gated only by a single shared header value (`router-key`). The shared\nvalue is\n\n* a literal string (`secret-api-key`) baked into `cmd/mcp-broker-router/main.go`\n  as a fall-back default, and\n* in controller-managed deployments, a SHA-256 trunc",
+    "severity": "critical",
+    "cve_id": null,
+    "ghsa_id": "GHSA-g53w-w6mj-hrpp",
     "affected_packages": [
-      "github.com/openziti/zrok/v2",
-      "github.com/openziti/zrok"
+      "github.com/Kuadrant/mcp-gateway"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-m9p2-fxp5-v3fp",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:42:00Z",
+    "title": "Diesel: Command injection in Diesel's implementation of `COPY FROM`/`COPY TO`",
+    "description": "Diesel allows users to configure various options for PostgreSQL's `COPY FROM` and `COPY TO` statements. These configurations are partially provided as strings or characters. \n\nDiesel did not check if any these user-provided options contain a quote character `'`, which can lead to the injection of additional options in the current `COPY FROM`/`COPY TO` statement. \n\nThis vulnerability affects any user of `COPY FROM`/`COPY TO` that passes user-provided input to any of the affected functions. It can",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-m9p2-fxp5-v3fp",
+    "affected_packages": [
+      "diesel"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-q8x8-jrhj-fh9p",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:39:37Z",
+    "title": "Diesel: Possible unaligned data access for implementations of `SqliteAggregate`",
+    "description": "Diesel allows to register custom aggregate SQL functions for SQLite via the `SqliteAggregate` interface.\n\nTo store an instance of the custom aggregate processor Diesel relied on the `sqlite3_aggregate_context` function provided by sqlite. This function doesn't provide any guarantees about alignment of the returned allocation, which in turn can lead to problems if the type implementing requires a special alignment, e.g. via a custom `#[align(x)]` attribute on the type implementing this trait. Thi",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-q8x8-jrhj-fh9p",
+    "affected_packages": [
+      "diesel"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 55,
+      "impact_assessment": "The unaligned data access issue in Diesel's `SqliteAggregate` implementation can lead to undefined behavior, crashes, or data corruption in applications relying on SQLite with custom aggregate functions. This is particularly concerning for systems requiring strict memory alignment.",
+      "affected_industries": [
+        "Software Development",
+        "Database Management",
+        "Web Applications"
+      ],
+      "recommended_actions": [
+        "Update Diesel to the latest version once a patch is released to address the alignment issue.",
+        "Avoid using custom aggregate SQL functions in Diesel until the issue is resolved, or ensure the types used do not require special alignment.",
+        "Conduct thorough testing of applications using Diesel to identify potential crashes or undefined behavior caused by this vulnerability."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 55
+  },
+  {
+    "id": "gh-GHSA-crc3-h8v6-qh57",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:37:01Z",
+    "title": "GitHub CLI: GitHub Actions log output in `gh run view` allows terminal escape sequence injection",
+    "description": "### Summary\n\nA security vulnerability has been identified in GitHub CLI that could allow terminal escape sequence injection when users view GitHub Actions workflow logs using `gh run view --log` or `gh run view --log-failed`.\n\n### Details\n\nThe vulnerability stems from the way GitHub CLI handles raw Actions log output. The `gh run view --log` and `gh run view --log-failed` commands stream workflow log lines to stdout or the configured pager without sanitizing terminal control sequences. An attack",
+    "severity": "low",
+    "cve_id": "CVE-2026-45803",
+    "ghsa_id": "GHSA-crc3-h8v6-qh57",
+    "affected_packages": [
+      "github.com/cli/cli/v2",
+      "github.com/cli/cli"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "The vulnerability allows terminal escape sequence injection, which could potentially lead to malicious commands being executed in the terminal or disruption of terminal output. However, the impact is limited to users who manually execute the affected commands and view logs in an unsanitized terminal.",
+      "affected_industries": [
+        "Software Development",
+        "DevOps",
+        "Technology"
+      ],
+      "recommended_actions": [
+        "Update to the latest version of GitHub CLI as soon as a patched version is released.",
+        "Avoid using the `gh run view --log` and `gh run view --log-failed` commands in untrusted repositories or environments until the issue is resolved.",
+        "Use a terminal emulator that mitigates the impact of escape sequence injection by sanitizing input."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-gx7w-56w6-g48x",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:36:13Z",
+    "title": "Caddy: Remote Admin Authorization Bypass on PKI Endpoints via Prefix-Based Path Matching",
+    "description": "## AI Disclosure\n\n  I used an LLM to help review the source code, reason about attack surface, and help draft and refine this report.\n  I manually validated the finding by reproducing it locally, confirming the vulnerable code path, and verifying the HTTP behavior with `curl -v`.\n\n  ## Summary\n\n  Caddy's remote admin access control performs path authorization using prefix matching:\n\n  - [`admin.go`](/caddy/admin.go#L719): `strings.HasPrefix(r.URL.Path, allowedPath)`\n\n  This allows a client certi",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-gx7w-56w6-g48x",
+    "affected_packages": [
+      "github.com/caddyserver/caddy/v2"
     ],
     "cwes": [
       null
@@ -185,37 +606,110 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This vulnerability allows an attacker to perform directory traversal by exploiting improperly sanitized WebDAV paths. An attacker could create or overwrite files outside the intended directory, potentially leading to unauthorized access, data corruption, or execution of malicious code. This poses a significant risk to systems handling sensitive data or critical operations.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
       "affected_industries": [
         "Technology",
-        "Cloud Services",
-        "Enterprise Software",
-        "File Storage and Sharing Platforms",
-        "DevOps and IT Operations"
+        "General"
       ],
       "recommended_actions": [
-        "Implement strict input validation and sanitization to prevent directory traversal by normalizing and validating paths before processing.",
-        "Apply the latest security patches and updates to the zrok system to address CVE-2026-45576.",
-        "Restrict WebDAV access to trusted users and implement robust access control mechanisms to minimize potential exploitation."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 85
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-crhj-59gh-8x96",
+    "id": "gh-GHSA-wwhq-w58m-w29c",
     "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:38:39Z",
-    "title": "go-git: Crafted repositories may modify main and submodule .git directories",
-    "description": "### Impact\nA path validation issue in `go-git` could allow crafted repository data to affect files outside the intended checkout target, including the repository's `.git` directory.\n\nThese validations were introduced in upstream Git years ago, so the vulnerability arose from go-git drifting from those checks. Some attack vectors were platform-specific: certain payloads affected only Windows users, others affected only macOS users, and some applied across all supported platforms.\n\nUsing non-desce",
+    "timestamp": "2026-05-19T19:35:47Z",
+    "title": "Caddy CVE-2026-30852 Fix Bypass",
+    "description": "# \n\n## TL;DR\n\nCVE-2026-30852 fixed double expansion in `vars_regexp` when the variable key is a placeholder (e.g. `{http.vars.x}`). The fix does NOT protect literal key names (e.g. `tenant_id`). An attacker injects `{env.AWS_SECRET_ACCESS_KEY}` or `{file./etc/passwd}` via a request header → Caddy expands it on the second pass → secrets leaked in response headers.\n\n**Affected:** Caddy v2.11.0 through v2.11.2 (latest). All versions since the CVE-2026-30852 fix.\n\n## Root Cause\n\n`modules/caddyhttp/v",
     "severity": "medium",
-    "cve_id": "CVE-2026-45571",
-    "ghsa_id": "GHSA-crhj-59gh-8x96",
+    "cve_id": null,
+    "ghsa_id": "GHSA-wwhq-w58m-w29c",
     "affected_packages": [
-      "github.com/go-git/go-git/v5",
-      "github.com/go-git/go-git/v6",
-      "github.com/go-git/go-git"
+      "github.com/caddyserver/caddy/v2"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-m23h-6mwm-39m8",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:30:23Z",
+    "title": "Kong Ingress Controller for Kubernetes (KIC): Cross-namespace TLS Secret Exfiltration in Gateways with GatewayClass missing `konghq.com/gatewayclass-unmanaged: 'true'` annotation",
+    "description": "## Summary\n\nA vulnerability in the Kong Ingress Controller (KIC) allows for the unauthorized exfiltration of TLS certificates and private keys across Kubernetes namespace boundaries. In \"managed\" mode (where the `GatewayClass` lacks an unmanaged annotation), the Gateway TLS translator skips critical status checks. This bypass allows the translator to fetch Secrets from any namespace KIC watches, even when a `ReferenceGrant` explicitly denies access or is missing.\n\nAn actor with RBAC permissions ",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-m23h-6mwm-39m8",
+    "affected_packages": [
+      "github.com/kong/kubernetes-ingress-controller/v3",
+      "github.com/kong/kubernetes-ingress-controller/v3",
+      "github.com/kong/kubernetes-ingress-controller/v2",
+      "github.com/kong/kubernetes-ingress-controller"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-3278-c88v-xrh4",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-19T19:28:48Z",
+    "title": "Kong Ingress Controller for Kubernetes (KIC): Secret-backed plugin configurations leak through non-sensitive diagnostics endpoint",
+    "description": "## Summary\n\nA vulnerability in the Kong Ingress Controller (KIC) allows for the unauthorized exposure of sensitive plugin credentials through the diagnostics interface. Even when configured to redact sensitive information (using `--dump-sensitive-config=false`), KIC fails to sanitize the `Plugins` field in diagnostic configuration dumps. This causes secrets referenced via `configFrom.secretKeyRef` to be resolved and displayed in plaintext.\n\nBecause the diagnostics HTTP endpoints require no authe",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-3278-c88v-xrh4",
+    "affected_packages": [
+      "github.com/kong/kubernetes-ingress-controller/v3",
+      "github.com/kong/kubernetes-ingress-controller/v2",
+      "github.com/kong/kubernetes-ingress-controller"
     ],
     "cwes": [
       null
@@ -226,32 +720,35 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability in go-git allows crafted repositories to manipulate files outside the intended target, including the .git directory, potentially leading to unauthorized code execution, data corruption, or repository compromise. This risk is heightened for developers and CI/CD pipelines relying on go-git for repository management.",
+      "impact_assessment": "The vulnerability in the Kong Ingress Controller (KIC) allows unauthorized access to sensitive plugin credentials via a diagnostics endpoint. This could lead to data breaches, unauthorized access to systems, and potential exploitation of exposed secrets.",
       "affected_industries": [
-        "Software Development",
+        "Cloud Service Providers",
         "Technology",
-        "DevOps and CI/CD",
-        "Cloud Services"
+        "E-commerce",
+        "Financial Services",
+        "Healthcare"
       ],
       "recommended_actions": [
-        "Update to the latest version of go-git that includes the patch for CVE-2026-45571 to ensure proper path validation.",
-        "Implement additional repository validation checks in your CI/CD pipelines to detect and block malicious repositories.",
-        "Educate developers and DevOps teams about the risks of using untrusted repositories and enforce strict repository source controls."
+        "Immediately disable or restrict access to the diagnostics HTTP endpoint by implementing network-level access controls or authentication mechanisms.",
+        "Update to a patched version of the Kong Ingress Controller as soon as a fix is released, and monitor the vendor's advisory for updates.",
+        "Audit current Kubernetes configurations to identify and rotate any secrets that may have been exposed through this vulnerability."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-cffp-87j8-rff2",
+    "id": "gh-GHSA-rf5q-vwxw-gmrf",
     "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:36Z",
-    "title": "Funnel Builder for WooCommerce Checkout prior to 3.15.0.3 contains a missing authorization...",
-    "description": "Funnel Builder for WooCommerce Checkout prior to 3.15.0.3 contains a missing authorization vulnerability in the public checkout endpoint that allows unauthenticated attackers to invoke internal methods and write arbitrary data to the plugin's External Scripts global setting. Attackers can inject malicious JavaScript through the External Scripts setting that executes in the browsers of all checkout page visitors.",
+    "timestamp": "2026-05-19T19:25:21Z",
+    "title": "Bandit: Unauthenticated DoS via chunked request trailers in Bandit HTTP/1 decoder",
+    "description": "### Summary\nA worker-pinning denial of service in Bandit's HTTP/1 chunked transfer decoder. Any unauthenticated client that sends a `Transfer-Encoding: chunked` request whose body ends with a trailer field (RFC 9112 §7.1.2 explicitly permits this) causes the connection's worker process to spin forever in an infinite recursion. A handful of concurrent connections are sufficient to exhaust the listener pool and render the server unresponsive to all further traffic.\n\nThe vulnerability was likely in",
     "severity": "high",
-    "cve_id": "CVE-2026-47100",
-    "ghsa_id": "GHSA-cffp-87j8-rff2",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-39806",
+    "ghsa_id": "GHSA-rf5q-vwxw-gmrf",
+    "affected_packages": [
+      "bandit"
+    ],
     "cwes": [
       null
     ],
@@ -260,11 +757,12 @@
       null,
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-47100.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-39806.",
       "affected_industries": [
         "Technology",
         "General"
@@ -279,128 +777,21 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-pj32-6rxc-gcmq",
+    "id": "gh-GHSA-9q9q-324x-93r2",
     "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:36Z",
-    "title": "NGINX JavaScript has a vulnerability when the js_fetch_proxy directive is configured with at...",
-    "description": "NGINX JavaScript has a vulnerability when the js_fetch_proxy directive is configured with at least one client-controlled NGINX variable (for example, $http_*, $arg_*, $cookie_*) and a location invoking the ngx.fetch() operation from NGINX JavaScript. An unauthenticated attacker can exploit this vulnerability by sending crafted HTTP requests. This may cause a heap buffer overflow in the NGINX worker process leading to a restart. Additionally, for systems with Address Space Layout Randomization (A",
-    "severity": "critical",
-    "cve_id": "CVE-2026-8711",
-    "ghsa_id": "GHSA-pj32-6rxc-gcmq",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-8711.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-vpfg-gc96-vg45",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:36Z",
-    "title": "Technitium DNS Server aggressively tries to fetch missing RRSIG records or mismatched DNSKEY...",
-    "description": "Technitium DNS Server aggressively tries to fetch missing RRSIG records or mismatched DNSKEY records. An attacker in control of a domain can cause a vulnerable system to generate excessive network traffic. Fixed in 15.0.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-45557",
-    "ghsa_id": "GHSA-vpfg-gc96-vg45",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-45557.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-fmqc-2w48-qp8r",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:36Z",
-    "title": "Tyler Identity Local (TID-L) uses documented, default administrative credentials. Users are not...",
-    "description": "Tyler Identity Local (TID-L) uses documented, default administrative credentials. Users are not required to change the credentials before deployment. TID-L has not been distributed since December 2020, and has not been supported since 2021.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-44159",
-    "ghsa_id": "GHSA-fmqc-2w48-qp8r",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 92,
-      "impact_assessment": "The use of default administrative credentials in Tyler Identity Local (TID-L) poses a significant risk of unauthorized access, privilege escalation, and potential compromise of systems. Since the software is no longer supported, vulnerabilities remain unpatched, increasing exposure to exploitation.",
-      "affected_industries": [
-        "Government",
-        "Healthcare",
-        "Education",
-        "Financial Services",
-        "Retail"
-      ],
-      "recommended_actions": [
-        "Immediately identify and remove any instances of TID-L from active systems, especially if default credentials are still in use.",
-        "Conduct a thorough audit of systems to detect unauthorized access or suspicious activity potentially linked to TID-L vulnerabilities.",
-        "Implement compensating controls such as network segmentation and enhanced monitoring to mitigate risks associated with legacy systems."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 92
-  },
-  {
-    "id": "gh-GHSA-72fg-f46j-5gvp",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:35Z",
-    "title": "HestiaCP versions 1.2.0 through 1.9.4 contain an IP spoofing vulnerability that allows...",
-    "description": "HestiaCP versions 1.2.0 through 1.9.4 contain an IP spoofing vulnerability that allows unauthenticated remote attackers to bypass authentication security controls by supplying an arbitrary IP address in the CF-Connecting-IP HTTP header without verifying the request originated from Cloudflare's network. Attackers can exploit this to circumvent fail2ban brute-force protection, bypass per-user IP allowlists, and poison authentication audit logs by spoofing trusted IP addresses on each request.",
+    "timestamp": "2026-05-19T19:23:49Z",
+    "title": "Bandit: Unauthenticated one-shot DoS via `Transfer-Encoding: chunked`",
+    "description": "### Summary\n\nBandit's HTTP/1 chunked-body reader silently drops the request size cap that the application configures (e.g. `Plug.Parsers`' default 8 MB `length:`) and buffers the entire body in memory before the application sees it. An unauthenticated attacker can crash any Bandit-fronted Phoenix/Plug app (BEAM OOM) with a single `Transfer-Encoding: chunked` request to any URL.\n\n### Details\n\nIn `lib/bandit/http1/socket.ex:189`, the chunked clause of `read_data/2` only forwards `:read_length` and",
     "severity": "high",
-    "cve_id": "CVE-2026-43634",
-    "ghsa_id": "GHSA-72fg-f46j-5gvp",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-39803",
+    "ghsa_id": "GHSA-9q9q-324x-93r2",
+    "affected_packages": [
+      "bandit"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -410,7 +801,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-43634.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-39803.",
       "affected_industries": [
         "Technology",
         "General"
@@ -423,359 +814,6 @@
       "urgency": "high"
     },
     "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-rg3p-p27c-2f39",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:35Z",
-    "title": "An issue in gohttp commit 34ea51 allows attackers to execute a directory traversal via supplying...",
-    "description": "An issue in gohttp commit 34ea51 allows attackers to execute a directory traversal via supplying a crafted request.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-70950",
-    "ghsa_id": "GHSA-rg3p-p27c-2f39",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-70950.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-3phm-wpxf-97gh",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:35Z",
-    "title": "An issue was discovered in the Portrait Dell Color Management application before 3.7.0 for Dell...",
-    "description": "An issue was discovered in the Portrait Dell Color Management application before 3.7.0 for Dell monitors. On Windows, a symbolic link vulnerability allows a local low-privileged user to escalate privileges to Administrator. During installation, the software writes the file CCFLFamily_07Feb11.edr to C:\\ProgramData\\Portrait Displays\\CW\\data\\i1D3\\ while running with elevated privileges. Because the installer does not properly validate symbolic links or reparse points at the destination path, an att",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-34883",
-    "ghsa_id": "GHSA-3phm-wpxf-97gh",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-34883.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-29wv-cv7p-xjc2",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:35Z",
-    "title": "A critical Remote Code Execution (RCE) vulnerability was identified in the server-side template...",
-    "description": "A critical Remote Code Execution (RCE) vulnerability was identified in the server-side template rendering mechanism used by the Glassfish gadget handler. The application processes .xml files and evaluates user-supplied values within a context where Expression Language (EL) “expressions” are processed without proper sanitization or escaping. By injecting expressions such as #{7*7}, the server returns 49, confirming server-side EL evaluation. This issue allows a remote attacker to fully compromise",
-    "severity": "critical",
-    "cve_id": "CVE-2026-2587",
-    "ghsa_id": "GHSA-29wv-cv7p-xjc2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 95,
-      "impact_assessment": "This vulnerability allows remote attackers to execute arbitrary code on affected servers, potentially leading to full system compromise, data exfiltration, unauthorized access, and service disruption.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Government",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Immediately apply the latest security patch or update provided by the vendor to address CVE-2026-2587.",
-        "Implement strict input validation and sanitization for user-supplied data to prevent malicious code injection.",
-        "Conduct a thorough security audit of systems using the Glassfish gadget handler to identify potential exploitation."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 95
-  },
-  {
-    "id": "gh-GHSA-96v6-hq43-x9h4",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:35Z",
-    "title": "An authenticated Remote Code Execution (RCE) vulnerability was identified in GlassFish's...",
-    "description": "An authenticated Remote Code Execution (RCE) vulnerability was identified in GlassFish's Administration Console. A user with access to the panel can send crafted requests that allow the execution of arbitrary operating system commands with the privileges of the application service user.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-2586",
-    "ghsa_id": "GHSA-96v6-hq43-x9h4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-2586.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-fhhq-h4hg-549x",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:35Z",
-    "title": "An issue was discovered in ModelScope 1.25.0 allowing attackers to execute arbitrary code via...",
-    "description": "An issue was discovered in ModelScope 1.25.0 allowing attackers to execute arbitrary code via crafted module listed in the configuration file (dey_mini.yaml) under the key ['nnet']['module'].",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-51427",
-    "ghsa_id": "GHSA-fhhq-h4hg-549x",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in ModelScope 1.25.0 allows attackers to execute arbitrary code by manipulating the configuration file, potentially leading to unauthorized access, data breaches, or system compromise.",
-      "affected_industries": [
-        "Artificial Intelligence",
-        "Machine Learning",
-        "Technology",
-        "Research and Development",
-        "Healthcare",
-        "Finance"
-      ],
-      "recommended_actions": [
-        "Immediately update to a patched version of ModelScope if available, or apply any recommended mitigations provided by the vendor.",
-        "Restrict access to configuration files (e.g., dey_mini.yaml) to trusted users only and monitor for unauthorized changes.",
-        "Implement input validation and sanitization for configuration files to prevent malicious entries from being processed."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-c792-chx5-8443",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:35Z",
-    "title": "Memory safety bugs present in Firefox ESR 140.10 and Firefox 150. Some of these bugs showed...",
-    "description": "Memory safety bugs present in Firefox ESR 140.10 and Firefox 150. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability was fixed in Firefox 151 and Firefox ESR 140.11.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-8974",
-    "ghsa_id": "GHSA-c792-chx5-8443",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-8974.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-f4hm-8h94-gvp6",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:35Z",
-    "title": "Memory safety bugs present in Firefox 150. Some of these bugs showed evidence of memory...",
-    "description": "Memory safety bugs present in Firefox 150. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability was fixed in Firefox 151.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-8973",
-    "ghsa_id": "GHSA-f4hm-8h94-gvp6",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Memory safety bugs in Firefox 150 could potentially allow attackers to exploit memory corruption vulnerabilities to execute arbitrary code, leading to unauthorized access, data breaches, or system compromise.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "E-commerce"
-      ],
-      "recommended_actions": [
-        "Update Firefox to version 151 or later immediately to mitigate the vulnerability.",
-        "Conduct a security audit to ensure no systems are running outdated versions of Firefox.",
-        "Educate employees and users about the importance of applying software updates promptly."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-wg2h-wc56-7jcc",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:35Z",
-    "title": "Same-origin policy bypass in the Networking: JAR component. This vulnerability was fixed in...",
-    "description": "Same-origin policy bypass in the Networking: JAR component. This vulnerability was fixed in Firefox 151.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-8971",
-    "ghsa_id": "GHSA-wg2h-wc56-7jcc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8971.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-v6hv-5rrm-2f28",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:35Z",
-    "title": "Memory safety bugs present in Firefox ESR 115.35, Firefox ESR 140.10 and Firefox 150. Some of...",
-    "description": "Memory safety bugs present in Firefox ESR 115.35, Firefox ESR 140.10 and Firefox 150. Some of these bugs showed evidence of memory corruption and we presume that with enough effort some of these could have been exploited to run arbitrary code. This vulnerability was fixed in Firefox 151, Firefox ESR 115.36, and Firefox ESR 140.11.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-8975",
-    "ghsa_id": "GHSA-v6hv-5rrm-2f28",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Memory safety bugs in Firefox versions could allow attackers to exploit memory corruption vulnerabilities, potentially leading to arbitrary code execution. This poses a significant risk to systems using affected browser versions.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Education",
-        "Retail"
-      ],
-      "recommended_actions": [
-        "Immediately update Firefox to versions 151, Firefox ESR 115.36, or Firefox ESR 140.11 to mitigate the vulnerability.",
-        "Conduct a review of systems and applications that rely on affected Firefox versions to ensure no residual vulnerabilities remain.",
-        "Monitor for unusual activity or potential exploitation attempts in systems using older Firefox versions."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-96x7-hrvx-gqj6",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-19T15:31:35Z",
-    "title": "Privilege escalation in the WebRTC: Audio/Video component. This vulnerability was fixed in...",
-    "description": "Privilege escalation in the WebRTC: Audio/Video component. This vulnerability was fixed in Firefox 151.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-8972",
-    "ghsa_id": "GHSA-96x7-hrvx-gqj6",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-8972.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
   },
   {
     "id": "cve-CVE-2026-40131",
@@ -793,18 +831,18 @@
     ],
     "ai_analysis": {
       "risk_score": 35,
-      "impact_assessment": "The SQL injection vulnerability in @sap/hdi-deploy package could allow high privileged users to manipulate SELECT statements, potentially exposing sensitive data and disrupting application availability. However, integrity remains unaffected.",
+      "impact_assessment": "The SQL injection vulnerability in @sap/hdi-deploy package could allow high privileged users to manipulate SELECT statements, potentially exposing sensitive data and disrupting application availability. However, integrity is not impacted, and the severity is classified as low.",
       "affected_industries": [
         "Technology",
         "Enterprise Software",
         "Cloud Services"
       ],
       "recommended_actions": [
-        "Upgrade to the latest version of @sap/hdi-deploy package if a patched version is available.",
-        "Implement input validation and sanitize user inputs to prevent SQL injection attacks.",
-        "Use parameterized queries or prepared statements to construct SQL queries securely."
+        "Implement proper parameterization or prepared statements in SQL queries within the @sap/hdi-deploy package.",
+        "Upgrade to the latest version of the package if a patch is available to address the vulnerability.",
+        "Conduct a thorough code review and penetration testing to identify and mitigate similar vulnerabilities."
       ],
-      "urgency": "medium"
+      "urgency": "low"
     },
     "risk_score": 35
   },
@@ -853,20 +891,24 @@
       "https://url.sap/sapsecuritypatchday"
     ],
     "ai_analysis": {
-      "risk_score": 100,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-34263.",
+      "risk_score": 95,
+      "impact_assessment": "The vulnerability allows unauthenticated attackers to inject malicious input, leading to arbitrary server-side code execution. This can compromise the confidentiality, integrity, and availability of affected systems, potentially resulting in data breaches, service disruption, and unauthorized access.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "E-commerce",
+        "Retail",
+        "Manufacturing",
+        "Logistics",
+        "Telecommunications",
+        "Financial Services"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately apply the latest security patches or updates provided by SAP for the affected versions of SAP Commerce Cloud.",
+        "Review and harden Spring Security configurations to ensure proper authentication and input validation mechanisms are in place.",
+        "Conduct a thorough security audit of the application to identify and mitigate any additional vulnerabilities or misconfigurations."
       ],
       "urgency": "critical"
     },
-    "risk_score": 100
+    "risk_score": 95
   },
   {
     "id": "cve-CVE-2026-34260",
