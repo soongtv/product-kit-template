@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1779393814968-1",
+    "id": "twitter-1779423479147-1",
     "source": "Twitter Security",
-    "timestamp": "2026-05-21T20:03:34.968Z",
+    "timestamp": "2026-05-22T04:17:59.147Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,29 +10,25 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code, potentially leading to data encryption, service disruption, and financial losses.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
       "affected_industries": [
         "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Media and Entertainment",
-        "Government"
+        "General"
       ],
       "recommended_actions": [
-        "Implement strict access controls and monitor CI/CD pipelines for unauthorized changes or suspicious activity.",
-        "Regularly back up critical data and ensure backups are stored securely and offline to prevent encryption by ransomware.",
-        "Deploy endpoint detection and response (EDR) solutions and conduct regular security awareness training for development teams."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "hn-1779393814968-1",
+    "id": "hn-1779423479147-1",
     "source": "HackerNews",
-    "timestamp": "2026-05-21T20:03:34.968Z",
+    "timestamp": "2026-05-22T04:17:59.147Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -56,703 +52,99 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-2qjj-h6wp-c7h7",
+    "id": "gh-GHSA-m2r4-jq7j-hchx",
     "source": "GitHub Security",
-    "timestamp": "2026-05-21T19:58:06Z",
-    "title": "Umbraco.Cms: Open Redirect Vulnerability in Surface Controllers",
-    "description": "### Impact\nSome of the Surface Controllers in the CMS provide to support member related operations fail to validate redirect URLs, making Razor templates that derive 'RedirectUrl' from user-controlled query parameters vulnerable to malicious redirect attacks.\n\n### Patches\nThe issue is resolved in versions 17.4.0 and 13.14.0.\n\n### Workarounds\nIf users cannot upgrade immediately, they can mitigate the issue in their own site by ensuring every Razor form that posts to `UmbLoginStatusController`, `U",
-    "severity": "medium",
-    "cve_id": "CVE-2026-46616",
-    "ghsa_id": "GHSA-2qjj-h6wp-c7h7",
-    "affected_packages": [
-      "Umbraco.Cms",
-      "Umbraco.Cms"
-    ],
+    "timestamp": "2026-05-22T03:30:26Z",
+    "title": "A malicious actor with access to the network and low privileges could exploit a Path Traversal...",
+    "description": "A malicious actor with access to the network and low privileges could exploit a Path Traversal vulnerability found in UniFi OS devices to access files on the underlying system that could be manipulated to obtain sensitive information.",
+    "severity": "high",
+    "cve_id": "CVE-2026-34911",
+    "ghsa_id": "GHSA-m2r4-jq7j-hchx",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-46616.",
+      "risk_score": 85,
+      "impact_assessment": "Exploitation of the Path Traversal vulnerability in UniFi OS devices could allow attackers to access sensitive files on the system, potentially leading to data breaches, exposure of credentials, or further compromise of the network.",
       "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-8rp3-xc6w-5qp5",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T19:54:32Z",
-    "title": "pyload-ng: SSRF via HTTP Redirect Bypass in parse_urls API",
-    "description": "## Summary\n\nThe SSRF mitigation added in commit `33c55da` for GHSA-7gvf-3w72-p2pg is incomplete. The `PREREQFUNCTION`-based private IP check was correctly applied to `HTTPChunk` (download path) but not to `HTTPRequest` (used by the `parse_urls` API). An authenticated attacker can supply a URL pointing to an attacker-controlled server that responds with a 302 redirect to an internal/private IP address, bypassing the `is_global_host()` check on the initial URL.\n\n## Details\n\nThe `parse_urls` API me",
-    "severity": "medium",
-    "cve_id": "CVE-2026-46561",
-    "ghsa_id": "GHSA-8rp3-xc6w-5qp5",
-    "affected_packages": [
-      "pyload-ng"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows an authenticated attacker to exploit a Server-Side Request Forgery (SSRF) by bypassing the private IP address check in the parse_urls API. This could lead to unauthorized access to internal systems, potentially exposing sensitive data or enabling further attacks within the network.",
-      "affected_industries": [
-        "Technology",
         "Telecommunications",
+        "Healthcare",
+        "Education",
+        "Retail",
         "Finance",
-        "Healthcare",
-        "E-commerce"
-      ],
-      "recommended_actions": [
-        "Apply the latest patch or update from the pyload-ng maintainers that addresses this vulnerability.",
-        "Implement additional network-level protections, such as firewall rules, to block unauthorized access to internal/private IP ranges.",
-        "Conduct a security review of API endpoints to ensure proper validation and mitigation of SSRF vulnerabilities."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-mw3q-r9wh-h2ff",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T19:50:31Z",
-    "title": "nimiq-primitives: Panic DoS in trie chunk processing via ROOT-keyed item",
-    "description": "### Impact\n\nA remote, unauthenticated denial-of-service vulnerability in `MerkleRadixTrie::put_chunk` allows any state-sync peer to crash any node performing state synchronization (freshly joining nodes and recovering nodes).\n\nA malicious peer can respond to a `RequestChunk` with a `ResponseChunk::Chunk` whose first `TrieItem.key` is the empty (ROOT) key. The chunk passes sorting, range, and Merkle-proof validation, but when `put_raw` tries to store a value at the root node, it calls `TrieNode::",
-    "severity": "high",
-    "cve_id": "CVE-2026-46545",
-    "ghsa_id": "GHSA-mw3q-r9wh-h2ff",
-    "affected_packages": [
-      "nimiq-primitives"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-46545.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-vghx-352f-93jm",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T19:46:15Z",
-    "title": "nimiq-blockchain: Genesis batch set request",
-    "description": "### Impact\nA remote peer can crash any full node by sending a RequestBatchSet message containing the genesis block's hash. The handler calls `get_epoch_chunks` which iterates backwards through macro blocks using `Policy::macro_block_before`. When it reaches the genesis block number, `macro_block_before` panics with \"No macro blocks before genesis block\".\n\n### Patches\n[The patch for this vulnerability](https://github.com/nimiq/core-rs-albatross/pull/3745) is formally released as part of [v1.5.0](",
-    "severity": "medium",
-    "cve_id": "CVE-2026-46543",
-    "ghsa_id": "GHSA-vghx-352f-93jm",
-    "affected_packages": [
-      "nimiq-blockchain"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows a remote attacker to crash any full node in the Nimiq blockchain network by exploiting a flaw in the handling of RequestBatchSet messages. This could lead to denial of service (DoS) attacks, disrupting blockchain operations and potentially affecting transaction processing and network stability.",
-      "affected_industries": [
-        "Blockchain",
-        "Cryptocurrency",
-        "Financial Services"
-      ],
-      "recommended_actions": [
-        "Immediately update all full nodes to the patched version v1.5.0 or later to mitigate the vulnerability.",
-        "Monitor network activity for unusual RequestBatchSet messages to detect potential exploitation attempts.",
-        "Implement rate-limiting or input validation mechanisms to reduce the risk of similar attacks in the future."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-h9cc-w26m-j342",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T19:45:08Z",
-    "title": "nimiq-keys: Denial of service in Ed25519 multisig delinearization via invalid curve points",
-    "description": "### Impact\n\nA denial-of-service vulnerability exists in the Ed25519 multisig delinearization code path. `Ed25519PublicKey::delinearize()` in `keys/src/multisig/mod.rs` called `.unwrap()` on curve point decompression, which panics when a public key is\nconstructed from 32 bytes that do not represent a valid point on the Ed25519 curve. `Ed25519PublicKey` construction only validates byte length, not curve membership, so invalid keys can reach the delinearization path and crash the\nhosting process.\n\n",
-    "severity": "medium",
-    "cve_id": "CVE-2026-46542",
-    "ghsa_id": "GHSA-h9cc-w26m-j342",
-    "affected_packages": [
-      "nimiq-keys"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows an attacker to crash the hosting process by sending malformed public keys that exploit improper validation in the Ed25519 multisig delinearization code path. This could lead to denial-of-service (DoS) attacks, disrupting services relying on the affected implementation.",
-      "affected_industries": [
-        "Financial Services",
-        "Cryptocurrency",
-        "Blockchain Technology",
-        "Software Development"
-      ],
-      "recommended_actions": [
-        "Update to the latest patched version of the nimiq-keys library that addresses CVE-2026-46542 and ensures proper validation of curve points.",
-        "Implement input validation to ensure that only valid public keys are processed before reaching the delinearization path.",
-        "Monitor systems for unusual activity or crashes that could indicate exploitation attempts and apply runtime protections to prevent process panics."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-799f-29jm-gr6c",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T19:38:00Z",
-    "title": "nimiq-primitives: BlockInclusionProof interlink issue when hops are empty",
-    "description": "### Impact\nA logic flaw in `BlockInclusionProof::is_block_proven` causes the function to return true without performing any cryptographic verification when `get_interlink_hops` yields an empty hop list. This occurs when the target block is at the election block position immediately preceding the election head's epoch. An attacker providing transaction inclusion proofs can forge a MacroBlock header for that epoch position and have it accepted as \"proven\" without any hash or signature verification",
-    "severity": "medium",
-    "cve_id": "CVE-2026-46539",
-    "ghsa_id": "GHSA-799f-29jm-gr6c",
-    "affected_packages": [
-      "nimiq-primitives"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-46539.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-9xq9-36w5-q796",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T19:33:32Z",
-    "title": "lmdeploy: Hardcoded trust_remote_code=True is an implicit unsafe remote-code load path with no user opt-out",
-    "description": "> ## 📋 Reframing (2026-05-02): implicit unsafe remote-code path, not \"supply-chain\"\n>\n> The accurate description of this vulnerability is:\n> **\"`get_model_arch` and related helpers hardcode `trust_remote_code=True`\n> with no opt-out, creating an implicit unsafe remote-code load path\n> on every model fetch.\"**\n>\n> What this report does NOT claim:\n> * It is NOT a network-attack RCE — the user supplies the model\n>   reference; LMDeploy honors it.\n> * It is NOT a \"supply chain\" CVE in the classical",
-    "severity": "high",
-    "cve_id": "CVE-2026-46517",
-    "ghsa_id": "GHSA-9xq9-36w5-q796",
-    "affected_packages": [
-      "lmdeploy"
-    ],
-    "cwes": [
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-46517.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-3r75-xc34-5f44",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T19:28:10Z",
-    "title": "Crawlee for Python: SSRF via sitemap-derived URLs",
-    "description": "## Overview\n\n- **Vulnerability type:** Blind SSRF\n- **Affected components:** `src/crawlee/_utils/sitemap.py`, `src/crawlee/_utils/robots.py`, `src/crawlee/request_loaders/_sitemap_request_loader.py`, and all built-in HTTP clients.\n- **Trigger:** an attacker-controlled sitemap or `robots.txt` containing a URL that points to an internal host (layer 1) or uses a non-http scheme (layer 2).\n\nTwo-layer SSRF via sitemap-derived URLs:\n\n### 1) Cross-host HTTP SSRF\n\nBase case, affects every HTTP client.**",
-    "severity": "low",
-    "cve_id": "CVE-2026-46497",
-    "ghsa_id": "GHSA-3r75-xc34-5f44",
-    "affected_packages": [
-      "crawlee"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-46497.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-x9qr-969f-24wr",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T18:33:15Z",
-    "title": "Open ISES Tickets before 3.44.2 disables TLS certificate verification in rm/incs/mobile_login.inc...",
-    "description": "Open ISES Tickets before 3.44.2 disables TLS certificate verification in rm/incs/mobile_login.inc.php by setting CURLOPT_SSL_VERIFYPEER to false (and not setting CURLOPT_SSL_VERIFYHOST) when issuing outbound HTTPS requests for outbound HTTPS requests issued during the mobile (RouteMate) login flow. An attacker positioned on the network path between the server and the remote endpoint can present a forged certificate to intercept, monitor, or modify the request and response, including any API keys",
-    "severity": "high",
-    "cve_id": "CVE-2026-48249",
-    "ghsa_id": "GHSA-x9qr-969f-24wr",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in Open ISES Tickets before version 3.44.2 allows attackers to intercept, monitor, or modify HTTPS requests during the mobile login flow by exploiting disabled TLS certificate verification. This could lead to exposure of sensitive data such as API keys, user credentials, and other confidential information, potentially enabling further attacks.",
-      "affected_industries": [
-        "Transportation and Logistics",
-        "E-commerce",
-        "Healthcare",
-        "Financial Services",
         "Government"
       ],
       "recommended_actions": [
-        "Immediately update Open ISES Tickets to version 3.44.2 or later to ensure TLS certificate verification is properly enforced.",
-        "Conduct a review of server logs to identify any suspicious activity or potential exploitation of this vulnerability.",
-        "Implement network monitoring and intrusion detection systems to detect and mitigate potential man-in-the-middle (MITM) attacks."
+        "Apply the latest security patches and firmware updates provided by the vendor to address CVE-2026-34911.",
+        "Restrict network access to UniFi OS devices by implementing strict firewall rules and network segmentation.",
+        "Monitor system logs for unusual file access patterns and unauthorized activities, and enable alerts for potential exploitation attempts."
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
     "risk_score": 85
   },
   {
-    "id": "gh-GHSA-gf9f-hqc6-ch9x",
+    "id": "gh-GHSA-gfqf-9c7q-2qmr",
     "source": "GitHub Security",
-    "timestamp": "2026-05-21T18:33:15Z",
-    "title": "Open ISES Tickets before 3.44.2 embeds a hardcoded Google Maps API key in settings.inc.php that...",
-    "description": "Open ISES Tickets before 3.44.2 embeds a hardcoded Google Maps API key in settings.inc.php that is committed to the public source repository. The key can be extracted by anyone with read access to the source and used to make Google Maps Platform requests billed against the original owner's Google Cloud project.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-48244",
-    "ghsa_id": "GHSA-gf9f-hqc6-ch9x",
+    "timestamp": "2026-05-22T03:30:26Z",
+    "title": "A cross-site scripting (XSS) vulnerability in SketchUp 2026's Dynamic Components feature allows...",
+    "description": "A cross-site scripting (XSS) vulnerability in SketchUp 2026's Dynamic Components feature allows remote code execution and local file exfiltration through maliciously crafted SKP files. The vulnerability stems from improper input sanitization in the component options window, enabling attackers to execute arbitrary system commands and read local files without user interaction by exploiting an embedded Internet Explorer 11 browser.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-9264",
+    "ghsa_id": "GHSA-gfqf-9c7q-2qmr",
     "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "cwes": [],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48244.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-qg44-r3wg-78jj",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T18:33:15Z",
-    "title": "Open ISES Tickets before 3.44.2 disables TLS certificate verification in incs/login.inc.php by...",
-    "description": "Open ISES Tickets before 3.44.2 disables TLS certificate verification in incs/login.inc.php by setting CURLOPT_SSL_VERIFYPEER to false (and not setting CURLOPT_SSL_VERIFYHOST) when issuing outbound HTTPS requests for outbound HTTPS requests issued during the login/authentication flow. An attacker positioned on the network path between the server and the remote endpoint can present a forged certificate to intercept, monitor, or modify the request and response, including any API keys or session-be",
-    "severity": "high",
-    "cve_id": "CVE-2026-48248",
-    "ghsa_id": "GHSA-qg44-r3wg-78jj",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48248.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-24vx-5h6h-8q7m",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T18:33:15Z",
-    "title": "Open ISES Tickets before 3.44.2 disables TLS certificate verification in incs/functions.inc.php...",
-    "description": "Open ISES Tickets before 3.44.2 disables TLS certificate verification in incs/functions.inc.php by setting CURLOPT_SSL_VERIFYPEER to false (and not setting CURLOPT_SSL_VERIFYHOST) when issuing outbound HTTPS requests for general-purpose outbound HTTPS requests issued by the shared helper functions. An attacker positioned on the network path between the server and the remote endpoint can present a forged certificate to intercept, monitor, or modify the request and response, including any API keys",
-    "severity": "high",
-    "cve_id": "CVE-2026-48247",
-    "ghsa_id": "GHSA-24vx-5h6h-8q7m",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to intercept, monitor, or modify HTTPS requests due to disabled TLS certificate verification. This can lead to exposure of sensitive data, including API keys, and compromise of secure communications.",
+      "impact_assessment": "The XSS vulnerability in SketchUp 2026's Dynamic Components feature could allow attackers to execute arbitrary system commands and exfiltrate local files, potentially leading to data breaches, unauthorized access, and system compromise. The use of an embedded Internet Explorer 11 browser exacerbates the risk due to its outdated security mechanisms.",
       "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Government"
+        "Architecture",
+        "Engineering",
+        "Construction",
+        "Design and Creative Services",
+        "Education and Training"
       ],
       "recommended_actions": [
-        "Immediately update Open ISES Tickets to version 3.44.2 or later to restore proper TLS certificate verification.",
-        "Audit server configurations to ensure TLS settings are correctly implemented and verify no other insecure practices are present.",
-        "Monitor network traffic for signs of interception or tampering and implement additional security measures such as HTTPS inspection and certificate pinning."
+        "Immediately apply any available patches or updates provided by the vendor to address CVE-2026-9264.",
+        "Disable or restrict the use of the Dynamic Components feature until a fix is implemented, especially in environments handling sensitive data.",
+        "Implement strict file validation and scanning for SKP files before opening them, and educate users on the risks of opening files from untrusted sources."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "gh-GHSA-544v-wvfr-r5pw",
+    "id": "gh-GHSA-fvgm-jgwh-qwx7",
     "source": "GitHub Security",
-    "timestamp": "2026-05-21T18:33:15Z",
-    "title": "Open ISES Tickets before 3.44.2 embeds a hardcoded Google Maps API key in tables.php that is...",
-    "description": "Open ISES Tickets before 3.44.2 embeds a hardcoded Google Maps API key in tables.php that is committed to the public source repository. The key can be extracted by anyone with read access to the source and used to make Google Maps Platform requests billed against the original owner's Google Cloud project.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-48245",
-    "ghsa_id": "GHSA-544v-wvfr-r5pw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48245.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-cm28-j57h-46hg",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T18:33:15Z",
-    "title": "Open ISES Tickets before 3.44.2 disables TLS certificate verification in ajax/reports.php by...",
-    "description": "Open ISES Tickets before 3.44.2 disables TLS certificate verification in ajax/reports.php by setting CURLOPT_SSL_VERIFYPEER to false (and not setting CURLOPT_SSL_VERIFYHOST) when issuing outbound HTTPS requests for Google Maps Directions API lookups during incident report generation. An attacker positioned on the network path between the server and the remote endpoint can present a forged certificate to intercept, monitor, or modify the request and response, including any API keys or session-bea",
-    "severity": "high",
-    "cve_id": "CVE-2026-48246",
-    "ghsa_id": "GHSA-cm28-j57h-46hg",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in Open ISES Tickets before version 3.44.2 allows attackers to intercept and manipulate HTTPS requests to the Google Maps Directions API by exploiting disabled TLS certificate verification. This could lead to exposure of sensitive data such as API keys, session tokens, or other confidential information, as well as potential injection of malicious data into responses.",
-      "affected_industries": [
-        "IT Services",
-        "Customer Support",
-        "Logistics and Transportation",
-        "Healthcare",
-        "Public Sector"
-      ],
-      "recommended_actions": [
-        "Immediately update Open ISES Tickets to version 3.44.2 or later to ensure proper TLS certificate verification is enforced.",
-        "Review and rotate any API keys or credentials that may have been exposed due to this vulnerability.",
-        "Implement network monitoring to detect potential man-in-the-middle (MITM) attacks and ensure secure communication channels are enforced."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-8wx2-2gr7-3c4q",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T18:33:14Z",
-    "title": "Open ISES Tickets before 3.44.2 contains a SQL injection vulnerability in ajax/mobile_main.php...",
-    "description": "Open ISES Tickets before 3.44.2 contains a SQL injection vulnerability in ajax/mobile_main.php where the id GET parameter is concatenated into the WHERE clause of a SELECT statement used as a ticket-existence sanity check without sanitization. Authenticated attackers can craft requests that alter query semantics to read, modify, or destroy database contents.",
-    "severity": "high",
-    "cve_id": "CVE-2026-48238",
-    "ghsa_id": "GHSA-8wx2-2gr7-3c4q",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48238.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-64mc-q5rh-6vmq",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T18:33:14Z",
-    "title": "Open ISES Tickets before 3.44.2 contains a SQL injection vulnerability in ajax/statistics.php...",
-    "description": "Open ISES Tickets before 3.44.2 contains a SQL injection vulnerability in ajax/statistics.php where the tick_id and f_tick_id POST parameters are concatenated into WHERE clauses of SELECT statements in the statistics rollup queries without sanitization. Authenticated attackers can craft requests that alter query semantics to read, modify, or destroy database contents.",
-    "severity": "high",
-    "cve_id": "CVE-2026-48240",
-    "ghsa_id": "GHSA-64mc-q5rh-6vmq",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48240.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-v5r4-5jjv-84fg",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T18:33:14Z",
-    "title": "Open ISES Tickets before 3.44.2 contains a SQL injection vulnerability in ajax/reports.php where...",
-    "description": "Open ISES Tickets before 3.44.2 contains a SQL injection vulnerability in ajax/reports.php where the tick_id POST parameter is concatenated into the WHERE clause of SELECT statements in the incidents summary report without sanitization. Authenticated attackers can craft requests that alter query semantics to read, modify, or destroy database contents.",
-    "severity": "high",
-    "cve_id": "CVE-2026-48239",
-    "ghsa_id": "GHSA-v5r4-5jjv-84fg",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48239.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-4837-8524-277g",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T18:33:14Z",
-    "title": "Open ISES Tickets before 3.44.2 contains a SQL injection vulnerability in db_loader.php where the...",
-    "description": "Open ISES Tickets before 3.44.2 contains a SQL injection vulnerability in db_loader.php where the multiple POST parameters (ticketsdb, ticketshost, ticketsuser, ticketspassword) are concatenated into mysqli connection arguments and dynamic SQL operating against an attacker-controlled database without sanitization. Authenticated attackers can craft requests that alter query semantics to read, modify, or destroy database contents.",
-    "severity": "high",
-    "cve_id": "CVE-2026-48236",
-    "ghsa_id": "GHSA-4837-8524-277g",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The SQL injection vulnerability in Open ISES Tickets before version 3.44.2 allows authenticated attackers to manipulate database queries, potentially leading to unauthorized access, data exfiltration, data modification, or complete database destruction.",
-      "affected_industries": [
-        "Customer Support",
-        "IT Services",
-        "E-commerce",
-        "Healthcare",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Immediately update Open ISES Tickets to version 3.44.2 or later to patch the vulnerability.",
-        "Review database logs for suspicious activity to identify potential exploitation attempts.",
-        "Implement input validation and parameterized queries to prevent SQL injection vulnerabilities in future development."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-5hxh-6mg6-f5mh",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-21T18:33:14Z",
-    "title": "Open ISES Tickets before 3.44.2 contains hardcoded MySQL database connection credentials (host,...",
-    "description": "Open ISES Tickets before 3.44.2 contains hardcoded MySQL database connection credentials (host, username, password, database name) in import_mdb.php. The credentials are embedded in source code committed to the public repository, allowing any reader of the source to obtain valid configuration values that may match deployed installations.",
+    "timestamp": "2026-05-22T03:30:26Z",
+    "title": "A malicious actor with access to the network could exploit an Improper Input Validation...",
+    "description": "A malicious actor with access to the network could exploit an Improper Input Validation vulnerability found in UniFi OS devices to execute a Command Injection.",
     "severity": "critical",
-    "cve_id": "CVE-2026-48242",
-    "ghsa_id": "GHSA-5hxh-6mg6-f5mh",
+    "cve_id": "CVE-2026-34910",
+    "ghsa_id": "GHSA-fvgm-jgwh-qwx7",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-48242.",
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-34910.",
       "affected_industries": [
         "Technology",
         "General"
@@ -767,14 +159,14 @@
     "risk_score": 90
   },
   {
-    "id": "gh-GHSA-ff8w-m7v9-pp77",
+    "id": "gh-GHSA-3ggx-cv4j-6p7j",
     "source": "GitHub Security",
-    "timestamp": "2026-05-21T18:33:14Z",
-    "title": "Open ISES Tickets before 3.44.2 embeds a hardcoded WhitePages reverse-phone API key in wp1.php...",
-    "description": "Open ISES Tickets before 3.44.2 embeds a hardcoded WhitePages reverse-phone API key in wp1.php that is committed to the public source repository. Any actor with read access to the source tree can extract the key and use it to make third-party API calls billed to or rate-limited against the original owner's WhitePages account.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-48243",
-    "ghsa_id": "GHSA-ff8w-m7v9-pp77",
+    "timestamp": "2026-05-22T03:30:25Z",
+    "title": "A malicious actor with access to the network and high privileges could exploit an Improper Input...",
+    "description": "A malicious actor with access to the network and high privileges could exploit an Improper Input Validation vulnerability found in UniFi OS devices to execute a Command Injection.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-33000",
+    "ghsa_id": "GHSA-3ggx-cv4j-6p7j",
     "affected_packages": [],
     "cwes": [
       null
@@ -782,50 +174,747 @@
     "references": [
       null,
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-33000.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-95fp-244g-g3vr",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T03:30:25Z",
+    "title": "A malicious actor with access to the network could exploit a Path Traversal vulnerability found...",
+    "description": "A malicious actor with access to the network could exploit a Path Traversal vulnerability found in UniFi OS devices to access files on the underlying system that could be manipulated to access an underlying account.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-34909",
+    "ghsa_id": "GHSA-95fp-244g-g3vr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The hardcoded API key in the public repository allows unauthorized actors to exploit the WhitePages reverse-phone API, potentially leading to financial losses, service disruptions, or abuse of the API owner's account.",
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-34909.",
       "affected_industries": [
-        "Customer Support",
-        "Telecommunications",
-        "E-commerce",
-        "Software Development"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately rotate the exposed WhitePages API key to invalidate the compromised key.",
-        "Update Open ISES Tickets to version 3.44.2 or later to remove the hardcoded API key from the source code.",
-        "Audit the repository for other sensitive information and implement secure coding practices to prevent future exposures."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-p8c5-xwrc-584f",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T03:30:25Z",
+    "title": "A malicious actor with access to the network could exploit an Improper Access Control...",
+    "description": "A malicious actor with access to the network could exploit an Improper Access Control vulnerability found in UniFi OS devices to make unauthorized changes to the system.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-34908",
+    "ghsa_id": "GHSA-p8c5-xwrc-584f",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 92,
+      "impact_assessment": "Exploitation of the Improper Access Control vulnerability in UniFi OS devices could allow malicious actors to make unauthorized changes to critical system configurations, potentially leading to service disruptions, data breaches, or further exploitation within the network.",
+      "affected_industries": [
+        "Technology",
+        "Telecommunications",
+        "Healthcare",
+        "Finance",
+        "Education",
+        "Retail"
+      ],
+      "recommended_actions": [
+        "Immediately apply the latest security patches provided by UniFi to mitigate the vulnerability.",
+        "Restrict network access to UniFi OS devices by implementing network segmentation and access controls.",
+        "Monitor system logs for unusual activity and conduct a thorough security audit of UniFi OS devices."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 92
+  },
+  {
+    "id": "gh-GHSA-6fxm-r8p3-mx5c",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete...",
+    "description": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete/controllers/backend/file rescan(). The Concrete CMS security team gave this vulnerability a CVSS v.4.0 score of 2.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks Yonatan Drori (Tenzai) for reporting.",
+    "severity": "low",
+    "cve_id": "CVE-2026-8433",
+    "ghsa_id": "GHSA-6fxm-r8p3-mx5c",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "The vulnerability allows attackers to perform Cross Site Request Forgery (CSRF) attacks, which could potentially trick authenticated users into executing unwanted actions on the server. However, the overall impact is limited due to the low CVSS score and specific attack vector requirements.",
+      "affected_industries": [
+        "Web Development",
+        "Content Management Systems",
+        "Digital Marketing",
+        "E-commerce"
+      ],
+      "recommended_actions": [
+        "Upgrade to Concrete CMS version 9.5.0 or later to patch the vulnerability.",
+        "Implement CSRF protection mechanisms, such as requiring CSRF tokens for sensitive operations.",
+        "Educate users and administrators about the risks of CSRF attacks and encourage safe browsing practices."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-97jw-gr4m-c5v8",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete...",
+    "description": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete/controllers/backend/file star(). The Concrete CMS security team gave this vulnerability a CVSS v.4.0 score of 2.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks Yonatan Drori (Tenzai) for reporting.",
+    "severity": "low",
+    "cve_id": "CVE-2026-8432",
+    "ghsa_id": "GHSA-97jw-gr4m-c5v8",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-8432.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-67hj-8239-cmf5",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete...",
+    "description": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete/controllers/backend/file removeFavoriteFolder($id). The Concrete CMS security team gave this vulnerability a CVSS v.4.0 score of 2.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks Yonatan Drori (Tenzai) for reporting.",
+    "severity": "low",
+    "cve_id": "CVE-2026-8427",
+    "ghsa_id": "GHSA-67hj-8239-cmf5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-8427.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-44q4-354f-c826",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete...",
+    "description": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete/controllers/backend/file approveVersion(). The Concrete CMS security team gave this vulnerability a CVSS v.4.0 score of 2.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks Yonatan Drori (Tenzai) for reporting.",
+    "severity": "low",
+    "cve_id": "CVE-2026-8435",
+    "ghsa_id": "GHSA-44q4-354f-c826",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-8435.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-mpq2-mv8p-9wm6",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete...",
+    "description": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete/controllers/dialog/page/bulk/design. The Concrete CMS security team gave this vulnerability a CVSS v.4.0 score of 2.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks Yonatan Drori (Tenzai) for reporting.",
+    "severity": "low",
+    "cve_id": "CVE-2026-8413",
+    "ghsa_id": "GHSA-mpq2-mv8p-9wm6",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "The vulnerability allows attackers to perform unauthorized actions via CSRF, potentially leading to minor disruptions or unauthorized changes in the affected CMS. However, it requires user interaction and is rated as low severity.",
+      "affected_industries": [
+        "Web Development",
+        "Content Management Systems",
+        "Digital Marketing"
+      ],
+      "recommended_actions": [
+        "Upgrade Concrete CMS to version 9.5.0 or later to patch the vulnerability.",
+        "Implement CSRF protection mechanisms, such as anti-CSRF tokens, for all forms and sensitive endpoints.",
+        "Educate users and administrators about avoiding suspicious links and ensuring secure browsing practices."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-qj94-6rx6-27fr",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete...",
+    "description": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete/controllers/backend/file addFavoriteFolder($id). The Concrete CMS security team gave this vulnerability a CVSS v.4.0 score of 2.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks Yonatan Drori (Tenzai) for reporting.",
+    "severity": "low",
+    "cve_id": "CVE-2026-8416",
+    "ghsa_id": "GHSA-qj94-6rx6-27fr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "The vulnerability allows attackers to perform unauthorized actions on behalf of authenticated users by exploiting CSRF, potentially leading to unauthorized changes in user preferences or folder structures. However, the impact is limited due to the low CVSS score and the requirement for user interaction.",
+      "affected_industries": [
+        "Web Development",
+        "Content Management Systems",
+        "Small and Medium Businesses"
+      ],
+      "recommended_actions": [
+        "Upgrade Concrete CMS to version 9.5.0 or later to patch the vulnerability.",
+        "Implement CSRF protection mechanisms, such as anti-CSRF tokens, on all user-interactive endpoints.",
+        "Educate users on avoiding suspicious links and ensuring safe browsing practices."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-6qjh-p324-694f",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete...",
+    "description": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete/controllers/backend/file rescanMultiple(). The Concrete CMS security team gave this vulnerability a CVSS v.4.0 score of 2.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks Yonatan Drori (Tenzai) for reporting.",
+    "severity": "low",
+    "cve_id": "CVE-2026-8434",
+    "ghsa_id": "GHSA-6qjh-p324-694f",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-8434.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-v7c7-658v-hh7v",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete...",
+    "description": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete/controllers/dialog/logs/bulk/delete.  The The Concrete CMS security team gave this vulnerability a CVSS v.4.0 score of 2.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks Yonatan Drori (Tenzai) for reporting.",
+    "severity": "low",
+    "cve_id": "CVE-2026-8410",
+    "ghsa_id": "GHSA-v7c7-658v-hh7v",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-8410.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-56c9-xq5g-xrf9",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete...",
+    "description": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete/controllers/dialog/logs/delete.  The The Concrete CMS security team gave this vulnerability a CVSS v.4.0 score of 2.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks Yonatan Drori (Tenzai) for reporting.",
+    "severity": "low",
+    "cve_id": "CVE-2026-8409",
+    "ghsa_id": "GHSA-56c9-xq5g-xrf9",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-8409.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-5j68-3wmc-p4rc",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-5297",
+    "ghsa_id": "GHSA-5j68-3wmc-p4rc",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 0,
+      "impact_assessment": "This CVE ID has been rejected or withdrawn by its CVE Numbering Authority, indicating that it is not a valid or actionable security threat. It poses no risk to systems or industries.",
+      "affected_industries": [],
+      "recommended_actions": [
+        "Verify the status of CVE-2026-5297 with the official CVE database to confirm its rejection or withdrawal.",
+        "No further action is required as this CVE does not represent an active or valid threat."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 0
+  },
+  {
+    "id": "gh-GHSA-rv3q-xmfw-mcjv",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at \tconcrete...",
+    "description": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at \tconcrete/controllers/dialog/page/bulk/cache. The Concrete CMS security team gave this vulnerability a CVSS v.4.0 score of 2.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks Yonatan Drori (Tenzai) for reporting.",
+    "severity": "low",
+    "cve_id": "CVE-2026-8412",
+    "ghsa_id": "GHSA-rv3q-xmfw-mcjv",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-8412.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-8c7c-h7px-267g",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Concrete CMS 9.5.0 and below is vulnerable to IDOR in surveys. To be vulnerable, a site would...",
+    "description": "Concrete CMS 9.5.0 and below is vulnerable to IDOR in surveys. To be vulnerable, a site would have to be configured in such a way that both public and private surveys are present on the site. An unauthenticated attacker can vote in the restricted survey by submitting the restricted optionID through the public survey’s endpoint. The Concrete CMS security team gave this vulnerability a CVSS v.4.0 score of 6.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks  Zer0",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8337",
+    "ghsa_id": "GHSA-8c7c-h7px-267g",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 63,
+      "impact_assessment": "The vulnerability allows unauthenticated attackers to exploit an IDOR flaw in Concrete CMS surveys, enabling them to submit votes to restricted surveys. This could lead to unauthorized data manipulation, skewed survey results, and potential reputational damage for organizations relying on survey integrity.",
+      "affected_industries": [
+        "Media and Publishing",
+        "Education",
+        "Healthcare",
+        "E-commerce",
+        "Nonprofit Organizations"
+      ],
+      "recommended_actions": [
+        "Update Concrete CMS to the latest version above 9.5.0 to patch the vulnerability.",
+        "Audit survey configurations to ensure restricted surveys are not exposed to public endpoints.",
+        "Implement additional access controls and input validation to prevent unauthorized access to restricted resources."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 63
+  },
+  {
+    "id": "gh-GHSA-xj25-753j-wgp9",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete...",
+    "description": "Concrete CMS 9 before 9.5.0 is vulnerable to Cross Site Request Forgery (CSRF) at concrete/controllers/dialog/express/association/reorder. The Concrete CMS security team gave this vulnerability a CVSS v.4.0 score of 2.3 with vector CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N. Thanks Yonatan Drori (Tenzai) for reporting.",
+    "severity": "low",
+    "cve_id": "CVE-2026-8415",
+    "ghsa_id": "GHSA-xj25-753j-wgp9",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-8415.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-f73j-pm2c-rxvr",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T00:31:17Z",
+    "title": "Concrete CMS 9.5.0 and below is vulnerable to Reflected XSS in Legacy Pagination via HTML...",
+    "description": "Concrete CMS 9.5.0 and below is vulnerable to Reflected XSS in Legacy Pagination via HTML attribute injection. Concrete\\Core\\Legacy\\Pagination builds pagination links by raw-interpolating its $URL field into href=\"\" (<a href=\"{$linkURL}\" …>). Any authenticated admin or report viewer with access to `/dashboard/reports/forms/legacy` who clicks the crafted URL fires the payload in their session. The Concrete CMS security team gave this vulnerability a CVSS v.4.0 score of 6.0 with vector CVSS:4.0/AV",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8245",
+    "ghsa_id": "GHSA-f73j-pm2c-rxvr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8245.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "cve-CVE-2023-31317",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-15T03:16:20.663",
+    "title": "CVE-2023-31317 - Improper restriction of operations within the bounds of a memory buffer in the AMD secure processer ",
+    "description": "Improper restriction of operations within the bounds of a memory buffer in the AMD secure processer (ASP) could allow an attacker to read or write to protected memory potentially resulting in arbitrary code execution.",
+    "severity": "medium",
+    "cve_id": "CVE-2023-31317",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-6027.html"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2023-31317.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2023-31316",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-15T03:16:20.513",
+    "title": "CVE-2023-31316 - Improperly preserved integrity of hardware configuration state during a power save/restore operation",
+    "description": "Improperly preserved integrity of hardware configuration state during a power save/restore operation in the AMD Secure Processor (ASP) could allow an attacker with the ability to write outside the trusted memory range (TMR) to change the execution flow of the Video Core Next (VCN) firmware potentially impacting confidentiality, integrity, or availability.",
+    "severity": "medium",
+    "cve_id": "CVE-2023-31316",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4017.html",
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-6027.html"
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to exploit improperly preserved hardware configuration states during power save/restore operations, potentially altering the execution flow of firmware. This could lead to unauthorized access, data corruption, or denial of service, impacting system confidentiality, integrity, and availability.",
+      "affected_industries": [
+        "Technology",
+        "Healthcare",
+        "Finance",
+        "Government",
+        "Manufacturing"
+      ],
+      "recommended_actions": [
+        "Apply the latest firmware and software updates provided by AMD to mitigate the vulnerability.",
+        "Implement strict access controls to limit the ability of attackers to write outside the trusted memory range (TMR).",
+        "Monitor system logs and firmware behavior for any unusual activity that could indicate exploitation attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "cve-CVE-2023-31309",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-15T03:16:20.380",
+    "title": "CVE-2023-31309 - Improper validation in Power Management Firmware (PMFW) may allow an attacker with privileges to pas",
+    "description": "Improper validation in Power Management Firmware (PMFW) may allow an attacker with privileges to pass malformed workload arguments when exporting table data from SMU to DRAM potentially resulting in a loss of confidentiality and/or availability.",
+    "severity": "medium",
+    "cve_id": "CVE-2023-31309",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-6027.html"
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in Power Management Firmware (PMFW) could allow privileged attackers to exploit improper validation, potentially leading to a loss of confidentiality and availability. This may impact systems relying on PMFW for secure operations.",
+      "affected_industries": [
+        "Technology",
+        "Manufacturing",
+        "Energy",
+        "Healthcare",
+        "Financial Services"
+      ],
+      "recommended_actions": [
+        "Apply firmware updates or patches provided by the vendor to address CVE-2023-31309.",
+        "Restrict access to privileged accounts and monitor for unusual activity to minimize exploitation risk.",
+        "Implement additional validation checks for workload arguments in PMFW to prevent malformed data from being processed."
       ],
       "urgency": "medium"
     },
     "risk_score": 65
   },
   {
-    "id": "cve-CVE-2026-1184",
+    "id": "cve-CVE-2022-23826",
     "source": "NVD CVE",
-    "timestamp": "2026-05-14T06:16:21.190",
-    "title": "CVE-2026-1184 - GitLab has remediated an issue in GitLab EE affecting all versions from 11.9 before 18.9.7, 18.10 be",
-    "description": "GitLab has remediated an issue in GitLab EE affecting all versions from 11.9 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an unauthenticated user to cause denial of service by uploading a specially crafted file due to improper validation.",
+    "timestamp": "2026-05-15T03:16:20.220",
+    "title": "CVE-2022-23826 - A TOCTOU (Time-Of-Check to Time-Of-Use) in the graphics interface may allow an attacker to load regi",
+    "description": "A TOCTOU (Time-Of-Check to Time-Of-Use) in the graphics interface may allow an attacker to load registers repeatedly creating a race condition potentially leading to a loss of integrity.",
     "severity": "medium",
-    "cve_id": "CVE-2026-1184",
-    "cvss_score": 6.5,
+    "cve_id": "CVE-2022-23826",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4017.html",
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-6027.html"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2022-23826.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2021-26380",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-15T03:16:20.030",
+    "title": "CVE-2021-26380 - A compromised Trusted OS (TOS) driver could issue a malformed call that could potentially allow  mem",
+    "description": "A compromised Trusted OS (TOS) driver could issue a malformed call that could potentially allow  memory access outside the intended range resulting in loss of integrity.",
+    "severity": "medium",
+    "cve_id": "CVE-2021-26380",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4017.html",
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-6027.html"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2021-26380.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-8612",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-15T02:16:23.843",
+    "title": "CVE-2026-8612 - WWW::Mechanize::Cached versions before 2.00 for Perl deserialize cached HTTP responses from a world-",
+    "description": "WWW::Mechanize::Cached versions before 2.00 for Perl deserialize cached HTTP responses from a world-writable on-disk cache, enabling local response forgery and code execution.\n\nWith no explicit cache backend, WWW::Mechanize::Cached constructs a default Cache::FileCache under /tmp/FileCache without overriding the backend's documented directory_umask of 000, so the cache root and its subdirectories are created mode 0777 with no sticky bit. Cache entries are named by sha1_hex of the request and read back through Storable::thaw on the next cache hit.\n\nA local attacker with write access to the cache tree can replace a victim's cache entry for a known URL with an arbitrary frozen HTTP::Response blob, causing the victim's next get() of that URL to return attacker controlled response bytes. Because the bytes are passed to Storable::thaw, a victim process that has loaded any class with a side-effectful STORABLE_thaw, DESTROY, or overload hook can be escalated to arbitrary code execution.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8612",
+    "cvss_score": 5.3,
     "affected_products": [
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*"
+      "cpe:2.3:a:oalders:www\\:\\:mechanize\\:\\:cached:*:*:*:*:*:perl:*:*"
     ],
     "references": [
-      "https://about.gitlab.com/releases/2026/05/13/patch-release-gitlab-18-11-3-released/",
-      "https://gitlab.com/gitlab-org/gitlab/-/work_items/586634",
-      "https://hackerone.com/reports/3515842"
+      "https://github.com/libwww-perl/WWW-Mechanize-Cached/commit/b821647deeedf83490ebc1db91d959d942300ce0.patch",
+      "https://github.com/libwww-perl/WWW-Mechanize-Cached/pull/36",
+      "https://metacpan.org/release/OALDERS/WWW-Mechanize-Cached-2.00/changes",
+      "http://www.openwall.com/lists/oss-security/2026/05/15/1"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-1184.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8612.",
       "affected_industries": [
         "Technology",
         "General"
@@ -840,23 +929,22 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2025-15345",
+    "id": "cve-CVE-2026-0438",
     "source": "NVD CVE",
-    "timestamp": "2026-05-14T06:16:21.027",
-    "title": "CVE-2025-15345 - The MapGeo – Interactive Geo Maps plugin for WordPress is vulnerable to Reflected Cross-Site Scripti",
-    "description": "The MapGeo – Interactive Geo Maps plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'map' parameter in the display-map shortcode in all versions up to, and including, 1.6.27 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.",
+    "timestamp": "2026-05-15T02:16:23.637",
+    "title": "CVE-2026-0438 - A System Management Mode (SMM) handler could perform a callout to code located in non-SMM/untrusted ",
+    "description": "A System Management Mode (SMM) handler could perform a callout to code located in non-SMM/untrusted memory. A highly privileged attacker could, with active user interaction and under high complexity and present preconditions, trigger execution of attacker-controlled code in SMM, potentially compromising the system’s confidentiality, integrity, and availability.",
     "severity": "medium",
-    "cve_id": "CVE-2025-15345",
-    "cvss_score": 6.1,
+    "cve_id": "CVE-2026-0438",
+    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://plugins.trac.wordpress.org/changeset?old_path=/interactive-geo-maps/tags/1.6.27/src/Plugin/Map.php&new_path=/interactive-geo-maps/tags/1.6.28/src/Plugin/Map.php",
-      "https://research.cleantalk.org/cve-2025-15345",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/bfccbf41-c861-4bf1-b400-7858cb255b9a?source=cve"
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-3030.html",
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4017.html"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-15345.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-0438.",
       "affected_industries": [
         "Technology",
         "General"
@@ -871,110 +959,22 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2025-14870",
+    "id": "cve-CVE-2026-0432",
     "source": "NVD CVE",
-    "timestamp": "2026-05-14T06:16:20.887",
-    "title": "CVE-2025-14870 - GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.5 before 18.9.7, 18.10",
-    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.5 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an unauthenticated user to cause denial of service by sending specially crafted JSON payloads due to insufficient input validation.",
-    "severity": "high",
-    "cve_id": "CVE-2025-14870",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*"
-    ],
-    "references": [
-      "https://about.gitlab.com/releases/2026/05/13/patch-release-gitlab-18-11-3-released/",
-      "https://gitlab.com/gitlab-org/gitlab/-/work_items/584490",
-      "https://hackerone.com/reports/3446641"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows an unauthenticated attacker to cause a denial of service (DoS) by exploiting insufficient input validation in GitLab CE/EE. This could disrupt critical development workflows, CI/CD pipelines, and other operations relying on GitLab, potentially leading to downtime and productivity loss.",
-      "affected_industries": [
-        "Technology",
-        "Software Development",
-        "Financial Services",
-        "Healthcare",
-        "Education",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Immediately upgrade GitLab CE/EE to the latest patched versions: 18.9.7, 18.10.6, or 18.11.3, depending on your current version.",
-        "Review and monitor logs for unusual or unauthorized activity, particularly related to JSON payloads, to detect potential exploitation attempts.",
-        "Implement Web Application Firewall (WAF) rules to block or filter suspicious JSON payloads as an additional layer of defense."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2025-14869",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-14T06:16:20.757",
-    "title": "CVE-2025-14869 - GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.5 before 18.9.7, 18.10",
-    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 18.5 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an unauthenticated user to cause denial of service by sending specially crafted payloads on certain API endpoints.",
-    "severity": "high",
-    "cve_id": "CVE-2025-14869",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*"
-    ],
-    "references": [
-      "https://about.gitlab.com/releases/2026/05/13/patch-release-gitlab-18-11-3-released/",
-      "https://gitlab.com/gitlab-org/gitlab/-/work_items/584489",
-      "https://hackerone.com/reports/3447146"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-14869.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2025-13874",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-14T06:16:20.617",
-    "title": "CVE-2025-13874 - GitLab has remediated an issue in GitLab CE/EE affecting all versions from 15.1 before 18.9.7, 18.10",
-    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 15.1 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user with Guest permissions to view issues in projects they were not authorized to access.",
+    "timestamp": "2026-05-15T02:16:23.413",
+    "title": "CVE-2026-0432 - Incorrect default permissions in the installation directory for the AMD chipset driver could allow a",
+    "description": "Incorrect default permissions in the installation directory for the AMD chipset driver could allow an attacker to achieve privilege escalation resulting in arbitrary code execution.",
     "severity": "medium",
-    "cve_id": "CVE-2025-13874",
-    "cvss_score": 4.3,
-    "affected_products": [
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*"
-    ],
+    "cve_id": "CVE-2026-0432",
+    "cvss_score": null,
+    "affected_products": [],
     "references": [
-      "https://about.gitlab.com/releases/2026/05/13/patch-release-gitlab-18-11-3-released/",
-      "https://gitlab.com/gitlab-org/gitlab/-/work_items/582634",
-      "https://hackerone.com/reports/3445398"
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-3047.html",
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-13874.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-0432.",
       "affected_industries": [
         "Technology",
         "General"
@@ -989,30 +989,21 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2025-12669",
+    "id": "cve-CVE-2025-52540",
     "source": "NVD CVE",
-    "timestamp": "2026-05-14T06:16:19.370",
-    "title": "CVE-2025-12669 - GitLab has remediated an issue in GitLab CE/EE affecting all versions from 15.11 before 18.9.7, 18.1",
-    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 15.11 before 18.9.7, 18.10 before 18.10.6, and 18.11 before 18.11.3 that could have allowed an authenticated user to inject HTML and JavaScript into email notifications sent to other users due to improper input sanitization.",
+    "timestamp": "2026-05-15T02:16:23.280",
+    "title": "CVE-2025-52540 - An improper input validation vulnerability within the AMD Platform Management Framework (PMF) Driver",
+    "description": "An improper input validation vulnerability within the AMD Platform Management Framework (PMF) Driver can allow a local attacker to write Out-of-Bounds, potentially resulting in privilege escalation.",
     "severity": "medium",
-    "cve_id": "CVE-2025-12669",
-    "cvss_score": 5.4,
-    "affected_products": [
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:community:*:*:*",
-      "cpe:2.3:a:gitlab:gitlab:*:*:*:*:enterprise:*:*:*"
-    ],
+    "cve_id": "CVE-2025-52540",
+    "cvss_score": null,
+    "affected_products": [],
     "references": [
-      "https://about.gitlab.com/releases/2026/05/13/patch-release-gitlab-18-11-3-released/",
-      "https://gitlab.com/gitlab-org/gitlab/-/work_items/579385",
-      "https://hackerone.com/reports/3368096"
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-12669.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-52540.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1027,28 +1018,22 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-7648",
+    "id": "cve-CVE-2025-48521",
     "source": "NVD CVE",
-    "timestamp": "2026-05-14T05:16:46.080",
-    "title": "CVE-2026-7648 - The LearnPress – WordPress LMS Plugin for Create and Sell Online Courses plugin for WordPress is vul",
-    "description": "The LearnPress – WordPress LMS Plugin for Create and Sell Online Courses plugin for WordPress is vulnerable to payment bypass through user-controlled key in all versions up to, and including, 4.3.5. This is due to improper handling of user-supplied request parameters in the REST API endpoint, which passes the unsanitized parameter array to the add_to_cart() function where array_merge() allows attacker-controlled values to overwrite hardcoded defaults. This makes it possible for authenticated attackers, with subscriber-level access and above, to enroll in any paid course entirely free of charge by supplying a quantity value of zero, which causes the order total to calculate as $0 and bypasses all payment gateway requirements.",
+    "timestamp": "2026-05-15T02:16:23.077",
+    "title": "CVE-2025-48521 - Improper input validation in the AMD Secure Processor (ASP) PCI driver could allow a local attacker ",
+    "description": "Improper input validation in the AMD Secure Processor (ASP) PCI driver could allow a local attacker to trigger a Use-After-Free (UAF) condition, potentially resulting in a loss of platform integrity or crash.",
     "severity": "medium",
-    "cve_id": "CVE-2026-7648",
-    "cvss_score": 4.3,
+    "cve_id": "CVE-2025-48521",
+    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.3/inc/cart/class-lp-cart.php#L105",
-      "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.3/inc/cart/class-lp-cart.php#L180",
-      "https://plugins.trac.wordpress.org/browser/learnpress/tags/4.3.3/inc/rest-api/v1/frontend/class-lp-rest-courses-controller.php#L474",
-      "https://plugins.trac.wordpress.org/browser/learnpress/trunk/inc/cart/class-lp-cart.php#L105",
-      "https://plugins.trac.wordpress.org/browser/learnpress/trunk/inc/cart/class-lp-cart.php#L180",
-      "https://plugins.trac.wordpress.org/browser/learnpress/trunk/inc/rest-api/v1/frontend/class-lp-rest-courses-controller.php#L474",
-      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3521636%40learnpress&new=3521636%40learnpress&sfp_email=&sfph_mail=",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/564ec4a6-20d3-4b46-8637-fc1de586e19a?source=cve"
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-3047.html",
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7648.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-48521.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1063,32 +1048,21 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-7525",
+    "id": "cve-CVE-2025-48520",
     "source": "NVD CVE",
-    "timestamp": "2026-05-14T05:16:45.947",
-    "title": "CVE-2026-7525 - The My Calendar – Accessible Event Manager plugin for WordPress is vulnerable to authorization bypas",
-    "description": "The My Calendar – Accessible Event Manager plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 3.7.9. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with custom-level access and above, to bypass the moderation and approval workflow by tampering with the POST body to publish events or set other unauthorized statuses such as cancelled or private, in ways their role does not permit. While the UI correctly restricts low-privilege users to a draft-only submit button, this restriction is enforced only client-side, making it trivially bypassable by directly manipulating the POST request.",
+    "timestamp": "2026-05-15T02:16:22.953",
+    "title": "CVE-2025-48520 - An improper input validation vulnerability within the AMD Platform Management Framework (PMF) driver",
+    "description": "An improper input validation vulnerability within the AMD Platform Management Framework (PMF) driver can allow a local attacker to read Out-of-Bounds potentially resulting in information disclosure or a crash",
     "severity": "medium",
-    "cve_id": "CVE-2026-7525",
-    "cvss_score": 4.3,
+    "cve_id": "CVE-2025-48520",
+    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://github.com/joedolson/my-calendar/commit/98aef8fbfc6ca4cfe50aaa36761d5f1eb629dfe4",
-      "https://plugins.trac.wordpress.org/browser/my-calendar/tags/3.7.4/my-calendar-event-editor.php#L2384",
-      "https://plugins.trac.wordpress.org/browser/my-calendar/tags/3.7.4/my-calendar-event-editor.php#L406",
-      "https://plugins.trac.wordpress.org/browser/my-calendar/tags/3.7.4/my-calendar-event-editor.php#L601",
-      "https://plugins.trac.wordpress.org/browser/my-calendar/tags/3.7.9/my-calendar-event-editor.php#L2384",
-      "https://plugins.trac.wordpress.org/browser/my-calendar/tags/3.7.9/my-calendar-event-editor.php#L406",
-      "https://plugins.trac.wordpress.org/browser/my-calendar/tags/3.7.9/my-calendar-event-editor.php#L601",
-      "https://plugins.trac.wordpress.org/browser/my-calendar/trunk/my-calendar-event-editor.php#L2384",
-      "https://plugins.trac.wordpress.org/browser/my-calendar/trunk/my-calendar-event-editor.php#L406",
-      "https://plugins.trac.wordpress.org/browser/my-calendar/trunk/my-calendar-event-editor.php#L601",
-      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3527861%40my-calendar&new=3527861%40my-calendar&sfp_email=&sfph_mail=",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/3e27c0b0-c74f-47ad-b9ed-9fd6bd05d040?source=cve"
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7525.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-48520.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1103,26 +1077,21 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-5361",
+    "id": "cve-CVE-2025-48519",
     "source": "NVD CVE",
-    "timestamp": "2026-05-14T05:16:44.933",
-    "title": "CVE-2026-5361 - The Envira Gallery Lite plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the RE",
-    "description": "The Envira Gallery Lite plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the REST API in versions up to and including 1.12.4. This is due to insufficient input sanitization in the update_gallery_data() function and improper output escaping in the gallery_init() function. The sanitize_config_values() function only sanitizes the justified_gallery_theme and justified_row_height parameters, but does not sanitize the arrows parameter. When the arrows value is output in the inline JavaScript configuration, it uses esc_attr() which is designed for HTML attribute contexts, not JavaScript contexts, allowing JavaScript expression injection. This makes it possible for authenticated attackers, with Author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+    "timestamp": "2026-05-15T02:16:22.823",
+    "title": "CVE-2025-48519 - An improper input validation vulnerability within the AMD Platform Management Framework (PMF) driver",
+    "description": "An improper input validation vulnerability within the AMD Platform Management Framework (PMF) driver can allow a local attacker to read or write Out-of-Bounds, potentially resulting in privilege escalation",
     "severity": "medium",
-    "cve_id": "CVE-2026-5361",
-    "cvss_score": 6.4,
+    "cve_id": "CVE-2025-48519",
+    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://plugins.trac.wordpress.org/browser/envira-gallery-lite/tags/1.12.4/includes/global/rest.php#L163",
-      "https://plugins.trac.wordpress.org/browser/envira-gallery-lite/tags/1.12.4/includes/global/shortcode.php#L1067",
-      "https://plugins.trac.wordpress.org/browser/envira-gallery-lite/trunk/includes/global/rest.php#L163",
-      "https://plugins.trac.wordpress.org/browser/envira-gallery-lite/trunk/includes/global/shortcode.php#L1067",
-      "https://plugins.trac.wordpress.org/changeset/3514026/envira-gallery-lite/trunk/includes/global/shortcode.php?old=3465371&old_path=envira-gallery-lite%2Ftrunk%2Fincludes%2Fglobal%2Fshortcode.php",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/d2b1e973-f22d-4e69-b3b8-d6ea5df3f047?source=cve"
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-5361.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-48519.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1137,30 +1106,22 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-5486",
+    "id": "cve-CVE-2025-48512",
     "source": "NVD CVE",
-    "timestamp": "2026-05-14T04:17:03.773",
-    "title": "CVE-2026-5486 - The Unlimited Elements for Elementor plugin for WordPress is vulnerable to SQL Injection via the 'da",
-    "description": "The Unlimited Elements for Elementor plugin for WordPress is vulnerable to SQL Injection via the 'data[filter_search]' parameter in the get_cat_addons AJAX action in versions up to and including 2.0.7. This is due to insufficient input sanitization and the use of deprecated escaping functions combined with direct string concatenation in SQL query construction. The vulnerability is exacerbated because the normalizeAjaxInputData() function calls stripslashes() on all user input, removing the protection provided by WordPress's wp_magic_quotes() function. Subsequently, the filter_search parameter is escaped using the deprecated wpdb->_escape() function and then directly concatenated into a LIKE clause without using prepared statements. This makes it possible for authenticated attackers, with Contributor-level access and above (who can obtain a valid nonce through the Elementor editor), to inject arbitrary SQL commands and extract sensitive information from the database.",
+    "timestamp": "2026-05-15T02:16:22.597",
+    "title": "CVE-2025-48512 - Incorrect default permissions in the installation directory for the AMD general-purpose input/output",
+    "description": "Incorrect default permissions in the installation directory for the AMD general-purpose input/output controller (GPIO) could allow an attacker to achieve privilege escalation resulting in arbitrary code execution.",
     "severity": "medium",
-    "cve_id": "CVE-2026-5486",
-    "cvss_score": 6.5,
+    "cve_id": "CVE-2025-48512",
+    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/tags/2.0.6/inc_php/unitecreator_actions.class.php#L132",
-      "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/tags/2.0.6/inc_php/unitecreator_addons.class.php#L229",
-      "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/tags/2.0.6/provider/provider_functions.class.php#L482",
-      "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/trunk/inc_php/unitecreator_actions.class.php#L132",
-      "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/trunk/inc_php/unitecreator_addons.class.php#L188",
-      "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/trunk/inc_php/unitecreator_addons.class.php#L229",
-      "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/trunk/provider/provider_db.class.php#L82-L84",
-      "https://plugins.trac.wordpress.org/browser/unlimited-elements-for-elementor/trunk/provider/provider_functions.class.php#L482",
-      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3513863%40unlimited-elements-for-elementor&new=3513863%40unlimited-elements-for-elementor&sfp_email=&sfph_mail=",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/b495914d-d8f2-4592-8461-1ae1056a0855?source=cve"
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-3047.html",
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-5486.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-48512.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1175,116 +1136,22 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-46446",
+    "id": "cve-CVE-2025-0045",
     "source": "NVD CVE",
-    "timestamp": "2026-05-14T04:17:03.547",
-    "title": "CVE-2026-46446 - SOGo before 5.12.7, when PostgreSQL or MariaDB is used, and cleartext passwords are stored, allows S",
-    "description": "SOGo before 5.12.7, when PostgreSQL or MariaDB is used, and cleartext passwords are stored, allows SQL injection. This is related to c_password = '%@' in changePasswordForLogin.",
-    "severity": "high",
-    "cve_id": "CVE-2026-46446",
-    "cvss_score": 7.1,
-    "affected_products": [],
-    "references": [
-      "https://github.com/Alinto/sogo/pull/379/changes/1f7e5d2b2c2047c44a6a9e05f73c36491cb96d21",
-      "https://www.mail-archive.com/debian-bugs-dist%40lists.debian.org/msg2100131.html",
-      "https://www.sogo.nu/news/2026/sogo-v5127-released.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-46446.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-46445",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-14T04:17:03.193",
-    "title": "CVE-2026-46445 - SOGo before 5.12.7, when PostgreSQL is used, allows SQL injection.",
-    "description": "SOGo before 5.12.7, when PostgreSQL is used, allows SQL injection.",
-    "severity": "high",
-    "cve_id": "CVE-2026-46445",
-    "cvss_score": 7.1,
-    "affected_products": [],
-    "references": [
-      "https://github.com/Alinto/sogo/pull/379/changes/1f7e5d2b2c2047c44a6a9e05f73c36491cb96d21",
-      "https://www.mail-archive.com/debian-bugs-dist%40lists.debian.org/msg2100131.html",
-      "https://www.sogo.nu/news/2026/sogo-v5127-released.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-46445.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-46419",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-14T02:17:21.917",
-    "title": "CVE-2026-46419 - Yubico webauthn-server-core (aka java-webauthn-server) 2.8.0 before 2.8.2 incorrectly checks a funct",
-    "description": "Yubico webauthn-server-core (aka java-webauthn-server) 2.8.0 before 2.8.2 incorrectly checks a function's return value in the second factor flow, leading to impersonation.",
-    "severity": "high",
-    "cve_id": "CVE-2026-46419",
-    "cvss_score": 7.5,
-    "affected_products": [],
-    "references": [
-      "https://github.com/Yubico/java-webauthn-server/releases/tag/2.8.2",
-      "https://www.yubico.com/support/security-advisories/ysa-2026-02/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-46419.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-44919",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-14T02:17:21.773",
-    "title": "CVE-2026-44919 - In OpenStack Ironic through 35.x before a3f6d73, during image handling, an infinite loop in checksum",
-    "description": "In OpenStack Ironic through 35.x before a3f6d73, during image handling, an infinite loop in checksum calculations can occur via the file:///dev/zero URL.",
+    "timestamp": "2026-05-15T02:16:22.353",
+    "title": "CVE-2025-0045 - Improper Input validation in the AMD Secure Processor (ASP) PCI driver may allow a local attacker to",
+    "description": "Improper Input validation in the AMD Secure Processor (ASP) PCI driver may allow a local attacker to create a buffer overflow condition, potentially resulting in a crash or denial of service",
     "severity": "medium",
-    "cve_id": "CVE-2026-44919",
-    "cvss_score": 4.3,
+    "cve_id": "CVE-2025-0045",
+    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://bugs.launchpad.net/ironic/+bug/2150332",
-      "https://opendev.org/openstack/ironic/commit/a3f6d735ac3642ab95b49142c7305f072ae748d0",
-      "https://security.openstack.org/ossa/OSSA-2026-013.html",
-      "https://bugs.launchpad.net/ironic/+bug/2150332"
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-3047.html",
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-44919.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-0045.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1299,21 +1166,22 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-41281",
+    "id": "cve-CVE-2024-36345",
     "source": "NVD CVE",
-    "timestamp": "2026-05-14T00:16:35.237",
-    "title": "CVE-2026-41281 - Android App \"あんしんフィルター for au\" provided by KDDI CORPORATION contains Cleartext Transmission of Sensi",
-    "description": "Android App \"あんしんフィルター for au\" provided by KDDI CORPORATION contains Cleartext Transmission of Sensitive Information (CWE-319) vulnerability. A man-in-the-middle attacker may access and modify communications transmitted in plaintext, potentially resulting in information disclosure or data tampering.",
+    "timestamp": "2026-05-15T02:16:20.773",
+    "title": "CVE-2024-36345 - Improper input validation in the AMD OverDrive (AOD) System Management Mode (SMM) module could allow",
+    "description": "Improper input validation in the AMD OverDrive (AOD) System Management Mode (SMM) module could allow a privileged attacker to perform an out-of-bounds read, potentially resulting in loss of confidentiality.",
     "severity": "medium",
-    "cve_id": "CVE-2026-41281",
-    "cvss_score": 4.8,
+    "cve_id": "CVE-2024-36345",
+    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://jvn.jp/en/jp/JVN24167657/"
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-3030.html",
+      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4017.html"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41281.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2024-36345.",
       "affected_industries": [
         "Technology",
         "General"
