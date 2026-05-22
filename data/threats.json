@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1779461602047-1",
+    "id": "twitter-1779479950251-1",
     "source": "Twitter Security",
-    "timestamp": "2026-05-22T14:53:22.047Z",
+    "timestamp": "2026-05-22T19:59:10.251Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,14 +13,126 @@
     "risk_score": null
   },
   {
-    "id": "hn-1779461602047-1",
+    "id": "hn-1779479950251-1",
     "source": "HackerNews",
-    "timestamp": "2026-05-22T14:53:22.047Z",
+    "timestamp": "2026-05-22T19:59:10.251Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
     "references": [
       "https://news.ycombinator.com/item?id=123"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-97r5-pg8x-p63p",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T17:48:54Z",
+    "title": "Flask-Security-Too OAuth reauthentication freshness bypass via cross-   user OAuth identity acceptance",
+    "description": "### Summary\n\n  Flask-Security-Too 5.8.0's OAuth reauthentication flow can mark a\n  session as fresh after verifying an OAuth account that belongs to a\n  different user.\n\n  If an attacker can operate an already-authenticated but stale victim\n  session, they can complete OAuth verification using their own OAuth\n  identity. The victim session is then treated as recently\n  reauthenticated, allowing freshness-protected account actions to\n  proceed. This was reproduced against the built-in `/change-us",
+    "severity": "medium",
+    "cve_id": "CVE-2026-46715",
+    "ghsa_id": "GHSA-97r5-pg8x-p63p",
+    "affected_packages": [
+      "Flask-Security-Too"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-7m8f-hgjq-8gc9",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T17:27:56Z",
+    "title": "aiosend: Deserialization of request body before signature verification (Pre-auth DoS) in webhook handler",
+    "description": "# Vulnerability Description\n\nIn `aiosend/webhook/base.py`, the `WebhookHandler.feed_update()` method performs full deserialization of the incoming JSON via Pydantic **before** verifying the HMAC signature. Anyone can send a request with an arbitrary body — the server will parse it, spend CPU and memory, and only then reject it.\n\n## Vulnerable Code\n\n```python\n# aiosend/webhook/base.py — feed_update()\nupdate = Update.model_validate(body, context={\"client\": self})  #  parsing — always\nif not self._",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-7m8f-hgjq-8gc9",
+    "affected_packages": [
+      "aiosend"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-q8mj-m7cp-5q26",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T17:27:19Z",
+    "title": "qs has a remotely triggerable DoS: qs.stringify crashes with TypeError on null/undefined entries in comma-format arrays when encodeValuesOnly is set",
+    "description": "### Summary\n\n`qs.stringify` throws `TypeError` when called with `arrayFormat: 'comma'` and `encodeValuesOnly: true` on an array containing `null` or `undefined`. The throw is synchronous and not handled by any of qs's null-related options (`skipNulls`, `strictNullHandling`).\n\n### Details\n\nIn the comma + `encodeValuesOnly` branch, `lib/stringify.js:145` mapped the array through the raw encoder before joining:\n\n```js\nobj = utils.maybeMap(obj, encoder);\n```\n\n`utils.encode` (`lib/utils.js:195`) read",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8723",
+    "ghsa_id": "GHSA-q8mj-m7cp-5q26",
+    "affected_packages": [
+      "qs"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-qqqm-5547-774x",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T17:26:25Z",
+    "title": "FileBrowser Quantum: Path traversal in public share PATCH allows file ops outside shared directory",
+    "description": "## Summary\n\n`publicPatchHandler` in `backend/http/public.go` joins user-controlled `fromPath` and `toPath` body fields with the trusted `d.share.Path` BEFORE the downstream sanitizer runs. Because `filepath.Join` collapses `..` segments during the join, the sanitizer in `resourcePatchHandler` never sees the traversal and the move/copy/rename operates on a path outside the shared directory. The same root-cause pattern was patched for the bulk DELETE endpoint as CVE-2026-44542 (GHSA-fwj3-42wh-8673",
+    "severity": "critical",
+    "cve_id": null,
+    "ghsa_id": "GHSA-qqqm-5547-774x",
+    "affected_packages": [
+      "github.com/gtsteffaniak/filebrowser/backend"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-jwvv-qr7q-cv8j",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T15:39:07Z",
+    "title": "YesWiki: Unauthenticated SQL Injection",
+    "description": "### Summary\n\nAn unauthenticated SQL injection in the Bazar form-import path (`FormManager::create()`) allows any unauthenticated visitor of a default YesWiki install to inject arbitrary SQL into an `INSERT` statement and read the full database, including `yeswiki_users.password` hashes. Present in 4.6.1 / 4.6.2 / current `doryphore-dev`; analyzed against upstream commit `1f485c049db030b94c047ec219e63534ac81142e`.\n\n### Details\n\nSink is at `FormManager::create()` (function at L232), unquoted conca",
+    "severity": "critical",
+    "cve_id": "CVE-2026-46670",
+    "ghsa_id": "GHSA-jwvv-qr7q-cv8j",
+    "affected_packages": [
+      "yeswiki/yeswiki"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
     ],
     "ai_analysis": null,
     "risk_score": null
@@ -457,124 +569,6 @@
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-v8xg-3gv8-m4wc",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T06:31:38Z",
-    "title": "The Alfie – Feed Plugin plugin for WordPress is vulnerable to Cross-Site Request Forgery in all...",
-    "description": "The Alfie – Feed Plugin plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.2.1. This is due to missing nonce validation on the alfie_manage() function which handles feed deletion via the 'delete' GET parameter. This makes it possible for unauthenticated attackers to delete arbitrary plugin feed data (from alfie_colindex, alfie_producten, alfie_reactions, and alfie_searchproduct tables) via a forged request granted they can trick a site admini",
-    "severity": "medium",
-    "cve_id": "CVE-2026-4070",
-    "ghsa_id": "GHSA-v8xg-3gv8-m4wc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-ggv5-f87x-rf79",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T06:31:38Z",
-    "title": "An attacker sending tcp, il, rudp, rudp, or gre packets with a length less than the header size...",
-    "description": "An attacker sending tcp, il, rudp, rudp, or gre packets with a length less than the header size would trigger a kernel panic.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-9054",
-    "ghsa_id": "GHSA-ggv5-f87x-rf79",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-m4c4-9rgw-f76c",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T06:31:38Z",
-    "title": "The KIA Subtitle plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin...",
-    "description": "The KIA Subtitle plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's `the-subtitle` shortcode `before` and `after` attributes in all versions up to, and including, 4.0.1. This is due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-7509",
-    "ghsa_id": "GHSA-m4c4-9rgw-f76c",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-38r3-cgcv-g3qp",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T06:31:38Z",
-    "title": "Mothra would respect a default value given by a website for HTML file upload forms. An attacker...",
-    "description": "Mothra would respect a default value given by a website for HTML file upload forms. An attacker could craft a website with a malicious default file path, and then conceal this form element.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-9053",
-    "ghsa_id": "GHSA-38r3-cgcv-g3qp",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-hx3j-p7vv-7jq2",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T06:31:38Z",
-    "title": "The Location Weather plugin for WordPress is vulnerable to unauthorized modification of data due...",
-    "description": "The Location Weather plugin for WordPress is vulnerable to unauthorized modification of data due to missing capability checks on the `splw_update_block_options()` and `lwp_clean_weather_transients()` functions in all versions up to, and including, 3.0.2. This makes it possible for authenticated attackers, with Contributor-level access and above, to disable all weather blocks and purge all weather cache transients. The nonce required for these actions is exposed to all authenticated users via `wp",
-    "severity": "medium",
-    "cve_id": "CVE-2026-7249",
-    "ghsa_id": "GHSA-hx3j-p7vv-7jq2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
       null,
       null,
       null,

@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1779461602047-1",
+    "id": "twitter-1779479950251-1",
     "source": "Twitter Security",
-    "timestamp": "2026-05-22T14:53:22.047Z",
+    "timestamp": "2026-05-22T19:59:10.251Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -11,28 +11,28 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code, potentially leading to data encryption, service disruption, and financial losses.",
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure could lead to significant disruptions, including data loss, service outages, and financial damage. Compromised CI/CD pipelines may allow attackers to propagate malicious code across multiple systems, affecting both production and development environments.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
-        "Retail",
-        "Manufacturing",
+        "E-commerce",
+        "Media and Entertainment",
         "Government"
       ],
       "recommended_actions": [
-        "Conduct an immediate review of CI/CD pipelines to identify and mitigate any unauthorized access or vulnerabilities.",
-        "Implement robust backup and recovery strategies, ensuring backups are stored securely and isolated from production environments.",
-        "Enhance monitoring and detection capabilities for unusual activity within cloud environments, focusing on CI/CD pipelines."
+        "Implement strict access controls and monitor CI/CD pipelines for unusual activity, including unauthorized changes.",
+        "Regularly back up critical data stored in cloud environments and ensure backups are isolated from the main infrastructure.",
+        "Deploy endpoint detection and response (EDR) solutions to identify and mitigate ransomware activity in real time."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "hn-1779461602047-1",
+    "id": "hn-1779479950251-1",
     "source": "HackerNews",
-    "timestamp": "2026-05-22T14:53:22.047Z",
+    "timestamp": "2026-05-22T19:59:10.251Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -40,21 +40,200 @@
       "https://news.ycombinator.com/item?id=123"
     ],
     "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "The open-source vulnerability scanner itself does not pose a direct threat, but its widespread use may lead to potential risks if the tool contains flaws, is misused, or becomes a target for attackers. Additionally, reliance on automated tools without proper validation could result in overlooked vulnerabilities.",
+      "risk_score": 20,
+      "impact_assessment": "The open-source vulnerability scanner itself poses a low risk but could be exploited if malicious actors tamper with its code or distribution. Additionally, improper use or over-reliance on the tool without proper validation of results may lead to a false sense of security.",
       "affected_industries": [
         "Technology",
         "Software Development",
         "Cybersecurity"
       ],
       "recommended_actions": [
-        "Conduct a thorough review of the tool's source code before implementation to ensure it does not introduce vulnerabilities.",
-        "Complement the tool's findings with manual validation and additional security measures to avoid over-reliance.",
-        "Monitor the tool's updates and community feedback for any reported issues or improvements."
+        "Evaluate the tool's source code and verify its integrity before use to ensure it has not been tampered with.",
+        "Use the tool as a supplementary measure alongside existing security practices, not as a sole dependency.",
+        "Monitor the tool's updates and community feedback to stay informed about potential vulnerabilities or misuse."
       ],
       "urgency": "low"
     },
-    "risk_score": 25
+    "risk_score": 20
+  },
+  {
+    "id": "gh-GHSA-97r5-pg8x-p63p",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T17:48:54Z",
+    "title": "Flask-Security-Too OAuth reauthentication freshness bypass via cross-   user OAuth identity acceptance",
+    "description": "### Summary\n\n  Flask-Security-Too 5.8.0's OAuth reauthentication flow can mark a\n  session as fresh after verifying an OAuth account that belongs to a\n  different user.\n\n  If an attacker can operate an already-authenticated but stale victim\n  session, they can complete OAuth verification using their own OAuth\n  identity. The victim session is then treated as recently\n  reauthenticated, allowing freshness-protected account actions to\n  proceed. This was reproduced against the built-in `/change-us",
+    "severity": "medium",
+    "cve_id": "CVE-2026-46715",
+    "ghsa_id": "GHSA-97r5-pg8x-p63p",
+    "affected_packages": [
+      "Flask-Security-Too"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-46715.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-7m8f-hgjq-8gc9",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T17:27:56Z",
+    "title": "aiosend: Deserialization of request body before signature verification (Pre-auth DoS) in webhook handler",
+    "description": "# Vulnerability Description\n\nIn `aiosend/webhook/base.py`, the `WebhookHandler.feed_update()` method performs full deserialization of the incoming JSON via Pydantic **before** verifying the HMAC signature. Anyone can send a request with an arbitrary body — the server will parse it, spend CPU and memory, and only then reject it.\n\n## Vulnerable Code\n\n```python\n# aiosend/webhook/base.py — feed_update()\nupdate = Update.model_validate(body, context={\"client\": self})  #  parsing — always\nif not self._",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-7m8f-hgjq-8gc9",
+    "affected_packages": [
+      "aiosend"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-q8mj-m7cp-5q26",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T17:27:19Z",
+    "title": "qs has a remotely triggerable DoS: qs.stringify crashes with TypeError on null/undefined entries in comma-format arrays when encodeValuesOnly is set",
+    "description": "### Summary\n\n`qs.stringify` throws `TypeError` when called with `arrayFormat: 'comma'` and `encodeValuesOnly: true` on an array containing `null` or `undefined`. The throw is synchronous and not handled by any of qs's null-related options (`skipNulls`, `strictNullHandling`).\n\n### Details\n\nIn the comma + `encodeValuesOnly` branch, `lib/stringify.js:145` mapped the array through the raw encoder before joining:\n\n```js\nobj = utils.maybeMap(obj, encoder);\n```\n\n`utils.encode` (`lib/utils.js:195`) read",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8723",
+    "ghsa_id": "GHSA-q8mj-m7cp-5q26",
+    "affected_packages": [
+      "qs"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8723.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-qqqm-5547-774x",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T17:26:25Z",
+    "title": "FileBrowser Quantum: Path traversal in public share PATCH allows file ops outside shared directory",
+    "description": "## Summary\n\n`publicPatchHandler` in `backend/http/public.go` joins user-controlled `fromPath` and `toPath` body fields with the trusted `d.share.Path` BEFORE the downstream sanitizer runs. Because `filepath.Join` collapses `..` segments during the join, the sanitizer in `resourcePatchHandler` never sees the traversal and the move/copy/rename operates on a path outside the shared directory. The same root-cause pattern was patched for the bulk DELETE endpoint as CVE-2026-44542 (GHSA-fwj3-42wh-8673",
+    "severity": "critical",
+    "cve_id": null,
+    "ghsa_id": "GHSA-qqqm-5547-774x",
+    "affected_packages": [
+      "github.com/gtsteffaniak/filebrowser/backend"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-jwvv-qr7q-cv8j",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-22T15:39:07Z",
+    "title": "YesWiki: Unauthenticated SQL Injection",
+    "description": "### Summary\n\nAn unauthenticated SQL injection in the Bazar form-import path (`FormManager::create()`) allows any unauthenticated visitor of a default YesWiki install to inject arbitrary SQL into an `INSERT` statement and read the full database, including `yeswiki_users.password` hashes. Present in 4.6.1 / 4.6.2 / current `doryphore-dev`; analyzed against upstream commit `1f485c049db030b94c047ec219e63534ac81142e`.\n\n### Details\n\nSink is at `FormManager::create()` (function at L232), unquoted conca",
+    "severity": "critical",
+    "cve_id": "CVE-2026-46670",
+    "ghsa_id": "GHSA-jwvv-qr7q-cv8j",
+    "affected_packages": [
+      "yeswiki/yeswiki"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 95,
+      "impact_assessment": "The vulnerability allows unauthenticated attackers to execute arbitrary SQL commands, potentially exposing sensitive data such as user password hashes and compromising the integrity and confidentiality of the database. This could lead to unauthorized access, data breaches, and further exploitation of the system.",
+      "affected_industries": [
+        "Education",
+        "Nonprofits",
+        "Small and Medium Businesses",
+        "Content Management Platforms"
+      ],
+      "recommended_actions": [
+        "Immediately update to a patched version of YesWiki if available, or apply any recommended mitigations from the vendor.",
+        "Implement a web application firewall (WAF) to detect and block SQL injection attempts as a temporary measure.",
+        "Review and monitor database access logs for any signs of unauthorized or suspicious activity."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 95
   },
   {
     "id": "gh-GHSA-6gxq-f64p-5w6f",
@@ -93,20 +272,23 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-47166.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows an attacker to exploit a heap buffer over-read in the ImageMagick distributed pixel cache server, potentially leading to information disclosure, application crashes, or other undefined behavior. This could impact systems relying on ImageMagick for image processing in distributed environments.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Web Hosting",
+        "Media and Entertainment",
+        "E-commerce",
+        "Cloud Services",
+        "Healthcare"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update ImageMagick to the latest patched version that addresses CVE-2026-47166.",
+        "Restrict access to the magick -distribute-cache service by implementing network-level controls such as firewalls or IP whitelisting.",
+        "Monitor logs for any unusual or unauthorized access attempts to the magick -distribute-cache service."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
     "id": "gh-GHSA-2rgj-gx5x-f62w",
@@ -247,23 +429,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows an attacker to exploit a heap buffer over-write in the ImageMagick distributed pixel cache server, potentially leading to denial of service (DoS), data corruption, or remote code execution depending on the attacker's capabilities.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-46692.",
       "affected_industries": [
-        "Media and Entertainment",
-        "Web Hosting and Cloud Services",
-        "E-commerce",
-        "Healthcare",
-        "Education"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update ImageMagick to the latest patched version that addresses CVE-2026-46692.",
-        "Restrict access to the `magick -distribute-cache` service by implementing network-level access controls, such as firewalls or VPNs, to limit connections to trusted sources only.",
-        "Monitor server logs for any unusual or unauthorized connection attempts to the distributed pixel cache service and investigate anomalies promptly."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-hg7j-7v3f-fjq2",
@@ -332,23 +511,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows authenticated attackers with subscriber-level access or higher to bypass authorization checks and manipulate form structures, potentially leading to data integrity issues, phishing attacks, or unauthorized data collection.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8692.",
       "affected_industries": [
-        "E-commerce",
-        "Education",
-        "Healthcare",
-        "Media",
-        "Small Businesses"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Update the plugin to a patched version as soon as it becomes available.",
-        "Restrict user roles and permissions to minimize exposure to subscriber-level accounts.",
-        "Monitor and audit form changes for any unauthorized modifications."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-x7jf-v64x-878j",
@@ -376,20 +552,21 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8684.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows unauthenticated attackers to bypass authorization and manipulate internal booking notes, potentially leading to data integrity issues, loss of sensitive information, or disruption of booking systems. This could harm customer trust and operational efficiency.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Hospitality",
+        "Travel and Tourism",
+        "Event Management"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Update the MotoPress Hotel Booking plugin to a patched version as soon as it becomes available.",
+        "Implement a web application firewall (WAF) to monitor and block unauthorized requests targeting the vulnerability.",
+        "Review and restrict access to sensitive booking data and monitor logs for any unauthorized changes to booking records."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
     "id": "gh-GHSA-pq4x-338r-cq3h",
@@ -417,20 +594,23 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7798.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in the FluentCRM WordPress plugin allows unauthenticated attackers to exploit a Blind Server-Side Request Forgery (SSRF) via the 'SubscribeURL' parameter. This could enable attackers to send unauthorized requests to internal services, potentially leading to data exfiltration, unauthorized access to sensitive information, or further exploitation of internal systems.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "E-commerce",
+        "Media and Publishing",
+        "Marketing and Advertising",
+        "Education",
+        "Nonprofit Organizations"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Update the FluentCRM plugin to the latest patched version as soon as it becomes available.",
+        "Implement web application firewall (WAF) rules to monitor and block malicious requests targeting the 'SubscribeURL' parameter.",
+        "Restrict outbound web requests from the web server to only trusted and necessary destinations to limit SSRF attack vectors."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
     "id": "gh-GHSA-hvqp-vjwf-27jg",
@@ -455,22 +635,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in the AudioIgniter plugin allows unauthorized users to access sensitive playlist data by exploiting an insecure direct object reference (IDOR). This could lead to data leakage, unauthorized access to media assets, or further exploitation of the WordPress site.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-8679.",
       "affected_industries": [
-        "Media and Entertainment",
-        "Education",
-        "Marketing and Advertising",
-        "Small and Medium Businesses using WordPress"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update the AudioIgniter plugin to the latest patched version if available. If no patch exists, disable the plugin temporarily.",
-        "Implement a web application firewall (WAF) to block unauthorized access to the vulnerable endpoint.",
-        "Review and monitor server logs for any suspicious activity related to the /audioigniter/playlist/{id}/ endpoint."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
     "id": "gh-GHSA-x4qq-w73c-72mv",
@@ -491,20 +669,24 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8381.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows low-privileged authenticated users to access administrative or sensitive functionality, potentially leading to unauthorized data access, privilege escalation, or disruption of critical operations.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Healthcare",
+        "Finance",
+        "Education",
+        "Government",
+        "Manufacturing"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update the TeamViewer DEX Platform to the latest version that addresses this vulnerability.",
+        "Review and restrict user roles and permissions to minimize the risk of exploitation by low-privileged users.",
+        "Monitor logs and activities for any unusual or unauthorized access attempts, particularly from low-privileged accounts."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
     "id": "gh-GHSA-273r-585g-q7wv",
@@ -532,20 +714,23 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7636.",
+      "risk_score": 55,
+      "impact_assessment": "The vulnerability allows authenticated attackers with low-level access (e.g., subscribers) to extract sensitive draft slider metadata, including unpublished media URLs, captions, and slider configurations. This could lead to information leakage or unauthorized access to sensitive content.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Media and Publishing",
+        "E-commerce",
+        "Education",
+        "Small Businesses",
+        "Marketing and Advertising"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Update the Slider by Soliloquy plugin to the latest patched version as soon as it is available.",
+        "Restrict subscriber-level access to only trusted users and review user roles and permissions.",
+        "Monitor server logs for unusual activity related to slider metadata access and take appropriate action if suspicious behavior is detected."
       ],
       "urgency": "medium"
     },
-    "risk_score": 50
+    "risk_score": 55
   },
   {
     "id": "gh-GHSA-jrc7-p252-6hpq",
@@ -611,23 +796,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to escalate privileges by exploiting the lack of proper validation in the `easyel_handle_register()` function. This could lead to unauthorized access, data breaches, or full control of the WordPress site.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9018.",
       "affected_industries": [
-        "E-commerce",
-        "Media and Publishing",
-        "Education",
-        "Small and Medium Businesses",
-        "Nonprofits"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update the Easy Elements for Elementor plugin to a patched version (if available) or temporarily disable the plugin until a fix is released.",
-        "Implement a Web Application Firewall (WAF) to block malicious POST requests targeting the `wp_ajax_nopriv_eel_register` endpoint.",
-        "Review and audit user accounts for unauthorized privilege escalations and remove any suspicious accounts or roles."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
     "id": "gh-GHSA-p9mp-xq3w-289v",
@@ -652,23 +834,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to inject malicious scripts via the 'shortcode' parameter, potentially leading to data theft, session hijacking, or defacement of affected WordPress websites.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-3481.",
       "affected_industries": [
-        "e-commerce",
-        "media and publishing",
-        "education",
-        "nonprofits",
-        "small businesses"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Update the WP Blockade plugin to the latest patched version once available or disable the plugin temporarily.",
-        "Implement a web application firewall (WAF) to block malicious requests targeting the 'shortcode' parameter.",
-        "Audit WordPress plugins regularly for vulnerabilities and remove or replace outdated plugins."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-jf98-h9cw-4365",
@@ -709,197 +888,6 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-v8xg-3gv8-m4wc",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T06:31:38Z",
-    "title": "The Alfie – Feed Plugin plugin for WordPress is vulnerable to Cross-Site Request Forgery in all...",
-    "description": "The Alfie – Feed Plugin plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.2.1. This is due to missing nonce validation on the alfie_manage() function which handles feed deletion via the 'delete' GET parameter. This makes it possible for unauthenticated attackers to delete arbitrary plugin feed data (from alfie_colindex, alfie_producten, alfie_reactions, and alfie_searchproduct tables) via a forged request granted they can trick a site admini",
-    "severity": "medium",
-    "cve_id": "CVE-2026-4070",
-    "ghsa_id": "GHSA-v8xg-3gv8-m4wc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-4070.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-ggv5-f87x-rf79",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T06:31:38Z",
-    "title": "An attacker sending tcp, il, rudp, rudp, or gre packets with a length less than the header size...",
-    "description": "An attacker sending tcp, il, rudp, rudp, or gre packets with a length less than the header size would trigger a kernel panic.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-9054",
-    "ghsa_id": "GHSA-ggv5-f87x-rf79",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 95,
-      "impact_assessment": "The vulnerability allows an attacker to send malformed packets (TCP, IL, RUDP, or GRE) with a length less than the header size, leading to a kernel panic. This could result in Denial of Service (DoS) attacks, causing system crashes and disruptions to critical operations.",
-      "affected_industries": [
-        "Telecommunications",
-        "Cloud Service Providers",
-        "Financial Services",
-        "Healthcare",
-        "Government",
-        "Manufacturing",
-        "Energy and Utilities"
-      ],
-      "recommended_actions": [
-        "Immediately apply patches or updates provided by the vendor to address CVE-2026-9054.",
-        "Implement network-level filtering to block malformed packets with lengths less than the header size.",
-        "Enable logging and monitoring for unusual packet activity to detect potential exploitation attempts."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 95
-  },
-  {
-    "id": "gh-GHSA-m4c4-9rgw-f76c",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T06:31:38Z",
-    "title": "The KIA Subtitle plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin...",
-    "description": "The KIA Subtitle plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the plugin's `the-subtitle` shortcode `before` and `after` attributes in all versions up to, and including, 4.0.1. This is due to insufficient input sanitization and output escaping on user supplied attributes. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-7509",
-    "ghsa_id": "GHSA-m4c4-9rgw-f76c",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7509.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-38r3-cgcv-g3qp",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T06:31:38Z",
-    "title": "Mothra would respect a default value given by a website for HTML file upload forms. An attacker...",
-    "description": "Mothra would respect a default value given by a website for HTML file upload forms. An attacker could craft a website with a malicious default file path, and then conceal this form element.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-9053",
-    "ghsa_id": "GHSA-38r3-cgcv-g3qp",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to exploit HTML file upload forms by injecting a malicious default file path. This could lead to unauthorized file uploads, data exfiltration, or execution of malicious scripts, potentially compromising user data and system integrity.",
-      "affected_industries": [
-        "E-commerce",
-        "Healthcare",
-        "Finance",
-        "Education",
-        "Technology"
-      ],
-      "recommended_actions": [
-        "Validate and sanitize all user inputs, including file upload paths, on the server side to prevent exploitation of default values.",
-        "Implement Content Security Policy (CSP) headers to restrict the execution of malicious scripts and mitigate potential impacts.",
-        "Update the Mothra library or related dependencies to the latest patched version addressing CVE-2026-9053."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-hx3j-p7vv-7jq2",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T06:31:38Z",
-    "title": "The Location Weather plugin for WordPress is vulnerable to unauthorized modification of data due...",
-    "description": "The Location Weather plugin for WordPress is vulnerable to unauthorized modification of data due to missing capability checks on the `splw_update_block_options()` and `lwp_clean_weather_transients()` functions in all versions up to, and including, 3.0.2. This makes it possible for authenticated attackers, with Contributor-level access and above, to disable all weather blocks and purge all weather cache transients. The nonce required for these actions is exposed to all authenticated users via `wp",
-    "severity": "medium",
-    "cve_id": "CVE-2026-7249",
-    "ghsa_id": "GHSA-hx3j-p7vv-7jq2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7249.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
     "id": "cve-CVE-2023-31317",
     "source": "NVD CVE",
     "timestamp": "2026-05-15T03:16:20.663",
@@ -914,19 +902,19 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "The vulnerability in the AMD secure processor could allow attackers to read or write to protected memory, potentially leading to arbitrary code execution. This could compromise sensitive data and system integrity, especially in environments relying on AMD processors for secure operations.",
+      "impact_assessment": "The vulnerability in the AMD Secure Processor could allow attackers to read or write to protected memory, potentially leading to arbitrary code execution. This could compromise sensitive data, enable privilege escalation, or disrupt system operations.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
         "Government",
         "Defense",
-        "Cloud Service Providers"
+        "Manufacturing"
       ],
       "recommended_actions": [
-        "Apply the latest security patches and firmware updates provided by AMD to mitigate the vulnerability.",
-        "Implement strict access controls and monitoring to detect and prevent unauthorized access to systems using AMD processors.",
-        "Conduct a thorough risk assessment of systems relying on AMD secure processors and prioritize patching in critical environments."
+        "Apply the latest security patches and firmware updates provided by AMD as soon as they become available.",
+        "Implement strict access controls and monitor systems for unusual activity to detect potential exploitation attempts.",
+        "Conduct a thorough risk assessment to identify and mitigate any systems using affected AMD processors in critical environments."
       ],
       "urgency": "high"
     },
@@ -947,20 +935,23 @@
       "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-6027.html"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2023-31316.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows an attacker to manipulate the hardware configuration state during power save/restore operations, potentially compromising the confidentiality, integrity, or availability of systems relying on AMD Secure Processor (ASP). This could lead to unauthorized code execution or system instability.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "Government",
+        "Telecommunications"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Apply the latest firmware and software updates provided by AMD to mitigate the vulnerability.",
+        "Implement strict access controls to prevent unauthorized write access to memory outside the trusted memory range (TMR).",
+        "Monitor systems for unusual activity, particularly around power save/restore operations, and implement logging to detect potential exploitation attempts."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 60
+    "risk_score": 65
   },
   {
     "id": "cve-CVE-2023-31309",
