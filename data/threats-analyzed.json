@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1779479950251-1",
+    "id": "twitter-1779508581506-1",
     "source": "Twitter Security",
-    "timestamp": "2026-05-22T19:59:10.251Z",
+    "timestamp": "2026-05-23T03:56:21.506Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,29 +10,25 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure could lead to significant disruptions, including data loss, service outages, and financial damage. Compromised CI/CD pipelines may allow attackers to propagate malicious code across multiple systems, affecting both production and development environments.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
       "affected_industries": [
         "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Media and Entertainment",
-        "Government"
+        "General"
       ],
       "recommended_actions": [
-        "Implement strict access controls and monitor CI/CD pipelines for unusual activity, including unauthorized changes.",
-        "Regularly back up critical data stored in cloud environments and ensure backups are isolated from the main infrastructure.",
-        "Deploy endpoint detection and response (EDR) solutions to identify and mitigate ransomware activity in real time."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "hn-1779479950251-1",
+    "id": "hn-1779508581506-1",
     "source": "HackerNews",
-    "timestamp": "2026-05-22T19:59:10.251Z",
+    "timestamp": "2026-05-23T03:56:21.506Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -40,21 +36,321 @@
       "https://news.ycombinator.com/item?id=123"
     ],
     "ai_analysis": {
-      "risk_score": 20,
-      "impact_assessment": "The open-source vulnerability scanner itself poses a low risk but could be exploited if malicious actors tamper with its code or distribution. Additionally, improper use or over-reliance on the tool without proper validation of results may lead to a false sense of security.",
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. ",
       "affected_industries": [
         "Technology",
-        "Software Development",
-        "Cybersecurity"
+        "General"
       ],
       "recommended_actions": [
-        "Evaluate the tool's source code and verify its integrity before use to ensure it has not been tampered with.",
-        "Use the tool as a supplementary measure alongside existing security practices, not as a sole dependency.",
-        "Monitor the tool's updates and community feedback to stay informed about potential vulnerabilities or misuse."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "low"
     },
-    "risk_score": 20
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-hvv7-hfrh-7gxj",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-23T00:18:33Z",
+    "title": "Nezha Monitoring: Nezha WebSocket server stream discloses cross-tenant server telemetry to authenticated members",
+    "description": "### Summary\n\nAny authenticated non-admin member can connect to the server-status WebSocket and receive telemetry for all servers, including servers owned by other users. The normal server list API filters objects by `HasPermission`, but the WebSocket stream treats the presence of any authenticated user as authorization for the full unfiltered server list.\n\n### Details\n\nThe server WebSocket route is registered under the optional-auth group in `cmd/dashboard/controller/controller.go:71-73`:\n\n```go",
+    "severity": "medium",
+    "cve_id": "CVE-2026-47124",
+    "ghsa_id": "GHSA-hvv7-hfrh-7gxj",
+    "affected_packages": [
+      "github.com/nezhahq/nezha"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows authenticated non-admin users to access telemetry data for all servers, including cross-tenant data. This could lead to unauthorized access to sensitive operational data, potentially exposing server configurations, performance metrics, and other telemetry that could be exploited for further attacks or competitive intelligence.",
+      "affected_industries": [
+        "Cloud Service Providers",
+        "IT Infrastructure Management",
+        "Software-as-a-Service (SaaS)",
+        "Managed Service Providers (MSPs)"
+      ],
+      "recommended_actions": [
+        "Implement stricter access controls for the WebSocket server-status route, ensuring telemetry data is filtered based on user permissions.",
+        "Conduct a thorough audit of the WebSocket implementation to identify and patch similar authorization bypass vulnerabilities.",
+        "Notify affected users and tenants about the vulnerability and advise them to monitor their server telemetry for any suspicious activity."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-99gv-2m7h-3hh9",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-23T00:17:58Z",
+    "title": "Nezha Monitoring: RoleMember can run shell on every server (cross-tenant RCE) via POST /api/v1/cron",
+    "description": "## Summary\n\n`nezha`'s dashboard supports two user roles: `RoleAdmin` (Role==0) and `RoleMember` (Role==1). The cron routes `POST /api/v1/cron` and `PATCH /api/v1/cron/:id` are wired through `commonHandler` (any authenticated user) rather than `adminHandler`, and the per-server permission check on cron creation has a vacuous-true bypass.\n\nA `RoleMember` user can create a scheduled cron task with `Cover=CronCoverAll, Servers=[]` and an arbitrary `Command`. At every tick of the scheduler, the dashb",
+    "severity": "critical",
+    "cve_id": "CVE-2026-46716",
+    "ghsa_id": "GHSA-99gv-2m7h-3hh9",
+    "affected_packages": [
+      "github.com/nezhahq/nezha"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 95,
+      "impact_assessment": "The vulnerability allows a low-privileged user (RoleMember) to execute arbitrary shell commands across all servers managed by the Nezha monitoring dashboard. This could lead to full system compromise, data exfiltration, service disruption, and lateral movement within affected environments.",
+      "affected_industries": [
+        "IT and Cloud Service Providers",
+        "Financial Services",
+        "Healthcare",
+        "E-commerce",
+        "Government",
+        "Telecommunications"
+      ],
+      "recommended_actions": [
+        "Immediately update Nezha to a patched version that addresses CVE-2026-46716, or apply any available security patches mitigating this vulnerability.",
+        "Restrict access to the Nezha dashboard by implementing strict network segmentation, IP whitelisting, and multi-factor authentication (MFA) for all users.",
+        "Conduct a full audit of cron tasks and server configurations to identify and remove any unauthorized or malicious commands that may have been added."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 95
+  },
+  {
+    "id": "gh-GHSA-jpjh-jm2p-39hh",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-23T00:16:56Z",
+    "title": "Arcane: Missing admin authorization on global variables endpoint",
+    "description": "## Summary\n\nThe `PUT /api/environments/{id}/templates/variables` endpoint, which writes the system-wide `.env.global` file used for variable substitution in every project's compose file, is missing an admin authorization check. Any authenticated non-admin user can call this endpoint with their bearer token or API key and overwrite the global environment variables that are merged into every project deployment. By overriding values like `REGISTRY`, `IMAGE`, `DATABASE_URL`, or `SECRET_KEY` that oth",
+    "severity": "high",
+    "cve_id": "CVE-2026-47125",
+    "ghsa_id": "GHSA-jpjh-jm2p-39hh",
+    "affected_packages": [
+      "github.com/getarcaneapp/arcane/backend"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-47125.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-ggxf-37hm-9wqf",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-23T00:12:34Z",
+    "title": "instagrapi: Unsafe signup challenge path handling in instagrapi",
+    "description": "instagrapi versions before 2.6.9 accepted server-supplied signup challenge paths and used them to build request URLs before validating that the paths were relative Instagram API paths. A malicious or tampered challenge payload could cause challenge handling requests to be sent outside the intended Instagram host with the client\\'s existing session headers. Version 2.6.9 validates challenge paths before building URLs, solving captcha challenges, or submitting phone/SMS challenge forms.",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-ggxf-37hm-9wqf",
+    "affected_packages": [
+      "instagrapi"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-jh37-x3fv-4x72",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-23T00:11:53Z",
+    "title": "aiograpi: Unsafe signup challenge path handling",
+    "description": "aiograpi versions before 0.9.10 accepted server-supplied signup challenge paths and used them to build request URLs before validating that the paths were relative Instagram API paths. A malicious or tampered challenge payload could cause challenge handling requests to be sent outside the intended Instagram host with the client\\'s existing session headers. Version 0.9.10 validates challenge paths before building URLs, solving captcha challenges, or submitting phone/SMS challenge forms.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-47157",
+    "ghsa_id": "GHSA-jh37-x3fv-4x72",
+    "affected_packages": [
+      "aiograpi"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-47157.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-38m6-82c8-4xfm",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-23T00:11:25Z",
+    "title": "Parse Server: Pre-authentication denial of service via client version header regex backtracking",
+    "description": "### Impact\n\nAn unauthenticated attacker who knows a publicly-known Parse Application ID can submit a single HTTP request whose client SDK version field contains adversarial input that triggers polynomial backtracking in a request-header parser. The parsing runs before session authentication and before rate limiting on every `/parse/*` request, so the request consumes seconds to minutes of synchronous CPU on a Node.js worker before any access control evaluates it. A small number of concurrent req",
+    "severity": "high",
+    "cve_id": "CVE-2026-47138",
+    "ghsa_id": "GHSA-38m6-82c8-4xfm",
+    "affected_packages": [
+      "parse-server",
+      "parse-server"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows an unauthenticated attacker to exploit a regex backtracking issue in the Parse Server's request-header parser, leading to denial of service (DoS). This could result in significant service disruption, as the server's resources are consumed by malicious requests, potentially affecting availability for legitimate users.",
+      "affected_industries": [
+        "Technology",
+        "E-commerce",
+        "Healthcare",
+        "Finance",
+        "Education",
+        "Media and Entertainment"
+      ],
+      "recommended_actions": [
+        "Immediately update Parse Server to a patched version that addresses CVE-2026-47138, if available.",
+        "Implement Web Application Firewall (WAF) rules to detect and block malicious requests exploiting this vulnerability.",
+        "Enable robust rate limiting and input validation mechanisms to mitigate the impact of potential attacks."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-rxf6-wjh4-jfj6",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-23T00:08:45Z",
+    "title": "Nezha Monitoring: RoleMember can fire other users' cron tasks via AlertRule.FailTriggerTasks (no ownership check)",
+    "description": "## Summary\n\n`createAlertRule` and `createService` (and their `update*` siblings) accept `FailTriggerTasks []uint64` and `RecoverTriggerTasks []uint64` — IDs of cron tasks to fire when the alert/service trips. The validation function only validates the alert's `Rules.Ignore` server map; it never checks that the cron task IDs in `FailTriggerTasks` / `RecoverTriggerTasks` belong to the caller.\n\nWhen the alert fires, `singleton.CronShared.SendTriggerTasks(taskIDs, triggerServer)` (`service/singleton",
+    "severity": "medium",
+    "cve_id": "CVE-2026-47120",
+    "ghsa_id": "GHSA-rxf6-wjh4-jfj6",
+    "affected_packages": [
+      "github.com/nezhahq/nezha"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows unauthorized users to trigger cron tasks belonging to other users, potentially disrupting services, causing data corruption, or executing malicious tasks. This could lead to operational downtime and security breaches.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Implement ownership validation checks for cron task IDs in `FailTriggerTasks` and `RecoverTriggerTasks` to ensure they belong to the caller.",
+        "Conduct a thorough audit of existing alert rules and services to identify and mitigate any misuse of the vulnerability.",
+        "Apply patches or updates as soon as they are available to address the CVE-2026-47120 vulnerability."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-w4g9-mxgg-j532",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-23T00:08:04Z",
+    "title": "Nezha Monitoring: RoleMember-reachable SSRF with full response-body reflection via POST /api/v1/notification",
+    "description": "## Summary\n\nnezha's dashboard supports two user roles: `RoleAdmin` (Role==0) and `RoleMember` (Role==1). The notification routes `POST /api/v1/notification` and `PATCH /api/v1/notification/:id` are wired through `commonHandler` rather than `adminHandler` — so a `RoleMember` user can call them. These handlers synchronously `Send()` an HTTP request to a user-controlled URL and reflect the *entire* response body (no size limit) back to the caller on any non-2xx response.\n\nNet effect: a low-privileg",
+    "severity": "high",
+    "cve_id": "CVE-2026-46717",
+    "ghsa_id": "GHSA-w4g9-mxgg-j532",
+    "affected_packages": [
+      "github.com/nezhahq/nezha"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-46717.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
   },
   {
     "id": "gh-GHSA-97r5-pg8x-p63p",
@@ -148,20 +444,23 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8723.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in the qs library allows a remotely triggerable Denial of Service (DoS) attack by crashing applications that use qs.stringify with specific configurations. This could lead to service interruptions and degraded functionality for affected systems.",
       "affected_industries": [
         "Technology",
-        "General"
+        "E-commerce",
+        "Financial Services",
+        "Healthcare",
+        "Media and Entertainment"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Update the qs library to the latest patched version that addresses CVE-2026-8723.",
+        "Review and sanitize input data to ensure null or undefined entries are handled properly before passing them to qs.stringify.",
+        "Implement application-level error handling to catch and mitigate unexpected TypeErrors caused by this vulnerability."
       ],
       "urgency": "medium"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
     "id": "gh-GHSA-qqqm-5547-774x",
@@ -183,20 +482,23 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. ",
+      "risk_score": 92,
+      "impact_assessment": "The vulnerability allows attackers to perform path traversal attacks, enabling unauthorized file operations such as move, copy, or rename outside the intended shared directory. This could lead to data breaches, unauthorized access to sensitive files, or system compromise.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately apply patches or updates provided by the FileBrowser project to address the vulnerability.",
+        "Implement strict input validation and sanitization to ensure user-controlled inputs cannot exploit path traversal vulnerabilities.",
+        "Monitor and audit file operations for unusual activity, especially in shared directories, to detect potential exploitation attempts."
       ],
       "urgency": "critical"
     },
-    "risk_score": 90
+    "risk_score": 92
   },
   {
     "id": "gh-GHSA-jwvv-qr7q-cv8j",
@@ -218,22 +520,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 95,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to execute arbitrary SQL commands, potentially exposing sensitive data such as user password hashes and compromising the integrity and confidentiality of the database. This could lead to unauthorized access, data breaches, and further exploitation of the system.",
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-46670.",
       "affected_industries": [
-        "Education",
-        "Nonprofits",
-        "Small and Medium Businesses",
-        "Content Management Platforms"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update to a patched version of YesWiki if available, or apply any recommended mitigations from the vendor.",
-        "Implement a web application firewall (WAF) to detect and block SQL injection attempts as a temporary measure.",
-        "Review and monitor database access logs for any signs of unauthorized or suspicious activity."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "critical"
     },
-    "risk_score": 95
+    "risk_score": 90
   },
   {
     "id": "gh-GHSA-6gxq-f64p-5w6f",
@@ -272,23 +572,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows an attacker to exploit a heap buffer over-read in the ImageMagick distributed pixel cache server, potentially leading to information disclosure, application crashes, or other undefined behavior. This could impact systems relying on ImageMagick for image processing in distributed environments.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-47166.",
       "affected_industries": [
-        "Web Hosting",
-        "Media and Entertainment",
-        "E-commerce",
-        "Cloud Services",
-        "Healthcare"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update ImageMagick to the latest patched version that addresses CVE-2026-47166.",
-        "Restrict access to the magick -distribute-cache service by implementing network-level controls such as firewalls or IP whitelisting.",
-        "Monitor logs for any unusual or unauthorized access attempts to the magick -distribute-cache service."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-2rgj-gx5x-f62w",
@@ -429,20 +726,23 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-46692.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows an attacker to exploit a heap buffer over-write in the ImageMagick distributed pixel cache server, potentially leading to denial of service, data corruption, or remote code execution.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Web Hosting",
+        "Media and Entertainment",
+        "E-commerce",
+        "Software Development",
+        "Cloud Service Providers"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update ImageMagick to the latest patched version that addresses CVE-2026-46692.",
+        "Restrict access to the `magick -distribute-cache` service by implementing network-level access controls, such as firewalls or VPNs.",
+        "Monitor server logs for any unusual activity or unauthorized access attempts to the ImageMagick distributed cache service."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
     "id": "gh-GHSA-hg7j-7v3f-fjq2",
@@ -470,20 +770,23 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9011.",
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows unauthorized attackers to bypass authentication and access sensitive, non-public content managed by the Ditty plugin. This could lead to data leaks, exposure of confidential information, and potential reputational damage for affected websites.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Media and Publishing",
+        "E-commerce",
+        "Education",
+        "Nonprofit Organizations",
+        "Corporate Websites"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update the Ditty plugin to a patched version (if available) or disable the plugin temporarily to mitigate the risk.",
+        "Restrict access to the WordPress admin panel and ensure strong authentication mechanisms are in place, such as two-factor authentication (2FA).",
+        "Monitor server logs for unusual activity, particularly unauthorized access attempts to the ditty_init AJAX endpoint, and block suspicious IPs if necessary."
       ],
       "urgency": "high"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
     "id": "gh-GHSA-92j9-vfpr-4xhf",
@@ -552,91 +855,169 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to bypass authorization and manipulate internal booking notes, potentially leading to data integrity issues, loss of sensitive information, or disruption of booking systems. This could harm customer trust and operational efficiency.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8684.",
       "affected_industries": [
-        "Hospitality",
-        "Travel and Tourism",
-        "Event Management"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Update the MotoPress Hotel Booking plugin to a patched version as soon as it becomes available.",
-        "Implement a web application firewall (WAF) to monitor and block unauthorized requests targeting the vulnerability.",
-        "Review and restrict access to sensitive booking data and monitor logs for any unauthorized changes to booking records."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "cve-CVE-2020-37236",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-16T16:16:19.700",
+    "title": "CVE-2020-37236 - NewsLister contains an authenticated persistent cross-site scripting vulnerability that allows authe",
+    "description": "NewsLister contains an authenticated persistent cross-site scripting vulnerability that allows authenticated administrators to inject malicious scripts through the title parameter in the news addition interface. Attackers can inject JavaScript payloads via the title field in the admin panel that execute when news items are viewed by other users.",
+    "severity": "medium",
+    "cve_id": "CVE-2020-37236",
+    "cvss_score": 6.4,
+    "affected_products": [],
+    "references": [
+      "https://www.exploit-db.com/exploits/49160",
+      "https://www.netartmedia.net/newslister.html",
+      "https://www.vulncheck.com/advisories/newslister-authenticated-persistent-cross-site-scripting-via-admin-panel"
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows authenticated administrators to inject persistent malicious scripts, potentially leading to session hijacking, data theft, or further exploitation of users viewing the affected news items.",
+      "affected_industries": [
+        "Media",
+        "Publishing",
+        "Content Management Systems",
+        "Web Applications"
+      ],
+      "recommended_actions": [
+        "Update NewsLister to the latest patched version if available.",
+        "Implement input validation and sanitization for the title parameter to prevent script injection.",
+        "Restrict administrative access to trusted personnel and monitor admin activities for unusual behavior."
+      ],
+      "urgency": "medium"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-pq4x-338r-cq3h",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T09:31:28Z",
-    "title": "The FluentCRM – Email Newsletter, Automation, Email Marketing, Email Campaigns, Optins, Leads,...",
-    "description": "The FluentCRM – Email Newsletter, Automation, Email Marketing, Email Campaigns, Optins, Leads, and CRM Solution plugin for WordPress is vulnerable to Blind Server-Side Request Forgery in all versions up to, and including, 2.9.87 via the 'SubscribeURL' parameter. This makes it possible for unauthenticated attackers to make web requests to arbitrary locations originating from the web application and can be used to query and modify information from internal services. Exploitation requires that the ",
+    "id": "cve-CVE-2020-37235",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-16T16:16:19.570",
+    "title": "CVE-2020-37235 - WordPress Theme Wibar 1.1.8 contains a stored cross-site scripting vulnerability in the Brand compon",
+    "description": "WordPress Theme Wibar 1.1.8 contains a stored cross-site scripting vulnerability in the Brand component that allows authenticated users to inject malicious scripts by manipulating the Logo URL parameter. Attackers with editor, administrator, contributor, or author privileges can inject base64-encoded script payloads through the ftc_brand_url input field to execute arbitrary JavaScript when users visit the brand page.",
     "severity": "medium",
-    "cve_id": "CVE-2026-7798",
-    "ghsa_id": "GHSA-pq4x-338r-cq3h",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "cve_id": "CVE-2020-37235",
+    "cvss_score": 6.4,
+    "affected_products": [],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
+      "http://demo.themeftc.com/wibar",
+      "https://themeforest.net/item/wibar-responsive-woocommerce-wordpress-theme/20994798",
+      "https://www.exploit-db.com/exploits/49107",
+      "https://www.vulncheck.com/advisories/wordpress-theme-wibar-stored-cross-site-scripting-via-brand-component"
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability in the FluentCRM WordPress plugin allows unauthenticated attackers to exploit a Blind Server-Side Request Forgery (SSRF) via the 'SubscribeURL' parameter. This could enable attackers to send unauthorized requests to internal services, potentially leading to data exfiltration, unauthorized access to sensitive information, or further exploitation of internal systems.",
+      "impact_assessment": "The stored cross-site scripting (XSS) vulnerability in the WordPress Theme Wibar 1.1.8 allows attackers with certain privileges to inject malicious scripts. This can lead to session hijacking, redirection to malicious sites, or unauthorized actions performed on behalf of affected users.",
       "affected_industries": [
         "E-commerce",
         "Media and Publishing",
-        "Marketing and Advertising",
-        "Education",
-        "Nonprofit Organizations"
+        "Small and Medium Businesses using WordPress"
       ],
       "recommended_actions": [
-        "Update the FluentCRM plugin to the latest patched version as soon as it becomes available.",
-        "Implement web application firewall (WAF) rules to monitor and block malicious requests targeting the 'SubscribeURL' parameter.",
-        "Restrict outbound web requests from the web server to only trusted and necessary destinations to limit SSRF attack vectors."
+        "Update to a patched version of the Wibar theme or contact the theme developer for a security fix.",
+        "Restrict user roles and permissions to minimize the risk of exploitation by limiting access to the vulnerable component.",
+        "Implement a web application firewall (WAF) to detect and block malicious payloads targeting the vulnerability."
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-hvqp-vjwf-27jg",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T09:31:28Z",
-    "title": "The AudioIgniter plugin for WordPress is vulnerable to Insecure Direct Object Reference in...",
-    "description": "The AudioIgniter plugin for WordPress is vulnerable to Insecure Direct Object Reference in versions up to, and including, 2.0.2. This is due to the handle_playlist_endpoint() function (hooked to template_redirect) accepting a user-controlled playlist ID via the audioigniter_playlist_id query var or the /audioigniter/playlist/{id}/ rewrite rule and returning playlist track data without performing any authentication, capability, or post_status check — only the post_type is validated. This makes it",
+    "id": "cve-CVE-2020-37234",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-16T16:16:19.440",
+    "title": "CVE-2020-37234 - Internet Download Manager 6.38.12 contains a buffer overflow vulnerability in the Scheduler componen",
+    "description": "Internet Download Manager 6.38.12 contains a buffer overflow vulnerability in the Scheduler component that allows local attackers to crash the application by supplying oversized input. Attackers can paste malicious data exceeding 5000 bytes into the 'Open the following file when done' field to trigger a denial of service condition.",
+    "severity": "medium",
+    "cve_id": "CVE-2020-37234",
+    "cvss_score": 6.2,
+    "affected_products": [],
+    "references": [
+      "http://www.internetdownloadmanager.com/",
+      "http://www.internetdownloadmanager.com/download.html",
+      "https://www.exploit-db.com/exploits/49083",
+      "https://www.vulncheck.com/advisories/internet-download-manager-scheduler-buffer-overflow"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2020-37234.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2020-37233",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-16T16:16:19.310",
+    "title": "CVE-2020-37233 - WordPress Plugin Buddypress 6.2.0 contains a persistent cross-site scripting vulnerability that allo",
+    "description": "WordPress Plugin Buddypress 6.2.0 contains a persistent cross-site scripting vulnerability that allows authenticated attackers with moderator privileges to inject malicious script code through the figure parameter in wp:html blocks. Attackers can inject iframe elements with event handlers like onload that execute when administrators or privileged users preview or view the affected page content, enabling session hijacking and persistent phishing attacks.",
+    "severity": "medium",
+    "cve_id": "CVE-2020-37233",
+    "cvss_score": 6.4,
+    "affected_products": [],
+    "references": [
+      "https://wordpress.org/plugins/buddypress/",
+      "https://www.exploit-db.com/exploits/49061",
+      "https://www.vulncheck.com/advisories/wordpress-plugin-buddypress-persistent-cross-site-scripting"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2020-37233.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2020-37232",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-16T16:16:19.180",
+    "title": "CVE-2020-37232 - Advanced System Care Service 13.0.0.157 contains an unquoted service path vulnerability in the Advan",
+    "description": "Advanced System Care Service 13.0.0.157 contains an unquoted service path vulnerability in the AdvancedSystemCareService13 service binary path that allows local attackers to escalate privileges. Attackers can place malicious executables in the system root path that will be executed with LocalSystem privileges during service startup or system reboot.",
     "severity": "high",
-    "cve_id": "CVE-2026-8679",
-    "ghsa_id": "GHSA-hvqp-vjwf-27jg",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "cve_id": "CVE-2020-37232",
+    "cvss_score": 7.8,
+    "affected_products": [],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
+      "https://www.exploit-db.com/exploits/49049",
+      "https://www.iobit.com",
+      "https://www.iobit.com/es/advancedsystemcarepro.php",
+      "https://www.vulncheck.com/advisories/advanced-system-care-service-unquoted-service-path-privilege-escalation"
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-8679.",
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2020-37232.",
       "affected_industries": [
         "Technology",
         "General"
@@ -648,156 +1029,27 @@
       ],
       "urgency": "high"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
-    "id": "gh-GHSA-x4qq-w73c-72mv",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T09:31:28Z",
-    "title": "A broken access\ncontrol vulnerability exists in the TeamViewer DEX Platform (On‑Premises) prior...",
-    "description": "A broken access\ncontrol vulnerability exists in the TeamViewer DEX Platform (On‑Premises) prior version 9.2. Certain backend API endpoints do not\ncorrectly enforce authorization checks, allowing an authenticated user with low\nprivileges to perform actions and access resources intended only for higher‑privileged roles. An attacker with\nlow‑privileged credentials may exploit\nthis to gain unauthorized access to administrative or sensitive functionality.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-8381",
-    "ghsa_id": "GHSA-x4qq-w73c-72mv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows low-privileged authenticated users to access administrative or sensitive functionality, potentially leading to unauthorized data access, privilege escalation, or disruption of critical operations.",
-      "affected_industries": [
-        "Technology",
-        "Healthcare",
-        "Finance",
-        "Education",
-        "Government",
-        "Manufacturing"
-      ],
-      "recommended_actions": [
-        "Immediately update the TeamViewer DEX Platform to the latest version that addresses this vulnerability.",
-        "Review and restrict user roles and permissions to minimize the risk of exploitation by low-privileged users.",
-        "Monitor logs and activities for any unusual or unauthorized access attempts, particularly from low-privileged accounts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-273r-585g-q7wv",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T09:31:28Z",
-    "title": "The Slider by Soliloquy – Responsive Image Slider for WordPress plugin for WordPress is...",
-    "description": "The Slider by Soliloquy – Responsive Image Slider for WordPress plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 2.8.1 via the map_meta_cap. This makes it possible for authenticated attackers, with subscriber-level access and above, to extract draft slider metadata including unpublished media URLs, captions, and slider configuration authored by administrators or editors.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-7636",
-    "ghsa_id": "GHSA-273r-585g-q7wv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 55,
-      "impact_assessment": "The vulnerability allows authenticated attackers with low-level access (e.g., subscribers) to extract sensitive draft slider metadata, including unpublished media URLs, captions, and slider configurations. This could lead to information leakage or unauthorized access to sensitive content.",
-      "affected_industries": [
-        "Media and Publishing",
-        "E-commerce",
-        "Education",
-        "Small Businesses",
-        "Marketing and Advertising"
-      ],
-      "recommended_actions": [
-        "Update the Slider by Soliloquy plugin to the latest patched version as soon as it is available.",
-        "Restrict subscriber-level access to only trusted users and review user roles and permissions.",
-        "Monitor server logs for unusual activity related to slider metadata access and take appropriate action if suspicious behavior is detected."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 55
-  },
-  {
-    "id": "gh-GHSA-jrc7-p252-6hpq",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T09:31:28Z",
-    "title": "The Widget Context plugin for WordPress is vulnerable to Cross-Site Request Forgery in all...",
-    "description": "The Widget Context plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.3.3. This is due to missing or incorrect nonce validation on the save_widget_context_settings function. This makes it possible for unauthenticated attackers to modify widget visibility context settings stored in the WordPress options table via a forged POST request to /wp-admin/widgets.php via a forged request granted they can trick a site administrator into performing an a",
-    "severity": "medium",
-    "cve_id": "CVE-2026-7615",
-    "ghsa_id": "GHSA-jrc7-p252-6hpq",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7615.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-jvg6-x4cw-2wj7",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T06:31:39Z",
-    "title": "The Easy Elements for Elementor – Addons & Website Templates plugin for WordPress is vulnerable...",
-    "description": "The Easy Elements for Elementor – Addons & Website Templates plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 1.4.5 via the `easyel_handle_register()` function. This is due to the `wp_ajax_nopriv_eel_register` AJAX handler iterating the attacker-controlled `custom_meta` POST array and writing every supplied key-value pair to the newly created user's meta via `update_user_meta()` without any key whitelist or blocklist, allowing the `wp_capabilities`",
+    "id": "cve-CVE-2020-37231",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-16T16:16:19.050",
+    "title": "CVE-2020-37231 - Privacy Drive 3.17.0 contains an unquoted service path vulnerability in the pdsvc.exe service binary",
+    "description": "Privacy Drive 3.17.0 contains an unquoted service path vulnerability in the pdsvc.exe service binary that allows local attackers to escalate privileges by exploiting the service startup process. Attackers can place malicious executables in the unquoted path directories to execute arbitrary code with LocalSystem privileges during service startup or system reboot.",
     "severity": "high",
-    "cve_id": "CVE-2026-9018",
-    "ghsa_id": "GHSA-jvg6-x4cw-2wj7",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "cve_id": "CVE-2020-37231",
+    "cvss_score": 7.8,
+    "affected_products": [],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
+      "https://www.cybertronsoft.com/",
+      "https://www.cybertronsoft.com/download/privacy-drive-setup.exe",
+      "https://www.exploit-db.com/exploits/49023",
+      "https://www.vulncheck.com/advisories/privacy-drive-unquoted-service-path-privilege-escalation"
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9018.",
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2020-37231.",
       "affected_industries": [
         "Technology",
         "General"
@@ -809,33 +1061,27 @@
       ],
       "urgency": "high"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
-    "id": "gh-GHSA-p9mp-xq3w-289v",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T06:31:38Z",
-    "title": "The WP Blockade plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the ...",
-    "description": "The WP Blockade plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'shortcode' parameter in all versions up to and including 0.9.14. This is due to insufficient input sanitization and output escaping in the render_shortcode_preview() function. The function receives user input from $_GET['shortcode'], passes it through stripslashes() without any sanitization, and then outputs it directly via echo do_shortcode($shortcode) on line 393. When the input is not a valid WordPre",
-    "severity": "medium",
-    "cve_id": "CVE-2026-3481",
-    "ghsa_id": "GHSA-p9mp-xq3w-289v",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "id": "cve-CVE-2020-37230",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-16T16:16:18.920",
+    "title": "CVE-2020-37230 - Syncplify.me Server! 5.0.37 contains an unquoted service path vulnerability in the SMWebRestServicev",
+    "description": "Syncplify.me Server! 5.0.37 contains an unquoted service path vulnerability in the SMWebRestServicev5 service that allows local attackers to escalate privileges by exploiting the unquoted binary path. Attackers can insert a malicious executable into the service path and execute it with LocalSystem privileges when the service restarts or the system reboots.",
+    "severity": "high",
+    "cve_id": "CVE-2020-37230",
+    "cvss_score": 7.8,
+    "affected_products": [],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
+      "https://download.syncplify.me/SMServer_Setup.exe",
+      "https://www.exploit-db.com/exploits/49009",
+      "https://www.syncplify.me/",
+      "https://www.vulncheck.com/advisories/syncplify-me-server-unquoted-service-path-privilege-escalation"
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-3481.",
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2020-37230.",
       "affected_industries": [
         "Technology",
         "General"
@@ -845,35 +1091,29 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 85
   },
   {
-    "id": "gh-GHSA-jf98-h9cw-4365",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-22T06:31:38Z",
-    "title": "The CBX 5 Star Rating & Review plugin for WordPress is vulnerable to Reflected Cross-Site...",
-    "description": "The CBX 5 Star Rating & Review plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'page' parameter in all versions up to, and including, 1.0.7 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick an administrator into performing an action such as clicking on a link.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6864",
-    "ghsa_id": "GHSA-jf98-h9cw-4365",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "id": "cve-CVE-2020-37229",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-16T16:16:18.803",
+    "title": "CVE-2020-37229 - OKI sPSV Port Manager 1.0.41 contains an unquoted service path vulnerability in the sPSVOpLclSrv ser",
+    "description": "OKI sPSV Port Manager 1.0.41 contains an unquoted service path vulnerability in the sPSVOpLclSrv service that allows local attackers to escalate privileges by inserting executable files into the unquoted path. Attackers can place a malicious executable in a directory within the service path that will execute with LocalSystem privileges when the service restarts or the system reboots.",
+    "severity": "high",
+    "cve_id": "CVE-2020-37229",
+    "cvss_score": 7.8,
+    "affected_products": [],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
+      "https://www.exploit-db.com/exploits/49005",
+      "https://www.oki.com/",
+      "https://www.oki.com/mx/printing/download/sPSV_010041_2_270910.exe",
+      "https://www.vulncheck.com/advisories/oki-spsv-port-manager-unquoted-service-path-privilege-escalation"
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6864.",
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2020-37229.",
       "affected_industries": [
         "Technology",
         "General"
@@ -883,92 +1123,92 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 85
   },
   {
-    "id": "cve-CVE-2023-31317",
+    "id": "cve-CVE-2020-37228",
     "source": "NVD CVE",
-    "timestamp": "2026-05-15T03:16:20.663",
-    "title": "CVE-2023-31317 - Improper restriction of operations within the bounds of a memory buffer in the AMD secure processer ",
-    "description": "Improper restriction of operations within the bounds of a memory buffer in the AMD secure processer (ASP) could allow an attacker to read or write to protected memory potentially resulting in arbitrary code execution.",
-    "severity": "medium",
-    "cve_id": "CVE-2023-31317",
-    "cvss_score": null,
+    "timestamp": "2026-05-16T16:16:18.667",
+    "title": "CVE-2020-37228 - iDS6 DSSPro Digital Signage System 6.2 contains a CAPTCHA security bypass vulnerability that allows ",
+    "description": "iDS6 DSSPro Digital Signage System 6.2 contains a CAPTCHA security bypass vulnerability that allows attackers to bypass authentication by requesting the autoLoginVerifyCode object. Attackers can retrieve valid CAPTCHA codes via the login endpoint and use them to perform brute-force attacks against user accounts.",
+    "severity": "critical",
+    "cve_id": "CVE-2020-37228",
+    "cvss_score": 9.8,
     "affected_products": [],
     "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-6027.html"
+      "http://www.yerootech.com",
+      "https://www.exploit-db.com/exploits/48991",
+      "https://www.vulncheck.com/advisories/ids6-dsspro-digital-signage-system-captcha-security-bypass",
+      "https://www.zeroscience.mk/en/vulnerabilities/ZSL-2020-5607.php"
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability in the AMD Secure Processor could allow attackers to read or write to protected memory, potentially leading to arbitrary code execution. This could compromise sensitive data, enable privilege escalation, or disrupt system operations.",
+      "risk_score": 100,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2020-37228.",
       "affected_industries": [
         "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Defense",
-        "Manufacturing"
+        "General"
       ],
       "recommended_actions": [
-        "Apply the latest security patches and firmware updates provided by AMD as soon as they become available.",
-        "Implement strict access controls and monitor systems for unusual activity to detect potential exploitation attempts.",
-        "Conduct a thorough risk assessment to identify and mitigate any systems using affected AMD processors in critical environments."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 100
+  },
+  {
+    "id": "cve-CVE-2020-37227",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-16T16:16:17.713",
+    "title": "CVE-2020-37227 - HS Brand Logo Slider 2.1 contains an unrestricted file upload vulnerability that allows authenticate",
+    "description": "HS Brand Logo Slider 2.1 contains an unrestricted file upload vulnerability that allows authenticated users to bypass client-side file extension validation by uploading arbitrary files. Attackers can intercept upload requests to the logoupload parameter in the admin interface and rename files to executable extensions .php to achieve remote code execution.",
+    "severity": "high",
+    "cve_id": "CVE-2020-37227",
+    "cvss_score": 8.8,
+    "affected_products": [],
+    "references": [
+      "https://ms.wordpress.org/plugins/hs-brand-logo-slider/",
+      "https://www.exploit-db.com/exploits/48913",
+      "https://www.heliossolutions.co/",
+      "https://www.vulncheck.com/advisories/wordpress-plugin-hs-brand-logo-slider-unrestricted-file-upload"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2020-37227.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "high"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
-    "id": "cve-CVE-2023-31316",
+    "id": "cve-CVE-2026-46719",
     "source": "NVD CVE",
-    "timestamp": "2026-05-15T03:16:20.513",
-    "title": "CVE-2023-31316 - Improperly preserved integrity of hardware configuration state during a power save/restore operation",
-    "description": "Improperly preserved integrity of hardware configuration state during a power save/restore operation in the AMD Secure Processor (ASP) could allow an attacker with the ability to write outside the trusted memory range (TMR) to change the execution flow of the Video Core Next (VCN) firmware potentially impacting confidentiality, integrity, or availability.",
+    "timestamp": "2026-05-16T14:16:37.507",
+    "title": "CVE-2026-46719 - Net::Statsd::Lite versions before 0.9.0 for Perl allowed metric injections.\n\nThe metric names were n",
+    "description": "Net::Statsd::Lite versions before 0.9.0 for Perl allowed metric injections.\n\nThe metric names were not checked for newlines, colons or pipes. Metrics generated from untrusted sources could inject additional statsd metrics.",
     "severity": "medium",
-    "cve_id": "CVE-2023-31316",
-    "cvss_score": null,
+    "cve_id": "CVE-2026-46719",
+    "cvss_score": 6.5,
     "affected_products": [],
     "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4017.html",
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-6027.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows an attacker to manipulate the hardware configuration state during power save/restore operations, potentially compromising the confidentiality, integrity, or availability of systems relying on AMD Secure Processor (ASP). This could lead to unauthorized code execution or system instability.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Telecommunications"
-      ],
-      "recommended_actions": [
-        "Apply the latest firmware and software updates provided by AMD to mitigate the vulnerability.",
-        "Implement strict access controls to prevent unauthorized write access to memory outside the trusted memory range (TMR).",
-        "Monitor systems for unusual activity, particularly around power save/restore operations, and implement logging to detect potential exploitation attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "cve-CVE-2023-31309",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-15T03:16:20.380",
-    "title": "CVE-2023-31309 - Improper validation in Power Management Firmware (PMFW) may allow an attacker with privileges to pas",
-    "description": "Improper validation in Power Management Firmware (PMFW) may allow an attacker with privileges to pass malformed workload arguments when exporting table data from SMU to DRAM potentially resulting in a loss of confidentiality and/or availability.",
-    "severity": "medium",
-    "cve_id": "CVE-2023-31309",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-6027.html"
+      "https://github.com/robrwo/Net-Statsd-Lite/commit/e1a8ab866d75c2827982134e9cf7e51a7f771153.patch",
+      "https://metacpan.org/release/RRWO/Net-Statsd-Lite-v0.9.0/changes",
+      "http://www.openwall.com/lists/oss-security/2026/05/16/9"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2023-31309.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-46719.",
       "affected_industries": [
         "Technology",
         "General"
@@ -983,22 +1223,23 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2022-23826",
+    "id": "cve-CVE-2025-4202",
     "source": "NVD CVE",
-    "timestamp": "2026-05-15T03:16:20.220",
-    "title": "CVE-2022-23826 - A TOCTOU (Time-Of-Check to Time-Of-Use) in the graphics interface may allow an attacker to load regi",
-    "description": "A TOCTOU (Time-Of-Check to Time-Of-Use) in the graphics interface may allow an attacker to load registers repeatedly creating a race condition potentially leading to a loss of integrity.",
+    "timestamp": "2026-05-16T13:16:16.073",
+    "title": "CVE-2025-4202 - The Multicollab: Content Team Collaboration and Editorial Workflow plugin for WordPress is vulnerabl",
+    "description": "The Multicollab: Content Team Collaboration and Editorial Workflow plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the 'cf_add_comment' function in all versions up to, and including, 5.2. This makes it possible for authenticated attackers, with Subscriber-level access and above, to add comments to arbitrary collaborations.",
     "severity": "medium",
-    "cve_id": "CVE-2022-23826",
-    "cvss_score": null,
+    "cve_id": "CVE-2025-4202",
+    "cvss_score": 4.3,
     "affected_products": [],
     "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4017.html",
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-6027.html"
+      "https://plugins.trac.wordpress.org/browser/commenting-feature/tags/4.8.1/admin/classes/class-commenting-block-admin.php#L1239",
+      "https://plugins.trac.wordpress.org/changeset/3519252/",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/08ec2376-dfe3-4aeb-8173-01e88309f540?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2022-23826.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-4202.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1013,22 +1254,60 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2021-26380",
+    "id": "cve-CVE-2026-8657",
     "source": "NVD CVE",
-    "timestamp": "2026-05-15T03:16:20.030",
-    "title": "CVE-2021-26380 - A compromised Trusted OS (TOS) driver could issue a malformed call that could potentially allow  mem",
-    "description": "A compromised Trusted OS (TOS) driver could issue a malformed call that could potentially allow  memory access outside the intended range resulting in loss of integrity.",
-    "severity": "medium",
-    "cve_id": "CVE-2021-26380",
-    "cvss_score": null,
+    "timestamp": "2026-05-16T06:16:18.727",
+    "title": "CVE-2026-8657 - Versions of the package jsondiffpatch before 0.7.6 are vulnerable to Prototype Pollution via the jso",
+    "description": "Versions of the package jsondiffpatch before 0.7.6 are vulnerable to Prototype Pollution via the jsondiffpatch.patch() and jsondiffpatch/formatters/jsonpatch.patch() APIs. An attacker can perform prototype pollution by supplying crafted delta or JSON Patch documents, as attacker-controlled property names and path segments are used to traverse and modify objects without restricting access to special properties like __proto__ or constructor.prototype, allowing modification of Object.prototype.",
+    "severity": "high",
+    "cve_id": "CVE-2026-8657",
+    "cvss_score": 8.2,
     "affected_products": [],
     "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4017.html",
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-6027.html"
+      "https://gist.github.com/yuki-matsuhashi/e570fb1579ae1f3190059b622b0473fb",
+      "https://github.com/benjamine/jsondiffpatch/blob/96112c35a98f9201dd75d67fcee68a952c79e2fe/packages/jsondiffpatch/src/filters/nested.ts%23L107-L115",
+      "https://github.com/benjamine/jsondiffpatch/blob/96112c35a98f9201dd75d67fcee68a952c79e2fe/packages/jsondiffpatch/src/filters/nested.ts%23L82-L87",
+      "https://github.com/benjamine/jsondiffpatch/blob/96112c35a98f9201dd75d67fcee68a952c79e2fe/packages/jsondiffpatch/src/formatters/jsonpatch-apply.ts%23L146-L168",
+      "https://github.com/benjamine/jsondiffpatch/blob/96112c35a98f9201dd75d67fcee68a952c79e2fe/packages/jsondiffpatch/src/formatters/jsonpatch-apply.ts%23L171-L199",
+      "https://github.com/benjamine/jsondiffpatch/commit/381c0125efab49f6f0dbc08317d01d55717672af",
+      "https://security.snyk.io/vuln/SNYK-JS-JSONDIFFPATCH-16322990",
+      "https://gist.github.com/yuki-matsuhashi/e570fb1579ae1f3190059b622b0473fb"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-8657.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-8656",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-16T06:16:18.347",
+    "title": "CVE-2026-8656 - Versions of the package jsondiffpatch before 0.7.6 are vulnerable to Cross-site Scripting (XSS) via ",
+    "description": "Versions of the package jsondiffpatch before 0.7.6 are vulnerable to Cross-site Scripting (XSS) via the annotated formatter due to improper sanitization of JSON values and property names. If an application compares untrusted JSON/object data and renders annotated formatter output in the DOM, attacker-controlled HTML can be interpreted by the browser, resulting in XSS.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8656",
+    "cvss_score": 6.1,
+    "affected_products": [],
+    "references": [
+      "https://gist.github.com/yuki-matsuhashi/72ed072d919f3c52adba298faa6a7da5",
+      "https://github.com/benjamine/jsondiffpatch/commit/232338b34c4653148ca2f44e897a765b72c8c98f",
+      "https://security.snyk.io/vuln/SNYK-JS-JSONDIFFPATCH-16635946",
+      "https://gist.github.com/yuki-matsuhashi/72ed072d919f3c52adba298faa6a7da5"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2021-26380.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8656.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1043,293 +1322,23 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-8612",
+    "id": "cve-CVE-2026-8681",
     "source": "NVD CVE",
-    "timestamp": "2026-05-15T02:16:23.843",
-    "title": "CVE-2026-8612 - WWW::Mechanize::Cached versions before 2.00 for Perl deserialize cached HTTP responses from a world-",
-    "description": "WWW::Mechanize::Cached versions before 2.00 for Perl deserialize cached HTTP responses from a world-writable on-disk cache, enabling local response forgery and code execution.\n\nWith no explicit cache backend, WWW::Mechanize::Cached constructs a default Cache::FileCache under /tmp/FileCache without overriding the backend's documented directory_umask of 000, so the cache root and its subdirectories are created mode 0777 with no sticky bit. Cache entries are named by sha1_hex of the request and read back through Storable::thaw on the next cache hit.\n\nA local attacker with write access to the cache tree can replace a victim's cache entry for a known URL with an arbitrary frozen HTTP::Response blob, causing the victim's next get() of that URL to return attacker controlled response bytes. Because the bytes are passed to Storable::thaw, a victim process that has loaded any class with a side-effectful STORABLE_thaw, DESTROY, or overload hook can be escalated to arbitrary code execution.",
+    "timestamp": "2026-05-16T03:16:21.007",
+    "title": "CVE-2026-8681 - The Essential Chat Support plugin for WordPress is vulnerable to authorization bypass in all version",
+    "description": "The Essential Chat Support plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 1.0.1. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to reset all plugin configuration settings — including general settings, display rules, custom CSS, and WooCommerce tab settings — to their defaults by sending a POST request with ecs_reset_settings=1.",
     "severity": "medium",
-    "cve_id": "CVE-2026-8612",
+    "cve_id": "CVE-2026-8681",
     "cvss_score": 5.3,
-    "affected_products": [
-      "cpe:2.3:a:oalders:www\\:\\:mechanize\\:\\:cached:*:*:*:*:*:perl:*:*"
-    ],
-    "references": [
-      "https://github.com/libwww-perl/WWW-Mechanize-Cached/commit/b821647deeedf83490ebc1db91d959d942300ce0.patch",
-      "https://github.com/libwww-perl/WWW-Mechanize-Cached/pull/36",
-      "https://metacpan.org/release/OALDERS/WWW-Mechanize-Cached-2.00/changes",
-      "http://www.openwall.com/lists/oss-security/2026/05/15/1"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8612.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-0438",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-15T02:16:23.637",
-    "title": "CVE-2026-0438 - A System Management Mode (SMM) handler could perform a callout to code located in non-SMM/untrusted ",
-    "description": "A System Management Mode (SMM) handler could perform a callout to code located in non-SMM/untrusted memory. A highly privileged attacker could, with active user interaction and under high complexity and present preconditions, trigger execution of attacker-controlled code in SMM, potentially compromising the system’s confidentiality, integrity, and availability.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-0438",
-    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-3030.html",
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4017.html"
+      "https://plugins.trac.wordpress.org/browser/essential-chat-support/trunk/includes/admin/settings/register-settings.php#L47",
+      "https://plugins.trac.wordpress.org/browser/essential-chat-support/trunk/includes/ecs-functions.php#L33",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/6b98ea22-4c82-45c6-8e29-75cc9a9185be?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-0438.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-0432",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-15T02:16:23.413",
-    "title": "CVE-2026-0432 - Incorrect default permissions in the installation directory for the AMD chipset driver could allow a",
-    "description": "Incorrect default permissions in the installation directory for the AMD chipset driver could allow an attacker to achieve privilege escalation resulting in arbitrary code execution.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-0432",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-3047.html",
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-0432.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2025-52540",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-15T02:16:23.280",
-    "title": "CVE-2025-52540 - An improper input validation vulnerability within the AMD Platform Management Framework (PMF) Driver",
-    "description": "An improper input validation vulnerability within the AMD Platform Management Framework (PMF) Driver can allow a local attacker to write Out-of-Bounds, potentially resulting in privilege escalation.",
-    "severity": "medium",
-    "cve_id": "CVE-2025-52540",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-52540.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2025-48521",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-15T02:16:23.077",
-    "title": "CVE-2025-48521 - Improper input validation in the AMD Secure Processor (ASP) PCI driver could allow a local attacker ",
-    "description": "Improper input validation in the AMD Secure Processor (ASP) PCI driver could allow a local attacker to trigger a Use-After-Free (UAF) condition, potentially resulting in a loss of platform integrity or crash.",
-    "severity": "medium",
-    "cve_id": "CVE-2025-48521",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-3047.html",
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-48521.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2025-48520",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-15T02:16:22.953",
-    "title": "CVE-2025-48520 - An improper input validation vulnerability within the AMD Platform Management Framework (PMF) driver",
-    "description": "An improper input validation vulnerability within the AMD Platform Management Framework (PMF) driver can allow a local attacker to read Out-of-Bounds potentially resulting in information disclosure or a crash",
-    "severity": "medium",
-    "cve_id": "CVE-2025-48520",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-48520.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2025-48519",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-15T02:16:22.823",
-    "title": "CVE-2025-48519 - An improper input validation vulnerability within the AMD Platform Management Framework (PMF) driver",
-    "description": "An improper input validation vulnerability within the AMD Platform Management Framework (PMF) driver can allow a local attacker to read or write Out-of-Bounds, potentially resulting in privilege escalation",
-    "severity": "medium",
-    "cve_id": "CVE-2025-48519",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-48519.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2025-48512",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-15T02:16:22.597",
-    "title": "CVE-2025-48512 - Incorrect default permissions in the installation directory for the AMD general-purpose input/output",
-    "description": "Incorrect default permissions in the installation directory for the AMD general-purpose input/output controller (GPIO) could allow an attacker to achieve privilege escalation resulting in arbitrary code execution.",
-    "severity": "medium",
-    "cve_id": "CVE-2025-48512",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-3047.html",
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-48512.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2025-0045",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-15T02:16:22.353",
-    "title": "CVE-2025-0045 - Improper Input validation in the AMD Secure Processor (ASP) PCI driver may allow a local attacker to",
-    "description": "Improper Input validation in the AMD Secure Processor (ASP) PCI driver may allow a local attacker to create a buffer overflow condition, potentially resulting in a crash or denial of service",
-    "severity": "medium",
-    "cve_id": "CVE-2025-0045",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-3047.html",
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4015.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-0045.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2024-36345",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-15T02:16:20.773",
-    "title": "CVE-2024-36345 - Improper input validation in the AMD OverDrive (AOD) System Management Mode (SMM) module could allow",
-    "description": "Improper input validation in the AMD OverDrive (AOD) System Management Mode (SMM) module could allow a privileged attacker to perform an out-of-bounds read, potentially resulting in loss of confidentiality.",
-    "severity": "medium",
-    "cve_id": "CVE-2024-36345",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-3030.html",
-      "https://www.amd.com/en/resources/product-security/bulletin/AMD-SB-4017.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2024-36345.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8681.",
       "affected_industries": [
         "Technology",
         "General"
