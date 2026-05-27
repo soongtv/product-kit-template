@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1779897738951-1",
+    "id": "twitter-1779913615044-1",
     "source": "Twitter Security",
-    "timestamp": "2026-05-27T16:02:18.951Z",
+    "timestamp": "2026-05-27T20:26:55.044Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1779897738951-1",
+    "id": "hn-1779913615044-1",
     "source": "HackerNews",
-    "timestamp": "2026-05-27T16:02:18.951Z",
+    "timestamp": "2026-05-27T20:26:55.044Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,78 +26,174 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-72p9-6vv6-gvqh",
+    "id": "gh-GHSA-qc95-4862-92fh",
     "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "When creating an export through the pretix API, API clients are \nreturned an UUID value for their...",
-    "description": "When creating an export through the pretix API, API clients are \nreturned an UUID value for their export job (a long, random string like \n35742818-c375-4d15-839f-d49aecce94d6). Using this UUID, the API client \ncan then request the actual file for download. The same kind of UUID is \nused in other places in pretix when temporary files are generated for \ninternal use or download.\n\n\n\n\nOne remaining API endpoint, however, wrongfully did not verify if the\n UUID used for download actually belongs to a ",
-    "severity": "low",
-    "cve_id": "CVE-2026-9712",
-    "ghsa_id": "GHSA-72p9-6vv6-gvqh",
-    "affected_packages": [],
+    "timestamp": "2026-05-27T20:13:04Z",
+    "title": "Symfony has an HtmlSanitizer allowLinkHosts() / allowMediaHosts() Bypass via URL-Parser Differentials and <area> Misclassification",
+    "description": "### Description\n\n`symfony/html-sanitizer` lets applications sanitise untrusted HTML. The configuration methods `allowLinkHosts([...])` and `allowLinkSchemes([...])` are intended to restrict `<a href>` targets to an allowlist of hosts/schemes; `allowMediaHosts()` / `allowMediaSchemes()` do the same for `<img src>` etc.\n\nThree distinct bypasses allow a content author to smuggle off-allowlist URLs past these checks. First, `UrlSanitizer::parse()` parses the input following RFC-3986, while browsers ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-45066",
+    "ghsa_id": "GHSA-qc95-4862-92fh",
+    "affected_packages": [
+      "symfony/html-sanitizer",
+      "symfony/html-sanitizer",
+      "symfony/html-sanitizer",
+      "symfony/symfony",
+      "symfony/symfony",
+      "symfony/symfony"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-h5vq-qfcg-4m6p",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-27T20:04:22Z",
+    "title": "Symfony's HtmlSanitizer URL Attributes Pass Through BiDi Override Characters → Visual href Spoofing",
+    "description": "### Description\n\n`Symfony\\Component\\HtmlSanitizer\\TextSanitizer\\UrlSanitizer::parse()` (used by `UrlSanitizer::sanitize()` and therefore by every `HtmlSanitizer` config that allows links or media) accepts URLs that contain Unicode explicit-direction BiDi formatting characters: U+202A–U+202E (LRE / RLE / PDF / LRO / RLO) and U+2066–U+2069 (LRI / RLI / FSI / PDI). These characters are passed through unchanged into the `href` / `src` attributes produced by `HtmlSanitizer`. When the resulting HTML i",
+    "severity": "medium",
+    "cve_id": "CVE-2026-45064",
+    "ghsa_id": "GHSA-h5vq-qfcg-4m6p",
+    "affected_packages": [
+      "symfony/html-sanitizer",
+      "symfony/html-sanitizer",
+      "symfony/html-sanitizer",
+      "symfony/symfony",
+      "symfony/symfony",
+      "symfony/symfony"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-rw47-hm26-6wr7",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-27T19:58:15Z",
+    "title": "CrowdSec AppSec silently drops request body for chunked / HTTP-2 requests",
+    "description": "## Summary\n\nThe CrowdSec AppSec component fails to read the HTTP request body for any request whose `Content-Length` is not positive — most notably HTTP/1.1 requests using `Transfer-Encoding: chunked` and HTTP/2 requests sent without a `content-length` header. Coraza is then evaluated against an empty body, so every WAF rule targeting `REQUEST_BODY`, `BODY_ARGS`, `ARGS_POST`, `JSON`, or `XML` silently fails to match.\n\nAn unauthenticated remote attacker can bypass the entire AppSec body-inspectio",
+    "severity": "high",
+    "cve_id": "CVE-2026-44982",
+    "ghsa_id": "GHSA-rw47-hm26-6wr7",
+    "affected_packages": [
+      "github.com/crowdsecurity/crowdsec"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-43ph-42gv-7965",
+    "id": "gh-GHSA-273h-gvwr-c3qj",
     "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "Jenkins buildgraph-view Plugin 1.8 and earlier does not escape the build URL, resulting in a...",
-    "description": "Jenkins buildgraph-view Plugin 1.8 and earlier does not escape the build URL, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers able to configure jobs or views.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-48927",
-    "ghsa_id": "GHSA-43ph-42gv-7965",
-    "affected_packages": [],
-    "cwes": [],
+    "timestamp": "2026-05-27T19:57:28Z",
+    "title": "CrowdSec LAPI: Denial of Service via Unbounded Gzip Decompression",
+    "description": "The LAPI router uses `gin-contrib/gzip` with `DefaultDecompressHandle` globally (`pkg/apiserver/controllers/controller.go`).\nThis middleware decompresses incoming request bodies without enforcing a maximum decompressed size. \n\nThe endpoints `/v1/watchers` or `/v1/watchers/login` require no authentication.\nAn attacker can send small gzip-compressed JSON payloads that, when decompressed, result in hundreds of MB of valid JSON occupying server memory.\nSending enough requests concurrently will cause",
+    "severity": "medium",
+    "cve_id": "CVE-2026-44981",
+    "ghsa_id": "GHSA-273h-gvwr-c3qj",
+    "affected_packages": [
+      "github.com/crowdsecurity/crowdsec"
+    ],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
-      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-hj3h-r49w-34wh",
+    "id": "gh-GHSA-chqv-56wv-7564",
     "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "A cross-site request forgery (CSRF) vulnerability in Jenkins Multijob Plugin 662.vd2e0001f6b_b_d...",
-    "description": "A cross-site request forgery (CSRF) vulnerability in Jenkins Multijob Plugin 662.vd2e0001f6b_b_d and earlier allows attackers to resume failed Multijob builds.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-9674",
-    "ghsa_id": "GHSA-hj3h-r49w-34wh",
-    "affected_packages": [],
-    "cwes": [],
+    "timestamp": "2026-05-27T19:51:46Z",
+    "title": "Deno's TLS retry copies stale upgrade hook, risking plaintext traffic",
+    "description": "## Summary\n\nA flaw in Deno's Node.js tls compatibility layer could cause a TLS client to transmit application data in plaintext after a connection retry. When `autoSelectFamily was enabled and the first address-family attempt failed, the socket reinitialization path reused a stale TLS upgrade hook that was bound to the original, failed handle. \n\nAs a result, the replacement TCP connection was never upgraded to TLS, and any data the application wrote before the `secureConnect` event travelled ove",
+    "severity": "high",
+    "cve_id": "CVE-2026-44726",
+    "ghsa_id": "GHSA-chqv-56wv-7564",
+    "affected_packages": [
+      "deno"
+    ],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
-      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-6m8g-7xrr-8q5f",
+    "id": "gh-GHSA-mxfr-6hcw-j9rq",
     "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "Webmin before 2.640 does not safely construct a filename for saving of an attachment within the...",
-    "description": "Webmin before 2.640 does not safely construct a filename for saving of an attachment within the mailboxes component. This occurs in mailboxes/detachall.cgi.",
+    "timestamp": "2026-05-27T19:38:58Z",
+    "title": "Langroid has Prompt to SQL Injection, Leading to RCE",
+    "description": "# Security Vulnerability Report: Prompt to SQL Injection leading to RCE in latest Langroid\n\n## Affected Scope\nlangroid < 0.63.0\n\n## Vulnerability Description\n\nSQLChatAgent executes SQL produced by an LLM, which is influenceable by prompt injection. When configured with a database role that has privileges enabling code execution or filesystem access (e.g., PostgreSQL pg_execute_server_program, MySQL FILE, MSSQL xp_cmdshell), an attacker who can shape the agent's input — including indirectly via d",
     "severity": "critical",
-    "cve_id": "CVE-2026-49103",
-    "ghsa_id": "GHSA-6m8g-7xrr-8q5f",
+    "cve_id": "CVE-2026-25879",
+    "ghsa_id": "GHSA-mxfr-6hcw-j9rq",
+    "affected_packages": [
+      "langroid"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-h574-9fvh-93j7",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-27T18:31:42Z",
+    "title": "A security vulnerability has been detected in TeamSpeak 3 Server up to 3.13.7. This vulnerability...",
+    "description": "A security vulnerability has been detected in TeamSpeak 3 Server up to 3.13.7. This vulnerability affects unknown code of the component ECC Key Parser. Such manipulation leads to heap-based buffer overflow. The attack may be launched remotely. Upgrading to version 3.13.8 is able to resolve this issue. It is suggested to upgrade the affected component.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-4391",
+    "ghsa_id": "GHSA-h574-9fvh-93j7",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
       null,
       null,
       null,
@@ -107,18 +203,90 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-x7w4-j7hv-94wg",
+    "id": "gh-GHSA-cr8m-87qj-3732",
     "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "Mattermost Plugins versions <=1.1.5 fail to sanitize filenames received from federated peers...",
-    "description": "Mattermost Plugins versions <=1.1.5 fail to sanitize filenames received from federated peers before using them to construct export destination paths, which allows an administrator of a remote federated Mattermost server to write files to arbitrary locations within the target server's filestore via a malicious filename delivered through the shared-channel attachment sync protocol. Mattermost Advisory ID: MMSA-2026-00659",
+    "timestamp": "2026-05-27T18:31:42Z",
+    "title": "A weakness has been identified in TeamSpeak 3 Server up to 3.13.7. This affects the function...",
+    "description": "A weakness has been identified in TeamSpeak 3 Server up to 3.13.7. This affects the function process_resend_queue of the component Connection State Management. This manipulation causes use after free. The attack may be initiated remotely. Upgrading to version 3.13.8 is able to mitigate this issue. The affected component should be upgraded.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-4390",
+    "ghsa_id": "GHSA-cr8m-87qj-3732",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-jfq9-pq7p-655w",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-27T18:31:42Z",
+    "title": "A vulnerability was detected in TeamSpeak 3 Server up to 3.13.7. This issue affects some unknown...",
+    "description": "A vulnerability was detected in TeamSpeak 3 Server up to 3.13.7. This issue affects some unknown processing of the component clientek Handshake Handler. Performing a manipulation of the argument proof results in reachable assertion. Remote exploitation of the attack is possible. Upgrading to version 3.13.8 is capable of addressing this issue. Upgrading the affected component is recommended.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-4392",
+    "ghsa_id": "GHSA-jfq9-pq7p-655w",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-5qh8-v6gw-rfcc",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-27T18:31:42Z",
+    "title": "An authenticated command injection vulnerability exists in the Archer BE450 v1 and BE7200 v1...",
+    "description": "An authenticated command injection vulnerability exists in the Archer BE450 v1 and BE7200 v1 router that allows an administrator to execute arbitrary system commands through the web management interface. After successfully authenticating to the admin interface, an attacker can leverage the browser’s developer console by supplying a crafted input that is passed to backend system commands without adequate sanitization. \n\nSuccessful exploitation enables execution of arbitrary commands with elevated",
     "severity": "high",
-    "cve_id": "CVE-2026-6957",
-    "ghsa_id": "GHSA-x7w4-j7hv-94wg",
+    "cve_id": "CVE-2026-5509",
+    "ghsa_id": "GHSA-5qh8-v6gw-rfcc",
     "affected_packages": [],
     "cwes": [
       null
     ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-27hf-5x7w-h2g3",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-27T18:31:41Z",
+    "title": "Insecure Permissions vulnerability in kvf-admin v1.0.0 allows a remote attacker to escalate...",
+    "description": "Insecure Permissions vulnerability in kvf-admin v1.0.0 allows a remote attacker to escalate privileges via the UserController.java component",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-38807",
+    "ghsa_id": "GHSA-27hf-5x7w-h2g3",
+    "affected_packages": [],
+    "cwes": [],
     "references": [
       null,
       null,
@@ -128,14 +296,73 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-6f96-4hg2-638g",
+    "id": "gh-GHSA-47hh-q443-4357",
     "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "URL Redirection to Untrusted Site ('Open Redirect') vulnerability in Facebook Facebook for...",
-    "description": "URL Redirection to Untrusted Site ('Open Redirect') vulnerability in Facebook Facebook for WooCommerce allows Phishing.\n\nThis issue affects Facebook for WooCommerce: from n/a through 3.7.0.",
+    "timestamp": "2026-05-27T18:31:41Z",
+    "title": "SQL Injection vulnerability in uzy-ssm-mall v1.1.0 allows a remote attacker to obtain sensitive...",
+    "description": "SQL Injection vulnerability in uzy-ssm-mall v1.1.0 allows a remote attacker to obtain sensitive information via the ProductMapper.xml and /OrderUtil.java components",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-38808",
+    "ghsa_id": "GHSA-47hh-q443-4357",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-f3f3-r56h-c5r4",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-27T18:31:41Z",
+    "title": "Command injection in Raynet rvia 12.6.4392.49-amd64.deb allows adversaries to execute commands...",
+    "description": "Command injection in Raynet rvia 12.6.4392.49-amd64.deb allows adversaries to execute commands via getconfig, and upload through the URL argument, and oracle through the -o flag The Supplier's perspective is that this is caused by Argument Injection in the find command query in rvia 12.6.4392.49. This in an arbitrary code execution flaw caused by an incorrectly constructed find command. The application actively searches for a Java executable by using search criteria that is not properly terminat",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-69600",
+    "ghsa_id": "GHSA-f3f3-r56h-c5r4",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-pg62-xhhc-55cc",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-27T18:31:41Z",
+    "title": "Northern.tech Mender Client 5 before 5.0.4 allows a Cryptographic signature verification bypass.",
+    "description": "Northern.tech Mender Client 5 before 5.0.4 allows a Cryptographic signature verification bypass.",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-67903",
+    "ghsa_id": "GHSA-pg62-xhhc-55cc",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-3c8c-p4wx-4q49",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-27T18:31:41Z",
+    "title": "Missing Authorization vulnerability in Mamunur Rashid The Post Grid allows Exploiting Incorrectly...",
+    "description": "Missing Authorization vulnerability in Mamunur Rashid The Post Grid allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects The Post Grid: from n/a through 7.9.2.",
     "severity": "medium",
-    "cve_id": "CVE-2026-49059",
-    "ghsa_id": "GHSA-6f96-4hg2-638g",
+    "cve_id": "CVE-2026-49054",
+    "ghsa_id": "GHSA-3c8c-p4wx-4q49",
     "affected_packages": [],
     "cwes": [
       null
@@ -149,61 +376,18 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-4fvr-xj2h-j282",
+    "id": "gh-GHSA-wxvc-h8gm-x6h3",
     "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "Missing Authorization vulnerability in Wpmet ElementsKit Elementor addons Lite allows Exploiting...",
-    "description": "Missing Authorization vulnerability in Wpmet ElementsKit Elementor addons Lite allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects ElementsKit Elementor addons Lite: from n/a through 3.9.6.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-49053",
-    "ghsa_id": "GHSA-4fvr-xj2h-j282",
+    "timestamp": "2026-05-27T18:31:40Z",
+    "title": "A stored cross-site scripting (XSS) vulnerability in the /admin/config-module.php component of...",
+    "description": "A stored cross-site scripting (XSS) vulnerability in the /admin/config-module.php component of creatorsofcode simplephp GitHub commit 5184cff (Latest as of 2026-02-27) via injecting a crafted payload.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-38931",
+    "ghsa_id": "GHSA-wxvc-h8gm-x6h3",
     "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "cwes": [],
     "references": [
       null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-g97j-4hmg-j4gx",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "Missing Authorization vulnerability in DearHive DearFlip allows Exploiting Incorrectly Configured...",
-    "description": "Missing Authorization vulnerability in DearHive DearFlip allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects DearFlip: from n/a through 2.4.27.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-49047",
-    "ghsa_id": "GHSA-g97j-4hmg-j4gx",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-2rpj-3356-c2rw",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "Webmin before 2.640 allows mailboxes/detach.cgi XSS via an SVG document attachment that is viewed...",
-    "description": "Webmin before 2.640 allows mailboxes/detach.cgi XSS via an SVG document attachment that is viewed in the mailboxes component, because image/svg+xml is used instead of a safe type (e.g., text/plain).",
-    "severity": "medium",
-    "cve_id": "CVE-2026-49102",
-    "ghsa_id": "GHSA-2rpj-3356-c2rw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
       null,
       null,
       null,
@@ -213,82 +397,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-jvxm-pqmv-6427",
+    "id": "gh-GHSA-6j46-7pm3-f2jp",
     "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')...",
-    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Justin Kruit Advanced Custom Fields: Font Awesome Field allows Stored XSS.\n\nThis issue affects Advanced Custom Fields: Font Awesome Field: from n/a through 5.0.2.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-49044",
-    "ghsa_id": "GHSA-jvxm-pqmv-6427",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-frmx-6g5x-w92p",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "Missing Authorization vulnerability in Benbodhi SVG Support allows Exploiting Incorrectly...",
-    "description": "Missing Authorization vulnerability in Benbodhi SVG Support allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects SVG Support: from n/a through 2.5.14.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-48973",
-    "ghsa_id": "GHSA-frmx-6g5x-w92p",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-cf5w-c59m-3p6w",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "Missing Authorization vulnerability in Wpmet ElementsKit Elementor addons Lite allows Exploiting...",
-    "description": "Missing Authorization vulnerability in Wpmet ElementsKit Elementor addons Lite allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects ElementsKit Elementor addons Lite: from n/a through 3.9.6.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-49052",
-    "ghsa_id": "GHSA-cf5w-c59m-3p6w",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-qf22-3mph-6276",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')...",
-    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Arjun Thakur Duplicate Page and Post allows Blind SQL Injection.\n\nThis issue affects Duplicate Page and Post: from n/a through 2.9.5.",
+    "timestamp": "2026-05-27T18:31:40Z",
+    "title": "Command injection in Raynet rvia version 12.6.4392.49-amd64.deb allows adversaries to execute...",
+    "description": "Command injection in Raynet rvia version 12.6.4392.49-amd64.deb allows adversaries to execute arbitrary Java code via a crafted path that matches the improperly terminated search criteria of rvia's Java search using the find command.",
     "severity": "high",
-    "cve_id": "CVE-2026-49046",
-    "ghsa_id": "GHSA-qf22-3mph-6276",
+    "cve_id": "CVE-2026-38945",
+    "ghsa_id": "GHSA-6j46-7pm3-f2jp",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null
@@ -297,14 +420,35 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-gq7p-2w5v-c75x",
+    "id": "gh-GHSA-6f3g-p975-cjv5",
     "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "Missing Authorization vulnerability in Prasad Kirpekar WP Meta and Date Remover allows Exploiting...",
-    "description": "Missing Authorization vulnerability in Prasad Kirpekar WP Meta and Date Remover allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects WP Meta and Date Remover: from n/a through 2.3.6.",
+    "timestamp": "2026-05-27T18:31:40Z",
+    "title": "A NULL pointer dereference in GPAC MP4Box: when parsing certain truncated MP4 files, an unknown...",
+    "description": "A NULL pointer dereference in GPAC MP4Box: when parsing certain truncated MP4 files, an unknown/invalid stsd entry can result in missing descriptor fields (e.g., codec/mime/profile strings). gf_media_map_esd then calls strlen() on a NULL pointer, triggering a crash (ASan SEGV).",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-70116",
+    "ghsa_id": "GHSA-6f3g-p975-cjv5",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-cr7m-pmfg-ggh9",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-27T18:31:39Z",
+    "title": "Missing Authorization vulnerability in Bizswoop Account Manager for WooCommerce allows Exploiting...",
+    "description": "Missing Authorization vulnerability in Bizswoop Account Manager for WooCommerce allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects Account Manager for WooCommerce: from n/a through 2.1.2.",
     "severity": "medium",
-    "cve_id": "CVE-2026-49051",
-    "ghsa_id": "GHSA-gq7p-2w5v-c75x",
+    "cve_id": "CVE-2022-41656",
+    "ghsa_id": "GHSA-cr7m-pmfg-ggh9",
     "affected_packages": [],
     "cwes": [
       null
@@ -318,114 +462,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-8g9r-287c-mcw4",
+    "id": "gh-GHSA-jjh2-xjr3-cgm8",
     "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:28Z",
-    "title": "Missing Authorization vulnerability in WP Media Adminimize allows Exploiting Incorrectly...",
-    "description": "Missing Authorization vulnerability in WP Media Adminimize allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects Adminimize: from n/a through 1.11.11.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-49045",
-    "ghsa_id": "GHSA-8g9r-287c-mcw4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-r8fj-rff6-f7h5",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:27Z",
-    "title": "Jenkins Bitbucket OAuth Plugin 0.17 and earlier does not restrict the redirect URL after login,...",
-    "description": "Jenkins Bitbucket OAuth Plugin 0.17 and earlier does not restrict the redirect URL after login, allowing attackers to perform phishing attacks.",
+    "timestamp": "2026-05-27T18:31:39Z",
+    "title": "OpenRapid RapidCMS v1.3.1 was discovered to contain an authentication bypass in the /template...",
+    "description": "OpenRapid RapidCMS v1.3.1 was discovered to contain an authentication bypass in the /template/default/menu.php component. This vulnerability is exploited via injecting a crafted SQL payload into the name cookie parameter.",
     "severity": "unknown",
-    "cve_id": "CVE-2026-48924",
-    "ghsa_id": "GHSA-r8fj-rff6-f7h5",
+    "cve_id": "CVE-2026-38930",
+    "ghsa_id": "GHSA-jjh2-xjr3-cgm8",
     "affected_packages": [],
     "cwes": [],
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-p8jh-4p5p-2rfp",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:27Z",
-    "title": "Jenkins Job Import Plugin 143.v044a_2e819b_27 and earlier does not perform a permission check in...",
-    "description": "Jenkins Job Import Plugin 143.v044a_2e819b_27 and earlier does not perform a permission check in an HTTP endpoint, allowing attackers with Overall/Read permission to enumerate credentials IDs of credentials stored in Jenkins.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-48926",
-    "ghsa_id": "GHSA-p8jh-4p5p-2rfp",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-rf8w-7c3g-7h3g",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:27Z",
-    "title": "A cross-site request forgery (CSRF) vulnerability in Jenkins GitHub Integration Plugin 0.7.3 and...",
-    "description": "A cross-site request forgery (CSRF) vulnerability in Jenkins GitHub Integration Plugin 0.7.3 and earlier allows attackers to attackers to trigger a build for a pull request.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-48925",
-    "ghsa_id": "GHSA-rf8w-7c3g-7h3g",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-9wm7-8qf3-9v98",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:27Z",
-    "title": "Jenkins AppSpider Plugin 1.0.17 and earlier does not perform a permission check in a method...",
-    "description": "Jenkins AppSpider Plugin 1.0.17 and earlier does not perform a permission check in a method implementing form validation, allowing attackers with Overall/Read permission to connect to an attacker-specified URL.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-48923",
-    "ghsa_id": "GHSA-9wm7-8qf3-9v98",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-fxxf-w25w-mcx2",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-27T15:33:26Z",
-    "title": "Jenkins Credentials Binding Plugin 720.v3f6decef43ea_ and earlier does not properly sanitize file...",
-    "description": "Jenkins Credentials Binding Plugin 720.v3f6decef43ea_ and earlier does not properly sanitize file names for file and zip file credentials, allowing attackers able to provide credentials to a job to write files to arbitrary locations on the node filesystem, which can lead to remote code execution if Jenkins is configured to allow a low-privileged user to configure file or zip file credentials used for a job running on the built-in node.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-48922",
-    "ghsa_id": "GHSA-fxxf-w25w-mcx2",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
       null,
       null,
       null
