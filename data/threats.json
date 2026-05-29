@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1780070410139-1",
+    "id": "twitter-1780086902783-1",
     "source": "Twitter Security",
-    "timestamp": "2026-05-29T16:00:10.139Z",
+    "timestamp": "2026-05-29T20:35:02.783Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1780070410139-1",
+    "id": "hn-1780086902783-1",
     "source": "HackerNews",
-    "timestamp": "2026-05-29T16:00:10.139Z",
+    "timestamp": "2026-05-29T20:35:02.783Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,17 +26,16 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-pjwm-pj3p-43mv",
+    "id": "gh-GHSA-c3m2-jqmq-pvp3",
     "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:59:30Z",
-    "title": "axios's shouldBypassProxy does not recognize IPv4-mapped IPv6 addresses, allowing NO_PROXY bypass (incomplete fix for CVE-2025-62718)",
-    "description": "### Summary\nshouldBypassProxy, introduced in v1.15.0 to fix CVE-2025-62718, does not normalise IPv4-mapped IPv6 addresses. When NO_PROXY lists an IPv4 address such as `127.0.0.1` or `169.254.169.254`, a request URL using the IPv4-mapped IPv6 form (`::ffff:7f00:1`, `::ffff:a9fe:a9fe`) still routes through the configured proxy. Node.js resolves these addresses to the underlying IPv4 host, so the request reaches the internal service via the proxy rather than being blocked.\n\n### Details\nlib/helpers/",
+    "timestamp": "2026-05-29T20:25:48Z",
+    "title": "authentik's XML Signature Wrapping in SAML Source ACS allows authentication as arbitrary federated user",
+    "description": "### Summary\n \n authentik's SAML Source ACS endpoint is vulnerable to XML Signature Wrapping when validating upstream SAML responses. An attacker with any account at the upstream IdP can reuse a valid signed assertion to authenticate as another federated user.\n \n ### Patches\n \n authentik 2026.5.1, 2026.2.4 and 2025.12.6 fix this issue.\n \n ### Impact\n \n Affected: authentik deployments using a SAML Source for upstream SAML federation with signed assertions, or signed responses without signed assert",
     "severity": "high",
-    "cve_id": "CVE-2026-44492",
-    "ghsa_id": "GHSA-pjwm-pj3p-43mv",
+    "cve_id": "CVE-2026-47201",
+    "ghsa_id": "GHSA-c3m2-jqmq-pvp3",
     "affected_packages": [
-      "axios",
-      "axios"
+      "goauthentik.io"
     ],
     "cwes": [
       null
@@ -50,40 +49,45 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-898c-q2cr-xwhg",
+    "id": "gh-GHSA-5jh9-2h63-pw4q",
     "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:54:57Z",
-    "title": "axios has DoS & Header Injection via Prototype Pollution Read-Side Gadgets in axios merge functions",
-    "description": "## Summary\n\naxios `1.15.2` exposes two read-side prototype-pollution gadgets. When `Object.prototype` is polluted by an upstream dependency in the same process (e.g. lodash `_.merge` / [CVE-2018-16487](https://nvd.nist.gov/vuln/detail/CVE-2018-16487)), axios silently picks up the polluted values:\n\n1. **Header injection** - `lib/utils.js` line 406 builds `merge()`'s accumulator as `result = {}`, so `result[targetKey]` (line 414) walks `Object.prototype` and the polluted bucket's own keys are copi",
+    "timestamp": "2026-05-29T20:21:12Z",
+    "title": "CC-Tweaked has an SSRF Protection Bypass with NAT64",
+    "description": "### Summary\n\nCC-Tweaked's HTTP API (`http.request`, `http.websocket`) blocks requests to private network ranges to prevent server-side request forgery (SSRF). This protection can be bypassed on IPv6-capable servers using NAT64 well-known prefix addresses (`64:ff9b::/96`). An attacker who can execute Lua code can reach any internal IPv4 service that the filter is intended to block, by addressing it as `http://[64:ff9b::<ipv4-as-hex>]/` instead of its direct IPv4 address. This affects any CC-Tweak",
+    "severity": "high",
+    "cve_id": "CVE-2026-47695",
+    "ghsa_id": "GHSA-5jh9-2h63-pw4q",
+    "affected_packages": [
+      "cc.tweaked:cc-tweaked-1.21-core",
+      "cc.tweaked:cc-tweaked-1.20.1-core",
+      "cc.tweaked:cc-tweaked-1.20.4-core",
+      "cc.tweaked:cc-tweaked-1.20.5-core",
+      "cc.tweaked:cc-tweaked-1.20.6-core",
+      "cc.tweaked:cc-tweaked-1.19.3-core",
+      "cc.tweaked:cc-tweaked-1.19.4-core",
+      "cc.tweaked:cc-tweaked-1.20-core"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-rfg2-pjw2-56x2",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-29T20:18:53Z",
+    "title": "zeroconf has unbounded DNS record cache that allows LAN-local memory exhaustion via multicast flood",
+    "description": "### Impact\n\n`DNSCache._async_add` inserted every response record into `cache`, `_expirations`, `_expire_heap`, and `service_cache` with no cap on entry count. The only pre-existing protection was a PTR TTL floor (`_DNS_PTR_MIN_TTL = 1125` s, RFC 6762 §10), which actually *prolonged* attacker-injected records, and a periodic `async_expire` on `_CACHE_CLEANUP_INTERVAL = 10` s that could not keep up with a flood.\n\nAny unauthenticated host on the local link (UDP/5353, `224.0.0.251` / `ff02::fb`) can",
     "severity": "medium",
-    "cve_id": "CVE-2026-44490",
-    "ghsa_id": "GHSA-898c-q2cr-xwhg",
+    "cve_id": "CVE-2026-47184",
+    "ghsa_id": "GHSA-rfg2-pjw2-56x2",
     "affected_packages": [
-      "axios",
-      "axios"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-654m-c8p4-x5fp",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:51:02Z",
-    "title": "Axios has a Patch Bypass: Proxy-Authorization Header Injection via Prototype Pollution — Incomplete Null-Prototype Fix",
-    "description": "# [Patch Bypass] Proxy-Authorization Header Injection via Prototype Pollution — Incomplete Null-Prototype Fix in Axios 1.15.2\n\n## Summary\n\nThe `Object.create(null)` fix introduced in Axios 1.15.2 (GHSA-q8qp-cvcw-x6jj) protects the **top-level config object** from prototype pollution. However, **nested objects** created by `utils.merge()` (e.g., `config.proxy`) are still constructed as plain `{}` with `Object.prototype` in their chain.\n\nThe `setProxy()` function at `lib/adapters/http.js:209-223` ",
-    "severity": "low",
-    "cve_id": "CVE-2026-44489",
-    "ghsa_id": "GHSA-654m-c8p4-x5fp",
-    "affected_packages": [
-      "axios"
+      "zeroconf"
     ],
     "cwes": [
       null,
@@ -92,22 +96,71 @@
     "references": [
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-j6fm-9rfm-j5hx",
+    "id": "gh-GHSA-phvx-9mgw-67r5",
     "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:45:31Z",
-    "title": "Froxlor has an incomplete fix for CVE-2026-30932",
-    "description": "### Summary\n\nThe LOC record regex uses `\\s+` which matches newlines (allowing embedded newlines to pass), TLSA `matchingType=0` has no upper bound on hex data length, and all validators return raw input without zone-file escaping.\n\n### Affected Package\n\n- **Ecosystem:** Other\n- **Package:** froxlor\n- **Affected versions:** all versions before fix commit b34829262dc3\n- **Patched versions:** >= commit b34829262dc3\n\n### Severity\n\nMedium -- CVSS\n\n### CWE\n\nCWE-74 -- Improper Neutralization of Special",
+    "timestamp": "2026-05-29T20:13:08Z",
+    "title": "zeroconf: Unbounded exception-dedup state retains packet buffers via traceback frame locals, enabling LAN-local memory exhaustion",
+    "description": "### Impact\n`DNSIncoming._log_exception_debug` and the four `QuietLogger` exception-dedup methods stored an unbounded `_seen_logs` dict keyed by `str(sys.exc_info()[1])`. The seven `IncomingDecodeError` messages raised from `_read_name` / `_decode_labels_at_offset` (RFC 6762 §18 name-decoding error paths) all embed `self.source` — the peer's ephemeral source port, varying per packet — plus byte `offset` and pointer `link`, so every attacker-influenced combination produced a fresh dedup key. The s",
     "severity": "medium",
-    "cve_id": "CVE-2026-41237",
-    "ghsa_id": "GHSA-j6fm-9rfm-j5hx",
+    "cve_id": "CVE-2026-47183",
+    "ghsa_id": "GHSA-phvx-9mgw-67r5",
     "affected_packages": [
-      "froxlor/froxlor"
+      "zeroconf"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-9pgc-3ccv-5297",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-29T20:09:52Z",
+    "title": "zeroconf has unbounded recursion in DNS compression-pointer decoder that allows LAN-local denial of service",
+    "description": "### Impact\n\n`DNSIncoming._decode_labels_at_offset` recurses once per DNS-name compression pointer (RFC 1035 §4.1.4). Pointer cycles and label counts were capped, but the chain length of unique forward pointers was not. A single ~3 kB mDNS packet carrying ~1500 chained pointers drives the recursion past CPython's default limit, and `RecursionError` was not listed in `DECODE_EXCEPTIONS`, so it escaped `DNSIncoming.__init__` and was logged by asyncio's default exception handler.\n\nAny unauthenticate",
+    "severity": "medium",
+    "cve_id": "CVE-2026-47180",
+    "ghsa_id": "GHSA-9pgc-3ccv-5297",
+    "affected_packages": [
+      "zeroconf"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-92vj-hp7m-gwcj",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-29T20:02:59Z",
+    "title": "Nerdbank.MessagePack has Inefficient CPU Computation",
+    "description": "### Impact\n\nApplications that call `OptionalConverters.WithExpandoObjectConverter` and deserialize untrusted data are open to a vulnerability by which an attacker can exploit a `O(n²)` algorithm to burn an inordinate amount of CPU effort by adding a great many properties to an `ExpandoObject`, whose `Add` method is implemented as an `O(n)` algorithm.\n\n### Patches\n\nUpdate to a patched version.\n\nIf a project's `ExpandoObject` data requires more than 128 properties, the default limit should be chan",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-92vj-hp7m-gwcj",
+    "affected_packages": [
+      "Nerdbank.MessagePack"
     ],
     "cwes": [
       null
@@ -121,16 +174,110 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-mq5v-pxpm-8jw2",
+    "id": "gh-GHSA-7j2f-6h2r-6cqc",
     "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:40:23Z",
-    "title": "Froxlor has privilege escalation in SSH key synchronization via symlinked `authorized_keys` path",
-    "description": "### Summary\nFroxlor 2.3.6 contains a symlink-following flaw in the root-owned SSH key synchronization path used for customer FTP users. The provisioning code appends public keys to `~/.ssh/authorized_keys` under a customer-controlled home directory without verifying that the target path is not a symbolic link.\n\nIf an attacker controls a shell-enabled customer account and can modify files inside the assigned home directory, the attacker can replace `~/.ssh/authorized_keys` with a symlink to `/roo",
+    "timestamp": "2026-05-29T19:56:06Z",
+    "title": "Koel Vulnerable to SSRF via Podcast Episode Enclosure URLs",
+    "description": "## Summary\n\nKoel validates the podcast feed URL via the `SafeUrl` rule (DNS resolution + public IP check), but the individual episode `<enclosure url=\"...\">` values extracted from the RSS XML are stored directly into the database without any SSRF validation. When a user plays an episode, the server downloads the full HTTP response from the unvalidated enclosure URL via `Http::sink()->get()` and streams it back to the user, enabling full-read SSRF against internal services.\n\n---\n\n## Vulnerability",
     "severity": "high",
-    "cve_id": "CVE-2026-41236",
-    "ghsa_id": "GHSA-mq5v-pxpm-8jw2",
+    "cve_id": "CVE-2026-47260",
+    "ghsa_id": "GHSA-7j2f-6h2r-6cqc",
     "affected_packages": [
-      "froxlor/froxlor"
+      "phanan/koel"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-qjvr-435c-5fjh",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-29T19:55:09Z",
+    "title": "Nerdbank.MessagePack has a memory amplification DoS in collection deserialization",
+    "description": "Nerdbank.MessagePack deserializers for many collection-shaped types trusted the element count declared in MessagePack array and map headers when allocating destination storage. A crafted payload could therefore force large arrays, pooled buffers, dictionaries, or collection instances to be allocated before the deserializer had consumed the corresponding elements.\n\nThe same allocation pattern existed across strongly typed arrays, primitive arrays, mutable and immutable dictionaries, mutable enume",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-qjvr-435c-5fjh",
+    "affected_packages": [
+      "Nerdbank.MessagePack"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-g3hp-f6mg-559v",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-29T19:47:19Z",
+    "title": "Sparkle's AppInstaller post-stage-1 XPC listener accepts unvalidated connections, allowing spoofed appcast item data injection",
+    "description": "## Summary\n\nAppInstaller post-stage-1 XPC listener accepts unvalidated connections, allowing spoofed appcast item data injection.\n\n## Details\n\n`Autoupdate/AppInstaller.m`'s `shouldAcceptNewConnection:` only enforces `SUCodeSigningVerifier validateConnection:` before stage 1 completes. After `_performedStage1Installation = YES`, new connections to the registered Mach service `<bundleId>-spki` are accepted from any local process without team-ID or code-signing checks.\n\nThe following chain of event",
+    "severity": "medium",
+    "cve_id": "CVE-2026-47122",
+    "ghsa_id": "GHSA-g3hp-f6mg-559v",
+    "affected_packages": [
+      "github.com/sparkle-project/Sparkle"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-hg88-v3cw-3qrh",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-29T19:45:04Z",
+    "title": "Sparkle: Binary delta apply intermediate-symlink traversal in malicious .delta",
+    "description": "## Summary\n\nBinary delta apply intermediate-symlink traversal in malicious .delta\n\n`Autoupdate/SUBinaryDeltaApply.m` enforces `relativePath.pathComponents containsObject:@\"..\"` and rejects writes whose immediate parent directory IS itself a symbolic link, but does not detect symlinks deeper in the relative path. `Autoupdate/SPUSparkleDeltaArchive.m`'s `extractItem:` will create symlinks in the destination tree from archive content (no `..` check on the symlink target), and a subsequent `Extract`",
+    "severity": "medium",
+    "cve_id": "CVE-2026-47121",
+    "ghsa_id": "GHSA-hg88-v3cw-3qrh",
+    "affected_packages": [
+      "github.com/sparkle-project/Sparkle"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-w5pp-99ch-qj29",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-29T19:43:27Z",
+    "title": "go-git: Malformed Git object data may cause panics or resource exhaustion",
+    "description": "### Impact\nSeveral denial-of-service issues were identified in `go-git` when parsing maliciously crafted Git repository data.\n\nAn attacker may craft a malicious `.pack`, `.idx` or loose objects that causes an application using an affected version of `go-git` to panic or consume excessive resources.\n\nThis can lead to denial of service in applications that use `go-git` to clone, fetch, open, or otherwise process untrusted repositories or Git object data.\n\nExploitation requires the ability to alter",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-w5pp-99ch-qj29",
+    "affected_packages": [
+      "github.com/go-git/go-git/v5",
+      "github.com/go-git/go-git/v6"
     ],
     "cwes": [
       null
@@ -143,16 +290,38 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-gcv3-5v9q-fmhh",
+    "id": "gh-GHSA-hpv4-5h6f-wqr3",
     "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:36:26Z",
-    "title": "Froxlor has an authorization bypass in FTP shell assignment via missing server-side `available_shells` enforcement",
-    "description": "### Summary\nFroxlor 2.3.6 lets administrators configure `system.available_shells` as the approved shell list that customers may assign to FTP users. However, the server-side FTP account handlers do not enforce that whitelist when processing add or edit requests.\n\nAs a result, an authenticated customer with shell delegation enabled can submit an arbitrary shell such as `/bin/bash` even when the panel UI only offers more restricted choices. In deployments that use the default `nssextrausers` integ",
+    "timestamp": "2026-05-29T19:39:41Z",
+    "title": "russh server userauth state is not reset when authentication principal changes",
+    "description": "### Summary\nThe `russh` server authentication path keeps internal userauth state across `SSH_MSG_USERAUTH_REQUEST` messages without separating that state when the request principal changes.\n\nRFC 4252 allows the `user name` and `service name` fields to change between authentication requests. The issue is not that such changes are invalid. The issue is that russh-owned authentication state, such as remaining methods, partial-success state, and in-progress method state, can remain associated with t",
+    "severity": "medium",
+    "cve_id": "CVE-2026-46705",
+    "ghsa_id": "GHSA-hpv4-5h6f-wqr3",
+    "affected_packages": [
+      "russh"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-wwx6-x28x-8259",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-29T19:37:14Z",
+    "title": "russh: Post-decompression SSH packet size was not bounded, allowing remote oversized compressed packets",
+    "description": "### Summary\n\nWhen SSH compression is enabled, `russh` accepted compressed packets whose on-wire size passed the normal transport packet-length checks but whose decompressed size was much larger. This allowed a remote peer to send oversized post-decompression packets that should have been rejected.\n\nIn current releases, this is a remote denial-of-service / resource-exhaustion issue in the post-decompression receive path.\n\nIn older releases before `0.58.0`, the same remote decompression path used ",
     "severity": "high",
-    "cve_id": "CVE-2026-41235",
-    "ghsa_id": "GHSA-gcv3-5v9q-fmhh",
+    "cve_id": "CVE-2026-46702",
+    "ghsa_id": "GHSA-wwx6-x28x-8259",
     "affected_packages": [
-      "froxlor/froxlor"
+      "russh"
     ],
     "cwes": [
       null
@@ -165,20 +334,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-xx7c-f2fq-qmv3",
+    "id": "gh-GHSA-29h4-r29x-hchv",
     "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:35Z",
-    "title": "manga-image-translator contains a remote code execution vulnerability in the shared API server...",
-    "description": "manga-image-translator contains a remote code execution vulnerability in the shared API server mode due to unsafe deserialization of untrusted pickle data in the share.py module, where the /execute/{method_name} and /simple_execute/{method_name} endpoints deserialize attacker-controlled HTTP request bodies using pickle.loads(). A remote attacker can supply a crafted pickle payload to these endpoints to execute arbitrary code in the server process, resulting in full container compromise when runn",
+    "timestamp": "2026-05-29T19:32:28Z",
+    "title": "amazon-redshift-python-driver vulnerable to Remote Code Execution via eval() Injection",
+    "description": "### Summary\namazon-redshift-python-driver is the official Python connector for Amazon Redshift. In versions 2.1.13 and earlier, the driver insufficiently validates data received from the server during query result processing. A rogue server or man-in-the-middle could leverage this to execute arbitrary code on the client.\n\n### Impact\nWhen a client connects to a rogue server implementing the PostgreSQL wire protocol, the server can send specially crafted query responses that the driver processes w",
     "severity": "critical",
-    "cve_id": "CVE-2026-10042",
-    "ghsa_id": "GHSA-xx7c-f2fq-qmv3",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-8838",
+    "ghsa_id": "GHSA-29h4-r29x-hchv",
+    "affected_packages": [
+      "redshift-connector"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -189,211 +359,74 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-8wp9-qgxj-6pm5",
+    "id": "gh-GHSA-4gg8-gxpx-9rph",
     "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:35Z",
-    "title": "A vulnerability was identified in TRENDnet TEW-432BRP 3.10B20. Affected by this issue is the...",
-    "description": "A vulnerability was identified in TRENDnet TEW-432BRP 3.10B20. Affected by this issue is the function formWPS of the file /goform/formWPS. Such manipulation of the argument peerPin leads to stack-based buffer overflow. The attack may be performed from remote. The exploit is publicly available and might be used. The vendor explains: \"This product has been EOL for 15 years (since 2009). As the item has been EOL for such a long time, we are not able to replicate or fix any vulnerabilities.\" This vu",
-    "severity": "high",
-    "cve_id": "CVE-2026-10063",
-    "ghsa_id": "GHSA-8wp9-qgxj-6pm5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-mv66-48p3-pfm6",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:35Z",
-    "title": "Incorrect behavior order in the Infotainment / Digital Round display of the Indian Motorcycle...",
-    "description": "Incorrect behavior order in the Infotainment / Digital Round display of the Indian Motorcycle Scout Bobber + Tech 2025 model year allows an adjacent-network attacker to bypass the PIN entry screen. The Infotainment uses presence of Wireless Control Module (WCM) traffic during its boot window as a proxy for whether an immobilizer is fitted; if no WCM messages are observed, it skips the PIN entry screen and shows the normal user interface. An attacker who silences the WCM during the boot window — ",
-    "severity": "low",
-    "cve_id": "CVE-2026-49318",
-    "ghsa_id": "GHSA-mv66-48p3-pfm6",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-x7xq-w72j-v4qx",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:35Z",
-    "title": "Incorrect behavior order in the Infotainment / Digital Round display of the Indian Motorcycle...",
-    "description": "Incorrect behavior order in the Infotainment / Digital Round display of the Indian Motorcycle Scout Bobber + Tech 2025 model year allows an adjacent-network attacker to bypass the PIN entry screen. The Infotainment uses presence of Wireless Control Module (WCM) traffic during its boot window as a proxy for whether an immobilizer is fitted; if no WCM messages are observed, it skips the PIN entry screen and shows the normal user interface. An attacker who silences the WCM during the boot window — ",
-    "severity": "low",
-    "cve_id": "CVE-2026-49317",
-    "ghsa_id": "GHSA-x7xq-w72j-v4qx",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-f6m3-35xp-mwj6",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:35Z",
-    "title": "A vulnerability was determined in TRENDnet TEW-432BRP 3.10B20. Affected by this vulnerability is...",
-    "description": "A vulnerability was determined in TRENDnet TEW-432BRP 3.10B20. Affected by this vulnerability is the function formSetRoute of the file /goform/formSetRoute. This manipulation of the argument ip/mask/gateway causes stack-based buffer overflow. The attack is possible to be carried out remotely. The exploit has been publicly disclosed and may be utilized. The vendor explains: \"This product has been EOL for 15 years (since 2009). As the item has been EOL for such a long time, we are not able to repl",
-    "severity": "high",
-    "cve_id": "CVE-2026-10062",
-    "ghsa_id": "GHSA-f6m3-35xp-mwj6",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3r5v-r3c5-jj73",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:35Z",
-    "title": "The WP Travel Pro plugin for WordPress is vulnerable to arbitrary user deletion via the /wp-json...",
-    "description": "The WP Travel Pro plugin for WordPress is vulnerable to arbitrary user deletion via the /wp-json/wp-travel/v1/travel-guide/{user_id} REST API endpoint in all versions up to, and including, 10.6.0. This is due to the check_permission() callback unconditionally returning true and the Database::delete() method passing the user ID directly to wp_delete_user() without any role validation. This makes it possible for unauthenticated attackers to delete arbitrary user accounts, including those of admini",
-    "severity": "critical",
-    "cve_id": "CVE-2026-4290",
-    "ghsa_id": "GHSA-3r5v-r3c5-jj73",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-c9x8-xp9p-g29g",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:35Z",
-    "title": "Improper handling of physical conditions in the bike-shutdown control of the Indian Motorcycle...",
-    "description": "Improper handling of physical conditions in the bike-shutdown control of the Indian Motorcycle Scout Bobber + Tech 2025 model year allows a physical attacker with access to the Wireless Control Module (WCM) wiring harness to bypass the anti-theft shutdown. The WCM signals shutdown to a peer ECU via a falling-edge voltage transition on a dedicated wire pair. The receiving ECU does not distinguish between an active shutdown pulse and an open-circuit / disconnected condition; interrupting the relev",
+    "timestamp": "2026-05-29T19:26:33Z",
+    "title": "uv is vulnerable to arbitrary file write through entry point names",
+    "description": "### Impact\n\nIn versions of uv prior to 0.11.15, when installing a distribution containing an entry point specification (under `console_scripts` or `gui_scripts`), uv would place the generated entry point according to the given name even if doing so resulted in a path outside of the environment's scripts directory.\n\nA malicious wheel could use this to place an executable outside of the intended environment, including in a directory already present on the user's `PATH`. This could shadow or overwr",
     "severity": "medium",
-    "cve_id": "CVE-2026-49325",
-    "ghsa_id": "GHSA-c9x8-xp9p-g29g",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-4gg8-gxpx-9rph",
+    "affected_packages": [
+      "uv",
+      "uv"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-gqvc-rhwj-m45g",
+    "id": "gh-GHSA-wjjv-3mj2-39hf",
     "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:35Z",
-    "title": "Falco Solutions PHPPageBuilder v0.31.0 contains an unrestricted file upload vulnerability in the...",
-    "description": "Falco Solutions PHPPageBuilder v0.31.0 contains an unrestricted file upload vulnerability in the pagemanager/pagebuilder module that allows remote attackers to upload arbitrary files and achieve remote code execution. The vulnerability exists due to insufficient validation of uploaded file types and executable content.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-39292",
-    "ghsa_id": "GHSA-gqvc-rhwj-m45g",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-xpm6-xp6j-7w29",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:34Z",
-    "title": "Expected behavior violation in the in-vehicle network of the Indian Motorcycle Scout Bobber +...",
-    "description": "Expected behavior violation in the in-vehicle network of the Indian Motorcycle Scout Bobber + Tech 2025 model year allows an adjacent-network attacker to bypass the motorcycle's anti-theft shutdown by forcing the Wireless Control Module (WCM) into the CAN bus-off state. Using a well-known CAN error-frame injection technique against a periodic WCM transmission, the attacker drives the WCM CAN controller's transmit error counter past the bus-off threshold, after which the WCM stops transmitting al",
-    "severity": "medium",
-    "cve_id": "CVE-2026-49316",
-    "ghsa_id": "GHSA-xpm6-xp6j-7w29",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-r2hv-45g6-75gw",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:33Z",
-    "title": "DreamMaker developed by Interinfo has a Path Traversal vulnerability, allowing unauthenticated...",
-    "description": "DreamMaker developed by Interinfo has a Path Traversal vulnerability, allowing unauthenticated remote attackers to read file names under arbitrary path by exploiting an Absolute Path Traversal vulnerability.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-10075",
-    "ghsa_id": "GHSA-r2hv-45g6-75gw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-hp24-385h-9xv4",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:33Z",
-    "title": "DreamMaker developed by Interinfo has an Arbitrary File Read vulnerability, allowing...",
-    "description": "DreamMaker developed by Interinfo has an Arbitrary File Read vulnerability, allowing unauthenticated local attackers to exploit Relative Path Traversal to download arbitrary system files.",
+    "timestamp": "2026-05-29T19:23:29Z",
+    "title": "AgenticMail API/storage and outbound relay hardening fixes",
+    "description": "The current upstream main branch at commit 7e0206d was reviewed, and the fix-first patch set was rebased on 2026-05-18. The patches cover: validated and bound inactive-agent hour filtering; storage SQL identifier validation; metadata-backed ownership checks for raw storage SQL; blocking direct storage metadata access through raw SQL; fail-closed outbound worker secret handling; SMTP envelope/header control-character validation before command construction; and TLS certificate verification as the ",
     "severity": "high",
-    "cve_id": "CVE-2026-10073",
-    "ghsa_id": "GHSA-hp24-385h-9xv4",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-47255",
+    "ghsa_id": "GHSA-wjjv-3mj2-39hf",
+    "affected_packages": [
+      "@agenticmail/api",
+      "@agenticmail/core"
+    ],
+    "cwes": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-8cph-rgr4-g5vj",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-29T19:18:01Z",
+    "title": "Parse Server's GraphQL \"Did you mean ...?\" validation suggestions disclose schema to unauthenticated callers",
+    "description": "### Impact\n\nParse Server's GraphQL endpoint discloses schema metadata to unauthenticated callers through `Did you mean ...?` suggestions embedded in GraphQL validation-error messages. An unauthenticated caller who knows only the public application id can iteratively send malformed queries to reconstruct class names, field names, argument names, mutation names, and input-object fields. This bypasses the `IntrospectionControlPlugin` enforced when `graphQLPublicIntrospection: false` (the default) a",
+    "severity": "medium",
+    "cve_id": "CVE-2026-47248",
+    "ghsa_id": "GHSA-8cph-rgr4-g5vj",
+    "affected_packages": [
+      "parse-server",
+      "parse-server"
+    ],
     "cwes": [
       null
     ],
@@ -407,38 +440,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-vxjj-52h8-95w5",
+    "id": "gh-GHSA-3pv8-6f4r-ffg2",
     "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:33Z",
-    "title": "OpenSC before 0.27.0, fixed in commit 0358817, contains a stack and heap buffer overrun...",
-    "description": "OpenSC before 0.27.0, fixed in commit 0358817, contains a stack and heap buffer overrun vulnerability in the do_key_value() function in src/pkcs15init/profile.c that allows attackers to corrupt memory by supplying a crafted profile configuration file. During pkcs15-init invocation, a key value entry beginning with '=' followed by more than sizeof(keybuf) characters is copied into keybuf via memcpy without a length check, causing both stack and heap buffer overruns.",
-    "severity": "low",
-    "cve_id": "CVE-2026-40528",
-    "ghsa_id": "GHSA-vxjj-52h8-95w5",
-    "affected_packages": [],
-    "cwes": [
-      null
+    "timestamp": "2026-05-29T19:16:12Z",
+    "title": "tar has a PAX header desynchronization issue",
+    "description": "### Summary\n\nWhen a tar stream contains multiple \"header\" entries prior to a file entry, tar-rs applies the PAX header (`x`) to the _next_ entry in the stream, regardless of type. For example, a stream of `x -> L -> file` (PAX, GNU longname, file) would result in `x`'s extensions being applied to `L` rather than to `file`.\n\n[Per POSIX pax](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/pax.html), this is incorrect: a PAX header always applies to a file entry, not any intermediary ent",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-3pv8-6f4r-ffg2",
+    "affected_packages": [
+      "tar"
     ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-7rrw-cv3r-3cgg",
-    "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:33Z",
-    "title": "OpenSC before 0.27.0-rc1, fixed in commit 3f24f0b, contains a stack buffer overflow vulnerability...",
-    "description": "OpenSC before 0.27.0-rc1, fixed in commit 3f24f0b, contains a stack buffer overflow vulnerability in piv_process_history() in src/libopensc/card-piv.c that allows physically present attackers to trigger memory corruption by presenting a crafted PIV smart card or USB device returning a URL field longer than 118 bytes in the Key History Object ASN.1 response.",
-    "severity": "low",
-    "cve_id": "CVE-2026-40510",
-    "ghsa_id": "GHSA-7rrw-cv3r-3cgg",
-    "affected_packages": [],
     "cwes": [
+      null,
       null
     ],
     "references": [
@@ -452,23 +466,45 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-x5x3-v9hr-2jhp",
+    "id": "gh-GHSA-3cv2-h65g-fgmm",
     "source": "GitHub Security",
-    "timestamp": "2026-05-29T15:30:33Z",
-    "title": "A vulnerability was found in TRENDnet TEW-432BRP 3.10B20. Affected is the function formWPS of the...",
-    "description": "A vulnerability was found in TRENDnet TEW-432BRP 3.10B20. Affected is the function formWPS of the file /goform/formWPS. The manipulation of the argument peerPin results in command injection. The attack can be executed remotely. The exploit has been made public and could be used. The vendor explains: \"This product has been EOL for 15 years (since 2009). As the item has been EOL for such a long time, we are not able to replicate or fix any vulnerabilities.\" This vulnerability only affects products",
-    "severity": "low",
-    "cve_id": "CVE-2026-10061",
-    "ghsa_id": "GHSA-x5x3-v9hr-2jhp",
-    "affected_packages": [],
+    "timestamp": "2026-05-29T19:08:23Z",
+    "title": "astral-tokio-tar has a PAX Header Desynchronization issue",
+    "description": "### Impact\n\nVersions of astral-tokio-tar prior to 0.6.2 contain a PAX header interpretation bug that allows manipulated entries to be made selectively visible or invisible during extraction with astral-tokio-tar versus other tar implementations. An attacker could use this differential to smuggle unexpected files onto a victim's filesystem.\n\n### Details\n\nWhen a tar stream contains multiple \"header\" entries prior to a file entry, astral-tokio-tar applies the PAX header (`x`) to the next entry in t",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-3cv2-h65g-fgmm",
+    "affected_packages": [
+      "astral-tokio-tar"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
       null,
       null,
-      null,
-      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-xg9x-h37w-h3r3",
+    "source": "GitHub Security",
+    "timestamp": "2026-05-29T19:07:38Z",
+    "title": "ezsystems/ezpublish-legacy has a SQL injection in dfscleanup",
+    "description": "NB: All tags and branches in this repository are past their end of life, so the vulnerability will not be fixed. The advisory is posted on the request of the researcher, for the information of anyone who might still use this software.\n\n### Impact\nThere is a security vulnerability in eZ Publish Legacy, affecting the dfscleanup.php script and the `_getFileList` function of the `eZDFSFileHandlerMySQLiBackend` class (kernel/private/classes/clusterfilehandlers/dfsbackends/mysqli.php). The vulnerabili",
+    "severity": "high",
+    "cve_id": "CVE-2026-38739",
+    "ghsa_id": "GHSA-xg9x-h37w-h3r3",
+    "affected_packages": [
+      "ezsystems/ezpublish-legacy"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null
     ],
