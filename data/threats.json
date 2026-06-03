@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1780506287831-1",
+    "id": "twitter-1780521864504-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-03T17:04:47.831Z",
+    "timestamp": "2026-06-03T21:24:24.504Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1780506287831-1",
+    "id": "hn-1780521864504-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-03T17:04:47.831Z",
+    "timestamp": "2026-06-03T21:24:24.504Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,62 +26,67 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-mm6v-q8q9-pgcf",
+    "id": "gh-GHSA-jmmv-h3mp-59v8",
     "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:43Z",
-    "title": "An issue was discovered in Django 6.0 before 6.0.6 and 5.2 before 5.2.15.\n`django.core.mail...",
-    "description": "An issue was discovered in Django 6.0 before 6.0.6 and 5.2 before 5.2.15.\n`django.core.mail.backends.smtp.EmailBackend` in Django fails to prevent reuse of a partially-initialized connection after a failed `STARTTLS` handshake when `fail_silently=True`, which allows on-path network attackers to read email content via cleartext interception.\nEarlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected.\nDjango would like to thank Kasper Dupont fo",
-    "severity": "low",
-    "cve_id": "CVE-2026-7666",
-    "ghsa_id": "GHSA-mm6v-q8q9-pgcf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-h7pc-vwp9-298g",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:43Z",
-    "title": "An issue was discovered in Django 6.0 before 6.0.6 and 5.2 before 5.2.15.\n`django.http...",
-    "description": "An issue was discovered in Django 6.0 before 6.0.6 and 5.2 before 5.2.15.\n`django.http.HttpRequest.get_signed_cookie` in Django uses a non-injective salt derivation (concatenating the cookie name and salt argument), which allows a remote attacker to use a cookie in a context different from the one where it was signed, via distinct `(name, salt)` pairs that produce the same concatenation.\nEarlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affec",
-    "severity": "low",
-    "cve_id": "CVE-2026-6873",
-    "ghsa_id": "GHSA-h7pc-vwp9-298g",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-fgcw-684q-jj6r",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:43Z",
-    "title": "A vulnerability in the LightGlue model loading path of huggingface/transformers version 5.2.0...",
-    "description": "A vulnerability in the LightGlue model loading path of huggingface/transformers version 5.2.0 allows an attacker-controlled model repository to execute arbitrary code during model initialization. The issue arises because the `trust_remote_code` parameter, intended to prevent remote code execution, is overridden by untrusted serialized configuration data in a nested code path. Specifically, when loading a LightGlue model using `AutoModel.from_pretrained()` with `trust_remote_code=False`, the `Lig",
+    "timestamp": "2026-06-03T21:16:25Z",
+    "title": "Docling Core: Unsafe remote filename resolution",
+    "description": "### Impact\nIn versions `>= 1.5.0, < 2.74.1`, `docling-core` did not sufficiently restrict remote request destinations and could resolve a server-provided `Content-Disposition` to a local path in an unsafe manner.\n\nIn applications that accept untrusted URLs, this could allow SSRF attacks targeting local files outside the user-defined cache directory.\n\n### Patches\nPatched in `docling-core` `2.74.1`.\nThe fix adds stricter validation for remote destinations and normalizes server-provided filenames b",
     "severity": "high",
-    "cve_id": "CVE-2026-5241",
-    "ghsa_id": "GHSA-fgcw-684q-jj6r",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-44023",
+    "ghsa_id": "GHSA-jmmv-h3mp-59v8",
+    "affected_packages": [
+      "docling-core"
+    ],
     "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-j5xp-7m2f-49jv",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T21:15:31Z",
+    "title": "Docling Core: Insufficient validation of image reference URIs",
+    "description": "### Impact\nIn versions `>= 2.5.0, < 2.74.1`, `docling-core`  could allow local `file://` image references and accepted inline `data:` content without a decoded-size limit.\n\nIn applications that accept untrusted image references, this may allow access to local files readable by the process or excessive memory use from large inline payloads.\n\n### Patches\nPatched in `docling-core` `2.74.1`.\nThe fix blocks local file URIs by default and adds a size limit for decoded inline image data.\n\nUsers should ",
+    "severity": "high",
+    "cve_id": "CVE-2026-44019",
+    "ghsa_id": "GHSA-j5xp-7m2f-49jv",
+    "affected_packages": [
+      "docling-core"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-q29v-xc37-wh5m",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T21:15:02Z",
+    "title": "Docling: Unsafe URI and Path Handling in HTML Backend",
+    "description": "### Impact\nThe HTML backend did not perform sufficient validation during resource handling:\n- Accepted `file://` URIs enabling local file system access when `enable_local_fetch=True`\n- Path resolution allowed traversal outside intended directories via `../` sequences and absolute paths\n- Did not block internal network resources under `enable_remote_fetch=True`\n- HTTP redirects were not validated, potentially redirecting to unintended schemes\n- No resource limits for remote image downloads and `d",
+    "severity": "high",
+    "cve_id": "CVE-2026-47214",
+    "ghsa_id": "GHSA-q29v-xc37-wh5m",
+    "affected_packages": [
+      "docling"
+    ],
+    "cwes": [
+      null,
       null
     ],
     "references": [
@@ -94,37 +99,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-hxqj-5m25-j368",
+    "id": "gh-GHSA-2j5p-7p5m-cvqr",
     "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:43Z",
-    "title": "ProjectsAndPrograms school-management-system uses predictable credentials by generating student's...",
-    "description": "ProjectsAndPrograms school-management-system uses predictable credentials by generating student's and teacher's passwords solely from the user’s date of birth (e.g., 12072000 for 12 July 2000). The application does not require or prompt users to change the password upon first login. This behavior allows attackers to easily guess or derive valid credentials, leading to unauthorized account access.\n\nThe maintainers were notified early about this vulnerability but did not provide details regarding ",
+    "timestamp": "2026-06-03T21:14:35Z",
+    "title": "Docling: Potential Path Traversal via LaTeX \\includegraphics and \\input Commands",
+    "description": "### Impact\nThe LaTeX backend's handling of `\\includegraphics`, `\\input`, and `\\include` commands lacked path containment validation. Attackers could craft malicious LaTeX documents with path traversal sequences (e.g., `../../../etc/passwd`) to:\n- Read arbitrary files from the file system accessible to the process\n- Include sensitive files in the converted document output\n- Potentially access configuration files, credentials, or other sensitive data\n\n### Patches\nFixed in version 2.91.0. The fix i",
     "severity": "medium",
-    "cve_id": "CVE-2026-47325",
-    "ghsa_id": "GHSA-hxqj-5m25-j368",
-    "affected_packages": [],
-    "cwes": [
-      null
+    "cve_id": "CVE-2026-44022",
+    "ghsa_id": "GHSA-2j5p-7p5m-cvqr",
+    "affected_packages": [
+      "docling"
     ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-xh68-hfp5-5x5m",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:43Z",
-    "title": "daphne before 4.2.2 reconstructs a raw HTTP request from Twisted's parsed headers and feeds it to...",
-    "description": "daphne before 4.2.2 reconstructs a raw HTTP request from Twisted's parsed headers and feeds it to autobahn for WebSocket handshake processing. Twisted does not treat \\x0b, \\x0c, \\x1c, \\x1d, \\x1e, or \\x85 as header line separators, but autobahn decodes header values to str and calls splitlines(). An attacker can exploit this parser differential to inject additional headers into the ASGI scope passed to the application. daphne now rejects requests with these bytes in any header value with a 400 re",
-    "severity": "low",
-    "cve_id": "CVE-2026-44546",
-    "ghsa_id": "GHSA-xh68-hfp5-5x5m",
-    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -137,20 +122,46 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-8m4w-m8gr-x23c",
+    "id": "gh-GHSA-m88r-rg27-5xfg",
     "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:43Z",
-    "title": "ProjectsAndPrograms school-management-system is vulnerable to Stored Cross‑Site Scripting (XSS)...",
-    "description": "ProjectsAndPrograms school-management-system is vulnerable to Stored Cross‑Site Scripting (XSS) in multiple attributes of students and teachers objects. An authorized attacker (e.g., a teacher or administrator) can inject malicious JavaScript that is subsequently executed in other users’ browsers.\nCritically, when chained with CVE‑2025‑11661, which allows unauthenticated access to backend endpoints, this vulnerability can be exploited by a remote attacker without privileges to inject and execute",
+    "timestamp": "2026-06-03T21:14:15Z",
+    "title": "Docling: Unsafe XML Entity Expansion in USPTO Patent Backend",
+    "description": "### Impact\nThe USPTO patent XML parser used the standard `xml.sax.parseString()` without protection against XML External Entity (XXE) attacks. An attacker could craft malicious USPTO patent XML files with external entity references that could:\n- Read arbitrary files from the server filesystem\n- Perform Server-Side Request Forgery (SSRF) attacks\n- Cause denial of service through entity expansion (Billion Laughs attack)\n\nThe vulnerability affects three USPTO patent format parsers: ICE (v4.x), Gran",
+    "severity": "high",
+    "cve_id": "CVE-2026-44020",
+    "ghsa_id": "GHSA-m88r-rg27-5xfg",
+    "affected_packages": [
+      "docling"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-r3xg-rg9j-67fv",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T21:13:32Z",
+    "title": "Docling: Unsafe Archive Extraction and XML Parsing in METS-GBS Backend",
+    "description": "### Impact\nThe METS-GBS backend's XML parsing and the input document format detection lacked security controls, enabling:\n- XML External Entity (XXE) attacks to read local files or cause denial of service\n- Decompression bombs (zip bombs) to exhaust memory and disk space\n- Unbounded archive extraction consuming system resources\n\nAn attacker could craft malicious METS-GBS archives that, when processed, could read sensitive files, exhaust system resources, or cause application crashes.\n\n### Patche",
     "severity": "medium",
-    "cve_id": "CVE-2026-47324",
-    "ghsa_id": "GHSA-8m4w-m8gr-x23c",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-44018",
+    "ghsa_id": "GHSA-r3xg-rg9j-67fv",
+    "affected_packages": [
+      "docling"
+    ],
     "cwes": [
+      null,
+      null,
       null
     ],
     "references": [
-      null,
       null,
       null,
       null
@@ -159,21 +170,22 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-8cjm-8mp7-r2xf",
+    "id": "gh-GHSA-pj2v-ggqh-cmq2",
     "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:43Z",
-    "title": "An issue was discovered in Django 5.2 before 5.2.15 and 6.0 before 6.0.6.\n`django.middleware...",
-    "description": "An issue was discovered in Django 5.2 before 5.2.15 and 6.0 before 6.0.6.\n`django.middleware.cache.UpdateCacheMiddleware` in Django does not match `Cache-Control` response directives case-insensitively, which allows remote attackers to read responses that were incorrectly cached because their `Cache-Control` directives used uppercase or mixed-case values.\nEarlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected.\nDjango would like to thank A",
-    "severity": "low",
-    "cve_id": "CVE-2026-8404",
-    "ghsa_id": "GHSA-8cjm-8mp7-r2xf",
-    "affected_packages": [],
+    "timestamp": "2026-06-03T21:09:37Z",
+    "title": "Docling: Unsafe Playwright-based HTML Rendering",
+    "description": "### Impact\nIn versions `>= 2.82.0, < 2.91.0`, if the HTML backend was explicitly configured for rendering (rendering option by default deactivated), then the Playwright-based rendering feature could allow JavaScript execution and unrestricted network access when processing untrusted HTML documents. An attacker could craft malicious HTML that executes arbitrary JavaScript in the rendering context or makes unauthorized network requests to internal services, potentially leading to SSRF attacks, dat",
+    "severity": "high",
+    "cve_id": "CVE-2026-44016",
+    "ghsa_id": "GHSA-pj2v-ggqh-cmq2",
+    "affected_packages": [
+      "docling"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
-      null,
-      null,
       null,
       null,
       null
@@ -182,38 +194,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-923m-gv2p-w5qp",
+    "id": "gh-GHSA-ch57-39q2-4crm",
     "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:43Z",
-    "title": "An issue was discovered in Django 5.2 before 5.2.15 and 6.0 before 6.0.6.\n`django.utils.cache...",
-    "description": "An issue was discovered in Django 5.2 before 5.2.15 and 6.0 before 6.0.6.\n`django.utils.cache.has_vary_header()` in Django does not strip leading or trailing whitespace from `Vary` response header values before comparison, which allows remote attackers to read cached responses via requests to URLs whose responses contain whitespace-padded Vary header values.\nEarlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected.\nDjango would like to than",
-    "severity": "low",
-    "cve_id": "CVE-2026-48587",
-    "ghsa_id": "GHSA-923m-gv2p-w5qp",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-qcc6-8w82-xq69",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:42Z",
-    "title": "A cleartext transmission of sensitive information vulnerability in Synology Note Station Client...",
-    "description": "A cleartext transmission of sensitive information vulnerability in Synology Note Station Client before 2.2.4-703 allows man-in-the-middle attackers to obtain user credential.",
+    "timestamp": "2026-06-03T21:06:27Z",
+    "title": "malla: Stored XSS via Meshtastic node names in multiple frontend pages",
+    "description": "Node names (long_name, short_name) received via MQTT are stored in SQLite without sanitization and rendered into the DOM without escaping.\nAny participant on a public Meshtastic MQTT broker can set a malicious node name that executes JavaScript in the browser of every Malla dashboard visitor.\n\nAffected files:\n\n - src/malla/templates/traceroute_graph.html (line ~832)\n - src/malla/templates/map.html (lines ~945, 1078)\n - src/malla/templates/packet_detail.html (lines ~1402, 1452)\n - src/malla/stati",
     "severity": "medium",
-    "cve_id": "CVE-2023-52951",
-    "ghsa_id": "GHSA-qcc6-8w82-xq69",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-43980",
+    "ghsa_id": "GHSA-ch57-39q2-4crm",
+    "affected_packages": [
+      "malla"
+    ],
     "cwes": [
       null
     ],
@@ -226,14 +217,254 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-4ph9-3c4q-r2hh",
+    "id": "gh-GHSA-8x6r-g9mw-2r78",
     "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:42Z",
-    "title": "Missing input validation in the rfapiRibBi2Ri() function (rfapi_rib.c) of FRRouting (FRR) stable...",
-    "description": "Missing input validation in the rfapiRibBi2Ri() function (rfapi_rib.c) of FRRouting (FRR) stable/10.0 to stable/10.6 allows attackers to cause a Denial of Service (DoS) via supplying a crafted BGP UPDATE message.",
+    "timestamp": "2026-06-03T21:05:17Z",
+    "title": "React Router vulnerable to DoS via unbounded path expansion in __manifest endpoint",
+    "description": "There exists a potential DOS attack vector in React Router Framework Mode applications (as well as Remix v2.10.0 - 2.17.4).  Certain requests can be crafted to consume disproportionate resources on the server, resulting in response time degredation and/or service unavailability for end users.\n\n> [!NOTE]\n> This does not impact your React Router application if you are using [Declarative Mode](https://reactrouter.com/start/modes#declarative) (`<BrowserRouter>`) or [Data Mode](https://reactrouter.co",
+    "severity": "high",
+    "cve_id": "CVE-2026-42342",
+    "ghsa_id": "GHSA-8x6r-g9mw-2r78",
+    "affected_packages": [
+      "react-router",
+      "@remix-run/server-runtime"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-49rj-9fvp-4h2h",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T21:03:32Z",
+    "title": "React Router's vendored turbo-stream v2 allows arbitrary constructor invocation via TYPE_ERROR deserialization leading to Unauth RCE",
+    "description": "When using React Router v7 in [Framework Mode](https://reactrouter.com/start/modes#framework), there exists a combination of steps that could potentially allow unauthorized RCE through external requests.  This first requires the application code to have an existing prototype pollution vulnerability.  This can be leveraged into a 2-step attack in which the second step can trigger unauthorized RCE on the remote server.\n\n> [!NOTE]\n> This does not impact your React Router application if you are usin",
+    "severity": "high",
+    "cve_id": "CVE-2026-42211",
+    "ghsa_id": "GHSA-49rj-9fvp-4h2h",
+    "affected_packages": [
+      "react-router"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-37m5-m4q3-fc6x",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T21:02:12Z",
+    "title": "Froxlor: BIND Zone File Injection via TXT Record Content",
+    "description": "## Summary\n\nThe `DomainZones.add` API endpoint does not sanitize newline characters in TXT record content. An authenticated customer with DNS editing enabled can inject newlines into TXT record values, which break out of the record line in the generated BIND zone file. This enables injection of arbitrary BIND directives (`$INCLUDE`, `$GENERATE`) and arbitrary DNS records (A, MX, CNAME) into the zone file written to disk by the DNS rebuild cron.\n\nThis is an incomplete fix for CVE-2026-30932 (GHSA",
+    "severity": "high",
+    "cve_id": "CVE-2026-41234",
+    "ghsa_id": "GHSA-37m5-m4q3-fc6x",
+    "affected_packages": [
+      "froxlor/froxlor"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-vvgj-x9jq-8cj9",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T20:59:49Z",
+    "title": "quic-go: HTTP/3 QPACK Trailer Expansion Memory Exhaustion ",
+    "description": "## Summary\n\nAn attacker can cause excessive memory allocation in quic-go's HTTP/3 client and server implementations by sending a QPACK-encoded HEADERS frame that decodes into a large trailer field section with many unique field names and/or large values. The implementation builds an `http.Header` for the corresponding `http.Request` or `http.Response`, while only enforcing limits on the size of the QPACK-compressed HEADERS frame, not on the decoded field section. This can lead to memory exhausti",
+    "severity": "medium",
+    "cve_id": "CVE-2026-40898",
+    "ghsa_id": "GHSA-vvgj-x9jq-8cj9",
+    "affected_packages": [
+      "github.com/quic-go/quic-go"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-2j2x-hqr9-3h42",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T20:58:01Z",
+    "title": "React Router's same-origin redirect with path starting // causes open redirect via protocol-relative URL reinterpretation",
+    "description": "Certain URLs passed to the `redirect` function can trigger an open redirect to an external domain depending on the level of validation done by the application prior to returning the `redirect`.\n\n> [!NOTE]\n> This does not impact your React Router application if you are using [Declarative Mode](https://reactrouter.com/start/modes#declarative) (`<BrowserRouter>`)",
+    "severity": "medium",
+    "cve_id": "CVE-2026-40181",
+    "ghsa_id": "GHSA-2j2x-hqr9-3h42",
+    "affected_packages": [
+      "react-router",
+      "react-router"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-jg22-mg44-37j8",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T20:56:54Z",
+    "title": "AIOHTTP is Vulnerable to Deserialization of Untrusted Data",
+    "description": "### Summary\n\nUsing ``CookieJar.load()`` with untrusted input may allow arbitrary code execution.\n\n### Impact\n\nMost applications using this function will be doing so with the user's own data, so this is unlikely to affect many applications.\n\n### Workaround\n\nIf an application does allow attacker controlled files to be loaded, a workaround on older releases would be to sanitise the files before loading.\n\n-----\n\nPatch: https://github.com/aio-libs/aiohttp/commit/dcf40f30637e8752c76781cf6703b5a236749a",
+    "severity": "medium",
+    "cve_id": "CVE-2026-34993",
+    "ghsa_id": "GHSA-jg22-mg44-37j8",
+    "affected_packages": [
+      "aiohttp"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-8646-j5j9-6r62",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T20:33:32Z",
+    "title": "React Router vulnerable to XSS in unstable RSC redirect handling via javascript: redirect targets",
+    "description": "When using React Router v7's unstable RSC APIs, there exists a potential client-side XSS issue in the RSC redirect handling if redirects are coming from untrusted sources\n\n> [!NOTE]\n> This only impacts your application if you are using the unstable RSC APIs in React Router.",
+    "severity": "high",
+    "cve_id": "CVE-2026-33245",
+    "ghsa_id": "GHSA-8646-j5j9-6r62",
+    "affected_packages": [
+      "react-router"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-f22v-gfqf-p8f3",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T20:33:01Z",
+    "title": "React Router has stored XSS via unescaped Location header in prerendered redirect HTML",
+    "description": "When using React Router v7 [Framework Mode](https://reactrouter.com/start/modes#framework) with [Pre-rendering](https://reactrouter.com/how-to/pre-rendering) enabled, an improper neutralization of the HTTP `Location` header value can permit Cross-Site Scripting (XSS) in statically generated HTML files if the redirect location comes from an untrusted source.\n\n> [!NOTE]\n> This does not impact your React Router application if you are using [Declarative Mode](https://reactrouter.com/start/modes#decl",
+    "severity": "medium",
+    "cve_id": "CVE-2026-33244",
+    "ghsa_id": "GHSA-f22v-gfqf-p8f3",
+    "affected_packages": [
+      "react-router"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-m8xx-3x29-84h8",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T20:25:50Z",
+    "title": "backpack/crud is vulnerable to Cross-Site Scripting (XSS)",
+    "description": "### Impact\n\nIt’s a “*moderate*” vulnerability… but being an admin panel, take this seriously. It’s difficult… but an attacker could conduct a targeted phishing campaign, in order to **trick your users or admins to click a malicious link, which under very specific circumstances could give them information... or even admin access**. It’s *unlikely*, but that’s not good enough in admin panels - It should be made *impossible*. That’s why you are bothered with this. \n\n### Patches\n\n\nIf you don’t have ",
+    "severity": "medium",
+    "cve_id": "CVE-2022-31114",
+    "ghsa_id": "GHSA-m8xx-3x29-84h8",
+    "affected_packages": [
+      "backpack/crud",
+      "backpack/crud",
+      "backpack/crud"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-cjqg-rq2h-2fvj",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T20:02:42Z",
+    "title": "Docling: Unsafe Zip Extraction in EasyOCR Model Download",
+    "description": "### Impact\nIn versions `< 2.91.0`, The EasyOCR model download functionality extracted ZIP archives without validating member paths, enabling Zip Slip attacks. If an attacker could compromise the model download source (via supply chain attack, DNS spoofing, or MITM), they could write arbitrary files to any location writable by the process, potentially achieving:\n- Remote code execution by overwriting Python files or system binaries\n- Persistent backdoors by modifying startup scripts or SSH keys\n-",
+    "severity": "high",
+    "cve_id": "CVE-2026-44017",
+    "ghsa_id": "GHSA-cjqg-rq2h-2fvj",
+    "affected_packages": [
+      "docling"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-vj56-8x44-c882",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T18:33:13Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: rt9455: Fix...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: rt9455: Fix use-after-free in power_supply_changed()\n\nUsing the `devm_` variant for requesting IRQ _before_ the `devm_`\nvariant for allocating/registering the `power_supply` handle, means that\nthe `power_supply` handle will be deallocated/unregistered _before_ the\ninterrupt handler (since `devm_` naturally deallocates in reverse\nallocation order). This means that during removal, there is a race\ncondition where an",
     "severity": "unknown",
-    "cve_id": "CVE-2026-37460",
-    "ghsa_id": "GHSA-4ph9-3c4q-r2hh",
+    "cve_id": "CVE-2026-46270",
+    "ghsa_id": "GHSA-vj56-8x44-c882",
     "affected_packages": [],
     "cwes": [],
     "references": [
@@ -241,25 +472,7 @@
       null,
       null,
       null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-qpc8-7fxc-cm4p",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:42Z",
-    "title": "An issue was discovered in Django 5.2 before 5.2.15 and 6.0 before 6.0.6.\n`django.middleware...",
-    "description": "An issue was discovered in Django 5.2 before 5.2.15 and 6.0 before 6.0.6.\n`django.middleware.cache.UpdateCacheMiddleware` in Django does not add `Authorization` to the `Vary` response header for requests bearing that header without `Cache-Control: public`, which allows remote attackers to read private cached responses via unauthenticated requests to the same URL.\nEarlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected.\nDjango would like to",
-    "severity": "low",
-    "cve_id": "CVE-2026-35193",
-    "ghsa_id": "GHSA-qpc8-7fxc-cm4p",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
+      null,
       null,
       null,
       null,
@@ -270,186 +483,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-f3gg-2qff-fg59",
+    "id": "gh-GHSA-3vgg-pc24-vv5m",
     "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:42Z",
-    "title": "A NULL pointer dereference in the gf_filter_pid_resolve_file_template_ex function (/filter_core...",
-    "description": "A NULL pointer dereference in the gf_filter_pid_resolve_file_template_ex function (/filter_core/filter_pid.c) of GPAC Project/MP4Box before 26.02.0 allows attackers to cause a Denial of Service (DoS) via supplying a crafted file.",
+    "timestamp": "2026-06-03T18:33:13Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ninet: RAW sockets using...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ninet: RAW sockets using IPPROTO_RAW MUST drop incoming ICMP\n\nYizhou Zhao reported that simply having one RAW socket on protocol\nIPPROTO_RAW (255) was dangerous.\n\n  socket(AF_INET, SOCK_RAW, 255);\n\nA malicious incoming ICMP packet can set the protocol field to 255\nand match this socket, leading to FNHE cache changes.\n\ninner = IP(src=\"192.168.2.1\", dst=\"8.8.8.8\", proto=255)/Raw(\"TEST\")\npkt = IP(src=\"192.168.1.1\", dst=\"192.168.2.1",
     "severity": "unknown",
-    "cve_id": "CVE-2025-60477",
-    "ghsa_id": "GHSA-f3gg-2qff-fg59",
+    "cve_id": "CVE-2026-46266",
+    "ghsa_id": "GHSA-3vgg-pc24-vv5m",
     "affected_packages": [],
     "cwes": [],
     "references": [
       null,
       null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-5754-2m89-cvmg",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:42Z",
-    "title": "An inclusion of functionality from untrusted control sphere vulnerability in OpenSSL...",
-    "description": "An inclusion of functionality from untrusted control sphere vulnerability in OpenSSL configuration in Synology Active Backup for Business Recovery Media Creator before 2.5.0-2081 allows local users to execute arbitrary code via unspecified vectors.",
-    "severity": "high",
-    "cve_id": "CVE-2022-49036",
-    "ghsa_id": "GHSA-5754-2m89-cvmg",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-57rp-874r-xvf4",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:42Z",
-    "title": "A remote attacker with user privileges can exploit a stack buffer overflow in gdv-serverconfig to...",
-    "description": "A remote attacker with user privileges can exploit a stack buffer overflow in gdv-serverconfig to gain full system access as root.",
-    "severity": "high",
-    "cve_id": "CVE-2026-35085",
-    "ghsa_id": "GHSA-57rp-874r-xvf4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-qqc4-wwg4-7292",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:42Z",
-    "title": "An improper limitation of a pathname to a restricted directory ('Path Traversal') vulnerability...",
-    "description": "An improper limitation of a pathname to a restricted directory ('Path Traversal') vulnerability in Backup.Repository webapi component in Synology Hyper Backup before 4.1.2-4036 allows remote authenticated users with administrator privileges to write specific files containing non-sensitive information via unspecified vectors.",
-    "severity": "medium",
-    "cve_id": "CVE-2024-47263",
-    "ghsa_id": "GHSA-qqc4-wwg4-7292",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-43cg-f93f-9jhx",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:42Z",
-    "title": "A divide-by-zero vulnerability in the ext4_block_set_lb_size function in src/ext4_blockdev.c of...",
-    "description": "A divide-by-zero vulnerability in the ext4_block_set_lb_size function in src/ext4_blockdev.c of the lwext4 1.0.0 library allows attackers to cause a denial of service by providing a malformed ext4 filesystem image that results in a zero logical block size. The vulnerability is triggered during mount or image processing and leads to a Floating-Point Exception (FPE) under sanitizers or a runtime crash in standard builds due to missing validation of lb_size.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-70100",
-    "ghsa_id": "GHSA-43cg-f93f-9jhx",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-vg85-v4gp-8v33",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:42Z",
-    "title": "A remote attacker with user privileges can exploit a stack buffer overflow in dali-devconfig to...",
-    "description": "A remote attacker with user privileges can exploit a stack buffer overflow in dali-devconfig to gain full system access as root.",
-    "severity": "high",
-    "cve_id": "CVE-2026-35084",
-    "ghsa_id": "GHSA-vg85-v4gp-8v33",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-v475-jf39-hvf2",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:42Z",
-    "title": "The ugw-logread method allows a remote attacker with user privileges to access arbitrary local...",
-    "description": "The ugw-logread method allows a remote attacker with user privileges to access arbitrary local files due to insufficient validation of user-supplied input.",
-    "severity": "high",
-    "cve_id": "CVE-2026-35082",
-    "ghsa_id": "GHSA-v475-jf39-hvf2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-2wj3-r484-f224",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:42Z",
-    "title": "An inclusion of functionality from untrusted control sphere vulnerability in MinGW DLL component...",
-    "description": "An inclusion of functionality from untrusted control sphere vulnerability in MinGW DLL component in Synology Hyper Backup Explorer before 3.0.1-0156 allows local users to execute arbitrary code via unspecified vectors.",
-    "severity": "high",
-    "cve_id": "CVE-2022-49042",
-    "ghsa_id": "GHSA-2wj3-r484-f224",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-4v99-r46p-gx3v",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T15:30:42Z",
-    "title": "An out-of-bounds read in the ext4_ext_binsearch_idx function in src/ext4_extent.c of the lwext4 1...",
-    "description": "An out-of-bounds read in the ext4_ext_binsearch_idx function in src/ext4_extent.c of the lwext4 1.0.0 library allows attackers to cause a denial of service by supplying a specially crafted ext4 filesystem image. The vulnerability occurs due to insufficient validation of extent header fields before performing a binary search over extent index entries, which can result in invalid pointer calculations and an out-of-bounds memory read during extent tree traversal.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-70101",
-    "ghsa_id": "GHSA-4v99-r46p-gx3v",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
       null,
       null,
       null,
