@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1780521864504-1",
+    "id": "twitter-1780548634347-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-03T21:24:24.504Z",
+    "timestamp": "2026-06-04T04:50:34.347Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1780521864504-1",
+    "id": "hn-1780548634347-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-03T21:24:24.504Z",
+    "timestamp": "2026-06-04T04:50:34.347Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -37,7 +37,410 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
+      "impact_assessment": "The open-source vulnerability scanner itself does not pose a direct threat, but its widespread adoption could lead to potential misuse by malicious actors to identify and exploit unpatched vulnerabilities in systems. Additionally, organizations relying solely on the tool without proper validation may face risks if the tool provides inaccurate or incomplete results.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Retail",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Evaluate the tool in a controlled environment to assess its accuracy and reliability before integrating it into production workflows.",
+        "Ensure that any identified vulnerabilities are verified and patched using established security protocols.",
+        "Monitor for updates or potential misuse of the tool by threat actors and adjust security measures accordingly."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-96vc-39m3-22w5",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-04T03:30:22Z",
+    "title": "PackagePersister.validate_tgz builds \"tar -tf #{tgz} 2>&1\" where tgz = File.join(release_dir, ...",
+    "description": "PackagePersister.validate_tgz builds \"tar -tf #{tgz} 2>&1\" where tgz = File.join(release_dir, 'packages', \"#{name}.tgz\") and name = package_meta['name'] comes directly from release.MF inside the uploaded tarball. The string is passed to Bosh::Common::Exec.sh, which executes via %x{} — i.e., /bin/sh -c. No Shellwords.escape is applied. The Models::Package Sequel validation (VALID_ID = /^[-0-9A-Za-z_+.]+$/i) would reject the name, but in create_package (lines 74–79) the shell-out in save_package_s",
+    "severity": "high",
+    "cve_id": "CVE-2026-41011",
+    "ghsa_id": "GHSA-96vc-39m3-22w5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41011.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-9p7j-9995-m88w",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-04T03:30:22Z",
+    "title": "HTML::Entities versions before 3.84 for Perl read freed heap memory in _decode_entities.\n\nThe XS...",
+    "description": "HTML::Entities versions before 3.84 for Perl read freed heap memory in _decode_entities.\n\nThe XS routine backing HTML::Entities::_decode_entities cached a pointer (repl) into the entity-value SV returned by hv_fetch on the entity2char hash. When the input SV was identical to a value SV in that hash, and that value contained its own key as an entity reference, a later call to grow_gap() reallocated the SV's PV buffer and freed the backing allocation that repl still pointed into. The subsequent co",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-8829",
+    "ghsa_id": "GHSA-9p7j-9995-m88w",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 72,
+      "impact_assessment": "The vulnerability in HTML::Entities versions before 3.84 for Perl could allow attackers to exploit a use-after-free condition, potentially leading to application crashes, data corruption, or remote code execution under certain circumstances. This poses a significant risk to systems relying on this library for parsing or decoding HTML entities.",
+      "affected_industries": [
+        "Web Development",
+        "E-commerce",
+        "Content Management Systems",
+        "Software as a Service (SaaS)",
+        "Financial Services"
+      ],
+      "recommended_actions": [
+        "Upgrade to HTML::Entities version 3.84 or later to mitigate the vulnerability.",
+        "Conduct a dependency audit to identify and update all applications using vulnerable versions of HTML::Entities.",
+        "Implement runtime monitoring and logging to detect potential exploitation attempts targeting this vulnerability."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 72
+  },
+  {
+    "id": "gh-GHSA-vrwp-qqhw-75c3",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-04T03:30:22Z",
+    "title": "OMICARD EDM developed by ITPison has a Insecure Direct Object Reference vulnerability, allowing...",
+    "description": "OMICARD EDM developed by ITPison has a Insecure Direct Object Reference vulnerability, allowing unauthenticated remote attackers to modify a specific parameter to obtain user's email address.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-10597",
+    "ghsa_id": "GHSA-vrwp-qqhw-75c3",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-10597.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-f9p6-prpf-3757",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-04T03:30:22Z",
+    "title": "Weak Randomness / Insecure Cryptographic Primitive (CWE-338) in Get-RandomPassword in BOSH...",
+    "description": "Weak Randomness / Insecure Cryptographic Primitive (CWE-338) in Get-RandomPassword in BOSH-Ecosystem / windows-utilities-release allows a network attacker to estimate VM boot time and reconstruct a small candidate list to recover the Administrator password. The randomize_password job exists solely to lock the local Administrator account behind an unguessable password as a hardening control. Because the password is derived from a predictable, clock-seeded PRNG, a network attacker who can estimate",
+    "severity": "high",
+    "cve_id": "CVE-2026-41858",
+    "ghsa_id": "GHSA-f9p6-prpf-3757",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41858.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-fqm2-p6px-f54c",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-04T03:30:22Z",
+    "title": "CWE-326 in BOSH allows a local attacker to steal Basic-auth credentials or redirect UAA token...",
+    "description": "CWE-326 in BOSH allows a local attacker to steal Basic-auth credentials or redirect UAA token requests via MITM. HttpRequestHelper#create_async_endpoint and #send_http_get_request_synchronous hard-code OpenSSL::SSL::VERIFY_NONE, enabling an attacker to intercept traffic between bosh-monitor and the BOSH director or UAA and steal credentials.\n\nAffected versions:\n- BOSH: all versions prior to v282.1.9 (inclusive); fixed in v282.1.9 or later",
+    "severity": "high",
+    "cve_id": "CVE-2026-41860",
+    "ghsa_id": "GHSA-fqm2-p6px-f54c",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41860.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-xcv3-99jh-m22g",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-04T03:30:22Z",
+    "title": "The MasterStudy LMS Pro Plus plugin for WordPress is vulnerable to generic SQL Injection via the ...",
+    "description": "The MasterStudy LMS Pro Plus plugin for WordPress is vulnerable to generic SQL Injection via the 'columns' parameter in all versions up to, and including, 4.8.20 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with instructor-level access or above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the dat",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8653",
+    "ghsa_id": "GHSA-xcv3-99jh-m22g",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows authenticated attackers with instructor-level access or higher to exploit SQL injection, potentially leading to unauthorized access to sensitive data such as user credentials, personal information, and course details. This could result in data breaches, loss of trust, and compliance violations.",
+      "affected_industries": [
+        "Education",
+        "E-learning Platforms",
+        "Online Training Providers",
+        "Small Businesses using WordPress"
+      ],
+      "recommended_actions": [
+        "Immediately update the MasterStudy LMS Pro Plus plugin to a patched version (if available) or disable the plugin until a fix is released.",
+        "Restrict access to instructor-level accounts and review user permissions to minimize exposure to potential attackers.",
+        "Implement a Web Application Firewall (WAF) to detect and block malicious SQL queries targeting the vulnerability."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-7c7h-p74x-w3h5",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-04T03:30:22Z",
+    "title": "An out-of-bounds read vulnerability in the morse.ko HaLow Wi-Fi kernel driver in Morse Micro...",
+    "description": "An out-of-bounds read vulnerability in the morse.ko HaLow Wi-Fi kernel driver in Morse Micro HaLowLink 2 software versions prior to 2.11.12 allows an unauthenticated attacker within radio range to disclose a small amount of kernel heap memory or cause a Denial of Service (kernel oops/panic) via a crafted 802.11ah beacon or probe response frame containing a malformed Vendor Information Element. The function morse_vendor_find_vendor_ie() does not validate the IE length against the expected structu",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-7764",
+    "ghsa_id": "GHSA-7c7h-p74x-w3h5",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 72,
+      "impact_assessment": "The vulnerability allows an unauthenticated attacker within radio range to potentially disclose kernel heap memory or cause a Denial of Service (kernel oops/panic), which could disrupt operations or expose sensitive data. The impact is limited to devices using the affected Morse Micro HaLow Wi-Fi kernel driver.",
+      "affected_industries": [
+        "IoT (Internet of Things)",
+        "Smart Home Devices",
+        "Industrial Automation",
+        "Healthcare (using wireless medical devices)",
+        "Agriculture (using IoT sensors)"
+      ],
+      "recommended_actions": [
+        "Update to Morse Micro HaLowLink 2 software version 2.11.12 or later to patch the vulnerability.",
+        "Implement network segmentation to isolate HaLow Wi-Fi devices from critical systems.",
+        "Monitor and log unusual activity on affected devices to detect potential exploitation attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 72
+  },
+  {
+    "id": "gh-GHSA-cggw-g858-xx4w",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-04T03:30:22Z",
+    "title": "A network man-in-the-middle between nats-sync and the BOSH director can steal the director...",
+    "description": "A network man-in-the-middle between nats-sync and the BOSH director can steal the director credentials (Basic auth header or UAA client secret) and can tamper with the VM list that is written into the NATS authorization file. Stolen credentials grant administrative director access. UsersSync#bosh_api_response_body builds a Net::HTTP client with verify_mode = OpenSSL::SSL::VERIFY_NONE for every director call (/info, /deployments, /deployments/<name>/vms).\n\nAffected versions:\n- BOSH: all versions ",
+    "severity": "high",
+    "cve_id": "CVE-2026-41859",
+    "ghsa_id": "GHSA-cggw-g858-xx4w",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41859.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-7ppx-r2wh-w5w3",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-04T03:30:22Z",
+    "title": "The SP Project & Document Manager plugin for WordPress is vulnerable to unauthorized access due...",
+    "description": "The SP Project & Document Manager plugin for WordPress is vulnerable to unauthorized access due to a missing capability check on the view_file function in all versions up to, and including, 4.71. This makes it possible for unauthenticated attackers to read file metadata and obtain download links for arbitrary files stored inside project folders on the server, which can contain sensitive information. The authorization gate uses a negated nonce check OR-chained with permission checks, meaning a mi",
+    "severity": "high",
+    "cve_id": "CVE-2026-10737",
+    "ghsa_id": "GHSA-7ppx-r2wh-w5w3",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in the SP Project & Document Manager plugin allows unauthenticated attackers to access sensitive file metadata and download links for arbitrary files, potentially exposing confidential information such as intellectual property, personal data, or business-critical documents.",
+      "affected_industries": [
+        "Technology",
+        "Healthcare",
+        "Finance",
+        "Education",
+        "E-commerce",
+        "Legal"
+      ],
+      "recommended_actions": [
+        "Immediately update the SP Project & Document Manager plugin to the latest patched version if available. If no patch is available, disable the plugin temporarily.",
+        "Implement additional access controls, such as restricting access to the plugin's endpoints via .htaccess or server-side firewall rules.",
+        "Conduct a security audit to identify any unauthorized access or data exfiltration that may have occurred as a result of this vulnerability."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-hpgh-hpwg-532v",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-04T00:30:25Z",
+    "title": "Net::Async::Statsd::Client versions through 0.005 for Perl allow metric injections.\n\nThe metric...",
+    "description": "Net::Async::Statsd::Client versions through 0.005 for Perl allow metric injections.\n\nThe metric names are not checked for newlines, colons or pipes. Metrics generated from untrusted sources could inject additional statsd metrics.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-8722",
+    "ghsa_id": "GHSA-hpgh-hpwg-532v",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 72,
+      "impact_assessment": "The vulnerability in Net::Async::Statsd::Client versions through 0.005 allows attackers to inject malicious metrics by exploiting improper input validation. This could lead to data integrity issues, unauthorized metric manipulation, and potential disruption of monitoring systems.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Telecommunications"
+      ],
+      "recommended_actions": [
+        "Update to a patched version of Net::Async::Statsd::Client as soon as it becomes available or apply any provided mitigations.",
+        "Implement input validation to sanitize metric names and prevent injection of newlines, colons, or pipes.",
+        "Monitor statsd metrics for unusual or unexpected patterns that may indicate exploitation attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 72
+  },
+  {
+    "id": "gh-GHSA-jrcc-j37m-v8fg",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-04T00:30:25Z",
+    "title": "A vulnerability was determined in sgl-project SGLang up to 0.5.11. Affected by this vulnerability...",
+    "description": "A vulnerability was determined in sgl-project SGLang up to 0.5.11. Affected by this vulnerability is the function data_hash of the component Cache Handler. This manipulation causes denial of service. The attack is restricted to local execution. A high degree of complexity is needed for the attack. The exploitation appears to be difficult. The exploit has been publicly disclosed and may be utilized. The pull request to fix this issue awaits acceptance.",
+    "severity": "low",
+    "cve_id": "CVE-2026-10775",
+    "ghsa_id": "GHSA-jrcc-j37m-v8fg",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-10775.",
       "affected_industries": [
         "Technology",
         "General"
@@ -52,225 +455,31 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-jmmv-h3mp-59v8",
+    "id": "gh-GHSA-8qxw-gwxm-v526",
     "source": "GitHub Security",
-    "timestamp": "2026-06-03T21:16:25Z",
-    "title": "Docling Core: Unsafe remote filename resolution",
-    "description": "### Impact\nIn versions `>= 1.5.0, < 2.74.1`, `docling-core` did not sufficiently restrict remote request destinations and could resolve a server-provided `Content-Disposition` to a local path in an unsafe manner.\n\nIn applications that accept untrusted URLs, this could allow SSRF attacks targeting local files outside the user-defined cache directory.\n\n### Patches\nPatched in `docling-core` `2.74.1`.\nThe fix adds stricter validation for remote destinations and normalizes server-provided filenames b",
-    "severity": "high",
-    "cve_id": "CVE-2026-44023",
-    "ghsa_id": "GHSA-jmmv-h3mp-59v8",
-    "affected_packages": [
-      "docling-core"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in 'docling-core' allows Server-Side Request Forgery (SSRF) attacks, potentially exposing sensitive local files and enabling unauthorized access to internal systems. This could lead to data breaches, system compromise, or further exploitation of internal infrastructure.",
-      "affected_industries": [
-        "Software Development",
-        "Cloud Services",
-        "E-commerce",
-        "Financial Services",
-        "Healthcare"
-      ],
-      "recommended_actions": [
-        "Upgrade to 'docling-core' version 2.74.1 or later to ensure the vulnerability is patched.",
-        "Implement strict input validation and sanitization for any user-provided URLs to prevent exploitation.",
-        "Conduct an audit of systems using vulnerable versions to identify potential unauthorized access or data exposure."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-j5xp-7m2f-49jv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T21:15:31Z",
-    "title": "Docling Core: Insufficient validation of image reference URIs",
-    "description": "### Impact\nIn versions `>= 2.5.0, < 2.74.1`, `docling-core`  could allow local `file://` image references and accepted inline `data:` content without a decoded-size limit.\n\nIn applications that accept untrusted image references, this may allow access to local files readable by the process or excessive memory use from large inline payloads.\n\n### Patches\nPatched in `docling-core` `2.74.1`.\nThe fix blocks local file URIs by default and adds a size limit for decoded inline image data.\n\nUsers should ",
-    "severity": "high",
-    "cve_id": "CVE-2026-44019",
-    "ghsa_id": "GHSA-j5xp-7m2f-49jv",
-    "affected_packages": [
-      "docling-core"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in 'docling-core' allows unauthorized access to local files via 'file://' URIs and can lead to excessive memory consumption due to unbounded inline 'data:' payloads. This poses risks of data leakage, denial of service, and potential exploitation in applications handling untrusted image references.",
-      "affected_industries": [
-        "Software Development",
-        "Web Applications",
-        "Content Management Systems",
-        "Media and Publishing",
-        "E-commerce"
-      ],
-      "recommended_actions": [
-        "Upgrade to 'docling-core' version 2.74.1 or later to mitigate the vulnerability.",
-        "Implement input validation to reject untrusted or potentially malicious image references in applications.",
-        "Conduct a security audit to identify and patch any applications relying on vulnerable versions of 'docling-core'."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-q29v-xc37-wh5m",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T21:15:02Z",
-    "title": "Docling: Unsafe URI and Path Handling in HTML Backend",
-    "description": "### Impact\nThe HTML backend did not perform sufficient validation during resource handling:\n- Accepted `file://` URIs enabling local file system access when `enable_local_fetch=True`\n- Path resolution allowed traversal outside intended directories via `../` sequences and absolute paths\n- Did not block internal network resources under `enable_remote_fetch=True`\n- HTTP redirects were not validated, potentially redirecting to unintended schemes\n- No resource limits for remote image downloads and `d",
-    "severity": "high",
-    "cve_id": "CVE-2026-47214",
-    "ghsa_id": "GHSA-q29v-xc37-wh5m",
-    "affected_packages": [
-      "docling"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-47214.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-2j5p-7p5m-cvqr",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T21:14:35Z",
-    "title": "Docling: Potential Path Traversal via LaTeX \\includegraphics and \\input Commands",
-    "description": "### Impact\nThe LaTeX backend's handling of `\\includegraphics`, `\\input`, and `\\include` commands lacked path containment validation. Attackers could craft malicious LaTeX documents with path traversal sequences (e.g., `../../../etc/passwd`) to:\n- Read arbitrary files from the file system accessible to the process\n- Include sensitive files in the converted document output\n- Potentially access configuration files, credentials, or other sensitive data\n\n### Patches\nFixed in version 2.91.0. The fix i",
+    "timestamp": "2026-06-04T00:30:25Z",
+    "title": "A vulnerability was found in crmeb crmeb_java 1.4. Affected is the function RestTemplate...",
+    "description": "A vulnerability was found in crmeb crmeb_java 1.4. Affected is the function RestTemplate.getForEntity of the file crmeb-common/src/main/java/com/zbkj/common/utils/RestTemplateUtil.java of the component base64 Qrcode Endpoint. The manipulation of the argument url results in server-side request forgery. The attack can be executed remotely. The exploit has been made public and could be used. The project was informed of the problem early through an issue report but has not responded yet.",
     "severity": "medium",
-    "cve_id": "CVE-2026-44022",
-    "ghsa_id": "GHSA-2j5p-7p5m-cvqr",
-    "affected_packages": [
-      "docling"
-    ],
+    "cve_id": "CVE-2026-10771",
+    "ghsa_id": "GHSA-8qxw-gwxm-v526",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to exploit path traversal via LaTeX commands, potentially exposing sensitive files such as configuration files, credentials, or other critical data. This could lead to data breaches, unauthorized access, or further exploitation of the system.",
-      "affected_industries": [
-        "Education",
-        "Publishing",
-        "Research and Academia",
-        "Software Development",
-        "Cloud Services"
-      ],
-      "recommended_actions": [
-        "Upgrade to version 2.91.0 or later to ensure the vulnerability is patched.",
-        "Restrict file system access for the LaTeX process to limit exposure to sensitive files.",
-        "Implement input sanitization and validation to prevent malicious LaTeX documents from being processed."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-m88r-rg27-5xfg",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T21:14:15Z",
-    "title": "Docling: Unsafe XML Entity Expansion in USPTO Patent Backend",
-    "description": "### Impact\nThe USPTO patent XML parser used the standard `xml.sax.parseString()` without protection against XML External Entity (XXE) attacks. An attacker could craft malicious USPTO patent XML files with external entity references that could:\n- Read arbitrary files from the server filesystem\n- Perform Server-Side Request Forgery (SSRF) attacks\n- Cause denial of service through entity expansion (Billion Laughs attack)\n\nThe vulnerability affects three USPTO patent format parsers: ICE (v4.x), Gran",
-    "severity": "high",
-    "cve_id": "CVE-2026-44020",
-    "ghsa_id": "GHSA-m88r-rg27-5xfg",
-    "affected_packages": [
-      "docling"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in the USPTO patent backend XML parser allows attackers to exploit XML External Entity (XXE) attacks, potentially leading to unauthorized file access, server-side request forgery (SSRF), and denial of service (DoS) through resource exhaustion. This could compromise sensitive patent data, disrupt services, and expose internal systems to further attacks.",
-      "affected_industries": [
-        "Intellectual Property Services",
-        "Legal Services",
-        "Government Agencies",
-        "Technology and Innovation"
-      ],
-      "recommended_actions": [
-        "Implement secure XML parsing by disabling external entity processing and DTDs in the XML parser configuration (e.g., use `defusedxml` or equivalent libraries).",
-        "Conduct a thorough security audit of the affected systems to identify and patch all instances of unsafe XML parsing.",
-        "Monitor for unusual activity, such as unexpected file access or outbound requests, to detect potential exploitation attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-r3xg-rg9j-67fv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T21:13:32Z",
-    "title": "Docling: Unsafe Archive Extraction and XML Parsing in METS-GBS Backend",
-    "description": "### Impact\nThe METS-GBS backend's XML parsing and the input document format detection lacked security controls, enabling:\n- XML External Entity (XXE) attacks to read local files or cause denial of service\n- Decompression bombs (zip bombs) to exhaust memory and disk space\n- Unbounded archive extraction consuming system resources\n\nAn attacker could craft malicious METS-GBS archives that, when processed, could read sensitive files, exhaust system resources, or cause application crashes.\n\n### Patche",
-    "severity": "medium",
-    "cve_id": "CVE-2026-44018",
-    "ghsa_id": "GHSA-r3xg-rg9j-67fv",
-    "affected_packages": [
-      "docling"
-    ],
-    "cwes": [
       null,
-      null,
-      null
-    ],
-    "references": [
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-44018.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-10771.",
       "affected_industries": [
         "Technology",
         "General"
@@ -285,65 +494,31 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-pj2v-ggqh-cmq2",
+    "id": "gh-GHSA-j7p7-p844-3j69",
     "source": "GitHub Security",
-    "timestamp": "2026-06-03T21:09:37Z",
-    "title": "Docling: Unsafe Playwright-based HTML Rendering",
-    "description": "### Impact\nIn versions `>= 2.82.0, < 2.91.0`, if the HTML backend was explicitly configured for rendering (rendering option by default deactivated), then the Playwright-based rendering feature could allow JavaScript execution and unrestricted network access when processing untrusted HTML documents. An attacker could craft malicious HTML that executes arbitrary JavaScript in the rendering context or makes unauthorized network requests to internal services, potentially leading to SSRF attacks, dat",
-    "severity": "high",
-    "cve_id": "CVE-2026-44016",
-    "ghsa_id": "GHSA-pj2v-ggqh-cmq2",
-    "affected_packages": [
-      "docling"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-44016.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-ch57-39q2-4crm",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T21:06:27Z",
-    "title": "malla: Stored XSS via Meshtastic node names in multiple frontend pages",
-    "description": "Node names (long_name, short_name) received via MQTT are stored in SQLite without sanitization and rendered into the DOM without escaping.\nAny participant on a public Meshtastic MQTT broker can set a malicious node name that executes JavaScript in the browser of every Malla dashboard visitor.\n\nAffected files:\n\n - src/malla/templates/traceroute_graph.html (line ~832)\n - src/malla/templates/map.html (lines ~945, 1078)\n - src/malla/templates/packet_detail.html (lines ~1402, 1452)\n - src/malla/stati",
+    "timestamp": "2026-06-04T00:30:25Z",
+    "title": "A vulnerability was identified in ealpha072 Student-Management-System up to...",
+    "description": "A vulnerability was identified in ealpha072 Student-Management-System up to 01451bd7a2f58cdda07bd0b86e3967582e3ecd08. Affected by this issue is some unknown functionality of the file admin/config.php of the component Administrative Backend. Such manipulation leads to improper authentication. The attack may be performed from remote. The exploit is publicly available and might be used. This product utilizes a rolling release system for continuous delivery, and as such, version information for affe",
     "severity": "medium",
-    "cve_id": "CVE-2026-43980",
-    "ghsa_id": "GHSA-ch57-39q2-4crm",
-    "affected_packages": [
-      "malla"
-    ],
+    "cve_id": "CVE-2026-10777",
+    "ghsa_id": "GHSA-j7p7-p844-3j69",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-43980.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-10777.",
       "affected_industries": [
         "Technology",
         "General"
@@ -358,95 +533,181 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-8x6r-g9mw-2r78",
+    "id": "gh-GHSA-jrh2-f5jc-xpgr",
     "source": "GitHub Security",
-    "timestamp": "2026-06-03T21:05:17Z",
-    "title": "React Router vulnerable to DoS via unbounded path expansion in __manifest endpoint",
-    "description": "There exists a potential DOS attack vector in React Router Framework Mode applications (as well as Remix v2.10.0 - 2.17.4).  Certain requests can be crafted to consume disproportionate resources on the server, resulting in response time degredation and/or service unavailability for end users.\n\n> [!NOTE]\n> This does not impact your React Router application if you are using [Declarative Mode](https://reactrouter.com/start/modes#declarative) (`<BrowserRouter>`) or [Data Mode](https://reactrouter.co",
-    "severity": "high",
-    "cve_id": "CVE-2026-42342",
-    "ghsa_id": "GHSA-8x6r-g9mw-2r78",
-    "affected_packages": [
-      "react-router",
-      "@remix-run/server-runtime"
-    ],
-    "cwes": [
+    "timestamp": "2026-06-04T00:30:25Z",
+    "title": "OpenStack Ironic through 35.0.x allows Boot Script Injection.",
+    "description": "OpenStack Ironic through 35.0.x allows Boot Script Injection.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-46447",
+    "ghsa_id": "GHSA-jrh2-f5jc-xpgr",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
       null
     ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-46447.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-5v33-qmw6-v5h3",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-04T00:30:25Z",
+    "title": "Active IQ Config Advisor version 6.7.3 contains hard-coded credentials that could allow an...",
+    "description": "Active IQ Config Advisor version 6.7.3 contains hard-coded credentials that could allow an authenticated attacker with low privileges to perform unauthorized AutoSupport operations.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-22054",
+    "ghsa_id": "GHSA-5v33-qmw6-v5h3",
+    "affected_packages": [],
+    "cwes": [],
     "references": [
       null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in React Router Framework Mode applications and Remix versions 2.10.0 to 2.17.4 allows attackers to exploit unbounded path expansion in the __manifest endpoint, potentially leading to Denial of Service (DoS) attacks. This can degrade server performance, increase response times, or render services unavailable to legitimate users.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-22054.",
       "affected_industries": [
         "Technology",
-        "E-commerce",
-        "Healthcare",
-        "Finance",
-        "Education",
-        "Media and Entertainment"
+        "General"
       ],
       "recommended_actions": [
-        "Immediately upgrade to the latest patched version of React Router or Remix that addresses CVE-2026-42342.",
-        "Implement rate limiting and input validation on server endpoints to mitigate the risk of resource exhaustion from malicious requests.",
-        "Monitor server logs for unusual traffic patterns or spikes in resource usage that may indicate exploitation attempts."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 85
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-49rj-9fvp-4h2h",
+    "id": "gh-GHSA-6655-8ph2-63j3",
     "source": "GitHub Security",
-    "timestamp": "2026-06-03T21:03:32Z",
-    "title": "React Router's vendored turbo-stream v2 allows arbitrary constructor invocation via TYPE_ERROR deserialization leading to Unauth RCE",
-    "description": "When using React Router v7 in [Framework Mode](https://reactrouter.com/start/modes#framework), there exists a combination of steps that could potentially allow unauthorized RCE through external requests.  This first requires the application code to have an existing prototype pollution vulnerability.  This can be leveraged into a 2-step attack in which the second step can trigger unauthorized RCE on the remote server.\n\n> [!NOTE]\n> This does not impact your React Router application if you are usin",
-    "severity": "high",
-    "cve_id": "CVE-2026-42211",
-    "ghsa_id": "GHSA-49rj-9fvp-4h2h",
-    "affected_packages": [
-      "react-router"
-    ],
+    "timestamp": "2026-06-04T00:30:25Z",
+    "title": "A security flaw has been discovered in gradio-app gradio 6.14.0. This affects the function...",
+    "description": "A security flaw has been discovered in gradio-app gradio 6.14.0. This affects the function save_audio_to_cache of the component Audio Cache Key Handler. Performing a manipulation results in use of weak hash. The attack must be initiated from a local position. The attack is considered to have high complexity. It is indicated that the exploitability is difficult. The exploit has been released to the public and may be used for attacks. The patch is named 13394. To fix this issue, it is recommended ",
+    "severity": "low",
+    "cve_id": "CVE-2026-10783",
+    "ghsa_id": "GHSA-6655-8ph2-63j3",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in React Router's vendored turbo-stream v2 allows for unauthorized remote code execution (RCE) when combined with an existing prototype pollution vulnerability. This could lead to full system compromise, data exfiltration, or unauthorized control of the affected server.",
+      "risk_score": 35,
+      "impact_assessment": "The vulnerability in gradio-app gradio 6.14.0 allows for the use of a weak hash in the save_audio_to_cache function, which could potentially lead to data integrity issues or unauthorized modifications. However, the attack requires local access, is of high complexity, and is difficult to exploit, reducing its overall impact.",
       "affected_industries": [
         "Technology",
-        "E-commerce",
-        "Healthcare",
-        "Finance",
-        "Education",
-        "Government"
+        "Artificial Intelligence",
+        "Software Development"
       ],
       "recommended_actions": [
-        "Immediately upgrade React Router to the latest patched version that addresses CVE-2026-42211.",
-        "Conduct a thorough code audit to identify and remediate any existing prototype pollution vulnerabilities in the application.",
-        "Implement strict input validation and sanitization to mitigate potential exploitation vectors."
+        "Apply the patch named 13394 provided by the vendor to address the vulnerability.",
+        "Restrict local access to the systems running gradio-app gradio 6.14.0 to trusted personnel only.",
+        "Monitor for any unusual activity or exploitation attempts related to the CVE-2026-10783 vulnerability."
       ],
-      "urgency": "critical"
+      "urgency": "low"
     },
-    "risk_score": 85
+    "risk_score": 35
   },
   {
-    "id": "gh-GHSA-37m5-m4q3-fc6x",
+    "id": "gh-GHSA-72wm-f78p-qmh9",
     "source": "GitHub Security",
-    "timestamp": "2026-06-03T21:02:12Z",
-    "title": "Froxlor: BIND Zone File Injection via TXT Record Content",
-    "description": "## Summary\n\nThe `DomainZones.add` API endpoint does not sanitize newline characters in TXT record content. An authenticated customer with DNS editing enabled can inject newlines into TXT record values, which break out of the record line in the generated BIND zone file. This enables injection of arbitrary BIND directives (`$INCLUDE`, `$GENERATE`) and arbitrary DNS records (A, MX, CNAME) into the zone file written to disk by the DNS rebuild cron.\n\nThis is an incomplete fix for CVE-2026-30932 (GHSA",
+    "timestamp": "2026-06-04T00:30:25Z",
+    "title": "Active IQ OneCollect version 2.7.3 contains hard-coded credentials that could allow an...",
+    "description": "Active IQ OneCollect version 2.7.3 contains hard-coded credentials that could allow an authenticated attacker with low privileges to perform unauthorized AutoSupport operations.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-22055",
+    "ghsa_id": "GHSA-72wm-f78p-qmh9",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-22055.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-rx6x-c2x2-96pp",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-04T00:30:25Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-2596",
+    "ghsa_id": "GHSA-rx6x-c2x2-96pp",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 0,
+      "impact_assessment": "This CVE ID has been rejected or withdrawn, indicating that it is not a valid or active security threat. There is no impact associated with this entry.",
+      "affected_industries": [],
+      "recommended_actions": [
+        "Verify the rejection status of CVE-2026-2596 with the CVE Numbering Authority to confirm it is not a valid threat.",
+        "Monitor official sources for any updates or corrections regarding this CVE ID.",
+        "Focus resources on addressing confirmed and active vulnerabilities."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 0
+  },
+  {
+    "id": "gh-GHSA-f9rx-7wf7-jr36",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T21:41:12Z",
+    "title": "Froxlor's API Authentication bypasses 2FA Authentication",
+    "description": "## Summary\n\nFroxlor's API authentication (`FroxlorRPC::validateAuth`) does not enforce Two-Factor Authentication. When a user (admin or customer) enables 2FA on their account, the web UI correctly requires a TOTP code after password verification. However, the API accepts requests authenticated with only an API key and secret — no TOTP challenge is issued, checked, or required.\n\nAn attacker who obtains a leaked API key+secret for a 2FA-protected account has full access to all API operations witho",
     "severity": "high",
-    "cve_id": "CVE-2026-41234",
-    "ghsa_id": "GHSA-37m5-m4q3-fc6x",
+    "cve_id": null,
+    "ghsa_id": "GHSA-f9rx-7wf7-jr36",
     "affected_packages": [
       "froxlor/froxlor"
     ],
@@ -460,450 +721,82 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41234.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-vvgj-x9jq-8cj9",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T20:59:49Z",
-    "title": "quic-go: HTTP/3 QPACK Trailer Expansion Memory Exhaustion ",
-    "description": "## Summary\n\nAn attacker can cause excessive memory allocation in quic-go's HTTP/3 client and server implementations by sending a QPACK-encoded HEADERS frame that decodes into a large trailer field section with many unique field names and/or large values. The implementation builds an `http.Header` for the corresponding `http.Request` or `http.Response`, while only enforcing limits on the size of the QPACK-compressed HEADERS frame, not on the decoded field section. This can lead to memory exhausti",
-    "severity": "medium",
-    "cve_id": "CVE-2026-40898",
-    "ghsa_id": "GHSA-vvgj-x9jq-8cj9",
-    "affected_packages": [
-      "github.com/quic-go/quic-go"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-40898.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-2j2x-hqr9-3h42",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T20:58:01Z",
-    "title": "React Router's same-origin redirect with path starting // causes open redirect via protocol-relative URL reinterpretation",
-    "description": "Certain URLs passed to the `redirect` function can trigger an open redirect to an external domain depending on the level of validation done by the application prior to returning the `redirect`.\n\n> [!NOTE]\n> This does not impact your React Router application if you are using [Declarative Mode](https://reactrouter.com/start/modes#declarative) (`<BrowserRouter>`)",
-    "severity": "medium",
-    "cve_id": "CVE-2026-40181",
-    "ghsa_id": "GHSA-2j2x-hqr9-3h42",
-    "affected_packages": [
-      "react-router",
-      "react-router"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-40181.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-jg22-mg44-37j8",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T20:56:54Z",
-    "title": "AIOHTTP is Vulnerable to Deserialization of Untrusted Data",
-    "description": "### Summary\n\nUsing ``CookieJar.load()`` with untrusted input may allow arbitrary code execution.\n\n### Impact\n\nMost applications using this function will be doing so with the user's own data, so this is unlikely to affect many applications.\n\n### Workaround\n\nIf an application does allow attacker controlled files to be loaded, a workaround on older releases would be to sanitise the files before loading.\n\n-----\n\nPatch: https://github.com/aio-libs/aiohttp/commit/dcf40f30637e8752c76781cf6703b5a236749a",
-    "severity": "medium",
-    "cve_id": "CVE-2026-34993",
-    "ghsa_id": "GHSA-jg22-mg44-37j8",
-    "affected_packages": [
-      "aiohttp"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 55,
-      "impact_assessment": "The vulnerability in AIOHTTP's CookieJar.load() function could allow arbitrary code execution if untrusted input is deserialized. However, the likelihood of exploitation is low for most applications, as they typically use trusted user data. The impact could be severe for applications that inadvertently process attacker-controlled files.",
-      "affected_industries": [
-        "Web Development",
-        "E-commerce",
-        "Technology",
-        "SaaS Platforms"
-      ],
-      "recommended_actions": [
-        "Immediately update to the patched version of AIOHTTP by applying the fix provided in the GitHub patch (https://github.com/aio-libs/aiohttp/commit/dcf40f30637e8752c76781cf6703b5a236749a).",
-        "Audit your application to identify any instances where untrusted or external files are being deserialized using CookieJar.load(), and implement input sanitization or validation as needed.",
-        "Monitor for any unusual activity or exploitation attempts targeting this vulnerability, and ensure proper logging and alerting mechanisms are in place."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 55
-  },
-  {
-    "id": "gh-GHSA-8646-j5j9-6r62",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T20:33:32Z",
-    "title": "React Router vulnerable to XSS in unstable RSC redirect handling via javascript: redirect targets",
-    "description": "When using React Router v7's unstable RSC APIs, there exists a potential client-side XSS issue in the RSC redirect handling if redirects are coming from untrusted sources\n\n> [!NOTE]\n> This only impacts your application if you are using the unstable RSC APIs in React Router.",
-    "severity": "high",
-    "cve_id": "CVE-2026-33245",
-    "ghsa_id": "GHSA-8646-j5j9-6r62",
-    "affected_packages": [
-      "react-router"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-33245.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-f22v-gfqf-p8f3",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T20:33:01Z",
-    "title": "React Router has stored XSS via unescaped Location header in prerendered redirect HTML",
-    "description": "When using React Router v7 [Framework Mode](https://reactrouter.com/start/modes#framework) with [Pre-rendering](https://reactrouter.com/how-to/pre-rendering) enabled, an improper neutralization of the HTTP `Location` header value can permit Cross-Site Scripting (XSS) in statically generated HTML files if the redirect location comes from an untrusted source.\n\n> [!NOTE]\n> This does not impact your React Router application if you are using [Declarative Mode](https://reactrouter.com/start/modes#decl",
-    "severity": "medium",
-    "cve_id": "CVE-2026-33244",
-    "ghsa_id": "GHSA-f22v-gfqf-p8f3",
-    "affected_packages": [
-      "react-router"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to execute arbitrary scripts in the context of the user's browser, potentially leading to data theft, session hijacking, or further exploitation. This is particularly concerning for applications that rely on pre-rendered HTML and accept untrusted input for redirects.",
-      "affected_industries": [
-        "E-commerce",
-        "Healthcare",
-        "Finance",
-        "Education",
-        "Technology"
-      ],
-      "recommended_actions": [
-        "Validate and sanitize all user-supplied input, especially the HTTP `Location` header, to prevent injection of malicious scripts.",
-        "Upgrade React Router to the latest patched version once a fix is released for CVE-2026-33244.",
-        "Disable or avoid using pre-rendering with untrusted redirect sources until the vulnerability is resolved."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-m8xx-3x29-84h8",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T20:25:50Z",
-    "title": "backpack/crud is vulnerable to Cross-Site Scripting (XSS)",
-    "description": "### Impact\n\nIt’s a “*moderate*” vulnerability… but being an admin panel, take this seriously. It’s difficult… but an attacker could conduct a targeted phishing campaign, in order to **trick your users or admins to click a malicious link, which under very specific circumstances could give them information... or even admin access**. It’s *unlikely*, but that’s not good enough in admin panels - It should be made *impossible*. That’s why you are bothered with this. \n\n### Patches\n\n\nIf you don’t have ",
-    "severity": "medium",
-    "cve_id": "CVE-2022-31114",
-    "ghsa_id": "GHSA-m8xx-3x29-84h8",
-    "affected_packages": [
-      "backpack/crud",
-      "backpack/crud",
-      "backpack/crud"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2022-31114.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-cjqg-rq2h-2fvj",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T20:02:42Z",
-    "title": "Docling: Unsafe Zip Extraction in EasyOCR Model Download",
-    "description": "### Impact\nIn versions `< 2.91.0`, The EasyOCR model download functionality extracted ZIP archives without validating member paths, enabling Zip Slip attacks. If an attacker could compromise the model download source (via supply chain attack, DNS spoofing, or MITM), they could write arbitrary files to any location writable by the process, potentially achieving:\n- Remote code execution by overwriting Python files or system binaries\n- Persistent backdoors by modifying startup scripts or SSH keys\n-",
-    "severity": "high",
-    "cve_id": "CVE-2026-44017",
-    "ghsa_id": "GHSA-cjqg-rq2h-2fvj",
-    "affected_packages": [
-      "docling"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-44017.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-vj56-8x44-c882",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T18:33:13Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: rt9455: Fix...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\npower: supply: rt9455: Fix use-after-free in power_supply_changed()\n\nUsing the `devm_` variant for requesting IRQ _before_ the `devm_`\nvariant for allocating/registering the `power_supply` handle, means that\nthe `power_supply` handle will be deallocated/unregistered _before_ the\ninterrupt handler (since `devm_` naturally deallocates in reverse\nallocation order). This means that during removal, there is a race\ncondition where an",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-46270",
-    "ghsa_id": "GHSA-vj56-8x44-c882",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability involves a use-after-free issue in the Linux kernel's power supply subsystem, specifically in the rt9455 driver. This could potentially allow attackers to exploit the race condition during device removal, leading to system crashes, privilege escalation, or arbitrary code execution. The severity depends on the specific use case and exposure of the affected system.",
-      "affected_industries": [
-        "Embedded Systems",
-        "IoT (Internet of Things)",
-        "Telecommunications",
-        "Data Centers",
-        "Cloud Service Providers"
-      ],
-      "recommended_actions": [
-        "Apply the latest Linux kernel patches that address CVE-2026-46270 to ensure the vulnerability is resolved.",
-        "Audit and monitor systems running the affected Linux kernel versions to detect any unusual activity or exploitation attempts.",
-        "Review and update system configurations to minimize exposure to untrusted or potentially malicious devices."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-3vgg-pc24-vv5m",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-03T18:33:13Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ninet: RAW sockets using...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ninet: RAW sockets using IPPROTO_RAW MUST drop incoming ICMP\n\nYizhou Zhao reported that simply having one RAW socket on protocol\nIPPROTO_RAW (255) was dangerous.\n\n  socket(AF_INET, SOCK_RAW, 255);\n\nA malicious incoming ICMP packet can set the protocol field to 255\nand match this socket, leading to FNHE cache changes.\n\ninner = IP(src=\"192.168.2.1\", dst=\"8.8.8.8\", proto=255)/Raw(\"TEST\")\npkt = IP(src=\"192.168.1.1\", dst=\"192.168.2.1",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-46266",
-    "ghsa_id": "GHSA-3vgg-pc24-vv5m",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-46266.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "cve-CVE-2026-9628",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-27T02:16:35.747",
-    "title": "CVE-2026-9628 - A weakness has been identified in UTT HiPER 1200GW up to 2.5.3-170306. Affected is an unknown functi",
-    "description": "A weakness has been identified in UTT HiPER 1200GW up to 2.5.3-170306. Affected is an unknown function of the file /goform/formPptpClientConfig of the component Web Management Interface. This manipulation of the argument PPTP server address/username/password/tunnel name causes stack-based buffer overflow. The attack may be initiated remotely. The exploit has been made available to the public and could be used for attacks.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9628",
-    "cvss_score": 8.8,
-    "affected_products": [],
-    "references": [
-      "https://github.com/luozhibo-sec/cve/blob/main/10.md",
-      "https://vuldb.com/submit/818380",
-      "https://vuldb.com/vuln/365684",
-      "https://vuldb.com/vuln/365684/cti"
-    ],
-    "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9628.",
+      "impact_assessment": "The vulnerability allows attackers to bypass Two-Factor Authentication (2FA) for Froxlor accounts via its API, granting unauthorized access to sensitive account operations if an API key and secret are compromised. This undermines the security benefits of 2FA and exposes accounts to potential data breaches, unauthorized changes, and exploitation of system resources.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Web Hosting Providers",
+        "IT Services",
+        "Cloud Service Providers",
+        "E-commerce Platforms"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-9627",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-27T02:16:35.583",
-    "title": "CVE-2026-9627 - A security flaw has been discovered in UTT HiPER 1200GW up to 2.5.3-170306. This impacts the functio",
-    "description": "A security flaw has been discovered in UTT HiPER 1200GW up to 2.5.3-170306. This impacts the function strcpy of the file /goform/setSysAdm of the component Web Management Interface. The manipulation of the argument sysAdmUser/sysAdmPass results in buffer overflow. The attack can be launched remotely. The exploit has been released to the public and may be used for attacks.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9627",
-    "cvss_score": 8.8,
-    "affected_products": [],
-    "references": [
-      "https://github.com/zhouguobing-maker/cve/blob/main/9.md",
-      "https://vuldb.com/submit/818374",
-      "https://vuldb.com/vuln/365683",
-      "https://vuldb.com/vuln/365683/cti"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows remote attackers to exploit a buffer overflow in the web management interface of UTT HiPER 1200GW devices. This could lead to unauthorized access, remote code execution, or denial of service, potentially compromising the device and the network it manages.",
-      "affected_industries": [
-        "Telecommunications",
-        "Small and Medium Enterprises (SMEs)",
-        "Managed Service Providers (MSPs)",
-        "Retail"
-      ],
-      "recommended_actions": [
-        "Immediately update the firmware of UTT HiPER 1200GW devices to the latest available version or contact the vendor for a patched release if no update is available.",
-        "Restrict access to the web management interface by implementing IP whitelisting or VPN access to limit exposure to trusted networks only.",
-        "Monitor network traffic for unusual activity and apply intrusion detection/prevention systems (IDS/IPS) to identify and block exploitation attempts."
+        "Implement 2FA validation for API requests by requiring TOTP or equivalent verification alongside API key and secret.",
+        "Rotate all API keys and secrets for accounts with 2FA enabled and notify users to regenerate their keys.",
+        "Conduct a security audit of API authentication mechanisms to identify and address similar vulnerabilities."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-9609",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-27T02:16:35.413",
-    "title": "CVE-2026-9609 - A vulnerability was identified in QianFox FoxCMS up to 1.2.6. This affects the function Edit of the ",
-    "description": "A vulnerability was identified in QianFox FoxCMS up to 1.2.6. This affects the function Edit of the file Admin.php. The manipulation leads to weak password recovery. The attack can be initiated remotely. The exploit is publicly available and might be used. The project was informed of the problem early through an issue report but has not responded yet.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-9609",
-    "cvss_score": 4.7,
-    "affected_products": [],
+    "id": "gh-GHSA-6vr3-7wcx-v5g5",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-03T21:39:32Z",
+    "title": "browserstack-runner vulnerable to Remote Code Execution via vm sandbox escape in _log HTTP handler",
+    "description": "### Summary\n\nThe HTTP handler `/_log` in `lib/server.js` (lines 491–515) of browserstack-runner passes unauthenticated user-supplied data to `vm.runInNewContext()` combined with `eval()`, enabling a sandbox escape and arbitrary code execution on the host system.\n\n### Details\n\nWhen `browserstack-runner` starts, it creates an HTTP server on port 8888 (configurable) that listens on all network interfaces (`0.0.0.0`). The `/_log` endpoint accepts POST requests and processes the JSON body as follows:",
+    "severity": "high",
+    "cve_id": "CVE-2026-49143",
+    "ghsa_id": "GHSA-6vr3-7wcx-v5g5",
+    "affected_packages": [
+      "browserstack-runner"
+    ],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://github.com/QianFox/FoxCMS/",
-      "https://github.com/QianFox/FoxCMS/issues/3",
-      "https://vuldb.com/submit/818343",
-      "https://vuldb.com/vuln/365682",
-      "https://vuldb.com/vuln/365682/cti"
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows unauthenticated attackers to execute arbitrary code on the host system by exploiting the insecure use of vm.runInNewContext() and eval() in the HTTP handler. This could lead to full system compromise, data theft, or service disruption.",
+      "affected_industries": [
+        "Software Development",
+        "Technology Services",
+        "E-commerce",
+        "Media and Entertainment",
+        "Financial Services"
+      ],
+      "recommended_actions": [
+        "Immediately update browserstack-runner to the latest patched version if available, or apply a temporary fix to disable or secure the /_log endpoint.",
+        "Restrict network access to the HTTP server by binding it to localhost or implementing firewall rules to limit exposure.",
+        "Conduct a security audit of systems running browserstack-runner to identify potential signs of exploitation and ensure no unauthorized access has occurred."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-9792",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-28T05:16:40.537",
+    "title": "CVE-2026-9792 - A flaw was found in Keycloak's Client Policies, specifically within the `org.keycloak.protocol.oidc`",
+    "description": "A flaw was found in Keycloak's Client Policies, specifically within the `org.keycloak.protocol.oidc` component. When certain condition providers (client-type, client-roles, client-attributes, client-scopes) are used to enforce security restrictions, the `reject-ropc-grant` executor is silently bypassed. This allows an unauthenticated remote attacker to obtain tokens via a Resource Owner Password Credentials (ROPC) grant, even when a policy is explicitly configured to block it. This bypass can lead to unauthorized access and information disclosure.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9792",
+    "cvss_score": 6.5,
+    "affected_products": [
+      "cpe:2.3:a:redhat:build_of_keycloak:-:*:*:*:-:*:*:*"
+    ],
+    "references": [
+      "https://access.redhat.com/security/cve/CVE-2026-9792",
+      "https://bugzilla.redhat.com/show_bug.cgi?id=2482459"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9609.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9792.",
       "affected_industries": [
         "Technology",
         "General"
@@ -918,25 +811,24 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-9608",
+    "id": "cve-CVE-2026-9791",
     "source": "NVD CVE",
-    "timestamp": "2026-05-27T02:16:35.247",
-    "title": "CVE-2026-9608 - A vulnerability was determined in QianFox FoxCMS up to 1.2.6. The impacted element is an unknown fun",
-    "description": "A vulnerability was determined in QianFox FoxCMS up to 1.2.6. The impacted element is an unknown function of the file /Tag/edit of the component Administrator Backend. Executing a manipulation can lead to cross site scripting. It is possible to launch the attack remotely. The exploit has been publicly disclosed and may be utilized. The project was informed of the problem early through an issue report but has not responded yet.",
-    "severity": "low",
-    "cve_id": "CVE-2026-9608",
-    "cvss_score": 2.4,
-    "affected_products": [],
+    "timestamp": "2026-05-28T05:16:39.977",
+    "title": "CVE-2026-9791 - A flaw was found in Keycloak. An authenticated user with existing organization membership can exploi",
+    "description": "A flaw was found in Keycloak. An authenticated user with existing organization membership can exploit this flaw by accessing user-facing APIs, such as the account API or by requesting an OpenID Connect (OIDC) token with the 'organization' scope. This allows organization metadata to be disclosed in tokens, even after an administrator has explicitly disabled the Organizations feature, potentially leading to incorrect authorization decisions by resource servers.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9791",
+    "cvss_score": 4.3,
+    "affected_products": [
+      "cpe:2.3:a:redhat:build_of_keycloak:-:*:*:*:-:*:*:*"
+    ],
     "references": [
-      "https://github.com/QianFox/FoxCMS/",
-      "https://github.com/QianFox/FoxCMS/issues/2",
-      "https://vuldb.com/submit/818342",
-      "https://vuldb.com/vuln/365681",
-      "https://vuldb.com/vuln/365681/cti"
+      "https://access.redhat.com/security/cve/CVE-2026-9791",
+      "https://bugzilla.redhat.com/show_bug.cgi?id=2482458"
     ],
     "ai_analysis": {
-      "risk_score": 35,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-9608.",
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9791.",
       "affected_industries": [
         "Technology",
         "General"
@@ -946,30 +838,106 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "low"
+      "urgency": "medium"
     },
-    "risk_score": 35
+    "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-9207",
+    "id": "cve-CVE-2026-9241",
     "source": "NVD CVE",
-    "timestamp": "2026-05-27T02:16:35.130",
-    "title": "CVE-2026-9207 - Tanium addressed an unauthorized code execution vulnerability in Connect.",
-    "description": "Tanium addressed an unauthorized code execution vulnerability in Connect.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9207",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:tanium:connect:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:tanium:connect:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:tanium:connect:*:*:*:*:*:*:*:*"
-    ],
+    "timestamp": "2026-05-28T05:16:39.600",
+    "title": "CVE-2026-9241 - The FOX – Currency Switcher Professional for WooCommerce plugin for WordPress is vulnerable to Autho",
+    "description": "The FOX – Currency Switcher Professional for WooCommerce plugin for WordPress is vulnerable to Authorization Bypass Through User-Controlled Key in all versions up to and including 1.4.6. This is due to the `get_value()` function in `classes/fixed/fixed_user_role.php` trusting the attacker-controlled `$_REQUEST['wooc_order_user_roles']` parameter to determine the user's role context for role-based price resolution without any validation, allowing it to override the legitimate role data derived from the authenticated user's session object via `$user->roles`. This makes it possible for authenticated attackers, with Subscriber-level access and above, to impersonate higher-privileged roles — such as wholesale customer or administrator — and obtain discounted or otherwise restricted pricing that should not be available to their actual role. This vulnerability only has practical impact when the fixed user-role pricing feature is enabled and at least one product has a privileged-role price configured.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9241",
+    "cvss_score": 4.3,
+    "affected_products": [],
     "references": [
-      "https://security.tanium.com/TAN-2026-014"
+      "https://plugins.trac.wordpress.org/browser/woocommerce-currency-switcher/trunk/classes/fixed/fixed_user_role.php#L228",
+      "https://plugins.trac.wordpress.org/browser/woocommerce-currency-switcher/trunk/classes/fixed/fixed_user_role.php#L229",
+      "https://plugins.trac.wordpress.org/browser/woocommerce-currency-switcher/trunk/classes/woocs.php#L2271",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3543524%40woocommerce-currency-switcher&new=3543524%40woocommerce-currency-switcher&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/1c8c1fec-0e87-46f7-83c5-8f9e9aa97b4f?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9241.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-9228",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-28T05:16:39.447",
+    "title": "CVE-2026-9228 - The Timetable and Event Schedule by MotoPress plugin for WordPress is vulnerable to Insecure Direct ",
+    "description": "The Timetable and Event Schedule by MotoPress plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 2.4.16 via the action_get_event_data due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with contributor-level access and above, to enumerate timeslot IDs and read the full WP_Post object — including post_content, post_excerpt, post_status, and post_author — of draft, pending, and private mp-event posts belonging to other users, along with their associated raw timeslot descriptions.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9228",
+    "cvss_score": 4.3,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/mp-timetable/tags/2.4.16/classes/class-core.php#L311",
+      "https://plugins.trac.wordpress.org/browser/mp-timetable/tags/2.4.16/classes/class-hooks.php#L152",
+      "https://plugins.trac.wordpress.org/browser/mp-timetable/tags/2.4.16/classes/controllers/class-controller-events.php#L62",
+      "https://plugins.trac.wordpress.org/browser/mp-timetable/tags/2.4.16/classes/models/class-events.php#L102",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3548166%40mp-timetable&new=3548166%40mp-timetable&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/9adf94ac-30ef-4c24-afa6-04248c25bd7f?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9228.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-7802",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-28T05:16:38.493",
+    "title": "CVE-2026-7802 - The Frontend Admin by DynamiApps plugin for WordPress is vulnerable to authorization bypass in all v",
+    "description": "The Frontend Admin by DynamiApps plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 3.29.2. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to overwrite an administrator's user_pass, user_email, first_name, last_name, and other profile fields by supplying an arbitrary ?user_id= value, enabling full administrator account takeover via direct password replacement or email-redirect password reset. Exploitation requires the targeted Edit-User form to have its 'Roles' configuration setting left empty; when a non-empty roles list is configured, load_data() sets the user ID to 'none' for users whose roles fall outside the allowed list, preventing administrators from being targeted through that form.",
+    "severity": "high",
+    "cve_id": "CVE-2026-7802",
+    "cvss_score": 8.8,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.28.36/main/frontend/forms/actions/user.php#L565",
+      "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.28.36/main/frontend/forms/actions/user.php#L636",
+      "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.28.36/main/frontend/forms/classes/submit.php#L110",
+      "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.28.36/main/frontend/forms/classes/submit.php#L392",
+      "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.1/main/frontend/forms/actions/user.php#L565",
+      "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.1/main/frontend/forms/actions/user.php#L636",
+      "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.1/main/frontend/forms/classes/submit.php#L110",
+      "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/tags/3.29.1/main/frontend/forms/classes/submit.php#L392",
+      "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/trunk/main/frontend/forms/actions/user.php#L565",
+      "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/trunk/main/frontend/forms/actions/user.php#L636",
+      "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/trunk/main/frontend/forms/classes/submit.php#L110",
+      "https://plugins.trac.wordpress.org/browser/acf-frontend-form-element/trunk/main/frontend/forms/classes/submit.php#L392",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3525193%40acf-frontend-form-element&new=3525193%40acf-frontend-form-element&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/cd091bd5-6b6a-4964-9249-525bbbec702c?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9207.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-7802.",
       "affected_industries": [
         "Technology",
         "General"
@@ -984,55 +952,30 @@
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-9156",
+    "id": "cve-CVE-2026-5737",
     "source": "NVD CVE",
-    "timestamp": "2026-05-27T02:16:35.003",
-    "title": "CVE-2026-9156 - Tanium addressed a denial of service vulnerability in Tanium Server.",
-    "description": "Tanium addressed a denial of service vulnerability in Tanium Server.",
+    "timestamp": "2026-05-28T05:16:38.100",
+    "title": "CVE-2026-5737 - The Independent Analytics plugin for WordPress is vulnerable to Server-Side Request Forgery in all v",
+    "description": "The Independent Analytics plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 2.14.9. This is due to a public tracking route at /wp-json/iawp/search that accepts attacker-controlled referrer_url values when the signature matches, combined with a scheduled favicon fetcher that performs unrestricted cURL requests to stored domains. The signature validation is insufficient because the signature is embedded in publicly-accessible JavaScript and the salt is static per site, allowing attackers to extract valid signatures. The favicon downloader uses raw cURL functions without any SSRF protection mechanisms (no localhost blocking, no private network filtering, and does not use WordPress's wp_safe_remote_* functions). This makes it possible for unauthenticated attackers to inject malicious referrer domains into the database and trigger server-side requests to arbitrary hosts including internal services.",
     "severity": "medium",
-    "cve_id": "CVE-2026-9156",
+    "cve_id": "CVE-2026-5737",
     "cvss_score": 6.5,
-    "affected_products": [
-      "cpe:2.3:a:tanium:server:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:tanium:server:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:tanium:server:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://security.tanium.com/TAN-2026-013"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9156.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-7493",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-27T02:16:34.770",
-    "title": "CVE-2026-7493 - The Appointment Booking Calendar — Simply Schedule Appointments Booking Plugin plugin for WordPress ",
-    "description": "The Appointment Booking Calendar — Simply Schedule Appointments Booking Plugin plugin for WordPress is vulnerable to denial of service in all versions up to, and including, 1.6.11.5. This is due to a publicly accessible REST API endpoint (/wp-json/ssa/v1/async) that calls PHP's sleep() function on a user-supplied delay parameter without any rate limiting. This makes it possible for unauthenticated attackers to exhaust PHP worker processes, denying access to the site to legitimate users.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-7493",
-    "cvss_score": 5.3,
     "affected_products": [],
     "references": [
-      "https://plugins.trac.wordpress.org/browser/simply-schedule-appointments/tags/1.6.11.2/includes/class-async-action-model.php#L173",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/ae66228e-d086-44fd-8acb-5a99482cedfb?source=cve"
+      "https://plugins.trac.wordpress.org/browser/independent-analytics/tags/2.14.4/IAWP/Favicon/FaviconDownloader.php#L57",
+      "https://plugins.trac.wordpress.org/browser/independent-analytics/tags/2.14.4/IAWP/FetchFaviconsJob.php#L27",
+      "https://plugins.trac.wordpress.org/browser/independent-analytics/tags/2.14.4/IAWP/REST_API.php#L409",
+      "https://plugins.trac.wordpress.org/browser/independent-analytics/tags/2.14.4/IAWP/Views/View.php#L252",
+      "https://plugins.trac.wordpress.org/browser/independent-analytics/trunk/IAWP/Favicon/FaviconDownloader.php#L57",
+      "https://plugins.trac.wordpress.org/browser/independent-analytics/trunk/IAWP/FetchFaviconsJob.php#L27",
+      "https://plugins.trac.wordpress.org/browser/independent-analytics/trunk/IAWP/REST_API.php#L409",
+      "https://plugins.trac.wordpress.org/browser/independent-analytics/trunk/IAWP/Views/View.php#L252",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3537814%40independent-analytics&new=3537814%40independent-analytics&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/06ecc40c-6a63-4354-9f49-1925896622f5?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7493.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-5737.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1047,22 +990,21 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-6565",
+    "id": "cve-CVE-2026-32999",
     "source": "NVD CVE",
-    "timestamp": "2026-05-27T02:16:34.640",
-    "title": "CVE-2026-6565 - The Style Kits – Advanced Theme Styles for Elementor, Elementor Kits & Elementor Patterns plugin for",
-    "description": "The Style Kits – Advanced Theme Styles for Elementor, Elementor Kits & Elementor Patterns plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the '/wp-json/agwp/v1/tokens/save' endpoint kit title parameter in versions up to, and including, 2.5.0 due to insufficient input sanitization and output escaping in an admin attribute context. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6565",
-    "cvss_score": 6.4,
+    "timestamp": "2026-05-28T05:16:36.107",
+    "title": "CVE-2026-32999 - Insufficient character filtering in backup agent signing module on Comet Backup server allows authen",
+    "description": "Insufficient character filtering in backup agent signing module on Comet Backup server allows authenticated tenant administrator to execute an arbitrary code on behalf of a privileged user on the affected server and connected devices.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-32999",
+    "cvss_score": 9,
     "affected_products": [],
     "references": [
-      "https://plugins.trac.wordpress.org/changeset/3530172/analogwp-templates",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/d6332d57-5832-4093-a609-f9c454452815?source=cve"
+      "https://support.cometbackup.com/hc/en-us/articles/40655100268439--CVE-2026-32999-RCE-on-Comet-Server-via-branding-configuration"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6565.",
+      "risk_score": 100,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-32999.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1072,30 +1014,26 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "critical"
     },
-    "risk_score": 60
+    "risk_score": 100
   },
   {
-    "id": "cve-CVE-2026-49017",
+    "id": "cve-CVE-2026-32998",
     "source": "NVD CVE",
-    "timestamp": "2026-05-27T02:16:34.327",
-    "title": "CVE-2026-49017 - In OpenStack Swift before 2.36.2 and 2.37.2, s3api middleware enters an infinite loop when processin",
-    "description": "In OpenStack Swift before 2.36.2 and 2.37.2, s3api middleware enters an infinite loop when processing a truncated aws-chunked PUT request body. The StreamingInput class repeatedly appends an empty buffer and re-reads, causing the proxy-server worker handling the request to become permanently unresponsive with increasing CPU and memory consumption. An authenticated attacker can systematically exhaust all proxy-server workers, resulting in denial of service. The defect was introduced in Swift 2.36.0.",
+    "timestamp": "2026-05-28T05:16:35.970",
+    "title": "CVE-2026-32998 - This vulnerability in Veeam Service Provider Console allows for remote code execution.",
+    "description": "This vulnerability in Veeam Service Provider Console allows for remote code execution.",
     "severity": "medium",
-    "cve_id": "CVE-2026-49017",
+    "cve_id": "CVE-2026-32998",
     "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://bugs.launchpad.net/bugs/2152205",
-      "https://review.opendev.org/c/openstack/swift/+/987957",
-      "https://review.opendev.org/c/openstack/swift/+/988093",
-      "http://www.openwall.com/lists/oss-security/2026/05/27/9",
-      "http://www.openwall.com/lists/oss-security/2026/06/02/6"
+      "https://www.veeam.com/kb4853"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-49017.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-32998.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1110,56 +1048,21 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-49014",
+    "id": "cve-CVE-2026-32997",
     "source": "NVD CVE",
-    "timestamp": "2026-05-27T02:16:34.180",
-    "title": "CVE-2026-49014 - In GDAL 3.1.0 through 3.13.0, scanForGeometryContainers in the netCDF driver allows code execution v",
-    "description": "In GDAL 3.1.0 through 3.13.0, scanForGeometryContainers in the netCDF driver allows code execution via a stack-based buffer overflow. It reads a geometry attribute into a fixed-size stack buffer without validating the attribute length. The attacker embeds the exploit as an oversized geometry attribute in a crafted NetCDF file. This achieves arbitrary code execution on the server running GDAL. This is in frmts/netcdf/netcdfsg.cpp.",
-    "severity": "high",
-    "cve_id": "CVE-2026-49014",
-    "cvss_score": 7.4,
-    "affected_products": [],
-    "references": [
-      "https://github.com/OSGeo/gdal/issues/14594",
-      "https://github.com/OSGeo/gdal/issues/14594"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-49014.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-9607",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-27T00:16:39.567",
-    "title": "CVE-2026-9607 - A vulnerability was found in itsourcecode Courier Management System 1.0. The affected element is an ",
-    "description": "A vulnerability was found in itsourcecode Courier Management System 1.0. The affected element is an unknown function of the file /parcel_list.php. Performing a manipulation of the argument s results in sql injection. It is possible to initiate the attack remotely. The exploit has been made public and could be used.",
+    "timestamp": "2026-05-28T05:16:35.793",
+    "title": "CVE-2026-32997 - A vulnerability allowing an authenticated user with the Backup Administrator role to write arbitrary",
+    "description": "A vulnerability allowing an authenticated user with the Backup Administrator role to write arbitrary files on Linux-based Veeam Backup & Replication server.",
     "severity": "medium",
-    "cve_id": "CVE-2026-9607",
-    "cvss_score": 6.3,
+    "cve_id": "CVE-2026-32997",
+    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://github.com/ltranquility/cve_submit/issues/19",
-      "https://itsourcecode.com/",
-      "https://vuldb.com/submit/818333",
-      "https://vuldb.com/vuln/365680",
-      "https://vuldb.com/vuln/365680/cti",
-      "https://github.com/ltranquility/cve_submit/issues/19"
+      "https://www.veeam.com/kb4852"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9607.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-32997.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1174,144 +1077,176 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-9606",
+    "id": "cve-CVE-2026-32996",
     "source": "NVD CVE",
-    "timestamp": "2026-05-27T00:16:39.333",
-    "title": "CVE-2026-9606 - A vulnerability has been found in itsourcecode Courier Management System 1.0. Impacted is an unknown",
-    "description": "A vulnerability has been found in itsourcecode Courier Management System 1.0. Impacted is an unknown function of the file /manage_user.php. Such manipulation of the argument ID leads to sql injection. The attack may be performed from remote. The exploit has been disclosed to the public and may be used.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9606",
-    "cvss_score": 7.3,
-    "affected_products": [],
-    "references": [
-      "https://itsourcecode.com/",
-      "https://lhzzz08.github.io/posts/cveapplication3/",
-      "https://vuldb.com/submit/818198",
-      "https://vuldb.com/vuln/365679",
-      "https://vuldb.com/vuln/365679/cti"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9606.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-9605",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-27T00:16:39.157",
-    "title": "CVE-2026-9605 - A flaw has been found in GNU libredwg up to 0.13.4.8160. This issue affects the function bit_read_RC",
-    "description": "A flaw has been found in GNU libredwg up to 0.13.4.8160. This issue affects the function bit_read_RC of the file bits.c of the component Dwgbmp Utility. This manipulation causes heap-based buffer overflow. The attack is possible to be carried out remotely. The exploit has been published and may be used. Patch name: 8f03865f37f5d4ffd616fef802acc980be54d300. Applying a patch is the recommended action to fix this issue.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9605",
-    "cvss_score": 7.3,
-    "affected_products": [],
-    "references": [
-      "https://github.com/HackC0der/CVE-Repos/blob/main/libredwg/libredwg_6d6a339_heap_oob_write_read_2004_compressed_section.dwg",
-      "https://github.com/LibreDWG/libredwg/commit/8f03865f37f5d4ffd616fef802acc980be54d300",
-      "https://github.com/LibreDWG/libredwg/issues/1248",
-      "https://vuldb.com/submit/818197",
-      "https://vuldb.com/vuln/365678",
-      "https://vuldb.com/vuln/365678/cti",
-      "https://www.gnu.org/",
-      "https://github.com/LibreDWG/libredwg/issues/1248",
-      "https://vuldb.com/submit/818197"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9605.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-9312",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-27T00:16:39.020",
-    "title": "CVE-2026-9312 - A server-side request forgery (SSRF) vulnerability was identified in GitHub Enterprise Server that a",
-    "description": "A server-side request forgery (SSRF) vulnerability was identified in GitHub Enterprise Server that allowed an unauthenticated attacker to send crafted requests to internal services by exploiting insufficient input validation in an upload endpoint. By injecting path traversal content into request parameters, an attacker could bypass the intended request flow and redirect internal API calls, potentially accessing internal services and exposing sensitive credentials. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.22 and was fixed in versions 3.16.20, 3.17.17, 3.18.11, 3.19.8, 3.20.4, and 3.21.1. This vulnerability was reported via the GitHub Bug Bounty program.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9312",
-    "cvss_score": 8.2,
-    "affected_products": [
-      "cpe:2.3:a:github:enterprise_server:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:github:enterprise_server:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:github:enterprise_server:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:github:enterprise_server:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:github:enterprise_server:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:github:enterprise_server:3.21.1:rc1:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://docs.github.com/en/enterprise-server@3.16/admin/release-notes#3.16.20",
-      "https://docs.github.com/en/enterprise-server@3.17/admin/release-notes#3.17.17",
-      "https://docs.github.com/en/enterprise-server@3.18/admin/release-notes#3.18.11",
-      "https://docs.github.com/en/enterprise-server@3.19/admin/release-notes#3.19.8",
-      "https://docs.github.com/en/enterprise-server@3.20/admin/release-notes#3.20.4",
-      "https://docs.github.com/en/enterprise-server@3.21/admin/release-notes#3.21.1"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9312.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-8606",
-    "source": "NVD CVE",
-    "timestamp": "2026-05-27T00:16:37.900",
-    "title": "CVE-2026-8606 - A Server-Side Request Forgery (SSRF) vulnerability was identified in GitHub Enterprise Server that a",
-    "description": "A Server-Side Request Forgery (SSRF) vulnerability was identified in GitHub Enterprise Server that allowed an attacker to cause the server to issue HTTP requests to internal services via the security advisories package lookup feature. By directing requests to an internal management service and measuring response timing, an attacker could infer the values of sensitive environment variables, including signing secrets and private keys. Exploitation required GitHub Packages to be enabled; on instances not running in private mode the vulnerability was exploitable without authentication, otherwise any authenticated user could exploit it. This vulnerability affected all versions of GitHub Enterprise Server prior to 3.21.1 and was fixed in versions 3.20.3, 3.19.7, 3.18.10, 3.17.16, and 3.16.19. This vulnerability was reported via the GitHub Bug Bounty program.",
+    "timestamp": "2026-05-28T05:16:35.637",
+    "title": "CVE-2026-32996 - This vulnerability in Veeam Agent for Microsoft Windows allows for Local Privilege Escalation.",
+    "description": "This vulnerability in Veeam Agent for Microsoft Windows allows for Local Privilege Escalation.",
     "severity": "medium",
-    "cve_id": "CVE-2026-8606",
-    "cvss_score": 5.9,
-    "affected_products": [
-      "cpe:2.3:a:github:enterprise_server:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:github:enterprise_server:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:github:enterprise_server:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:github:enterprise_server:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:github:enterprise_server:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:github:enterprise_server:3.21.0:*:*:*:*:*:*:*"
-    ],
+    "cve_id": "CVE-2026-32996",
+    "cvss_score": null,
+    "affected_products": [],
     "references": [
-      "https://docs.github.com/en/enterprise-server@3.16/admin/release-notes#3.16.19",
-      "https://docs.github.com/en/enterprise-server@3.17/admin/release-notes#3.17.16",
-      "https://docs.github.com/en/enterprise-server@3.18/admin/release-notes#3.18.10",
-      "https://docs.github.com/en/enterprise-server@3.19/admin/release-notes#3.19.7",
-      "https://docs.github.com/en/enterprise-server@3.20/admin/release-notes#3.20.3",
-      "https://docs.github.com/en/enterprise-server@3.21/admin/release-notes#3.21.1"
+      "https://www.veeam.com/kb4852"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8606.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-32996.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-32995",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-28T05:16:35.477",
+    "title": "CVE-2026-32995 - The Rocket.Chat DDP method autoTranslate.translateMessage in versions <8.5.0, <8.4.2, <8.3.4, <8.2.4",
+    "description": "The Rocket.Chat DDP method autoTranslate.translateMessage in versions <8.5.0, <8.4.2, <8.3.4, <8.2.4, <8.1.5, <8.0.5, <7.13.8, and <7.10.12 accepts a client-supplied IMessage object and passes it directly to translateMessage() without checking Meteor.userId() or verifying room membership. Any authenticated DDP user can read the content of any message by ID from any room (private channels, DMs, E2EE rooms) by calling this method.",
+    "severity": "high",
+    "cve_id": "CVE-2026-32995",
+    "cvss_score": 7.5,
+    "affected_products": [],
+    "references": [
+      "https://github.com/RocketChat/Rocket.Chat/pull/40528",
+      "https://hackerone.com/reports/3734326"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-32995.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-2374",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-28T05:16:34.290",
+    "title": "CVE-2026-2374 - The Login No Captcha reCAPTCHA plugin for WordPress is vulnerable to Stored Cross-Site Scripting via",
+    "description": "The Login No Captcha reCAPTCHA plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the `$_SERVER['PHP_SELF']` superglobal in all versions up to, and including, 1.8.0. This is due to the `authenticate()` function storing the unsanitized output of `basename($_SERVER['PHP_SELF'])` in the `login_nocaptcha_error` WordPress option when a login attempt is made from a non-standard login page (e.g., xmlrpc.php). The `admin_notices()` function then echoes this stored value directly into the admin dashboard HTML without escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts that execute when an administrator with a whitelisted IP address visits the WordPress dashboard within 30 seconds of the attack.",
+    "severity": "high",
+    "cve_id": "CVE-2026-2374",
+    "cvss_score": 7.2,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/login-recaptcha/tags/1.7.3/login-nocaptcha.php#L281",
+      "https://plugins.trac.wordpress.org/browser/login-recaptcha/tags/1.7.3/login-nocaptcha.php#L377",
+      "https://plugins.trac.wordpress.org/browser/login-recaptcha/trunk/login-nocaptcha.php#L281",
+      "https://plugins.trac.wordpress.org/browser/login-recaptcha/trunk/login-nocaptcha.php#L377",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3549342%40login-recaptcha&new=3549342%40login-recaptcha&sfp_email=&sfph_mail=",
+      "https://wordpress.org/plugins/login-recaptcha/",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/99dfce3b-2b47-41bf-8b20-b53fb9f061a7?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-2374.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-9789",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-28T03:16:44.200",
+    "title": "CVE-2026-9789 - A Local Privilege Escalation (LPE) vulnerability affects Acer NitroSense software versions prior to ",
+    "description": "A Local Privilege Escalation (LPE) vulnerability affects Acer NitroSense software versions prior to 3.01.3052. The vulnerability stems from the the PSAdminAgent service, which creates a Named Pipe with a weak Access Control List (ACL). This allows any authenticated local user to connect and send commands. Because the service does not check the caller's privileges before running file deletion commands, a low-privileged local user can exploit this to delete arbitrary files with system authority.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9789",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://community.acer.com/en/kb/articles/19670"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9789.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-8915",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-28T00:16:43.950",
+    "title": "CVE-2026-8915 - Out-of-bounds write vulnerability in Samsung Open Source Escargot allows Overflow Buffers.\n\nThis iss",
+    "description": "Out-of-bounds write vulnerability in Samsung Open Source Escargot allows Overflow Buffers.\n\nThis issue affects Escargot: 36f5fb58366a67b713c02f6fd985e924fcc09e31.",
+    "severity": "high",
+    "cve_id": "CVE-2026-8915",
+    "cvss_score": 8.8,
+    "affected_products": [
+      "cpe:2.3:a:samsung:escargot:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://github.com/Samsung/escargot/pull/1579"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-8915.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-4888",
+    "source": "NVD CVE",
+    "timestamp": "2026-05-28T00:16:43.797",
+    "title": "CVE-2026-4888 - The Everest Forms – Contact Form, Payment Form, Quiz, Survey & Custom Form Builder plugin for WordPr",
+    "description": "The Everest Forms – Contact Form, Payment Form, Quiz, Survey & Custom Form Builder plugin for WordPress is vulnerable to unauthorized email sending due to a missing capability check on the send_test_email() function in all versions up to, and including, 3.4.7. This makes it possible for authenticated attackers, with Subscriber-level access and above, to send test emails to arbitrary addresses from the server.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-4888",
+    "cvss_score": 4.3,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/everest-forms/tags/3.4.4/includes/class-evf-ajax.php#L1174",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/8bced7df-3e1a-4d7b-9ad0-64be5e18900f?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-4888.",
       "affected_industries": [
         "Technology",
         "General"
