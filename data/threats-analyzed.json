@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1780841408974-1",
+    "id": "twitter-1780861357691-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-07T14:10:08.974Z",
+    "timestamp": "2026-06-07T19:42:37.691Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -11,27 +11,28 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The ransomware campaign poses a significant threat to cloud-based infrastructure, potentially leading to data encryption, service disruptions, financial losses, and reputational damage. The use of compromised CI/CD pipelines increases the risk of widespread and rapid deployment of the ransomware.",
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud-based services. Compromised CI/CD pipelines can lead to widespread deployment of malicious code, resulting in data loss, service disruption, and financial damage.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
-        "E-commerce",
-        "Media and Entertainment"
+        "Retail",
+        "Manufacturing",
+        "Government"
       ],
       "recommended_actions": [
-        "Immediately review and secure CI/CD pipelines by implementing strict access controls, multi-factor authentication, and regular security audits.",
-        "Deploy endpoint detection and response (EDR) solutions to monitor for anomalous activity and ransomware indicators in cloud environments.",
-        "Ensure regular backups of critical data are performed and stored offline to enable recovery in the event of an attack."
+        "Implement strict access controls and monitor CI/CD pipelines for unauthorized changes or suspicious activity.",
+        "Regularly back up critical data and store backups in isolated environments to ensure recovery in case of ransomware infection.",
+        "Deploy endpoint detection and response (EDR) solutions to identify and mitigate ransomware activity early."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "hn-1780841408974-1",
+    "id": "hn-1780861357691-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-07T14:10:08.974Z",
+    "timestamp": "2026-06-07T19:42:37.691Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -39,8 +40,45 @@
       "https://news.ycombinator.com/item?id=123"
     ],
     "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
+      "risk_score": 20,
+      "impact_assessment": "The open-source vulnerability scanner itself does not pose a direct threat but could be exploited by malicious actors to analyze systems and identify vulnerabilities for exploitation. Additionally, improper usage or reliance on the tool without proper validation could lead to a false sense of security.",
+      "affected_industries": [
+        "Technology",
+        "Software Development",
+        "Cybersecurity"
+      ],
+      "recommended_actions": [
+        "Evaluate the tool in a controlled environment before integrating it into production workflows.",
+        "Ensure that any vulnerabilities identified by the tool are validated and patched using best practices.",
+        "Monitor for updates or potential misuse of the tool in the cybersecurity community."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 20
+  },
+  {
+    "id": "gh-GHSA-87cf-mxjw-fmjh",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-07T15:31:49Z",
+    "title": "Comodo Internet Security's firewall driver Inspect.sys contains an integer underflow in its IPv6...",
+    "description": "Comodo Internet Security's firewall driver Inspect.sys contains an integer underflow in its IPv6 packet parser. The parser decrements an unsigned 64-bit payload-length value (taken from the IPv6 fixed header's payload length field) by the size of each IPv6 extension header without validating it, so a packet whose declared payload length is smaller than the sum of its extension-header lengths underflows the value to a near-maximal 64-bit integer. Because IPv6 parsing occurs before firewall rule e",
+    "severity": "high",
+    "cve_id": "CVE-2026-49494",
+    "ghsa_id": "GHSA-87cf-mxjw-fmjh",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-49494.",
       "affected_industries": [
         "Technology",
         "General"
@@ -50,9 +88,9 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "low"
+      "urgency": "high"
     },
-    "risk_score": 25
+    "risk_score": 75
   },
   {
     "id": "gh-GHSA-pw43-h2x7-pm54",
@@ -115,22 +153,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability in the Boot Actuator Endpoint of erzhongxmu JeeWMS could lead to information disclosure, potentially exposing sensitive data to unauthorized parties. The exploit is publicly available, increasing the likelihood of attacks.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11458.",
       "affected_industries": [
         "Technology",
-        "Finance",
-        "Healthcare",
-        "Manufacturing"
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update erzhongxmu JeeWMS to the latest patched version to mitigate the vulnerability.",
-        "Restrict access to the /base-boot/actuator endpoint using firewall rules or authentication mechanisms.",
-        "Monitor systems for unusual activity and implement intrusion detection systems to identify potential exploitation attempts."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 75
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-m34f-6c67-jx84",
@@ -234,16 +270,16 @@
     ],
     "ai_analysis": {
       "risk_score": 45,
-      "impact_assessment": "The vulnerability allows remote command injection via the mermaid.path argument in the check_cmd_exists function, potentially enabling attackers to execute arbitrary commands. While exploitation is complex and difficult, the public disclosure increases the likelihood of targeted attacks.",
+      "impact_assessment": "The vulnerability in FoundationAgents MetaGPT up to version 0.8.2 allows for command injection via the 'mermaid.path' argument in the 'check_cmd_exists' function. While exploitation requires a high degree of complexity, successful attacks could allow remote execution of arbitrary commands, potentially compromising systems relying on this software.",
       "affected_industries": [
         "Technology",
         "Software Development",
-        "DevOps"
+        "AI/ML Research"
       ],
       "recommended_actions": [
-        "Update FoundationAgents MetaGPT to the latest patched version once available.",
+        "Upgrade FoundationAgents MetaGPT to the latest patched version beyond 0.8.2.",
         "Restrict access to systems running vulnerable versions and monitor for unusual activity.",
-        "Validate and sanitize all user inputs to prevent command injection vulnerabilities."
+        "Validate and sanitize user inputs to prevent command injection vulnerabilities."
       ],
       "urgency": "medium"
     },
@@ -272,22 +308,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in GL.iNet GL-MT3000 4.4.5 allows for remote command injection via the FTP Protocol Handler. If exploited, attackers could execute arbitrary commands, potentially leading to unauthorized access, data exfiltration, or system compromise.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11451.",
       "affected_industries": [
-        "Telecommunications",
-        "IoT Device Manufacturers",
-        "Small and Medium Enterprises (SMEs)",
-        "Home Networking"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately upgrade to GL.iNet GL-MT3000 firmware version 4.8.1 to patch the vulnerability.",
-        "Restrict FTP access to trusted IP addresses and disable FTP services if not required.",
-        "Monitor network traffic for unusual activity and implement intrusion detection systems to identify potential exploitation attempts."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-44h7-ppq3-383m",
@@ -312,20 +346,21 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-11453.",
+      "risk_score": 45,
+      "impact_assessment": "The vulnerability allows for SQL injection attacks via the 'Keyword' parameter in the Tiobon Employee Self-Service System up to version 7.2. This could lead to unauthorized access, data exfiltration, or database manipulation. The exploit is publicly available, increasing the likelihood of malicious use.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Human Resources",
+        "Corporate Enterprises",
+        "Small and Medium Businesses (SMBs)"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately apply input validation and parameterized queries to mitigate SQL injection vulnerabilities in the affected endpoint.",
+        "Restrict public access to the /Blog/BlogSearch.aspx endpoint until a patch or fix is implemented.",
+        "Contact the vendor again to escalate the issue and request a timeline for a security patch. Monitor for updates or third-party fixes."
       ],
-      "urgency": "low"
+      "urgency": "medium"
     },
-    "risk_score": 25
+    "risk_score": 45
   },
   {
     "id": "gh-GHSA-5qf6-3rw8-7jgg",
@@ -350,20 +385,22 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11452.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in the GL.iNet GL-MT3000 router allows remote attackers to execute arbitrary commands via the manipulation of the Password argument in the SET_USER_PWD handler. This could lead to unauthorized access, system compromise, or further exploitation of the affected device.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Telecommunications",
+        "Small and Medium Enterprises (SMEs)",
+        "Home Networking",
+        "IoT Device Manufacturers"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Upgrade the firmware of GL.iNet GL-MT3000 devices to version 4.8.1 or later to patch the vulnerability.",
+        "Implement network segmentation to isolate vulnerable devices from critical infrastructure and sensitive systems.",
+        "Monitor network traffic for unusual activity and apply intrusion detection/prevention systems to detect potential exploitation attempts."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
     "id": "gh-GHSA-jqrf-6qhf-8j4m",
@@ -465,22 +502,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in the LuCI JSON-RPC Interface of GL.iNet GL-MT3000 firmware version 4.4.5 allows remote attackers to execute arbitrary commands via command injection. This could lead to unauthorized access, data exfiltration, or system compromise.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11449.",
       "affected_industries": [
-        "Telecommunications",
-        "IoT Device Manufacturers",
-        "Small and Medium Enterprises (SMEs)",
-        "Home Networking"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately upgrade the firmware of GL.iNet GL-MT3000 devices to version 4.8.1 or later to mitigate the vulnerability.",
-        "Conduct a comprehensive audit of network devices to identify any other systems running outdated firmware.",
-        "Implement network segmentation to limit the exposure of IoT and networking devices to untrusted networks."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-pg7m-jpvg-gp32",
@@ -506,16 +541,16 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability in the GL.iNet GL-MT3000 router allows remote attackers to execute arbitrary commands via command injection in the Minidlna Service. This could lead to unauthorized access, data exfiltration, or complete system compromise.",
+      "impact_assessment": "The vulnerability in GL.iNet GL-MT3000 up to version 4.4.5 allows for remote command injection via the Minidlna Service. If exploited, attackers could execute arbitrary commands on the device, potentially compromising the device and any connected network.",
       "affected_industries": [
         "Telecommunications",
+        "IoT and Smart Devices",
         "Small and Medium Enterprises (SMEs)",
-        "Home Networking",
-        "IoT Device Manufacturers"
+        "Home Networking"
       ],
       "recommended_actions": [
-        "Immediately upgrade the GL.iNet GL-MT3000 firmware to version 4.7 or later to patch the vulnerability.",
-        "Restrict remote access to the device by configuring firewalls or using VPNs to limit exposure.",
+        "Immediately upgrade all GL.iNet GL-MT3000 devices to firmware version 4.7 or later to patch the vulnerability.",
+        "Restrict remote access to the device by implementing firewall rules and disabling unnecessary services.",
         "Monitor network traffic for unusual activity and implement intrusion detection/prevention systems to identify potential exploitation attempts."
       ],
       "urgency": "high"
@@ -614,16 +649,16 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability in the Pull Request Handler's authorization mechanism could allow unauthorized access to sensitive issue data, leading to potential data breaches or unauthorized modifications.",
+      "impact_assessment": "The vulnerability in the Pull Request Handler's authorization mechanism could allow unauthorized users to access or manipulate issue data, potentially leading to data breaches, privilege escalation, or unauthorized changes in project repositories.",
       "affected_industries": [
         "Software Development",
         "Technology",
         "Open Source Projects"
       ],
       "recommended_actions": [
-        "Upgrade theonedev to version 15.0.6 immediately to patch the vulnerability.",
-        "Review access logs for any unauthorized access to issues and pull requests to identify potential exploitation.",
-        "Implement additional monitoring and authorization checks for sensitive components like issue tracking and pull request handling."
+        "Upgrade to theonedev version 15.0.6 immediately to patch the vulnerability.",
+        "Review access logs for unusual activity related to issue handling to identify potential exploitation.",
+        "Implement additional authorization checks and monitoring mechanisms to detect unauthorized access attempts."
       ],
       "urgency": "high"
     },
@@ -654,18 +689,18 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability in the Parent Project Handler of theonedev up to version 15.0.5 allows unauthorized access to project data by exploiting improper authorization mechanisms. This could lead to data exposure, unauthorized modifications, or potential privilege escalation.",
+      "impact_assessment": "The vulnerability allows remote attackers to exploit improper authorization in the Parent Project Handler component, potentially leading to unauthorized access or modification of project data.",
       "affected_industries": [
         "Software Development",
         "Technology",
         "DevOps"
       ],
       "recommended_actions": [
-        "Immediately upgrade theonedev to version 15.0.6 or later to patch the vulnerability.",
-        "Review access logs for any unauthorized access to the /projects/ endpoint to identify potential exploitation.",
-        "Implement additional monitoring and access controls to detect and prevent unauthorized access attempts."
+        "Upgrade theonedev onedev to version 15.0.6 or later to patch the vulnerability.",
+        "Audit access logs for any unauthorized access attempts to /projects/ endpoint.",
+        "Implement additional access controls and monitoring to detect and prevent exploitation."
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
     "risk_score": 65
   },
@@ -771,60 +806,22 @@
     ],
     "ai_analysis": {
       "risk_score": 45,
-      "impact_assessment": "The vulnerability in Mage AI up to version 0.9.79 allows for cross-site scripting (XSS) attacks via the manipulation of the 'query.redirect_url' argument in the Sign-in Flow. This could enable attackers to execute malicious scripts in the context of a user's browser, potentially leading to data theft, session hijacking, or unauthorized actions on behalf of the user.",
+      "impact_assessment": "The vulnerability allows for cross-site scripting (XSS) attacks via the manipulation of the 'query.redirect_url' argument in the sign-in flow of Mage AI. This could lead to unauthorized execution of malicious scripts in the context of the user's browser, potentially exposing sensitive user data or enabling session hijacking. The exploit is publicly available, increasing the likelihood of exploitation.",
       "affected_industries": [
         "Technology",
         "E-commerce",
-        "Healthcare",
         "Finance",
+        "Healthcare",
         "Education"
       ],
       "recommended_actions": [
-        "Immediately update Mage AI to a patched version if available, or implement input validation and sanitization for the 'query.redirect_url' parameter to mitigate the vulnerability.",
-        "Monitor application logs and traffic for signs of exploitation, such as unusual redirects or unauthorized script execution.",
-        "Notify users and administrators of the vulnerability, and provide guidance on recognizing and avoiding potential phishing attempts or malicious links."
+        "Immediately update Mage AI to a version patched for CVE-2026-11436, or apply any available mitigation measures provided by the vendor.",
+        "Implement input validation and sanitization on the 'query.redirect_url' parameter to prevent malicious payloads from being executed.",
+        "Monitor application logs for unusual activity or signs of exploitation, and educate users about potential phishing attempts leveraging this vulnerability."
       ],
       "urgency": "medium"
     },
     "risk_score": 45
-  },
-  {
-    "id": "gh-GHSA-xhq4-92wj-h688",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-06T18:30:22Z",
-    "title": "A security vulnerability has been detected in Jinher OA 1.0. This affects an unknown function of...",
-    "description": "A security vulnerability has been detected in Jinher OA 1.0. This affects an unknown function of the file nextselectplan.aspx. Such manipulation of the argument httpOID leads to sql injection. The attack may be launched remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-11435",
-    "ghsa_id": "GHSA-xhq4-92wj-h688",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11435.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
   },
   {
     "id": "cve-CVE-2026-10167",
@@ -844,17 +841,18 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-10167.",
+      "impact_assessment": "The vulnerability allows remote attackers to manipulate authentication cookies, potentially gaining unauthorized access to sensitive student data and administrative functionalities. This could lead to data breaches, unauthorized system control, and reputational damage.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Education",
+        "Software Development",
+        "IT Services"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately apply patches or updates provided by the vendor to address the vulnerability.",
+        "Implement additional monitoring and logging to detect unauthorized access attempts or suspicious activity.",
+        "Restrict access to the affected system and validate input parameters to prevent exploitation."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
     "risk_score": 85
   },
@@ -874,23 +872,20 @@
       "https://www.wordfence.com/threat-intel/vulnerabilities/id/ddb2290d-d4bd-4f70-9fe9-927f49721811?source=cve"
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to bypass authorization checks and modify the title and content of posts linked to publicly accessible ACF forms. This could lead to defacement, misinformation, or malicious content injection, potentially damaging the credibility and trust of affected websites.",
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8382.",
       "affected_industries": [
-        "Media and Publishing",
-        "E-commerce",
-        "Education",
-        "Nonprofits",
-        "Small and Medium Businesses"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update the Advanced Custom Fields (ACF®) plugin to a patched version (if available) or disable the plugin temporarily if no fix is available.",
-        "Audit all publicly accessible ACF forms and restrict access to trusted users only by implementing additional authentication and authorization mechanisms.",
-        "Monitor website content for unauthorized changes and implement a Web Application Firewall (WAF) to detect and block malicious form submissions."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 60
   },
   {
     "id": "cve-CVE-2026-10166",
