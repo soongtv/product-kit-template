@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1781106894392-1",
+    "id": "twitter-1781124066313-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-10T15:54:54.392Z",
+    "timestamp": "2026-06-10T20:41:06.313Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1781106894392-1",
+    "id": "hn-1781124066313-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-10T15:54:54.392Z",
+    "timestamp": "2026-06-10T20:41:06.313Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,20 +26,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-g89r-93r3-rqqp",
+    "id": "gh-GHSA-78v8-vpjp-cjqh",
     "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:33Z",
-    "title": "A flaw was found in migration-planner-ui-app. An attacker can register a malicious discovery...",
-    "description": "A flaw was found in migration-planner-ui-app. An attacker can register a malicious discovery agent with a specially crafted credentialUrl containing JavaScript code. When an organizational user clicks this link in the user interface, the embedded malicious code executes within the user's browser session. This cross-site scripting (XSS) vulnerability allows the attacker to compromise the victim's Red Hat Single Sign-On (SSO) session, potentially leading to unauthorized cross-tenant data access an",
+    "timestamp": "2026-06-10T20:33:13Z",
+    "title": "PDM  wheel installation leads to Path Traversal via overridden write_to_fs",
+    "description": "InstallDestination.write_to_fs() in src/pdm/installers/installers.py overrides the base class to add symlink/hardlink support but replaces the safe _path_with_destdir() (which validates via Path.resolve() + is_relative_to()) with a bare os.path.join() that performs no path validation. A malicious wheel with traversal entries can write arbitrary files. Same class as Poetry CVE-2026-34591. Fix ready at: https://github.com/pdm-project/pdm/pull/3787.",
     "severity": "high",
-    "cve_id": "CVE-2026-53473",
-    "ghsa_id": "GHSA-g89r-93r3-rqqp",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-47764",
+    "ghsa_id": "GHSA-78v8-vpjp-cjqh",
+    "affected_packages": [
+      "pdm"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -49,103 +50,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-q34g-8v67-vv99",
+    "id": "gh-GHSA-ghq2-5c67-fprm",
     "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:33Z",
-    "title": "A potential authentication bypass was reported in Lenovo Smart Connect for Windows that could...",
-    "description": "A potential authentication bypass was reported in Lenovo Smart Connect for Windows that could allow a local authenticated user to execute arbitrary code with elevated privileges.",
-    "severity": "high",
-    "cve_id": "CVE-2026-6090",
-    "ghsa_id": "GHSA-q34g-8v67-vv99",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-6xvf-9742-48w2",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:33Z",
-    "title": "A flaw was found in migration-planner. An authenticated user can exploit this vulnerability by...",
-    "description": "A flaw was found in migration-planner. An authenticated user can exploit this vulnerability by sending a DELETE request to the /api/v1/sources route, which lacks proper authorization and filtering. This allows for the destruction of all customer data, including sources, agents, and assessments, leading to a critical loss of availability and integrity across the entire SaaS platform.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-53469",
-    "ghsa_id": "GHSA-6xvf-9742-48w2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-wx95-xvqf-3525",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:33Z",
-    "title": "A vulnerability was identified in the Lenovo Android Application, distributed exclusively on...",
-    "description": "A vulnerability was identified in the Lenovo Android Application, distributed exclusively on tablets in the Chinese market, that could allow a website visited by the built-in browser to overwrite system clipboard contents.",
+    "timestamp": "2026-06-10T20:32:56Z",
+    "title": "PDM: Project-Local State and Config Writes Follow Symlinks",
+    "description": "## Summary\n\nPDM writes several project-local state or configuration files without symlink protection. If a malicious repository places those files as symlinks, local PDM operations can overwrite the symlink targets.\n\nThis creates an arbitrary file clobber primitive relative to the privileges of the invoking user.\n\n## Affected Behavior\n\n- Project-local config writes can affect files outside the repository\n- The most stable demonstrated sink is `pdm.toml`\n- Related sinks include `.pdm-python` and ",
     "severity": "medium",
-    "cve_id": "CVE-2026-7516",
-    "ghsa_id": "GHSA-wx95-xvqf-3525",
-    "affected_packages": [],
-    "cwes": [
-      null
+    "cve_id": "CVE-2026-47763",
+    "ghsa_id": "GHSA-ghq2-5c67-fprm",
+    "affected_packages": [
+      "pdm"
     ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-j94f-hq72-qm3h",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:33Z",
-    "title": "During an internal security assessment, a potential vulnerability was discovered in Lenovo...",
-    "description": "During an internal security assessment, a potential vulnerability was discovered in Lenovo Accessories and Display Manager for Enterprise for Windows that could allow a local authenticated user to execute arbitrary code with elevated privileges.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9045",
-    "ghsa_id": "GHSA-j94f-hq72-qm3h",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-4rf2-jfxm-vxmr",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:33Z",
-    "title": "A potential uncontrolled search path vulnerability was reported in the LanSchool Classic client...",
-    "description": "A potential uncontrolled search path vulnerability was reported in the LanSchool Classic client application that could allow a local authenticated user to execute arbitrary code with elevated privileges.",
-    "severity": "high",
-    "cve_id": "CVE-2026-8637",
-    "ghsa_id": "GHSA-4rf2-jfxm-vxmr",
-    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -158,178 +73,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-7j4w-x8x8-5mvg",
+    "id": "gh-GHSA-8g7m-96c8-8wwc",
     "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:33Z",
-    "title": "A flaw was found in assisted-migration-agent. An unauthenticated attacker, located on the same...",
-    "description": "A flaw was found in assisted-migration-agent. An unauthenticated attacker, located on the same local area network (LAN), can exploit a path traversal vulnerability. By crafting a specially designed gzipped tarball, the attacker can bypass security checks and write arbitrary files to the system. This could ultimately lead to the execution of unauthorized code on the appliance.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-53476",
-    "ghsa_id": "GHSA-7j4w-x8x8-5mvg",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-v5m8-5455-qw2x",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:33Z",
-    "title": "A flaw was found in migration-planner. An authenticated attacker could exploit an improper access...",
-    "description": "A flaw was found in migration-planner. An authenticated attacker could exploit an improper access control vulnerability in the `/api/v1/sources/{id}/image-url` endpoint. This flaw allows the attacker to bypass an ownership check and obtain presigned S3 URLs for Open Virtual Appliance (OVA) images belonging to other users. Consequently, the attacker can download OVA images containing sensitive information, such as long-lived agent JSON Web Tokens (JWTs) and source configurations, potentially lead",
-    "severity": "critical",
-    "cve_id": "CVE-2026-53470",
-    "ghsa_id": "GHSA-v5m8-5455-qw2x",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-vf2h-7x3w-97fr",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:33Z",
-    "title": "A flaw was found in migration-planner. A remote authenticated attacker could exploit this...",
-    "description": "A flaw was found in migration-planner. A remote authenticated attacker could exploit this vulnerability by uploading a specially crafted RVTools .xlsx file. Due to improper input sanitization, malicious SQL embedded within a spreadsheet cell is executed when cluster names are processed. This SQL Injection allows for arbitrary file reading on the system, potentially exposing sensitive information such as Kubernetes service account tokens and other credentials, which could lead to a full compromis",
-    "severity": "critical",
-    "cve_id": "CVE-2026-53474",
-    "ghsa_id": "GHSA-vf2h-7x3w-97fr",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-379r-2p3h-m47v",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:33Z",
-    "title": "libnfs through 6.0.2 before 55c18ea does not validate a string size, leading to an integer...",
-    "description": "libnfs through 6.0.2 before 55c18ea does not validate a string size, leading to an integer overflow during a connection to a crafted NFS server. This occurs in libnfs_zdr_string in lib/libnfs-zdr.c.",
-    "severity": "high",
-    "cve_id": "CVE-2026-53689",
-    "ghsa_id": "GHSA-379r-2p3h-m47v",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-x546-prg5-fvp8",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:33Z",
-    "title": "A missing authentication check on the Aix‑DB \"/llm/process_llm_out\" endpoint allows...",
-    "description": "A missing authentication check on the Aix‑DB \"/llm/process_llm_out\" endpoint allows unauthenticated clients to execute arbitrary \"SELECT\" SQL queries and retrieve database data, as the endpoint lacks the token validation enforced on all other application endpoints.\nAll releases up to 1.2.4 are considered vulnerable. Status of next releases is unknown as the vulnerability has not been addressed by any patch.",
-    "severity": "high",
-    "cve_id": "CVE-2026-8335",
-    "ghsa_id": "GHSA-x546-prg5-fvp8",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-8g5p-jxp9-457c",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:33Z",
-    "title": "A flaw was found in assisted-migration-agent. The application hardcodes insecure Transport Layer...",
-    "description": "A flaw was found in assisted-migration-agent. The application hardcodes insecure Transport Layer Security (TLS) connections when communicating with vCenter. This vulnerability allows a Man-in-the-Middle (MITM) attacker to intercept and harvest vCenter administrator credentials. This can lead to unauthorized access to vCenter.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-53475",
-    "ghsa_id": "GHSA-8g5p-jxp9-457c",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-2fqw-7c6r-2cq6",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:33Z",
-    "title": "A flaw was found in migration-planner. The agent-API middleware processes JSON Web Tokens (JWTs)...",
-    "description": "A flaw was found in migration-planner. The agent-API middleware processes JSON Web Tokens (JWTs) for authentication, but its UpdateSourceInventory and UpdateAgentStatus handlers fail to validate the source_id claim within these tokens against the requested source ID. This oversight allows an authenticated attacker with a valid agent token to manipulate data across different tenants, leading to a complete collapse of tenant isolation. This could result in unauthorized overwriting of victim invent",
-    "severity": "critical",
-    "cve_id": "CVE-2026-53471",
-    "ghsa_id": "GHSA-2fqw-7c6r-2cq6",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-f4g5-r76v-qg3p",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:32Z",
-    "title": "A heap buffer overflow flaw was found in 389 Directory Server. When serializing objectclass...",
-    "description": "A heap buffer overflow flaw was found in 389 Directory Server. When serializing objectclass definitions, the oc_superior (SUP) field length is omitted from buffer size calculations in read_schema_dse() and schema_oc_to_string(), but the field is still written via strcat(). An attacker with Directory Manager privileges, or a compromised replication supplier, can trigger a server crash by creating objectclasses with long SUP values. This is an incomplete fix variant of CVE-2025-14905.",
+    "timestamp": "2026-06-10T20:07:21Z",
+    "title": "Incus has a Nil-Pointer Dereference Panic via Instance Backup Import (volume omitted)",
+    "description": "## Summary\n\n`(*backend).CreateInstanceFromBackup` in [`internal/server/storage/backend.go`](https://github.com/lxc/incus/blob/1513600/internal/server/storage/backend.go) contains a nil-pointer dereference that an authenticated user with permission to create instances in any project can trigger remotely by uploading a crafted backup tarball. The Incus daemon panics and the process crashes, causing denial of service to every project on that cluster member.\n\nThis is a sibling of `GHSA-fwj8-62r8-8p8",
     "severity": "medium",
-    "cve_id": "CVE-2026-11884",
-    "ghsa_id": "GHSA-f4g5-r76v-qg3p",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-47753",
+    "ghsa_id": "GHSA-8g7m-96c8-8wwc",
+    "affected_packages": [
+      "github.com/lxc/incus/v7"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -338,15 +96,92 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-q89f-427x-5p67",
+    "id": "gh-GHSA-8q5r-mmjf-575q",
     "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:32Z",
-    "title": "Improper comparison with the certificates trusted list in S2OPC allows an attacker well-formed...",
-    "description": "Improper comparison with the certificates trusted list in S2OPC allows an attacker well-formed untrusted certificate to be considered trusted",
+    "timestamp": "2026-06-10T19:33:48Z",
+    "title": "Claude Code Action: Malicious MCP Server Configuration in PRs Enables Remote Code Execution and Secret Exfiltration",
+    "description": "Due to the combination of checking out PR head branches (attacker-controlled), reading `.mcp.json` from the working directory via default setting sources, and unconditionally enabling all project MCP servers via `enableAllProjectMcpServers`, it was possible for an attacker who opened a PR containing a malicious `.mcp.json` file to achieve arbitrary code execution on the GitHub Actions runner. This could lead to exfiltration of secrets available to the workflow (such as API keys and tokens) when ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-47751",
+    "ghsa_id": "GHSA-8q5r-mmjf-575q",
+    "affected_packages": [
+      "anthropics/claude-code-action"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-qvv5-jq5g-4cgg",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-10T19:33:20Z",
+    "title": "Baileys has message upsert / hist sync spoofing and app state corruption when using maliciously crafted protocolMessage payload",
+    "description": "### Impact\nAny baileys session under the latest version (< 7.0.0-rc12, and < 6.7.22) can be sent a malicious payload via the placeholderResendMessage and trigger a fake `messages.upsert` event with a **fake message key and payload**. This allows anyone to spoof messages. The same exploit also allows an attacker to corrupt the app state sync system by sending fake key shares, and also allows for history sync spoofing which also serves the same problem, injecting fake previous context or \"on-deman",
+    "severity": "critical",
+    "cve_id": "CVE-2026-48063",
+    "ghsa_id": "GHSA-qvv5-jq5g-4cgg",
+    "affected_packages": [
+      "baileys",
+      "@whiskeysockets/baileys",
+      "baileys",
+      "@whiskeysockets/baileys"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-3qmc-cj7q-62hv",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-10T19:12:10Z",
+    "title": "Litestar: AllowedHostsMiddleware bypasses host validation via client-controlled X-Forwarded-Host header",
+    "description": "### Summary\n\n`AllowedHostsMiddleware` trusts the `X-Forwarded-Host` header as a fallback when the `Host` header is absent. Since `X-Forwarded-Host` is a client-controllable header, an attacker can bypass the allowed hosts validation by omitting the `Host` header and supplying an `X-Forwarded-Host` header set to a whitelisted domain. This enables host header injection attacks such as password reset poisoning, cache poisoning, and server-side request routing manipulation.\n\n### Details\n\nIn `Allowed",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48061",
+    "ghsa_id": "GHSA-3qmc-cj7q-62hv",
+    "affected_packages": [
+      "litestar"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-542p-wvx7-72m4",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-10T19:12:05Z",
+    "title": "Litestar has HTML Injection Through its CSRF Token",
+    "description": "# Overview\n\nLitestar instances which use a template engine in conjunction with CSRF protection are vulnerable to HTML Injection which can be escalated to Cross Site Scripting due to the contents of the CSRF cookie being excluded from automatic escaping by the template engine when configured inline with documentation recommendations.\n\nWe used the latest Litestar version available via PyPI for this disclosure. At the time of writing, that is version 2.21.0 and we have not validated this against th",
     "severity": "high",
-    "cve_id": "CVE-2026-9758",
-    "ghsa_id": "GHSA-q89f-427x-5p67",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-48060",
+    "ghsa_id": "GHSA-542p-wvx7-72m4",
+    "affected_packages": [
+      "litestar"
+    ],
     "cwes": [
       null
     ],
@@ -359,15 +194,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-9h3m-vgr9-8wvv",
+    "id": "gh-GHSA-rqfj-vv8r-xhqc",
     "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:32Z",
-    "title": "During an internal security assessment, a potential vulnerability was discovered in some ThinkPad...",
-    "description": "During an internal security assessment, a potential vulnerability was discovered in some ThinkPad embedded controller firmware that could allow a privileged local user to perform arbitrary reads or writes to privileged memory regions.",
-    "severity": "high",
-    "cve_id": "CVE-2025-10237",
-    "ghsa_id": "GHSA-9h3m-vgr9-8wvv",
-    "affected_packages": [],
+    "timestamp": "2026-06-10T18:49:22Z",
+    "title": "nebula-mesh: Session and OIDC state cookies lack the Secure attribute",
+    "description": "`internal/web/session.go` and `internal/web/oidc.go` set `HttpOnly` and `SameSite=Lax` on every cookie but never `Secure`. A single plaintext request to the origin (operator on a LAN, mistyped URL, HTTP→HTTPS not strictly enforced, reverse proxy misconfiguration) discloses the session.\n\n## Affected\nAll released versions up to v0.3.1.\n\n## Impact\nAn attacker who can observe one HTTP request to the origin recovers the session cookie and impersonates the operator for the remainder of its 24h TTL. Th",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48058",
+    "ghsa_id": "GHSA-rqfj-vv8r-xhqc",
+    "affected_packages": [
+      "github.com/juev/nebula-mesh"
+    ],
     "cwes": [
       null
     ],
@@ -380,19 +217,22 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-p7jf-pwjp-h977",
+    "id": "gh-GHSA-8h84-fhqq-q58v",
     "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:32Z",
-    "title": "During an internal security assessment, a potential out-of-bounds write vulnerability was...",
-    "description": "During an internal security assessment, a potential out-of-bounds write vulnerability was discovered in the BIOS of some ThinkPad products could allow a privileged local user to execute code in System Management Mode (SMM).",
-    "severity": "high",
-    "cve_id": "CVE-2025-10238",
-    "ghsa_id": "GHSA-p7jf-pwjp-h977",
-    "affected_packages": [],
+    "timestamp": "2026-06-10T18:34:29Z",
+    "title": "nebula-mesh: Decrypted CA private key persists in heap after signing",
+    "description": "`internal/pki/resolver.go:36-64` constructs a `CAManager` with the plaintext `ed25519.PrivateKey` after unwrapping via the master key; `internal/pki/ca.go:13-16` stores it. Callers at `internal/api/enroll.go:116`, `internal/api/updates.go:297`, and `internal/api/mobile_bundle.go:40` use the manager for one `Sign()` and drop the reference on function return — but the underlying slice contents are not wiped before release.\n\nThe keystore package's contract (`internal/keystore/keystore.go` doc: *\"Ca",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48025",
+    "ghsa_id": "GHSA-8h84-fhqq-q58v",
+    "affected_packages": [
+      "github.com/juev/nebula-mesh"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
@@ -401,18 +241,42 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-g28p-6mcc-v4rv",
+    "id": "gh-GHSA-629x-23h4-9f72",
     "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:31Z",
-    "title": "Missing permission checks in Jenkins 2.567 and earlier, LTS 2.555.2 and earlier allow attackers...",
-    "description": "Missing permission checks in Jenkins 2.567 and earlier, LTS 2.555.2 and earlier allow attackers with Overall/Read permission to determine other users' configured timezone and to enumerate view names of other users' \"My Views\".",
+    "timestamp": "2026-06-10T18:31:47Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
     "severity": "unknown",
-    "cve_id": "CVE-2026-53439",
-    "ghsa_id": "GHSA-g28p-6mcc-v4rv",
+    "cve_id": "CVE-2026-48556",
+    "ghsa_id": "GHSA-629x-23h4-9f72",
     "affected_packages": [],
     "cwes": [],
     "references": [
       null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-x4j3-73c9-wq9c",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-10T18:31:47Z",
+    "title": "An OS\ncommand injection vulnerability exists in the VPN module of TP-Link Archer AX12\nv1, AX17 v1...",
+    "description": "An OS\ncommand injection vulnerability exists in the VPN module of TP-Link Archer AX12\nv1, AX17 v1. AX18 v1, and AX1300 v1.6 routers. This vulnerability allows an\nadjacent, authenticated attacker to execute arbitrary commands on the device by\nimporting a specially crafted VPN client configuration file. The issue stems\nfrom improper filtering of special characters. \n\n\n\n\n\nSuccessful\nexploitation of this vulnerability may enable an attacker to gain full control\nof the affected device, potentially co",
+    "severity": "high",
+    "cve_id": "CVE-2026-9151",
+    "ghsa_id": "GHSA-x4j3-73c9-wq9c",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
       null,
       null
     ],
@@ -420,16 +284,18 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-m6wv-wh8g-64xc",
+    "id": "gh-GHSA-c58f-cc4q-2mvj",
     "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:31Z",
-    "title": "Jenkins 2.567 and earlier, LTS 2.555.2 and earlier does not encrypt secrets from POST config.xml...",
-    "description": "Jenkins 2.567 and earlier, LTS 2.555.2 and earlier does not encrypt secrets from POST config.xml submissions before storing them in job configurations unencrypted in job config.xml files on the Jenkins controller where they can be viewed by users with Item/Extended Read permission, or access to the Jenkins controller file system.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53442",
-    "ghsa_id": "GHSA-m6wv-wh8g-64xc",
+    "timestamp": "2026-06-10T18:31:46Z",
+    "title": "In Splunk Enterprise versions below 10.2.4, 10.0.7, 9.4.12, and 9.3.13, and Splunk Cloud Platform...",
+    "description": "In Splunk Enterprise versions below 10.2.4, 10.0.7, 9.4.12, and 9.3.13, and Splunk Cloud Platform versions below 10.3.2512.13, 10.2.2510.15, 10.1.2507.23, and 9.3.2411.132, a low-privileged user that does not hold the 'admin' or 'power' Splunk roles could craft a malicious classic dashboard that exfiltrates sensitive data to an external server when a higher-privileged user views it, bypassing the external content restriction through a Cascading Style Sheets (CSS) injection.<br><br>The Trusted Do",
+    "severity": "medium",
+    "cve_id": "CVE-2026-20254",
+    "ghsa_id": "GHSA-c58f-cc4q-2mvj",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
       null,
@@ -439,16 +305,169 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-3rqh-hch3-jhpc",
+    "id": "gh-GHSA-jhf8-vwfv-vr95",
     "source": "GitHub Security",
-    "timestamp": "2026-06-10T15:31:31Z",
-    "title": "Jenkins 2.567 and earlier, LTS 2.555.2 and earlier improperly determines that a redirect URL...",
-    "description": "Jenkins 2.567 and earlier, LTS 2.555.2 and earlier improperly determines that a redirect URL after login is legitimately pointing to Jenkins when it contains relative path segments (`./` or `../`), allowing attackers to perform phishing attacks.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53436",
-    "ghsa_id": "GHSA-3rqh-hch3-jhpc",
+    "timestamp": "2026-06-10T18:31:46Z",
+    "title": "In Splunk Enterprise versions below 10.2.4 and 10.0.7, and Splunk Cloud Platform versions below...",
+    "description": "In Splunk Enterprise versions below 10.2.4 and 10.0.7, and Splunk Cloud Platform versions below 10.4.2604.0, 10.3.2512.12, 10.2.2510.15, 10.1.2507.23, 10.0.2503.14, and 9.3.2411.131, a user who holds a Splunk role that contains the high-privilege capability `edit_saved_search_owner` could reassign saved search ownership to users outside their authorized scope. The ownership reassignment endpoint lacks access control.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-20259",
+    "ghsa_id": "GHSA-jhf8-vwfv-vr95",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-xgm5-jh99-wc4v",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-10T18:31:46Z",
+    "title": "In Splunk Enterprise versions below 10.2.4 and 10.0.7, and Splunk Cloud Platform versions below...",
+    "description": "In Splunk Enterprise versions below 10.2.4 and 10.0.7, and Splunk Cloud Platform versions below 10.4.2604.3 and 10.2.2510.14, an unauthenticated user could create or truncate arbitrary files through a PostgreSQL sidecar service endpoint.<br><br>The vulnerability exists because the PostgreSQL sidecar service endpoint lacks authentication controls, allowing any network-reachable user to invoke file operations without credentials.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-20253",
+    "ghsa_id": "GHSA-xgm5-jh99-wc4v",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-7m5m-884p-fv5r",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-10T18:31:46Z",
+    "title": "In Splunk SOAR (Security Orchestration, Automation, and Response) versions below 8.5.0, an...",
+    "description": "In Splunk SOAR (Security Orchestration, Automation, and Response) versions below 8.5.0, an unauthenticated attacker could inject American National Standards Institute (ANSI) escape codes into SOAR application log files through specially crafted HTTP request paths, which a terminal emulator might interpret when an administrator views the logs.<br><br>The injection is possible because SOAR does not strip control characters from HTTP request paths before writing them to application logs.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-20260",
+    "ghsa_id": "GHSA-7m5m-884p-fv5r",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-3crw-7xg9-fpxg",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-10T18:31:46Z",
+    "title": "In Splunk Enterprise versions below 10.2.4, 10.0.7, 9.4.12, and 9.3.13, Splunk Cloud Platform...",
+    "description": "In Splunk Enterprise versions below 10.2.4, 10.0.7, 9.4.12, and 9.3.13, Splunk Cloud Platform versions below 10.3.2512.12, 10.2.2510.14, 10.1.2507.22, and 9.3.2411.132, and Splunk Secure Gateway versions below 3.10.6, 3.9.20, and 3.8.67, a low-privileged user that does not hold the 'admin' or 'power' Splunk roles could perform a Remote Code Execution (RCE) through the Splunk Secure Gateway app.<br><br>The Remote Code Execution is possible because of unsafe deserialization of App Key Value Store ",
+    "severity": "high",
+    "cve_id": "CVE-2026-20251",
+    "ghsa_id": "GHSA-3crw-7xg9-fpxg",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-73fj-f5qc-x4jf",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-10T18:31:46Z",
+    "title": "In Splunk Enterprise versions below 10.2.4, 10.0.7, 9.4.12, and 9.3.13, and Splunk Cloud Platform...",
+    "description": "In Splunk Enterprise versions below 10.2.4, 10.0.7, 9.4.12, and 9.3.13, and Splunk Cloud Platform versions below 10.3.2512.13, 10.2.2510.15, 10.1.2507.23, and 9.3.2411.132, a low-privileged user that does not hold the \"admin\" or \"power\" Splunk roles could craft a classic dashboard that exfiltrates sensitive data from the browser of a higher-privileged user who views it.  \n\nThe exfiltration is possible because classic dashboard panels do not fully validate style attribute values, which can allow ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-20257",
+    "ghsa_id": "GHSA-73fj-f5qc-x4jf",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-pph3-cx78-q9jc",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-10T18:31:46Z",
+    "title": "Improper Neutralization of Argument Delimiters in a Command ('Argument Injection') vulnerability...",
+    "description": "Improper Neutralization of Argument Delimiters in a Command ('Argument Injection') vulnerability in Nomachine allows Argument Injection.This issue affects Nomachine: before 9.5.7, before 8.23.2.",
+    "severity": "high",
+    "cve_id": "CVE-2026-53694",
+    "ghsa_id": "GHSA-pph3-cx78-q9jc",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-qv8h-rqr3-mph9",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-10T18:31:46Z",
+    "title": "Silverpeas through 6.4.6 mishandles the \"Personal space\" feature that is selected when no...",
+    "description": "Silverpeas through 6.4.6 mishandles the \"Personal space\" feature that is selected when no componentId is set.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53698",
+    "ghsa_id": "GHSA-qv8h-rqr3-mph9",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-ff2m-7qh4-77hp",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-10T18:31:46Z",
+    "title": "In ScreenConnect™ versions prior to 26.2, input\nvalidation within the Host Pass creation...",
+    "description": "In ScreenConnect™ versions prior to 26.2, input\nvalidation within the Host Pass creation functionality could allow an\nauthenticated user with Host Pass creation privileges the ability to specify a\ntoken expiration duration beyond the intended maximum when generating delegated\naccess tokens.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11596",
+    "ghsa_id": "GHSA-ff2m-7qh4-77hp",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
       null,
