@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1781209889865-1",
+    "id": "twitter-1781239668320-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-11T20:31:29.865Z",
+    "timestamp": "2026-06-12T04:47:48.320Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1781209889865-1",
+    "id": "hn-1781239668320-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-11T20:31:29.865Z",
+    "timestamp": "2026-06-12T04:47:48.320Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,260 +52,109 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-76r6-x97p-67vr",
+    "id": "gh-GHSA-x5xf-rwjm-436w",
     "source": "GitHub Security",
-    "timestamp": "2026-06-11T20:29:14Z",
-    "title": "Russh: SSH identification parsing accepted non-canonical client banners and did not bound pre-banner input",
-    "description": "### Summary\n\n`russh` did not enforce the SSH identification-string rules as deliberately as OpenSSH. In particular, the server-side identification reader used the same permissive path as the client, allowing pre-banner lines from clients, and the reader did not enforce a bounded number of pre-banner lines.\n\nFor a library server built on `russh`, this could allow a remote peer to hold connection setup resources in the cleartext pre-authentication phase with malformed identification input that sho",
-    "severity": "medium",
-    "cve_id": "CVE-2026-48108",
-    "ghsa_id": "GHSA-76r6-x97p-67vr",
-    "affected_packages": [
-      "russh"
-    ],
+    "timestamp": "2026-06-12T03:31:28Z",
+    "title": "A use-after-free vulnerability exists in MongoDB Server's server-side JavaScript engine when...",
+    "description": "A use-after-free vulnerability exists in MongoDB Server's server-side JavaScript engine when converting BSON documents to JavaScript arrays. An authenticated user with read privileges who is able to run server-side JavaScript (for example, via $where or $function) can cause the server to access memory that has already been freed. This may result in disclosure of information from the mongod process memory or a denial of service through a server crash.",
+    "severity": "high",
+    "cve_id": "CVE-2026-11933",
+    "ghsa_id": "GHSA-x5xf-rwjm-436w",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The use-after-free vulnerability in MongoDB Server's server-side JavaScript engine could allow an authenticated user with read privileges to access sensitive data from the server's memory or cause a denial of service by crashing the server. This poses a significant risk to data confidentiality and system availability.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Immediately apply the latest security patch or update provided by MongoDB that addresses CVE-2026-11933.",
+        "Restrict or disable the use of server-side JavaScript features (e.g., $where or $function) for users with read privileges if not strictly necessary.",
+        "Monitor server logs for unusual activity, such as unexpected crashes or abnormal memory access patterns, and implement intrusion detection mechanisms."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-2m85-j8xj-wrg2",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-12T03:31:28Z",
+    "title": "The Presto Player plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ...",
+    "description": "The Presto Player plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'link_url' parameter of the [presto_player_overlay] shortcode in versions up to, and including, 4.2.0 This is due to insufficient input sanitization and output escaping in the getOverlays() function, which copies the link_url shortcode attribute directly into the overlay configuration without scheme validation, allowing javascript: URIs to survive and be rendered as the href of a clickable anchor element ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9125",
+    "ghsa_id": "GHSA-2m85-j8xj-wrg2",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability in the 'russh' library allows malicious actors to exploit the SSH identification parsing process by sending malformed pre-banner input. This could lead to resource exhaustion during the connection setup phase, potentially causing denial-of-service (DoS) conditions on servers using the library.",
+      "impact_assessment": "The vulnerability allows attackers to inject malicious JavaScript via the 'link_url' parameter, potentially leading to data theft, session hijacking, or redirection to malicious websites. This could compromise the integrity of websites using the Presto Player plugin.",
       "affected_industries": [
-        "Technology",
-        "Cloud Service Providers",
-        "Telecommunications",
-        "Financial Services",
-        "Healthcare"
+        "Media and Entertainment",
+        "Education",
+        "E-commerce",
+        "Small Businesses"
       ],
       "recommended_actions": [
-        "Upgrade to the latest patched version of the 'russh' library where this issue is resolved.",
-        "Implement rate-limiting and timeout mechanisms for SSH connections to mitigate resource exhaustion risks.",
-        "Monitor and log SSH connection attempts for unusual patterns or malformed input to detect potential exploitation attempts."
+        "Update the Presto Player plugin to the latest version once a patch is released.",
+        "Implement a Web Application Firewall (WAF) to detect and block malicious payloads targeting this vulnerability.",
+        "Audit website plugins regularly to identify and mitigate vulnerabilities."
       ],
       "urgency": "medium"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-g9g7-5cgw-6v28",
+    "id": "gh-GHSA-4pc6-w92r-32xw",
     "source": "GitHub Security",
-    "timestamp": "2026-06-11T20:28:56Z",
-    "title": "Russh: Unchecked keyboard-interactive prompt count in client auth path",
-    "description": "### Summary\nIn the `russh` client keyboard-interactive authentication path, a malicious SSH server could send a `USERAUTH_INFO_REQUEST` with an attacker-controlled prompt count, and the client would use that raw count directly in `Vec::with_capacity(...)` before validating that enough prompt data was actually present in the packet.\n\nThis is a client-side denial-of-service / resource-exhaustion issue on the keyboard-interactive auth path.\n\n### Details\nThe vulnerable code path is in:\n\n- `russh/src",
-    "severity": "medium",
-    "cve_id": "CVE-2026-48107",
-    "ghsa_id": "GHSA-g9g7-5cgw-6v28",
-    "affected_packages": [
-      "russh"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48107.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-wxq4-cc2q-338q",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-11T20:28:45Z",
-    "title": "WsgiDAV encoded dot segments can escape filesystem share roots",
-    "description": "### Impact\nWsgiDAV 4.3.3 can allow a WebDAV request path containing an encoded parent-directory segment to escape the configured filesystem share root in a specific path layout.\n\n### Patches\nThe issue is fixed with version 4.3.4.\n\n### Preconditions\n\nThe practical impact depends on the deployment.\n\nThe deployment uses a filesystem-backed WsgiDAV share.\n\nThe attacker can send WebDAV requests accepted by that share. This may be an anonymous share or an authenticated WebDAV user. This is not an auth",
+    "timestamp": "2026-06-12T03:31:28Z",
+    "title": "Idira Privilege Cloud Connector versions prior 1.1.100504 under specific conditions and...",
+    "description": "Idira Privilege Cloud Connector versions prior 1.1.100504 under specific conditions and configuration scenarios, TLS certificate validation may not be fully enforced. CyberArk Security Bulletin: CA26-17",
     "severity": "high",
-    "cve_id": "CVE-2026-48099",
-    "ghsa_id": "GHSA-wxq4-cc2q-338q",
-    "affected_packages": [
-      "wsgidav"
-    ],
+    "cve_id": "CVE-2026-45170",
+    "ghsa_id": "GHSA-4pc6-w92r-32xw",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to escape the configured filesystem share root by sending crafted WebDAV requests, potentially exposing sensitive files and directories outside the intended share scope.",
-      "affected_industries": [
-        "Cloud Services",
-        "Web Hosting",
-        "Software Development",
-        "IT Infrastructure"
-      ],
-      "recommended_actions": [
-        "Upgrade WsgiDAV to version 4.3.4 immediately to patch the vulnerability.",
-        "Audit WebDAV configurations to ensure proper access controls and limit anonymous or overly permissive shares.",
-        "Monitor WebDAV logs for suspicious activity, such as requests with encoded parent-directory segments."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-8396-jffm-qx4w",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-11T20:28:18Z",
-    "title": "OpenFGA has cache-key delimiter injection in shared-iterator and v2 iterator that caches enables intra-store authorization-decision poisoning",
-    "description": "### Description\nIn OpenFGA, when iterator caching is enabled, two distinct check requests can produce the same cache key, leading to OpenFGA reusing an earlier cached result for a subsequent request.\n\n### Preconditions\nThis applies if the following preconditions are present:\n\n- FGA runs with SharedIteratorCache enabled,\n- FGA runs with ListObjectsIteratorCache enabled.\n\n### Fix\nUpgrade to version 1.16.0 or greater.\n\n### Acknowledgements\nOpenFGA would like to thank @j4xT for the discovery and the",
-    "severity": "medium",
-    "cve_id": "CVE-2026-48096",
-    "ghsa_id": "GHSA-8396-jffm-qx4w",
-    "affected_packages": [
-      "github.com/openfga/openfga"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48096.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-6p54-fw2f-q7gf",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-11T20:26:18Z",
-    "title": "DevGuard has improper authorization on public assets",
-    "description": "### Impact\n\nOn a DevGuard API instance with one or more **public assets**, any authenticated user — including users from a different organization with no membership or role in the affected org/project — can create, update, reapply, and delete **VEX rules** on those public assets. The same flaw affects the other vulnerability-triage write endpoints exposed under a public asset, including:\n\n- VEX rule create / update / reapply / delete\n- Dependency-vuln event creation (accept / reject / mitigate d",
-    "severity": "high",
-    "cve_id": "CVE-2026-48089",
-    "ghsa_id": "GHSA-6p54-fw2f-q7gf",
-    "affected_packages": [
-      "github.com/l3montree-dev/devguard"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The improper authorization flaw in DevGuard's API allows authenticated users from outside an organization to manipulate vulnerability triage rules and dependency-vulnerability events on public assets. This could lead to unauthorized changes, mismanagement of vulnerabilities, and potential exploitation of insecure configurations.",
-      "affected_industries": [
-        "Software Development",
-        "Technology Services",
-        "Cloud Providers",
-        "Cybersecurity Firms"
-      ],
-      "recommended_actions": [
-        "Immediately restrict access to the affected API endpoints by implementing stricter authorization checks to ensure only users with appropriate roles can modify public assets.",
-        "Audit all public assets and VEX rules for unauthorized changes and revert any suspicious modifications.",
-        "Apply patches or updates provided by DevGuard to address CVE-2026-48089 and monitor for further advisories."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-7q3w-xqjw-g3cr",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-11T20:26:07Z",
-    "title": "Filament has inconsistent scope enforcement for its AttachAction and AssociateAction Select fields",
-    "description": "The `recordSelectOptionsQuery()` method may be used to scope the options available in the `Select` field for `AttachAction` and `AssociateAction`. However, the built-in validation rule for these fields did not apply the same scope. As a result, a user who can trigger these actions could tamper with the Livewire component's state and submit an out-of-scope value.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-48067",
-    "ghsa_id": "GHSA-7q3w-xqjw-g3cr",
-    "affected_packages": [
-      "filament/tables",
-      "filament/actions",
-      "filament/actions"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48067.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-h2qv-fj59-j46j",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-11T20:19:27Z",
-    "title": "Netty HAProxy: Unbalanced Reference Count in Nested PP2_TYPE_SSL TLV Parsing Leads to Memory Exhaustion",
-    "description": "### Impact\nThe HAProxy PROXY protocol v2 codec in netty leaks native or heap memory on every connection when a client sends a syntactically valid header containing nested `PP2_TYPE_SSL` TLVs (type-length-value records) at depth two or greater. The leak occurs on the successful parse path — no exception is thrown, the message fires downstream, the decoder removes itself, and the application releases the `HAProxyMessage` normally. Yet the underlying cumulation buffer (a pooled, potentially direct ",
-    "severity": "high",
-    "cve_id": "CVE-2026-48059",
-    "ghsa_id": "GHSA-h2qv-fj59-j46j",
-    "affected_packages": [
-      "io.netty:netty-codec-haproxy",
-      "io.netty:netty-codec-haproxy"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48059.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-45170.",
       "affected_industries": [
         "Technology",
         "General"
@@ -320,14 +169,14 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-mq42-j95v-p3gq",
+    "id": "gh-GHSA-4gmj-9m2m-6h5f",
     "source": "GitHub Security",
-    "timestamp": "2026-06-11T18:31:34Z",
-    "title": "KanaDojo before 0.1.18 contains a sandbox escape vulnerability that allows an attacker to execute...",
-    "description": "KanaDojo before 0.1.18 contains a sandbox escape vulnerability that allows an attacker to execute arbitrary code by exploiting the explicit passing of the global require function into a Node.js vm.runInNewContext() sandbox context in the issue-auto-respond.yml workflow. Attackers can submit a pull request modifying messages.cjs to import arbitrary Node.js modules, bypassing sandbox restrictions and achieving remote code execution with full GitHub Actions runner privileges including access to AUT",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "An\nauthenticated format string vulnerability exists in the ONVIF service of Tapo\nC110 v2 due to...",
+    "description": "An\nauthenticated format string vulnerability exists in the ONVIF service of Tapo\nC110 v2 due to improper handling of user-controlled input.  Externally controlled data is interpreted as\na format string, which can be used to manipulate stack memory, including\ncontrol flow data such as return addresses.\n\n\n\n\n\nA remote\nauthenticated attacker may redirect execution flow to existing internal\nfunctions, triggering an unauthorized factory reset, leading to loss of\nconfiguration, deletion of stored crede",
     "severity": "high",
-    "cve_id": "CVE-2026-48546",
-    "ghsa_id": "GHSA-mq42-j95v-p3gq",
+    "cve_id": "CVE-2026-6250",
+    "ghsa_id": "GHSA-4gmj-9m2m-6h5f",
     "affected_packages": [],
     "cwes": [
       null
@@ -335,37 +184,103 @@
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-6250.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-54vf-p4x4-gfcv",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Rejected reason: This CVE Record has been rejected by the Zephyr Project CNA. Subsequent analysis...",
+    "description": "Rejected reason: This CVE Record has been rejected by the Zephyr Project CNA. Subsequent analysis determined that the addressed defect is not reachable in any released version of Zephyr: on every supported release branch the affected value is corrected before it is used, and the change that exposes the defect exists only in unreleased development code. As no released version is affected, this identifier is withdrawn.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-10676",
+    "ghsa_id": "GHSA-54vf-p4x4-gfcv",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-10676.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-mh6m-7983-2r5w",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Incorrect Privilege Assignment vulnerability in Hippoo Mobile App for WooCommerce allows...",
+    "description": "Incorrect Privilege Assignment vulnerability in Hippoo Mobile App for WooCommerce allows Privilege Escalation.\n\nThis issue affects Hippoo Mobile App for WooCommerce: from n/a through 1.9.4.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-49060",
+    "ghsa_id": "GHSA-mh6m-7983-2r5w",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 92,
-      "impact_assessment": "The vulnerability allows attackers to escape the sandbox environment in KanaDojo versions before 0.1.18, enabling arbitrary code execution. This could lead to full compromise of GitHub Actions runners, unauthorized access to sensitive data, and potential lateral movement within affected systems.",
+      "impact_assessment": "The Incorrect Privilege Assignment vulnerability in the Hippoo Mobile App for WooCommerce allows unauthorized users to escalate their privileges, potentially gaining access to sensitive data, administrative controls, or other restricted functionalities. This could lead to data breaches, financial fraud, or service disruptions.",
       "affected_industries": [
-        "Software Development",
-        "Technology",
-        "DevOps",
-        "Cloud Services"
+        "E-commerce",
+        "Retail",
+        "Small and Medium Businesses (SMBs)",
+        "Technology"
       ],
       "recommended_actions": [
-        "Immediately upgrade KanaDojo to version 0.1.18 or later to patch the vulnerability.",
-        "Review and restrict permissions for GitHub Actions runners to minimize potential damage from exploitation.",
-        "Audit workflows and code repositories for any unauthorized changes or suspicious pull requests."
+        "Immediately update the Hippoo Mobile App for WooCommerce to the latest version if a patch is available. Monitor the vendor's website or GitHub repository for updates.",
+        "Implement strict access controls and monitor user activity for suspicious behavior, especially for privilege escalation attempts.",
+        "Conduct a security audit of your WooCommerce environment to identify and mitigate any additional vulnerabilities that could be exploited in conjunction with this issue."
       ],
       "urgency": "critical"
     },
     "risk_score": 92
   },
   {
-    "id": "gh-GHSA-p4v4-3mfq-ffjr",
+    "id": "gh-GHSA-mj36-6c8f-m4mw",
     "source": "GitHub Security",
-    "timestamp": "2026-06-11T18:31:34Z",
-    "title": "IBM DevOps Plan 3.0.0 through 3.0.6 is vulnerable to HTTP header injection, caused by improper...",
-    "description": "IBM DevOps Plan 3.0.0 through 3.0.6 is vulnerable to HTTP header injection, caused by improper validation of input by the HOST headers. This could allow an attacker to conduct various attacks against the vulnerable system, including cross-site scripting, cache poisoning or session hijacking",
-    "severity": "medium",
-    "cve_id": "CVE-2026-4096",
-    "ghsa_id": "GHSA-p4v4-3mfq-ffjr",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Use after free in Views in Google Chrome on Windows prior to 149.0.7827.115 allowed a remote...",
+    "description": "Use after free in Views in Google Chrome on Windows prior to 149.0.7827.115 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: High)",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-12035",
+    "ghsa_id": "GHSA-mj36-6c8f-m4mw",
     "affected_packages": [],
     "cwes": [
       null
@@ -373,11 +288,51 @@
     "references": [
       null,
       null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows a remote attacker to exploit heap corruption by leveraging a use-after-free issue in Google Chrome's Views component. This could lead to arbitrary code execution, potentially compromising user data, enabling malware installation, or allowing further exploitation of the affected system.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Education",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately update Google Chrome to version 149.0.7827.115 or later to mitigate the vulnerability.",
+        "Implement browser security policies, such as disabling JavaScript for untrusted websites, to reduce exposure to malicious HTML pages.",
+        "Monitor systems for unusual activity and apply endpoint protection solutions to detect and block potential exploitation attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-vrf3-m22c-r362",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Out of bounds read in VideoCapture in Google Chrome prior to 149.0.7827.115 allowed a remote...",
+    "description": "Out of bounds read in VideoCapture in Google Chrome prior to 149.0.7827.115 allowed a remote attacker who had compromised the GPU process to obtain potentially sensitive information from process memory via a crafted HTML page. (Chromium security severity: High)",
+    "severity": "medium",
+    "cve_id": "CVE-2026-12033",
+    "ghsa_id": "GHSA-vrf3-m22c-r362",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-4096.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-12033.",
       "affected_industries": [
         "Technology",
         "General"
@@ -392,14 +347,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-pfx2-jf85-mvf2",
+    "id": "gh-GHSA-6rr3-cp4w-m97q",
     "source": "GitHub Security",
-    "timestamp": "2026-06-11T18:31:34Z",
-    "title": "A remote unauthenticated attacker may be able to conduct credential-guessing attacks against user...",
-    "description": "A remote unauthenticated attacker may be able to conduct credential-guessing attacks against user accounts in Sonatype Nexus Repository via authentication endpoints.",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Idira Endpoint Privilege Manager Linux Agent versions prior to 26.5 allow a local attacker to...",
+    "description": "Idira Endpoint Privilege Manager Linux Agent versions prior to 26.5 allow a local attacker to potentially compromise the agent daemon initialization. CyberArk Security Bulletin: CA26-19",
     "severity": "high",
-    "cve_id": "CVE-2026-3329",
-    "ghsa_id": "GHSA-pfx2-jf85-mvf2",
+    "cve_id": "CVE-2026-45174",
+    "ghsa_id": "GHSA-6rr3-cp4w-m97q",
     "affected_packages": [],
     "cwes": [
       null
@@ -407,12 +362,11 @@
     "references": [
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-3329.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-45174.",
       "affected_industries": [
         "Technology",
         "General"
@@ -427,54 +381,374 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-7jx5-vvgh-vcjw",
+    "id": "gh-GHSA-2369-78ph-422f",
     "source": "GitHub Security",
-    "timestamp": "2026-06-11T18:31:34Z",
-    "title": "The crypton-x509-validation Haskell library fails to enforce X.509 NameConstraints, allowing TLS...",
-    "description": "The crypton-x509-validation Haskell library fails to enforce X.509 NameConstraints, allowing TLS clients to accept certificates whose Subject Alternative Names fall outside the issuing CA’s permitted subtrees. This oversight enables an attacker who compromises a name-constrained sub-CA to impersonate domains beyond its intended scope.",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')...",
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in Beardev JoomSport allows Blind SQL Injection.\n\nThis issue affects JoomSport: from n/a through 5.7.7.",
     "severity": "critical",
-    "cve_id": "CVE-2026-9648",
-    "ghsa_id": "GHSA-7jx5-vvgh-vcjw",
+    "cve_id": "CVE-2026-42647",
+    "ghsa_id": "GHSA-2369-78ph-422f",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-42647.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-w2mw-j4jj-c949",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Inappropriate implementation in Views in Google Chrome on Windows prior to 149.0.7827.115 allowed...",
+    "description": "Inappropriate implementation in Views in Google Chrome on Windows prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+    "severity": "high",
+    "cve_id": "CVE-2026-12031",
+    "ghsa_id": "GHSA-w2mw-j4jj-c949",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows a remote attacker to escape the Chrome sandbox environment, potentially leading to unauthorized access to the underlying system. This could result in data exfiltration, malware installation, or further exploitation of the compromised system.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Government",
+        "Retail",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Immediately update Google Chrome to version 149.0.7827.115 or later to mitigate the vulnerability.",
+        "Enable strict security policies, such as limiting access to untrusted websites and disabling unnecessary browser extensions.",
+        "Monitor systems for unusual activity or signs of exploitation, particularly in environments where Chrome is widely used."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-mmjg-x39c-438q",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Idira Identity Browser Extension (Chrome, Firefox, and Edge builds) versions prior to 26.8.1...",
+    "description": "Idira Identity Browser Extension (Chrome, Firefox, and Edge builds) versions prior to 26.8.1 exhibit an origin validation flaw within its internal web-page verification routines. If an authenticated user navigates to a specially crafted webpage, this interaction could potentially allow a remote attacker to trigger unauthorized application interaction or execution parameters within the context of that authenticated browser session. CyberArk Security Bulletin: CA26-21",
+    "severity": "high",
+    "cve_id": "CVE-2026-45173",
+    "ghsa_id": "GHSA-mmjg-x39c-438q",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The origin validation flaw in the Idira Identity Browser Extension could allow attackers to execute unauthorized actions or manipulate application parameters within the context of an authenticated user's browser session. This could lead to data breaches, unauthorized access, or compromise of sensitive information.",
+      "affected_industries": [
+        "Financial Services",
+        "Healthcare",
+        "E-commerce",
+        "Technology",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately update the Idira Identity Browser Extension to version 26.8.1 or later to patch the vulnerability.",
+        "Educate users to avoid visiting untrusted or suspicious websites while logged into sensitive accounts using the affected browser extension.",
+        "Implement monitoring and alerting for unusual application interactions or unauthorized access attempts in systems using the Idira extension."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-jxq2-jp82-9mj4",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Out of bounds write in GPU in Google Chrome on Android prior to 149.0.7827.115 allowed a remote...",
+    "description": "Out of bounds write in GPU in Google Chrome on Android prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+    "severity": "high",
+    "cve_id": "CVE-2026-12030",
+    "ghsa_id": "GHSA-jxq2-jp82-9mj4",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12030.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-g3c5-h5qv-px3q",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Incomplete input validation and improperly configured folder permissions within Idira Privileged...",
+    "description": "Incomplete input validation and improperly configured folder permissions within Idira Privileged Session Manager (PSM) versions prior to 15.0.3, 14.6.3, 14.2.5, and 14.0.5, an authenticated, low-privileged user could potentially execute arbitrary code. CyberArk Security Bulletin: CA26-17 and CA26-18",
+    "severity": "critical",
+    "cve_id": "CVE-2026-45171",
+    "ghsa_id": "GHSA-g3c5-h5qv-px3q",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-45171.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-9hqq-5px8-3pfv",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Due to incomplete input validation in Idira Privileged Session Manager for SSH (PSMP) versions...",
+    "description": "Due to incomplete input validation in Idira Privileged Session Manager for SSH (PSMP) versions prior to 15.0.2, 14.6.3, 14.2.5, and 14.0.6, an authenticated, low-privileged user could potentially execute arbitrary commands on the PSMP host. CyberArk Security Bulletins: CA26-17 and CA26-18",
+    "severity": "high",
+    "cve_id": "CVE-2026-45172",
+    "ghsa_id": "GHSA-9hqq-5px8-3pfv",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-45172.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-h97p-mrq3-8jwj",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Insufficient validation of untrusted input in Network in Google Chrome prior to 149.0.7827.115...",
+    "description": "Insufficient validation of untrusted input in Network in Google Chrome prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to leak cross-origin data via a crafted HTML page. (Chromium security severity: High)",
+    "severity": "medium",
+    "cve_id": "CVE-2026-12025",
+    "ghsa_id": "GHSA-h97p-mrq3-8jwj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "This vulnerability allows a remote attacker to bypass cross-origin restrictions and potentially access sensitive data, leading to data leakage or unauthorized access to user information.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Update Google Chrome to version 149.0.7827.115 or later to patch the vulnerability.",
+        "Implement strict input validation and sanitization in web applications to mitigate risks from compromised renderer processes.",
+        "Monitor network traffic for unusual activity that may indicate exploitation attempts and deploy web application firewalls (WAFs) for additional protection."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-hg8f-fjxw-frxj",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')...",
+    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in WBW Plugins Product Filter by WBW allows Blind SQL Injection.\n\nThis issue affects Product Filter by WBW: from n/a through 3.1.2.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-39494",
+    "ghsa_id": "GHSA-hg8f-fjxw-frxj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-39494.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-36wv-jqc8-m47v",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')...",
+    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in iova.Mihai SliceWP allows Stored XSS.\n\nThis issue affects SliceWP: from n/a through 1.2.6.",
+    "severity": "high",
+    "cve_id": "CVE-2026-42653",
+    "ghsa_id": "GHSA-36wv-jqc8-m47v",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The Stored Cross-Site Scripting (XSS) vulnerability in SliceWP allows attackers to inject malicious scripts into web pages, potentially compromising user data, session tokens, and enabling phishing attacks. This can lead to unauthorized access and reputational damage for affected organizations.",
+      "affected_industries": [
+        "E-commerce",
+        "Marketing",
+        "Web Development",
+        "Small Businesses"
+      ],
+      "recommended_actions": [
+        "Update SliceWP to the latest version once a patch is released to address CVE-2026-42653.",
+        "Implement input validation and sanitization to prevent malicious scripts from being executed.",
+        "Conduct a security audit of your web application to identify and mitigate other potential vulnerabilities."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-88g6-23mm-rpg4",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Inappropriate implementation in Headless in Google Chrome prior to 149.0.7827.115 allowed a...",
+    "description": "Inappropriate implementation in Headless in Google Chrome prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: High)",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-12027",
+    "ghsa_id": "GHSA-88g6-23mm-rpg4",
     "affected_packages": [],
     "cwes": [],
     "references": [
       null,
       null,
       null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 92,
-      "impact_assessment": "The vulnerability in the crypton-x509-validation Haskell library allows attackers to bypass X.509 NameConstraints, enabling them to impersonate domains outside the permitted scope of a compromised sub-CA. This could lead to man-in-the-middle attacks, data interception, and unauthorized access to sensitive systems.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-12027.",
       "affected_industries": [
-        "Finance",
-        "Healthcare",
-        "E-commerce",
         "Technology",
-        "Government",
-        "Telecommunications"
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update the crypton-x509-validation library to a patched version that enforces X.509 NameConstraints.",
-        "Conduct a thorough review of all certificates issued by sub-CAs to ensure compliance with NameConstraints and revoke any non-compliant certificates.",
-        "Implement additional monitoring and alerting for anomalous certificate usage or unauthorized domain impersonation."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "medium"
     },
-    "risk_score": 92
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-45c2-g3rg-fwmg",
+    "id": "gh-GHSA-cc2r-m9h8-v7mj",
     "source": "GitHub Security",
-    "timestamp": "2026-06-11T18:31:34Z",
-    "title": "IBM i 7.6, 7.5, 7.4, and 7.3 could allow a user to gain elevated privileges due to an unqualified...",
-    "description": "IBM i 7.6, 7.5, 7.4, and 7.3 could allow a user to gain elevated privileges due to an unqualified library call. A malicious actor could cause user-controlled code to run with administrator privilege.",
+    "timestamp": "2026-06-12T00:31:56Z",
+    "title": "Insufficient validation of untrusted input in Linux Toolkit Theming in Google Chrome on Linux...",
+    "description": "Insufficient validation of untrusted input in Linux Toolkit Theming in Google Chrome on Linux prior to 149.0.7827.115 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a malicious file. (Chromium security severity: High)",
     "severity": "high",
-    "cve_id": "CVE-2026-7870",
-    "ghsa_id": "GHSA-45c2-g3rg-fwmg",
+    "cve_id": "CVE-2026-12034",
+    "ghsa_id": "GHSA-cc2r-m9h8-v7mj",
     "affected_packages": [],
     "cwes": [
       null
@@ -482,11 +756,12 @@
     "references": [
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-7870.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12034.",
       "affected_industries": [
         "Technology",
         "General"
@@ -501,317 +776,134 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-6w3v-mcfh-m3q7",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-11T18:31:34Z",
-    "title": "A flaw was found in the admin-ui-ext component of Keycloak, which provides extended...",
-    "description": "A flaw was found in the admin-ui-ext component of Keycloak, which provides extended administrative user interface capabilities. The issue occurs because certain bulk role-removal endpoints fail to perform granular permission checks when deleting role mappings. This allows a delegated administrator with limited permissions to remove highly privileged roles from other users or groups, potentially disrupting administrative access control.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-11986",
-    "ghsa_id": "GHSA-6w3v-mcfh-m3q7",
-    "affected_packages": [],
-    "cwes": [
-      null
+    "id": "cve-CVE-2026-11248",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-05T00:17:01.247",
+    "title": "CVE-2026-11248 - Inappropriate implementation in Google Lens in Google Chrome prior to 149.0.7827.53 allowed a remote",
+    "description": "Inappropriate implementation in Google Lens in Google Chrome prior to 149.0.7827.53 allowed a remote attacker to bypass navigation restrictions via a crafted HTML page. (Chromium security severity: Low)",
+    "severity": "high",
+    "cve_id": "CVE-2026-11248",
+    "cvss_score": 8.8,
+    "affected_products": [
+      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
     ],
     "references": [
-      null,
-      null,
-      null,
-      null
+      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
+      "https://issues.chromium.org/issues/497946941"
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows a delegated administrator with limited permissions to remove highly privileged roles from users or groups. This could lead to unauthorized privilege escalation, disruption of administrative access control, and potential compromise of sensitive operations.",
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-11248.",
       "affected_industries": [
         "Technology",
-        "Healthcare",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-11247",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-05T00:17:01.130",
+    "title": "CVE-2026-11247 - Insufficient policy enforcement in CustomTabs in Google Chrome on Android prior to 149.0.7827.53 all",
+    "description": "Insufficient policy enforcement in CustomTabs in Google Chrome on Android prior to 149.0.7827.53 allowed a remote attacker to leak cross-origin data via a crafted HTML page. (Chromium security severity: Low)",
+    "severity": "low",
+    "cve_id": "CVE-2026-11247",
+    "cvss_score": 3.1,
+    "affected_products": [
+      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:google:android:-:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
+      "https://issues.chromium.org/issues/497865734"
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "The vulnerability allows a remote attacker to potentially leak cross-origin data via a crafted HTML page in CustomTabs on affected versions of Google Chrome for Android. While the severity is low, it could still lead to unauthorized data exposure if exploited.",
+      "affected_industries": [
+        "Technology",
+        "E-commerce",
         "Finance",
-        "Government",
+        "Healthcare"
+      ],
+      "recommended_actions": [
+        "Update Google Chrome on Android devices to version 149.0.7827.53 or later to mitigate the vulnerability.",
+        "Educate users about the importance of keeping their browsers and devices updated to the latest versions.",
+        "Monitor for any unusual activity or data leakage from applications utilizing CustomTabs."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "cve-CVE-2026-11246",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-05T00:17:00.983",
+    "title": "CVE-2026-11246 - Insufficient validation of untrusted input in IndexedDB in Google Chrome prior to 149.0.7827.53 allo",
+    "description": "Insufficient validation of untrusted input in IndexedDB in Google Chrome prior to 149.0.7827.53 allowed a remote attacker who had compromised the renderer process to bypass same origin policy via a crafted HTML page. (Chromium security severity: Low)",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11246",
+    "cvss_score": 5.3,
+    "affected_products": [
+      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
+      "https://issues.chromium.org/issues/497660733"
+    ],
+    "ai_analysis": {
+      "risk_score": 45,
+      "impact_assessment": "The vulnerability allows a remote attacker to bypass the same-origin policy in Google Chrome, potentially leading to unauthorized access to sensitive data stored in IndexedDB. However, exploitation requires prior compromise of the renderer process, reducing the overall likelihood of successful attacks.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
         "E-commerce"
       ],
       "recommended_actions": [
-        "Apply the latest patch or update for Keycloak that addresses CVE-2026-11986 as soon as it becomes available.",
-        "Restrict access to the admin-ui-ext component to trusted administrators only and review delegated administrator permissions.",
-        "Monitor and audit role changes in Keycloak for any unauthorized modifications to privileged roles."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-g5vm-7gwv-45rj",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-11T18:31:34Z",
-    "title": "PostgreSQL Anonymizer contains a vulnerability that allows a user to gain superuser privileges by...",
-    "description": "PostgreSQL Anonymizer contains a vulnerability that allows a user to gain superuser privileges by creating a JSON document and placing malicious code inside a particular key-value pair. If a superuser calls the import_database_rules() or import_roles_rules() functions, the malicious code is executed with superuser privileges. The problem is resolved in PostgreSQL Anonymizer 3.1.1 and further versions",
-    "severity": "medium",
-    "cve_id": "CVE-2026-11945",
-    "ghsa_id": "GHSA-g5vm-7gwv-45rj",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11945.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Update Google Chrome to version 149.0.7827.53 or later to patch the vulnerability.",
+        "Implement robust endpoint protection to prevent renderer process compromise.",
+        "Educate users on avoiding malicious websites and phishing attempts that could exploit this vulnerability."
       ],
       "urgency": "medium"
     },
-    "risk_score": 50
+    "risk_score": 45
   },
   {
-    "id": "gh-GHSA-wxmc-rhr3-hx2w",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-11T18:31:34Z",
-    "title": "IBM Security QRadar EDR 3.12 through 3.12.24 stores user credentials in plain text which can be...",
-    "description": "IBM Security QRadar EDR 3.12 through 3.12.24 stores user credentials in plain text which can be read by a local privileged user.",
-    "severity": "medium",
-    "cve_id": "CVE-2024-45636",
-    "ghsa_id": "GHSA-wxmc-rhr3-hx2w",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The storage of user credentials in plain text poses a significant risk of credential theft if a local privileged user gains access to the system. This could lead to unauthorized access to sensitive systems or data, lateral movement within the network, and potential data breaches.",
-      "affected_industries": [
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Technology",
-        "Retail"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patch or update from IBM to address the vulnerability (CVE-2024-45636).",
-        "Restrict local privileged access to only essential personnel and monitor for unusual activity.",
-        "Implement a password rotation policy to reset any potentially exposed credentials."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-wvfv-3qjh-qwxj",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-11T18:31:34Z",
-    "title": "IBM Langflow Desktop 1.0.0 through 1.9.2 IBM Langflow is vulnerable to server-side request...",
-    "description": "IBM Langflow Desktop 1.0.0 through 1.9.2 IBM Langflow is vulnerable to server-side request forgery (SSRF). This may allow an authenticated attacker to send unauthorized requests from the system, potentially leading to network enumeration or facilitating other attacks.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-3341",
-    "ghsa_id": "GHSA-wvfv-3qjh-qwxj",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-3341.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-4r5w-3xv4-56jm",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-11T18:31:34Z",
-    "title": "Unrestricted upload of file with dangerous type vulnerability in Başarsoft Information...",
-    "description": "Unrestricted upload of file with dangerous type vulnerability in Başarsoft Information Technologies Inc. Rotaban allows Upload a Web Shell to a Web Server.\n\nThis issue affects Rotaban: from V2026.06.002 before V2026.06.003.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-11839",
-    "ghsa_id": "GHSA-4r5w-3xv4-56jm",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-11839.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-gfrh-qj3c-qwrr",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-11T18:31:34Z",
-    "title": "IBM Langflow OSS 1.0.0 through 1.9.1 could allow an authenticated user to read or modify...",
-    "description": "IBM Langflow OSS 1.0.0 through 1.9.1 could allow an authenticated user to read or modify sensitive information by bypassing authentication using insecure direct object references.",
-    "severity": "high",
-    "cve_id": "CVE-2026-7787",
-    "ghsa_id": "GHSA-gfrh-qj3c-qwrr",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows an authenticated user to bypass authentication mechanisms and access or modify sensitive information, potentially leading to data breaches, unauthorized access, and system compromise.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Immediately upgrade IBM Langflow OSS to the latest patched version, if available.",
-        "Implement additional access controls and monitor for suspicious activity to mitigate exploitation risks.",
-        "Review and secure direct object references in the application to prevent unauthorized access."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-2gr4-ppc7-7mhx",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-11T17:16:09Z",
-    "title": "CodeIgniter4 has a validation bypass when uploading file extensions via `ext_in` rule",
-    "description": "### Impact\nThe `ext_in` upload validation rule checked the MIME-derived guessed extension instead of the client-provided filename extension. As a result, an uploaded file named `shell.php` containing GIF-like content could pass validation such as:\n```\nuploaded[avatar]|is_image[avatar]|mime_in[avatar,image/gif]|ext_in[avatar,gif]\n```\nbecause the detected MIME type maps to `gif`, even though the uploaded filename extension is `php`.\n\nApplications are impacted if they:\n- accept user-controlled uplo",
-    "severity": "critical",
-    "cve_id": "CVE-2026-48062",
-    "ghsa_id": "GHSA-2gr4-ppc7-7mhx",
-    "affected_packages": [
-      "codeigniter4/framework"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-48062.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-4mj9-pf4r-cqrc",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-11T17:10:33Z",
-    "title": "Kolibri has Unauthenticated Server-Side Request Forgery (SSRF) in RemoteFacilityUserViewset",
-    "description": "## Summary\n\nSeveral Kolibri API endpoints accept an unvalidated `baseurl` parameter and fetch attacker-controlled URLs from the Kolibri server, reflecting the response body back to the caller. The original report identified two endpoints on the `RemoteFacilityUser*` viewsets; remediation review found two further reflection points on the same pattern. The GET endpoint was unauthenticated.\n\n## Affected endpoints\n\nReported:\n\n- `GET /api/auth/remotefacilityuser` → `RemoteFacilityUserViewset` (`kolib",
-    "severity": "medium",
-    "cve_id": "CVE-2026-48053",
-    "ghsa_id": "GHSA-4mj9-pf4r-cqrc",
-    "affected_packages": [
-      "kolibri"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48053.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "cve-CVE-2026-48681",
+    "id": "cve-CVE-2026-11245",
     "source": "NVD CVE",
-    "timestamp": "2026-06-04T04:17:15.220",
-    "title": "CVE-2026-48681 - OpenStack Ironic through before 35.0.2 allows file overwrite via directory traversal during deployme",
-    "description": "OpenStack Ironic through before 35.0.2 allows file overwrite via directory traversal during deployment with a crafted ISO image.",
+    "timestamp": "2026-06-05T00:17:00.857",
+    "title": "CVE-2026-11245 - Inappropriate implementation in Payments in Google Chrome prior to 149.0.7827.53 allowed a remote at",
+    "description": "Inappropriate implementation in Payments in Google Chrome prior to 149.0.7827.53 allowed a remote attacker to perform UI spoofing via a crafted HTML page. (Chromium security severity: Low)",
     "severity": "medium",
-    "cve_id": "CVE-2026-48681",
-    "cvss_score": 5.9,
+    "cve_id": "CVE-2026-11245",
+    "cvss_score": 4.3,
     "affected_products": [
-      "cpe:2.3:a:openstack:ironic:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:openstack:ironic:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:openstack:ironic:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:openstack:ironic:*:*:*:*:*:*:*:*"
+      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://bugs.launchpad.net/ironic/+bug/2148333",
-      "https://www.openwall.com/lists/oss-security/2026/06/03/12",
-      "http://www.openwall.com/lists/oss-security/2026/06/03/12"
+      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
+      "https://issues.chromium.org/issues/497610654"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48681.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11245.",
       "affected_industries": [
         "Technology",
         "General"
@@ -826,434 +918,27 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-44917",
+    "id": "cve-CVE-2026-11244",
     "source": "NVD CVE",
-    "timestamp": "2026-06-04T04:17:14.853",
-    "title": "CVE-2026-44917 - OpenStack Ironic before 35.0.2 allows a malicious authenticated project admin or manager to read loc",
-    "description": "OpenStack Ironic before 35.0.2 allows a malicious authenticated project admin or manager to read local files on the Ironic conductor via a pxe_template.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-44917",
-    "cvss_score": 4.9,
-    "affected_products": [
-      "cpe:2.3:a:openstack:ironic:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:openstack:ironic:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:openstack:ironic:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:openstack:ironic:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://bugs.launchpad.net/ironic/+bug/2148319",
-      "https://www.openwall.com/lists/oss-security/2026/06/03/13",
-      "http://www.openwall.com/lists/oss-security/2026/06/03/13"
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows a malicious authenticated project admin or manager to read local files on the Ironic conductor via a pxe_template. This could lead to unauthorized access to sensitive configuration files, credentials, or other critical data stored on the conductor, potentially compromising the integrity and confidentiality of the system.",
-      "affected_industries": [
-        "Cloud Service Providers",
-        "Telecommunications",
-        "IT Infrastructure Management",
-        "Data Centers"
-      ],
-      "recommended_actions": [
-        "Upgrade OpenStack Ironic to version 35.0.2 or later to patch the vulnerability.",
-        "Restrict access to project admin or manager roles to trusted personnel and implement strict role-based access controls (RBAC).",
-        "Monitor and audit access logs for suspicious activity related to pxe_template usage to detect potential exploitation attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "cve-CVE-2026-41283",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-04T04:17:12.700",
-    "title": "CVE-2026-41283 - OpenStack Mistral through 22.0.0 allows Arbitrary Remote Code Execution when the API is exposed. The",
-    "description": "OpenStack Mistral through 22.0.0 allows Arbitrary Remote Code Execution when the API is exposed. There are endpoints that allow code execution, which can lead to exfiltration of service credentials.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-41283",
-    "cvss_score": 9.9,
-    "affected_products": [],
-    "references": [
-      "https://github.com/openstack/mistral/tags",
-      "https://security.openstack.org/ossa/OSSA-2026-020.html",
-      "https://www.openwall.com/lists/oss-security/2026/06/03/14",
-      "http://www.openwall.com/lists/oss-security/2026/06/03/14"
-    ],
-    "ai_analysis": {
-      "risk_score": 95,
-      "impact_assessment": "The vulnerability in OpenStack Mistral through 22.0.0 allows attackers to execute arbitrary code remotely via exposed API endpoints. This can result in full system compromise, unauthorized access to sensitive data, and exfiltration of service credentials, potentially leading to further exploitation of connected systems.",
-      "affected_industries": [
-        "Cloud Service Providers",
-        "Telecommunications",
-        "Healthcare",
-        "Finance",
-        "Government",
-        "Technology"
-      ],
-      "recommended_actions": [
-        "Immediately restrict public access to the Mistral API by implementing network-level access controls, such as firewalls or VPNs.",
-        "Apply the latest security patches or upgrade to a version of OpenStack Mistral that addresses CVE-2026-41283 as soon as they are available.",
-        "Conduct a thorough review of system logs to identify any signs of exploitation and rotate all potentially exposed service credentials."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 95
-  },
-  {
-    "id": "cve-CVE-2026-41010",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-04T04:17:10.037",
-    "title": "CVE-2026-41010 - ReleaseJob#unpack builds job_dir = File.join(@release_dir, 'jobs', name) and job_tgz = File.join(@re",
-    "description": "ReleaseJob#unpack builds job_dir = File.join(@release_dir, 'jobs', name) and job_tgz = File.join(@release_dir, 'jobs', \"#{name}.tgz\") where name returns @job_meta['name'], a value taken verbatim from the jobs: array of the attacker-supplied release.MF inside the uploaded tarball. These paths are then interpolated into a shell string: Bosh::Common::Exec.sh(\"tar -C #{job_dir} -xf #{job_tgz} 2>&1\", :on_error => :return). Bosh::Common::Exec.sh executes via %x{#{command}} (bosh-common/lib/bosh/common/exec.rb:53), i.e. /bin/sh -c, so any shell metacharacters in name are interpreted. FileUtils.mkdir_p(job_dir) on line 49 creates the literal directory (no shell) and succeeds even when the name contains $()/;, so execution reaches the sh call.\n\nAffected versions:\n- BOSH Director: all versions prior to v282.1.12 (inclusive); fixed in v282.1.12 or later",
-    "severity": "high",
-    "cve_id": "CVE-2026-41010",
-    "cvss_score": 8.2,
-    "affected_products": [],
-    "references": [
-      "https://www.cloudfoundry.org/blog/cve-2026-41010-release-job-name-command-injection-on-bosh-director/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41010.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-8829",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-04T03:16:20.260",
-    "title": "CVE-2026-8829 - HTML::Entities versions before 3.84 for Perl read freed heap memory in _decode_entities.\n\nThe XS rou",
-    "description": "HTML::Entities versions before 3.84 for Perl read freed heap memory in _decode_entities.\n\nThe XS routine backing HTML::Entities::_decode_entities cached a pointer (repl) into the entity-value SV returned by hv_fetch on the entity2char hash. When the input SV was identical to a value SV in that hash, and that value contained its own key as an entity reference, a later call to grow_gap() reallocated the SV's PV buffer and freed the backing allocation that repl still pointed into. The subsequent copy loop read repl_len bytes from the freed allocation.\n\nThe read may disclose adjacent heap contents into the destination SV.",
-    "severity": "high",
-    "cve_id": "CVE-2026-8829",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:oalders:html\\:\\:entities:*:*:*:*:*:perl:*:*"
-    ],
-    "references": [
-      "https://github.com/libwww-perl/HTML-Parser/commit/6922552b0778c90a9587a3894e248be4d3a25e1c.patch",
-      "https://github.com/libwww-perl/HTML-Parser/pull/56",
-      "http://www.openwall.com/lists/oss-security/2026/06/04/2"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-8829.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-41860",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-04T03:16:20.107",
-    "title": "CVE-2026-41860 - CWE-326 in BOSH allows a local attacker to steal Basic-auth credentials or redirect UAA token reques",
-    "description": "CWE-326 in BOSH allows a local attacker to steal Basic-auth credentials or redirect UAA token requests via MITM. HttpRequestHelper#create_async_endpoint and #send_http_get_request_synchronous hard-code OpenSSL::SSL::VERIFY_NONE, enabling an attacker to intercept traffic between bosh-monitor and the BOSH director or UAA and steal credentials.\n\nAffected versions:\n- BOSH: all versions prior to v282.1.9 (inclusive); fixed in v282.1.9 or later",
-    "severity": "high",
-    "cve_id": "CVE-2026-41860",
-    "cvss_score": 8.8,
-    "affected_products": [],
-    "references": [
-      "https://www.cloudfoundry.org/blog/cve-2026-41860-missing-tls-verify-on-bosh-monitor/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41860.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-41859",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-04T03:16:19.947",
-    "title": "CVE-2026-41859 - A network man-in-the-middle between nats-sync and the BOSH director can steal the director credentia",
-    "description": "A network man-in-the-middle between nats-sync and the BOSH director can steal the director credentials (Basic auth header or UAA client secret) and can tamper with the VM list that is written into the NATS authorization file. Stolen credentials grant administrative director access. UsersSync#bosh_api_response_body builds a Net::HTTP client with verify_mode = OpenSSL::SSL::VERIFY_NONE for every director call (/info, /deployments, /deployments/<name>/vms).\n\nAffected versions:\n- BOSH: all versions prior to v282.1.9 (inclusive); fixed in v282.1.9 or later",
-    "severity": "high",
-    "cve_id": "CVE-2026-41859",
-    "cvss_score": 7.8,
-    "affected_products": [],
-    "references": [
-      "https://www.cloudfoundry.org/blog/cve-2026-41859-missing-tls-in-nats-sync/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41859.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-41858",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-04T03:16:19.790",
-    "title": "CVE-2026-41858 - Weak Randomness / Insecure Cryptographic Primitive (CWE-338) in Get-RandomPassword in BOSH-Ecosystem",
-    "description": "Weak Randomness / Insecure Cryptographic Primitive (CWE-338) in Get-RandomPassword in BOSH-Ecosystem / windows-utilities-release allows a network attacker to estimate VM boot time and reconstruct a small candidate list to recover the Administrator password. The randomize_password job exists solely to lock the local Administrator account behind an unguessable password as a hardening control. Because the password is derived from a predictable, clock-seeded PRNG, a network attacker who can estimate VM boot time can reconstruct a small candidate list and recover the Administrator password, defeating the hardening control.\n\nAffected versions:\n- windows-utilities-release: all versions prior to v0.23.0 (inclusive); fixed in v0.23.0 or later",
-    "severity": "high",
-    "cve_id": "CVE-2026-41858",
-    "cvss_score": 7.5,
-    "affected_products": [],
-    "references": [
-      "https://www.cloudfoundry.org/blog/cve-2026-41858-brute-forceable-windows-admin-creds/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41858.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-41011",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-04T03:16:19.633",
-    "title": "CVE-2026-41011 - PackagePersister.validate_tgz builds \"tar -tf #{tgz} 2>&1\" where tgz = File.join(release_dir, 'packa",
-    "description": "PackagePersister.validate_tgz builds \"tar -tf #{tgz} 2>&1\" where tgz = File.join(release_dir, 'packages', \"#{name}.tgz\") and name = package_meta['name'] comes directly from release.MF inside the uploaded tarball. The string is passed to Bosh::Common::Exec.sh, which executes via %x{} — i.e., /bin/sh -c. No Shellwords.escape is applied. The Models::Package Sequel validation (VALID_ID = /^[-0-9A-Za-z_+.]+$/i) would reject the name, but in create_package (lines 74–79) the shell-out in save_package_source_blob runs before package.save, so validation fires too late.\n\nAffected versions:\n- BOSH: all versions prior to v282.1.12 (inclusive); fixed in v282.1.12 or later",
-    "severity": "high",
-    "cve_id": "CVE-2026-41011",
-    "cvss_score": 8.2,
-    "affected_products": [],
-    "references": [
-      "https://www.cloudfoundry.org/blog/cve-2026-41011-package-name-command-injection/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41011.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-10597",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-04T03:16:19.443",
-    "title": "CVE-2026-10597 - OMICARD EDM developed by ITPison has a Insecure Direct Object Reference vulnerability, allowing unau",
-    "description": "OMICARD EDM developed by ITPison has a Insecure Direct Object Reference vulnerability, allowing unauthenticated remote attackers to modify a specific parameter to obtain user's email address.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-10597",
-    "cvss_score": 5.3,
-    "affected_products": [],
-    "references": [
-      "https://www.twcert.org.tw/en/cp-139-10948-78864-2.html",
-      "https://www.twcert.org.tw/tw/cp-132-10947-027a7-1.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-10597.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-8653",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-04T02:16:17.840",
-    "title": "CVE-2026-8653 - The MasterStudy LMS Pro Plus plugin for WordPress is vulnerable to generic SQL Injection via the 'co",
-    "description": "The MasterStudy LMS Pro Plus plugin for WordPress is vulnerable to generic SQL Injection via the 'columns' parameter in all versions up to, and including, 4.8.20 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with instructor-level access or above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-8653",
-    "cvss_score": 6.5,
-    "affected_products": [],
-    "references": [
-      "https://stylemixthemes.com/wordpress-lms-plugin/",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/f24749a8-e01d-436a-9ec8-3745a6b5eecf?source=cve"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8653.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-7764",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-04T02:16:17.700",
-    "title": "CVE-2026-7764 - An out-of-bounds read vulnerability in the morse.ko HaLow Wi-Fi kernel driver in Morse Micro HaLowLi",
-    "description": "An out-of-bounds read vulnerability in the morse.ko HaLow Wi-Fi kernel driver in Morse Micro HaLowLink 2 software versions prior to 2.11.12 allows an unauthenticated attacker within radio range to disclose a small amount of kernel heap memory or cause a Denial of Service (kernel oops/panic) via a crafted 802.11ah beacon or probe response frame containing a malformed Vendor Information Element. The function morse_vendor_find_vendor_ie() does not validate the IE length against the expected structure size before its result is passed to morse_vendor_rx_caps_ops_ie() and morse_vendor_fill_sta_vendor_info(), which read at fixed offsets into the IE data. Because the length check only requires the IE to be longer than 3 bytes, an attacker can supply an undersized IE, causing a heap out-of-bounds read of up to 9 bytes. No authentication, association, or user interaction is required.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-7764",
-    "cvss_score": 6.8,
-    "affected_products": [],
-    "references": [
-      "https://www.morsemicro.com/security-advisories/MM-SA-2026-003"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7764.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-10737",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-04T02:16:17.503",
-    "title": "CVE-2026-10737 - The SP Project & Document Manager plugin for WordPress is vulnerable to unauthorized access due to a",
-    "description": "The SP Project & Document Manager plugin for WordPress is vulnerable to unauthorized access due to a missing capability check on the view_file function in all versions up to, and including, 4.71. This makes it possible for unauthenticated attackers to read file metadata and obtain download links for arbitrary files stored inside project folders on the server, which can contain sensitive information. The authorization gate uses a negated nonce check OR-chained with permission checks, meaning a missing or invalid nonce causes the entire condition to evaluate to true and bypass all preceding capability and ownership checks. The secondary fallback check only denies access for root-level files (pid == 0), leaving all files stored inside project folders fully exposed to unauthenticated users who supply only a valid file ID in a POST request to admin-ajax.php.",
-    "severity": "high",
-    "cve_id": "CVE-2026-10737",
-    "cvss_score": 7.5,
-    "affected_products": [],
-    "references": [
-      "https://plugins.trac.wordpress.org/browser/sp-client-document-manager/trunk/ajax.php#L155",
-      "https://plugins.trac.wordpress.org/browser/sp-client-document-manager/trunk/ajax.php#L39",
-      "https://plugins.trac.wordpress.org/browser/sp-client-document-manager/trunk/classes/ajax.php#L250",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/2eafe150-2178-4355-88a8-67687bd446e4?source=cve"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-10737.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-8722",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-04T00:17:00.333",
-    "title": "CVE-2026-8722 - Net::Async::Statsd::Client versions through 0.005 for Perl allow metric injections.\n\nThe metric name",
-    "description": "Net::Async::Statsd::Client versions through 0.005 for Perl allow metric injections.\n\nThe metric names are not checked for newlines, colons or pipes. Metrics generated from untrusted sources could inject additional statsd metrics.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-8722",
-    "cvss_score": 6.5,
-    "affected_products": [
-      "cpe:2.3:a:team:net\\:\\:async\\:\\:statsd\\:\\:client:*:*:*:*:*:perl:*:*"
-    ],
-    "references": [
-      "https://www.cve.org/CVERecord?id=CVE-2026-46719",
-      "https://www.cve.org/CVERecord?id=CVE-2026-46720"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8722.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-10783",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-04T00:16:59.010",
-    "title": "CVE-2026-10783 - A security flaw has been discovered in gradio-app gradio 6.14.0. This affects the function save_audi",
-    "description": "A security flaw has been discovered in gradio-app gradio 6.14.0. This affects the function save_audio_to_cache of the component Audio Cache Key Handler. Performing a manipulation results in use of weak hash. The attack must be initiated from a local position. The attack is considered to have high complexity. It is indicated that the exploitability is difficult. The exploit has been released to the public and may be used for attacks. The patch is named 13394. To fix this issue, it is recommended to deploy a patch.",
+    "timestamp": "2026-06-05T00:17:00.727",
+    "title": "CVE-2026-11244 - Insufficient validation of untrusted input in WebAuthentication in Google Chrome prior to 149.0.7827",
+    "description": "Insufficient validation of untrusted input in WebAuthentication in Google Chrome prior to 149.0.7827.53 allowed a remote attacker who had compromised the renderer process to bypass same origin policy via a crafted HTML page. (Chromium security severity: Low)",
     "severity": "low",
-    "cve_id": "CVE-2026-10783",
-    "cvss_score": 2.5,
+    "cve_id": "CVE-2026-11244",
+    "cvss_score": 3.1,
     "affected_products": [
-      "cpe:2.3:a:gradio_project:gradio:6.14.0:*:*:*:*:python:*:*"
+      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://github.com/gradio-app/gradio/",
-      "https://github.com/gradio-app/gradio/issues/13395",
-      "https://github.com/gradio-app/gradio/pull/13394",
-      "https://vuldb.com/cve/CVE-2026-10783",
-      "https://vuldb.com/submit/831451",
-      "https://vuldb.com/vuln/368140",
-      "https://vuldb.com/vuln/368140/cti"
+      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
+      "https://issues.chromium.org/issues/497609145"
     ],
     "ai_analysis": {
       "risk_score": 35,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-10783.",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-11244.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1266,5 +951,351 @@
       "urgency": "low"
     },
     "risk_score": 35
+  },
+  {
+    "id": "cve-CVE-2026-11243",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-05T00:17:00.607",
+    "title": "CVE-2026-11243 - Inappropriate implementation in Downloads in Google Chrome prior to 149.0.7827.53 allowed a remote a",
+    "description": "Inappropriate implementation in Downloads in Google Chrome prior to 149.0.7827.53 allowed a remote attacker to bypass navigation restrictions via a crafted HTML page. (Chromium security severity: Low)",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11243",
+    "cvss_score": 5.4,
+    "affected_products": [
+      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
+      "https://issues.chromium.org/issues/497394061"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11243.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-11242",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-05T00:17:00.470",
+    "title": "CVE-2026-11242 - Insufficient validation of untrusted input in Plugins in Google Chrome prior to 149.0.7827.53 allowe",
+    "description": "Insufficient validation of untrusted input in Plugins in Google Chrome prior to 149.0.7827.53 allowed a remote attacker who had compromised the renderer process to leak cross-origin data via a crafted HTML page. (Chromium security severity: Low)",
+    "severity": "high",
+    "cve_id": "CVE-2026-11242",
+    "cvss_score": 7.5,
+    "affected_products": [
+      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
+      "https://issues.chromium.org/issues/497385823"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-11242.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-11241",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-05T00:17:00.340",
+    "title": "CVE-2026-11241 - Insufficient validation of untrusted input in Cast in Google Chrome prior to 149.0.7827.53 allowed a",
+    "description": "Insufficient validation of untrusted input in Cast in Google Chrome prior to 149.0.7827.53 allowed an attacker on the local network segment to perform privilege escalation via a crafted HTML page. (Chromium security severity: Low)",
+    "severity": "high",
+    "cve_id": "CVE-2026-11241",
+    "cvss_score": 8,
+    "affected_products": [
+      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
+      "https://issues.chromium.org/issues/497203741"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-11241.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-11240",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-05T00:17:00.207",
+    "title": "CVE-2026-11240 - Insufficient validation of untrusted input in Loader in Google Chrome prior to 149.0.7827.53 allowed",
+    "description": "Insufficient validation of untrusted input in Loader in Google Chrome prior to 149.0.7827.53 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: Low)",
+    "severity": "low",
+    "cve_id": "CVE-2026-11240",
+    "cvss_score": 3.1,
+    "affected_products": [
+      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
+      "https://issues.chromium.org/issues/497030032"
+    ],
+    "ai_analysis": {
+      "risk_score": 35,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-11240.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 35
+  },
+  {
+    "id": "cve-CVE-2026-11239",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-05T00:17:00.067",
+    "title": "CVE-2026-11239 - Inappropriate implementation in Extensions in Google Chrome prior to 149.0.7827.53 allowed a remote ",
+    "description": "Inappropriate implementation in Extensions in Google Chrome prior to 149.0.7827.53 allowed a remote attacker who had compromised the renderer process to perform privilege escalation via a crafted HTML page. (Chromium security severity: Low)",
+    "severity": "high",
+    "cve_id": "CVE-2026-11239",
+    "cvss_score": 7.5,
+    "affected_products": [
+      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
+      "https://issues.chromium.org/issues/497025738"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-11239.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-11238",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-05T00:16:59.920",
+    "title": "CVE-2026-11238 - Inappropriate implementation in DevTools in Google Chrome prior to 149.0.7827.53 allowed an attacker",
+    "description": "Inappropriate implementation in DevTools in Google Chrome prior to 149.0.7827.53 allowed an attacker who convinced a user to install a malicious extension to obtain potentially sensitive information from process memory via a crafted Chrome Extension. (Chromium security severity: Low)",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11238",
+    "cvss_score": 5.9,
+    "affected_products": [
+      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
+      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
+      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
+      "https://issues.chromium.org/issues/496705691"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11238.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-10878",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-05T00:16:59.730",
+    "title": "CVE-2026-10878 - A vulnerability was detected in D-Link DWR-M920 1.1.50/1.1.70. Affected is the function sub_41C8E8 o",
+    "description": "A vulnerability was detected in D-Link DWR-M920 1.1.50/1.1.70. Affected is the function sub_41C8E8 of the file /boafrm/formSmsManage. Performing a manipulation of the argument action_value results in command injection. The attack is possible to be carried out remotely. The exploit is now public and may be used.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-10878",
+    "cvss_score": 6.3,
+    "affected_products": [
+      "cpe:2.3:o:dlink:dwr-m920_firmware:1.1.50:*:*:*:*:*:*:*",
+      "cpe:2.3:o:dlink:dwr-m920_firmware:1.1.70:*:*:*:*:*:*:*",
+      "cpe:2.3:h:dlink:dwr-m920:-:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://github.com/7u7777/Dlink/blob/DWR-M920/formSmsManage.md",
+      "https://vuldb.com/cve/CVE-2026-10878",
+      "https://vuldb.com/submit/832154",
+      "https://vuldb.com/vuln/368368",
+      "https://vuldb.com/vuln/368368/cti",
+      "https://www.dlink.com/"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-10878.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-10877",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-05T00:16:59.530",
+    "title": "CVE-2026-10877 - A security vulnerability has been detected in SourceCodester Ship Ferry Ticket Reservation System up",
+    "description": "A security vulnerability has been detected in SourceCodester Ship Ferry Ticket Reservation System up to 1.0. This impacts an unknown function of the file /admin/login.php of the component Admin Login. Such manipulation of the argument Username leads to sql injection. The attack can be executed remotely. The exploit has been disclosed publicly and may be used.",
+    "severity": "high",
+    "cve_id": "CVE-2026-10877",
+    "cvss_score": 7.3,
+    "affected_products": [],
+    "references": [
+      "https://medium.com/@hemantrajbhati5555/sql-injection-in-authentication-mechanism-leads-to-authentication-bypass-65177ce7a41c",
+      "https://vuldb.com/cve/CVE-2026-10877",
+      "https://vuldb.com/submit/831871",
+      "https://vuldb.com/vuln/368367",
+      "https://vuldb.com/vuln/368367/cti",
+      "https://www.sourcecodester.com/"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-10877.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-10876",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-05T00:16:59.313",
+    "title": "CVE-2026-10876 - A weakness has been identified in SourceCodester Ship Ferry Ticket Reservation System 1.0. This affe",
+    "description": "A weakness has been identified in SourceCodester Ship Ferry Ticket Reservation System 1.0. This affects an unknown function of the file /admin/. This manipulation of the argument page causes improper authorization. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-10876",
+    "cvss_score": 6.3,
+    "affected_products": [],
+    "references": [
+      "https://medium.com/@hemantrajbhati5555/missing-authorization-in-sourcecodester-ship-ferry-ticket-reservation-system-leads-to-unauthorized-7783134d6596",
+      "https://vuldb.com/cve/CVE-2026-10876",
+      "https://vuldb.com/submit/831870",
+      "https://vuldb.com/vuln/368366",
+      "https://vuldb.com/vuln/368366/cti",
+      "https://www.sourcecodester.com/"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-10876.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-10586",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-05T00:16:57.747",
+    "title": "CVE-2026-10586 - The Gutenberg Essential Blocks – Page Builder for Gutenberg Blocks & Patterns plugin for WordPress i",
+    "description": "The Gutenberg Essential Blocks – Page Builder for Gutenberg Blocks & Patterns plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 6.1.3 via the `save_ai_generated_image()` function. This makes it possible for authenticated attackers, with Author-level access and above, to make web requests to arbitrary locations originating from the web application and can be used to query and modify information from internal services.",
+    "severity": "high",
+    "cve_id": "CVE-2026-10586",
+    "cvss_score": 7.2,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/essential-blocks/tags/6.1.3/includes/Integrations/AI/AI.php#L171",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/08906577-162c-4875-b16c-18d4912c2611?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-10586.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
   }
 ]
