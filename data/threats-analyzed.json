@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1781295657904-1",
+    "id": "twitter-1781324788825-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-12T20:20:57.904Z",
+    "timestamp": "2026-06-13T04:26:28.825Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,25 +10,29 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "risk_score": 85,
+      "impact_assessment": "The ransomware campaign poses a significant threat to organizations relying on cloud-based infrastructure, potentially leading to data encryption, service disruption, financial losses, and reputational damage. Exploiting CI/CD pipelines increases the risk of widespread compromise across development and production environments.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "Retail",
+        "Manufacturing",
+        "Government"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately review and secure CI/CD pipelines by implementing multi-factor authentication (MFA), access controls, and regular security audits.",
+        "Ensure all cloud infrastructure is patched and up-to-date, and monitor for unusual activity or unauthorized access.",
+        "Implement robust backup strategies, including offline backups, and test recovery processes to ensure business continuity in case of an attack."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
-    "id": "hn-1781295657904-1",
+    "id": "hn-1781324788825-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-12T20:20:57.904Z",
+    "timestamp": "2026-06-13T04:26:28.825Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -36,34 +40,34 @@
       "https://news.ycombinator.com/item?id=123"
     ],
     "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "The open-source vulnerability scanner itself does not pose a direct threat but could be exploited by malicious actors to identify vulnerabilities in target systems if misused. Additionally, reliance on such tools without proper validation could lead to a false sense of security.",
+      "risk_score": 20,
+      "impact_assessment": "The open-source vulnerability scanner itself does not pose a direct threat but could be misused by malicious actors to identify and exploit vulnerabilities in systems that have not been patched. The tool's widespread adoption increases the likelihood of both positive and negative use cases.",
       "affected_industries": [
         "Technology",
-        "Software Development",
-        "Cybersecurity"
+        "Finance",
+        "Healthcare",
+        "Retail",
+        "Government"
       ],
       "recommended_actions": [
-        "Evaluate the tool's source code and ensure it adheres to security best practices before integrating it into workflows.",
-        "Educate teams on the limitations of automated scanners and the importance of manual validation of findings.",
-        "Monitor the tool's updates and community feedback to ensure continued reliability and security."
+        "Evaluate the tool in a controlled environment to ensure it aligns with your organization's security policies and does not expose sensitive data.",
+        "Monitor for any misuse of the tool by malicious actors and ensure all dependencies in your systems are regularly updated and patched.",
+        "Educate development and security teams on the responsible use of vulnerability scanning tools and the importance of securing open-source dependencies."
       ],
       "urgency": "low"
     },
-    "risk_score": 25
+    "risk_score": 20
   },
   {
-    "id": "gh-GHSA-chgr-c6px-7xpp",
+    "id": "gh-GHSA-cmwh-2j7f-4vh3",
     "source": "GitHub Security",
-    "timestamp": "2026-06-12T20:09:05Z",
-    "title": "PyO3 has a missing `Sync` bound on `PyCFunction::new_closure` closures",
-    "description": "`PyCFunction::new_closure` (and the temporary `new_closure_bound` complement in the 0.21–0.22 series) required the supplied closure to be `Send + 'static` but not `Sync`. The resulting `PyCFunction` is a Python callable that can be invoked from any Python thread, which means the closure may be called concurrently from multiple threads, and needs a `Sync` bound to prevent possible data races.\n\nThe problem exists under all Python versions but is particularly vulnerable under the newer free-threade",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-chgr-c6px-7xpp",
-    "affected_packages": [
-      "pyo3"
-    ],
+    "timestamp": "2026-06-13T03:30:24Z",
+    "title": "The WP Ticket plugin for WordPress is vulnerable to SQL Injection via the WordPress search query...",
+    "description": "The WP Ticket plugin for WordPress is vulnerable to SQL Injection via the WordPress search query parameter (`s`) in versions up to, and including, 6.0.4 The plugin hooks WordPress's `posts_request` filter with `wp_ticket_com_posts_request()`, which calls `emd_author_search_results()` when the current request is an unauthenticated front-end search. That function reads `$query->query_vars['s']` — already wp_unslash()'d by `WP_Query::parse_query()`, so wp_magic_quotes protection has been stripped —",
+    "severity": "high",
+    "cve_id": "CVE-2026-9848",
+    "ghsa_id": "GHSA-cmwh-2j7f-4vh3",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -71,51 +75,87 @@
       null,
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The missing `Sync` bound in `PyCFunction::new_closure` can lead to data races when closures are invoked concurrently from multiple threads, potentially causing unpredictable behavior or crashes in Python applications utilizing PyO3. This vulnerability could be exploited in multi-threaded environments, especially under newer free-threaded Python versions.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9848.",
       "affected_industries": [
-        "Software Development",
-        "Data Science and Machine Learning",
-        "Web Development",
-        "Cybersecurity Tools",
-        "IoT Applications"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Update to the latest version of PyO3 once a patch is released that addresses the missing `Sync` bound.",
-        "Audit existing codebases using PyO3 to identify any usage of `PyCFunction::new_closure` and ensure thread safety by adding manual synchronization mechanisms if necessary.",
-        "Monitor the PyO3 GitHub repository and related forums for updates and guidance regarding this issue."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-cx9x-fm2c-c65m",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T03:30:23Z",
+    "title": "The LWS Optimize – All-in-One Speed Booster & Cache Tools plugin for WordPress is vulnerable to...",
+    "description": "The LWS Optimize – All-in-One Speed Booster & Cache Tools plugin for WordPress is vulnerable to Arbitrary File Read in versions up to, and including, 3.3.19. This is due to the combine_current_css() function  trusting <link rel=\"stylesheet\" href=\"...\"> values harvested from page HTML and converting same-site URLs to absolute filesystem paths before reading them with file_get_contents()/Minify\\CSS::add(), without enforcing that the resolved path stay within ABSPATH or have a .css extension. This ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-12089",
+    "ghsa_id": "GHSA-cx9x-fm2c-c65m",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-12089.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-gv7w-rqvm-qjhr",
+    "id": "gh-GHSA-gvjc-4rfj-mxxj",
     "source": "GitHub Security",
-    "timestamp": "2026-06-12T20:08:59Z",
-    "title": "esbuild: Missing binary integrity verification in Deno module enables remote code execution via NPM_CONFIG_REGISTRY",
-    "description": "### Summary\n\nThe esbuild Deno module (`lib/deno/mod.ts`) downloads native binary executables from an npm registry and writes them to disk with executable permissions (`0o755`) **without performing any integrity verification** (e.g., SHA-256 hash check). The Node.js equivalent (`lib/npm/node-install.ts`) includes a robust `binaryIntegrityCheck()` function that verifies SHA-256 hashes against hardcoded expected values from `package.json`, but this protection was never implemented for the Deno dist",
+    "timestamp": "2026-06-13T03:30:23Z",
+    "title": "A symlink following vulnerability was found in the ABRT post-create event handler scripts in...",
+    "description": "A symlink following vulnerability was found in the ABRT post-create event handler scripts in libreport. Event scripts write output files using shell redirections without the O_NOFOLLOW flag. If the target file is replaced with a symlink, the shell process running as root follows the symlink and writes content to the symlink target, allowing arbitrary file overwrites on the system.",
     "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-gv7w-rqvm-qjhr",
-    "affected_packages": [
-      "esbuild"
-    ],
+    "cve_id": "CVE-2026-54230",
+    "ghsa_id": "GHSA-gvjc-4rfj-mxxj",
+    "affected_packages": [],
     "cwes": [
-      null,
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54230.",
       "affected_industries": [
         "Technology",
         "General"
@@ -130,28 +170,27 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-g7r4-m6w7-qqqr",
+    "id": "gh-GHSA-p464-2mqm-5h37",
     "source": "GitHub Security",
-    "timestamp": "2026-06-12T20:08:53Z",
-    "title": "esbuild allows arbitrary file read when running the development server on Windows",
-    "description": "### Summary\n\nThe development server contains a path traversal vulnerability on Windows when serving files from `servedir`.\n\nDue to the use of `path.Clean()` (which only normalizes forward-slash `/` separators) instead of a Windows-aware path normalization function, it is possible to craft requests using backslashes (`\\`) that bypass the intended directory containment logic. An attacker can escape the configured `servedir` root and access arbitrary files on the filesystem.\nThis issue affects Wind",
-    "severity": "low",
-    "cve_id": null,
-    "ghsa_id": "GHSA-g7r4-m6w7-qqqr",
-    "affected_packages": [
-      "esbuild"
-    ],
+    "timestamp": "2026-06-13T03:30:23Z",
+    "title": "A content injection vulnerability was found in the ABRT post-create event handler scripts in...",
+    "description": "A content injection vulnerability was found in the ABRT post-create event handler scripts in libreport. The event script queries the systemd journal for log entries matching the crashed process and writes the results to files in the dump directory without sanitizing embedded control characters. A local user can inject arbitrary content into the journal output by embedding newline characters in syslog messages, controlling the content that root writes to dump directory files.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-54231",
+    "ghsa_id": "GHSA-p464-2mqm-5h37",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54231.",
       "affected_industries": [
         "Technology",
         "General"
@@ -161,34 +200,32 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "low"
+      "urgency": "medium"
     },
-    "risk_score": 25
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-fp5j-4fj2-4jvq",
+    "id": "gh-GHSA-c3cq-8jxp-w66j",
     "source": "GitHub Security",
-    "timestamp": "2026-06-12T20:08:46Z",
-    "title": "Radius Controller May Delete a Container Resource via an Injected Deployment Annotation (Multi-Tenant Installs)",
-    "description": "# Radius Controller May Delete a Container Resource via an Injected Deployment Annotation (Multi-Tenant Installs)\n\n## Summary\n\nA configuration-validation issue in the Radius Kubernetes controller can cause it to issue a `DELETE` for the container resource referenced by a tampered `radapp.io/status` annotation on a Deployment. It follows the \"Confused Deputy\" pattern. Real-world impact is bounded and depends heavily on install topology: in a multi-tenant install (one controller reconciling Deploy",
+    "timestamp": "2026-06-13T03:30:23Z",
+    "title": "A race condition was found in the abrt-dbus D-Bus service's ChownProblemDir method....",
+    "description": "A race condition was found in the abrt-dbus D-Bus service's ChownProblemDir method. ChownProblemDir opens the dump directory with DD_OPEN_READONLY and calls dd_chown to change ownership of all files to the caller's uid, succeeding even while post-create event handlers hold a write lock. This allows an attacker to gain filesystem-level control of the dump directory while privileged event scripts are still running.",
     "severity": "high",
-    "cve_id": "CVE-2026-53999",
-    "ghsa_id": "GHSA-fp5j-4fj2-4jvq",
-    "affected_packages": [
-      "github.com/radius-project/radius"
-    ],
+    "cve_id": "CVE-2026-54229",
+    "ghsa_id": "GHSA-c3cq-8jxp-w66j",
+    "affected_packages": [],
     "cwes": [
-      null,
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-53999.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54229.",
       "affected_industries": [
         "Technology",
         "General"
@@ -203,33 +240,19 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-pjpj-v387-x4vq",
+    "id": "gh-GHSA-6pjg-wmm6-r8rp",
     "source": "GitHub Security",
-    "timestamp": "2026-06-12T20:08:11Z",
-    "title": "TYPO3 CMS has Broken Access Control in its Form Framework",
-    "description": "### Problem\nBackend users with access to the Form Framework were able to use files not ending in `.form.yaml` as form definitions, which were processed without denying the incorrect file extension. Maliciously crafted form definition files can be used to execute arbitrary SQL statements, allowing attackers to escalate privileges by creating administrative backend user accounts.\n\n### Solution\nUpdate to TYPO3 versions 10.4.57 ELTS, 11.5.51 ELTS, 12.4.46 ELTS, 13.4.31 LTS, 14.3.3 LTS that fix the p",
+    "timestamp": "2026-06-13T03:30:23Z",
+    "title": "A time-of-check time-of-use (TOCTOU) race condition was found in the abrt-dbus D-Bus service's...",
+    "description": "A time-of-check time-of-use (TOCTOU) race condition was found in the abrt-dbus D-Bus service's SetElement method. Between dump directory creation and post-create event execution, any local user can call SetElement to write arbitrary text files into the root-owned dump directory, bypassing package validation and allowing crashes of unpackaged binaries to survive post-create processing.",
     "severity": "high",
-    "cve_id": "CVE-2026-11607",
-    "ghsa_id": "GHSA-pjpj-v387-x4vq",
-    "affected_packages": [
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-form",
-      "typo3/cms-form",
-      "typo3/cms-form",
-      "typo3/cms-form",
-      "typo3/cms-form"
-    ],
+    "cve_id": "CVE-2026-54228",
+    "ghsa_id": "GHSA-6pjg-wmm6-r8rp",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -237,272 +260,44 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability in TYPO3 CMS allows attackers to execute arbitrary SQL statements, potentially leading to privilege escalation and unauthorized administrative access. This can compromise sensitive data and disrupt operations.",
+      "impact_assessment": "The TOCTOU race condition in the abrt-dbus D-Bus service's SetElement method allows local users to exploit a vulnerability to write arbitrary files into root-owned directories, potentially leading to privilege escalation and persistence of malicious binaries.",
       "affected_industries": [
-        "Education",
-        "Government",
+        "Technology",
+        "Finance",
         "Healthcare",
-        "E-commerce",
-        "Media and Publishing",
-        "Nonprofit Organizations"
+        "Government",
+        "Education"
       ],
       "recommended_actions": [
-        "Immediately update TYPO3 CMS to the patched versions: 10.4.57 ELTS, 11.5.51 ELTS, 12.4.46 ELTS, 13.4.31 LTS, or 14.3.3 LTS.",
-        "Audit backend user permissions to ensure only trusted users have access to the Form Framework.",
-        "Monitor and review logs for any signs of unauthorized access or suspicious activity related to form definitions."
+        "Apply the latest security patch or update for abrt-dbus to mitigate the vulnerability.",
+        "Implement file system monitoring to detect unauthorized file writes in root-owned directories.",
+        "Restrict access to the SetElement method and enforce stricter validation checks for local users."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "gh-GHSA-f34x-rx2w-7pm3",
+    "id": "gh-GHSA-xwvr-mg4x-vxqq",
     "source": "GitHub Security",
-    "timestamp": "2026-06-12T20:08:04Z",
-    "title": "TYPO3 CMS has Broken Access Control in the Recycler Module",
-    "description": "### Problem\nBackend users with access to the Recycler module were able to restore soft-deleted records on pages or for tables they were not authorized to modify.\n\n### Solution\nUpdate to TYPO3 versions 10.4.57 ELTS, 11.5.51 ELTS, 12.4.46 ELTS, 13.4.31 LTS, 14.3.3 LTS that fix the problem described.\n\n### Credits\nTYPO3 CMS thanks Hyunseo Shin for reporting this issue, and TYPO3 security team member Elias Häußler for fixing it.\n\n### Resources\n* [TYPO3-CORE-SA-2026-011](https://typo3.org/security/adv",
-    "severity": "medium",
-    "cve_id": "CVE-2026-47349",
-    "ghsa_id": "GHSA-f34x-rx2w-7pm3",
-    "affected_packages": [
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-recycler",
-      "typo3/cms-recycler",
-      "typo3/cms-recycler",
-      "typo3/cms-recycler",
-      "typo3/cms-recycler"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-47349.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-3p42-w5ch-gg42",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-12T20:07:58Z",
-    "title": "TYPO3 CMS has an Open Redirect Vulnerability via Core Utilities",
-    "description": "### Problem\nApplications that use `GeneralUtility::sanitizeLocalUrl` to allow only local URLs are vulnerable to open redirect attacks if the URL is used after it has passed the aforementioned sanitization checks. This enables attackers to redirect users to external content and carry out phishing attacks.\n\n### Solution\nUpdate to TYPO3 versions 10.4.57 ELTS, 11.5.51 ELTS, 12.4.46 ELTS, 13.4.31 LTS, 14.3.3 LTS that fix the problem described.\n\n### Credits\nTYPO3 CMS thanks Alexandre Romao for reporti",
-    "severity": "medium",
-    "cve_id": "CVE-2026-47347",
-    "ghsa_id": "GHSA-3p42-w5ch-gg42",
-    "affected_packages": [
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-47347.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-3v8v-4wg6-r7qh",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-12T20:07:52Z",
-    "title": "TYPO3 CMS: Destructive Actions on File Mount Folders",
-    "description": "### Problem\nNon-privileged backend users with file mount access were able to perform write operations (move, delete, rename) on folders representing the root of an active file mount due to missing authorization restrictions.\n\n### Solution\nUpdate to TYPO3 versions 10.4.57 ELTS, 11.5.51 ELTS, 12.4.46 ELTS, 13.4.31 LTS, 14.3.3 LTS that fix the problem described.\n\n### Credits\nTYPO3 CMS thanks Arne Uplegger for reporting this issue, and TYPO3 security team member Elias Häußler for fixing it.\n\n### Res",
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "Heap buffer out-of-bounds read vulnerability in Avira Antivirus engine when scanning a malformed...",
+    "description": "Heap buffer out-of-bounds read vulnerability in Avira Antivirus engine when scanning a malformed Windows PE file may allow Local Execution of Code or Denial-of-Service of the antivirus engine process.\n\nThis issue affects Avira Antivirus on Windows, macOS, and Linux for engine builds before 8.3.70.98.",
     "severity": "high",
-    "cve_id": "CVE-2026-47343",
-    "ghsa_id": "GHSA-3v8v-4wg6-r7qh",
-    "affected_packages": [
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core"
-    ],
+    "cve_id": "CVE-2025-9032",
+    "ghsa_id": "GHSA-xwvr-mg4x-vxqq",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Non-privileged backend users can perform destructive actions on file mount folders, potentially leading to data loss, disruption of services, and unauthorized modifications in systems using TYPO3 CMS.",
-      "affected_industries": [
-        "Web Development",
-        "E-commerce",
-        "Education",
-        "Government",
-        "Healthcare",
-        "Media and Publishing"
-      ],
-      "recommended_actions": [
-        "Immediately update TYPO3 CMS to the patched versions: 10.4.57 ELTS, 11.5.51 ELTS, 12.4.46 ELTS, 13.4.31 LTS, or 14.3.3 LTS.",
-        "Audit user permissions and restrict backend access to non-essential users to minimize exposure.",
-        "Monitor file mount folders for unusual activity and implement logging to detect unauthorized operations."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-p5j5-4j3q-8mq8",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-12T20:07:46Z",
-    "title": "TYPO3 HTML Sanitizer allows Cross-site Scripting",
-    "description": "Namespace attributes are not encoded correctly during HTML serialization. This allows bypassing the cross-site scripting prevention mechanism of `typo3/html-sanitizer` before version 2.3.2.\n\nCredits to Doyensec in collaboration with Claude and Anthropic Research for reporting this vulnerability.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-47345",
-    "ghsa_id": "GHSA-p5j5-4j3q-8mq8",
-    "affected_packages": [
-      "typo3/html-sanitizer"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-47345.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-36hh-v3qg-5jq4",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-12T19:32:47Z",
-    "title": "PyO3 has an Out-of-bounds Read in `nth` / `nth_back` for `PyList` and `PyTuple` iterators",
-    "description": "PyO3 0.24.0 added optimized implementations of `Iterator::nth` and `DoubleEndedIterator::nth_back` for the `BoundListIterator` and `BoundTupleIterator` types. These implementations computed the target index using unchecked `usize` addition (`index + n`) before bounds-checking against the sequence length, then read the element via `get_item_unchecked`.\n\nIn `nth` methods, a sufficiently large `n` (combined with a non-zero internal index) could cause the addition to overflow and wrap around, produc",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-36hh-v3qg-5jq4",
-    "affected_packages": [
-      "pyo3"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in PyO3's `nth` and `nth_back` methods for `PyList` and `PyTuple` iterators can lead to out-of-bounds reads due to unchecked arithmetic operations. This could result in undefined behavior, crashes, or potential data leakage, especially in applications that process untrusted or user-controlled data.",
-      "affected_industries": [
-        "Software Development",
-        "Data Science and Analytics",
-        "Artificial Intelligence and Machine Learning",
-        "Web Development",
-        "Cybersecurity"
-      ],
-      "recommended_actions": [
-        "Immediately update to a patched version of PyO3 if available, or apply any recommended mitigations from the PyO3 maintainers.",
-        "Audit all codebases using PyO3 to identify and mitigate potential misuse of `nth` and `nth_back` methods in `PyList` and `PyTuple` iterators.",
-        "Implement input validation and bounds-checking mechanisms in applications to prevent the use of excessively large indices that could exploit this vulnerability."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-jh32-v29g-68pq",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-12T19:32:22Z",
-    "title": "TYPO3 CMS has Privilege Escalation & SQL Injection in its Form Framework",
-    "description": "### Problem\nBackend users with write access to the `form_definition` database table were able to directly create, update, or delete form definition records via `DataHandler`, bypassing the Form Framework's persistence validation and permission checks. This allowed injecting arbitrary form configurations, re-enabling attack vectors originally addressed in [TYPO3-CORE-SA-2018-003](https://typo3.org/security/advisory/typo3-core-sa-2018-003), including SQL injection and privilege escalation.\n\n### So",
-    "severity": "high",
-    "cve_id": "CVE-2026-49741",
-    "ghsa_id": "GHSA-jh32-v29g-68pq",
-    "affected_packages": [
-      "typo3/cms-core",
-      "typo3/cms-form"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-49741.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-9032.",
       "affected_industries": [
         "Technology",
         "General"
@@ -517,25 +312,57 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-qcmw-6rm2-5x78",
+    "id": "gh-GHSA-575m-c8qr-pcg3",
     "source": "GitHub Security",
-    "timestamp": "2026-06-12T19:32:15Z",
-    "title": "TYPO3 CMS has Broken Access Control in its DataHandler",
-    "description": "### Problem\nBackend users were able to move records to a different page without having edit permissions on the source page.\n\n### Solution\nUpdate to TYPO3 versions 13.4.31 LTS, 14.3.3 LTS that fix the problem described.\n\n### Credits\nTYPO3 CMS thanks Hyunseo Shin for reporting this issue, and TYPO3 security team member Torben Hansen for fixing it.\n\n### Resources\n* [TYPO3-CORE-SA-2026-012](https://typo3.org/security/advisory/typo3-core-sa-2026-012)",
-    "severity": "medium",
-    "cve_id": "CVE-2026-47350",
-    "ghsa_id": "GHSA-qcmw-6rm2-5x78",
-    "affected_packages": [
-      "typo3/cms-core",
-      "typo3/cms-core"
-    ],
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "Heap buffer out-of-bounds write vulnerability due to integer overflow in Avira Antivirus engine...",
+    "description": "Heap buffer out-of-bounds write vulnerability due to integer overflow in Avira Antivirus engine when scanning a malformed MS-DOS executable file may allow Local Execution of Code or Denial-of-Service of the antivirus engine process.\n\nThis issue affects Avira Antivirus on Windows, macOS, and Linux for engine builds before 8.3.70.104.",
+    "severity": "high",
+    "cve_id": "CVE-2025-14098",
+    "ghsa_id": "GHSA-575m-c8qr-pcg3",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
-      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows attackers to execute arbitrary code or cause a denial-of-service (DoS) by exploiting a heap buffer out-of-bounds write via a malformed MS-DOS executable file. This could compromise the integrity and availability of systems running the affected Avira Antivirus engine.",
+      "affected_industries": [
+        "Healthcare",
+        "Financial Services",
+        "Government",
+        "Education",
+        "Retail",
+        "Technology"
+      ],
+      "recommended_actions": [
+        "Immediately update Avira Antivirus to engine build 8.3.70.104 or later to mitigate the vulnerability.",
+        "Implement strict file scanning policies and monitor for any suspicious or malformed MS-DOS executable files in the environment.",
+        "Conduct a thorough review of antivirus logs and system activity to identify any signs of exploitation or abnormal behavior."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-wcpv-6hg7-mfcc",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "OpenClaw before 2026.5.7 contains a hostname validation vulnerability in retry endpoint checks...",
+    "description": "OpenClaw before 2026.5.7 contains a hostname validation vulnerability in retry endpoint checks that allows matching hostname prefixes instead of exact hostnames. Attackers can exploit this by crafting a hostname prefix resembling a trusted host to send authentication material to untrusted endpoints.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53839",
+    "ghsa_id": "GHSA-wcpv-6hg7-mfcc",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null,
@@ -543,184 +370,249 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows unauthorized backend users to move records to different pages without proper edit permissions, potentially leading to data integrity issues, unauthorized modifications, or misplacement of sensitive information.",
+      "impact_assessment": "The hostname validation vulnerability in OpenClaw before version 2026.5.7 could allow attackers to redirect sensitive authentication material to untrusted endpoints by exploiting improperly validated hostname prefixes. This could lead to data breaches, unauthorized access, or session hijacking.",
       "affected_industries": [
-        "Web Development",
-        "Media and Publishing",
+        "Technology",
+        "Finance",
+        "Healthcare",
         "E-commerce",
-        "Education",
         "Government"
       ],
       "recommended_actions": [
-        "Immediately update TYPO3 CMS to versions 13.4.31 LTS or 14.3.3 LTS to patch the vulnerability.",
-        "Review backend user permissions and access controls to ensure proper restrictions are in place.",
-        "Monitor and audit recent changes to records and pages for any unauthorized modifications."
+        "Immediately update OpenClaw to version 2026.5.7 or later to patch the vulnerability.",
+        "Conduct a review of logs to identify any suspicious activity or unauthorized access attempts related to hostname validation.",
+        "Implement additional hostname validation mechanisms or monitoring tools to detect and prevent exploitation attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-c89p-wq36-89h3",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "Heap buffer out-of-bounds write vulnerability in Avira Antivirus engine when scanning a malformed...",
+    "description": "Heap buffer out-of-bounds write vulnerability in Avira Antivirus engine when scanning a malformed POSIX tar archive may allow Local Execution of Code or Denial-of-Service of the antivirus engine process.\n\nThis issue affects Avira Antivirus on Windows, macOS, and Linux for engine builds before 8.3.27.12.",
+    "severity": "high",
+    "cve_id": "CVE-2026-6676",
+    "ghsa_id": "GHSA-c89p-wq36-89h3",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The heap buffer out-of-bounds write vulnerability in the Avira Antivirus engine could allow attackers to execute arbitrary code or cause a denial-of-service (DoS) condition by exploiting the scanning of a malformed POSIX tar archive. This could lead to system compromise, data breaches, or disruption of antivirus functionality, leaving systems unprotected.",
+      "affected_industries": [
+        "Healthcare",
+        "Finance",
+        "Government",
+        "Retail",
+        "Technology",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Immediately update the Avira Antivirus engine to version 8.3.27.12 or later to mitigate the vulnerability.",
+        "Conduct a thorough review of systems using Avira Antivirus to ensure no malicious or malformed POSIX tar archives have been introduced.",
+        "Implement network monitoring and intrusion detection systems to identify and block any exploitation attempts targeting this vulnerability."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-h53c-vv76-w4w5",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "Information disclosure vulnerability in Avira Password Manager when used with Mozilla Firefox may...",
+    "description": "Information disclosure vulnerability in Avira Password Manager when used with Mozilla Firefox may allow a remote attacker operating a cross-origin iframe to obtain credentials autofilled for the parent web page via incorrect autofill field selection.\n\nThis issue affects Avira Password Manager when used with Mozilla Firefox on Windows, macOS, and Linux.",
+    "severity": "high",
+    "cve_id": "CVE-2026-12068",
+    "ghsa_id": "GHSA-h53c-vv76-w4w5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12068.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-27wx-pvwm-cfh2",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "An authorization flaw in MISP’s object add/edit handling allowed an authenticated user with...",
+    "description": "An authorization flaw in MISP’s object add/edit handling allowed an authenticated user with object editing permissions to assign a MISP object, or attributes contained within an object, to a sharing group that the user was not authorized to use or view. When editing objects, the sharing group validation was performed against the wrong request data structure after object fields had been merged to the top level, causing the check to be bypassed. In addition, attributes embedded in objects were not",
+    "severity": "medium",
+    "cve_id": "CVE-2026-54398",
+    "ghsa_id": "GHSA-27wx-pvwm-cfh2",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54398.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-8v35-94r3-25g8",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "Heap buffer out-of-bounds read vulnerability in Avira Antivirus engine when scanning a malformed...",
+    "description": "Heap buffer out-of-bounds read vulnerability in Avira Antivirus engine when scanning a malformed PDF file may allow Local Execution of Code or Denial-of-Service of the antivirus engine process.\n\nThis issue affects Avira Antivirus on Windows, macOS, and Linux for engine builds before 8.3.70.76.",
+    "severity": "high",
+    "cve_id": "CVE-2025-9033",
+    "ghsa_id": "GHSA-8v35-94r3-25g8",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-9033.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-m8wq-7mhg-mgm7",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "Allegra downloadAttachment Cross-Site Scripting Authentication Bypass Vulnerability. This...",
+    "description": "Allegra downloadAttachment Cross-Site Scripting Authentication Bypass Vulnerability. This vulnerability allows remote attackers to execute arbitrary script on affected installations of Allegra. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe specific flaw exists within the downloadAttachment method. The issue results from the lack of proper validation of user-supplied data, which can lead to the injection of",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11443",
+    "ghsa_id": "GHSA-m8wq-7mhg-mgm7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows remote attackers to execute arbitrary scripts via the downloadAttachment method, potentially leading to data theft, session hijacking, or unauthorized access. Exploitation requires user interaction, such as visiting a malicious page or opening a malicious file.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Apply the latest security patch or update for Allegra to address CVE-2026-11443.",
+        "Implement input validation and sanitization to prevent injection attacks.",
+        "Educate users on recognizing and avoiding malicious links or files."
       ],
       "urgency": "medium"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-hwvq-2w67-rvxp",
+    "id": "gh-GHSA-2cqf-7mh8-jphj",
     "source": "GitHub Security",
-    "timestamp": "2026-06-12T19:32:09Z",
-    "title": "TYPO3 CMS has Broken Access Control in its Form Framework",
-    "description": "### Problem\nBackend users with file write permissions were able to upload form definition files with mixed-case extensions (e.g., `.FORM.YAML`) to bypass the Form Framework's upload restriction. Maliciously crafted form definition files can be used to execute arbitrary SQL statements, allowing attackers to escalate privileges by creating administrative backend user accounts.\n\n### Solution\nUpdate to TYPO3 versions 10.4.57 ELTS, 11.5.51 ELTS, 12.4.46 ELTS, 13.4.31 LTS, 14.3.3 LTS that fix the prob",
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "Capgo before 12.128.2 contains a denial of service vulnerability allowing attackers to register...",
+    "description": "Capgo before 12.128.2 contains a denial of service vulnerability allowing attackers to register accounts using arbitrary email addresses without verification, then initiate deletion to lock emails in pending deletion state. Attackers can permanently lock legitimate users out of the platform for 30 days by exploiting unverified email ownership in account lifecycle operations.",
     "severity": "high",
-    "cve_id": "CVE-2026-47346",
-    "ghsa_id": "GHSA-hwvq-2w67-rvxp",
-    "affected_packages": [
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-form",
-      "typo3/cms-form",
-      "typo3/cms-form",
-      "typo3/cms-form",
-      "typo3/cms-form"
-    ],
+    "cve_id": "CVE-2026-53868",
+    "ghsa_id": "GHSA-2cqf-7mh8-jphj",
+    "affected_packages": [],
     "cwes": [
-      null,
       null
     ],
     "references": [
       null,
       null,
       null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-47346.",
+      "risk_score": 85,
+      "impact_assessment": "This denial of service vulnerability allows attackers to exploit account lifecycle operations by registering accounts with arbitrary email addresses and initiating deletions. This can result in legitimate users being locked out of their accounts for 30 days, potentially disrupting business operations, customer access, and trust in the platform.",
       "affected_industries": [
         "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-chm7-4vch-h8vr",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-12T19:09:30Z",
-    "title": "TYPO3 CMS has Broken Access Control in its Media Module",
-    "description": "### Problem\nBackend users with file download permissions were able to download files from the fallback storage of the file abstraction layer (FAL) via the Media Module. Since the fallback storage resolves paths relative to the server's document root, this could expose sensitive files such as log files.\n\n### Solution\nUpdate to TYPO3 versions 11.5.51 ELTS, 12.4.46 ELTS, 13.4.31 LTS, 14.3.3 LTS that fix the problem described.\n\n### Credits\nTYPO3 CMS thanks Hyunseo Shin for reporting this issue, and ",
-    "severity": "high",
-    "cve_id": "CVE-2026-49742",
-    "ghsa_id": "GHSA-chm7-4vch-h8vr",
-    "affected_packages": [
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-filelist",
-      "typo3/cms-filelist",
-      "typo3/cms-filelist",
-      "typo3/cms-filelist"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-49742.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-c78m-c52x-jgwp",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-12T19:09:26Z",
-    "title": "TYPO3 CMS has Insecure Deserialization via Core API",
-    "description": "### Problem\nTYPO3's cache frontend (`VariableFrontend`) and persistent key-value store (`Registry`) deserialized PHP payloads without integrity validation or class restrictions. An attacker with write access to the underlying storage backend (cache store or sys_registry database table) could inject a crafted serialized payload to trigger PHP Object Injection, potentially exploiting a gadget chain to achieve Remote Code Execution or other high-impact effects.\n\nExploiting this vulnerability requir",
-    "severity": "medium",
-    "cve_id": "CVE-2026-49740",
-    "ghsa_id": "GHSA-c78m-c52x-jgwp",
-    "affected_packages": [
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability in TYPO3 CMS allows attackers with write access to the storage backend to exploit insecure deserialization, potentially leading to PHP Object Injection and Remote Code Execution. This could result in unauthorized access, data breaches, or system compromise.",
-      "affected_industries": [
-        "Web Development",
         "E-commerce",
-        "Media and Publishing",
-        "Education",
-        "Government"
+        "Financial Services",
+        "Healthcare",
+        "Education"
       ],
       "recommended_actions": [
-        "Update TYPO3 CMS to the latest patched version that addresses CVE-2026-49740 to mitigate the vulnerability.",
-        "Restrict access to the storage backend (cache store or sys_registry database table) to trusted users only.",
-        "Implement application-level input validation and consider disabling PHP object deserialization where possible."
+        "Update to Capgo version 12.128.2 or later to patch the vulnerability.",
+        "Implement stricter email verification processes to ensure ownership before allowing account deletion requests.",
+        "Monitor and audit account lifecycle operations for suspicious activity, such as bulk account registrations or deletion requests."
       ],
       "urgency": "high"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
-    "id": "gh-GHSA-jf56-v8jc-jcc5",
+    "id": "gh-GHSA-g9f3-8379-v2hf",
     "source": "GitHub Security",
-    "timestamp": "2026-06-12T19:09:04Z",
-    "title": "TYPO3 CMS has Broken Access Control in its File Abstraction Layer",
-    "description": "### Problem\nThe path allowance check in `GeneralUtility::isAllowedAbsPath()` performed a plain string prefix comparison without requiring a directory separator boundary, causing a path like `/var/www/html-other/secret.yaml` to be incorrectly accepted as valid when the project root was `/var/www/html`. Administrator users with access to the File Abstraction Layer were able to create new file storage definitions pointing to directories outside the project root, bypassing this path check.\n\n### Solu",
-    "severity": "low",
-    "cve_id": "CVE-2026-49738",
-    "ghsa_id": "GHSA-jf56-v8jc-jcc5",
-    "affected_packages": [
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core"
-    ],
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "Capgo before 12.128.2 fails to delete previously uploaded profile images from backend storage...",
+    "description": "Capgo before 12.128.2 fails to delete previously uploaded profile images from backend storage when users replace or remove them. Attackers can access orphaned image files through previously generated URLs, allowing unauthorized retrieval of user-uploaded content.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53867",
+    "ghsa_id": "GHSA-g9f3-8379-v2hf",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -728,6 +620,38 @@
       null,
       null,
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53867.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-gjr2-gw52-3xch",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "OpenClaw before 2026.5.6 contains a configuration enforcement bypass vulnerability in Feishu...",
+    "description": "OpenClaw before 2026.5.6 contains a configuration enforcement bypass vulnerability in Feishu dynamic-agent bindings that allows authenticated senders to create or update bindings without honoring configured config-write controls. Attackers can exploit this by leveraging the dynamic-agent binding feature to change sender-agent binding state beyond intended policy, potentially enabling unauthorized binding modifications.",
+    "severity": "low",
+    "cve_id": "CVE-2026-53835",
+    "ghsa_id": "GHSA-gjr2-gw52-3xch",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null,
@@ -735,7 +659,7 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-49738.",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-53835.",
       "affected_industries": [
         "Technology",
         "General"
@@ -750,26 +674,15 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-2j54-93q2-3hjq",
+    "id": "gh-GHSA-p625-mq37-453v",
     "source": "GitHub Security",
-    "timestamp": "2026-06-12T19:08:59Z",
-    "title": "TYPO3 CMS has Broken Access Control in Backend API",
-    "description": "### Problem\nAuthenticated backend users were able to retrieve file metadata via several Backend API routes without proper permission checks, allowing access to files outside their permitted file mounts or storages.\n\n### Solution\nUpdate to TYPO3 versions 10.4.57 ELTS, 11.5.51 ELTS, 12.4.46 ELTS, 13.4.31 LTS, 14.3.3 LTS that fix the problem described.\n\n### Credits\nTYPO3 CMS thanks Phong Lan for reporting this issue, and to TYPO3 core & security team member Oliver Hader for fixing it.\n\n### Resource",
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "Allegra exportReport Directory Traversal Information Disclosure Vulnerability. This vulnerability...",
+    "description": "Allegra exportReport Directory Traversal Information Disclosure Vulnerability. This vulnerability allows remote attackers to disclose sensitive information on affected installations of Allegra. Authentication is required to exploit this vulnerability.\n\nThe specific flaw exists within the exportReport method. The issue results from the lack of proper validation of a user-supplied path prior to using it in file operations. An attacker can leverage this vulnerability to disclose information in the ",
     "severity": "medium",
-    "cve_id": "CVE-2026-47352",
-    "ghsa_id": "GHSA-2j54-93q2-3hjq",
-    "affected_packages": [
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-backend",
-      "typo3/cms-backend",
-      "typo3/cms-backend",
-      "typo3/cms-backend",
-      "typo3/cms-backend"
-    ],
+    "cve_id": "CVE-2026-11442",
+    "ghsa_id": "GHSA-p625-mq37-453v",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -777,6 +690,38 @@
       null,
       null,
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11442.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-c85p-9pvr-f7f5",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "OpenClaw before 2026.5.27 contains a state mutation vulnerability in node pairing reconnection...",
+    "description": "OpenClaw before 2026.5.27 contains a state mutation vulnerability in node pairing reconnection that allows paired nodes to confuse approval scope decisions. Attackers can exploit reconnection logic to restore or present broader node authority than intended, potentially bypassing approval restrictions.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53838",
+    "ghsa_id": "GHSA-c85p-9pvr-f7f5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null,
@@ -784,88 +729,32 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "Authenticated backend users can exploit broken access controls to retrieve unauthorized file metadata, potentially leading to data leaks or unauthorized access to sensitive files.",
+      "impact_assessment": "The vulnerability allows attackers to exploit node pairing reconnection logic, potentially granting unauthorized access or broader authority within a network. This could lead to data breaches, unauthorized actions, or compromised system integrity.",
       "affected_industries": [
         "Technology",
-        "Media",
-        "Education",
-        "Government",
-        "Healthcare"
+        "IoT",
+        "Telecommunications",
+        "Cloud Services"
       ],
       "recommended_actions": [
-        "Immediately update TYPO3 CMS to the patched versions: 10.4.57 ELTS, 11.5.51 ELTS, 12.4.46 ELTS, 13.4.31 LTS, or 14.3.3 LTS.",
-        "Audit backend user permissions and file storage configurations to ensure proper access controls are in place.",
-        "Monitor logs for unusual activity related to file metadata access to detect potential exploitation."
+        "Update OpenClaw to the latest patched version (2026.5.27 or later) to mitigate the vulnerability.",
+        "Conduct a comprehensive audit of node pairing and approval mechanisms to identify any unauthorized access or anomalies.",
+        "Implement network segmentation and monitoring to detect and isolate suspicious node behavior."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-q93m-25xv-94hh",
+    "id": "gh-GHSA-chqm-wxm2-w73w",
     "source": "GitHub Security",
-    "timestamp": "2026-06-12T19:06:59Z",
-    "title": "TYPO3 CMS: Broken Access Control in Media Module",
-    "description": "### Problem\nBackend users were able to insert arbitrary records and files into the TYPO3 clipboard without proper read permission checks, which allowed users to gather information about records and files they were not authorized to view.\n\n### Solution\nUpdate to TYPO3 versions 10.4.57 ELTS, 11.5.51 ELTS, 12.4.46 ELTS, 13.4.31 LTS, 14.3.3 LTS that fix the problem described.\n\n### Credits\nTYPO3 CMS thanks Vincent Yang for reporting this issue, and to TYPO3 security team member Elias Häußler for fixi",
+    "timestamp": "2026-06-13T00:34:33Z",
+    "title": "OpenClaw before 2026.5.6 contains an improper access control vulnerability in Mattermost event...",
+    "description": "OpenClaw before 2026.5.6 contains an improper access control vulnerability in Mattermost event handlers that fails to validate channel type metadata. Attackers can bypass intended DM policy decisions by sending crafted Mattermost events missing channel type information to process restricted content.",
     "severity": "medium",
-    "cve_id": "CVE-2026-47351",
-    "ghsa_id": "GHSA-q93m-25xv-94hh",
-    "affected_packages": [
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-backend",
-      "typo3/cms-backend",
-      "typo3/cms-backend",
-      "typo3/cms-backend",
-      "typo3/cms-backend"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-47351.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-cg75-qfg2-w9hj",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-12T19:06:52Z",
-    "title": "TYPO3 CMS has Cross-Site Scripting in Indexed Search",
-    "description": "### Problem\nEditors with access to create or modify page content were able to include HTML markup in page titles that were stored in the search index without sanitization. When displayed in frontend search results via the Indexed Search plugin, these titles were rendered without proper output encoding, resulting in a Cross-Site Scripting vulnerability.\n\n### Solution\nUpdate to TYPO3 versions 13.4.31 LTS, 14.3.3 LTS that fix the problem described.\n\n### Credits\nTYPO3 CMS thanks Jan Kahmen and Sanja",
-    "severity": "medium",
-    "cve_id": "CVE-2026-47348",
-    "ghsa_id": "GHSA-cg75-qfg2-w9hj",
-    "affected_packages": [
-      "typo3/cms-core",
-      "typo3/cms-core",
-      "typo3/cms-indexed-search",
-      "typo3/cms-indexed-search"
-    ],
+    "cve_id": "CVE-2026-53837",
+    "ghsa_id": "GHSA-chqm-wxm2-w73w",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -873,196 +762,50 @@
       null,
       null,
       null,
-      null,
-      null,
-      null,
       null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-47348.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-jvf5-rxvv-3mcg",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-12T19:06:45Z",
-    "title": "TYPO3 HTML Sanitizer allows Cross-site Scripting",
-    "description": "When `ALLOW_INSECURE_RAW_TEXT` is enabled, whitespace-variant closing tags (e.g., `</style\\\\t>`) are not recognized by the sanitizer but accepted by browsers as valid end tags, allowing subsequent content to escape sanitization. This allows bypassing the cross-site scripting prevention mechanism of `typo3/html-sanitizer` before version 2.3.2.\n\nCredits to IPC Labs for reporting this vulnerability.",
-    "severity": "low",
-    "cve_id": "CVE-2026-47344",
-    "ghsa_id": "GHSA-jvf5-rxvv-3mcg",
-    "affected_packages": [
-      "typo3/html-sanitizer"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 35,
-      "impact_assessment": "The vulnerability allows attackers to bypass the HTML sanitizer's cross-site scripting (XSS) prevention mechanism when certain configurations are enabled, potentially leading to the execution of malicious scripts in users' browsers. This could result in data theft, session hijacking, or other XSS-related attacks.",
-      "affected_industries": [
-        "Web Development",
-        "E-commerce",
-        "Content Management Systems",
-        "Digital Marketing"
-      ],
-      "recommended_actions": [
-        "Update the `typo3/html-sanitizer` package to version 2.3.2 or later to patch the vulnerability.",
-        "Disable the `ALLOW_INSECURE_RAW_TEXT` configuration if it is not strictly necessary for your application.",
-        "Conduct a security audit of your TYPO3 implementation to identify and mitigate other potential misconfigurations."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 35
-  },
-  {
-    "id": "cve-CVE-2026-11248",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:17:01.247",
-    "title": "CVE-2026-11248 - Inappropriate implementation in Google Lens in Google Chrome prior to 149.0.7827.53 allowed a remote",
-    "description": "Inappropriate implementation in Google Lens in Google Chrome prior to 149.0.7827.53 allowed a remote attacker to bypass navigation restrictions via a crafted HTML page. (Chromium security severity: Low)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11248",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
-      "https://issues.chromium.org/issues/497946941"
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows remote attackers to bypass navigation restrictions in Google Chrome's Google Lens feature, potentially enabling unauthorized access to sensitive web resources or facilitating phishing attacks.",
+      "impact_assessment": "The vulnerability allows attackers to bypass direct message (DM) policy restrictions in Mattermost by exploiting improper access control. This could lead to unauthorized access to sensitive or restricted communications, potentially resulting in data breaches or privacy violations.",
       "affected_industries": [
         "Technology",
-        "Finance",
         "Healthcare",
-        "E-commerce",
-        "Education"
+        "Finance",
+        "Education",
+        "Government"
       ],
       "recommended_actions": [
-        "Update Google Chrome to version 149.0.7827.53 or later to mitigate the vulnerability.",
-        "Monitor network traffic for unusual or unauthorized navigation attempts, especially involving crafted HTML pages.",
-        "Educate users about avoiding suspicious links and ensuring their browsers are up to date."
+        "Immediately update OpenClaw to version 2026.5.6 or later to patch the vulnerability.",
+        "Conduct an audit of Mattermost configurations and access control policies to ensure compliance with security best practices.",
+        "Monitor logs for any suspicious Mattermost events or unauthorized access attempts, and implement additional monitoring for DM-related activities."
       ],
       "urgency": "high"
     },
     "risk_score": 65
   },
   {
-    "id": "cve-CVE-2026-11247",
+    "id": "cve-CVE-2026-9719",
     "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:17:01.130",
-    "title": "CVE-2026-11247 - Insufficient policy enforcement in CustomTabs in Google Chrome on Android prior to 149.0.7827.53 all",
-    "description": "Insufficient policy enforcement in CustomTabs in Google Chrome on Android prior to 149.0.7827.53 allowed a remote attacker to leak cross-origin data via a crafted HTML page. (Chromium security severity: Low)",
-    "severity": "low",
-    "cve_id": "CVE-2026-11247",
-    "cvss_score": 3.1,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:google:android:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
-      "https://issues.chromium.org/issues/497865734"
-    ],
-    "ai_analysis": {
-      "risk_score": 35,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-11247.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 35
-  },
-  {
-    "id": "cve-CVE-2026-11246",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:17:00.983",
-    "title": "CVE-2026-11246 - Insufficient validation of untrusted input in IndexedDB in Google Chrome prior to 149.0.7827.53 allo",
-    "description": "Insufficient validation of untrusted input in IndexedDB in Google Chrome prior to 149.0.7827.53 allowed a remote attacker who had compromised the renderer process to bypass same origin policy via a crafted HTML page. (Chromium security severity: Low)",
+    "timestamp": "2026-06-06T00:16:42.460",
+    "title": "CVE-2026-9719 - The LatePoint – Calendar Booking Plugin for Appointments and Events plugin for WordPress is vulnerab",
+    "description": "The LatePoint – Calendar Booking Plugin for Appointments and Events plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 5.6.0. This is due to missing or incorrect nonce validation on the change_status function. This makes it possible for unauthenticated attackers to change the status of arbitrary invoices — including marking unpaid invoices as paid — without administrator consent via a forged request granted they can trick a site administrator into performing an action such as clicking on a link.",
     "severity": "medium",
-    "cve_id": "CVE-2026-11246",
-    "cvss_score": 5.3,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
-      "https://issues.chromium.org/issues/497660733"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11246.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-11245",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:17:00.857",
-    "title": "CVE-2026-11245 - Inappropriate implementation in Payments in Google Chrome prior to 149.0.7827.53 allowed a remote at",
-    "description": "Inappropriate implementation in Payments in Google Chrome prior to 149.0.7827.53 allowed a remote attacker to perform UI spoofing via a crafted HTML page. (Chromium security severity: Low)",
-    "severity": "medium",
-    "cve_id": "CVE-2026-11245",
+    "cve_id": "CVE-2026-9719",
     "cvss_score": 4.3,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
+    "affected_products": [],
     "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
-      "https://issues.chromium.org/issues/497610654"
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.3.0/lib/controllers/invoices_controller.php#L234",
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.3.0/lib/controllers/invoices_controller.php#L246",
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.3.0/lib/helpers/params_helper.php#L12",
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.0/lib/controllers/invoices_controller.php#L234",
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.0/lib/controllers/invoices_controller.php#L246",
+      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.0/lib/helpers/params_helper.php#L12",
+      "https://plugins.trac.wordpress.org/changeset/3553094/latepoint",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/c720fffe-c089-450a-ac5f-1138c1c223d9?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11245.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9719.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1077,27 +820,484 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-11244",
+    "id": "cve-CVE-2026-9290",
     "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:17:00.727",
-    "title": "CVE-2026-11244 - Insufficient validation of untrusted input in WebAuthentication in Google Chrome prior to 149.0.7827",
-    "description": "Insufficient validation of untrusted input in WebAuthentication in Google Chrome prior to 149.0.7827.53 allowed a remote attacker who had compromised the renderer process to bypass same origin policy via a crafted HTML page. (Chromium security severity: Low)",
-    "severity": "low",
-    "cve_id": "CVE-2026-11244",
-    "cvss_score": 3.1,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
+    "timestamp": "2026-06-06T00:16:42.303",
+    "title": "CVE-2026-9290 - The WP User Manager – User Profile Builder & Membership plugin for WordPress is vulnerable to Local ",
+    "description": "The WP User Manager – User Profile Builder & Membership plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 2.9.17 via the (profile template scope) function. This makes it possible for unauthenticated attackers to include and execute arbitrary .php files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or achieve code execution in cases where .php file types can be uploaded and included.",
+    "severity": "high",
+    "cve_id": "CVE-2026-9290",
+    "cvss_score": 7.5,
+    "affected_products": [],
     "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
-      "https://issues.chromium.org/issues/497609145"
+      "https://github.com/WPUserManager/wp-user-manager/pull/445",
+      "https://plugins.trac.wordpress.org/browser/wp-user-manager/tags/2.9.15/includes/functions.php#L955",
+      "https://plugins.trac.wordpress.org/browser/wp-user-manager/tags/2.9.15/includes/permalinks.php#L133",
+      "https://plugins.trac.wordpress.org/browser/wp-user-manager/tags/2.9.15/templates/profile.php#L52",
+      "https://plugins.trac.wordpress.org/browser/wp-user-manager/tags/2.9.15/vendor-dist/brain/cortex/src/Cortex/Router/Router.php#L183",
+      "https://plugins.trac.wordpress.org/browser/wp-user-manager/tags/2.9.15/vendor-dist/gamajo/template-loader/class-gamajo-template-loader.php#L226",
+      "https://plugins.trac.wordpress.org/browser/wp-user-manager/tags/2.9.17/includes/functions.php#L955",
+      "https://plugins.trac.wordpress.org/browser/wp-user-manager/tags/2.9.17/includes/permalinks.php#L133",
+      "https://plugins.trac.wordpress.org/browser/wp-user-manager/tags/2.9.17/templates/profile.php#L52",
+      "https://plugins.trac.wordpress.org/browser/wp-user-manager/tags/2.9.17/vendor-dist/brain/cortex/src/Cortex/Router/Router.php#L183",
+      "https://plugins.trac.wordpress.org/browser/wp-user-manager/tags/2.9.17/vendor-dist/gamajo/template-loader/class-gamajo-template-loader.php#L226",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3554574%40wp-user-manager&new=3554574%40wp-user-manager&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/7a5e08d8-c6ef-42a3-9599-28c3bfb35017?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9290.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-8976",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-06T00:16:42.143",
+    "title": "CVE-2026-8976 - The RSS Aggregator by Feedzy – Feed to Post, Autoblogging, News & YouTube Video Feeds Aggregator plu",
+    "description": "The RSS Aggregator by Feedzy – Feed to Post, Autoblogging, News & YouTube Video Feeds Aggregator plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 5.1.7. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with contributor-level access and above, to create and execute RSS import jobs, purge (force-delete) all posts associated with any import job, clear import error logs, and enumerate taxonomy terms and post meta_key names. The nonce required to reach these sub-handlers is leaked to any user with the edit_posts capability via the feedzyjs localized script injected into the block editor, meaning no privileged nonce theft or separate exploit step is required for Contributor-level users.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8976",
+    "cvss_score": 4.3,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.2/includes/admin/feedzy-rss-feeds-import.php#L1256",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.2/includes/admin/feedzy-rss-feeds-import.php#L1365",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.2/includes/admin/feedzy-rss-feeds-import.php#L1400",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.2/includes/admin/feedzy-rss-feeds-import.php#L1436",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.2/includes/admin/feedzy-rss-feeds-import.php#L3718",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.2/includes/admin/feedzy-rss-feeds-import.php#L3891",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.2/includes/admin/feedzy-rss-feeds-import.php#L4090",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.2/includes/admin/feedzy-rss-feeds-import.php#L4184",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.2/includes/feedzy-rss-feeds.php#L241",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.2/includes/gutenberg/feedzy-rss-feeds-gutenberg-block.php#L78",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.5/includes/admin/feedzy-rss-feeds-import.php#L1256",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.5/includes/admin/feedzy-rss-feeds-import.php#L1365",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.5/includes/admin/feedzy-rss-feeds-import.php#L1400",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.5/includes/admin/feedzy-rss-feeds-import.php#L1436",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.5/includes/admin/feedzy-rss-feeds-import.php#L3718",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.5/includes/admin/feedzy-rss-feeds-import.php#L3891",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.5/includes/admin/feedzy-rss-feeds-import.php#L4090",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.5/includes/admin/feedzy-rss-feeds-import.php#L4184",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.5/includes/feedzy-rss-feeds.php#L241",
+      "https://plugins.trac.wordpress.org/browser/feedzy-rss-feeds/tags/5.1.5/includes/gutenberg/feedzy-rss-feeds-gutenberg-block.php#L78",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3552062%40feedzy-rss-feeds&new=3552062%40feedzy-rss-feeds&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/e495c215-2e01-4a37-aca3-99a067c46791?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8976.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-8900",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-06T00:16:42.013",
+    "title": "CVE-2026-8900 - The Simple SEO Slideshow plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Short",
+    "description": "The Simple SEO Slideshow plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Shortcode Attributes in all versions up to, and including, 1.2.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. WordPress KSES does not strip malicious shortcode attribute values on post save, allowing contributor-level users to persist payloads that execute for any visitor, including administrators reviewing the post.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8900",
+    "cvss_score": 6.4,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/simple-seo-slideshow/trunk/simpleslideshow.php#L235",
+      "https://plugins.trac.wordpress.org/browser/simple-seo-slideshow/trunk/simpleslideshow.php#L334",
+      "https://plugins.trac.wordpress.org/browser/simple-seo-slideshow/trunk/simpleslideshow.php#L356",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3551425%40simple-seo-slideshow&new=3551425%40simple-seo-slideshow&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/3b3bb703-fdff-4525-9272-7a3db58b81a0?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8900.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-8893",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-06T00:16:41.887",
+    "title": "CVE-2026-8893 - The Express Payment For Stripe plugin for WordPress is vulnerable to Stored Cross-Site Scripting via",
+    "description": "The Express Payment For Stripe plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'type' attribute of the [stripe-express] shortcode in versions up to, and including, 1.28.0. This is due to insufficient input sanitization and output escaping on the shortcode attribute value, which is concatenated into an HTML attribute in the rendered output of the register_shortcode() function without being passed through esc_attr() or any other escaping function. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8893",
+    "cvss_score": 6.4,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/wp-stripe-express/tags/1.28.0/includes/wp-stripe-shortcodes.php#L31",
+      "https://plugins.trac.wordpress.org/browser/wp-stripe-express/tags/1.28.0/includes/wp-stripe-shortcodes.php#L46",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3553233%40wp-stripe-express&new=3553233%40wp-stripe-express&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/1a7dbb82-b484-4b86-b8dc-7a1e7291dec2?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8893.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-8608",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-06T00:16:41.757",
+    "title": "CVE-2026-8608 - The Event Monster – Event Management, Events Calendar, Tickets plugin for WordPress is vulnerable to",
+    "description": "The Event Monster – Event Management, Events Calendar, Tickets plugin for WordPress is vulnerable to Insufficient Verification of Data Authenticity in versions up to, and including, 2.1.0. This is due to the capture_payment() AJAX handler (registered via wp_ajax_nopriv_em_capture_payment) trusting client-supplied payment data — including transaction ID, amount, and payment status — without performing any server-side verification against the PayPal API or any other payment gateway, and without nonce or capability checks. This makes it possible for unauthenticated attackers to forge payment records, mark bookings as Completed, and obtain confirmation emails containing valid QR code tickets without making any actual payment.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8608",
+    "cvss_score": 5.3,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/event-monster/tags/2.0.1/includes/class-event-monster-ajax.php#L844",
+      "https://plugins.trac.wordpress.org/browser/event-monster/tags/2.0.1/includes/class-event-monster-ajax.php#L890",
+      "https://plugins.trac.wordpress.org/browser/event-monster/tags/2.0.1/includes/class-event-monster-ajax.php#L92",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3554570%40event-monster&new=3554570%40event-monster&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/daddfbd2-cff4-4caa-bbdc-9945a635a1d6?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8608.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-7047",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-06T00:16:41.623",
+    "title": "CVE-2026-7047 - The Frontend User Notes plugin for WordPress is vulnerable to Cross-Site Request Forgery in all vers",
+    "description": "The Frontend User Notes plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 2.1.1. This is due to missing or incorrect nonce validation on the funp_ajax_modify_notes function. This makes it possible for unauthenticated attackers to trick a logged-in user into visiting a malicious page, causing unauthorized overwriting of that victim's own note content via a forged cross-site request to wp_update_post() via a forged request granted they can trick a site administrator into performing an action such as clicking on a link. Due to ownership enforcement comparing the note's stored _funp_single_user_id meta against the current session's user ID, the attack is limited to modifying only notes belonging to the tricked victim, and cannot be used to alter notes owned by arbitrary third-party users.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-7047",
+    "cvss_score": 4.3,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/frontend-user-notes/tags/2.1.1/includes/ajax.php#L108",
+      "https://plugins.trac.wordpress.org/browser/frontend-user-notes/tags/2.1.1/includes/ajax.php#L157",
+      "https://plugins.trac.wordpress.org/browser/frontend-user-notes/trunk/includes/ajax.php#L108",
+      "https://plugins.trac.wordpress.org/browser/frontend-user-notes/trunk/includes/ajax.php#L157",
+      "https://plugins.trac.wordpress.org/changeset/3559955/",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/4699a9d7-4b72-4266-90be-1407e7d5b1eb?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7047.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-6448",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-06T00:16:41.477",
+    "title": "CVE-2026-6448 - The Quiz and Survey Master (QSM) – Easy Quiz and Survey Maker plugin for WordPress is vulnerable to ",
+    "description": "The Quiz and Survey Master (QSM) – Easy Quiz and Survey Maker plugin for WordPress is vulnerable to time-based blind SQL Injection via the 'order' parameter in all versions up to, and including, 11.1.2 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with admin-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. If the secret key is exposed, this can be exploited by lower-privileged users.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-6448",
+    "cvss_score": 4.9,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/10.3.5/php/classes/class-qsm-quiz-api.php#L126",
+      "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/10.3.5/php/classes/class-qsm-quiz-api.php#L131",
+      "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/10.3.5/php/classes/class-qsm-quiz-api.php#L164",
+      "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/10.3.5/php/classes/class-qsm-quiz-api.php#L243",
+      "https://plugins.trac.wordpress.org/browser/quiz-master-next/tags/10.3.5/php/classes/class-qsm-quiz-api.php#L374",
+      "https://plugins.trac.wordpress.org/browser/quiz-master-next/trunk/php/classes/class-qsm-quiz-api.php#L126",
+      "https://plugins.trac.wordpress.org/browser/quiz-master-next/trunk/php/classes/class-qsm-quiz-api.php#L131",
+      "https://plugins.trac.wordpress.org/browser/quiz-master-next/trunk/php/classes/class-qsm-quiz-api.php#L164",
+      "https://plugins.trac.wordpress.org/browser/quiz-master-next/trunk/php/classes/class-qsm-quiz-api.php#L243",
+      "https://plugins.trac.wordpress.org/browser/quiz-master-next/trunk/php/classes/class-qsm-quiz-api.php#L374",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3547016%40quiz-master-next&new=3547016%40quiz-master-next&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/d230b781-e208-4e66-b8ed-aba72db8d8dc?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6448.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-6242",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-06T00:16:41.347",
+    "title": "CVE-2026-6242 - An authenticated format string vulnerability exists in the ONVIF Subscribe service in Tapo C520WS v2",
+    "description": "An authenticated format string vulnerability exists in the ONVIF Subscribe service in Tapo C520WS v2 due to improper handling of externally supplied parameters within formatting functions. An attacker may inject crafted format strings into event subscription requests or notification generation path to disrupt normal service execution.\n\nSuccessful exploitation may cause the event notification service to terminate unexpectedly, resulting in the loss of real-time alarm functionality and disruption of event notifications.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-6242",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://www.tp-link.com/en/support/download/tapo-c520ws/#Firmware-Release-Notes",
+      "https://www.tp-link.com/us/support/download/tapo-c520ws/#Firmware-Release-Notes",
+      "https://www.tp-link.com/us/support/faq/5120/"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6242.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-6241",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-06T00:16:41.230",
+    "title": "CVE-2026-6241 - An authenticated format string vulnerability is present in the ONVIF AddScopes in Tapo C520WS v2, wh",
+    "description": "An authenticated format string vulnerability is present in the ONVIF AddScopes in Tapo C520WS v2, where user-controlled input is improperly passed to formatting functions without adequate sanitization. An attacker can inject format specifiers into ONVIF scope parameters to manipulate memory handling behavior.\n\nSuccessful exploitation may cause the ONVIF management service to crash, resulting in DoS condition that impacts normal device operation.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-6241",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://www.tp-link.com/en/support/download/tapo-c520ws/#Firmware-Release-Notes",
+      "https://www.tp-link.com/us/support/download/tapo-c520ws/#Firmware-Release-Notes",
+      "https://www.tp-link.com/us/support/faq/5120/"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6241.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-6240",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-06T00:16:41.103",
+    "title": "CVE-2026-6240 - A stack-based buffer overflow vulnerability exists in Tapo C520WS v2 in the ONVIF DeleteUsers servic",
+    "description": "A stack-based buffer overflow vulnerability exists in Tapo C520WS v2 in the ONVIF DeleteUsers service, due to insufficient boundary checks when handling multiple user deletion parameters. An authenticated attacker can send a  crafted malicious request containing an excessive number of identifiers to overflow stack memory.\n\nSuccessful exploitation may result in a service crash or deadlock, leading to DoS affecting device management and monitoring functionality.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-6240",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://www.tp-link.com/en/support/download/tapo-c520ws/#Firmware-Release-Notes",
+      "https://www.tp-link.com/us/support/download/tapo-c520ws/#Firmware-Release-Notes",
+      "https://www.tp-link.com/us/support/faq/5120/"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6240.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-6239",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-06T00:16:40.977",
+    "title": "CVE-2026-6239 - A stack‑based\nbuffer overflow vulnerability exists in Tapo C520WS v2 in the ONVIF CreateUsers servic",
+    "description": "A stack‑based\nbuffer overflow vulnerability exists in Tapo C520WS v2 in the ONVIF CreateUsers service, where\nthe device fails to properly validate the number of XML user nodes during\nrequest processing. An authenticated attacker can send a specially crafted\nONVIF request containing an excessive number of user entries to trigger memory\ncorruption.\n\n\n\n\n\n\n\n\n\nSuccessful\nexploitation may cause the ONVIF management service to terminate unexpectedly,\nresulting in a denial‑of‑service (DoS) condition that disrupts device\nconfiguration and management functions.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-6239",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://www.tp-link.com/en/support/download/tapo-c520ws/#Firmware-Release-Notes",
+      "https://www.tp-link.com/us/support/download/tapo-c520ws/#Firmware-Release-Notes",
+      "https://www.tp-link.com/us/support/faq/5120/"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6239.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-34123",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-06T00:16:40.833",
+    "title": "CVE-2026-34123 - On Tapo\nC520WS v2, restricted accounts (for example, hub users) are intended to execute\nonly a limit",
+    "description": "On Tapo\nC520WS v2, restricted accounts (for example, hub users) are intended to execute\nonly a limited set of low‑sensitivity operations. Due to a logic flaw in the\ndevice’s API authorization mechanism, an attacker can craft requests that\nleverage legitimate “method mapping” behavior to bypass whitelist restrictions,\nallowing restricted operations to be masked as permitted requests and executed.\n\n\n\n\n\nSuccessful\nexploitation may allow an attacker (with access to a restricted account) to\nexecute unauthorized sensitive operations. \nDepending on the operation invoked, impact could include device\nresets, unintended configuration changes, or disruption of normal operation,\nleading to loss of availability and integrity of the device.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-34123",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://www.tp-link.com/en/support/download/tapo-c520ws/#Firmware-Release-Notes",
+      "https://www.tp-link.com/us/support/download/tapo-c520ws/#Firmware-Release-Notes",
+      "https://www.tp-link.com/us/support/faq/5120/"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-34123.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-10038",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-06T00:16:40.670",
+    "title": "CVE-2026-10038 - The Charitable – Donation Plugin for WordPress – Fundraising with Recurring Donations & More plugin ",
+    "description": "The Charitable – Donation Plugin for WordPress – Fundraising with Recurring Donations & More plugin for WordPress is vulnerable to Insecure Direct Object Reference / Authorization Bypass leading to Arbitrary Attachment Deletion in versions up to, and including, 1.8.11.1 via the profile avatar update flow. This is due to the save_avatar() function in Charitable_Profile_Form calling wp_delete_attachment() on an attachment ID read from the user's 'avatar' meta without validating that the attachment is owned by the user, combined with Charitable_Data_Processor::process_picture() returning the raw posted value when no file is uploaded, allowing the 'avatar' user meta to be poisoned with any attacker-chosen attachment ID. This makes it possible for authenticated attackers, with Subscriber-level access and above, to delete arbitrary attachments from the Media Library by performing a two-request chain (first poisoning the stored avatar meta value with a target attachment ID, then triggering deletion via a normal avatar upload).",
+    "severity": "medium",
+    "cve_id": "CVE-2026-10038",
+    "cvss_score": 4.3,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/charitable/tags/1.8.10.5/includes/abstracts/abstract-class-charitable-form.php#L429",
+      "https://plugins.trac.wordpress.org/browser/charitable/tags/1.8.10.5/includes/forms/class-charitable-profile-form.php#L724",
+      "https://plugins.trac.wordpress.org/browser/charitable/tags/1.8.10.5/includes/forms/class-charitable-profile-form.php#L728",
+      "https://plugins.trac.wordpress.org/browser/charitable/tags/1.8.10.5/includes/users/class-charitable-user.php#L986",
+      "https://plugins.trac.wordpress.org/browser/charitable/tags/1.8.10.5/includes/utilities/class-charitable-data-processor.php#L270",
+      "https://plugins.trac.wordpress.org/browser/charitable/tags/1.8.10/includes/abstracts/abstract-class-charitable-form.php#L429",
+      "https://plugins.trac.wordpress.org/browser/charitable/tags/1.8.10/includes/forms/class-charitable-profile-form.php#L724",
+      "https://plugins.trac.wordpress.org/browser/charitable/tags/1.8.10/includes/forms/class-charitable-profile-form.php#L728",
+      "https://plugins.trac.wordpress.org/browser/charitable/tags/1.8.10/includes/users/class-charitable-user.php#L986",
+      "https://plugins.trac.wordpress.org/browser/charitable/tags/1.8.10/includes/utilities/class-charitable-data-processor.php#L270",
+      "https://plugins.trac.wordpress.org/changeset/3557047/charitable/trunk/includes/forms/class-charitable-profile-form.php?old=3435951&old_path=charitable%2Ftrunk%2Fincludes%2Fforms%2Fclass-charitable-profile-form.php",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/657bea00-9709-48b8-807a-c9a18b0aee1d?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-10038.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2025-12656",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-06T00:16:40.077",
+    "title": "CVE-2025-12656 - The Migration, Backup, Staging – WPvivid Backup & Migration plugin for WordPress is vulnerable to ar",
+    "description": "The Migration, Backup, Staging – WPvivid Backup & Migration plugin for WordPress is vulnerable to arbitrary directory deletion due to insufficient file path validation in the delete_cancel_staging_site() function in all versions up to, and including, 0.9.128. This makes it possible for authenticated attackers, with Administrator-level access and above, to delete arbitrary folders on the server, which leads to a loss of data.",
+    "severity": "low",
+    "cve_id": "CVE-2025-12656",
+    "cvss_score": 3.8,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/wpvivid-backuprestore/tags/0.9.120/includes/staging/class-wpvivid-staging.php#L1268",
+      "https://plugins.trac.wordpress.org/browser/wpvivid-backuprestore/tags/0.9.120/includes/staging/class-wpvivid-staging.php#L1282",
+      "https://plugins.trac.wordpress.org/browser/wpvivid-backuprestore/tags/0.9.120/includes/staging/class-wpvivid-staging.php#L1296",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3556022%40wpvivid-backuprestore&new=3556022%40wpvivid-backuprestore&sfp_email=&sfph_mail=",
+      "https://wordpress.org/plugins/wpvivid-backuprestore/",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/2f5962e5-3dc7-4f93-889c-d5e3530c7dba?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 35,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-11244.",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2025-12656.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1110,351 +1310,5 @@
       "urgency": "low"
     },
     "risk_score": 35
-  },
-  {
-    "id": "cve-CVE-2026-11243",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:17:00.607",
-    "title": "CVE-2026-11243 - Inappropriate implementation in Downloads in Google Chrome prior to 149.0.7827.53 allowed a remote a",
-    "description": "Inappropriate implementation in Downloads in Google Chrome prior to 149.0.7827.53 allowed a remote attacker to bypass navigation restrictions via a crafted HTML page. (Chromium security severity: Low)",
-    "severity": "medium",
-    "cve_id": "CVE-2026-11243",
-    "cvss_score": 5.4,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
-      "https://issues.chromium.org/issues/497394061"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11243.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-11242",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:17:00.470",
-    "title": "CVE-2026-11242 - Insufficient validation of untrusted input in Plugins in Google Chrome prior to 149.0.7827.53 allowe",
-    "description": "Insufficient validation of untrusted input in Plugins in Google Chrome prior to 149.0.7827.53 allowed a remote attacker who had compromised the renderer process to leak cross-origin data via a crafted HTML page. (Chromium security severity: Low)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11242",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
-      "https://issues.chromium.org/issues/497385823"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-11242.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-11241",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:17:00.340",
-    "title": "CVE-2026-11241 - Insufficient validation of untrusted input in Cast in Google Chrome prior to 149.0.7827.53 allowed a",
-    "description": "Insufficient validation of untrusted input in Cast in Google Chrome prior to 149.0.7827.53 allowed an attacker on the local network segment to perform privilege escalation via a crafted HTML page. (Chromium security severity: Low)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11241",
-    "cvss_score": 8,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
-      "https://issues.chromium.org/issues/497203741"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-11241.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-11240",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:17:00.207",
-    "title": "CVE-2026-11240 - Insufficient validation of untrusted input in Loader in Google Chrome prior to 149.0.7827.53 allowed",
-    "description": "Insufficient validation of untrusted input in Loader in Google Chrome prior to 149.0.7827.53 allowed a remote attacker who had compromised the renderer process to bypass site isolation via a crafted HTML page. (Chromium security severity: Low)",
-    "severity": "low",
-    "cve_id": "CVE-2026-11240",
-    "cvss_score": 3.1,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
-      "https://issues.chromium.org/issues/497030032"
-    ],
-    "ai_analysis": {
-      "risk_score": 35,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-11240.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 35
-  },
-  {
-    "id": "cve-CVE-2026-11239",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:17:00.067",
-    "title": "CVE-2026-11239 - Inappropriate implementation in Extensions in Google Chrome prior to 149.0.7827.53 allowed a remote ",
-    "description": "Inappropriate implementation in Extensions in Google Chrome prior to 149.0.7827.53 allowed a remote attacker who had compromised the renderer process to perform privilege escalation via a crafted HTML page. (Chromium security severity: Low)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11239",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
-      "https://issues.chromium.org/issues/497025738"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-11239.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-11238",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:16:59.920",
-    "title": "CVE-2026-11238 - Inappropriate implementation in DevTools in Google Chrome prior to 149.0.7827.53 allowed an attacker",
-    "description": "Inappropriate implementation in DevTools in Google Chrome prior to 149.0.7827.53 allowed an attacker who convinced a user to install a malicious extension to obtain potentially sensitive information from process memory via a crafted Chrome Extension. (Chromium security severity: Low)",
-    "severity": "medium",
-    "cve_id": "CVE-2026-11238",
-    "cvss_score": 5.9,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop.html",
-      "https://issues.chromium.org/issues/496705691"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11238.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-10878",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:16:59.730",
-    "title": "CVE-2026-10878 - A vulnerability was detected in D-Link DWR-M920 1.1.50/1.1.70. Affected is the function sub_41C8E8 o",
-    "description": "A vulnerability was detected in D-Link DWR-M920 1.1.50/1.1.70. Affected is the function sub_41C8E8 of the file /boafrm/formSmsManage. Performing a manipulation of the argument action_value results in command injection. The attack is possible to be carried out remotely. The exploit is now public and may be used.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-10878",
-    "cvss_score": 6.3,
-    "affected_products": [
-      "cpe:2.3:o:dlink:dwr-m920_firmware:1.1.50:*:*:*:*:*:*:*",
-      "cpe:2.3:o:dlink:dwr-m920_firmware:1.1.70:*:*:*:*:*:*:*",
-      "cpe:2.3:h:dlink:dwr-m920:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/7u7777/Dlink/blob/DWR-M920/formSmsManage.md",
-      "https://vuldb.com/cve/CVE-2026-10878",
-      "https://vuldb.com/submit/832154",
-      "https://vuldb.com/vuln/368368",
-      "https://vuldb.com/vuln/368368/cti",
-      "https://www.dlink.com/"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-10878.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-10877",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:16:59.530",
-    "title": "CVE-2026-10877 - A security vulnerability has been detected in SourceCodester Ship Ferry Ticket Reservation System up",
-    "description": "A security vulnerability has been detected in SourceCodester Ship Ferry Ticket Reservation System up to 1.0. This impacts an unknown function of the file /admin/login.php of the component Admin Login. Such manipulation of the argument Username leads to sql injection. The attack can be executed remotely. The exploit has been disclosed publicly and may be used.",
-    "severity": "high",
-    "cve_id": "CVE-2026-10877",
-    "cvss_score": 7.3,
-    "affected_products": [],
-    "references": [
-      "https://medium.com/@hemantrajbhati5555/sql-injection-in-authentication-mechanism-leads-to-authentication-bypass-65177ce7a41c",
-      "https://vuldb.com/cve/CVE-2026-10877",
-      "https://vuldb.com/submit/831871",
-      "https://vuldb.com/vuln/368367",
-      "https://vuldb.com/vuln/368367/cti",
-      "https://www.sourcecodester.com/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-10877.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-10876",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:16:59.313",
-    "title": "CVE-2026-10876 - A weakness has been identified in SourceCodester Ship Ferry Ticket Reservation System 1.0. This affe",
-    "description": "A weakness has been identified in SourceCodester Ship Ferry Ticket Reservation System 1.0. This affects an unknown function of the file /admin/. This manipulation of the argument page causes improper authorization. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-10876",
-    "cvss_score": 6.3,
-    "affected_products": [],
-    "references": [
-      "https://medium.com/@hemantrajbhati5555/missing-authorization-in-sourcecodester-ship-ferry-ticket-reservation-system-leads-to-unauthorized-7783134d6596",
-      "https://vuldb.com/cve/CVE-2026-10876",
-      "https://vuldb.com/submit/831870",
-      "https://vuldb.com/vuln/368366",
-      "https://vuldb.com/vuln/368366/cti",
-      "https://www.sourcecodester.com/"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-10876.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-10586",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-05T00:16:57.747",
-    "title": "CVE-2026-10586 - The Gutenberg Essential Blocks – Page Builder for Gutenberg Blocks & Patterns plugin for WordPress i",
-    "description": "The Gutenberg Essential Blocks – Page Builder for Gutenberg Blocks & Patterns plugin for WordPress is vulnerable to Server-Side Request Forgery in all versions up to, and including, 6.1.3 via the `save_ai_generated_image()` function. This makes it possible for authenticated attackers, with Author-level access and above, to make web requests to arbitrary locations originating from the web application and can be used to query and modify information from internal services.",
-    "severity": "high",
-    "cve_id": "CVE-2026-10586",
-    "cvss_score": 7.2,
-    "affected_products": [],
-    "references": [
-      "https://plugins.trac.wordpress.org/browser/essential-blocks/tags/6.1.3/includes/Integrations/AI/AI.php#L171",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/08906577-162c-4875-b16c-18d4912c2611?source=cve"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-10586.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
   }
 ]
