@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1781342855517-1",
+    "id": "twitter-1781360181697-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-13T09:27:35.517Z",
+    "timestamp": "2026-06-13T14:16:21.697Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,29 +10,25 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant risk of data encryption, service disruption, and potential data exfiltration. By exploiting compromised CI/CD pipelines, attackers can infiltrate development environments and propagate malicious code across cloud environments, impacting business continuity and data integrity.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
       "affected_industries": [
         "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Media and Entertainment",
-        "Manufacturing"
+        "General"
       ],
       "recommended_actions": [
-        "Implement strict access controls and multi-factor authentication (MFA) for CI/CD pipelines and cloud accounts.",
-        "Conduct a thorough review of CI/CD pipeline configurations and monitor for unauthorized changes or suspicious activity.",
-        "Ensure regular backups of critical data are performed and stored in isolated environments to facilitate recovery in case of ransomware attacks."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "hn-1781342855517-1",
+    "id": "hn-1781360181697-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-13T09:27:35.517Z",
+    "timestamp": "2026-06-13T14:16:21.697Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -54,6 +50,387 @@
       "urgency": "low"
     },
     "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-76g7-m3xw-x9gr",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T12:31:25Z",
+    "title": "The Model Context Protocol has a security warning advising servers to validate the \"Origin\"...",
+    "description": "The Model Context Protocol has a security warning advising servers to validate the \"Origin\" header on all incoming connections to prevent DNS rebinding attacks. Prior to the v0.25.0 release, users had no way to validate the origin's host. In v0.25.0, a new \"--allowed-hosts\" flag was introduced alongside the existing \"--allowed-origins\" flag, enabling users to specify permitted hosts at server startup. Both flags default to \"*\", allowing users to implement strict access controls as needed without",
+    "severity": "critical",
+    "cve_id": "CVE-2026-11624",
+    "ghsa_id": "GHSA-76g7-m3xw-x9gr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 92,
+      "impact_assessment": "The vulnerability allows attackers to exploit DNS rebinding attacks by bypassing origin validation, potentially enabling unauthorized access to sensitive server resources. This could lead to data breaches, unauthorized control of systems, or further exploitation of connected services.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately upgrade to Model Context Protocol version 0.25.0 or later to utilize the new '--allowed-hosts' and '--allowed-origins' flags for stricter access control.",
+        "Audit server configurations to ensure proper validation of the 'Origin' header and restrict access to trusted hosts using the newly introduced flags.",
+        "Monitor server logs for any suspicious activity that could indicate attempted DNS rebinding attacks and implement additional network-level protections such as firewall rules."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 92
+  },
+  {
+    "id": "gh-GHSA-vwf8-xx3v-5qw7",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T12:31:25Z",
+    "title": "The Meow Gallery plugin for WordPress is vulnerable to unauthorized modification of data due to a...",
+    "description": "The Meow Gallery plugin for WordPress is vulnerable to unauthorized modification of data due to a missing capability check on the REST API endpoint /wp-json/meow-gallery/v1/save_shortcode in all versions up to, and including, 5.4.4 This makes it possible for authenticated attackers, with Author-level access and above, to arbitrarily create or overwrite existing gallery shortcode records by supplying a user-controlled id value. The endpoint performs database update operations without verifying th",
+    "severity": "medium",
+    "cve_id": "CVE-2026-1291",
+    "ghsa_id": "GHSA-vwf8-xx3v-5qw7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows authenticated attackers with Author-level access or higher to modify or overwrite gallery shortcode records in the database. This could lead to unauthorized content changes, defacement, or injection of malicious content, potentially impacting the website's integrity and user trust.",
+      "affected_industries": [
+        "Media and Publishing",
+        "E-commerce",
+        "Education",
+        "Nonprofits",
+        "Small Businesses"
+      ],
+      "recommended_actions": [
+        "Update the Meow Gallery plugin to a patched version as soon as it becomes available.",
+        "Restrict Author-level access to only trusted users and review existing user roles and permissions.",
+        "Implement a web application firewall (WAF) to monitor and block suspicious API requests targeting the vulnerable endpoint."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-pfrr-cpcq-w8m8",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T12:31:25Z",
+    "title": "The Online Scheduling and Appointment Booking System – Bookly plugin for WordPress is vulnerable...",
+    "description": "The Online Scheduling and Appointment Booking System – Bookly plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'bookly-customer-full-name' cookie in versions up to, and including, 27.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires 'Remember personal information in cookies' setting to",
+    "severity": "high",
+    "cve_id": "CVE-2026-5513",
+    "ghsa_id": "GHSA-pfrr-cpcq-w8m8",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-5513.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-v675-74rr-5jfh",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T09:31:27Z",
+    "title": "The Canvas plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'tag'...",
+    "description": "The Canvas plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'tag' parameter in all versions up to, and including, 2.5.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9629",
+    "ghsa_id": "GHSA-v675-74rr-5jfh",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows authenticated users with contributor-level access or higher to inject malicious scripts into WordPress pages via the 'tag' parameter. This could lead to session hijacking, unauthorized actions, or data theft when other users access the compromised pages.",
+      "affected_industries": [
+        "E-commerce",
+        "Media and Publishing",
+        "Education",
+        "Small and Medium Businesses",
+        "Non-Profit Organizations"
+      ],
+      "recommended_actions": [
+        "Update the Canvas plugin to a patched version (if available) or disable it temporarily until a fix is released.",
+        "Restrict contributor-level access to trusted users only and review existing user permissions.",
+        "Implement a Web Application Firewall (WAF) to detect and block malicious payloads targeting this vulnerability."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-j66v-hr5c-cjh2",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T09:31:27Z",
+    "title": "The GPTranslate – Multilingual AI Translation for WordPress: Automatically Translate Websites...",
+    "description": "The GPTranslate – Multilingual AI Translation for WordPress: Automatically Translate Websites plugin for WordPress is vulnerable to Stored Cross-Site Scripting via REST API Translation Storage in all versions up to, and including, 2.31 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The deterministically derived API key (sha256 of ",
+    "severity": "high",
+    "cve_id": "CVE-2026-9109",
+    "ghsa_id": "GHSA-j66v-hr5c-cjh2",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9109.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-m66x-pc7c-qw2m",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T09:31:27Z",
+    "title": "The Page Builder: Pagelayer – Drag and Drop website builder plugin for WordPress is vulnerable to...",
+    "description": "The Page Builder: Pagelayer – Drag and Drop website builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Anchor block in versions up to, and including, 2.0.9 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-3297",
+    "ghsa_id": "GHSA-m66x-pc7c-qw2m",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-3297.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-fq2x-2hqx-f6x7",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T09:31:27Z",
+    "title": "The FooGallery plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ...",
+    "description": "The FooGallery plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'custom_attribute_key' shortcode parameter in versions up to, and including, 3.1.31 This is due to an incomplete JavaScript event handler blacklist in the foogallery_sanitize_javascript() function, which blocks only a subset of HTML event attributes (onmouseover, onmouseout, onpointerenter, onclick, onload, onchange, onerror) while permitting others such as 'onmouseenter', combined with the failure to escape",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9134",
+    "ghsa_id": "GHSA-fq2x-2hqx-f6x7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9134.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-r293-jvq6-pfqr",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T09:31:27Z",
+    "title": "The Page Builder: Pagelayer – Drag and Drop website builder plugin for WordPress is vulnerable to...",
+    "description": "The Page Builder: Pagelayer – Drag and Drop website builder plugin for WordPress is vulnerable to Incorrect Authorization in all versions up to, and including, 2.0.9. This is due to the pagelayer_save_content AJAX handler allowing users with basic post-edit capability to persist pagelayer_contact_templates metadata on posts they can edit (including pending posts), while the unauthenticated pagelayer_contact_submit endpoint later consumes that metadata by user-controlled post/form identifiers wit",
+    "severity": "medium",
+    "cve_id": "CVE-2026-2470",
+    "ghsa_id": "GHSA-r293-jvq6-pfqr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to exploit incorrect authorization mechanisms in the Pagelayer plugin, potentially leading to unauthorized modifications of metadata and submission of malicious data. This could result in data integrity issues, phishing attacks, or unauthorized access to sensitive information.",
+      "affected_industries": [
+        "E-commerce",
+        "Media and Publishing",
+        "Education",
+        "Small and Medium Businesses (SMBs)",
+        "Non-Profit Organizations"
+      ],
+      "recommended_actions": [
+        "Update the Pagelayer plugin to the latest patched version as soon as it becomes available.",
+        "Restrict access to the affected endpoints by implementing strong authentication and authorization mechanisms.",
+        "Regularly monitor and audit website activity logs for suspicious behavior, especially around the pagelayer_contact_templates metadata and pagelayer_contact_submit endpoint."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-553w-8mm7-5gf2",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T09:31:27Z",
+    "title": "The Store Locator WordPress plugin before 1.6.9 does not validate a parameter before using it in...",
+    "description": "The Store Locator WordPress plugin before 1.6.9 does not validate a parameter before using it in a file path, allowing high-privileged users such as administrators to read arbitrary `.php` files from the server, including configuration files that contain database credentials and authentication keys.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-9062",
+    "ghsa_id": "GHSA-553w-8mm7-5gf2",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows high-privileged users, such as administrators, to read sensitive `.php` files, potentially exposing database credentials, authentication keys, and other sensitive server configurations. This could lead to unauthorized access, data breaches, or further exploitation of the system.",
+      "affected_industries": [
+        "E-commerce",
+        "Retail",
+        "Media and Publishing",
+        "Healthcare",
+        "Education",
+        "Small and Medium Businesses"
+      ],
+      "recommended_actions": [
+        "Immediately update the Store Locator WordPress plugin to version 1.6.9 or later to patch the vulnerability.",
+        "Restrict administrative access to trusted users only and review user roles and permissions to minimize the risk of exploitation.",
+        "Conduct a security audit to identify and secure sensitive `.php` files and monitor for any unauthorized access attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-q5mp-4wmh-7f39",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-13T09:31:27Z",
+    "title": "The Store Locator WordPress plugin before 1.6.9 does not sanitize and escape store logo metadata...",
+    "description": "The Store Locator WordPress plugin before 1.6.9 does not sanitize and escape store logo metadata before storing it and outputting it on the Store Locator WordPress plugin before 1.6.9 admin page, allowing high-privileged users such as administrators to perform Stored Cross-Site Scripting attacks even when the `unfiltered_html` capability is disallowed (e.g. in a multisite network).",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-9061",
+    "ghsa_id": "GHSA-q5mp-4wmh-7f39",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-9061.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-v82c-5c2q-hx9g",
@@ -158,9 +535,9 @@
         "Nonprofits"
       ],
       "recommended_actions": [
-        "Update the LWS Optimize plugin to the latest patched version as soon as it becomes available or temporarily disable the plugin if an update is not yet released.",
+        "Immediately update the LWS Optimize plugin to the latest patched version (if available) or disable the plugin temporarily if no patch is provided.",
         "Implement a Web Application Firewall (WAF) to monitor and block malicious requests attempting to exploit this vulnerability.",
-        "Restrict access to sensitive files on the server by enforcing proper file permissions and ensuring that critical files are not publicly accessible."
+        "Review server file permissions to ensure sensitive files are not accessible to unauthorized users, and monitor logs for any unusual activity."
       ],
       "urgency": "high"
     },
@@ -187,18 +564,18 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to exploit symlink following to overwrite arbitrary files on the system, potentially leading to privilege escalation, data corruption, or denial of service.",
+      "impact_assessment": "The vulnerability allows attackers to exploit symlink following to overwrite arbitrary files on the system, potentially leading to privilege escalation, data corruption, or system compromise.",
       "affected_industries": [
         "Technology",
-        "Finance",
         "Healthcare",
+        "Finance",
         "Government",
         "Education"
       ],
       "recommended_actions": [
-        "Apply the security patch or update provided by the vendor to address CVE-2026-54230.",
-        "Audit systems for unauthorized file changes and verify critical file integrity using tools like Tripwire or AIDE.",
-        "Restrict access to the affected scripts and ensure proper file permissions to minimize exploitation risk."
+        "Apply the security patch or update libreport to the latest version as soon as it becomes available.",
+        "Audit system logs and file integrity to detect any unauthorized changes or exploitation attempts.",
+        "Implement filesystem hardening measures, such as restricting symlink creation and monitoring sensitive directories."
       ],
       "urgency": "critical"
     },
@@ -329,19 +706,18 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to execute arbitrary code or cause a denial-of-service condition by exploiting the antivirus engine during the scanning of a malformed Windows PE file. This could lead to system compromise or disruption of antivirus protection.",
+      "impact_assessment": "The vulnerability allows attackers to execute arbitrary code or cause a denial-of-service, potentially disabling antivirus protection and exposing systems to further attacks.",
       "affected_industries": [
         "Healthcare",
         "Finance",
         "Government",
         "Retail",
-        "Technology",
-        "Education"
+        "Technology"
       ],
       "recommended_actions": [
-        "Update Avira Antivirus to the latest engine build (8.3.70.98 or newer) to mitigate the vulnerability.",
-        "Implement strict file scanning policies to limit exposure to potentially malformed files until the patch is applied.",
-        "Monitor antivirus logs and system behavior for unusual activity that may indicate exploitation attempts."
+        "Update Avira Antivirus engine to version 8.3.70.98 or later to patch the vulnerability.",
+        "Implement additional monitoring for unusual activity or crashes in antivirus processes.",
+        "Educate employees on avoiding interaction with potentially malicious files until the patch is applied."
       ],
       "urgency": "high"
     },
@@ -401,8 +777,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The hostname validation vulnerability in OpenClaw could allow attackers to redirect authentication material to malicious endpoints, potentially leading to unauthorized access, data breaches, or further exploitation of the system.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in OpenClaw's hostname validation allows attackers to exploit prefix matching, potentially redirecting sensitive authentication material to malicious endpoints. This could lead to unauthorized access, data breaches, or further exploitation of systems relying on OpenClaw.",
       "affected_industries": [
         "Technology",
         "Finance",
@@ -412,364 +788,8 @@
       ],
       "recommended_actions": [
         "Immediately update OpenClaw to version 2026.5.7 or later to patch the vulnerability.",
-        "Conduct a review of logs for any suspicious activity or unauthorized access attempts related to hostname validation.",
-        "Implement additional hostname validation checks or monitoring mechanisms to detect and prevent exploitation."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-c89p-wq36-89h3",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-13T00:34:33Z",
-    "title": "Heap buffer out-of-bounds write vulnerability in Avira Antivirus engine when scanning a malformed...",
-    "description": "Heap buffer out-of-bounds write vulnerability in Avira Antivirus engine when scanning a malformed POSIX tar archive may allow Local Execution of Code or Denial-of-Service of the antivirus engine process.\n\nThis issue affects Avira Antivirus on Windows, macOS, and Linux for engine builds before 8.3.27.12.",
-    "severity": "high",
-    "cve_id": "CVE-2026-6676",
-    "ghsa_id": "GHSA-c89p-wq36-89h3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-6676.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-h53c-vv76-w4w5",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-13T00:34:33Z",
-    "title": "Information disclosure vulnerability in Avira Password Manager when used with Mozilla Firefox may...",
-    "description": "Information disclosure vulnerability in Avira Password Manager when used with Mozilla Firefox may allow a remote attacker operating a cross-origin iframe to obtain credentials autofilled for the parent web page via incorrect autofill field selection.\n\nThis issue affects Avira Password Manager when used with Mozilla Firefox on Windows, macOS, and Linux.",
-    "severity": "high",
-    "cve_id": "CVE-2026-12068",
-    "ghsa_id": "GHSA-h53c-vv76-w4w5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows a remote attacker to exploit cross-origin iframes to access sensitive user credentials, potentially leading to unauthorized account access, data breaches, and identity theft.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Education",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Update Avira Password Manager to the latest patched version as soon as a fix is released.",
-        "Disable autofill functionality in Avira Password Manager for sensitive accounts until the vulnerability is resolved.",
-        "Educate users on the risks of using password managers with autofill enabled and encourage manual entry for critical accounts."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-27wx-pvwm-cfh2",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-13T00:34:33Z",
-    "title": "An authorization flaw in MISP’s object add/edit handling allowed an authenticated user with...",
-    "description": "An authorization flaw in MISP’s object add/edit handling allowed an authenticated user with object editing permissions to assign a MISP object, or attributes contained within an object, to a sharing group that the user was not authorized to use or view. When editing objects, the sharing group validation was performed against the wrong request data structure after object fields had been merged to the top level, causing the check to be bypassed. In addition, attributes embedded in objects were not",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54398",
-    "ghsa_id": "GHSA-27wx-pvwm-cfh2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54398.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-8v35-94r3-25g8",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-13T00:34:33Z",
-    "title": "Heap buffer out-of-bounds read vulnerability in Avira Antivirus engine when scanning a malformed...",
-    "description": "Heap buffer out-of-bounds read vulnerability in Avira Antivirus engine when scanning a malformed PDF file may allow Local Execution of Code or Denial-of-Service of the antivirus engine process.\n\nThis issue affects Avira Antivirus on Windows, macOS, and Linux for engine builds before 8.3.70.76.",
-    "severity": "high",
-    "cve_id": "CVE-2025-9033",
-    "ghsa_id": "GHSA-8v35-94r3-25g8",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-9033.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-m8wq-7mhg-mgm7",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-13T00:34:33Z",
-    "title": "Allegra downloadAttachment Cross-Site Scripting Authentication Bypass Vulnerability. This...",
-    "description": "Allegra downloadAttachment Cross-Site Scripting Authentication Bypass Vulnerability. This vulnerability allows remote attackers to execute arbitrary script on affected installations of Allegra. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe specific flaw exists within the downloadAttachment method. The issue results from the lack of proper validation of user-supplied data, which can lead to the injection of",
-    "severity": "medium",
-    "cve_id": "CVE-2026-11443",
-    "ghsa_id": "GHSA-m8wq-7mhg-mgm7",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11443.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-2cqf-7mh8-jphj",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-13T00:34:33Z",
-    "title": "Capgo before 12.128.2 contains a denial of service vulnerability allowing attackers to register...",
-    "description": "Capgo before 12.128.2 contains a denial of service vulnerability allowing attackers to register accounts using arbitrary email addresses without verification, then initiate deletion to lock emails in pending deletion state. Attackers can permanently lock legitimate users out of the platform for 30 days by exploiting unverified email ownership in account lifecycle operations.",
-    "severity": "high",
-    "cve_id": "CVE-2026-53868",
-    "ghsa_id": "GHSA-2cqf-7mh8-jphj",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to exploit account lifecycle operations to lock legitimate users out of their accounts for 30 days, causing significant disruption to user access and potential reputational damage to the platform. This could lead to loss of trust, customer dissatisfaction, and operational downtime.",
-      "affected_industries": [
-        "Technology",
-        "SaaS Platforms",
-        "E-commerce",
-        "Social Media",
-        "Financial Services"
-      ],
-      "recommended_actions": [
-        "Immediately update to Capgo version 12.128.2 or later to patch the vulnerability.",
-        "Implement email verification checks during account registration and deletion processes to ensure email ownership.",
-        "Monitor for unusual account activity, such as a high volume of account deletions, and establish rate-limiting mechanisms to prevent abuse."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-g9f3-8379-v2hf",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-13T00:34:33Z",
-    "title": "Capgo before 12.128.2 fails to delete previously uploaded profile images from backend storage...",
-    "description": "Capgo before 12.128.2 fails to delete previously uploaded profile images from backend storage when users replace or remove them. Attackers can access orphaned image files through previously generated URLs, allowing unauthorized retrieval of user-uploaded content.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53867",
-    "ghsa_id": "GHSA-g9f3-8379-v2hf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53867.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-gjr2-gw52-3xch",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-13T00:34:33Z",
-    "title": "OpenClaw before 2026.5.6 contains a configuration enforcement bypass vulnerability in Feishu...",
-    "description": "OpenClaw before 2026.5.6 contains a configuration enforcement bypass vulnerability in Feishu dynamic-agent bindings that allows authenticated senders to create or update bindings without honoring configured config-write controls. Attackers can exploit this by leveraging the dynamic-agent binding feature to change sender-agent binding state beyond intended policy, potentially enabling unauthorized binding modifications.",
-    "severity": "low",
-    "cve_id": "CVE-2026-53835",
-    "ghsa_id": "GHSA-gjr2-gw52-3xch",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 35,
-      "impact_assessment": "The vulnerability allows authenticated attackers to bypass configuration enforcement controls in Feishu dynamic-agent bindings, potentially leading to unauthorized modifications of sender-agent binding states. This could result in policy violations and unauthorized access, though the impact is limited due to the requirement of authentication.",
-      "affected_industries": [
-        "Technology",
-        "Enterprise Collaboration",
-        "Cloud Services"
-      ],
-      "recommended_actions": [
-        "Upgrade to OpenClaw version 2026.5.6 or later to patch the vulnerability.",
-        "Review and monitor access controls for Feishu dynamic-agent bindings to ensure only authorized users can modify configurations.",
-        "Implement logging and alerting mechanisms to detect unusual or unauthorized binding modifications."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 35
-  },
-  {
-    "id": "gh-GHSA-p625-mq37-453v",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-13T00:34:33Z",
-    "title": "Allegra exportReport Directory Traversal Information Disclosure Vulnerability. This vulnerability...",
-    "description": "Allegra exportReport Directory Traversal Information Disclosure Vulnerability. This vulnerability allows remote attackers to disclose sensitive information on affected installations of Allegra. Authentication is required to exploit this vulnerability.\n\nThe specific flaw exists within the exportReport method. The issue results from the lack of proper validation of a user-supplied path prior to using it in file operations. An attacker can leverage this vulnerability to disclose information in the ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-11442",
-    "ghsa_id": "GHSA-p625-mq37-453v",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11442.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-c85p-9pvr-f7f5",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-13T00:34:33Z",
-    "title": "OpenClaw before 2026.5.27 contains a state mutation vulnerability in node pairing reconnection...",
-    "description": "OpenClaw before 2026.5.27 contains a state mutation vulnerability in node pairing reconnection that allows paired nodes to confuse approval scope decisions. Attackers can exploit reconnection logic to restore or present broader node authority than intended, potentially bypassing approval restrictions.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53838",
-    "ghsa_id": "GHSA-c85p-9pvr-f7f5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to exploit node reconnection logic, potentially granting unauthorized access or broader authority within affected systems. This could lead to data breaches, privilege escalation, or system compromise.",
-      "affected_industries": [
-        "Technology",
-        "IoT",
-        "Cloud Services",
-        "Telecommunications"
-      ],
-      "recommended_actions": [
-        "Update OpenClaw to version 2026.5.27 or later to patch the vulnerability.",
-        "Implement additional monitoring and logging for node pairing and reconnection activities to detect anomalous behavior.",
-        "Conduct a security audit of systems using OpenClaw to identify any unauthorized node authority changes."
+        "Review and monitor logs for any unusual or unauthorized access attempts to identify potential exploitation.",
+        "Implement strict hostname validation checks and consider additional endpoint security measures, such as mutual TLS or whitelisting trusted hosts."
       ],
       "urgency": "high"
     },
@@ -796,23 +816,20 @@
       "https://www.wordfence.com/threat-intel/vulnerabilities/id/c720fffe-c089-450a-ac5f-1138c1c223d9?source=cve"
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to manipulate invoice statuses, such as marking unpaid invoices as paid, which could lead to financial losses, fraud, and reputational damage for affected organizations.",
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9719.",
       "affected_industries": [
-        "E-commerce",
-        "Healthcare",
-        "Education",
-        "Hospitality",
-        "Professional Services"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update the LatePoint plugin to the latest patched version if available or disable the plugin temporarily until a fix is released.",
-        "Implement a Web Application Firewall (WAF) to detect and block malicious requests targeting this vulnerability.",
-        "Educate administrators and users about phishing and social engineering tactics to prevent exploitation via forged requests."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 60
   },
   {
     "id": "cve-CVE-2026-9290",
@@ -890,20 +907,23 @@
       "https://www.wordfence.com/threat-intel/vulnerabilities/id/e495c215-2e01-4a37-aca3-99a067c46791?source=cve"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8976.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows authenticated users with contributor-level access or higher to bypass authorization checks, enabling them to create and execute RSS import jobs, delete posts associated with import jobs, and potentially disrupt website content. This could lead to data loss, unauthorized content manipulation, or denial of service.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Media and Publishing",
+        "E-commerce",
+        "Education",
+        "Nonprofits",
+        "Small and Medium Businesses"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Update the RSS Aggregator by Feedzy plugin to a patched version as soon as it becomes available.",
+        "Restrict contributor-level access to trusted users only and review user roles and permissions.",
+        "Monitor website activity logs for any unauthorized actions related to RSS import jobs or post deletions."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 60
+    "risk_score": 65
   },
   {
     "id": "cve-CVE-2026-8900",
