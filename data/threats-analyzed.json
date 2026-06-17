@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1781711647158-1",
+    "id": "twitter-1781727900018-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-17T15:54:07.158Z",
+    "timestamp": "2026-06-17T20:25:00.018Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,29 +10,29 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The ransomware campaign poses a significant threat to cloud-based infrastructure, potentially leading to data encryption, service disruptions, financial losses, and reputational damage. The use of compromised CI/CD pipelines increases the risk of widespread deployment and lateral movement within affected environments.",
+      "risk_score": 92,
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By compromising CI/CD pipelines, attackers can deploy malicious code, potentially leading to data encryption, service disruptions, and financial losses.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
         "Retail",
-        "Manufacturing",
+        "Government",
         "Media and Entertainment"
       ],
       "recommended_actions": [
-        "Immediately review and secure CI/CD pipelines by implementing multi-factor authentication (MFA) and access controls.",
-        "Conduct a comprehensive audit of cloud infrastructure to identify and patch vulnerabilities, especially in deployment processes.",
-        "Implement robust backup and recovery strategies to ensure data can be restored in the event of an attack."
+        "Immediately audit and secure CI/CD pipelines by implementing multi-factor authentication (MFA) and ensuring access controls are properly configured.",
+        "Deploy endpoint detection and response (EDR) solutions to monitor and block suspicious activities in cloud environments.",
+        "Regularly back up critical data and ensure backups are stored in isolated environments to mitigate the impact of ransomware attacks."
       ],
       "urgency": "critical"
     },
-    "risk_score": 85
+    "risk_score": 92
   },
   {
-    "id": "hn-1781711647158-1",
+    "id": "hn-1781727900018-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-17T15:54:07.158Z",
+    "timestamp": "2026-06-17T20:25:00.018Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -40,8 +40,494 @@
       "https://news.ycombinator.com/item?id=123"
     ],
     "ai_analysis": {
+      "risk_score": 20,
+      "impact_assessment": "The open-source vulnerability scanner itself poses minimal risk, but its adoption could lead to potential risks if users rely on it without proper validation of its accuracy or if malicious actors exploit its codebase to introduce vulnerabilities.",
+      "affected_industries": [
+        "Technology",
+        "Software Development",
+        "Cybersecurity"
+      ],
+      "recommended_actions": [
+        "Evaluate the tool's codebase and functionality for potential security risks before adoption.",
+        "Use the tool as a supplementary measure alongside other established vulnerability management solutions.",
+        "Monitor the tool's updates and community feedback to ensure it remains secure and reliable."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 20
+  },
+  {
+    "id": "gh-GHSA-hhpq-7wg4-36jm",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:52:09Z",
+    "title": "CakePHP Authentication: Open redirect weakness via backslash bypass",
+    "description": "### Impact\nThe `getLoginRedirect()` method contains a weakness to backslash bypasses allowing redirect targets with attacker controlled hostnames.\n\n### Patches\n3.3.6 and 4.1.1 contain a fix for this issue.\n\n### Workarounds\nIf you are unable to upgrade, you should consider adding application validation to the redirect query string parameter to mitigate this vulnerability.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55590",
+    "ghsa_id": "GHSA-hhpq-7wg4-36jm",
+    "affected_packages": [
+      "cakephp/authentication",
+      "cakephp/authentication"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55590.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-8fq9-273g-6mrg",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:49:11Z",
+    "title": "Avo: Missing Authorization in Avo Association Attach Endpoint Allows Unauthorized Relationship Manipulation and Privilege Escalation",
+    "description": "## Summary\n\nA critical missing authorization flaw exists in Avo's association attach workflow. The UI and `GET /resources/:resource/:id/:related/new` path can check `attach_<association>?`, but the actual write endpoint, `POST /resources/:resource/:id/:related`, does not run the same authorization check before mutating the association.\n\nAs a result, an authenticated low-privileged Avo user can bypass hidden/disabled attach controls and directly attach related records to a parent record by sendin",
+    "severity": "critical",
+    "cve_id": "CVE-2026-55518",
+    "ghsa_id": "GHSA-8fq9-273g-6mrg",
+    "affected_packages": [
+      "avo",
+      "avo"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-55518.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-x2qc-cmh9-f4hf",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:48:18Z",
+    "title": "Deno: Denial of service via non-ASCII bytes in WebSocket response headers",
+    "description": "## Summary\n\nA Deno program that opens a client `WebSocket` connection could be crashed by\nthe remote server. While handling the WebSocket handshake response, Deno parsed\nthe `Sec-WebSocket-Protocol` and `Sec-WebSocket-Extensions` response headers in\na way that assumed their bytes were always printable ASCII. A response header\ncontaining non-visible-ASCII bytes (`0x80`-`0xFF`) caused a panic that aborted\nthe entire Deno process.\n\n## Details\n\nWhen establishing a client WebSocket connection, Deno r",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55517",
+    "ghsa_id": "GHSA-x2qc-cmh9-f4hf",
+    "affected_packages": [
+      "deno"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55517.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-2f55-g35j-5jmf",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:47:51Z",
+    "title": "HAPI FHIR: XXE in XsltUtilities.saxonTransform via unhardened Saxon TransformerFactory",
+    "description": "### Summary\n\n`org.hl7.fhir.utilities.XsltUtilities` exposes two parallel families of XSLT\ntransform helpers. The `transform(...)` overloads obtain their\n`TransformerFactory` from the project's hardened helper\n`XMLUtil.newXXEProtectedTransformerFactory()` (which sets\n`ACCESS_EXTERNAL_DTD=\"\"` and `ACCESS_EXTERNAL_STYLESHEET=\"\"`). The sibling\n`saxonTransform(...)` overloads instead instantiate a **bare**\n`new net.sf.saxon.TransformerFactoryImpl()` with no external-access\nrestriction. A document tra",
+    "severity": "critical",
+    "cve_id": "CVE-2026-55471",
+    "ghsa_id": "GHSA-2f55-g35j-5jmf",
+    "affected_packages": [
+      "ca.uhn.hapi.fhir:org.hl7.fhir.utilities"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 92,
+      "impact_assessment": "The vulnerability allows attackers to exploit an XXE (XML External Entity) injection via the unhardened Saxon TransformerFactory. This could lead to unauthorized access to sensitive files, server-side request forgery (SSRF), or denial of service (DoS) attacks. The issue is critical as it impacts systems processing XML data using the HAPI FHIR library.",
+      "affected_industries": [
+        "Healthcare",
+        "Health IT",
+        "Software Development",
+        "Cloud Services",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately update to a patched version of the HAPI FHIR library that addresses CVE-2026-55471 and ensures proper hardening of the TransformerFactory.",
+        "Audit all applications using the HAPI FHIR library to identify instances where the vulnerable `saxonTransform(...)` method is used, and replace it with a secure alternative.",
+        "Implement additional runtime protections, such as XML validation and sandboxing, to mitigate potential exploitation until the patch is applied."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 92
+  },
+  {
+    "id": "gh-GHSA-fxj4-p9xp-37v5",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:47:23Z",
+    "title": "HAPI FHIR: Incomplete fix for CVE-2026-45367: DSTU2 FHIRPathEngine.matches() missing RegexTimeout protection allows ReDoS",
+    "description": "## Summary\nThe fix for CVE-2026-45367 added `RegexTimeout` protection to the `matches()` function in DSTU2016MAY, DSTU3, R4, R4B, and R5, but the DSTU2 module was incompletely patched. In `org.hl7.fhir.dstu2`, `replaceMatches()` was updated while `matches()` at line 2462 still calls the raw `String.matches(sw)` without any timeout, allowing an unauthenticated attacker to trigger catastrophic regex backtracking and exhaust server CPU.\n\n\n## Details\n### Incomplete patch\n\nWithin the same file\n(`org.",
+    "severity": "high",
+    "cve_id": "CVE-2026-55470",
+    "ghsa_id": "GHSA-fxj4-p9xp-37v5",
+    "affected_packages": [
+      "ca.uhn.hapi.fhir:org.hl7.fhir.dstu2",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.convertors",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.validation",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.validation.cli"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The incomplete patch for CVE-2026-45367 in the HAPI FHIR library's DSTU2 module allows unauthenticated attackers to exploit a Regular Expression Denial of Service (ReDoS) vulnerability. This can lead to server CPU exhaustion, causing service disruptions or downtime for applications relying on the affected library.",
+      "affected_industries": [
+        "Healthcare",
+        "Health IT",
+        "Software Development",
+        "Cloud Service Providers"
+      ],
+      "recommended_actions": [
+        "Immediately apply a hotfix or patch to the DSTU2 module to ensure `matches()` has proper RegexTimeout protection.",
+        "Monitor server performance for unusual CPU spikes and implement rate-limiting or WAF (Web Application Firewall) rules to mitigate potential exploitation.",
+        "Engage with the HAPI FHIR maintainers to verify the completeness of the patch and ensure all modules are secured."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-x223-p2gf-v735",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:43:12Z",
+    "title": "Langflow: Unauthenticated file upload leads to DoS (space exhaustion) and information leak",
+    "description": "### Summary\nUnauthenticated users can upload any amount of data to the server without any limitations. No need for any prior knowledge, only network access to Langflow.\n\nThis can lead to space exhaustion on the server.\n\nIn adition, in the response, the absolute path of the uploaded file is reported to the attacker, which is an information leak that can assist in chaining other primitives.\n\nTested on commit 2d67402b1dbaefcbce85a244d4a6cd5e4bda1cfe\n\n### Details\nCode is in `langflow/api/v1/[endpoin",
+    "severity": "critical",
+    "cve_id": "CVE-2026-55450",
+    "ghsa_id": "GHSA-x223-p2gf-v735",
+    "affected_packages": [
+      "langflow"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-55450.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-r4gv-qr8j-p3pg",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:42:09Z",
+    "title": "handlebars.java FileTemplateLoader Path Traversal",
+    "description": "### Impact\nAny application that passes user-controlled input to Handlebars.compile() using a FileTemplateLoader (or ClassPathTemplateLoader) is vulnerable to arbitrary file read. This is a realistic attack surface for web applications that use template names from URL path parameters, request parameters, or other user-controlled sources.\n\n### Patches\ncom.github.jknack:handlebars:4.5.2\n\n### Workarounds\n\nValidate template name is derived from user input. \n\n```java\nif (!file.getPath().startsWith(new",
+    "severity": "high",
+    "cve_id": "CVE-2026-55760",
+    "ghsa_id": "GHSA-r4gv-qr8j-p3pg",
+    "affected_packages": [
+      "com.github.jknack:handlebars"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55760.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-m9cv-24rx-8mv7",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:41:12Z",
+    "title": "Filament: Disabled RichEditor field state can be used for XSS",
+    "description": "In Filament v3, a disabled `RichEditor` field rendered its raw state without sanitizing HTML. Where the data stored in this field's state isn't sanitized already when the form state was filled, an attacker could plant malicious HTML or JavaScript and achieve XSS that executes for users who view the form.\n\nPlease note that Filament v4 and above does not use the same mechanism for rendering a disabled `RichEditor` so this advisory does not apply.",
+    "severity": "high",
+    "cve_id": "CVE-2026-55409",
+    "ghsa_id": "GHSA-m9cv-24rx-8mv7",
+    "affected_packages": [
+      "filament/forms"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55409.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-2mfg-cc43-9pcj",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:39:56Z",
+    "title": "LangChain4j: SQL injection via metadata filters in langchain4j-mariadb and langchain4j-pgvector",
+    "description": "### Summary\nThe MariaDB and pgvector embedding stores build metadata-filter SQL by string-concatenating\nfilter **keys** (and, in MariaDB, string **values**) directly into the query without adequate\nescaping. A crafted metadata key in `EmbeddingSearchRequest.filter()` can break out of its SQL\ncontext and inject arbitrary SQL into the statements executed by the stores' search and\n`removeAll(Filter)` operations.\n\n### Details\n**pgvector — JSON mode (default, `COMBINED_JSON` / `COMBINED_JSONB`).** `J",
+    "severity": "high",
+    "cve_id": "CVE-2026-55405",
+    "ghsa_id": "GHSA-2mfg-cc43-9pcj",
+    "affected_packages": [
+      "dev.langchain4j:langchain4j-mariadb",
+      "dev.langchain4j:langchain4j-mariadb",
+      "dev.langchain4j:langchain4j-mariadb",
+      "dev.langchain4j:langchain4j-mariadb",
+      "dev.langchain4j:langchain4j-pgvector",
+      "dev.langchain4j:langchain4j-pgvector",
+      "dev.langchain4j:langchain4j-pgvector",
+      "dev.langchain4j:langchain4j-pgvector"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows attackers to perform SQL injection via crafted metadata keys, potentially leading to unauthorized access, data leakage, or manipulation of sensitive information in databases using langchain4j-mariadb and langchain4j-pgvector. This could compromise the integrity and confidentiality of the affected systems.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Implement parameterized queries or prepared statements to prevent SQL injection vulnerabilities in metadata filters.",
+        "Update to the latest patched version of langchain4j-mariadb and langchain4j-pgvector as soon as it becomes available.",
+        "Conduct a thorough review of database logs and metadata filters to identify any signs of exploitation or unauthorized access."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-v4fv-4v3p-rhf8",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:35:59Z",
+    "title": "Use of Hard-coded Credentials vulnerability in Mitsubishi Electric Room Air Conditioners (for...",
+    "description": "Use of Hard-coded Credentials vulnerability in Mitsubishi Electric Room Air Conditioners (for Japan and outside Japan); Wireless LAN Adapters for Room Air Conditioners (for Japan and outside Japan); Wireless LAN Adapters for Packaged Air Conditioners (for Japan and outside Japan); Refrigerators (for Japan); Heat Pump Water Heaters / HEMS-Compatible Adapters / Wireless LAN Adapters (for Japan); Bathroom Dryer / Heater / Ventilation Systems (for Japan); Adapters for Airflow Ventilation Systems, He",
+    "severity": "high",
+    "cve_id": "CVE-2026-5667",
+    "ghsa_id": "GHSA-v4fv-4v3p-rhf8",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The use of hard-coded credentials in Mitsubishi Electric devices could allow unauthorized access to sensitive systems, enabling attackers to exploit the devices for unauthorized control, data exfiltration, or as a pivot point for further attacks. This vulnerability could compromise the security and functionality of affected devices, leading to potential privacy breaches and operational disruptions.",
+      "affected_industries": [
+        "Residential and Commercial HVAC",
+        "Manufacturing",
+        "Healthcare",
+        "Hospitality",
+        "Real Estate and Property Management"
+      ],
+      "recommended_actions": [
+        "Immediately apply available firmware updates or patches provided by Mitsubishi Electric to address the vulnerability.",
+        "Restrict network access to the affected devices by implementing network segmentation and using firewalls to limit exposure to external threats.",
+        "Disable or replace default credentials on affected devices where possible, and enforce strong authentication mechanisms."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-48hp-f245-fq94",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:35:58Z",
+    "title": "Missing Authentication for Critical Function vulnerability in RTI Connext Professional (Security...",
+    "description": "Missing Authentication for Critical Function vulnerability in RTI Connext Professional (Security Plugins) allows Identity Spoofing.This issue affects Connext Professional: from 7.4.0 before 7.7.0, from 7.0.0 before 7.3.*, from 6.1.0 before 6.1.*, from 6.0.0 before 6.0.*, from 5.3.0 before 5.3.*.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-30799",
+    "ghsa_id": "GHSA-48hp-f245-fq94",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-30799.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-52mm-h59v-f3c7",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:35:58Z",
+    "title": "Improper Neutralization of Script in Attributes in a Web Page vulnerability in pragdave earmark...",
+    "description": "Improper Neutralization of Script in Attributes in a Web Page vulnerability in pragdave earmark allows stored cross-site scripting via unescaped HTML attribute values.\n\n'Elixir.Earmark.Transform':_make_att1/2 in lib/earmark/transform.ex splices attribute values verbatim between two literal \" bytes: [\" \", name, \"=\\\"\", value, \"\\\"\"]. Text nodes are routed through the existing escape function which encodes \" as &quot;, but attribute values never visit that path. A markdown link whose URL or title co",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48591",
+    "ghsa_id": "GHSA-52mm-h59v-f3c7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48591.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-4qcp-g757-95hj",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:35:58Z",
+    "title": "snes9x 1.63 allows an out-of-bounds write and denial of service via a crafted .ups file.",
+    "description": "snes9x 1.63 allows an out-of-bounds write and denial of service via a crafted .ups file.",
+    "severity": "low",
+    "cve_id": "CVE-2026-39199",
+    "ghsa_id": "GHSA-4qcp-g757-95hj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-39199.",
       "affected_industries": [
         "Technology",
         "General"
@@ -56,27 +542,26 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-cx9v-4qj2-jrw6",
+    "id": "gh-GHSA-gfjf-3m4p-4qjc",
     "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:31:16Z",
-    "title": "Open WebUI BOLA: `search_knowledge_files` Allows Unauthorized Knowledge Base File Enumeration",
-    "description": "## Summary\n\nOpen WebUI has a Broken Object Level Authorization (BOLA) vulnerability in the builtin `search_knowledge_files` tool.\n\nWhen native function calling is enabled and the selected model has no attached knowledge bases, an authenticated user can call `search_knowledge_files` with an arbitrary `knowledge_id`. The function then returns file metadata from that knowledge base without checking whether the user has read access.\n\nThis allows unauthorized enumeration of private or restricted know",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54016",
-    "ghsa_id": "GHSA-cx9v-4qj2-jrw6",
-    "affected_packages": [
-      "open-webui"
-    ],
+    "timestamp": "2026-06-17T18:35:58Z",
+    "title": "Out-of-bounds Read vulnerability in RTI Connext Professional (Core Libraries) allows Overread...",
+    "description": "Out-of-bounds Read vulnerability in RTI Connext Professional (Core Libraries) allows Overread Buffers.This issue affects Connext Professional: from 7.4.0 before 7.7.0, from 7.0.0 before 7.3.1.3, from 6.1.0 before 6.1.*, from 6.0.0 before 6.0.*, from 5.3.0 before 5.3.*, from 5.0.0 before 5.2.*.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-3894",
+    "ghsa_id": "GHSA-gfjf-3m4p-4qjc",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54016.",
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-3894.",
       "affected_industries": [
         "Technology",
         "General"
@@ -86,260 +571,142 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "critical"
     },
-    "risk_score": 50
+    "risk_score": 90
   },
   {
-    "id": "gh-GHSA-4r4w-2wgp-w7cj",
+    "id": "gh-GHSA-h57p-58j8-7xg6",
     "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:16:50Z",
-    "title": "Open WebUI Prompt history IDOR: unbound history_id allows cross-prompt read and deletion",
-    "description": "## Summary\n\nOpen WebUI's prompt version-history endpoints authorize the `prompt_id` in the URL but then act on caller-supplied history IDs without verifying that the history row belongs to that prompt (`history_entry.prompt_id == prompt.id`). Three operations are affected:\n\n- `GET /api/v1/prompts/id/{prompt_id}/history/diff` — returns another prompt's history snapshots (read).\n- `POST /api/v1/prompts/id/{prompt_id}/update/version` — restores another prompt's snapshot into the caller's prompt, ex",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54015",
-    "ghsa_id": "GHSA-4r4w-2wgp-w7cj",
-    "affected_packages": [
-      "open-webui"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows unauthorized access to prompt history data and the ability to overwrite or delete prompt versions. This could lead to data leakage, unauthorized modifications, and potential disruption of services relying on prompt integrity.",
-      "affected_industries": [
-        "Technology",
-        "Artificial Intelligence",
-        "Software Development",
-        "Cloud Services"
-      ],
-      "recommended_actions": [
-        "Implement strict validation to ensure that history IDs are verified against the associated prompt IDs before performing any operations.",
-        "Perform a comprehensive security audit of all endpoints to identify and fix similar IDOR (Insecure Direct Object Reference) vulnerabilities.",
-        "Deploy logging and monitoring to detect unauthorized access or unusual activity related to prompt history operations."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-j2c8-v969-8r5c",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:16:25Z",
-    "title": "Open WebUI: Sibling-Prefix Path Traversal via /cache/{path}",
-    "description": "## Summary\n\nA path traversal vulnerability exists in open-webui's cache file serving endpoint that allows any authenticated user to read files from sibling directories outside the intended cache directory, by exploiting an incomplete `startswith` containment check that lacks a trailing path separator.\n\nThe root cause is that `serve_cache_file()` in `open_webui/main.py` validates the resolved path with `file_path.startswith(os.path.abspath(CACHE_DIR))` — without appending `os.sep`. This allows an",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54014",
-    "ghsa_id": "GHSA-j2c8-v969-8r5c",
-    "affected_packages": [
-      "open-webui"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54014.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-v2qm-5wxj-qhj7",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:15:52Z",
-    "title": "Open WebUI: Stored XSS to Account Takeover via Model Profile Images ",
-    "description": "# Stored XSS to Account Takeover via Model Profile Images in Open WebUI\n\n**Affected:** Open WebUI <= 0.9.5\n**Bypass of:** GHSA-3wgj-c2hg-vm6q, GHSA-3856-3vxq-m6fc\n\n---\n\n## TL;DR\n\nOpen WebUI patched SVG XSS in user profile images and webhook profile images  but forgot to apply the same fix to **model** profile images. The `ModelMeta` class has no `validate_profile_image_url` field validator, and the model image serving endpoint has no MIME allowlist or `nosniff` header. Any authenticated user wit",
+    "timestamp": "2026-06-17T18:35:58Z",
+    "title": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow') vulnerability in RTI...",
+    "description": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow') vulnerability in RTI Connext Professional (Web Integration Service) allows Filter Failure through Buffer Overflow.This issue affects Connext Professional: from 7.4.0 before 7.*, from 7.0.0 before 7.3.1.3, from 6.1.2 before 6.1.*.",
     "severity": "high",
-    "cve_id": "CVE-2026-54013",
-    "ghsa_id": "GHSA-v2qm-5wxj-qhj7",
-    "affected_packages": [
-      "open-webui"
-    ],
-    "cwes": [
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54013.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-vjqm-6gcc-62cr",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:15:33Z",
-    "title": "Open WebUI: Forged model meta.knowledge allows cross-user file read and deletion",
-    "description": "## Summary\n\nOpen WebUI lets a user who can create, update, or import workspace models store arbitrary `meta.knowledge` entries on their model without checking whether they own or can read the referenced files. Open WebUI then treats `meta.knowledge` entries of type `file` as an authorization source in two places: the built-in `view_file` tool reads the file's extracted text, and `has_access_to_file()`'s model branch authorizes the file content and file delete endpoints. A malicious model owner c",
-    "severity": "high",
-    "cve_id": "CVE-2026-54012",
-    "ghsa_id": "GHSA-vjqm-6gcc-62cr",
-    "affected_packages": [
-      "open-webui"
-    ],
-    "cwes": [
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54012.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-v8qj-hxv7-mgvv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:14:05Z",
-    "title": "Open WebUI: Stored XSS in Mermaid Markdown Preview",
-    "description": "## Summary\n\nOpen WebUI renders Mermaid blocks from Markdown files in the file preview panel and inserts the generated SVG into the DOM using `innerHTML`.\n\nBecause Mermaid is configured with `securityLevel: 'loose'`, attacker-controlled Mermaid content can be rendered unsafely in this flow. A working payload was validated through the Markdown preview path, resulting in JavaScript execution in the victim’s browser under the application origin.\n\nThis is a confirmed stored XSS vulnerability reachabl",
-    "severity": "high",
-    "cve_id": "CVE-2026-54011",
-    "ghsa_id": "GHSA-v8qj-hxv7-mgvv",
-    "affected_packages": [
-      "open-webui"
-    ],
+    "cve_id": "CVE-2026-7300",
+    "ghsa_id": "GHSA-h57p-58j8-7xg6",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This stored XSS vulnerability allows an attacker to execute arbitrary JavaScript in the victim's browser under the application's origin. This can lead to data theft, session hijacking, or unauthorized actions performed on behalf of the victim. The vulnerability is particularly dangerous in environments where sensitive data is handled or where users have elevated privileges.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Education",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Update the Mermaid configuration to use `securityLevel: 'strict'` to prevent unsafe rendering of attacker-controlled content.",
-        "Sanitize all user-generated Markdown content before rendering it in the preview panel to ensure no malicious scripts are executed.",
-        "Apply security patches or updates provided by the application vendor to address CVE-2026-54011."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-vrhc-3fr6-pc3c",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:12:20Z",
-    "title": "Open WebUI: Forged chat-file link allows cross-user file read and deletion",
-    "description": "## Summary\n\nOpen WebUI `v0.9.5` lets an authenticated user attach arbitrary `file_id` values to their own chat message without checking whether they own or can read those files. If the attacker then shares that chat and grants themselves read access, `has_access_to_file()` treats the victim file as accessible through the shared chat, and the file endpoints read or delete the victim file.\n\n## Impact\n\nSecurity boundary crossed: file confidentiality and integrity.\n\nAn authenticated attacker who kno",
-    "severity": "high",
-    "cve_id": "CVE-2026-54010",
-    "ghsa_id": "GHSA-vrhc-3fr6-pc3c",
-    "affected_packages": [
-      "open-webui"
-    ],
-    "cwes": [
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows an authenticated attacker to bypass file ownership checks, enabling unauthorized access to sensitive files and potential deletion of critical data. This compromises file confidentiality and integrity, posing a significant security risk.",
+      "impact_assessment": "The vulnerability allows attackers to exploit a buffer overflow in RTI Connext Professional, potentially leading to unauthorized code execution, system crashes, or data corruption. This could compromise the integrity, availability, and confidentiality of affected systems.",
       "affected_industries": [
-        "Technology",
-        "Finance",
         "Healthcare",
-        "E-commerce",
-        "Government"
+        "Automotive",
+        "Aerospace",
+        "Industrial Automation",
+        "Telecommunications"
       ],
       "recommended_actions": [
-        "Immediately patch the Open WebUI to a version that addresses CVE-2026-54010 or apply any available security updates.",
-        "Implement stricter file ownership validation checks in the application to ensure file access is restricted to authorized users only.",
-        "Conduct a security audit to identify and mitigate any other potential vulnerabilities related to file access and sharing mechanisms."
+        "Immediately update RTI Connext Professional to the latest patched version to mitigate the vulnerability.",
+        "Conduct a thorough review of systems using RTI Connext Professional to identify and isolate vulnerable versions.",
+        "Implement network segmentation and monitoring to detect and prevent exploitation attempts."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "gh-GHSA-wch8-mhj5-9frg",
+    "id": "gh-GHSA-478c-rj3v-9229",
     "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:11:44Z",
-    "title": "Open WebUI: Cross-user file disclosure via /api/chat/completions image_url field",
-    "description": "## summary\n\n`POST /api/chat/completions` accepts an `image_url.url` value that, when it does NOT start with `http://`, `https://`, or `data:image/`, is interpreted as a file id and resolved against the global file table with no ownership check. An authenticated user can therefore set `image_url.url` to another user's file id, the server reads that file from disk, base64-encodes it, and injects the data URI into the LLM request. The user then prompts the LLM to describe / OCR the file and reads t",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54009",
-    "ghsa_id": "GHSA-wch8-mhj5-9frg",
-    "affected_packages": [
-      "open-webui"
-    ],
+    "timestamp": "2026-06-17T18:35:58Z",
+    "title": "NVIDIA Spatial Intelligence Lab's (SIL) GEN3C contains an unauthenticated remote code execution...",
+    "description": "NVIDIA Spatial Intelligence Lab's (SIL) GEN3C contains an unauthenticated remote code execution vulnerability in the inference API server where the /request-inference and /seed-model endpoints deserialize raw HTTP request bodies using Python's pickle.loads() without authentication or input validation. Attackers can supply a crafted payload containing a __reduce__ gadget to the inference API port to achieve remote code execution as the inference process.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-53805",
+    "ghsa_id": "GHSA-478c-rj3v-9229",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-53805.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-gjcv-h8fc-5668",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:35:58Z",
+    "title": "Integer Underflow (Wrap or Wraparound) vulnerability in RTI Connext Micro (Core Libraries) allows...",
+    "description": "Integer Underflow (Wrap or Wraparound) vulnerability in RTI Connext Micro (Core Libraries) allows Overread Buffers.This issue affects Connext Micro: from 4.0.0 before 4.3.0.",
+    "severity": "high",
+    "cve_id": "CVE-2026-30803",
+    "ghsa_id": "GHSA-gjcv-h8fc-5668",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The Integer Underflow vulnerability in RTI Connext Micro Core Libraries could allow attackers to overread buffers, potentially leading to data leakage, application crashes, or further exploitation. This could compromise the integrity and confidentiality of systems relying on these libraries.",
+      "affected_industries": [
+        "Healthcare",
+        "Automotive",
+        "Aerospace",
+        "Industrial Automation",
+        "Telecommunications"
+      ],
+      "recommended_actions": [
+        "Upgrade RTI Connext Micro to version 4.3.0 or later to mitigate the vulnerability.",
+        "Conduct a thorough review of systems using affected versions to identify potential exploitation or abnormal behavior.",
+        "Implement runtime monitoring and intrusion detection systems to detect and respond to potential exploitation attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-fjwx-wr6r-597j",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:35:57Z",
+    "title": "Out-of-bounds Write, Out-of-bounds Write, Out-of-bounds Write vulnerability in RTI Connext...",
+    "description": "Out-of-bounds Write, Out-of-bounds Write, Out-of-bounds Write vulnerability in RTI Connext Professional (Queueing Service,Core Libraries,Persistence Service) allows Overflow Buffers, Overflow Buffers, Overflow Buffers.This issue affects Connext Professional: from 7.4.0 before 7.7.0, from 7.0.0 before 7.3.1.3, from 6.1.0 before 6.1.*.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-2674",
+    "ghsa_id": "GHSA-fjwx-wr6r-597j",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54009.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-2674.",
       "affected_industries": [
         "Technology",
         "General"
@@ -354,929 +721,77 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-226f-f24g-524w",
+    "id": "gh-GHSA-5m7h-7whv-78fw",
     "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:10:56Z",
-    "title": "Open WebUI: Redirect-Bypass SSRF in OAuth `_process_picture_url` (incomplete-fix sibling of CVE-2026-45401)",
-    "description": "## Summary\n\n`backend/open_webui/utils/oauth.py::_process_picture_url` (v0.9.5, lines 1435-1470) calls `validate_url(picture_url)` on the initial URL only, then invokes `aiohttp.ClientSession.get(picture_url, ...)` without `allow_redirects=False`. aiohttp's default is `allow_redirects=True, max_redirects=10`; the function does not pass the project's `AIOHTTP_CLIENT_ALLOW_REDIRECTS` env constant either. An attacker with a valid OAuth IdP identity can therefore submit a public URL that 302-redirect",
-    "severity": "high",
-    "cve_id": "CVE-2026-54008",
-    "ghsa_id": "GHSA-226f-f24g-524w",
-    "affected_packages": [
-      "open-webui"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54008.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-3vv5-8xxp-4f55",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:10:35Z",
-    "title": "Open WebUI: Cross-origin postMessage confirmation bypass via action:submit",
-    "description": "### Summary\n\nThe chat message listener allows non-same-origin `input:prompt` and `action:submit` messages, so an external site can set prompt text and trigger `submitPrompt()` in an authenticated victim session. I validated this with a cross-origin attacker page that auto-posted messages and caused unauthorized `POST /api/v1/chats/new` and `POST /api/chat/completions` requests containing attacker-controlled prompts. This enables cross-site forced actions and model/tool execution under victim pri",
-    "severity": "high",
-    "cve_id": "CVE-2026-54007",
-    "ghsa_id": "GHSA-3vv5-8xxp-4f55",
-    "affected_packages": [
-      "open-webui"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54007.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-f3g7-59qc-pqg6",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:09:53Z",
-    "title": "Open WebUI IDOR: Calendar event re-parenting allows writing events into another user's calendar",
-    "description": "### Summary\n\n`POST /api/v1/calendars/events/{event_id}/update` validates that the caller has **write** access to the calendar the event *currently* belongs to, but does not validate the **destination** `calendar_id` supplied in the request body. The model layer then persists the new `calendar_id` unconditionally.\n\nA regular `user`-role account can therefore create an event in their own calendar and immediately move it into any other user's calendar whose ID they know — bypassing the authorizatio",
+    "timestamp": "2026-06-17T18:35:57Z",
+    "title": "A vulnerability in the browser-based version of Cisco Webex App could have allowed an...",
+    "description": "A vulnerability in the browser-based version of Cisco Webex App could have allowed an unauthenticated, remote attacker to redirect users to a malicious webpage. Cisco has addressed this vulnerability in the Cisco Webex App, and no customer action is needed.\n\n This vulnerability existed due to improper input validation of URL parameters in an HTTP request. Prior to this vulnerability being addressed, an attacker could have exploited this vulnerability by persuading a user to click a crafted URL. ",
     "severity": "medium",
-    "cve_id": "CVE-2026-54006",
-    "ghsa_id": "GHSA-f3g7-59qc-pqg6",
-    "affected_packages": [
-      "open-webui"
-    ],
+    "cve_id": "CVE-2026-20178",
+    "ghsa_id": "GHSA-5m7h-7whv-78fw",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "This vulnerability allows unauthorized users to move events into other users' calendars, potentially leading to data manipulation, unauthorized access to sensitive information, and disruption of workflows. It could also be exploited for phishing or social engineering attacks by injecting malicious or misleading events into a target's calendar.",
+      "risk_score": 55,
+      "impact_assessment": "The vulnerability could have allowed attackers to redirect users to malicious webpages, potentially leading to phishing attacks, credential theft, or malware installation. However, the issue has been addressed by Cisco, reducing the immediate risk.",
       "affected_industries": [
         "Technology",
         "Healthcare",
         "Finance",
         "Education",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Ensure all systems are updated to the latest version of the Cisco Webex App.",
+        "Educate employees about the risks of clicking on suspicious links and implement URL filtering solutions.",
+        "Monitor for any signs of phishing attempts or unusual activity in systems that use Cisco Webex."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 55
+  },
+  {
+    "id": "gh-GHSA-6x4j-83f8-hhx2",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T18:35:57Z",
+    "title": "A vulnerability in Cisco ISE and ISE-PIC could allow an unauthenticated, remote attacker to view...",
+    "description": "A vulnerability in Cisco ISE and ISE-PIC could allow an unauthenticated, remote attacker to view sensitive information on an affected device.\n\nThis vulnerability is due to improper authorization checks when a resource is accessed. An attacker could exploit this vulnerability by sending crafted traffic to an affected device. A successful exploit could allow the attacker to gain access to sensitive information, including hashed credentials that could be used in future attacks.",
+    "severity": "high",
+    "cve_id": "CVE-2026-20190",
+    "ghsa_id": "GHSA-6x4j-83f8-hhx2",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in Cisco ISE and ISE-PIC could allow an unauthenticated, remote attacker to access sensitive information, including hashed credentials. This information could be leveraged in subsequent attacks, potentially leading to unauthorized access, data breaches, or lateral movement within a network.",
+      "affected_industries": [
+        "Healthcare",
+        "Finance",
         "Government",
+        "Education",
+        "Technology",
         "Retail"
       ],
       "recommended_actions": [
-        "Implement strict validation checks on the destination `calendar_id` to ensure the user has the necessary write permissions before updating the event.",
-        "Conduct a thorough review of the authorization logic in the WebUI API to identify and patch similar vulnerabilities.",
-        "Monitor logs for suspicious activity, such as unexpected event movements between calendars, and alert administrators to investigate further."
+        "Immediately apply the latest security patches or updates provided by Cisco to address CVE-2026-20190.",
+        "Implement network segmentation and access controls to limit exposure of Cisco ISE and ISE-PIC devices to untrusted networks.",
+        "Monitor network traffic for unusual or suspicious activity targeting Cisco ISE and ISE-PIC devices, and review logs for signs of exploitation attempts."
       ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-hmcr-rmjq-47qr",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:08:26Z",
-    "title": "NocoDB: Server-Side Request Forgery via Spreadsheet Import Endpoint",
-    "description": "### Summary\nThe spreadsheet-import endpoint `axiosRequestMake` could be used as a generic\nHTTP proxy. Before the fix it was reachable unauthenticated, and its\nURL-extension allowlist was a regex tested against the full URL string, so\nURLs whose query string ended in `.csv` (for example\n`https://example.com/robots.txt?.csv`) satisfied the gate even though the\nunderlying request was for `robots.txt`.\n\n### Details\nThree layers of protection now apply to the endpoint:\n\n- The controller is decorated ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53931",
-    "ghsa_id": "GHSA-hmcr-rmjq-47qr",
-    "affected_packages": [
-      "nocodb"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53931.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-h6vv-pcq8-7xm4",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:08:04Z",
-    "title": "NocoDB: Server-Side Request Forgery via Base Migration URL",
-    "description": "### Summary\nThe base-migration endpoint accepted a caller-supplied URL that the migration worker\ndereferenced without enforcing protocol or destination, allowing scheme abuse\n(`file:`, `ftp:`, etc.) and probing of internal HTTP destinations.\n\n### Details\nThe `migrate` endpoint is restricted to the workspace owner role by ACL. The remaining\ngaps were (a) protocol validation — the controller now parses `body.migrationUrl` as a\n`URL` and rejects anything whose protocol is not `http:` or `https:` — ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53930",
-    "ghsa_id": "GHSA-h6vv-pcq8-7xm4",
-    "affected_packages": [
-      "nocodb"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to exploit the server-side request forgery (SSRF) flaw in the NocoDB base-migration endpoint. This could lead to unauthorized access to internal systems, data exfiltration, or further exploitation by abusing internal services or protocols.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Update to the latest patched version of NocoDB where the protocol validation for the migration URL has been implemented.",
-        "Restrict access to the `migrate` endpoint by ensuring proper role-based access control (RBAC) and monitoring API usage logs for suspicious activity.",
-        "Implement network-level protections such as firewall rules to block unauthorized outbound requests to internal or sensitive destinations."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-6mhr-74x2-98v9",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:07:52Z",
-    "title": "NocoDB: Stored Cross-Site Scripting via Secure Attachment",
-    "description": "### Summary\nWith `NC_SECURE_ATTACHMENTS=true`, an authenticated uploader could deliver `.html` or\n`.svg` attachments that the browser rendered inline from the NocoDB origin instead of\nforcing a download.\n\n### Details\nThe signed attachment handler stored response-header overrides under PascalCase keys\n(`ResponseContentDisposition`, `ResponseContentType`) while the controller that served\nthe file read them under lowercase-hyphen names (`response-content-disposition`). The\nmismatch dropped the `Con",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53929",
-    "ghsa_id": "GHSA-6mhr-74x2-98v9",
-    "affected_packages": [
-      "nocodb"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53929.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-r989-7g3j-wjhw",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:07:33Z",
-    "title": "NocoDB: Refresh Tokens Persist Through Password Recovery",
-    "description": "### Summary\nA stolen refresh token survived a password-forgot flow and could be used to mint fresh\nJWTs even after the user reset their password.\n\n### Details\n`passwordChange` and `passwordReset` deleted the user's refresh tokens, but\n`passwordForgot` only rotated `token_version` and revoked OAuth tokens — it did not\ncall `UserRefreshToken.deleteAllUserToken(user.id)`. An attacker holding a captured\nrefresh cookie could still exchange it for a new access token after the victim\ntriggered the reco",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53928",
-    "ghsa_id": "GHSA-r989-7g3j-wjhw",
-    "affected_packages": [
-      "nocodb"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53928.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-gprh-27j3-g5h4",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:06:43Z",
-    "title": "NocoDB: Server-Side Request Forgery via Spreadsheet Fetch URL",
-    "description": "### Summary\nThe spreadsheet-fetch endpoint (`axiosRequestMake`) accepted URLs whose path\ncontained a permitted extension anywhere in the string, and applied a hand-rolled\nregex blocklist that omitted `127.0.0.0/8` and `169.254.0.0/16`, allowing the\ncloud-metadata endpoint to be reached with a crafted URL.\n\n### Details\nThe extension matcher is now anchored to the end of the path or immediately before\nthe query string (`/\\.(xls|xlsx|xlsm|ods|ots)(\\?|$)/i` and `/\\.(csv)(\\?|$)/i`), so\n`http://169.25",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53927",
-    "ghsa_id": "GHSA-gprh-27j3-g5h4",
-    "affected_packages": [
-      "nocodb"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to exploit a Server-Side Request Forgery (SSRF) flaw in the NocoDB spreadsheet-fetch endpoint, potentially enabling unauthorized access to sensitive internal services, such as cloud metadata endpoints. This could lead to data exfiltration, privilege escalation, or further exploitation of internal systems.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Update to the latest patched version of NocoDB that addresses CVE-2026-53927 to ensure the regex validation is properly implemented.",
-        "Implement network-level restrictions to block unauthorized access to internal resources, such as cloud metadata endpoints, from the application server.",
-        "Conduct a security audit of all endpoints to identify and mitigate similar SSRF vulnerabilities."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-6pr9-rp53-2pmc",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:06:22Z",
-    "title": "vLLM: OOM Denial of Service via Audio Decompression Bomb",
-    "description": "### Summary\nvLLM's `/v1/audio/transcriptions` endpoint limits compressed upload size but not decoded PCM output. A 25MB OPUS file expands to ~14.9GB of float32 PCM at decode time. Tested on vLLM v0.19.0.\n\n### Details\n`SpeechToTextProcessor` rejects uploads over `VLLM_MAX_AUDIO_CLIP_FILESIZE_MB` (default 25MB) based on compressed byte length, but the audio decoder in `audio.py` accumulates all decoded frames into memory with no size limit before returning:\n\n```python\n# speech_to_text.py L184-189\n",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54233",
-    "ghsa_id": "GHSA-6pr9-rp53-2pmc",
-    "affected_packages": [
-      "vllm"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to exploit the `/v1/audio/transcriptions` endpoint by uploading specially crafted audio files that expand significantly in memory during decoding. This can lead to an Out-Of-Memory (OOM) condition, resulting in denial-of-service (DoS) for the affected system. Systems running vLLM v0.19.0 or similar configurations are at risk.",
-      "affected_industries": [
-        "Technology",
-        "Telecommunications",
-        "Media and Entertainment",
-        "Healthcare",
-        "Customer Support Services"
-      ],
-      "recommended_actions": [
-        "Implement a memory usage cap during audio decoding to prevent excessive resource consumption. This can be achieved by limiting the size of decoded PCM data.",
-        "Update the vLLM software to a patched version (if available) or apply a custom patch to enforce stricter validation on decoded audio size.",
-        "Monitor and log resource usage on the `/v1/audio/transcriptions` endpoint to detect and mitigate potential abuse in real time."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-hgg8-fqqc-vfmw",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:04:09Z",
-    "title": "vLLM: incomplete CVE-2026-22778 fix leaks PIL repr addresses via Anthropic router",
-    "description": "# vLLM: incomplete CVE-2026-22778 fix leaks PIL repr addresses via the Anthropic API router\n\n**Researcher:** Kai Aizen — SnailSploit (@SnailSploit), Adversarial & Offensive Security Research\n**Severity:** CVSS 3.1 5.3 (Medium)  `AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N`\n**Target:** https://github.com/vllm-project/vllm\n\n---\n\n## Summary\n\nThe fix for CVE-2026-22778 / GHSA-4r2x-xpjr-7cvv (PRs #31987 and #32319) introduced `sanitize_message` and applied it at four FastAPI exception-handling sites in the O",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54236",
-    "ghsa_id": "GHSA-hgg8-fqqc-vfmw",
-    "affected_packages": [
-      "vllm"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54236.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-5jv2-g5wq-cmr4",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:03:11Z",
-    "title": "vLLM: GGUF dequantize kernel int truncation exposes uninitialized GPU memory in multi-tenant serving",
-    "description": "## Summary\n\nInteger truncation of tensor dimensions in vLLM's GGUF dequantize kernels (`csrc/quantization/gguf/gguf_kernel.cu`) causes partial tensor processing. The output tensor is allocated at full size via `torch::empty` (uninitialized memory), but the dequantize CUDA kernel processes only a truncated number of elements. The unfilled portion of the output tensor retains whatever was previously in GPU memory. In multi-tenant inference deployments, this residual GPU memory may contain tensor d",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53923",
-    "ghsa_id": "GHSA-5jv2-g5wq-cmr4",
-    "affected_packages": [
-      "vllm"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53923.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-8jr5-v98p-w75m",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-17T14:02:42Z",
-    "title": "vLLM: image EXIF Rotation & PNG tRNS Transparency Not Normalized, Causing Mismatch Between Model Input and Expectations",
-    "description": "## Summary\n\nIssue 1: EXIF orientation not normalized → The image orientation processed by the model differs from how humans view it, introducing interpretation bias.\n\nIssue 2: PNG tRNS not explicitly flattened before converting to RGB → After conversion, transparent/semi-transparent pixels are rendered unexpectedly, making otherwise subtle overlay elements visible and distorting the input content. (This attack is similar to AlphaDog: RGBA handling is already correct in vLLM, but since tRNS permi",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-8jr5-v98p-w75m",
-    "affected_packages": [
-      "vllm"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "cve-CVE-2026-41717",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:51.683",
-    "title": "CVE-2026-41717 - Spring Data MongoDB contains a SpEL (Spring Expression Language) expression injection vulnerability.",
-    "description": "Spring Data MongoDB contains a SpEL (Spring Expression Language) expression injection vulnerability. The issue occurs during parameter binding when a user-defined repository query method is annotated with @Query and utilizes a capture-all placeholder.\n\nAffected versions:\nSpring Data MongoDB 5.0.0 through 5.0.5; 4.5.0 through 4.5.11; 4.4.0 through 4.4.14; 4.3.0 through 4.3.16; 4.2.0 through 4.2.15; 4.1.0 through 4.1.14; 4.0.0 through 4.0.15; 3.4.0 through 3.4.19.",
-    "severity": "high",
-    "cve_id": "CVE-2026-41717",
-    "cvss_score": 8.1,
-    "affected_products": [],
-    "references": [
-      "https://spring.io/security/cve-2026-41717"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41717.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-41716",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:51.567",
-    "title": "CVE-2026-41716 - Spring Data's internal property-lookup cache accepts and permanently retains attacker-supplied strin",
-    "description": "Spring Data's internal property-lookup cache accepts and permanently retains attacker-supplied strings as cache keys, allowing heap exhaustion through repeated requests.\n\nAffected versions:\nSpring Data Commons 2.7.0 through 2.7.19; 3.3.0 through 3.3.16; 3.4.0 through 3.4.14; 3.5.0 through 3.5.11; 4.0.0 through 4.0.5.",
-    "severity": "high",
-    "cve_id": "CVE-2026-41716",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://spring.io/security/cve-2026-41716"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to exploit the property-lookup cache in Spring Data, causing heap exhaustion through repeated requests. This could lead to denial-of-service (DoS) attacks, rendering affected applications unresponsive.",
-      "affected_industries": [
-        "Technology",
-        "E-commerce",
-        "Finance",
-        "Healthcare",
-        "Telecommunications",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Upgrade to a patched version of Spring Data Commons that addresses CVE-2026-41716. Refer to the official Spring Data documentation for the latest secure versions.",
-        "Implement rate limiting and input validation to mitigate the risk of exploitation until the patch is applied.",
-        "Monitor application logs and memory usage for signs of unusual activity or heap exhaustion, and establish alerts for potential DoS attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-41714",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:51.450",
-    "title": "CVE-2026-41714 - Applications that configure their broker connection via RabbitConnectionFactoryBean.setUri(\"amqps://",
-    "description": "Applications that configure their broker connection via RabbitConnectionFactoryBean.setUri(\"amqps://...\") without also calling setUseSSL(true) get TLS encryption with no certificate validation and no hostname verification.\n\nAffected versions:\nSpring AMQP 4.0.0 through 4.0.3; 3.2.0 through 3.2.10; 3.1.0 through 3.1.15; 2.4.0 through 2.4.17.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-41714",
-    "cvss_score": 4,
-    "affected_products": [],
-    "references": [
-      "https://spring.io/security/cve-2026-41714"
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows applications using specific versions of Spring AMQP to establish TLS-encrypted connections without proper certificate validation or hostname verification. This could enable man-in-the-middle (MITM) attacks, allowing attackers to intercept, modify, or inject malicious data into the communication between the application and the message broker.",
-      "affected_industries": [
-        "Financial Services",
-        "Healthcare",
-        "E-commerce",
-        "Technology",
-        "Telecommunications",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Update to a patched version of Spring AMQP that addresses CVE-2026-41714, if available.",
-        "Ensure that applications explicitly call setUseSSL(true) and configure proper certificate validation and hostname verification when using RabbitConnectionFactoryBean.setUri.",
-        "Conduct a security audit of all applications using affected Spring AMQP versions to identify and mitigate potential vulnerabilities."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "cve-CVE-2026-41711",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:51.337",
-    "title": "CVE-2026-41711 - Applications using Spring Data Commons may be vulnerable to a Denial of Service (DoS) attack leading",
-    "description": "Applications using Spring Data Commons may be vulnerable to a Denial of Service (DoS) attack leading to a StackOverflowException when parsing Sort parameters.\n\nAffected versions:\nSpring Data Commons 4.0.0 through 4.0.5; 3.5.0 through 3.5.11; 3.4.0 through 3.4.14; 3.3.0 through 3.3.16; 3.2.0 through 3.2.15; 3.1.0 through 3.1.14; 3.0.0 through 3.0.15; 2.7.0 through 2.7.19.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-41711",
-    "cvss_score": 5.9,
-    "affected_products": [
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://spring.io/security/cve-2026-41711"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41711.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-41706",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:51.223",
-    "title": "CVE-2026-41706 - Spring Security's CookieRequestCache and CookieServerRequestCache store the pre-authentication reque",
-    "description": "Spring Security's CookieRequestCache and CookieServerRequestCache store the pre-authentication request URL in a browser cookie so that users can be redirected back to their intended destination after a successful login. In affected versions, the full absolute URL is stored in the cookie and is used without validation as the post-login redirect target.\n\nAffected versions:\nSpring Security 5.7.0 through 5.7.23; 5.8.0 through 5.8.25; 6.3.0 through 6.3.16; 6.4.0 through 6.4.16; 6.5.0 through 6.5.10; 7.0.0 through 7.0.5.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-41706",
-    "cvss_score": 6.1,
-    "affected_products": [],
-    "references": [
-      "https://spring.io/security/cve-2026-41706"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41706.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-41701",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:51.107",
-    "title": "CVE-2026-41701 - Correlation IDs for replies in the RabbitTemplate.sendAndReceive() with the fixed reply queue are pr",
-    "description": "Correlation IDs for replies in the RabbitTemplate.sendAndReceive() with the fixed reply queue are predictable due to internal simple counter.\n\nAffected versions:\nSpring AMQP 4.0.0 through 4.0.3; 3.2.0 through 3.2.10; 3.1.0 through 3.1.15; 2.4.0 through 2.4.17.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-41701",
-    "cvss_score": 4.4,
-    "affected_products": [],
-    "references": [
-      "https://spring.io/security/cve-2026-41701"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41701.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-41697",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:50.947",
-    "title": "CVE-2026-41697 - Spring Data Relational does not properly escape binding values of externally-controlled input when u",
-    "description": "Spring Data Relational does not properly escape binding values of externally-controlled input when using StringMatcher (STARTING, ENDING, or CONTAINING) in Query By Example (QBE). An attacker can supply wildcard characters to perform boolean-based blind data inference.\n\nAffected versions:\nSpring Data Relational/JDBC/R2DBC 4.0.0 through 4.0.5; 3.5.0 through 3.5.11; 3.4.0 through 3.4.14; 3.3.0 through 3.3.16; 3.2.0 through 3.2.15; 3.1.0 through 3.1.14; 3.0.0 through 3.0.15; 2.4.0 through 2.4.19.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-41697",
-    "cvss_score": 4.8,
-    "affected_products": [],
-    "references": [
-      "https://spring.io/security/cve-2026-41697"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41697.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-41696",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:50.800",
-    "title": "CVE-2026-41696 - Spring Data MongoDB repository query methods annotated with @Query that use regex parameter binding ",
-    "description": "Spring Data MongoDB repository query methods annotated with @Query that use regex parameter binding perform insufficient validation of the bound parameter. An attacker can supply a crafted string to break out of the intended regular expression quoting.\n\nAffected versions:\nSpring Data MongoDB 5.0.0 through 5.0.5; 4.5.0 through 4.5.11; 4.4.0 through 4.4.14; 4.3.0 through 4.3.16; 4.2.0 through 4.2.15; 4.1.0 through 4.1.14; 4.0.0 through 4.0.15; 3.4.0 through 3.4.19.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-41696",
-    "cvss_score": 5.9,
-    "affected_products": [],
-    "references": [
-      "https://spring.io/security/cve-2026-41696"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41696.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-41695",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:50.683",
-    "title": "CVE-2026-41695 - Spring Data Commons applications may be vulnerable to denial of service through resource exhaustion ",
-    "description": "Spring Data Commons applications may be vulnerable to denial of service through resource exhaustion when attacker-controlled property path strings are passed to MappingContext property path resolution.\n\nAffected versions:\nSpring Data Commons 4.0.0 through 4.0.5; 3.5.0 through 3.5.11; 3.4.0 through 3.4.14.",
-    "severity": "high",
-    "cve_id": "CVE-2026-41695",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://spring.io/security/cve-2026-41695"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41695.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-41694",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:50.560",
-    "title": "CVE-2026-41694 - Since Spring Security SAML decrypts SAML Responses as well as elements of SAML LogoutRequests and Lo",
-    "description": "Since Spring Security SAML decrypts SAML Responses as well as elements of SAML LogoutRequests and LogoutResponses without requiring a valid signature, attackers may be able to craft these SAML payloads and use the Service Provider as a decryption oracle.\n\nAffected versions:\nSpring Security 5.7.0 through 5.7.23; 5.8.0 through 5.8.25; 6.3.0 through 6.3.16; 6.4.0 through 6.4.16; 6.5.0 through 6.5.10; 7.0.0 through 7.0.5.",
-    "severity": "low",
-    "cve_id": "CVE-2026-41694",
-    "cvss_score": 3.7,
-    "affected_products": [
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://spring.io/security/cve-2026-41694"
-    ],
-    "ai_analysis": {
-      "risk_score": 35,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-41694.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 35
-  },
-  {
-    "id": "cve-CVE-2026-41008",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:50.427",
-    "title": "CVE-2026-41008 - Spring Security Authorization Server's authorization endpoint performs insufficient validation of th",
-    "description": "Spring Security Authorization Server's authorization endpoint performs insufficient validation of the request_uri parameter. An attacker can craft a malicious authorization request containing an invalid request_uri and an arbitrary, unvalidated redirect_uri, which can lead to an Open Redirect vulnerability.\n\nAffected versions:\nSpring Security 7.0.0 through 7.0.5.\nSpring Authorization Server 1.5.0 through 1.5.7.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-41008",
-    "cvss_score": 6.1,
-    "affected_products": [],
-    "references": [
-      "https://spring.io/security/cve-2026-41008"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-41008.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-41003",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:50.307",
-    "title": "CVE-2026-41003 - An attacker able to influence values in RelyingPartyRegistration may be able to run arbitrary code o",
-    "description": "An attacker able to influence values in RelyingPartyRegistration may be able to run arbitrary code on HTML forms generated by Spring Security filters.\n\nAffected versions:\nSpring Security 5.7.0 through 5.7.23; 5.8.0 through 5.8.25; 6.3.0 through 6.3.16; 6.4.0 through 6.4.16; 6.5.0 through 6.5.10; 7.0.0 through 7.0.5.",
-    "severity": "high",
-    "cve_id": "CVE-2026-41003",
-    "cvss_score": 7.6,
-    "affected_products": [
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://spring.io/security/cve-2026-41003"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41003.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-40993",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:50.197",
-    "title": "CVE-2026-40993 - An attacker with write permissions to the database table managed by JdbcAssertingPartyMetadataReposi",
-    "description": "An attacker with write permissions to the database table managed by JdbcAssertingPartyMetadataRepository (saml2_asserting_party_metadata) may be able to store malicious serialized payloads in the columns containing the collection of verification or encryption credentials (verification_credentials and encryption_credentials, respectively).\n\nAffected versions:\nSpring Security 7.0.0 through 7.0.5.",
-    "severity": "high",
-    "cve_id": "CVE-2026-40993",
-    "cvss_score": 7.3,
-    "affected_products": [],
-    "references": [
-      "https://spring.io/security/cve-2026-40993"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-40993.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-40991",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:50.087",
-    "title": "CVE-2026-40991 - When using spring-restdocs-webtestclient or spring-restdocs-restassured to document a remote API acc",
-    "description": "When using spring-restdocs-webtestclient or spring-restdocs-restassured to document a remote API accessed over HTTP, an attacker who compromises the API or tricks the user into documenting a malicious API can perform an XXE injection attack when the documentation-generating tests are next executed.\n\nAffected versions:\nSpring REST Docs 4.0.0; 3.0.0 through 3.0.5; 2.0.0.RELEASE through 2.0.8.RELEASE.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-40991",
-    "cvss_score": 5.9,
-    "affected_products": [],
-    "references": [
-      "https://spring.io/security/cve-2026-40991"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-40991.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-40988",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-10T00:16:49.527",
-    "title": "CVE-2026-40988 - An application using spring-security-saml2-service-provider and the REDIRECT binding for SAML 2.0 Lo",
-    "description": "An application using spring-security-saml2-service-provider and the REDIRECT binding for SAML 2.0 Login or Logout may be vulnerable to a denial of service by way of an unbounded writer that inflates the compressed SAML payload into memory.\n\nAffected versions:\nSpring Security 5.7.0 through 5.7.23; 5.8.0 through 5.8.25; 6.3.0 through 6.3.16; 6.4.0 through 6.4.16; 6.5.0 through 6.5.10; 7.0.0 through 7.0.5.",
-    "severity": "high",
-    "cve_id": "CVE-2026-40988",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://spring.io/security/cve-2026-40988"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-40988.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
+      "urgency": "critical"
     },
     "risk_score": 85
   }
