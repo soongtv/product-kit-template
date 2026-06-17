@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1781694617662-1",
+    "id": "twitter-1781711647158-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-17T11:10:17.662Z",
+    "timestamp": "2026-06-17T15:54:07.158Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,25 +10,29 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "risk_score": 85,
+      "impact_assessment": "The ransomware campaign poses a significant threat to cloud-based infrastructure, potentially leading to data encryption, service disruptions, financial losses, and reputational damage. The use of compromised CI/CD pipelines increases the risk of widespread deployment and lateral movement within affected environments.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "Retail",
+        "Manufacturing",
+        "Media and Entertainment"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately review and secure CI/CD pipelines by implementing multi-factor authentication (MFA) and access controls.",
+        "Conduct a comprehensive audit of cloud infrastructure to identify and patch vulnerabilities, especially in deployment processes.",
+        "Implement robust backup and recovery strategies to ensure data can be restored in the event of an attack."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
-    "id": "hn-1781694617662-1",
+    "id": "hn-1781711647158-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-17T11:10:17.662Z",
+    "timestamp": "2026-06-17T15:54:07.158Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,30 +56,27 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-7v5m-pr3q-6453",
+    "id": "gh-GHSA-cx9v-4qj2-jrw6",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:43:15Z",
-    "title": "Pi Agent: Potential XSS in HTML session exports via Markdown URL sanitization bypass",
-    "description": "# Potential XSS in HTML session exports via Markdown URL handling\n\nPi HTML exports render session Markdown into a static HTML file. Affected versions did not consistently reject unsafe Markdown link and image URL schemes. In versions with scheme filtering, C0 control characters in the URL scheme could bypass the check because browsers normalize those characters before navigation.\n\n## Impact\n\nThe realistic attack path is indirect. An attacker would need to get suitable Markdown into a session, fo",
-    "severity": "low",
-    "cve_id": "CVE-2026-54326",
-    "ghsa_id": "GHSA-7v5m-pr3q-6453",
+    "timestamp": "2026-06-17T14:31:16Z",
+    "title": "Open WebUI BOLA: `search_knowledge_files` Allows Unauthorized Knowledge Base File Enumeration",
+    "description": "## Summary\n\nOpen WebUI has a Broken Object Level Authorization (BOLA) vulnerability in the builtin `search_knowledge_files` tool.\n\nWhen native function calling is enabled and the selected model has no attached knowledge bases, an authenticated user can call `search_knowledge_files` with an arbitrary `knowledge_id`. The function then returns file metadata from that knowledge base without checking whether the user has read access.\n\nThis allows unauthorized enumeration of private or restricted know",
+    "severity": "medium",
+    "cve_id": "CVE-2026-54016",
+    "ghsa_id": "GHSA-cx9v-4qj2-jrw6",
     "affected_packages": [
-      "@mariozechner/pi-coding-agent",
-      "@earendil-works/pi-coding-agent"
+      "open-webui"
     ],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-54326.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54016.",
       "affected_industries": [
         "Technology",
         "General"
@@ -85,21 +86,354 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "low"
+      "urgency": "medium"
     },
-    "risk_score": 25
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-cr4g-f395-h25h",
+    "id": "gh-GHSA-4r4w-2wgp-w7cj",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:42:04Z",
-    "title": "Gitea: Token scope bypass on web archive download endpoint",
-    "description": "## Summary\n\nPR #37698 added checkDownloadTokenScope to /raw/*, /media/*, and attachment download web endpoints. The /archive/* endpoint (repo.Download in routers/web/repo/repo.go:372) was not included in the fix. This endpoint accepts OAuth2 tokens via webAuth.AllowOAuth2 (registered at routers/web/web.go:1649-1652) but does not call checkDownloadTokenScope or CheckRepoScopedToken.\n\nA personal access token with any non-repository scope (e.g., read:issue or read:misc) can download full repository",
+    "timestamp": "2026-06-17T14:16:50Z",
+    "title": "Open WebUI Prompt history IDOR: unbound history_id allows cross-prompt read and deletion",
+    "description": "## Summary\n\nOpen WebUI's prompt version-history endpoints authorize the `prompt_id` in the URL but then act on caller-supplied history IDs without verifying that the history row belongs to that prompt (`history_entry.prompt_id == prompt.id`). Three operations are affected:\n\n- `GET /api/v1/prompts/id/{prompt_id}/history/diff` — returns another prompt's history snapshots (read).\n- `POST /api/v1/prompts/id/{prompt_id}/update/version` — restores another prompt's snapshot into the caller's prompt, ex",
     "severity": "medium",
-    "cve_id": "CVE-2026-20706",
-    "ghsa_id": "GHSA-cr4g-f395-h25h",
+    "cve_id": "CVE-2026-54015",
+    "ghsa_id": "GHSA-4r4w-2wgp-w7cj",
     "affected_packages": [
-      "code.gitea.io/gitea"
+      "open-webui"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows unauthorized access to prompt history data and the ability to overwrite or delete prompt versions. This could lead to data leakage, unauthorized modifications, and potential disruption of services relying on prompt integrity.",
+      "affected_industries": [
+        "Technology",
+        "Artificial Intelligence",
+        "Software Development",
+        "Cloud Services"
+      ],
+      "recommended_actions": [
+        "Implement strict validation to ensure that history IDs are verified against the associated prompt IDs before performing any operations.",
+        "Perform a comprehensive security audit of all endpoints to identify and fix similar IDOR (Insecure Direct Object Reference) vulnerabilities.",
+        "Deploy logging and monitoring to detect unauthorized access or unusual activity related to prompt history operations."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-j2c8-v969-8r5c",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T14:16:25Z",
+    "title": "Open WebUI: Sibling-Prefix Path Traversal via /cache/{path}",
+    "description": "## Summary\n\nA path traversal vulnerability exists in open-webui's cache file serving endpoint that allows any authenticated user to read files from sibling directories outside the intended cache directory, by exploiting an incomplete `startswith` containment check that lacks a trailing path separator.\n\nThe root cause is that `serve_cache_file()` in `open_webui/main.py` validates the resolved path with `file_path.startswith(os.path.abspath(CACHE_DIR))` — without appending `os.sep`. This allows an",
+    "severity": "medium",
+    "cve_id": "CVE-2026-54014",
+    "ghsa_id": "GHSA-j2c8-v969-8r5c",
+    "affected_packages": [
+      "open-webui"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54014.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-v2qm-5wxj-qhj7",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T14:15:52Z",
+    "title": "Open WebUI: Stored XSS to Account Takeover via Model Profile Images ",
+    "description": "# Stored XSS to Account Takeover via Model Profile Images in Open WebUI\n\n**Affected:** Open WebUI <= 0.9.5\n**Bypass of:** GHSA-3wgj-c2hg-vm6q, GHSA-3856-3vxq-m6fc\n\n---\n\n## TL;DR\n\nOpen WebUI patched SVG XSS in user profile images and webhook profile images  but forgot to apply the same fix to **model** profile images. The `ModelMeta` class has no `validate_profile_image_url` field validator, and the model image serving endpoint has no MIME allowlist or `nosniff` header. Any authenticated user wit",
+    "severity": "high",
+    "cve_id": "CVE-2026-54013",
+    "ghsa_id": "GHSA-v2qm-5wxj-qhj7",
+    "affected_packages": [
+      "open-webui"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54013.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-vjqm-6gcc-62cr",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T14:15:33Z",
+    "title": "Open WebUI: Forged model meta.knowledge allows cross-user file read and deletion",
+    "description": "## Summary\n\nOpen WebUI lets a user who can create, update, or import workspace models store arbitrary `meta.knowledge` entries on their model without checking whether they own or can read the referenced files. Open WebUI then treats `meta.knowledge` entries of type `file` as an authorization source in two places: the built-in `view_file` tool reads the file's extracted text, and `has_access_to_file()`'s model branch authorizes the file content and file delete endpoints. A malicious model owner c",
+    "severity": "high",
+    "cve_id": "CVE-2026-54012",
+    "ghsa_id": "GHSA-vjqm-6gcc-62cr",
+    "affected_packages": [
+      "open-webui"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54012.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-v8qj-hxv7-mgvv",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T14:14:05Z",
+    "title": "Open WebUI: Stored XSS in Mermaid Markdown Preview",
+    "description": "## Summary\n\nOpen WebUI renders Mermaid blocks from Markdown files in the file preview panel and inserts the generated SVG into the DOM using `innerHTML`.\n\nBecause Mermaid is configured with `securityLevel: 'loose'`, attacker-controlled Mermaid content can be rendered unsafely in this flow. A working payload was validated through the Markdown preview path, resulting in JavaScript execution in the victim’s browser under the application origin.\n\nThis is a confirmed stored XSS vulnerability reachabl",
+    "severity": "high",
+    "cve_id": "CVE-2026-54011",
+    "ghsa_id": "GHSA-v8qj-hxv7-mgvv",
+    "affected_packages": [
+      "open-webui"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "This stored XSS vulnerability allows an attacker to execute arbitrary JavaScript in the victim's browser under the application's origin. This can lead to data theft, session hijacking, or unauthorized actions performed on behalf of the victim. The vulnerability is particularly dangerous in environments where sensitive data is handled or where users have elevated privileges.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Education",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Update the Mermaid configuration to use `securityLevel: 'strict'` to prevent unsafe rendering of attacker-controlled content.",
+        "Sanitize all user-generated Markdown content before rendering it in the preview panel to ensure no malicious scripts are executed.",
+        "Apply security patches or updates provided by the application vendor to address CVE-2026-54011."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-vrhc-3fr6-pc3c",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T14:12:20Z",
+    "title": "Open WebUI: Forged chat-file link allows cross-user file read and deletion",
+    "description": "## Summary\n\nOpen WebUI `v0.9.5` lets an authenticated user attach arbitrary `file_id` values to their own chat message without checking whether they own or can read those files. If the attacker then shares that chat and grants themselves read access, `has_access_to_file()` treats the victim file as accessible through the shared chat, and the file endpoints read or delete the victim file.\n\n## Impact\n\nSecurity boundary crossed: file confidentiality and integrity.\n\nAn authenticated attacker who kno",
+    "severity": "high",
+    "cve_id": "CVE-2026-54010",
+    "ghsa_id": "GHSA-vrhc-3fr6-pc3c",
+    "affected_packages": [
+      "open-webui"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows an authenticated attacker to bypass file ownership checks, enabling unauthorized access to sensitive files and potential deletion of critical data. This compromises file confidentiality and integrity, posing a significant security risk.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately patch the Open WebUI to a version that addresses CVE-2026-54010 or apply any available security updates.",
+        "Implement stricter file ownership validation checks in the application to ensure file access is restricted to authorized users only.",
+        "Conduct a security audit to identify and mitigate any other potential vulnerabilities related to file access and sharing mechanisms."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-wch8-mhj5-9frg",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T14:11:44Z",
+    "title": "Open WebUI: Cross-user file disclosure via /api/chat/completions image_url field",
+    "description": "## summary\n\n`POST /api/chat/completions` accepts an `image_url.url` value that, when it does NOT start with `http://`, `https://`, or `data:image/`, is interpreted as a file id and resolved against the global file table with no ownership check. An authenticated user can therefore set `image_url.url` to another user's file id, the server reads that file from disk, base64-encodes it, and injects the data URI into the LLM request. The user then prompts the LLM to describe / OCR the file and reads t",
+    "severity": "medium",
+    "cve_id": "CVE-2026-54009",
+    "ghsa_id": "GHSA-wch8-mhj5-9frg",
+    "affected_packages": [
+      "open-webui"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54009.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-226f-f24g-524w",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T14:10:56Z",
+    "title": "Open WebUI: Redirect-Bypass SSRF in OAuth `_process_picture_url` (incomplete-fix sibling of CVE-2026-45401)",
+    "description": "## Summary\n\n`backend/open_webui/utils/oauth.py::_process_picture_url` (v0.9.5, lines 1435-1470) calls `validate_url(picture_url)` on the initial URL only, then invokes `aiohttp.ClientSession.get(picture_url, ...)` without `allow_redirects=False`. aiohttp's default is `allow_redirects=True, max_redirects=10`; the function does not pass the project's `AIOHTTP_CLIENT_ALLOW_REDIRECTS` env constant either. An attacker with a valid OAuth IdP identity can therefore submit a public URL that 302-redirect",
+    "severity": "high",
+    "cve_id": "CVE-2026-54008",
+    "ghsa_id": "GHSA-226f-f24g-524w",
+    "affected_packages": [
+      "open-webui"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54008.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-3vv5-8xxp-4f55",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T14:10:35Z",
+    "title": "Open WebUI: Cross-origin postMessage confirmation bypass via action:submit",
+    "description": "### Summary\n\nThe chat message listener allows non-same-origin `input:prompt` and `action:submit` messages, so an external site can set prompt text and trigger `submitPrompt()` in an authenticated victim session. I validated this with a cross-origin attacker page that auto-posted messages and caused unauthorized `POST /api/v1/chats/new` and `POST /api/chat/completions` requests containing attacker-controlled prompts. This enables cross-site forced actions and model/tool execution under victim pri",
+    "severity": "high",
+    "cve_id": "CVE-2026-54007",
+    "ghsa_id": "GHSA-3vv5-8xxp-4f55",
+    "affected_packages": [
+      "open-webui"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54007.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-f3g7-59qc-pqg6",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T14:09:53Z",
+    "title": "Open WebUI IDOR: Calendar event re-parenting allows writing events into another user's calendar",
+    "description": "### Summary\n\n`POST /api/v1/calendars/events/{event_id}/update` validates that the caller has **write** access to the calendar the event *currently* belongs to, but does not validate the **destination** `calendar_id` supplied in the request body. The model layer then persists the new `calendar_id` unconditionally.\n\nA regular `user`-role account can therefore create an event in their own calendar and immediately move it into any other user's calendar whose ID they know — bypassing the authorizatio",
+    "severity": "medium",
+    "cve_id": "CVE-2026-54006",
+    "ghsa_id": "GHSA-f3g7-59qc-pqg6",
+    "affected_packages": [
+      "open-webui"
     ],
     "cwes": [
       null
@@ -110,33 +444,71 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows unauthorized access to full repository archives using personal access tokens with non-repository scopes. This could lead to unauthorized data exposure, intellectual property theft, or leakage of sensitive information.",
+      "impact_assessment": "This vulnerability allows unauthorized users to move events into other users' calendars, potentially leading to data manipulation, unauthorized access to sensitive information, and disruption of workflows. It could also be exploited for phishing or social engineering attacks by injecting malicious or misleading events into a target's calendar.",
       "affected_industries": [
-        "Software Development",
         "Technology",
-        "Open Source Projects",
-        "DevOps and CI/CD Platforms"
+        "Healthcare",
+        "Finance",
+        "Education",
+        "Government",
+        "Retail"
       ],
       "recommended_actions": [
-        "Apply the patch or update to the latest version of Gitea that addresses CVE-2026-20706 to ensure proper token scope validation.",
-        "Audit and rotate all personal access tokens to prevent potential misuse of improperly scoped tokens.",
-        "Implement monitoring and logging to detect unauthorized repository archive downloads and investigate any suspicious activity."
+        "Implement strict validation checks on the destination `calendar_id` to ensure the user has the necessary write permissions before updating the event.",
+        "Conduct a thorough review of the authorization logic in the WebUI API to identify and patch similar vulnerabilities.",
+        "Monitor logs for suspicious activity, such as unexpected event movements between calendars, and alert administrators to investigate further."
       ],
       "urgency": "high"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-3fwp-p5rj-2pxf",
+    "id": "gh-GHSA-hmcr-rmjq-47qr",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:41:42Z",
-    "title": "Gitea: Missing repository-unit authorization on issue-template API endpoints",
-    "description": "## Summary\n\nThree Gitea API endpoints — `GET /repos/{owner}/{repo}/issue_templates`,\n`GET /repos/{owner}/{repo}/issue_config` and `GET /repos/{owner}/{repo}/issue_config/validate`\n— read files from the repository's **Code** default branch (`.gitea/ISSUE_TEMPLATE/*`\nand `issue_config.yaml`) and return their contents, but are registered **without**\nthe `reqRepoReader(unit.TypeCode)` authorization middleware that every sibling\nCode-tree endpoint in the same route group carries.\n\nA user who has acce",
+    "timestamp": "2026-06-17T14:08:26Z",
+    "title": "NocoDB: Server-Side Request Forgery via Spreadsheet Import Endpoint",
+    "description": "### Summary\nThe spreadsheet-import endpoint `axiosRequestMake` could be used as a generic\nHTTP proxy. Before the fix it was reachable unauthenticated, and its\nURL-extension allowlist was a regex tested against the full URL string, so\nURLs whose query string ended in `.csv` (for example\n`https://example.com/robots.txt?.csv`) satisfied the gate even though the\nunderlying request was for `robots.txt`.\n\n### Details\nThree layers of protection now apply to the endpoint:\n\n- The controller is decorated ",
     "severity": "medium",
-    "cve_id": "CVE-2026-27783",
-    "ghsa_id": "GHSA-3fwp-p5rj-2pxf",
+    "cve_id": "CVE-2026-53931",
+    "ghsa_id": "GHSA-hmcr-rmjq-47qr",
     "affected_packages": [
-      "code.gitea.io/gitea"
+      "nocodb"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53931.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-h6vv-pcq8-7xm4",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T14:08:04Z",
+    "title": "NocoDB: Server-Side Request Forgery via Base Migration URL",
+    "description": "### Summary\nThe base-migration endpoint accepted a caller-supplied URL that the migration worker\ndereferenced without enforcing protocol or destination, allowing scheme abuse\n(`file:`, `ftp:`, etc.) and probing of internal HTTP destinations.\n\n### Details\nThe `migrate` endpoint is restricted to the workspace owner role by ACL. The remaining\ngaps were (a) protocol validation — the controller now parses `body.migrationUrl` as a\n`URL` and rejects anything whose protocol is not `http:` or `https:` — ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53930",
+    "ghsa_id": "GHSA-h6vv-pcq8-7xm4",
+    "affected_packages": [
+      "nocodb"
     ],
     "cwes": [
       null
@@ -147,33 +519,34 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows unauthorized users with access to the affected API endpoints to read sensitive files from the repository's default branch without proper authorization. This could lead to exposure of confidential information, such as issue templates or configuration files, potentially aiding in further exploitation or reconnaissance.",
+      "impact_assessment": "The vulnerability allows attackers to exploit the server-side request forgery (SSRF) flaw in the NocoDB base-migration endpoint. This could lead to unauthorized access to internal systems, data exfiltration, or further exploitation by abusing internal services or protocols.",
       "affected_industries": [
-        "Software Development",
         "Technology",
-        "DevOps",
-        "Open Source Projects"
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Education"
       ],
       "recommended_actions": [
-        "Apply the patch or update to the latest version of Gitea that addresses CVE-2026-27783 to ensure proper authorization checks are in place.",
-        "Review access permissions for repositories to minimize exposure to unauthorized users while the vulnerability is being mitigated.",
-        "Conduct an audit of repository contents to identify and remove any sensitive information that may be exposed through the affected API endpoints."
+        "Update to the latest patched version of NocoDB where the protocol validation for the migration URL has been implemented.",
+        "Restrict access to the `migrate` endpoint by ensuring proper role-based access control (RBAC) and monitoring API usage logs for suspicious activity.",
+        "Implement network-level protections such as firewall rules to block unauthorized outbound requests to internal or sensitive destinations."
       ],
       "urgency": "medium"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-8629-vc8r-5p58",
+    "id": "gh-GHSA-6mhr-74x2-98v9",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:41:31Z",
-    "title": "Gitea: Incomplete CVE-2025-68941 fix: /user/orgs missing checkTokenPublicOnly + switch-case logic flaw",
-    "description": "## Summary\n\nTwo related issues in the token public-only scope enforcement introduced by PR #32204 (CVE-2025-68941 fix). A public-only scoped API token can access private organization data.\n\n## Issue 1: /user/orgs missing checkTokenPublicOnly()\n\n`routers/api/v1/api.go` line 1599:\n```go\nm.Get(\"/user/orgs\", reqToken(), tokenRequiresScopes(\n    auth_model.AccessTokenScopeCategoryUser,\n    auth_model.AccessTokenScopeCategoryOrganization,\n), org.ListMyOrgs)\n// Missing checkTokenPublicOnly()\n```\n\nAdjac",
+    "timestamp": "2026-06-17T14:07:52Z",
+    "title": "NocoDB: Stored Cross-Site Scripting via Secure Attachment",
+    "description": "### Summary\nWith `NC_SECURE_ATTACHMENTS=true`, an authenticated uploader could deliver `.html` or\n`.svg` attachments that the browser rendered inline from the NocoDB origin instead of\nforcing a download.\n\n### Details\nThe signed attachment handler stored response-header overrides under PascalCase keys\n(`ResponseContentDisposition`, `ResponseContentType`) while the controller that served\nthe file read them under lowercase-hyphen names (`response-content-disposition`). The\nmismatch dropped the `Con",
     "severity": "medium",
-    "cve_id": "CVE-2026-25714",
-    "ghsa_id": "GHSA-8629-vc8r-5p58",
+    "cve_id": "CVE-2026-53929",
+    "ghsa_id": "GHSA-6mhr-74x2-98v9",
     "affected_packages": [
-      "code.gitea.io/gitea"
+      "nocodb"
     ],
     "cwes": [
       null
@@ -184,7 +557,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-25714.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53929.",
       "affected_industries": [
         "Technology",
         "General"
@@ -199,182 +572,27 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-mm7c-rhg6-qr4r",
+    "id": "gh-GHSA-r989-7g3j-wjhw",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:41:01Z",
-    "title": "Gitea: Authorization Bypass via \"Allow edits from maintainers\" allows unauthorized commits to any readable repo",
-    "description": "## Summary\n\nAny authenticated low-privilege user with read access to a repository can push arbitrary commits directly to that repository, bypassing all write-access checks.\n\n## Vulnerability\n\nGitea's \"Allow edits from maintainers\" PR option can be abused via reverse-fork PRs:\n\n1. The web UI PR-create endpoint binds `allow_maintainer_edit=true` **without** verifying that the submitter has write access to the HEAD repository.\n2. Gitea allows creating a PR where **BASE = attacker's fork** and **HEA",
-    "severity": "high",
-    "cve_id": "CVE-2026-26231",
-    "ghsa_id": "GHSA-mm7c-rhg6-qr4r",
-    "affected_packages": [
-      "code.gitea.io/gitea"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-26231.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-9r5x-wg6m-x2rc",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:40:34Z",
-    "title": "Gitea: OAuth2 access token scope enforcement bypass via HTTP Basic authentication",
-    "description": "### Summary\n\nGitea fails to enforce OAuth2 access token scopes when the token is submitted via HTTP Basic authentication instead of a Bearer token. An OAuth2 application granted only `read:user` can use the same token as `Authorization: Basic base64(<token>:x-oauth-basic)` and perform write actions, including modifying profiles, adding email addresses, creating repositories, and deleting repositories as the authorizing user.\n\n### Details\n\n**Root cause:** `services/auth/basic.go` accepts OAuth2 a",
-    "severity": "high",
-    "cve_id": "CVE-2026-28699",
-    "ghsa_id": "GHSA-9r5x-wg6m-x2rc",
-    "affected_packages": [
-      "code.gitea.io/gitea"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to bypass OAuth2 access token scope restrictions when using HTTP Basic authentication. This can lead to unauthorized write actions, such as modifying user profiles, adding email addresses, creating repositories, and deleting repositories. It compromises the integrity and confidentiality of user data and resources.",
-      "affected_industries": [
-        "Software Development",
-        "Technology",
-        "DevOps",
-        "Cloud Services",
-        "Open Source Platforms"
-      ],
-      "recommended_actions": [
-        "Apply the security patch or update to the latest version of Gitea as soon as it becomes available.",
-        "Restrict the use of HTTP Basic authentication for OAuth2 tokens and enforce the use of Bearer tokens instead.",
-        "Audit access logs for suspicious activity, such as unauthorized repository modifications or profile changes."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-pm6v-2h4w-4rp2",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:40:04Z",
-    "title": "Gogs: Overwriting critical files results in a denial of service",
-    "description": "**Vulnerability type:** Path Traversal\n**Impact:** DoS\n**Exploitation prerequisite:** authorized user\n**Description:** As an authorized user, an intruder can dictate the value which is passed to the `git diff` command which, together with bypassing the filtering of the passed value, allows the user to bypass the target directory and write the result of the comparison to any arbitrary path.\n**Researcher:** Artyom Kulakov (Positive Technologies)\n**Mitigation:**\n1. https://github.com/gogs/gogs/blob",
-    "severity": "high",
-    "cve_id": "CVE-2026-52797",
-    "ghsa_id": "GHSA-pm6v-2h4w-4rp2",
-    "affected_packages": [
-      "gogs.io/gogs"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows an authorized user to exploit a path traversal issue, potentially overwriting critical files and causing a denial of service (DoS). This could disrupt operations, compromise system integrity, and lead to downtime.",
-      "affected_industries": [
-        "Software Development",
-        "Technology",
-        "DevOps",
-        "Cloud Services",
-        "Enterprises using self-hosted version control systems"
-      ],
-      "recommended_actions": [
-        "Immediately update to the latest patched version of Gogs that addresses CVE-2026-52797.",
-        "Restrict access to authorized users and enforce the principle of least privilege to limit the risk of exploitation.",
-        "Monitor logs for unusual activity, such as unauthorized file writes or unexpected usage of the `git diff` command."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-qw24-gh76-8rvv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:39:41Z",
-    "title": "Rclone: Unauthenticated command execution in `rclone rcd --rc-serve` via inline remote instantiation, bypassing CVE-2026-41179 fix",
-    "description": "## Summary\n\n`rclone rcd --rc-serve` accepts unauthenticated `GET` and `HEAD` requests to paths of the form:\n\n```text\n/[remote:path]/object\n```\n\nThe `remote` value is parsed from the URL and passed to normal backend initialization. Inline remote configuration can set backend options that execute local commands during initialization. As a result, a single unauthenticated `GET` or `HEAD` request can execute a command as the rclone process user.\n\nVersions from 1.55.0 onwards are vulnerable to comman",
-    "severity": "critical",
-    "cve_id": "CVE-2026-49980",
-    "ghsa_id": "GHSA-qw24-gh76-8rvv",
-    "affected_packages": [
-      "github.com/rclone/rclone"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-49980.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-x6qj-4h56-5rj5",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:39:16Z",
-    "title": "@nuxt/webpack-builder and @nuxt/rspack-builder dev server same-origin check bypassed when Sec-Fetch-Site, Origin, and Referer are all absent (incomplete fix for GHSA-6m52-m754-pw2g)",
-    "description": "### Summary\nThis is an incomplete fix for [GHSA-6m52-m754-pw2g](https://github.com/nuxt/nuxt/security/advisories/GHSA-6m52-m754-pw2g). Source code may still be stolen during dev when using the webpack / rspack builder if the dev server is bound to a non-loopback address (e.g. `nuxt dev --host`) and the developer opens a malicious site on the same network.\n\n### Details\nThe fix for [GHSA-6m52-m754-pw2g](https://github.com/nuxt/nuxt/security/advisories/GHSA-6m52-m754-pw2g) added an `Origin` / `Refe",
+    "timestamp": "2026-06-17T14:07:33Z",
+    "title": "NocoDB: Refresh Tokens Persist Through Password Recovery",
+    "description": "### Summary\nA stolen refresh token survived a password-forgot flow and could be used to mint fresh\nJWTs even after the user reset their password.\n\n### Details\n`passwordChange` and `passwordReset` deleted the user's refresh tokens, but\n`passwordForgot` only rotated `token_version` and revoked OAuth tokens — it did not\ncall `UserRefreshToken.deleteAllUserToken(user.id)`. An attacker holding a captured\nrefresh cookie could still exchange it for a new access token after the victim\ntriggered the reco",
     "severity": "medium",
-    "cve_id": "CVE-2026-49993",
-    "ghsa_id": "GHSA-x6qj-4h56-5rj5",
+    "cve_id": "CVE-2026-53928",
+    "ghsa_id": "GHSA-r989-7g3j-wjhw",
     "affected_packages": [
-      "@nuxt/webpack-builder",
-      "@nuxt/webpack-builder",
-      "@nuxt/rspack-builder",
-      "@nuxt/rspack-builder"
+      "nocodb"
     ],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-49993.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53928.",
       "affected_industries": [
         "Technology",
         "General"
@@ -389,93 +607,16 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-m3q2-p4fw-w38m",
+    "id": "gh-GHSA-gprh-27j3-g5h4",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:38:47Z",
-    "title": "Cross-site scripting via <NoScript> slot content in Nuxt's head components",
-    "description": "### Impact\n\nNuxt's globally registered `<NoScript>` component (from `@unhead/vue` head components, re-exported by Nuxt) wrote its default-slot content to the `innerHTML` of the `<noscript>` head tag, bypassing the HTML escaping that `{{ }}` interpolation normally applies in Vue templates.\n\nApplications that placed untrusted, attacker-controllable data inside a `<NoScript>` slot, for example:\n\n```vue\n<NoScript>{{ route.query.banner }}</NoScript>\n```\n\nwould emit that value unescaped inside `<noscr",
-    "severity": "low",
-    "cve_id": null,
-    "ghsa_id": "GHSA-m3q2-p4fw-w38m",
+    "timestamp": "2026-06-17T14:06:43Z",
+    "title": "NocoDB: Server-Side Request Forgery via Spreadsheet Fetch URL",
+    "description": "### Summary\nThe spreadsheet-fetch endpoint (`axiosRequestMake`) accepted URLs whose path\ncontained a permitted extension anywhere in the string, and applied a hand-rolled\nregex blocklist that omitted `127.0.0.0/8` and `169.254.0.0/16`, allowing the\ncloud-metadata endpoint to be reached with a crafted URL.\n\n### Details\nThe extension matcher is now anchored to the end of the path or immediately before\nthe query string (`/\\.(xls|xlsx|xlsm|ods|ots)(\\?|$)/i` and `/\\.(csv)(\\?|$)/i`), so\n`http://169.25",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53927",
+    "ghsa_id": "GHSA-gprh-27j3-g5h4",
     "affected_packages": [
-      "nuxt",
-      "nuxt"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-4xpc-pv4p-pm3w",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:38:26Z",
-    "title": "LiteLLM: Authentication Bypass via Host Header Injection",
-    "description": "### Impact\n\nA Host-header parsing flaw in the LiteLLM proxy could, under specific conditions, allow unauthenticated access to protected management routes.\n\nThe auth layer derived the effective route from `request.url.path` in `litellm/proxy/auth/auth_utils.py::get_request_route()`, which Starlette reconstructs from the `Host` header. A crafted `Host` could therefore make the auth gate evaluate a different route from the one FastAPI dispatched.\n\n**Most deployments are not affected.** The bypass i",
-    "severity": "critical",
-    "cve_id": "CVE-2026-49468",
-    "ghsa_id": "GHSA-4xpc-pv4p-pm3w",
-    "affected_packages": [
-      "litellm"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 92,
-      "impact_assessment": "The vulnerability allows an attacker to bypass authentication and gain unauthorized access to protected management routes. This could lead to unauthorized control of sensitive systems, data breaches, or further exploitation of the application.",
-      "affected_industries": [
-        "Technology",
-        "Cloud Service Providers",
-        "SaaS Platforms",
-        "Financial Services",
-        "Healthcare"
-      ],
-      "recommended_actions": [
-        "Immediately update LiteLLM to the latest patched version addressing CVE-2026-49468.",
-        "Implement strict validation of the Host header to prevent manipulation and ensure it matches expected values.",
-        "Conduct a security review of exposed management routes and restrict access to trusted IP ranges or VPNs."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 92
-  },
-  {
-    "id": "gh-GHSA-cc8w-r4qh-3v65",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:38:12Z",
-    "title": "Gitea: Git Smart HTTP Skips Repository Token Scopes for Bearer Tokens",
-    "description": "### Summary\nGitea v1.26.1 enforces repository-scoped access-token permissions on repository operations. In the Git Smart HTTP path, however, this check runs only when the token is presented via HTTP Basic authentication — `CheckRepoScopedToken()` returns early unless `ctx.IsBasicAuth` is true — so the same token sent as `Authorization: Bearer <token>` bypasses the scope check entirely.\n\nAs a result, a PAT or OAuth2 token presented as a Bearer credential can clone or fetch private repositories wi",
-    "severity": "high",
-    "cve_id": "CVE-2026-28744",
-    "ghsa_id": "GHSA-cc8w-r4qh-3v65",
-    "affected_packages": [
-      "code.gitea.io/gitea"
+      "nocodb"
     ],
     "cwes": [
       null
@@ -485,199 +626,89 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-28744.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-rm2v-h48j-895m",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:34:10Z",
-    "title": "n8n: SecurityScorecard Node Leaks API Token to User-Controlled Host",
-    "description": "## Impact\nAn authenticated user with permission to create or modify workflows and access to a SecurityScorecard credential with limited allowed domains could configure the SecurityScorecard node's report download operation to target an attacker-controlled URL. The node attached the SecurityScorecard API token to the outbound request, causing the credential to be sent to the attacker-controlled host bypassing credential configured limitations and exfiltrating.\n\n## Patches\nThe issue has been fixed",
-    "severity": "high",
-    "cve_id": "CVE-2026-54304",
-    "ghsa_id": "GHSA-rm2v-h48j-895m",
-    "affected_packages": [
-      "n8n",
-      "n8n",
-      "n8n"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows an attacker to exfiltrate API tokens by exploiting a misconfiguration in the n8n SecurityScorecard node. This could lead to unauthorized access to sensitive data or systems integrated with the compromised API token, potentially resulting in data breaches or further exploitation.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to exploit a Server-Side Request Forgery (SSRF) flaw in the NocoDB spreadsheet-fetch endpoint, potentially enabling unauthorized access to sensitive internal services, such as cloud metadata endpoints. This could lead to data exfiltration, privilege escalation, or further exploitation of internal systems.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
-        "Retail",
-        "Government",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Immediately update n8n to the latest patched version that addresses CVE-2026-54304.",
-        "Audit workflows and credentials in n8n to identify any suspicious configurations or unauthorized access.",
-        "Implement strict access controls and monitor API token usage for unusual activity."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-qrx8-25qr-5r7v",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:32:31Z",
-    "title": "n8n: MCP Browser HTTP Transport Exposes Unauthenticated Browser-Control Sessions",
-    "description": "## Impact\nWhen `@n8n/mcp-browser` is run in HTTP transport mode, the MCP endpoint accepts session initialization and tool invocation requests without any authentication. Any network-reachable client, or any website visited by the user, can establish an MCP session and invoke browser-control tools.\n\nWhere the n8n AI Browser Bridge extension is installed and a browser connection is active, an unauthenticated caller can access browser-control capabilities including navigation, JavaScript evaluation",
-    "severity": "high",
-    "cve_id": "CVE-2026-54309",
-    "ghsa_id": "GHSA-qrx8-25qr-5r7v",
-    "affected_packages": [
-      "n8n",
-      "n8n"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54309.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-2j5h-858j-5mpf",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:32:08Z",
-    "title": "n8n: Cross-Tenant Credential Takeover via Dynamic Credentials EE Endpoints",
-    "description": "## Impact\nThree EE endpoints used by the Dynamic Credentials feature accepted any authenticated n8n session without performing per-resource ownership or scope checks on the target workflow or credential. An authenticated user with no project membership or credential sharing relationship could enumerate credential identifiers, names, and types referenced by any private workflow in the instance, initiate an OAuth authorization flow against another user's credential to overwrite its stored tokens w",
-    "severity": "high",
-    "cve_id": "CVE-2026-54305",
-    "ghsa_id": "GHSA-2j5h-858j-5mpf",
-    "affected_packages": [
-      "n8n",
-      "n8n",
-      "n8n"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54305.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-pmqw-72cg-wx85",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:02:05Z",
-    "title": "n8n: Credential Exfiltration via Permission Bypass",
-    "description": "## Impact\nA member-level user with editor access to a shared workflow could reference credentials they do not own via specific public API endpoints. Credential ownership checks were only enforced partially leading to cross-user credential access.\n\nThis issue affects instances where workflow sharing is enabled and at least one workflow has been shared with a member-level user as an Editor.\n\n## Patches\nThe issue has been fixed in n8n versions 1.123.55, 2.25.7, and 2.26.2. Users should upgrade to o",
-    "severity": "high",
-    "cve_id": "CVE-2026-54307",
-    "ghsa_id": "GHSA-pmqw-72cg-wx85",
-    "affected_packages": [
-      "n8n",
-      "n8n",
-      "n8n"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This vulnerability allows unauthorized access to sensitive credentials by exploiting a permission bypass in shared workflows. If exploited, attackers could gain access to critical systems or data, leading to potential data breaches, unauthorized system access, or further exploitation.",
-      "affected_industries": [
-        "Technology",
-        "Financial Services",
-        "Healthcare",
         "E-commerce",
-        "Government",
         "Education"
       ],
       "recommended_actions": [
-        "Immediately upgrade to the patched versions of n8n (1.123.55, 2.25.7, or 2.26.2) to mitigate the vulnerability.",
-        "Review and audit all shared workflows to ensure no unauthorized access has occurred and revoke unnecessary permissions for member-level users.",
-        "Implement strict access control policies and monitor API usage logs for any suspicious activity."
+        "Update to the latest patched version of NocoDB that addresses CVE-2026-53927 to ensure the regex validation is properly implemented.",
+        "Implement network-level restrictions to block unauthorized access to internal resources, such as cloud metadata endpoints, from the application server.",
+        "Conduct a security audit of all endpoints to identify and mitigate similar SSRF vulnerabilities."
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-jqpw-qww5-cj4c",
+    "id": "gh-GHSA-6pr9-rp53-2pmc",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T23:01:51Z",
-    "title": "n8n: Denial of Service via ZIP decompression in webhook workflow",
-    "description": "## Impact\nThe Compression node's Decompress operation expanded attacker-controlled archives into memory without enforcing limits on decompressed output size. An unauthenticated attacker could send a small compressed archive to a public webhook workflow using this node, causing the n8n process to terminate due to memory exhaustion and disrupting all workflows in the same instance. \n\n## Patches\nThe issue has been fixed in n8n version 2.24.0. Users should upgrade to this version or later to remedia",
+    "timestamp": "2026-06-17T14:06:22Z",
+    "title": "vLLM: OOM Denial of Service via Audio Decompression Bomb",
+    "description": "### Summary\nvLLM's `/v1/audio/transcriptions` endpoint limits compressed upload size but not decoded PCM output. A 25MB OPUS file expands to ~14.9GB of float32 PCM at decode time. Tested on vLLM v0.19.0.\n\n### Details\n`SpeechToTextProcessor` rejects uploads over `VLLM_MAX_AUDIO_CLIP_FILESIZE_MB` (default 25MB) based on compressed byte length, but the audio decoder in `audio.py` accumulates all decoded frames into memory with no size limit before returning:\n\n```python\n# speech_to_text.py L184-189\n",
     "severity": "medium",
-    "cve_id": "CVE-2026-54314",
-    "ghsa_id": "GHSA-jqpw-qww5-cj4c",
+    "cve_id": "CVE-2026-54233",
+    "ghsa_id": "GHSA-6pr9-rp53-2pmc",
     "affected_packages": [
-      "n8n"
+      "vllm"
     ],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to exploit the `/v1/audio/transcriptions` endpoint by uploading specially crafted audio files that expand significantly in memory during decoding. This can lead to an Out-Of-Memory (OOM) condition, resulting in denial-of-service (DoS) for the affected system. Systems running vLLM v0.19.0 or similar configurations are at risk.",
+      "affected_industries": [
+        "Technology",
+        "Telecommunications",
+        "Media and Entertainment",
+        "Healthcare",
+        "Customer Support Services"
+      ],
+      "recommended_actions": [
+        "Implement a memory usage cap during audio decoding to prevent excessive resource consumption. This can be achieved by limiting the size of decoded PCM data.",
+        "Update the vLLM software to a patched version (if available) or apply a custom patch to enforce stricter validation on decoded audio size.",
+        "Monitor and log resource usage on the `/v1/audio/transcriptions` endpoint to detect and mitigate potential abuse in real time."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-hgg8-fqqc-vfmw",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T14:04:09Z",
+    "title": "vLLM: incomplete CVE-2026-22778 fix leaks PIL repr addresses via Anthropic router",
+    "description": "# vLLM: incomplete CVE-2026-22778 fix leaks PIL repr addresses via the Anthropic API router\n\n**Researcher:** Kai Aizen — SnailSploit (@SnailSploit), Adversarial & Offensive Security Research\n**Severity:** CVSS 3.1 5.3 (Medium)  `AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N`\n**Target:** https://github.com/vllm-project/vllm\n\n---\n\n## Summary\n\nThe fix for CVE-2026-22778 / GHSA-4r2x-xpjr-7cvv (PRs #31987 and #32319) introduced `sanitize_message` and applied it at four FastAPI exception-handling sites in the O",
+    "severity": "medium",
+    "cve_id": "CVE-2026-54236",
+    "ghsa_id": "GHSA-hgg8-fqqc-vfmw",
+    "affected_packages": [
+      "vllm"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54314.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54236.",
       "affected_industries": [
         "Technology",
         "General"
@@ -692,61 +723,61 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-h3jj-5f3v-3685",
+    "id": "gh-GHSA-5jv2-g5wq-cmr4",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T22:40:06Z",
-    "title": "n8n: Public API Execution Retry Authorization Bypass",
-    "description": "## Impact\nThe Public API endpoint for retrying executions authorized access using `workflow:read` rather than `workflow:execute`. An authenticated user with read-only access to a shared workflow could use the Public API to retry executions of that workflow, bypassing the intended permission boundary between read and execute access.\n\nThis issue affects instances where workflows are shared with other users or across projects.\n\n## Patches\nThe issue has been fixed in n8n versions 2.25.7, and 2.26.2.",
+    "timestamp": "2026-06-17T14:03:11Z",
+    "title": "vLLM: GGUF dequantize kernel int truncation exposes uninitialized GPU memory in multi-tenant serving",
+    "description": "## Summary\n\nInteger truncation of tensor dimensions in vLLM's GGUF dequantize kernels (`csrc/quantization/gguf/gguf_kernel.cu`) causes partial tensor processing. The output tensor is allocated at full size via `torch::empty` (uninitialized memory), but the dequantize CUDA kernel processes only a truncated number of elements. The unfilled portion of the output tensor retains whatever was previously in GPU memory. In multi-tenant inference deployments, this residual GPU memory may contain tensor d",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53923",
+    "ghsa_id": "GHSA-5jv2-g5wq-cmr4",
+    "affected_packages": [
+      "vllm"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53923.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-8jr5-v98p-w75m",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-17T14:02:42Z",
+    "title": "vLLM: image EXIF Rotation & PNG tRNS Transparency Not Normalized, Causing Mismatch Between Model Input and Expectations",
+    "description": "## Summary\n\nIssue 1: EXIF orientation not normalized → The image orientation processed by the model differs from how humans view it, introducing interpretation bias.\n\nIssue 2: PNG tRNS not explicitly flattened before converting to RGB → After conversion, transparent/semi-transparent pixels are rendered unexpectedly, making otherwise subtle overlay elements visible and distorting the input content. (This attack is similar to AlphaDog: RGBA handling is already correct in vLLM, but since tRNS permi",
     "severity": "medium",
     "cve_id": null,
-    "ghsa_id": "GHSA-h3jj-5f3v-3685",
+    "ghsa_id": "GHSA-8jr5-v98p-w75m",
     "affected_packages": [
-      "n8n",
-      "n8n"
+      "vllm"
     ],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 55,
-      "impact_assessment": "The vulnerability allows authenticated users with read-only access to execute workflows they should not have permission to run. This could lead to unauthorized execution of workflows, potentially exposing sensitive data, triggering unintended actions, or causing system disruptions.",
-      "affected_industries": [
-        "Technology",
-        "Healthcare",
-        "Finance",
-        "E-commerce",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Upgrade to n8n versions 2.25.7 or 2.26.2 immediately to patch the vulnerability.",
-        "Review user permissions and access controls for shared workflows to ensure proper role assignments.",
-        "Monitor API activity logs for any unauthorized execution attempts and investigate anomalies."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 55
-  },
-  {
-    "id": "gh-GHSA-jwm3-qcfw-c5pp",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T22:39:46Z",
-    "title": "n8n: Python Code Node AST Validator Bypass",
-    "description": "## Impact\nAn authenticated user with permission to create or modify workflows containing a Python Code node could bypass the AST security validator and access the task executor module namespace. On self-hosted instances where `N8N_BLOCK_RUNNER_ENV_ACCESS=false` is set, this extended to disclosure of environment variables accessible to the task runner process.\n\nThis issue only affects instances where the Python Task Runner is enabled and `N8N_BLOCK_RUNNER_ENV_ACCESS=true`.\n\n## Patches\nThe issue h",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-jwm3-qcfw-c5pp",
-    "affected_packages": [
-      "n8n",
-      "n8n"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
+      null,
       null,
       null
     ],
@@ -767,43 +798,6 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-42h7-m79w-wvg5",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T22:39:32Z",
-    "title": "n8n: Stored XSS in Chat Trigger Node",
-    "description": "## Impact\nAn authenticated user with workflow edit access could inject arbitrary JavaScript into the Chat Trigger's generated page by setting a malicious `webhookId`. When a logged-in user visited the chat URL, the injected code executed in the n8n origin with that user's session privileges.\n\n## Patches\nThe issue has been fixed in n8n versions 1.123.55, 2.25.7, and 2.26.2. Users should upgrade to one of these versions or later to remediate the vulnerability.\n\n## Workarounds\nIf upgrading is not i",
-    "severity": "high",
-    "cve_id": "CVE-2026-54302",
-    "ghsa_id": "GHSA-42h7-m79w-wvg5",
-    "affected_packages": [
-      "n8n",
-      "n8n",
-      "n8n"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54302.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
     "id": "cve-CVE-2026-41717",
     "source": "NVD CVE",
     "timestamp": "2026-06-10T00:16:51.683",
@@ -818,19 +812,15 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to exploit Spring Expression Language (SpEL) injection during parameter binding in user-defined repository query methods. This can lead to unauthorized access, data exfiltration, or remote code execution, potentially compromising sensitive data and critical application functionality.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41717.",
       "affected_industries": [
-        "Financial Services",
-        "Healthcare",
-        "E-commerce",
         "Technology",
-        "Government",
-        "Education"
+        "General"
       ],
       "recommended_actions": [
-        "Immediately upgrade to a patched version of Spring Data MongoDB that resolves CVE-2026-41717. Monitor the official Spring Data MongoDB repository for updates.",
-        "Review all repository query methods annotated with @Query in your application for potential misuse of SpEL expressions and refactor them to mitigate injection risks.",
-        "Implement strict input validation and sanitization for any user-supplied data used in repository queries to reduce the risk of injection attacks."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "high"
     },
@@ -857,15 +847,19 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41716.",
+      "impact_assessment": "The vulnerability allows attackers to exploit the property-lookup cache in Spring Data, causing heap exhaustion through repeated requests. This could lead to denial-of-service (DoS) attacks, rendering affected applications unresponsive.",
       "affected_industries": [
         "Technology",
-        "General"
+        "E-commerce",
+        "Finance",
+        "Healthcare",
+        "Telecommunications",
+        "Government"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Upgrade to a patched version of Spring Data Commons that addresses CVE-2026-41716. Refer to the official Spring Data documentation for the latest secure versions.",
+        "Implement rate limiting and input validation to mitigate the risk of exploitation until the patch is applied.",
+        "Monitor application logs and memory usage for signs of unusual activity or heap exhaustion, and establish alerts for potential DoS attempts."
       ],
       "urgency": "high"
     },
@@ -886,9 +880,9 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows applications using affected Spring AMQP versions to establish TLS-encrypted connections without proper certificate validation or hostname verification. This could enable man-in-the-middle (MITM) attacks, leading to potential data interception, unauthorized access, or injection of malicious data.",
+      "impact_assessment": "The vulnerability allows applications using specific versions of Spring AMQP to establish TLS-encrypted connections without proper certificate validation or hostname verification. This could enable man-in-the-middle (MITM) attacks, allowing attackers to intercept, modify, or inject malicious data into the communication between the application and the message broker.",
       "affected_industries": [
-        "Finance",
+        "Financial Services",
         "Healthcare",
         "E-commerce",
         "Technology",
@@ -896,9 +890,9 @@
         "Government"
       ],
       "recommended_actions": [
-        "Immediately update to a patched version of Spring AMQP that addresses CVE-2026-41714.",
-        "Ensure that applications explicitly call setUseSSL(true) when configuring broker connections via RabbitConnectionFactoryBean.setUri().",
-        "Conduct a review of all RabbitMQ configurations to ensure proper certificate validation and hostname verification are enforced."
+        "Update to a patched version of Spring AMQP that addresses CVE-2026-41714, if available.",
+        "Ensure that applications explicitly call setUseSSL(true) and configure proper certificate validation and hostname verification when using RabbitConnectionFactoryBean.setUri.",
+        "Conduct a security audit of all applications using affected Spring AMQP versions to identify and mitigate potential vulnerabilities."
       ],
       "urgency": "high"
     },
