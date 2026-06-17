@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1781644381297-1",
+    "id": "twitter-1781672102802-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-16T21:13:01.297Z",
+    "timestamp": "2026-06-17T04:55:02.802Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1781644381297-1",
+    "id": "hn-1781672102802-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-16T21:13:01.297Z",
+    "timestamp": "2026-06-17T04:55:02.802Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,16 +26,129 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-ww63-pv5x-vfc8",
+    "id": "gh-GHSA-7v5m-pr3q-6453",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T21:05:13Z",
-    "title": "Daytona: Public sandbox previews remain accessible for up to one hour after being made private",
-    "description": "### Summary\nSandbox previews that were switched from public to private could remain reachable without authentication for a short period after the change, due to a cached visibility state that was not invalidated when the sandbox's visibility changed.\n\n### Impact\nWhen a sandbox owner changed a preview from public to private, the preview proxy could continue serving unauthenticated requests to that sandbox's ordinary preview ports for a bounded period before the change took effect. Only sandboxes ",
-    "severity": "high",
-    "cve_id": "CVE-2026-54321",
-    "ghsa_id": "GHSA-ww63-pv5x-vfc8",
+    "timestamp": "2026-06-16T23:43:15Z",
+    "title": "Pi Agent: Potential XSS in HTML session exports via Markdown URL sanitization bypass",
+    "description": "# Potential XSS in HTML session exports via Markdown URL handling\n\nPi HTML exports render session Markdown into a static HTML file. Affected versions did not consistently reject unsafe Markdown link and image URL schemes. In versions with scheme filtering, C0 control characters in the URL scheme could bypass the check because browsers normalize those characters before navigation.\n\n## Impact\n\nThe realistic attack path is indirect. An attacker would need to get suitable Markdown into a session, fo",
+    "severity": "low",
+    "cve_id": "CVE-2026-54326",
+    "ghsa_id": "GHSA-7v5m-pr3q-6453",
     "affected_packages": [
-      "github.com/daytonaio/daytona"
+      "@mariozechner/pi-coding-agent",
+      "@earendil-works/pi-coding-agent"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-cr4g-f395-h25h",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T23:42:04Z",
+    "title": "Gitea: Token scope bypass on web archive download endpoint",
+    "description": "## Summary\n\nPR #37698 added checkDownloadTokenScope to /raw/*, /media/*, and attachment download web endpoints. The /archive/* endpoint (repo.Download in routers/web/repo/repo.go:372) was not included in the fix. This endpoint accepts OAuth2 tokens via webAuth.AllowOAuth2 (registered at routers/web/web.go:1649-1652) but does not call checkDownloadTokenScope or CheckRepoScopedToken.\n\nA personal access token with any non-repository scope (e.g., read:issue or read:misc) can download full repository",
+    "severity": "medium",
+    "cve_id": "CVE-2026-20706",
+    "ghsa_id": "GHSA-cr4g-f395-h25h",
+    "affected_packages": [
+      "code.gitea.io/gitea"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-3fwp-p5rj-2pxf",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T23:41:42Z",
+    "title": "Gitea: Missing repository-unit authorization on issue-template API endpoints",
+    "description": "## Summary\n\nThree Gitea API endpoints — `GET /repos/{owner}/{repo}/issue_templates`,\n`GET /repos/{owner}/{repo}/issue_config` and `GET /repos/{owner}/{repo}/issue_config/validate`\n— read files from the repository's **Code** default branch (`.gitea/ISSUE_TEMPLATE/*`\nand `issue_config.yaml`) and return their contents, but are registered **without**\nthe `reqRepoReader(unit.TypeCode)` authorization middleware that every sibling\nCode-tree endpoint in the same route group carries.\n\nA user who has acce",
+    "severity": "medium",
+    "cve_id": "CVE-2026-27783",
+    "ghsa_id": "GHSA-3fwp-p5rj-2pxf",
+    "affected_packages": [
+      "code.gitea.io/gitea"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-8629-vc8r-5p58",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T23:41:31Z",
+    "title": "Gitea: Incomplete CVE-2025-68941 fix: /user/orgs missing checkTokenPublicOnly + switch-case logic flaw",
+    "description": "## Summary\n\nTwo related issues in the token public-only scope enforcement introduced by PR #32204 (CVE-2025-68941 fix). A public-only scoped API token can access private organization data.\n\n## Issue 1: /user/orgs missing checkTokenPublicOnly()\n\n`routers/api/v1/api.go` line 1599:\n```go\nm.Get(\"/user/orgs\", reqToken(), tokenRequiresScopes(\n    auth_model.AccessTokenScopeCategoryUser,\n    auth_model.AccessTokenScopeCategoryOrganization,\n), org.ListMyOrgs)\n// Missing checkTokenPublicOnly()\n```\n\nAdjac",
+    "severity": "medium",
+    "cve_id": "CVE-2026-25714",
+    "ghsa_id": "GHSA-8629-vc8r-5p58",
+    "affected_packages": [
+      "code.gitea.io/gitea"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-mm7c-rhg6-qr4r",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T23:41:01Z",
+    "title": "Gitea: Authorization Bypass via \"Allow edits from maintainers\" allows unauthorized commits to any readable repo",
+    "description": "## Summary\n\nAny authenticated low-privilege user with read access to a repository can push arbitrary commits directly to that repository, bypassing all write-access checks.\n\n## Vulnerability\n\nGitea's \"Allow edits from maintainers\" PR option can be abused via reverse-fork PRs:\n\n1. The web UI PR-create endpoint binds `allow_maintainer_edit=true` **without** verifying that the submitter has write access to the HEAD repository.\n2. Gitea allows creating a PR where **BASE = attacker's fork** and **HEA",
+    "severity": "high",
+    "cve_id": "CVE-2026-26231",
+    "ghsa_id": "GHSA-mm7c-rhg6-qr4r",
+    "affected_packages": [
+      "code.gitea.io/gitea"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-9r5x-wg6m-x2rc",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T23:40:34Z",
+    "title": "Gitea: OAuth2 access token scope enforcement bypass via HTTP Basic authentication",
+    "description": "### Summary\n\nGitea fails to enforce OAuth2 access token scopes when the token is submitted via HTTP Basic authentication instead of a Bearer token. An OAuth2 application granted only `read:user` can use the same token as `Authorization: Basic base64(<token>:x-oauth-basic)` and perform write actions, including modifying profiles, adding email addresses, creating repositories, and deleting repositories as the authorizing user.\n\n### Details\n\n**Root cause:** `services/auth/basic.go` accepts OAuth2 a",
+    "severity": "high",
+    "cve_id": "CVE-2026-28699",
+    "ghsa_id": "GHSA-9r5x-wg6m-x2rc",
+    "affected_packages": [
+      "code.gitea.io/gitea"
     ],
     "cwes": [
       null,
@@ -49,41 +162,16 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-9cr8-q42q-g8m7",
+    "id": "gh-GHSA-pm6v-2h4w-4rp2",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T21:04:29Z",
-    "title": "Traefik: HTTP/3 mTLS bypass via exact SNI TLSOptions lookup for wildcard and mixed-case hosts",
-    "description": "## Summary\n\nThere is a critical vulnerability in Traefik's HTTP/3 (QUIC) TLS configuration selection that allows unauthenticated clients to bypass router-specific mTLS enforcement. When HTTP/3 is enabled on an entrypoint, the TLS handshake selects the applicable TLS configuration through an exact, case-sensitive lookup on the SNI value, which fails to match wildcard host patterns (e.g., `*.example.com`) or case variants of the configured hostname. Because the handshake falls back to the default ",
+    "timestamp": "2026-06-16T23:40:04Z",
+    "title": "Gogs: Overwriting critical files results in a denial of service",
+    "description": "**Vulnerability type:** Path Traversal\n**Impact:** DoS\n**Exploitation prerequisite:** authorized user\n**Description:** As an authorized user, an intruder can dictate the value which is passed to the `git diff` command which, together with bypassing the filtering of the passed value, allows the user to bypass the target directory and write the result of the comparison to any arbitrary path.\n**Researcher:** Artyom Kulakov (Positive Technologies)\n**Mitigation:**\n1. https://github.com/gogs/gogs/blob",
     "severity": "high",
-    "cve_id": "CVE-2026-53622",
-    "ghsa_id": "GHSA-9cr8-q42q-g8m7",
+    "cve_id": "CVE-2026-52797",
+    "ghsa_id": "GHSA-pm6v-2h4w-4rp2",
     "affected_packages": [
-      "Traefik",
-      "github.com/traefik/traefik/v2",
-      "github.com/traefik/traefik"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-6qhc-x826-342c",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T21:02:55Z",
-    "title": "Crawl4AI: SSRF via proxy settings in the Docker server bypasses the crawl-URL SSRF check",
-    "description": "### Summary\n\nThe Docker API server applied its SSRF destination check to the crawl target URL only, not to the proxy address. An unauthenticated request could supply a proxy pointing at an internal IP and route the browser through it, reaching internal services and cloud-metadata endpoints, while using a perfectly valid crawl URL. The Docker API is unauthenticated by default.\n\n### Affected paths\n\n`/crawl`, `/crawl/stream`, and `/crawl/job` accept a `browser_config` (and `crawler_config`). The fo",
-    "severity": "high",
-    "cve_id": "CVE-2026-53755",
-    "ghsa_id": "GHSA-6qhc-x826-342c",
-    "affected_packages": [
-      "crawl4ai"
+      "gogs.io/gogs"
     ],
     "cwes": [
       null
@@ -96,25 +184,74 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-7cx2-g3h9-382p",
+    "id": "gh-GHSA-qw24-gh76-8rvv",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T21:02:19Z",
-    "title": "Crawl4AI: Arbitrary file write (symlink/TOCTOU) plus log and webhook-header injection in Docker server",
-    "description": "### Summary\n\nThree backward-compatible hardening fixes in the Docker API server. The headline issue is an arbitrary file write via the screenshot/PDF `output_path`.\n\n### 1. Arbitrary file write via output_path symlink / TOCTOU (primary)\n\n`POST /screenshot` and `POST /pdf` accept an `output_path` constrained to `ALLOWED_OUTPUT_DIR` by `validate_output_path`. The 0.8.7 check was string-only: it did not resolve symlinks, so a symlinked path component inside the output directory could redirect the w",
-    "severity": "high",
+    "timestamp": "2026-06-16T23:39:41Z",
+    "title": "Rclone: Unauthenticated command execution in `rclone rcd --rc-serve` via inline remote instantiation, bypassing CVE-2026-41179 fix",
+    "description": "## Summary\n\n`rclone rcd --rc-serve` accepts unauthenticated `GET` and `HEAD` requests to paths of the form:\n\n```text\n/[remote:path]/object\n```\n\nThe `remote` value is parsed from the URL and passed to normal backend initialization. Inline remote configuration can set backend options that execute local commands during initialization. As a result, a single unauthenticated `GET` or `HEAD` request can execute a command as the rclone process user.\n\nVersions from 1.55.0 onwards are vulnerable to comman",
+    "severity": "critical",
+    "cve_id": "CVE-2026-49980",
+    "ghsa_id": "GHSA-qw24-gh76-8rvv",
+    "affected_packages": [
+      "github.com/rclone/rclone"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-x6qj-4h56-5rj5",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T23:39:16Z",
+    "title": "@nuxt/webpack-builder and @nuxt/rspack-builder dev server same-origin check bypassed when Sec-Fetch-Site, Origin, and Referer are all absent (incomplete fix for GHSA-6m52-m754-pw2g)",
+    "description": "### Summary\nThis is an incomplete fix for [GHSA-6m52-m754-pw2g](https://github.com/nuxt/nuxt/security/advisories/GHSA-6m52-m754-pw2g). Source code may still be stolen during dev when using the webpack / rspack builder if the dev server is bound to a non-loopback address (e.g. `nuxt dev --host`) and the developer opens a malicious site on the same network.\n\n### Details\nThe fix for [GHSA-6m52-m754-pw2g](https://github.com/nuxt/nuxt/security/advisories/GHSA-6m52-m754-pw2g) added an `Origin` / `Refe",
+    "severity": "medium",
+    "cve_id": "CVE-2026-49993",
+    "ghsa_id": "GHSA-x6qj-4h56-5rj5",
+    "affected_packages": [
+      "@nuxt/webpack-builder",
+      "@nuxt/webpack-builder",
+      "@nuxt/rspack-builder",
+      "@nuxt/rspack-builder"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-m3q2-p4fw-w38m",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T23:38:47Z",
+    "title": "Cross-site scripting via <NoScript> slot content in Nuxt's head components",
+    "description": "### Impact\n\nNuxt's globally registered `<NoScript>` component (from `@unhead/vue` head components, re-exported by Nuxt) wrote its default-slot content to the `innerHTML` of the `<noscript>` head tag, bypassing the HTML escaping that `{{ }}` interpolation normally applies in Vue templates.\n\nApplications that placed untrusted, attacker-controllable data inside a `<NoScript>` slot, for example:\n\n```vue\n<NoScript>{{ route.query.banner }}</NoScript>\n```\n\nwould emit that value unescaped inside `<noscr",
+    "severity": "low",
     "cve_id": null,
-    "ghsa_id": "GHSA-7cx2-g3h9-382p",
+    "ghsa_id": "GHSA-m3q2-p4fw-w38m",
     "affected_packages": [
-      "crawl4ai"
+      "nuxt",
+      "nuxt"
     ],
     "cwes": [
-      null,
-      null,
-      null,
       null
     ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -124,40 +261,180 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-f989-c77f-r2cq",
+    "id": "gh-GHSA-4xpc-pv4p-pm3w",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T21:00:31Z",
-    "title": "Crawl4AI: LLM credential exfiltration in Docker server via request base_url and env: token resolution",
-    "description": "### Summary\n\nThe Docker API server let a request control where LLM calls were sent and which environment variable an LLM token resolved from. Both could be abused to exfiltrate server-held secrets. The Docker API is unauthenticated by default.\n\n### Vector 1 - attacker base_url\n\n`/md`, `/llm`, and `/llm/job` accepted a `base_url` in the request and used it as the LLM endpoint while still attaching the server's configured provider API key. An attacker set `base_url` to a server they control and re",
+    "timestamp": "2026-06-16T23:38:26Z",
+    "title": "LiteLLM: Authentication Bypass via Host Header Injection",
+    "description": "### Impact\n\nA Host-header parsing flaw in the LiteLLM proxy could, under specific conditions, allow unauthenticated access to protected management routes.\n\nThe auth layer derived the effective route from `request.url.path` in `litellm/proxy/auth/auth_utils.py::get_request_route()`, which Starlette reconstructs from the `Host` header. A crafted `Host` could therefore make the auth gate evaluate a different route from the one FastAPI dispatched.\n\n**Most deployments are not affected.** The bypass i",
+    "severity": "critical",
+    "cve_id": "CVE-2026-49468",
+    "ghsa_id": "GHSA-4xpc-pv4p-pm3w",
+    "affected_packages": [
+      "litellm"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-cc8w-r4qh-3v65",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T23:38:12Z",
+    "title": "Gitea: Git Smart HTTP Skips Repository Token Scopes for Bearer Tokens",
+    "description": "### Summary\nGitea v1.26.1 enforces repository-scoped access-token permissions on repository operations. In the Git Smart HTTP path, however, this check runs only when the token is presented via HTTP Basic authentication — `CheckRepoScopedToken()` returns early unless `ctx.IsBasicAuth` is true — so the same token sent as `Authorization: Bearer <token>` bypasses the scope check entirely.\n\nAs a result, a PAT or OAuth2 token presented as a Bearer credential can clone or fetch private repositories wi",
     "severity": "high",
+    "cve_id": "CVE-2026-28744",
+    "ghsa_id": "GHSA-cc8w-r4qh-3v65",
+    "affected_packages": [
+      "code.gitea.io/gitea"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-rm2v-h48j-895m",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T23:34:10Z",
+    "title": "n8n: SecurityScorecard Node Leaks API Token to User-Controlled Host",
+    "description": "## Impact\nAn authenticated user with permission to create or modify workflows and access to a SecurityScorecard credential with limited allowed domains could configure the SecurityScorecard node's report download operation to target an attacker-controlled URL. The node attached the SecurityScorecard API token to the outbound request, causing the credential to be sent to the attacker-controlled host bypassing credential configured limitations and exfiltrating.\n\n## Patches\nThe issue has been fixed",
+    "severity": "high",
+    "cve_id": "CVE-2026-54304",
+    "ghsa_id": "GHSA-rm2v-h48j-895m",
+    "affected_packages": [
+      "n8n",
+      "n8n",
+      "n8n"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-qrx8-25qr-5r7v",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T23:32:31Z",
+    "title": "n8n: MCP Browser HTTP Transport Exposes Unauthenticated Browser-Control Sessions",
+    "description": "## Impact\nWhen `@n8n/mcp-browser` is run in HTTP transport mode, the MCP endpoint accepts session initialization and tool invocation requests without any authentication. Any network-reachable client, or any website visited by the user, can establish an MCP session and invoke browser-control tools.\n\nWhere the n8n AI Browser Bridge extension is installed and a browser connection is active, an unauthenticated caller can access browser-control capabilities including navigation, JavaScript evaluation",
+    "severity": "high",
+    "cve_id": "CVE-2026-54309",
+    "ghsa_id": "GHSA-qrx8-25qr-5r7v",
+    "affected_packages": [
+      "n8n",
+      "n8n"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-2j5h-858j-5mpf",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T23:32:08Z",
+    "title": "n8n: Cross-Tenant Credential Takeover via Dynamic Credentials EE Endpoints",
+    "description": "## Impact\nThree EE endpoints used by the Dynamic Credentials feature accepted any authenticated n8n session without performing per-resource ownership or scope checks on the target workflow or credential. An authenticated user with no project membership or credential sharing relationship could enumerate credential identifiers, names, and types referenced by any private workflow in the instance, initiate an OAuth authorization flow against another user's credential to overwrite its stored tokens w",
+    "severity": "high",
+    "cve_id": "CVE-2026-54305",
+    "ghsa_id": "GHSA-2j5h-858j-5mpf",
+    "affected_packages": [
+      "n8n",
+      "n8n",
+      "n8n"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-pmqw-72cg-wx85",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T23:02:05Z",
+    "title": "n8n: Credential Exfiltration via Permission Bypass",
+    "description": "## Impact\nA member-level user with editor access to a shared workflow could reference credentials they do not own via specific public API endpoints. Credential ownership checks were only enforced partially leading to cross-user credential access.\n\nThis issue affects instances where workflow sharing is enabled and at least one workflow has been shared with a member-level user as an Editor.\n\n## Patches\nThe issue has been fixed in n8n versions 1.123.55, 2.25.7, and 2.26.2. Users should upgrade to o",
+    "severity": "high",
+    "cve_id": "CVE-2026-54307",
+    "ghsa_id": "GHSA-pmqw-72cg-wx85",
+    "affected_packages": [
+      "n8n",
+      "n8n",
+      "n8n"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-jqpw-qww5-cj4c",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T23:01:51Z",
+    "title": "n8n: Denial of Service via ZIP decompression in webhook workflow",
+    "description": "## Impact\nThe Compression node's Decompress operation expanded attacker-controlled archives into memory without enforcing limits on decompressed output size. An unauthenticated attacker could send a small compressed archive to a public webhook workflow using this node, causing the n8n process to terminate due to memory exhaustion and disrupting all workflows in the same instance. \n\n## Patches\nThe issue has been fixed in n8n version 2.24.0. Users should upgrade to this version or later to remedia",
+    "severity": "medium",
+    "cve_id": "CVE-2026-54314",
+    "ghsa_id": "GHSA-jqpw-qww5-cj4c",
+    "affected_packages": [
+      "n8n"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-h3jj-5f3v-3685",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-16T22:40:06Z",
+    "title": "n8n: Public API Execution Retry Authorization Bypass",
+    "description": "## Impact\nThe Public API endpoint for retrying executions authorized access using `workflow:read` rather than `workflow:execute`. An authenticated user with read-only access to a shared workflow could use the Public API to retry executions of that workflow, bypassing the intended permission boundary between read and execute access.\n\nThis issue affects instances where workflows are shared with other users or across projects.\n\n## Patches\nThe issue has been fixed in n8n versions 2.25.7, and 2.26.2.",
+    "severity": "medium",
     "cve_id": null,
-    "ghsa_id": "GHSA-f989-c77f-r2cq",
+    "ghsa_id": "GHSA-h3jj-5f3v-3685",
     "affected_packages": [
-      "crawl4ai"
-    ],
-    "cwes": [
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-4qqr-vv2q-cmr5",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T21:00:04Z",
-    "title": "Crawl4AI: SSRF filter bypass in Docker server via IPv6 transition forms (NAT64 / 6to4 / unspecified / v4-mapped)",
-    "description": "### Summary\n\nThe Docker API server's SSRF protection (`validate_webhook_url` / `validate_url_destination` in `deploy/docker/utils.py`) used an explicit IPv4/IPv6 CIDR blocklist that missed several address families. An attacker could reach internal services and cloud metadata endpoints (e.g. `169.254.169.254`) despite the filter by encoding an internal IPv4 address inside an IPv6 transition form, or by using the IPv6 unspecified address.\n\nBecause the Docker API is unauthenticated by default (`jwt",
-    "severity": "high",
-    "cve_id": "CVE-2026-53754",
-    "ghsa_id": "GHSA-4qqr-vv2q-cmr5",
-    "affected_packages": [
-      "crawl4ai"
+      "n8n",
+      "n8n"
     ],
     "cwes": [
       null
@@ -170,236 +447,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-c6mh-fpjc-4pr3",
+    "id": "gh-GHSA-jwm3-qcfw-c5pp",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T20:59:42Z",
-    "title": "yt-dlp: Dangerous file type creation via insufficient filename sanitization (Bypass of CVE-2024-38519)",
-    "description": "### Summary\nA vulnerability exists in yt-dlp that allows a remote attacker to write arbitrary OS-shortcut files (such as `.desktop`, `.url`, `.webloc`) to the user's filesystem, bypassing the remediation for `CVE-2024-38519`. \n\n### Details\nThe fix for `CVE-2024-38519` enforced an allowlist for file extensions, in order to prevent writing files with unsafe extensions (such as `.exe` or `.sh`) during file downloads. However, this allowlist explicitly included the unsafe extensions `.desktop`, `.ur",
-    "severity": "high",
-    "cve_id": "CVE-2026-50023",
-    "ghsa_id": "GHSA-c6mh-fpjc-4pr3",
-    "affected_packages": [
-      "yt-dlp"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-f7j3-774f-rfhj",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T20:16:56Z",
-    "title": "yt-dlp: File Downloader cookie leak with curl ",
-    "description": "### Summary\nIf curl is used an external downloader for yt-dlp, cookies may be leaked to an unintended host upon HTTP redirect or when the host for download fragments differs from their parent manifest's.\n\nThis is the equivalent to [GHSA-v8mc-9377-rwjj](<https://github.com/yt-dlp/yt-dlp/security/advisories/GHSA-v8mc-9377-rwjj>) for the `curl` downloader. The vulnerable behavior is present in [yt-dlp](https://github.com/yt-dlp/yt-dlp) released since 2023.09.24.\n\n### Details\nAt the file download st",
+    "timestamp": "2026-06-16T22:39:46Z",
+    "title": "n8n: Python Code Node AST Validator Bypass",
+    "description": "## Impact\nAn authenticated user with permission to create or modify workflows containing a Python Code node could bypass the AST security validator and access the task executor module namespace. On self-hosted instances where `N8N_BLOCK_RUNNER_ENV_ACCESS=false` is set, this extended to disclosure of environment variables accessible to the task runner process.\n\nThis issue only affects instances where the Python Task Runner is enabled and `N8N_BLOCK_RUNNER_ENV_ACCESS=true`.\n\n## Patches\nThe issue h",
     "severity": "medium",
-    "cve_id": "CVE-2026-50019",
-    "ghsa_id": "GHSA-f7j3-774f-rfhj",
-    "affected_packages": [
-      "yt-dlp"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-xmwj-c75x-6346",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T20:15:57Z",
-    "title": "LobeHub: Unauthenticated SSRF in `/webapi/proxy`",
-    "description": "## Unauthenticated SSRF in /webapi/proxy allows anyone to proxy requests and inject cookies on lobehub.com\n\n## Summary\n\nThe `/webapi/proxy` endpoint on app.lobehub.com accepts a URL in the POST body and fetches it server-side without any authentication. This is the same proxy code that was vulnerable in CVE-2024-32964, where `/api/proxy` was fixed by adding auth middleware. The `/webapi/proxy` route was never secured — it is the only webapi route missing the `checkAuth()` wrapper. An attacker ca",
-    "severity": "critical",
-    "cve_id": "CVE-2026-54157",
-    "ghsa_id": "GHSA-xmwj-c75x-6346",
-    "affected_packages": [
-      "@lobehub/lobehub"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-365w-hqf6-vxfg",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T20:13:30Z",
-    "title": "Crawl4AI: Multiple Docker API Vulnerabilities - File Write, SSRF, Auth Bypass, XSS, JS Execution",
-    "description": "### Summary\n\nMultiple security vulnerabilities in the Crawl4AI Docker API server affecting endpoints for crawling, markdown/LLM extraction, screenshots, PDFs, webhooks, monitoring, JavaScript execution, and configuration.\n\n### Vulnerabilities\n\n#### 1. Arbitrary File Write via /screenshot and /pdf (CWE-22, CVSS 9.1)\n\nThe `output_path` parameter accepts arbitrary filesystem paths with no validation. An attacker can overwrite server files (DoS) or write to any appuser-writable location.\n\n**Fix:** A",
-    "severity": "critical",
     "cve_id": null,
-    "ghsa_id": "GHSA-365w-hqf6-vxfg",
+    "ghsa_id": "GHSA-jwm3-qcfw-c5pp",
     "affected_packages": [
-      "crawl4ai"
-    ],
-    "cwes": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-qxjp-w3pj-48m7",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T20:13:07Z",
-    "title": "Crawl4AI: AST Sandbox Escape via gi_frame.f_back Chain - Pre-Auth RCE in Docker API",
-    "description": "### Summary\n\nThe `_safe_eval_expression()` function in the computed fields feature uses an AST validator that only blocks attributes starting with underscore. Python generator and frame object attributes (`gi_frame`, `f_back`, `f_builtins`) do NOT start with underscore, enabling a complete sandbox escape to achieve arbitrary code execution.\n\nThe attack requires no authentication (JWT disabled by default) and is triggered via `POST /crawl` with a crafted extraction schema.\n\n### Attack Vector\n\nAn ",
-    "severity": "critical",
-    "cve_id": "CVE-2026-53753",
-    "ghsa_id": "GHSA-qxjp-w3pj-48m7",
-    "affected_packages": [
-      "crawl4ai"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-fw87-fv5r-9fpw",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T20:12:34Z",
-    "title": "Hugo: Symlink confinement bypass in resources.Get",
-    "description": "**Commit:** [f8b5fa09a6](https://github.com/gohugoio/hugo/commit/f8b5fa09a6) — _Fix prevention of direct symlink reads in resources.Get_\n**Affected versions:** v0.123.0 through v0.161.1. Earlier versions are not affected.\n**Fixed in:** v0.162.0.\n**Severity:** Medium. Requires the attacker to be able to place (or convince a site author to place) a symlink inside a mounted directory — for example, inside a locally-vendored theme under `themes/`. Themes mounted as Go modules from GitHub have symlin",
-    "severity": "medium",
-    "cve_id": "CVE-2026-50135",
-    "ghsa_id": "GHSA-fw87-fv5r-9fpw",
-    "affected_packages": [
-      "github.com/gohugoio/hugo"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-vxgm-5rmg-5w8g",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T19:22:37Z",
-    "title": "Hugo: security.http.urls allow-list bypass via HTTP redirects",
-    "description": "**Commit:** [86fbb0f7a8](https://github.com/gohugoio/hugo/commit/86fbb0f7a8) — _security: Validate redirects against security.http.urls_\n**Affected versions:** v0.91.0 (when `security.http.urls` was introduced) through v0.161.1.\n**Fixed in:** v0.162.0.\n**Severity:** Only relevant for sites that rely on `security.http.urls` as a trust boundary — e.g. CI builds that fetch remote resources but want to constrain which hosts can be reached. Not an issue if you fully trust every URL passed to `resourc",
-    "severity": "medium",
-    "cve_id": "CVE-2026-50134",
-    "ghsa_id": "GHSA-vxgm-5rmg-5w8g",
-    "affected_packages": [
-      "github.com/gohugoio/hugo"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-c54g-xjwj-8g82",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T19:22:14Z",
-    "title": "Hugo: XSS via text/html content files",
-    "description": "**Commit:** [e41a06447d](https://github.com/gohugoio/hugo/commit/e41a06447d) — _Disallow HTML content by default_\n**Affected versions:** all Hugo versions prior to v0.162.0.\n**Fixed in:** v0.162.0.\n**Severity:** Low to Medium, depending on threat model. Not an issue if you fully trust every file under `/content` and every content adapter you load.\n\n**Description.** Hugo accepts content files in several markup formats. Files mapped to the `text/html` media type (typically `.html` files under `/co",
-    "severity": "medium",
-    "cve_id": "CVE-2026-50133",
-    "ghsa_id": "GHSA-c54g-xjwj-8g82",
-    "affected_packages": [
-      "github.com/gohugoio/hugo"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-8xpq-cjcf-3wh9",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T19:11:52Z",
-    "title": "Deno: Permission Bypass via Unicode Normalization Mismatch on macOS (APFS)",
-    "description": "## Summary\n\nDeno's permission system enforces filesystem and execution restrictions by\ncomparing the requested path against the path supplied to `--deny-read`,\n`--deny-write`, `--deny-run`, or `--deny-ffi`. On macOS, that comparison was\ndone at the raw-byte level while the APFS filesystem treats different Unicode\nspellings of the same name as the same file.\n\nThat means a program could reach a denied path by spelling it differently than\nthe deny rule. For example, with `--deny-read=/secrets/passw",
-    "severity": "medium",
-    "cve_id": "CVE-2026-49401",
-    "ghsa_id": "GHSA-8xpq-cjcf-3wh9",
-    "affected_packages": [
-      "deno"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-968w-xfqw-vp9q",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T19:11:26Z",
-    "title": "Deno: BYONM module resolution allows `package.json` main path traversal to bypass `--allow-read` restrictions",
-    "description": "## Summary\n\nWhen Deno was run in BYONM mode (`nodeModulesDir: \"manual\"`), the module resolver did not validate that a package's resolved entrypoint stayed within its `node_modules/<pkg>/` directory. A malicious `package.json` whose `main` field contained `..` segments was able to resolve to an arbitrary path on disk, and the resolver then read that file without consulting the `--allow-read` allowlist. This let a `require(\"evil-pkg\")` call return the contents of a file that a direct `Deno.readTex",
-    "severity": "medium",
-    "cve_id": "CVE-2026-49406",
-    "ghsa_id": "GHSA-968w-xfqw-vp9q",
-    "affected_packages": [
-      "deno"
+      "n8n",
+      "n8n"
     ],
     "cwes": [
       null
@@ -412,61 +470,18 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-v8fw-85r8-5m23",
+    "id": "gh-GHSA-42h7-m79w-wvg5",
     "source": "GitHub Security",
-    "timestamp": "2026-06-16T19:09:46Z",
-    "title": "Deno: Node TCPWrap numeric hostname aliases bypass --deny-net resolved-IP deny checks",
-    "description": "## Summary\n\nDeno's network permission model is designed so that `--deny-net` rules apply to the **resolved IP address** of a destination, not just the literal string supplied by the caller. That means `--deny-net=127.0.0.1` (or `--deny-net=127.0.0.0/8`) is expected to block any attempt to reach loopback, regardless of how the hostname is spelled.\n\nOn affected versions, the Node.js compatibility TCP path checked the permission against the **original hostname string** before resolution and then di",
-    "severity": "medium",
-    "cve_id": "CVE-2026-49411",
-    "ghsa_id": "GHSA-v8fw-85r8-5m23",
-    "affected_packages": [
-      "deno"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-9xg4-qhm4-g43w",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T19:08:55Z",
-    "title": "Deno: Miller-Rabin Primality Test Allows Zero Rounds",
-    "description": "## Summary\n\n`node:crypto.checkPrime(candidate[, options][, callback])` and `crypto.checkPrimeSync(candidate[, options])` ran no Miller-Rabin rounds at all when the caller left `options.checks` at its default of `0`. In that mode, the only test applied to the candidate was trial division by the primes up to `17,863`. Any composite whose smallest prime factor exceeds that bound — for example the product of two primes just above it, such as `17,881 × 17,891` — was reported as `true` (\"probably prim",
+    "timestamp": "2026-06-16T22:39:32Z",
+    "title": "n8n: Stored XSS in Chat Trigger Node",
+    "description": "## Impact\nAn authenticated user with workflow edit access could inject arbitrary JavaScript into the Chat Trigger's generated page by setting a malicious `webhookId`. When a logged-in user visited the chat URL, the injected code executed in the n8n origin with that user's session privileges.\n\n## Patches\nThe issue has been fixed in n8n versions 1.123.55, 2.25.7, and 2.26.2. Users should upgrade to one of these versions or later to remediate the vulnerability.\n\n## Workarounds\nIf upgrading is not i",
     "severity": "high",
-    "cve_id": "CVE-2026-49440",
-    "ghsa_id": "GHSA-9xg4-qhm4-g43w",
+    "cve_id": "CVE-2026-54302",
+    "ghsa_id": "GHSA-42h7-m79w-wvg5",
     "affected_packages": [
-      "deno"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-7xh3-mhg9-jcw8",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T19:07:44Z",
-    "title": "Deno: Command Injection via spawnSync & spawn on Windows",
-    "description": "## Summary\n\nDeno's `node:child_process` implementation provided an `escapeShellArg()` helper used when callers passed `shell: true` to `spawn` / `spawnSync` / `exec` and friends. On Windows, the helper failed to quote arguments that contained `cmd.exe` metacharacters such as `&`, `|`, `<`, `>`, `^`, `!`, `(`, `)`, and did not neutralize `%` (which `cmd.exe` expands even inside double-quoted strings). An attacker who controlled any portion of an argument passed to such a call could inject arbitra",
-    "severity": "high",
-    "cve_id": "CVE-2026-49402",
-    "ghsa_id": "GHSA-7xh3-mhg9-jcw8",
-    "affected_packages": [
-      "deno"
+      "n8n",
+      "n8n",
+      "n8n"
     ],
     "cwes": [
       null
@@ -479,337 +494,281 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-4c8g-jvcx-v4hv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-16T19:04:57Z",
-    "title": "Deno: process.loadEnvFile() bypasses env permission checks and mutates process.env with only read access",
-    "description": "## Summary\n\nIn Deno, environment access is gated by the `env` permission. You can deny it\nwith `--deny-env`, or restrict it to a specific allowlist with\n`--allow-env=FOO,BAR`. The expectation is that a program running without `env`\npermission cannot change `process.env`.\n\n`process.loadEnvFile()` (the Node-compatible API for loading variables from a\n`.env` file) does **not** honor this. It only checks that the program has\n**read** permission for the dotenv file, then writes every key in that file",
-    "severity": "medium",
-    "cve_id": "CVE-2026-49983",
-    "ghsa_id": "GHSA-4c8g-jvcx-v4hv",
-    "affected_packages": [
-      "deno"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11642",
+    "id": "cve-CVE-2026-41717",
     "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:46.947",
-    "title": "CVE-2026-11642 - Use after free in Web Apps in Google Chrome prior to 149.0.7827.103 allowed a remote attacker who ha",
-    "description": "Use after free in Web Apps in Google Chrome prior to 149.0.7827.103 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Critical)",
+    "timestamp": "2026-06-10T00:16:51.683",
+    "title": "CVE-2026-41717 - Spring Data MongoDB contains a SpEL (Spring Expression Language) expression injection vulnerability.",
+    "description": "Spring Data MongoDB contains a SpEL (Spring Expression Language) expression injection vulnerability. The issue occurs during parameter binding when a user-defined repository query method is annotated with @Query and utilizes a capture-all placeholder.\n\nAffected versions:\nSpring Data MongoDB 5.0.0 through 5.0.5; 4.5.0 through 4.5.11; 4.4.0 through 4.4.14; 4.3.0 through 4.3.16; 4.2.0 through 4.2.15; 4.1.0 through 4.1.14; 4.0.0 through 4.0.15; 3.4.0 through 3.4.19.",
     "severity": "high",
-    "cve_id": "CVE-2026-11642",
-    "cvss_score": 8.3,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
+    "cve_id": "CVE-2026-41717",
+    "cvss_score": 8.1,
+    "affected_products": [],
     "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/517678820"
+      "https://spring.io/security/cve-2026-41717"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-11641",
+    "id": "cve-CVE-2026-41716",
     "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:46.837",
-    "title": "CVE-2026-11641 - Use after free in Bluetooth in Google Chrome on Windows prior to 149.0.7827.103 allowed a remote att",
-    "description": "Use after free in Bluetooth in Google Chrome on Windows prior to 149.0.7827.103 allowed a remote attacker who convinced a user to engage in specific UI gestures to execute arbitrary code via a crafted HTML page. (Chromium security severity: Critical)",
+    "timestamp": "2026-06-10T00:16:51.567",
+    "title": "CVE-2026-41716 - Spring Data's internal property-lookup cache accepts and permanently retains attacker-supplied strin",
+    "description": "Spring Data's internal property-lookup cache accepts and permanently retains attacker-supplied strings as cache keys, allowing heap exhaustion through repeated requests.\n\nAffected versions:\nSpring Data Commons 2.7.0 through 2.7.19; 3.3.0 through 3.3.16; 3.4.0 through 3.4.14; 3.5.0 through 3.5.11; 4.0.0 through 4.0.5.",
     "severity": "high",
-    "cve_id": "CVE-2026-11641",
+    "cve_id": "CVE-2026-41716",
     "cvss_score": 7.5,
     "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/517418936"
+      "https://spring.io/security/cve-2026-41716"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-11640",
+    "id": "cve-CVE-2026-41714",
     "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:46.717",
-    "title": "CVE-2026-11640 - Integer overflow in libyuv in Google Chrome prior to 149.0.7827.103 allowed a remote attacker who ha",
-    "description": "Integer overflow in libyuv in Google Chrome prior to 149.0.7827.103 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Critical)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11640",
-    "cvss_score": 8.3,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/517339758"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11639",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:46.603",
-    "title": "CVE-2026-11639 - Use after free in Compositing in Google Chrome on Mac prior to 149.0.7827.103 allowed a remote attac",
-    "description": "Use after free in Compositing in Google Chrome on Mac prior to 149.0.7827.103 allowed a remote attacker to execute arbitrary code via a crafted HTML page. (Chromium security severity: Critical)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11639",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/517227707"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11638",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:46.483",
-    "title": "CVE-2026-11638 - Use after free in Printing in Google Chrome prior to 149.0.7827.103 allowed a remote attacker to pot",
-    "description": "Use after free in Printing in Google Chrome prior to 149.0.7827.103 allowed a remote attacker to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Critical)",
-    "severity": "critical",
-    "cve_id": "CVE-2026-11638",
-    "cvss_score": 9.6,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/517047197"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11637",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:46.370",
-    "title": "CVE-2026-11637 - Use after free in Views in Google Chrome on Mac prior to 149.0.7827.103 allowed a remote attacker to",
-    "description": "Use after free in Views in Google Chrome on Mac prior to 149.0.7827.103 allowed a remote attacker to execute arbitrary code via a crafted HTML page. (Chromium security severity: Critical)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11637",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/517040438"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11636",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:46.247",
-    "title": "CVE-2026-11636 - Use after free in Autofill in Google Chrome on Windows prior to 149.0.7827.103 allowed a remote atta",
-    "description": "Use after free in Autofill in Google Chrome on Windows prior to 149.0.7827.103 allowed a remote attacker who convinced a user to engage in specific UI gestures to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: Critical)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11636",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/517023053"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11635",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:46.097",
-    "title": "CVE-2026-11635 - Use after free in Bluetooth in Google Chrome on Mac prior to 149.0.7827.103 allowed a remote attacke",
-    "description": "Use after free in Bluetooth in Google Chrome on Mac prior to 149.0.7827.103 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Critical)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11635",
-    "cvss_score": 8.3,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/516987814"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11634",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:45.983",
-    "title": "CVE-2026-11634 - Use after free in Gamepad in Google Chrome on Windows prior to 149.0.7827.103 allowed a remote attac",
-    "description": "Use after free in Gamepad in Google Chrome on Windows prior to 149.0.7827.103 allowed a remote attacker to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Critical)",
-    "severity": "critical",
-    "cve_id": "CVE-2026-11634",
-    "cvss_score": 9.6,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/516975148"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11633",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:45.873",
-    "title": "CVE-2026-11633 - Use after free in Bluetooth in Google Chrome on Mac prior to 149.0.7827.103 allowed a remote attacke",
-    "description": "Use after free in Bluetooth in Google Chrome on Mac prior to 149.0.7827.103 allowed a remote attacker to execute arbitrary code via a malicious peripheral. (Chromium security severity: Critical)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11633",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/516963272"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11632",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:45.740",
-    "title": "CVE-2026-11632 - Use after free in TabStrip in Google Chrome prior to 149.0.7827.103 allowed a remote attacker who co",
-    "description": "Use after free in TabStrip in Google Chrome prior to 149.0.7827.103 allowed a remote attacker who convinced a user to engage in specific UI gestures to execute arbitrary code via a crafted HTML page. (Chromium security severity: Critical)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11632",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/516707881"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11631",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:45.623",
-    "title": "CVE-2026-11631 - Use after free in Aura in Google Chrome on Windows prior to 149.0.7827.103 allowed a remote attacker",
-    "description": "Use after free in Aura in Google Chrome on Windows prior to 149.0.7827.103 allowed a remote attacker who had compromised the renderer process to potentially perform a sandbox escape via a crafted HTML page. (Chromium security severity: Critical)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11631",
-    "cvss_score": 8.3,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/516691130"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11630",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:45.500",
-    "title": "CVE-2026-11630 - Use after free in File Input in Google Chrome prior to 149.0.7827.103 allowed a remote attacker to p",
-    "description": "Use after free in File Input in Google Chrome prior to 149.0.7827.103 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: Critical)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11630",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/516677924"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11629",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:45.393",
-    "title": "CVE-2026-11629 - Use after free in Ozone in Google Chrome prior to 149.0.7827.103 allowed a remote attacker to potent",
-    "description": "Use after free in Ozone in Google Chrome prior to 149.0.7827.103 allowed a remote attacker to potentially exploit heap corruption via a crafted HTML page. (Chromium security severity: Critical)",
-    "severity": "high",
-    "cve_id": "CVE-2026-11629",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/516674532"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11628",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-09T00:16:45.270",
-    "title": "CVE-2026-11628 - Use after free in Ozone in Google Chrome prior to 149.0.7827.103 allowed a local attacker to potenti",
-    "description": "Use after free in Ozone in Google Chrome prior to 149.0.7827.103 allowed a local attacker to potentially exploit heap corruption via physical access to the device. (Chromium security severity: Critical)",
+    "timestamp": "2026-06-10T00:16:51.450",
+    "title": "CVE-2026-41714 - Applications that configure their broker connection via RabbitConnectionFactoryBean.setUri(\"amqps://",
+    "description": "Applications that configure their broker connection via RabbitConnectionFactoryBean.setUri(\"amqps://...\") without also calling setUseSSL(true) get TLS encryption with no certificate validation and no hostname verification.\n\nAffected versions:\nSpring AMQP 4.0.0 through 4.0.3; 3.2.0 through 3.2.10; 3.1.0 through 3.1.15; 2.4.0 through 2.4.17.",
     "severity": "medium",
-    "cve_id": "CVE-2026-11628",
-    "cvss_score": 6.8,
+    "cve_id": "CVE-2026-41714",
+    "cvss_score": 4,
+    "affected_products": [],
+    "references": [
+      "https://spring.io/security/cve-2026-41714"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-41711",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-10T00:16:51.337",
+    "title": "CVE-2026-41711 - Applications using Spring Data Commons may be vulnerable to a Denial of Service (DoS) attack leading",
+    "description": "Applications using Spring Data Commons may be vulnerable to a Denial of Service (DoS) attack leading to a StackOverflowException when parsing Sort parameters.\n\nAffected versions:\nSpring Data Commons 4.0.0 through 4.0.5; 3.5.0 through 3.5.11; 3.4.0 through 3.4.14; 3.3.0 through 3.3.16; 3.2.0 through 3.2.15; 3.1.0 through 3.1.14; 3.0.0 through 3.0.15; 2.7.0 through 2.7.19.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41711",
+    "cvss_score": 5.9,
     "affected_products": [
-      "cpe:2.3:a:google:chrome:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://chromereleases.googleblog.com/2026/06/stable-channel-update-for-desktop_0153744567.html",
-      "https://issues.chromium.org/issues/516501794"
+      "https://spring.io/security/cve-2026-41711"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-41706",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-10T00:16:51.223",
+    "title": "CVE-2026-41706 - Spring Security's CookieRequestCache and CookieServerRequestCache store the pre-authentication reque",
+    "description": "Spring Security's CookieRequestCache and CookieServerRequestCache store the pre-authentication request URL in a browser cookie so that users can be redirected back to their intended destination after a successful login. In affected versions, the full absolute URL is stored in the cookie and is used without validation as the post-login redirect target.\n\nAffected versions:\nSpring Security 5.7.0 through 5.7.23; 5.8.0 through 5.8.25; 6.3.0 through 6.3.16; 6.4.0 through 6.4.16; 6.5.0 through 6.5.10; 7.0.0 through 7.0.5.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41706",
+    "cvss_score": 6.1,
+    "affected_products": [],
+    "references": [
+      "https://spring.io/security/cve-2026-41706"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-41701",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-10T00:16:51.107",
+    "title": "CVE-2026-41701 - Correlation IDs for replies in the RabbitTemplate.sendAndReceive() with the fixed reply queue are pr",
+    "description": "Correlation IDs for replies in the RabbitTemplate.sendAndReceive() with the fixed reply queue are predictable due to internal simple counter.\n\nAffected versions:\nSpring AMQP 4.0.0 through 4.0.3; 3.2.0 through 3.2.10; 3.1.0 through 3.1.15; 2.4.0 through 2.4.17.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41701",
+    "cvss_score": 4.4,
+    "affected_products": [],
+    "references": [
+      "https://spring.io/security/cve-2026-41701"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-41697",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-10T00:16:50.947",
+    "title": "CVE-2026-41697 - Spring Data Relational does not properly escape binding values of externally-controlled input when u",
+    "description": "Spring Data Relational does not properly escape binding values of externally-controlled input when using StringMatcher (STARTING, ENDING, or CONTAINING) in Query By Example (QBE). An attacker can supply wildcard characters to perform boolean-based blind data inference.\n\nAffected versions:\nSpring Data Relational/JDBC/R2DBC 4.0.0 through 4.0.5; 3.5.0 through 3.5.11; 3.4.0 through 3.4.14; 3.3.0 through 3.3.16; 3.2.0 through 3.2.15; 3.1.0 through 3.1.14; 3.0.0 through 3.0.15; 2.4.0 through 2.4.19.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41697",
+    "cvss_score": 4.8,
+    "affected_products": [],
+    "references": [
+      "https://spring.io/security/cve-2026-41697"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-41696",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-10T00:16:50.800",
+    "title": "CVE-2026-41696 - Spring Data MongoDB repository query methods annotated with @Query that use regex parameter binding ",
+    "description": "Spring Data MongoDB repository query methods annotated with @Query that use regex parameter binding perform insufficient validation of the bound parameter. An attacker can supply a crafted string to break out of the intended regular expression quoting.\n\nAffected versions:\nSpring Data MongoDB 5.0.0 through 5.0.5; 4.5.0 through 4.5.11; 4.4.0 through 4.4.14; 4.3.0 through 4.3.16; 4.2.0 through 4.2.15; 4.1.0 through 4.1.14; 4.0.0 through 4.0.15; 3.4.0 through 3.4.19.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41696",
+    "cvss_score": 5.9,
+    "affected_products": [],
+    "references": [
+      "https://spring.io/security/cve-2026-41696"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-41695",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-10T00:16:50.683",
+    "title": "CVE-2026-41695 - Spring Data Commons applications may be vulnerable to denial of service through resource exhaustion ",
+    "description": "Spring Data Commons applications may be vulnerable to denial of service through resource exhaustion when attacker-controlled property path strings are passed to MappingContext property path resolution.\n\nAffected versions:\nSpring Data Commons 4.0.0 through 4.0.5; 3.5.0 through 3.5.11; 3.4.0 through 3.4.14.",
+    "severity": "high",
+    "cve_id": "CVE-2026-41695",
+    "cvss_score": 7.5,
+    "affected_products": [
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:broadcom:spring_data_commons:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://spring.io/security/cve-2026-41695"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-41694",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-10T00:16:50.560",
+    "title": "CVE-2026-41694 - Since Spring Security SAML decrypts SAML Responses as well as elements of SAML LogoutRequests and Lo",
+    "description": "Since Spring Security SAML decrypts SAML Responses as well as elements of SAML LogoutRequests and LogoutResponses without requiring a valid signature, attackers may be able to craft these SAML payloads and use the Service Provider as a decryption oracle.\n\nAffected versions:\nSpring Security 5.7.0 through 5.7.23; 5.8.0 through 5.8.25; 6.3.0 through 6.3.16; 6.4.0 through 6.4.16; 6.5.0 through 6.5.10; 7.0.0 through 7.0.5.",
+    "severity": "low",
+    "cve_id": "CVE-2026-41694",
+    "cvss_score": 3.7,
+    "affected_products": [
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://spring.io/security/cve-2026-41694"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-41008",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-10T00:16:50.427",
+    "title": "CVE-2026-41008 - Spring Security Authorization Server's authorization endpoint performs insufficient validation of th",
+    "description": "Spring Security Authorization Server's authorization endpoint performs insufficient validation of the request_uri parameter. An attacker can craft a malicious authorization request containing an invalid request_uri and an arbitrary, unvalidated redirect_uri, which can lead to an Open Redirect vulnerability.\n\nAffected versions:\nSpring Security 7.0.0 through 7.0.5.\nSpring Authorization Server 1.5.0 through 1.5.7.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-41008",
+    "cvss_score": 6.1,
+    "affected_products": [],
+    "references": [
+      "https://spring.io/security/cve-2026-41008"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-41003",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-10T00:16:50.307",
+    "title": "CVE-2026-41003 - An attacker able to influence values in RelyingPartyRegistration may be able to run arbitrary code o",
+    "description": "An attacker able to influence values in RelyingPartyRegistration may be able to run arbitrary code on HTML forms generated by Spring Security filters.\n\nAffected versions:\nSpring Security 5.7.0 through 5.7.23; 5.8.0 through 5.8.25; 6.3.0 through 6.3.16; 6.4.0 through 6.4.16; 6.5.0 through 6.5.10; 7.0.0 through 7.0.5.",
+    "severity": "high",
+    "cve_id": "CVE-2026-41003",
+    "cvss_score": 7.6,
+    "affected_products": [
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://spring.io/security/cve-2026-41003"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-40993",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-10T00:16:50.197",
+    "title": "CVE-2026-40993 - An attacker with write permissions to the database table managed by JdbcAssertingPartyMetadataReposi",
+    "description": "An attacker with write permissions to the database table managed by JdbcAssertingPartyMetadataRepository (saml2_asserting_party_metadata) may be able to store malicious serialized payloads in the columns containing the collection of verification or encryption credentials (verification_credentials and encryption_credentials, respectively).\n\nAffected versions:\nSpring Security 7.0.0 through 7.0.5.",
+    "severity": "high",
+    "cve_id": "CVE-2026-40993",
+    "cvss_score": 7.3,
+    "affected_products": [],
+    "references": [
+      "https://spring.io/security/cve-2026-40993"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-40991",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-10T00:16:50.087",
+    "title": "CVE-2026-40991 - When using spring-restdocs-webtestclient or spring-restdocs-restassured to document a remote API acc",
+    "description": "When using spring-restdocs-webtestclient or spring-restdocs-restassured to document a remote API accessed over HTTP, an attacker who compromises the API or tricks the user into documenting a malicious API can perform an XXE injection attack when the documentation-generating tests are next executed.\n\nAffected versions:\nSpring REST Docs 4.0.0; 3.0.0 through 3.0.5; 2.0.0.RELEASE through 2.0.8.RELEASE.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-40991",
+    "cvss_score": 5.9,
+    "affected_products": [],
+    "references": [
+      "https://spring.io/security/cve-2026-40991"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-40988",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-10T00:16:49.527",
+    "title": "CVE-2026-40988 - An application using spring-security-saml2-service-provider and the REDIRECT binding for SAML 2.0 Lo",
+    "description": "An application using spring-security-saml2-service-provider and the REDIRECT binding for SAML 2.0 Login or Logout may be vulnerable to a denial of service by way of an unbounded writer that inflates the compressed SAML payload into memory.\n\nAffected versions:\nSpring Security 5.7.0 through 5.7.23; 5.8.0 through 5.8.25; 6.3.0 through 6.3.16; 6.4.0 through 6.4.16; 6.5.0 through 6.5.10; 7.0.0 through 7.0.5.",
+    "severity": "high",
+    "cve_id": "CVE-2026-40988",
+    "cvss_score": 7.5,
+    "affected_products": [
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*",
+      "cpe:2.3:a:vmware:spring_security:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://spring.io/security/cve-2026-40988"
     ],
     "ai_analysis": null,
     "risk_score": null
