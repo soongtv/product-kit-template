@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1781797371093-1",
+    "id": "twitter-1781814880574-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-18T15:42:51.093Z",
+    "timestamp": "2026-06-18T20:34:40.574Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,29 +10,25 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations by exploiting compromised CI/CD pipelines. This can lead to widespread data encryption, service disruption, and potential data exfiltration, severely impacting business operations and customer trust.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
       "affected_industries": [
         "Technology",
-        "Financial Services",
-        "Healthcare",
-        "E-commerce",
-        "Media and Entertainment",
-        "Government"
+        "General"
       ],
       "recommended_actions": [
-        "Immediately review and secure CI/CD pipelines by implementing strict access controls, multi-factor authentication (MFA), and regular security audits.",
-        "Ensure robust backup strategies are in place, with backups stored in isolated environments to prevent ransomware encryption.",
-        "Deploy advanced threat detection and monitoring tools to identify and mitigate malicious activities targeting cloud infrastructure."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "hn-1781797371093-1",
+    "id": "hn-1781814880574-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-18T15:42:51.093Z",
+    "timestamp": "2026-06-18T20:34:40.574Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -41,7 +37,123 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
+      "impact_assessment": "The open-source vulnerability scanner itself does not pose a direct threat, but its widespread adoption could lead to potential misuse by malicious actors to identify unpatched vulnerabilities in software dependencies. Additionally, reliance on such tools without proper validation could lead to false positives or negatives.",
+      "affected_industries": [
+        "Technology",
+        "Software Development",
+        "Cybersecurity"
+      ],
+      "recommended_actions": [
+        "Evaluate the tool in a controlled environment before integrating it into production workflows.",
+        "Educate development and security teams on the limitations of automated vulnerability scanners to avoid over-reliance.",
+        "Monitor for updates or potential misuse of the tool within your organization or supply chain."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-24vr-rprv-67rf",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T20:33:54Z",
+    "title": "OpenClaw: Workspace .env npm_execpath could influence bundled runtime dependency install",
+    "description": "### Summary\n\nWorkspace .env npm_execpath could influence bundled runtime dependency install. In affected versions, a workspace `.env` in a repository opened by a trusted operator could override the package-manager executable path used by the install helper.\n\nThis advisory is scoped to the named feature and configuration. It does not change OpenClaw's trusted-operator model: authenticated Gateway operators, installed plugins, and intentional local execution surfaces remain trusted unless a separa",
+    "severity": "high",
+    "cve_id": "CVE-2026-53846",
+    "ghsa_id": "GHSA-24vr-rprv-67rf",
+    "affected_packages": [
+      "openclaw"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-53846.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-v2ww-5rh7-2h5v",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T20:33:22Z",
+    "title": "OpenClaw: Linux and macOS exec allowlists skipped configured argument patterns",
+    "description": "### Summary\n\nOpenClaw's exec allowlist supported optional `argPattern` entries to restrict the arguments accepted for an allowlisted executable. In affected releases, Linux and macOS gateways skipped `argPattern` checks and treated a matching executable path as sufficient to satisfy the allowlist.\n\nThis meant an operator could configure an allowlist entry that appeared to permit only a narrow argv shape, but OpenClaw would allow other argv for the same executable without an approval prompt when ",
+    "severity": "high",
+    "cve_id": "CVE-2026-53853",
+    "ghsa_id": "GHSA-v2ww-5rh7-2h5v",
+    "affected_packages": [
+      "openclaw"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows bypassing argument pattern restrictions for allowlisted executables, potentially enabling unauthorized or malicious command execution. This could lead to privilege escalation, data exfiltration, or system compromise on Linux and macOS systems.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Government",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Update OpenClaw to the latest patched version that addresses CVE-2026-53853.",
+        "Audit existing allowlist configurations to identify and mitigate any potential misuse of argument patterns.",
+        "Implement additional monitoring and logging for suspicious executable and argument usage to detect potential exploitation."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-8j37-5w68-wj2g",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T20:32:21Z",
+    "title": "OpenClaw: BlueBubbles sender policy could match mutable conversation identifiers",
+    "description": "### Summary\n\nBlueBubbles sender policy could match mutable conversation identifiers. In affected versions, a participant able to influence conversation-level identifiers could match an allowlist entry through conversation metadata rather than a stable sender identity.\n\nThis advisory is scoped to the named feature and configuration. It does not change OpenClaw's trusted-operator model: authenticated Gateway operators, installed plugins, and intentional local execution surfaces remain trusted unle",
+    "severity": "low",
+    "cve_id": "CVE-2026-53860",
+    "ghsa_id": "GHSA-8j37-5w68-wj2g",
+    "affected_packages": [
+      "openclaw"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-53860.",
       "affected_industries": [
         "Technology",
         "General"
@@ -56,64 +168,68 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-q46q-2v7c-wpch",
+    "id": "gh-GHSA-72fw-cqh5-f324",
     "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:03Z",
-    "title": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')...",
-    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in David Lingren Media LIbrary Assistant allows Blind SQL Injection.\n\nThis issue affects Media LIbrary Assistant: from n/a through 3.35.",
-    "severity": "high",
-    "cve_id": "CVE-2026-56012",
-    "ghsa_id": "GHSA-q46q-2v7c-wpch",
-    "affected_packages": [],
+    "timestamp": "2026-06-18T20:31:46Z",
+    "title": "OpenClaw: memory-wiki shared search could miss session visibility checks",
+    "description": "### Summary\n\nmemory-wiki shared search could miss session visibility checks. In affected versions, a caller able to search shared memory could skip the session visibility guard on the affected search path.\n\nThis advisory is scoped to the named feature and configuration. It does not change OpenClaw's trusted-operator model: authenticated Gateway operators, installed plugins, and intentional local execution surfaces remain trusted unless a separate policy, approval, allowlist, sandbox, or auth bou",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53844",
+    "ghsa_id": "GHSA-72fw-cqh5-f324",
+    "affected_packages": [
+      "openclaw"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to execute blind SQL injection attacks, potentially leading to unauthorized access to sensitive database information, data corruption, or complete database compromise. This could further result in data breaches, service disruption, or reputational damage.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in OpenClaw's memory-wiki shared search feature could allow unauthorized access to sensitive session data by bypassing visibility checks. This could lead to data leakage or unauthorized actions within the system.",
       "affected_industries": [
-        "Media and Entertainment",
-        "E-commerce",
-        "Education",
-        "Government",
-        "Healthcare",
-        "Technology"
+        "Technology",
+        "Enterprise Software",
+        "Cloud Services",
+        "Education"
       ],
       "recommended_actions": [
-        "Immediately update Media Library Assistant to the latest version if a patch is available. If no patch exists, consider temporarily disabling or restricting access to the plugin.",
-        "Implement input validation and sanitization mechanisms to ensure special characters are properly neutralized before being used in SQL queries.",
-        "Conduct a comprehensive security audit of the application to identify and remediate other potential vulnerabilities, especially those related to SQL injection."
+        "Apply the latest security patch or update provided by the OpenClaw development team to address CVE-2026-53844.",
+        "Review and audit current configurations to ensure proper session visibility checks are enforced.",
+        "Implement additional monitoring and logging to detect any unauthorized access attempts exploiting this vulnerability."
       ],
-      "urgency": "critical"
+      "urgency": "medium"
     },
-    "risk_score": 85
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-j8fr-ghg4-6wpr",
+    "id": "gh-GHSA-rwp6-7w3q-75fq",
     "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:03Z",
-    "title": "In Eclipse 4diac FORTE versions 3.0.0 to 3.1.0, a specially crafted DELETE connection command to...",
-    "description": "In Eclipse 4diac FORTE versions 3.0.0 to 3.1.0, a specially crafted DELETE connection command to the management interface can lead to a dangling pointer. This allows subsequent commands to access freed memory (use-after-free).",
+    "timestamp": "2026-06-18T20:29:50Z",
+    "title": "OpenClaw: Config recovery could restore openclaw.json with broad file permissions",
+    "description": "### Summary\n\nConfig recovery could restore openclaw.json with broad file permissions. In affected versions, a local recovery path after configuration repair could leave the restored config file more readable than intended.\n\nThis advisory is scoped to the named feature and configuration. It does not change OpenClaw's trusted-operator model: authenticated Gateway operators, installed plugins, and intentional local execution surfaces remain trusted unless a separate policy, approval, allowlist, san",
     "severity": "medium",
-    "cve_id": "CVE-2026-9158",
-    "ghsa_id": "GHSA-j8fr-ghg4-6wpr",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-53856",
+    "ghsa_id": "GHSA-rwp6-7w3q-75fq",
+    "affected_packages": [
+      "openclaw"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9158.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53856.",
       "affected_industries": [
         "Technology",
         "General"
@@ -128,15 +244,17 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-29x2-9v4j-q39r",
+    "id": "gh-GHSA-8c59-hr4w-qg69",
     "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:03Z",
-    "title": "A remote, unauthenticated attacker may exploit a deserialization of untrusted data vulnerability...",
-    "description": "A remote, unauthenticated attacker may exploit a deserialization of untrusted data vulnerability in ibaPDA or ibaDatCoordinator to gain full access to the affected systems.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-8024",
-    "ghsa_id": "GHSA-29x2-9v4j-q39r",
-    "affected_packages": [],
+    "timestamp": "2026-06-18T20:17:50Z",
+    "title": "OpenClaw: Zalo allowFrom could bind to mutable display names",
+    "description": "### Summary\n\nZalo allowFrom could bind to mutable display names. In affected versions, a Zalo friend or contact with mutable display metadata could match a policy entry through mutable display metadata.\n\nThis advisory is scoped to the named feature and configuration. It does not change OpenClaw's trusted-operator model: authenticated Gateway operators, installed plugins, and intentional local execution surfaces remain trusted unless a separate policy, approval, allowlist, sandbox, or auth bounda",
+    "severity": "high",
+    "cve_id": "CVE-2026-53857",
+    "ghsa_id": "GHSA-8c59-hr4w-qg69",
+    "affected_packages": [
+      "openclaw"
+    ],
     "cwes": [
       null
     ],
@@ -147,8 +265,354 @@
       null
     ],
     "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-53857.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-68xw-r643-9p5w",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T20:16:30Z",
+    "title": "OpenClaw: Skill-command dispatch could skip before-tool-call hooks",
+    "description": "### Summary\n\nSkill-command dispatch could skip before-tool-call hooks. In affected versions, a skill command routed through the affected dispatch path could run without the same `runBeforeToolCallHook` coverage as other tool entry points.\n\nThis advisory is scoped to the named feature and configuration. It does not change OpenClaw's trusted-operator model: authenticated Gateway operators, installed plugins, and intentional local execution surfaces remain trusted unless a separate policy, approval",
+    "severity": "low",
+    "cve_id": "CVE-2026-53845",
+    "ghsa_id": "GHSA-68xw-r643-9p5w",
+    "affected_packages": [
+      "openclaw"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-53845.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-x629-46cc-7xgw",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T20:15:20Z",
+    "title": "OpenClaw: Active Memory write scope could mutate global config",
+    "description": "### Summary\n\nActive Memory write scope could mutate global config. In affected versions, a Gateway caller with `operator.write` access to the affected command could change global configuration without requiring `operator.admin`.\n\nThis advisory is scoped to the named feature and configuration. It does not change OpenClaw's trusted-operator model: authenticated Gateway operators, installed plugins, and intentional local execution surfaces remain trusted unless a separate policy, approval, allowlis",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53847",
+    "ghsa_id": "GHSA-x629-46cc-7xgw",
+    "affected_packages": [
+      "openclaw"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows a Gateway caller with 'operator.write' access to modify global configurations without requiring 'operator.admin' privileges. This could lead to unauthorized configuration changes, potentially disrupting system operations or introducing security weaknesses.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Restrict 'operator.write' access to trusted users and review access control policies.",
+        "Apply patches or updates provided by OpenClaw to mitigate the vulnerability.",
+        "Monitor and audit global configuration changes to detect unauthorized modifications."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-w9hf-3pp7-pvxv",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T20:14:40Z",
+    "title": "OpenClaw: Exported session HTML could keep unsafe markdown links",
+    "description": "### Summary\n\nExported session HTML could keep unsafe markdown links. In affected versions, content rendered into an exported session could preserve unsafe `javascript:` or `data:` links in generated HTML.\n\nThis advisory is scoped to the named feature and configuration. It does not change OpenClaw's trusted-operator model: authenticated Gateway operators, installed plugins, and intentional local execution surfaces remain trusted unless a separate policy, approval, allowlist, sandbox, or auth boun",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53841",
+    "ghsa_id": "GHSA-w9hf-3pp7-pvxv",
+    "affected_packages": [
+      "openclaw"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53841.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-fcvx-5cxc-v5p8",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T20:13:11Z",
+    "title": "OpenClaw: Slack reaction events could ignore reaction notification settings",
+    "description": "### Summary\n\nSlack reaction events could ignore reaction notification settings. In affected versions, a Slack reaction event delivered to the configured app could enter the agent pipeline even when reaction notifications were disabled.\n\nThis advisory is scoped to the named feature and configuration. It does not change OpenClaw's trusted-operator model: authenticated Gateway operators, installed plugins, and intentional local execution surfaces remain trusted unless a separate policy, approval, a",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53851",
+    "ghsa_id": "GHSA-fcvx-5cxc-v5p8",
+    "affected_packages": [
+      "openclaw"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53851.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-9v8j-9c9g-w66c",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T20:12:43Z",
+    "title": "OpenClaw: Bootstrap token replay could widen pending pairing scopes",
+    "description": "### Summary\n\nBootstrap token replay could widen pending pairing scopes. In affected versions, a caller with access to a pending bootstrap token could reuse the token before approval with a broader requested scope set.\n\nThis advisory is scoped to the named feature and configuration. It does not change OpenClaw's trusted-operator model: authenticated Gateway operators, installed plugins, and intentional local execution surfaces remain trusted unless a separate policy, approval, allowlist, sandbox,",
+    "severity": "low",
+    "cve_id": "CVE-2026-53862",
+    "ghsa_id": "GHSA-9v8j-9c9g-w66c",
+    "affected_packages": [
+      "openclaw"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 35,
+      "impact_assessment": "The vulnerability allows an attacker with access to a pending bootstrap token to reuse it with a broader scope before approval, potentially escalating privileges or accessing unauthorized resources. However, the threat is mitigated by the trusted-operator model and specific configuration requirements.",
+      "affected_industries": [
+        "Technology",
+        "Cloud Service Providers",
+        "Software Development"
+      ],
+      "recommended_actions": [
+        "Restrict access to bootstrap tokens and ensure they are securely stored.",
+        "Implement monitoring and logging to detect unauthorized token reuse attempts.",
+        "Apply available patches or updates to the affected versions of OpenClaw to mitigate the vulnerability."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 35
+  },
+  {
+    "id": "gh-GHSA-5cj2-3jr2-5h77",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T20:12:12Z",
+    "title": "OpenClaw: Shell positional parameters could weaken strict inline-eval checks",
+    "description": "### Summary\n\nShell positional parameters could weaken strict inline-eval checks. In affected versions, a command request that combines allowlisted tools with shell positional arguments could place inline-eval content in a shell carrier not covered by the strict check.\n\nThis advisory is scoped to the named feature and configuration. It does not change OpenClaw's trusted-operator model: authenticated Gateway operators, installed plugins, and intentional local execution surfaces remain trusted unle",
+    "severity": "high",
+    "cve_id": "CVE-2026-53855",
+    "ghsa_id": "GHSA-5cj2-3jr2-5h77",
+    "affected_packages": [
+      "openclaw"
+    ],
+    "cwes": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in OpenClaw's handling of shell positional parameters could allow attackers to bypass strict inline-eval checks, potentially leading to unauthorized code execution or privilege escalation. This could compromise system integrity and expose sensitive data.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Government",
+        "E-commerce"
+      ],
+      "recommended_actions": [
+        "Immediately update to the latest patched version of OpenClaw that addresses CVE-2026-53855.",
+        "Restrict the use of inline-eval commands and review configurations to ensure they do not rely on vulnerable positional parameter handling.",
+        "Conduct a security audit of systems using OpenClaw to identify and mitigate any potential exploitation vectors."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-gxg4-2rrr-jhc7",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T20:11:31Z",
+    "title": "OpenClaw: Hostname checks could treat trailing-dot hosts inconsistently",
+    "description": "### Summary\n\nHostname checks could treat trailing-dot hosts inconsistently. In affected versions, a request path that accepts model- or workspace-derived URLs could present the same hostname with a trailing dot and avoid a blocklist comparison.\n\nThis advisory is scoped to the named feature and configuration. It does not change OpenClaw's trusted-operator model: authenticated Gateway operators, installed plugins, and intentional local execution surfaces remain trusted unless a separate policy, ap",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53859",
+    "ghsa_id": "GHSA-gxg4-2rrr-jhc7",
+    "affected_packages": [
+      "openclaw"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53859.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-cwpp-5962-q4f6",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T20:10:30Z",
+    "title": "OpenClaw: Exec allowlist could miss side effects from transparent command wrappers",
+    "description": "### Summary\n\nExec allowlist could miss side effects from transparent command wrappers. In affected versions, a command request that reaches the exec allowlist path could be evaluated against the inner command while the wrapper invocation still executed.\n\nThis advisory is scoped to the named feature and configuration. It does not change OpenClaw's trusted-operator model: authenticated Gateway operators, installed plugins, and intentional local execution surfaces remain trusted unless a separate p",
+    "severity": "low",
+    "cve_id": "CVE-2026-53848",
+    "ghsa_id": "GHSA-cwpp-5962-q4f6",
+    "affected_packages": [
+      "openclaw"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 35,
+      "impact_assessment": "The vulnerability allows transparent command wrappers to bypass the exec allowlist, potentially leading to unintended command execution. However, the impact is limited to specific configurations and trusted environments, reducing the overall severity.",
+      "affected_industries": [
+        "Technology",
+        "DevOps",
+        "Cloud Services",
+        "Software Development"
+      ],
+      "recommended_actions": [
+        "Review and update the exec allowlist configuration to account for transparent command wrappers.",
+        "Monitor and audit command execution logs to detect any unusual or unauthorized activity.",
+        "Apply patches or updates provided by the OpenClaw maintainers to mitigate the issue."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 35
+  },
+  {
+    "id": "gh-GHSA-pxq6-fr5m-fwh5",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T18:35:25Z",
+    "title": "JTL Shop versions 5.2.0 through 5.7.1 contains a server-side template injection vulnerability...",
+    "description": "JTL Shop versions 5.2.0 through 5.7.1 contains a server-side template injection vulnerability that allows unauthenticated attackers to inject malicious template syntax due to unsanitized user-supplied input passed to the Smarty template engine. Attackers can exploit this flaw to read sensitive server-side values such as database credentials and encryption keys, and on versions 5.4.0 through 5.7.1, leverage registered Smarty modifiers including unserialize and file_get_contents to write a webshel",
+    "severity": "critical",
+    "cve_id": "CVE-2026-54390",
+    "ghsa_id": "GHSA-pxq6-fr5m-fwh5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
       "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-8024.",
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-54390.",
       "affected_industries": [
         "Technology",
         "General"
@@ -163,157 +627,14 @@
     "risk_score": 90
   },
   {
-    "id": "gh-GHSA-qff7-4q6c-m8h6",
+    "id": "gh-GHSA-xpvh-gv3p-w5qx",
     "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:03Z",
-    "title": "An out-of-bounds write vulnerability in FFmpeg's libavcodec library, specifically in the MagicYUV...",
-    "description": "An out-of-bounds write vulnerability in FFmpeg's libavcodec library, specifically in the MagicYUV decoder, allows denial-of-service and, in some cases, can be exploited for remote code execution.\n\n This vulnerability is associated with the file libavcodec/magicyuv.C.\n\n\n\nThis issue affects FFmpeg before version 8.1.2.",
-    "severity": "high",
-    "cve_id": "CVE-2026-8461",
-    "ghsa_id": "GHSA-qff7-4q6c-m8h6",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-8461.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-733h-q99j-37gc",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "claudiopizzillo PIAF-HMS (PBX-In-A-Flash Hotel Management System; no released versions, latest...",
-    "description": "claudiopizzillo PIAF-HMS (PBX-In-A-Flash Hotel Management System; no released versions, latest commit 389d2633441b65ced1c104212cd62be2bfca21e5) contains multiple unauthenticated SQL injection vulnerabilities. The application has no authentication mechanism and passes user-supplied HTTP parameters directly into deprecated mysql_query() calls via string concatenation, without sanitization, escaping, or parameterization. Affected sinks include rooms.php (DELETE FROM Rooms WHERE ID = $_GET['ID'], un",
-    "severity": "critical",
-    "cve_id": "CVE-2026-54419",
-    "ghsa_id": "GHSA-733h-q99j-37gc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 95,
-      "impact_assessment": "The unauthenticated SQL injection vulnerabilities in PIAF-HMS allow attackers to execute arbitrary SQL commands, potentially leading to data breaches, unauthorized access, data manipulation, and complete compromise of the backend database. The lack of authentication exacerbates the risk, making exploitation trivial.",
-      "affected_industries": [
-        "Hospitality",
-        "Travel",
-        "Small Businesses utilizing PBX systems"
-      ],
-      "recommended_actions": [
-        "Immediately take the application offline to prevent exploitation.",
-        "Refactor the code to implement prepared statements and parameterized queries to mitigate SQL injection vulnerabilities.",
-        "Add robust authentication and access control mechanisms to secure the application."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 95
-  },
-  {
-    "id": "gh-GHSA-jgf8-gg7j-fq24",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "UBB.threads is vulnerable to Path traversal, allowing attackers with privilege to edit templates...",
-    "description": "UBB.threads is vulnerable to Path traversal, allowing attackers with privilege to edit templates to read and write any file on the application’s server that application has privileges to, what results in Remote Code Execution. \nBecause vendor contact attempts were unsuccessful, the vulnerability has only been confirmed in version 7.7.5 but may also affect other versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-54223",
-    "ghsa_id": "GHSA-jgf8-gg7j-fq24",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54223.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-r4cc-xcx2-vp28",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "UBB.threads is vulnerable to Denial of Service (DoS). By sending multiple concurrent requests to...",
-    "description": "UBB.threads is vulnerable to Denial of Service (DoS). By sending multiple concurrent requests to view any user profile on instances with many registered users, an authenticated attacker can easily exhaust database resources and completely deny access to the application for other users.\nBecause vendor contact attempts were unsuccessful, the vulnerability has only been confirmed in version 7.7.5 but may also affect other versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-54224",
-    "ghsa_id": "GHSA-r4cc-xcx2-vp28",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows an authenticated attacker to perform a Denial of Service (DoS) attack by exhausting database resources, potentially causing complete application downtime and service disruption for all users.",
-      "affected_industries": [
-        "Online Forums and Communities",
-        "Education Platforms",
-        "Customer Support Portals",
-        "Small and Medium Enterprises (SMEs) using UBB.threads"
-      ],
-      "recommended_actions": [
-        "Implement rate limiting or throttling mechanisms to restrict the number of requests a user can make to view profiles within a specific time frame.",
-        "Upgrade to the latest version of UBB.threads if available, or monitor vendor channels for patches addressing this vulnerability.",
-        "Deploy Web Application Firewalls (WAFs) to detect and block unusual patterns of traffic targeting user profiles."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-5h7g-227p-mv5r",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')...",
-    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in OceanWP Ocean Product Sharing allows Stored XSS.\n\nThis issue affects Ocean Product Sharing: from n/a through 2.2.2.",
+    "timestamp": "2026-06-18T18:35:24Z",
+    "title": "Webmin allows unauthenticated attackers to read the contents of any file ending in .conf within...",
+    "description": "Webmin allows unauthenticated attackers to read the contents of any file ending in .conf within module directories, due to a bypassable regex pattern.",
     "severity": "medium",
-    "cve_id": "CVE-2026-56007",
-    "ghsa_id": "GHSA-5h7g-227p-mv5r",
+    "cve_id": "CVE-2026-56021",
+    "ghsa_id": "GHSA-xpvh-gv3p-w5qx",
     "affected_packages": [],
     "cwes": [
       null
@@ -321,424 +642,6 @@
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-56007.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-mxqw-8v8m-qpmf",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "UBB.threads is vulnerable to Stored XSS via user posts and user profile fields. The application...",
-    "description": "UBB.threads is vulnerable to Stored XSS via user posts and user profile fields. The application fails to properly sanitize user input, allowing low privileged attackers to inject arbitrary JavaScript that executes in a victim's browser upon viewing.\n\nBecause vendor contact attempts were unsuccessful, the vulnerability has only been confirmed in version 7.7.5 but may also affect other versions.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54219",
-    "ghsa_id": "GHSA-mxqw-8v8m-qpmf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54219.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-9xq7-8p44-p7p4",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "[This CNA information record relates to multiple CVEs; the\ntext explains which aspects...",
-    "description": "[This CNA information record relates to multiple CVEs; the\ntext explains which aspects/vulnerabilities correspond to which CVE.]\n\nTo create and manage guests, domctl operations are used by the control\ndomain, a possible Xenstore domain, or by a domain controlling a\nparticular guest.  Some of these operations may not be executed in\nparallel, so a system-wide lock is used.  The way that lock is acquired\nis, however, not providing any fairness.  This is CVE-2026-42489.\n\nFurthermore, with XSM/Flask ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-42490",
-    "ghsa_id": "GHSA-9xq7-8p44-p7p4",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-42490.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-qrw9-xj5g-qxw8",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "An SQL Injection vulnerability exists in LMS (LAN Management System) before commit 4cb30a7 within...",
-    "description": "An SQL Injection vulnerability exists in LMS (LAN Management System) before commit 4cb30a7 within the \"tarifflist.php\" module due to insufficient sanitization of the POST \"tg[]\" parameter. The application directly concatenates user-supplied array values into an SQL query using \"implode()\", allowing authenticated attackers to perform Error-Based SQL injection and extract sensitive database information.",
-    "severity": "high",
-    "cve_id": "CVE-2026-40455",
-    "ghsa_id": "GHSA-qrw9-xj5g-qxw8",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The SQL Injection vulnerability in the LMS 'tarifflist.php' module allows authenticated attackers to extract sensitive database information, potentially exposing user credentials, financial data, or operational records. This could lead to data breaches, unauthorized access, and reputational damage.",
-      "affected_industries": [
-        "IT Services",
-        "Telecommunications",
-        "Education",
-        "Corporate Networks"
-      ],
-      "recommended_actions": [
-        "Upgrade LMS to the latest version that includes commit 4cb30a7 or later to patch the vulnerability.",
-        "Implement input validation and sanitization for all user-supplied data, especially in the 'tarifflist.php' module.",
-        "Conduct a thorough security audit of the LMS application to identify and mitigate other potential vulnerabilities."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-m7fg-j95w-crhw",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')...",
-    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Bricksable for Bricks Builder allows Stored XSS.\n\nThis issue affects Bricksable for Bricks Builder: from n/a through 1.6.83.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-56009",
-    "ghsa_id": "GHSA-m7fg-j95w-crhw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to execute stored cross-site scripting (XSS) attacks, potentially leading to data theft, session hijacking, or malicious redirection. This can compromise user trust and result in reputational damage for affected organizations.",
-      "affected_industries": [
-        "Web Development",
-        "E-commerce",
-        "Media and Publishing",
-        "Education",
-        "Small and Medium Businesses using Bricks Builder"
-      ],
-      "recommended_actions": [
-        "Update Bricksable for Bricks Builder to the latest patched version as soon as it becomes available.",
-        "Implement input validation and sanitization mechanisms to prevent malicious scripts from being stored or executed.",
-        "Conduct a security audit of web applications using Bricksable to identify and mitigate potential vulnerabilities."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-wqx8-qrc6-2wpv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "UBB.threads is vulnerable to Blind SQL Injection, allowing attackers with access to the Members...",
-    "description": "UBB.threads is vulnerable to Blind SQL Injection, allowing attackers with access to the Members in Control Panel to interact with the underlying database. Due to insufficient input sanitization, an attacker can extract sensitive information, such as user credentials, by manipulating SQL queries through time-based or boolean-based techniques. \nBecause vendor contact attempts were unsuccessful, the vulnerability has only been confirmed in version 7.7.5 but may also affect other versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-54222",
-    "ghsa_id": "GHSA-wqx8-qrc6-2wpv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54222.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-4fqm-96mj-r77p",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "A broken authorization boundary in the RTSP media delivery pipeline of Shenzhen Liandian...",
-    "description": "A broken authorization boundary in the RTSP media delivery pipeline of Shenzhen Liandian Communication Technology LTD V380 IP Camera firmware AppFHE1_V1.0.6.020230803 enables unauthenticated network actors to bypass the device’s credential-enforced live-view workflow and directly retrieve real-time video stream data.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-12527",
-    "ghsa_id": "GHSA-4fqm-96mj-r77p",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to bypass credential checks and access real-time video streams, potentially leading to privacy violations, espionage, and exposure of sensitive information.",
-      "affected_industries": [
-        "Residential Security",
-        "Commercial Security",
-        "Healthcare",
-        "Retail",
-        "Critical Infrastructure"
-      ],
-      "recommended_actions": [
-        "Immediately update the firmware of affected devices to the latest version if a patch is available.",
-        "Implement network segmentation to isolate IP cameras from public-facing networks and restrict access to trusted users only.",
-        "Enable monitoring and logging of RTSP traffic to detect unauthorized access attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-7jcv-rhv5-mq52",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "Some shadow paging errors paths will switch the page-tables without\nupdating the currently...",
-    "description": "Some shadow paging errors paths will switch the page-tables without\nupdating the currently running vCPU reference.  This causes a mismatch\nbetween the loaded page-tables and the mapcache metadata which can lead\nto corruption of the mapcache.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-42488",
-    "ghsa_id": "GHSA-7jcv-rhv5-mq52",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-42488.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-9c46-2jjw-rj67",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "UBB.threads is vulnerable to Reflected XSS. The application improperly handles user input in...",
-    "description": "UBB.threads is vulnerable to Reflected XSS. The application improperly handles user input in certain requests, enabling attackers to execute arbitrary JavaScript in the context of a victim's browser by tricking them into clicking a crafted link. \nBecause vendor contact attempts were unsuccessful, the vulnerability has only been confirmed in version 7.7.5 but may also affect other versions.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54221",
-    "ghsa_id": "GHSA-9c46-2jjw-rj67",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54221.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-f336-f4qw-pgx2",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "uBB.threads is vulnerable to a Cross-Site Request Forgery (CSRF) due to a lack of protective...",
-    "description": "uBB.threads is vulnerable to a Cross-Site Request Forgery (CSRF) due to a lack of protective mechanisms. This allows an attacker to trick an authenticated user into executing unintended actions.\n\nBecause vendor contact attempts were unsuccessful, the vulnerability has only been confirmed in version 7.7.5 but may also affect other versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-54220",
-    "ghsa_id": "GHSA-f336-f4qw-pgx2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The CSRF vulnerability in uBB.threads allows attackers to exploit authenticated users to perform unintended actions, potentially leading to unauthorized data manipulation, privilege escalation, or account compromise.",
-      "affected_industries": [
-        "Technology",
-        "Education",
-        "Community Forums",
-        "Small and Medium Enterprises"
-      ],
-      "recommended_actions": [
-        "Implement CSRF protection mechanisms such as anti-CSRF tokens in all forms and requests.",
-        "Advise users to avoid clicking on untrusted links while logged into uBB.threads and log out when not actively using the platform.",
-        "Monitor for unusual activity and consider applying web application firewall (WAF) rules to detect and block CSRF attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-3vrh-xvg4-68rm",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "A Reflected Cross-Site Scripting (XSS) vulnerability exists in LMS (LAN Management System) before...",
-    "description": "A Reflected Cross-Site Scripting (XSS) vulnerability exists in LMS (LAN Management System) before commit 9c5651b in the \"dbrecover.php\" and \"netremap.php\" modules where unsanitized GET parameters are directly embedded into HTML output. This allows an attacker to inject arbitrary JavaScript when an authenticated user clicks a crafted link, provided the required conditions (such as a network defined in the system) are met.",
-    "severity": "low",
-    "cve_id": "CVE-2026-40457",
-    "ghsa_id": "GHSA-3vrh-xvg4-68rm",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-40457.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-vw8q-74w5-57vq",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "[This CNA information record relates to multiple CVEs; the\ntext explains which aspects...",
-    "description": "[This CNA information record relates to multiple CVEs; the\ntext explains which aspects/vulnerabilities correspond to which CVE.]\n\nTo create and manage guests, domctl operations are used by the control\ndomain, a possible Xenstore domain, or by a domain controlling a\nparticular guest.  Some of these operations may not be executed in\nparallel, so a system-wide lock is used.  The way that lock is acquired\nis, however, not providing any fairness.  This is CVE-2026-42489.\n\nFurthermore, with XSM/Flask ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-42489",
-    "ghsa_id": "GHSA-vw8q-74w5-57vq",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-42489.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-m2f8-w9q8-gvj5",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-18T15:32:02Z",
-    "title": "A path traversal in handling the \"path\" component of .repo files processed by libzypp before 17...",
-    "description": "A path traversal in handling the \"path\" component of .repo files processed by libzypp before 17.38.13 in the 17.x series, or before 16.22.19 could be used by attackers to fill directories on the system outside of the zypp cache with content.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-44942",
-    "ghsa_id": "GHSA-m2f8-w9q8-gvj5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
       null,
       null,
       null,
@@ -746,22 +649,165 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to exploit a path traversal flaw in libzypp, potentially filling directories outside the zypp cache with malicious or unwanted content. This could lead to disk space exhaustion, disruption of system operations, or preparation for further attacks.",
+      "impact_assessment": "The vulnerability in Webmin allows unauthenticated attackers to read sensitive configuration files ending in .conf within module directories. This could expose critical system configurations, including credentials, API keys, or other sensitive data, potentially leading to further exploitation or unauthorized access.",
       "affected_industries": [
-        "Technology",
+        "IT and Software Development",
+        "Web Hosting Providers",
+        "Education",
         "Healthcare",
-        "Finance",
-        "Government",
-        "Retail"
+        "Government"
       ],
       "recommended_actions": [
-        "Immediately update libzypp to version 17.38.13 or later in the 17.x series, or 16.22.19 or later in the 16.x series.",
-        "Audit systems for unusual or unauthorized files in directories outside the zypp cache.",
-        "Implement file system monitoring to detect and alert on unexpected changes in critical directories."
+        "Immediately update Webmin to the latest patched version that addresses CVE-2026-56021.",
+        "Restrict access to Webmin using firewall rules or IP whitelisting to limit exposure to trusted networks.",
+        "Audit and monitor access logs for any unauthorized access attempts or suspicious activity targeting .conf files."
       ],
       "urgency": "high"
     },
     "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-9848-6qgw-2748",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T18:35:24Z",
+    "title": "Webmin accepts basic authentication without session cookies when an attacker provides the 'User...",
+    "description": "Webmin accepts basic authentication without session cookies when an attacker provides the 'User-Agent: webmin' header, allowing bypass of additional MFA requirements. Fixed in 2.641.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-56022",
+    "ghsa_id": "GHSA-9848-6qgw-2748",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-56022.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-hq7f-wv7c-w9mp",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T18:35:24Z",
+    "title": "Hermes WebUI before 0.51.468 contains a resource exhaustion vulnerability in the unauthenticated...",
+    "description": "Hermes WebUI before 0.51.468 contains a resource exhaustion vulnerability in the unauthenticated POST /api/onboarding/oauth/start endpoint that allows unbounded accumulation of in-memory flow state and daemon threads. Attackers can send repeated or concurrent requests to exhaust server memory and thread resources, potentially triggering repeated outbound device-code requests to upstream OAuth providers.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55205",
+    "ghsa_id": "GHSA-hq7f-wv7c-w9mp",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55205.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-ph56-37vq-qfxg",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T18:35:24Z",
+    "title": "InHand Networks IR912 V1.0.0.r20042 and IR915 V1.0.0.r20042 (including earlier versions) were...",
+    "description": "InHand Networks IR912 V1.0.0.r20042 and IR915 V1.0.0.r20042 (including earlier versions) were discovered to contain a buffer overflow vulnerability in the device registration function. This vulnerability could allow an attacker to cause a denial of service attack on the remote target device.",
+    "severity": "high",
+    "cve_id": "CVE-2026-38718",
+    "ghsa_id": "GHSA-ph56-37vq-qfxg",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-38718.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-2g6j-493r-hmfj",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-18T18:35:24Z",
+    "title": "Cross-Site Request Forgery (CSRF) vulnerability in Saad Iqbal WP EasyPay allows Cross Site...",
+    "description": "Cross-Site Request Forgery (CSRF) vulnerability in Saad Iqbal WP EasyPay allows Cross Site Request Forgery.\n\nThis issue affects WP EasyPay: from n/a through 4.4.0.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-56024",
+    "ghsa_id": "GHSA-2g6j-493r-hmfj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-56024.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
   },
   {
     "id": "cve-CVE-2026-41001",
@@ -778,7 +824,7 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows a local attacker to exploit a predictable directory path used by the embedded Artemis message broker in Spring Boot applications. This could lead to unauthorized access, data manipulation, or denial of service by pre-creating or symlinking the directory before the application starts.",
+      "impact_assessment": "The vulnerability allows a local attacker to exploit a predictable static path for the embedded Artemis message broker's data directory. This could lead to unauthorized access, data manipulation, or denial of service by pre-creating the directory or using a symlink to redirect data operations to unintended locations.",
       "affected_industries": [
         "Technology",
         "Finance",
@@ -787,11 +833,11 @@
         "Telecommunications"
       ],
       "recommended_actions": [
-        "Upgrade to a patched version of Spring Boot that resolves CVE-2026-41001. Ensure you are using the latest version available for your branch or migrate to a newer branch if necessary.",
-        "Explicitly configure a unique and secure path for the Artemis message broker's data directory in your application settings to avoid using the default static path.",
-        "Implement file system monitoring and access controls to detect and prevent unauthorized directory creation or symlink attacks on the host."
+        "Upgrade to a patched version of Spring Boot that resolves CVE-2026-41001. Monitor the official Spring Boot release notes for the latest updates.",
+        "Manually configure a unique and secure path for the Artemis message broker's data directory to avoid reliance on the default static path.",
+        "Implement file system monitoring to detect and alert on unauthorized directory or symlink creation in sensitive application directories."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
     "risk_score": 65
   },
@@ -810,15 +856,18 @@
     ],
     "ai_analysis": {
       "risk_score": 35,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-41000.",
+      "impact_assessment": "The vulnerability in Wss4jSecurityInterceptor could allow attackers to bypass replay protections, potentially enabling replay attacks on authentication tokens (e.g., UsernameToken nonces, SAML tokens). This could lead to unauthorized access or session hijacking in systems relying on affected Spring Web Services versions.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government",
+        "Technology"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Upgrade to a patched version of Spring Web Services that resolves CVE-2026-41000.",
+        "Review and validate the configuration of ReplayCache instances to ensure proper implementation and functionality.",
+        "Implement additional monitoring for replay attack patterns in authentication mechanisms as a temporary mitigation."
       ],
       "urgency": "low"
     },
