@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1781883350456-1",
+    "id": "twitter-1781899084404-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-19T15:35:50.456Z",
+    "timestamp": "2026-06-19T19:58:04.404Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1781883350456-1",
+    "id": "hn-1781899084404-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-19T15:35:50.456Z",
+    "timestamp": "2026-06-19T19:58:04.404Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -36,122 +36,229 @@
       "https://news.ycombinator.com/item?id=123"
     ],
     "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "The open-source vulnerability scanner itself does not pose a direct threat but could be exploited by attackers to identify unpatched vulnerabilities in systems if misused. The tool's popularity could also lead to over-reliance without proper validation of its findings.",
+      "risk_score": 20,
+      "impact_assessment": "The open-source vulnerability scanner itself poses minimal direct risk, but improper implementation or over-reliance on automated tools without manual validation could lead to missed vulnerabilities or false positives. Additionally, if the tool has its own vulnerabilities, it could potentially be exploited.",
       "affected_industries": [
         "Technology",
         "Software Development",
         "Cybersecurity"
       ],
       "recommended_actions": [
-        "Evaluate the tool in a controlled environment to ensure it aligns with organizational security policies.",
-        "Train security teams to validate the scanner's findings and avoid over-reliance on automated tools.",
-        "Monitor the tool's development and community activity for any signs of malicious forks or misuse."
+        "Evaluate the tool's source code and security practices before integrating it into your development pipeline.",
+        "Use the tool as a supplementary measure alongside manual code reviews and other security practices.",
+        "Monitor the tool's updates and community feedback to ensure it remains secure and effective."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 20
+  },
+  {
+    "id": "gh-GHSA-q2gm-54r6-8fwm",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-19T19:36:54Z",
+    "title": "Oj: Use-After-Free in Oj::Parser SAJ Callback via Input Mutation",
+    "description": "### Summary\n\n`Oj::Parser#parse` is vulnerable to a heap use-after-free when a SAJ/SAJ2 callback mutates the input JSON string during parsing. The C engine holds a raw `const byte *` pointer into the Ruby string's internal buffer. If a callback (e.g. `hash_start`) resizes the string — for example by calling `String#replace` with a longer value — Ruby reallocates the string buffer and frees the old one. The C parser's pointer is left dangling; the next character read at `parser.c:607` is a use-aft",
+    "severity": "high",
+    "cve_id": "CVE-2026-54898",
+    "ghsa_id": "GHSA-q2gm-54r6-8fwm",
+    "affected_packages": [
+      "oj"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows attackers to exploit a use-after-free condition in the Oj::Parser when a callback mutates the input JSON string during parsing. This can lead to undefined behavior, including potential memory corruption, crashes, or code execution.",
+      "affected_industries": [
+        "Software Development",
+        "Web Applications",
+        "E-commerce",
+        "Financial Services",
+        "Healthcare"
+      ],
+      "recommended_actions": [
+        "Upgrade to the latest version of the Oj gem where the vulnerability is patched.",
+        "Avoid mutating JSON input strings during parsing until the issue is resolved.",
+        "Implement runtime monitoring to detect abnormal behavior or crashes in applications using the vulnerable library."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-9ppp-w3g4-fh4q",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-19T19:36:50Z",
+    "title": "Oj: Use-After-Free in Oj::Doc Iterators via Reentrant Close",
+    "description": "### Summary\n\n`Oj::Doc` iterators (`each_value`, `each_child`, `each_leaf`) are vulnerable to a heap use-after-free. When a Ruby block yielded during iteration calls `doc.close` or `d.close`, the document's heap memory is freed while the C iterator is still running. When control returns from the block, the iterator reads from the freed region, producing a use-after-free accessible from pure Ruby.\n\n### Version\n\n- **Software**: oj gem\n- **Affected**: all versions with `ext/oj/fast.c`\n- **Latest tes",
+    "severity": "high",
+    "cve_id": "CVE-2026-54897",
+    "ghsa_id": "GHSA-9ppp-w3g4-fh4q",
+    "affected_packages": [
+      "oj"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54897.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-35w3-pjm6-wj95",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-19T19:36:47Z",
+    "title": "Oj: Heap Buffer Overflow in Oj.dump Exception Serialization via Large Indent",
+    "description": "### Summary\n\n`Oj.dump` in object mode is vulnerable to a heap buffer overflow when serializing Exception objects with a large `:indent` value. The serializer allocates a buffer sized for the object's attributes but does not account for the indent bytes added on each write. With `indent: 5000`, the accumulation of 5,000-byte indent strings overflows the 13,150-byte heap allocation, corrupting adjacent heap memory.\n\n### Version\n\n- **Software**: oj gem\n- **Affected**: all versions with `ext/oj/dump",
+    "severity": "high",
+    "cve_id": "CVE-2026-54896",
+    "ghsa_id": "GHSA-35w3-pjm6-wj95",
+    "affected_packages": [
+      "oj"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54896.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-v8x7-r927-cc93",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-19T19:36:36Z",
+    "title": "parse-server: Stored XSS via non-standard file extension bypassing file upload extension blocklist",
+    "description": "### Impact\n\nParse Server's default `fileUpload.fileExtensions` blocklist is intended to prevent uploading files that browsers render as active content (such as HTML and SVG), which can be used to perform stored cross-site scripting (XSS) attacks against other users. The blocklist could be bypassed by uploading a file whose extension is not an exact match of a blocked extension (for example a non-standard or compound extension) together with a dangerous content type. On storage adapters that pers",
+    "severity": "low",
+    "cve_id": "CVE-2026-55778",
+    "ghsa_id": "GHSA-v8x7-r927-cc93",
+    "affected_packages": [
+      "parse-server",
+      "parse-server"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-55778.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "low"
     },
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-gj4p-2qjv-wchv",
+    "id": "gh-GHSA-3m6q-jj5j-38c9",
     "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:20Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Free reuseport cBPF...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Free reuseport cBPF prog after RCU grace period.\n\nEulgyu Kim reported the splat below with a repro. [0]\n\nThe repro sets up a UDP reuseport group with a cBPF prog and\nreplaces it with a new one while another thread is sending\na UDP packet to the group.\n\nThe reuseport prog is freed by sk_reuseport_prog_free().\nbpf_prog_put() is called for \"e\"BPF prog to destruct through\nmultiple stages while cBPF prog is freed immediately by",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52910",
-    "ghsa_id": "GHSA-gj4p-2qjv-wchv",
-    "affected_packages": [],
-    "cwes": [],
+    "timestamp": "2026-06-19T19:36:28Z",
+    "title": "Oj: Stack Buffer Overflow in Oj::Doc#each_child via Deeply Nested Input",
+    "description": "### Summary\n\n`Oj::Doc#each_child`, when invoked recursively over a deeply nested JSON\ndocument, overflows a fixed-size stack buffer and aborts the process. This is a\ndenial of service reachable from untrusted JSON.\n\n### Details\n\nTwo-step chain in `ext/oj/fast.c`:\n\n1. **`doc_each_child` (~line 1501)** increments `doc->where` past the\n   `where_path[MAX_STACK = 100]` array with no bounds check, and never restores\n   it (`doc->where--` is missing). Calling `each_child` recursively from inside\n   th",
+    "severity": "high",
+    "cve_id": "CVE-2026-54592",
+    "ghsa_id": "GHSA-3m6q-jj5j-38c9",
+    "affected_packages": [
+      "oj"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52910.",
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows attackers to trigger a stack buffer overflow by providing deeply nested JSON input, resulting in a denial of service (DoS) attack. This can cause affected applications to crash, disrupting services and potentially leading to downtime.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-4q3h-784r-7xp4",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:20Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nip6_vti: set netns_immutable...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nip6_vti: set netns_immutable on the fallback device.\n\njohn1988 and Noam Rathaus reported that vti6_init_net() does not set the\nnetns_immutable flag on the per-netns fallback tunnel device (ip6_vti0).\n\nOther similar tunnel drivers (like ip6_tunnel, sit, ip6_gre, and ip_tunnel)\ncorrectly set this flag during their fallback device initialization to\nprevent them from being moved to another network namespace.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52909",
-    "ghsa_id": "GHSA-4q3h-784r-7xp4",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability in the Linux kernel's ip6_vti module could allow attackers to exploit the lack of the netns_immutable flag on the fallback device, potentially enabling unauthorized movement of the fallback tunnel device between network namespaces. This could lead to privilege escalation, unauthorized access, or network segmentation bypass.",
-      "affected_industries": [
-        "Cloud Service Providers",
-        "Telecommunications",
-        "Enterprise IT",
-        "Government",
-        "IoT and Embedded Systems"
-      ],
-      "recommended_actions": [
-        "Apply the latest Linux kernel patches that address CVE-2026-52909 to ensure the netns_immutable flag is properly set for ip6_vti fallback devices.",
-        "Audit systems using the ip6_vti module to identify any potential misuse or misconfiguration of network namespaces.",
-        "Monitor for unusual activity related to network namespace changes or tunnel device configurations, and implement additional logging for network namespace operations."
+        "Update the Oj gem to the latest patched version that addresses CVE-2026-54592.",
+        "Implement input validation to limit the depth of nested JSON documents processed by the application.",
+        "Monitor application logs for signs of abnormal crashes or DoS attempts and implement rate-limiting to mitigate abuse."
       ],
       "urgency": "high"
     },
-    "risk_score": 72
+    "risk_score": 85
   },
   {
-    "id": "gh-GHSA-r2cq-49ch-rf67",
+    "id": "gh-GHSA-436q-jwfr-rm2h",
     "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:19Z",
-    "title": "Chromacam 4.0.3.0 contains an unquoted service path vulnerability in the PsyFrameGrabberService...",
-    "description": "Chromacam 4.0.3.0 contains an unquoted service path vulnerability in the PsyFrameGrabberService that allows local attackers to execute arbitrary code by placing malicious executables in unquoted path directories. Attackers with write access to C:\\ or subdirectories like C:\\Program Files (x86)\\Personify\\ can place a malicious Program.exe or PsyFrameGrabberService.exe file that executes with LocalSystem privileges when the service starts automatically at boot.",
+    "timestamp": "2026-06-19T19:36:22Z",
+    "title": "jupyterlab-git excluded_paths Case-Sensitivity Bypass Allows Reading Excluded Directories",
+    "description": "## Summary\n\n`jupyterlab-git` 0.53.0 (latest, 2026-04-30) uses `fnmatch.fnmatchcase()` in `GitHandler.prepare()` (`jupyterlab_git/handlers.py:91`) to enforce the admin-configured `excluded_paths` security control. Because `fnmatchcase` is unconditionally case-sensitive, an authenticated user on a case-insensitive filesystem (macOS APFS, Windows NTFS) can bypass the exclusion by varying the case of the URL path segment — e.g. requesting `/git/project/Secrets/...` instead of `/git/project/secrets/.",
     "severity": "high",
-    "cve_id": "CVE-2023-54353",
-    "ghsa_id": "GHSA-r2cq-49ch-rf67",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-54528",
+    "ghsa_id": "GHSA-436q-jwfr-rm2h",
+    "affected_packages": [
+      "jupyterlab-git"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2023-54353.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54528.",
       "affected_industries": [
         "Technology",
         "General"
@@ -166,65 +273,374 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-95q3-4wgq-gv5r",
+    "id": "gh-GHSA-f962-v9hr-pfg5",
     "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:19Z",
-    "title": "The compose-rich-editor library (v1.0.0-rc14) used in HCL Verse for Android's rich text email...",
-    "description": "The compose-rich-editor library (v1.0.0-rc14) used in HCL Verse for Android's rich text email composition fails to properly validate all HTML input thereby allowing malicious content to be executed in certain situations.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-21768",
-    "ghsa_id": "GHSA-95q3-4wgq-gv5r",
-    "affected_packages": [],
+    "timestamp": "2026-06-19T19:36:04Z",
+    "title": "jupyterlab-git extension: Stored XSS leading to RCE",
+    "description": "Overview\n\nAmazon Web Services (AWS) Security has identified a stored cross-site scripting (XSS) issue in the jupyterlab-git JupyterLab extension that can lead to remote code execution (RCE). The issue exists in the PlainTextDiff.ts component, where the createHeader() method passes Git filenames directly to innerHTML without sanitization when rendering diffs for renamed files in commit history. This allows an adversary to craft a filename containing arbitrary HTML/JavaScript that executes when an",
+    "severity": "high",
+    "cve_id": "CVE-2026-54527",
+    "ghsa_id": "GHSA-f962-v9hr-pfg5",
+    "affected_packages": [
+      "jupyterlab-git",
+      "jupyterlab-git-core",
+      "@jupyterlab/git"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54527.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-fm7p-mprw-wjm9",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-19T19:35:59Z",
+    "title": "Oj: intern.c form_attr (uninitialized stack read)",
+    "description": "### Summary\n\n`Oj.load` in `:object` mode reads uninitialized stack memory (and, for long\nkeys, reads out of bounds) when parsing a JSON object whose key is 254 bytes\nor longer. The interned bytes can surface to the caller, disclosing process\nstack memory.\n\n### Details\n\nIn `ext/oj/intern.c`, `form_attr()` handles the long-key path by allocating a\nheap buffer `b`, populating it with the attribute name, and then freeing it —\nbut it passed the **uninitialized stack buffer `buf`** (not `b`) to\n`rb_in",
+    "severity": "medium",
+    "cve_id": "CVE-2026-54500",
+    "ghsa_id": "GHSA-fm7p-mprw-wjm9",
+    "affected_packages": [
+      "oj"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability in the compose-rich-editor library (v1.0.0-rc14) used in HCL Verse for Android could allow attackers to inject and execute malicious HTML content. This may lead to cross-site scripting (XSS) attacks, data theft, or unauthorized actions within the application.",
+      "impact_assessment": "The vulnerability allows the disclosure of uninitialized stack memory, potentially exposing sensitive data such as process memory contents. This could lead to information leakage and may be exploited further depending on the context of the application using the affected library.",
       "affected_industries": [
-        "Enterprise Communication",
-        "Financial Services",
+        "Technology",
+        "Finance",
         "Healthcare",
-        "Government",
-        "Technology"
+        "E-commerce",
+        "Government"
       ],
       "recommended_actions": [
-        "Upgrade the compose-rich-editor library to a patched version that addresses CVE-2026-21768.",
-        "Implement input validation and sanitization mechanisms to prevent execution of malicious HTML content.",
-        "Conduct a security review of the application to identify and mitigate any additional vulnerabilities related to HTML input handling."
+        "Update the Oj library to the latest patched version that addresses CVE-2026-54500.",
+        "Conduct a code audit to identify any dependencies or applications using the vulnerable library and assess their exposure.",
+        "Implement runtime monitoring to detect unusual behavior or potential exploitation attempts related to JSON parsing."
       ],
       "urgency": "medium"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-2m6m-r8c9-84hh",
+    "id": "gh-GHSA-v5jw-96jm-7h2c",
     "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:19Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA: During rereg_mr ensure...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA: During rereg_mr ensure that REREG_ACCESS is compatible\n\nIf IB_MR_REREG_ACCESS changes from RO to RW then the umem has to be\nre-evaluated to ensure it is properly pinned as RW. Since the umem is\nhidden inside each driver's mr struct add a ib_umem_check_rereg() function\nthat each driver has to call before processing IB_MR_REREG_ACCESS.\n\nmlx4 has to retain its duplicate ib_access_writable check because it\nimplements IB_MR_RE",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52908",
-    "ghsa_id": "GHSA-2m6m-r8c9-84hh",
-    "affected_packages": [],
-    "cwes": [],
+    "timestamp": "2026-06-19T19:35:54Z",
+    "title": "Stanza: Remote Code Execution via Unsafe Pickle Deserialization in Model Loaders",
+    "description": "### Summary\n\nStanza 1.12.0 attempts to safely load PyTorch checkpoint files using `torch.load(..., weights_only=True)`, but automatically falls back to the fully unsafe `torch.load(..., weights_only=False)` when the safe load raises `pickle.UnpicklingError`. Because the `UnpicklingError` condition is fully attacker-controllable, any `.pt` file that contains a single unsupported pickle global will trigger it.\n\nAn attacker who can place a malicious pretrain or model file on disk (via supply-chain ",
+    "severity": "high",
+    "cve_id": "CVE-2026-54499",
+    "ghsa_id": "GHSA-v5jw-96jm-7h2c",
+    "affected_packages": [
+      "stanza"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
     "references": [
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows attackers to execute arbitrary code on systems that load malicious PyTorch model files. This could lead to unauthorized access, data exfiltration, or system compromise, especially in environments where models are sourced from untrusted or third-party locations.",
+      "affected_industries": [
+        "Artificial Intelligence and Machine Learning",
+        "Healthcare (AI-driven diagnostics)",
+        "Finance (AI-based fraud detection)",
+        "Retail (recommendation systems)",
+        "Technology and Software Development"
+      ],
+      "recommended_actions": [
+        "Immediately update Stanza to a patched version that addresses CVE-2026-54499 and ensures safe deserialization of PyTorch models.",
+        "Implement strict validation and integrity checks for all `.pt` model files before loading them, especially those sourced from external or untrusted parties.",
+        "Restrict access to directories where model files are stored and ensure proper permissions to prevent unauthorized file placement."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-x84v-g949-293w",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-19T19:35:47Z",
+    "title": "Home Assistant: Konnected alarm-panel switch state and zone topology disclosed to unauthenticated actors on the LAN",
+    "description": "### Summary\n\nThe Konnected integration registers an HTTP endpoint, `KonnectedView` (`homeassistant/components/konnected/__init__.py`), that is marked as **not requiring authentication** (`requires_auth = False`). A comment next to that line says auth is instead handled \"via the access token from configuration.\"\n\nThat promise is only half true:\n\n- **Write requests (POST and PUT)** are handled by `update_sensor()`, which *does* check the request's `Authorization: Bearer <token>` header against the",
+    "severity": "high",
+    "cve_id": "CVE-2026-54317",
+    "ghsa_id": "GHSA-x84v-g949-293w",
+    "affected_packages": [
+      "homeassistant"
+    ],
+    "cwes": [
       null,
+      null
+    ],
+    "references": [
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows unauthenticated actors on the local network (LAN) to access sensitive information about the Konnected alarm-panel's switch state and zone topology. This could enable attackers to map out the security system's configuration, potentially leading to unauthorized access, tampering, or disabling of alarm systems.",
+      "affected_industries": [
+        "Residential Security",
+        "Commercial Security",
+        "Smart Home Automation",
+        "IoT Device Manufacturers"
+      ],
+      "recommended_actions": [
+        "Immediately update the Home Assistant software to the latest version if a patch addressing CVE-2026-54317 has been released.",
+        "Restrict LAN access to trusted devices only by implementing network segmentation or VLANs to isolate IoT devices from general network traffic.",
+        "Monitor network traffic for unauthorized access attempts to the Konnected alarm-panel endpoint and implement firewall rules to block suspicious activity."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-98m9-hrrm-r99r",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-19T19:35:43Z",
+    "title": "Faraday: Uncontrolled recursion in NestedParamsEncoder allows stack exhaustion DoS via deeply nested query parameters",
+    "description": "# Uncontrolled Recursion in NestedParamsEncoder Allows Stack Exhaustion DoS via Deeply Nested Query Parameters\n\n## Summary\n\n`Faraday::NestedParamsEncoder`, the default nested query parameter encoder/decoder in Faraday, decodes nested query strings without enforcing a maximum nesting depth.\n\nA crafted query string such as:\n\n```text\na[x][x][x][x]...[x]=1\n```\n\ncauses Faraday to build a deeply nested Ruby `Hash` structure. The internal `dehash` routine then recursively walks this attacker-controlled",
+    "severity": "high",
+    "cve_id": "CVE-2026-54297",
+    "ghsa_id": "GHSA-98m9-hrrm-r99r",
+    "affected_packages": [
+      "faraday"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54297.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-33vj-92qq-66hc",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-19T19:35:40Z",
+    "title": "containerd CRI checkpoint restore CDI annotation smuggling",
+    "description": "### Impact\n\ncontainerd's CRI implementation improperly trusts Container Device Interface (CDI) annotations found within untrusted checkpoint image metadata during container restoration. When restoring a container from a checkpoint, containerd preserves CDI-related annotations from the checkpoint archive rather than relying solely on the pod's create-time specification. This allows a user with pod creation permissions to bypass standard Kubernetes resource allocation and device plugin enforcement",
+    "severity": "high",
+    "cve_id": "CVE-2026-53492",
+    "ghsa_id": "GHSA-33vj-92qq-66hc",
+    "affected_packages": [
+      "github.com/containerd/containerd/v2",
+      "github.com/containerd/containerd/v2",
+      "github.com/containerd/containerd/v2"
+    ],
+    "cwes": [
       null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-53492.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-rgh6-rfwx-v388",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-19T19:35:36Z",
+    "title": "Arbitrary host CRI log file read via symlink following in CRI checkpoint restore",
+    "description": "### Impact\nA bug was found in containerd where the CRI plugin restores `container.log` from a checkpoint image without validating a symlinked path. This could result in reading an arbitrary file on the host via `kubectl logs`.\n\n### Patches\nThis bug has been fixed in the following containerd versions:\n\n* 2.3.2\n* 2.2.5\n* 2.1.9\n\nUsers should update to these versions to resolve the issue.\n\n### Workarounds\nEnsure that only trusted images and checkpoints are used.\n\n### Credits\nThe containerd project w",
+    "severity": "high",
+    "cve_id": "CVE-2026-53489",
+    "ghsa_id": "GHSA-rgh6-rfwx-v388",
+    "affected_packages": [
+      "github.com/containerd/containerd/v2",
+      "github.com/containerd/containerd/v2",
+      "github.com/containerd/containerd/v2"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-53489.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-xhf5-7wjv-pqxp",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-19T19:35:31Z",
+    "title": "containerd CRI — image-config `LABEL` flows to restart-monitor `binary://` logger: host-root command execution from an image pull",
+    "description": "### Impact\nA bug was found in containerd where the CRI plugin propagates labels from an image config (`LABEL` instruction in Dockerfile) to a container without validation. This may result in executing an arbitrary command on the host, via a plugin that consumes container labels for some operations.\n\n### Patches\nThis bug has been fixed in the following containerd versions:\n\n* 2.3.2\n* 2.2.5\n* 2.1.9\n* 2.0.10\n* 1.7.33\n\nUsers should update to these versions to resolve the issue.\n\n### Workarounds\nEnsu",
+    "severity": "high",
+    "cve_id": "CVE-2026-53488",
+    "ghsa_id": "GHSA-xhf5-7wjv-pqxp",
+    "affected_packages": [
+      "github.com/containerd/containerd",
+      "github.com/containerd/containerd/v2",
+      "github.com/containerd/containerd/v2",
+      "github.com/containerd/containerd/v2",
+      "github.com/containerd/containerd/v2"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows for arbitrary command execution on the host system by exploiting unvalidated container labels in the containerd CRI plugin. This could lead to unauthorized access, data breaches, or system compromise.",
+      "affected_industries": [
+        "Cloud Service Providers",
+        "DevOps and CI/CD Environments",
+        "Technology and Software Development",
+        "Financial Services",
+        "Healthcare",
+        "E-commerce"
+      ],
+      "recommended_actions": [
+        "Immediately update containerd to one of the patched versions: 2.3.2, 2.2.5, 2.1.9, 2.0.10, or 1.7.33.",
+        "Audit and review container images for untrusted or malicious labels before deployment.",
+        "Implement additional runtime security measures, such as restricting container privileges and monitoring container activity for suspicious behavior."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-3v45-f3vh-wg7m",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-19T19:35:27Z",
+    "title": "Oj: Stack Buffer Overflow in Oj.dump via Large Indent",
+    "description": "### Summary\n\n`Oj.dump` is vulnerable to a stack-based buffer overflow when a large `:indent` value is provided by the developer. `fill_indent` in `dump.h` calls `memset(indent_str, ' ', (size_t)opts->indent)` without validating the size. When `opts->indent` is set to `INT_MAX` (2,147,483,647), the `(size_t)` cast preserves the large value and `memset` writes 2 GB into the stack-allocated `out` buffer (4,184 bytes), corrupting the stack and crashing the process.\n\n### Version\n\n- **Software**: oj g",
+    "severity": "high",
+    "cve_id": "CVE-2026-54502",
+    "ghsa_id": "GHSA-3v45-f3vh-wg7m",
+    "affected_packages": [
+      "oj"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in Oj.dump allows a stack-based buffer overflow, which can lead to application crashes or potential remote code execution if exploited. This poses a significant risk to applications relying on the Oj library for JSON serialization, especially if user-controlled input is passed to the :indent parameter.",
+      "affected_industries": [
+        "Technology",
+        "E-commerce",
+        "Financial Services",
+        "Healthcare",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately update to a patched version of the Oj library if available or monitor the library's repository for updates addressing CVE-2026-54502.",
+        "Implement input validation to restrict the :indent parameter to a safe range, preventing excessively large values from being passed to Oj.dump.",
+        "Conduct a security review of all applications using the Oj library to identify potential exploitation vectors and mitigate risks."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-cvxm-645q-p574",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-19T19:35:23Z",
+    "title": "containerd: CRI checkpoint import allows local image tag poisoning",
+    "description": "## Impact\ncontainerd's CRI checkpoint import process contains a vulnerability where it fails to validate the image references specified within a checkpoint image's configuration. An attacker with permissions to create pods can use a crafted checkpoint image to force containerd to pull a malicious image and assign it an arbitrary local tag, thereby poisoning the node's local image cache. Subsequently, if other pods on the same node attempt to use the poisoned tag with an `IfNotPresent` (or `Never",
+    "severity": "medium",
+    "cve_id": "CVE-2026-50195",
+    "ghsa_id": "GHSA-cvxm-645q-p574",
+    "affected_packages": [
+      "github.com/containerd/containerd/v2",
+      "github.com/containerd/containerd/v2",
+      "github.com/containerd/containerd/v2"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52908.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-50195.",
       "affected_industries": [
         "Technology",
         "General"
@@ -239,15 +655,18 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-qqxm-j467-m9mr",
+    "id": "gh-GHSA-wmwx-jr2p-4j4r",
     "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:19Z",
-    "title": "AVAST Antivirus 25.11 contains an unquoted service path vulnerability in the SecureLine service...",
-    "description": "AVAST Antivirus 25.11 contains an unquoted service path vulnerability in the SecureLine service that allows local non-privileged users to execute code with elevated SYSTEM privileges. Attackers can exploit the unquoted binary path in the service configuration to inject malicious executables that execute with high-level system permissions.",
-    "severity": "high",
-    "cve_id": "CVE-2025-71326",
-    "ghsa_id": "GHSA-qqxm-j467-m9mr",
-    "affected_packages": [],
+    "timestamp": "2026-06-19T19:35:19Z",
+    "title": "parse-server: Relation `$relatedTo` query bypasses `protectedFields` and owning-object ACL",
+    "description": "### Impact\n\nA relation query using the `$relatedTo` operator could read the membership of a `Relation` field even when that field was hidden from the requesting client by `protectedFields`, and even when the object owning the relation was not readable by the client under its ACL or class-level permissions. The request requires only the public API credentials that Parse clients normally carry — no user session, master key, or Cloud Code is needed.\n\nAs a result, an unauthenticated client who knows",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53726",
+    "ghsa_id": "GHSA-wmwx-jr2p-4j4r",
+    "affected_packages": [
+      "parse-server",
+      "parse-server"
+    ],
     "cwes": [
       null
     ],
@@ -259,49 +678,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The unquoted service path vulnerability in AVAST Antivirus 25.11's SecureLine service allows local attackers to execute arbitrary code with SYSTEM privileges, potentially leading to full system compromise. This could be exploited to install malware, exfiltrate sensitive data, or disrupt operations.",
-      "affected_industries": [
-        "Healthcare",
-        "Finance",
-        "Government",
-        "Education",
-        "Small and Medium Businesses",
-        "Enterprise IT"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patch or update from AVAST immediately to address the vulnerability.",
-        "Restrict local user access to systems running AVAST Antivirus to minimize exploitation risk.",
-        "Audit and monitor systems for signs of exploitation, such as unexpected processes running with SYSTEM privileges."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-h259-67jx-3q85",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:19Z",
-    "title": "Malwarebytes 4.5 contains an unquoted service path vulnerability in the MBAMService executable...",
-    "description": "Malwarebytes 4.5 contains an unquoted service path vulnerability in the MBAMService executable that allows local attackers to escalate privileges by injecting malicious code into the system root path. Attackers can place executable files in unquoted path directories that execute with LocalSystem privileges during service startup or system reboot.",
-    "severity": "high",
-    "cve_id": "CVE-2022-50971",
-    "ghsa_id": "GHSA-h259-67jx-3q85",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2022-50971.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53726.",
       "affected_industries": [
         "Technology",
         "General"
@@ -311,20 +689,22 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 75
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-xvcc-cxhc-j68h",
+    "id": "gh-GHSA-75v4-m273-5j49",
     "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:19Z",
-    "title": "Wondershare PDFelement 5.2.9 contains a privilege escalation vulnerability due to an unquoted...",
-    "description": "Wondershare PDFelement 5.2.9 contains a privilege escalation vulnerability due to an unquoted service path in the WsAppService Windows service. Local attackers can place a malicious executable in the service path and execute code with LocalSystem privileges upon service restart or system reboot.",
-    "severity": "high",
-    "cve_id": "CVE-2020-37254",
-    "ghsa_id": "GHSA-xvcc-cxhc-j68h",
-    "affected_packages": [],
+    "timestamp": "2026-06-19T19:35:15Z",
+    "title": "parse-server: Endpoints `/login` and `/verifyPassword` disclose MFA secrets and protected fields when `_User` get is denied",
+    "description": "### Impact\n\nApps that enable MFA and deny `get` on the `_User` class via Class-Level Permissions could expose sensitive user data through the `/login` and `/verifyPassword` endpoints.\n\nThese endpoints re-fetch the user through the access-controlled query pipeline (CLP, `protectedFields`, auth-adapter sanitizers) before responding. When that re-fetch was denied by the `_User` `get` permission, the server fell back to the raw database row, exposing raw `authData` (including MFA TOTP secrets and re",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53725",
+    "ghsa_id": "GHSA-75v4-m273-5j49",
+    "affected_packages": [
+      "parse-server"
+    ],
     "cwes": [
       null
     ],
@@ -332,13 +712,11 @@
       null,
       null,
       null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2020-37254.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53725.",
       "affected_industries": [
         "Technology",
         "General"
@@ -348,21 +726,25 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 75
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-rq6c-35mg-vgrf",
+    "id": "gh-GHSA-7wqv-xjf3-x35v",
     "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:19Z",
-    "title": "Brother SAPSprint 7.60 contains an unquoted service path vulnerability in the SAPSprint service...",
-    "description": "Brother SAPSprint 7.60 contains an unquoted service path vulnerability in the SAPSprint service binary that allows local attackers to escalate privileges. Attackers can place a malicious executable in the Program Files directory path to be executed with LocalSystem privileges when the service starts automatically.",
-    "severity": "high",
-    "cve_id": "CVE-2021-47985",
-    "ghsa_id": "GHSA-rq6c-35mg-vgrf",
-    "affected_packages": [],
+    "timestamp": "2026-06-19T19:35:11Z",
+    "title": "parse-server: Stored XSS via trailing-dot filename bypassing file upload extension blocklist",
+    "description": "### Impact\n\nThe default file upload extension blocklist can be bypassed by appending a trailing dot to a filename whose extension would otherwise be blocked (e.g. `poc.svg.`). The trailing dot causes the extension parser to extract an empty string, which short-circuits the blocklist check, and the attacker-controlled Content-Type is forwarded to the storage adapter unchanged. Storage adapters that persist and serve the provided Content-Type (such as S3 or GCS) then serve the file with an active ",
+    "severity": "low",
+    "cve_id": "CVE-2026-53724",
+    "ghsa_id": "GHSA-7wqv-xjf3-x35v",
+    "affected_packages": [
+      "parse-server",
+      "parse-server"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
@@ -373,35 +755,37 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The unquoted service path vulnerability in Brother SAPSprint 7.60 allows local attackers to escalate privileges to LocalSystem, potentially enabling full control over the affected system. This could lead to unauthorized access, data theft, or further exploitation of the compromised machine.",
+      "risk_score": 45,
+      "impact_assessment": "The vulnerability allows attackers to bypass file upload extension blocklists by appending a trailing dot to filenames. This could enable the upload of malicious files, such as scripts or executable code, leading to potential stored XSS attacks. The impact is limited to systems using storage adapters that rely on the Content-Type provided by the attacker, such as S3 or GCS.",
       "affected_industries": [
-        "Manufacturing",
-        "Healthcare",
-        "Finance",
-        "Retail",
-        "Government",
-        "Education"
+        "Technology",
+        "E-commerce",
+        "Media and Entertainment",
+        "Cloud Services",
+        "Healthcare"
       ],
       "recommended_actions": [
-        "Ensure all service paths in Brother SAPSprint 7.60 are properly quoted to prevent exploitation of the vulnerability. Apply vendor-provided patches or updates if available.",
-        "Restrict local access to systems running Brother SAPSprint and monitor for unauthorized changes to the Program Files directory.",
-        "Implement application whitelisting to prevent execution of unauthorized binaries and conduct regular security audits to identify misconfigurations."
+        "Update to the latest version of parse-server that includes a fix for CVE-2026-53724.",
+        "Implement additional server-side validation to sanitize and verify file extensions and Content-Type headers before processing uploads.",
+        "Review and configure storage adapter settings to enforce strict MIME type validation and prevent serving untrusted Content-Type headers."
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 85
+    "risk_score": 45
   },
   {
-    "id": "gh-GHSA-vcqw-5625-54xg",
+    "id": "gh-GHSA-mwqm-4fw3-cjvr",
     "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:18Z",
-    "title": "Winstep 18.06.0096 contains an unquoted service path vulnerability in the Winstep Xtreme Service...",
-    "description": "Winstep 18.06.0096 contains an unquoted service path vulnerability in the Winstep Xtreme Service that allows local attackers to escalate privileges. Attackers can place malicious executables in the Program Files directory to be executed with LocalSystem privileges when the service starts.",
-    "severity": "high",
-    "cve_id": "CVE-2020-37253",
-    "ghsa_id": "GHSA-vcqw-5625-54xg",
-    "affected_packages": [],
+    "timestamp": "2026-06-19T19:35:05Z",
+    "title": "symfony/ux-autocomplete: XSS via unescaped AJAX response data",
+    "description": "### Description\n\nThe Stimulus controller shipped with `symfony/ux-autocomplete` renders AJAX response items into the dropdown by interpolating the `text` field directly into HTML template literals (`<div>${item[labelField]}</div>`) inside `_createAutocompleteWithRemoteData()`. The value is parsed as HTML rather than text, so any markup contained in the AJAX response is executed by the browser.\n\nWhen the dropdown values are derived from user-supplied content, an attacker can craft a string that t",
+    "severity": "medium",
+    "cve_id": "CVE-2026-49216",
+    "ghsa_id": "GHSA-mwqm-4fw3-cjvr",
+    "affected_packages": [
+      "symfony/ux-autocomplete",
+      "symfony/ux-autocomplete"
+    ],
     "cwes": [
       null
     ],
@@ -412,8 +796,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2020-37253.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-49216.",
       "affected_industries": [
         "Technology",
         "General"
@@ -423,391 +807,9 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-f7m8-g3g3-p9rf",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:18Z",
-    "title": "Network Inventory Advisor 5.0.26.0 installs the niaservice service with an unquoted binary path...",
-    "description": "Network Inventory Advisor 5.0.26.0 installs the niaservice service with an unquoted binary path that allows local attackers to escalate privileges by placing malicious executables in intermediate directories. Attackers can exploit the unquoted path in the service configuration to execute arbitrary code with LocalSystem privileges when the service starts or restarts.",
-    "severity": "high",
-    "cve_id": "CVE-2019-25747",
-    "ghsa_id": "GHSA-f7m8-g3g3-p9rf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2019-25747.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-478p-wq8m-rrr4",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:18Z",
-    "title": "TFTP Broadband 4.3.0.1465 contains an unquoted service path vulnerability in the tftpt.exe...",
-    "description": "TFTP Broadband 4.3.0.1465 contains an unquoted service path vulnerability in the tftpt.exe service binary that allows local attackers to execute arbitrary code with system privileges. Attackers can place a malicious executable in the Program Files directory path that will be executed during service startup or system reboot with LocalSystem privileges.",
-    "severity": "high",
-    "cve_id": "CVE-2020-37250",
-    "ghsa_id": "GHSA-478p-wq8m-rrr4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2020-37250.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-3364-g3c8-w87q",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:18Z",
-    "title": "AnyDesk 2.5.0 contains an unquoted service path vulnerability that allows local users to execute...",
-    "description": "AnyDesk 2.5.0 contains an unquoted service path vulnerability that allows local users to execute arbitrary code with SYSTEM privileges by exploiting the service installation. Attackers can insert malicious executables in the system root path that execute with elevated privileges during application startup or system reboot.",
-    "severity": "high",
-    "cve_id": "CVE-2016-20094",
-    "ghsa_id": "GHSA-3364-g3c8-w87q",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The unquoted service path vulnerability in AnyDesk 2.5.0 allows local attackers to execute arbitrary code with SYSTEM privileges. This can lead to full system compromise, unauthorized access, and potential lateral movement within the network.",
-      "affected_industries": [
-        "IT and Technology",
-        "Financial Services",
-        "Healthcare",
-        "Government",
-        "Education",
-        "Small and Medium Enterprises (SMEs)"
-      ],
-      "recommended_actions": [
-        "Update AnyDesk to the latest version where this vulnerability is patched, or apply any available vendor-provided mitigations.",
-        "Audit and secure service paths on all systems to ensure they are properly quoted to prevent exploitation.",
-        "Restrict local user access to critical systems and monitor for any unauthorized changes to service paths or executable files."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-5fq3-x65j-gvx5",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:18Z",
-    "title": "Comodo Chromodo Browser 52.15.25.664 contains an unquoted service path vulnerability in the...",
-    "description": "Comodo Chromodo Browser 52.15.25.664 contains an unquoted service path vulnerability in the ChromodoUpdater service that runs with SYSTEM privileges. A local attacker can insert a malicious executable in the service path and execute arbitrary code with elevated privileges upon service restart or system reboot.",
-    "severity": "high",
-    "cve_id": "CVE-2016-20088",
-    "ghsa_id": "GHSA-5fq3-x65j-gvx5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The unquoted service path vulnerability in Comodo Chromodo Browser's updater service allows a local attacker to execute arbitrary code with SYSTEM privileges, potentially leading to full system compromise.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Immediately update or patch the Chromodo Browser to the latest version if available, or contact Comodo for guidance.",
-        "Restrict physical and local access to systems running the vulnerable software to trusted personnel only.",
-        "Audit systems for unquoted service paths and implement proper quoting practices for all service paths to prevent exploitation."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-9mv8-29r8-jw5c",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:18Z",
-    "title": "Comodo Dragon Browser versions up to 52.15.25.663 contain a privilege escalation vulnerability in...",
-    "description": "Comodo Dragon Browser versions up to 52.15.25.663 contain a privilege escalation vulnerability in the DragonUpdater service due to an unquoted service path running with SYSTEM privileges. A local attacker can insert a malicious executable in the service path and execute arbitrary code with elevated privileges upon service restart or system reboot.",
-    "severity": "high",
-    "cve_id": "CVE-2016-20090",
-    "ghsa_id": "GHSA-9mv8-29r8-jw5c",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2016-20090.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-m54c-47fq-9p83",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:18Z",
-    "title": "RealTimes Desktop Service 18.1.4 contains an unquoted service path vulnerability in the rpdsvc...",
-    "description": "RealTimes Desktop Service 18.1.4 contains an unquoted service path vulnerability in the rpdsvc.exe binary that allows local attackers to escalate privileges. Attackers can place malicious executables in unquoted path directories to execute arbitrary code with LocalSystem privileges during service startup or system reboot.",
-    "severity": "high",
-    "cve_id": "CVE-2020-37251",
-    "ghsa_id": "GHSA-m54c-47fq-9p83",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2020-37251.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-88m9-fhx9-32h6",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:18Z",
-    "title": "Fortitude HTTP 1.0.4.0 contains an unquoted service path vulnerability that allows local users to...",
-    "description": "Fortitude HTTP 1.0.4.0 contains an unquoted service path vulnerability that allows local users to execute arbitrary code with elevated privileges by exploiting the service binary path. Attackers can insert malicious executables in the system root path that execute with SYSTEM privileges during service startup or system reboot.",
-    "severity": "high",
-    "cve_id": "CVE-2016-20087",
-    "ghsa_id": "GHSA-88m9-fhx9-32h6",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The unquoted service path vulnerability in Fortitude HTTP 1.0.4.0 allows local attackers to execute arbitrary code with SYSTEM privileges, potentially leading to full system compromise. This could be exploited during service startup or system reboot, making it a critical privilege escalation vector.",
-      "affected_industries": [
-        "Technology",
-        "Healthcare",
-        "Finance",
-        "Government",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Ensure all service paths in Fortitude HTTP 1.0.4.0 are quoted properly to prevent exploitation. Update the service configuration to include quotes around the executable path.",
-        "Restrict local user access to directories where the service binary resides and monitor for unauthorized changes to these directories.",
-        "Upgrade to a patched version of Fortitude HTTP, if available, or consider replacing it with a more secure alternative."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-r7w7-cvq9-735c",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:18Z",
-    "title": "Iperius Remote 1.7.0 contains an unquoted service path vulnerability that allows local users to...",
-    "description": "Iperius Remote 1.7.0 contains an unquoted service path vulnerability that allows local users to execute arbitrary code with SYSTEM privileges by exploiting the service installation path. When installed from directories containing spaces, attackers can place malicious executables in the path to be executed with elevated privileges during service startup or system reboot.",
-    "severity": "high",
-    "cve_id": "CVE-2016-20089",
-    "ghsa_id": "GHSA-r7w7-cvq9-735c",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2016-20089.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-4vvh-93ff-2f2v",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:18Z",
-    "title": "NetDrive 2.6.12 contains an unquoted service path vulnerability in the...",
-    "description": "NetDrive 2.6.12 contains an unquoted service path vulnerability in the Netdrive2_Service_Netdrive2 service that allows local users to execute arbitrary code with SYSTEM privileges. Attackers can insert malicious executables in the system root path that will be executed during service startup or system reboot, resulting in privilege escalation.",
-    "severity": "high",
-    "cve_id": "CVE-2016-20092",
-    "ghsa_id": "GHSA-4vvh-93ff-2f2v",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The unquoted service path vulnerability in NetDrive 2.6.12 allows local attackers to execute arbitrary code with SYSTEM privileges, potentially leading to full control of the affected system. This can result in privilege escalation, unauthorized access, and compromise of sensitive data.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Immediately update or patch NetDrive to the latest version if a fix is available. If no patch exists, consider disabling or removing the vulnerable service.",
-        "Restrict local user access to systems running NetDrive to minimize the risk of exploitation.",
-        "Audit and monitor systems for unauthorized changes to service paths or unexpected executable files in the system root path."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-99jf-rpjr-fwjv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-19T15:33:18Z",
-    "title": "Windows Firewall Control 4.8.6.0 contains an unquoted service path vulnerability that allows...",
-    "description": "Windows Firewall Control 4.8.6.0 contains an unquoted service path vulnerability that allows local attackers to escalate privileges by inserting malicious executables in the service path. Attackers can place executable files in unquoted path directories that the wfcs.exe service will execute with LocalSystem privileges upon service restart or system reboot.",
-    "severity": "high",
-    "cve_id": "CVE-2016-20091",
-    "ghsa_id": "GHSA-99jf-rpjr-fwjv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2016-20091.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
+    "risk_score": 50
   },
   {
     "id": "cve-CVE-2026-48612",
@@ -882,19 +884,19 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows malicious actors to exploit improper access control in UniFi OS devices, potentially leading to unauthorized changes, system compromise, and disruption of network operations.",
+      "impact_assessment": "Exploitation of the Improper Access Control vulnerability in UniFi OS devices could allow malicious actors to make unauthorized changes, potentially compromising network security, data integrity, and system functionality.",
       "affected_industries": [
-        "Telecommunications",
         "Technology",
+        "Telecommunications",
         "Healthcare",
         "Finance",
-        "Education",
-        "Retail"
+        "Retail",
+        "Education"
       ],
       "recommended_actions": [
-        "Immediately update all UniFi OS devices to the latest firmware version that addresses CVE-2026-48610.",
-        "Restrict network access to trusted devices and implement network segmentation to limit exposure.",
-        "Enable monitoring and logging on UniFi OS devices to detect unauthorized access attempts."
+        "Immediately apply the latest security patches and firmware updates provided by UniFi to mitigate the vulnerability.",
+        "Restrict network access to UniFi OS devices by implementing strong firewall rules and network segmentation.",
+        "Enable logging and monitoring on all UniFi OS devices to detect unauthorized access attempts and respond promptly."
       ],
       "urgency": "critical"
     },
