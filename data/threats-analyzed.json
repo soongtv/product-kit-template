@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1781929158530-1",
+    "id": "twitter-1781947803671-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-20T04:19:18.530Z",
+    "timestamp": "2026-06-20T09:30:03.671Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1781929158530-1",
+    "id": "hn-1781947803671-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-20T04:19:18.530Z",
+    "timestamp": "2026-06-20T09:30:03.671Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -72,20 +72,23 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-9265.",
+      "risk_score": 78,
+      "impact_assessment": "The vulnerability allows an attacker to exploit a heap out-of-bounds read in the Crypt::OpenSSL::PKCS12 Perl module, potentially leading to information disclosure, memory corruption, or application crashes. This could expose sensitive data or compromise application integrity.",
       "affected_industries": [
+        "Finance",
+        "Healthcare",
+        "E-commerce",
         "Technology",
-        "General"
+        "Government"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Upgrade to Crypt::OpenSSL::PKCS12 version 1.96 or later to mitigate the vulnerability.",
+        "Conduct a security audit of applications using the affected module to ensure no sensitive data has been exposed.",
+        "Implement input validation and sanitization to reduce the risk of exploitation in similar scenarios."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 78
   },
   {
     "id": "gh-GHSA-c8g9-cm5m-77px",
@@ -107,24 +110,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This vulnerability allows attackers to hijack user accounts by exploiting the SSO provisioning process, potentially leading to unauthorized access to sensitive corporate resources and data breaches.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-56215.",
       "affected_industries": [
         "Technology",
-        "Finance",
-        "Healthcare",
-        "Education",
-        "Government",
-        "Retail"
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update Capgo to version 12.128.12 or later to mitigate the vulnerability.",
-        "Review and enhance SSO provisioning workflows to validate email ownership and prevent unauthorized account merges.",
-        "Conduct an audit of user accounts for any suspicious activity or unauthorized merges, and notify affected users."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
     "id": "gh-GHSA-m735-jrv9-j3fc",
@@ -152,19 +151,19 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to delete arbitrary files on the server, potentially leading to remote code execution if critical files like wp-config.php are targeted. This could result in full compromise of the affected WordPress site, data loss, or service disruption.",
+      "impact_assessment": "The vulnerability allows unauthenticated attackers to delete arbitrary files on the server, potentially leading to remote code execution if critical files like wp-config.php are deleted. This could result in complete compromise of the affected WordPress site, including data loss, unauthorized access, and potential malware deployment.",
       "affected_industries": [
         "E-commerce",
         "Media and Publishing",
         "Education",
         "Healthcare",
         "Small and Medium Businesses",
-        "Non-profits"
+        "Nonprofits"
       ],
       "recommended_actions": [
-        "Immediately update the affected plugin to the latest patched version or disable it if no patch is available.",
-        "Implement file and directory permissions to restrict unauthorized access and deletion of critical files.",
-        "Regularly back up the website, including the database and configuration files, to ensure quick recovery in case of exploitation."
+        "Immediately update the vulnerable plugin to a patched version (if available) or disable it until a fix is released.",
+        "Implement file and directory permissions to prevent unauthorized file deletion or modification.",
+        "Monitor server logs for suspicious activity and review access controls to detect and mitigate potential exploitation attempts."
       ],
       "urgency": "critical"
     },
@@ -191,18 +190,19 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers with compromised app-limited API keys to escalate their privileges and gain unrestricted access to organizational resources, including sensitive app listings and protected endpoints. This could lead to data breaches, unauthorized access, and potential exploitation of critical systems.",
+      "impact_assessment": "The vulnerability allows attackers to escalate the scope of compromised app-limited API keys to unrestricted keys, granting them unauthorized access to sensitive organizational resources such as app listings and protected endpoints. This could lead to data breaches, unauthorized modifications, or further exploitation of the system.",
       "affected_industries": [
         "Technology",
-        "Finance",
-        "Healthcare",
+        "Software Development",
+        "Cloud Services",
         "E-commerce",
-        "SaaS Platforms"
+        "Healthcare",
+        "Finance"
       ],
       "recommended_actions": [
-        "Immediately upgrade to Capgo version 12.128.2 or later to patch the vulnerability.",
-        "Audit all API keys for suspicious activity, especially those with app-limited scopes, and revoke any compromised keys.",
-        "Implement stricter monitoring and logging for API key usage to detect unusual behavior and enforce rate limiting."
+        "Immediately update Capgo to version 12.128.2 or later to patch the vulnerability.",
+        "Audit all API keys to identify and revoke any potentially compromised or unrestricted keys.",
+        "Implement stricter monitoring and logging for API key usage to detect anomalous behavior."
       ],
       "urgency": "critical"
     },
@@ -228,22 +228,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows unauthorized attackers to manipulate application storage metrics by inserting arbitrary data into version_meta. This could lead to persistent false data in dashboards, incorrect alerts, and potential disruption of decision-making processes. It may also undermine trust in affected applications' data integrity.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-56213.",
       "affected_industries": [
-        "Software-as-a-Service (SaaS)",
-        "Cloud Service Providers",
         "Technology",
-        "Data Analytics"
+        "General"
       ],
       "recommended_actions": [
-        "Upgrade Capgo to version 12.128.2 or later to patch the vulnerability.",
-        "Audit application logs for any suspicious activity related to the public.upsert_version_meta function and PostgREST RPC endpoint.",
-        "Restrict access to the public RPC endpoint by implementing stricter authentication and authorization controls."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-cmgw-4g6h-mpvm",
@@ -300,20 +298,22 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-56212.",
+      "risk_score": 65,
+      "impact_assessment": "The authentication logic flaw in Capgo before 12.128.2 could allow a user with administrative permissions to enforce mandatory two-factor authentication (2FA) for all team members without enabling 2FA on their own account. This creates a risk of inconsistent security enforcement, potential misuse of administrative privileges, and accidental lockouts for team members, which could disrupt operations.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Software Development",
+        "Cloud Services",
+        "Enterprise IT"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Upgrade to Capgo version 12.128.2 or later to address the authentication logic flaw.",
+        "Audit administrative accounts to ensure all users with elevated permissions have 2FA enabled.",
+        "Implement internal policies requiring mandatory 2FA for all administrative users to prevent misuse."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
     "id": "gh-GHSA-4q75-4379-394h",
@@ -370,20 +370,24 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-56081.",
+      "risk_score": 92,
+      "impact_assessment": "The authentication logic flaw allows attackers to hijack accounts by pre-registering with a victim's email address, enabling unauthorized access to sensitive data, enforcing malicious policies, and denying legitimate users access to their accounts. This can lead to data breaches, reputational damage, and operational disruptions.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Education",
+        "Government"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update to Cap-go version 12.128.2 or later to patch the vulnerability.",
+        "Implement additional email verification checks to ensure ownership before allowing account registration or modifications.",
+        "Monitor accounts for suspicious activity, such as unexpected two-factor authentication activations or changes in account state."
       ],
       "urgency": "critical"
     },
-    "risk_score": 90
+    "risk_score": 92
   },
   {
     "id": "gh-GHSA-q28q-5xw5-9f2r",
@@ -405,23 +409,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The flaw in the Enforce Password Policy feature can lead to a denial of service for Super Admin accounts, causing organization-wide lockouts. This could disrupt operations, delay critical tasks, and potentially expose organizations to reputational and financial risks.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-56080.",
       "affected_industries": [
         "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Education"
+        "General"
       ],
       "recommended_actions": [
-        "Upgrade to Capgo version 12.128.2 or later to patch the vulnerability.",
-        "Implement a temporary workaround by disabling the Enforce Password Policy feature until the patch is applied.",
-        "Notify all Super Admin users about the issue and provide guidance on avoiding unnecessary password changes until the vulnerability is resolved."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-r464-rgh8-qf85",
@@ -444,23 +445,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 92,
-      "impact_assessment": "The vulnerability in the Branda plugin allows unauthenticated attackers to escalate privileges by taking over accounts, including administrative accounts. This can lead to full control of the WordPress site, data breaches, defacement, or further exploitation of the server.",
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-11551.",
       "affected_industries": [
-        "E-commerce",
-        "Media and Publishing",
-        "Education",
-        "Healthcare",
-        "Small and Medium Businesses"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update the Branda plugin to the latest patched version if available or disable the plugin until a fix is released.",
-        "Implement strong web application firewall (WAF) rules to block unauthorized access attempts.",
-        "Review and monitor user account activity for suspicious changes, and reset passwords for critical accounts."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "critical"
     },
-    "risk_score": 92
+    "risk_score": 90
   },
   {
     "id": "gh-GHSA-7hf5-4jq6-894f",
@@ -482,20 +480,23 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-56079.",
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows attackers to bypass cross-tenant authorization, enabling them to access sensitive webhook secrets and delivery logs. This could lead to data exfiltration, forged webhook events, and potential compromise of organizational systems relying on these webhooks.",
       "affected_industries": [
         "Technology",
-        "General"
+        "E-commerce",
+        "Financial Services",
+        "Healthcare",
+        "SaaS Providers"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately upgrade Capgo to version 12.128.2 or later to patch the vulnerability.",
+        "Rotate all org-scoped read API keys and regenerate webhook HMAC signing secrets to mitigate potential exposure.",
+        "Conduct a security audit to identify and address any unauthorized access or forged webhook events."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
     "id": "gh-GHSA-g359-4vg7-88hp",
@@ -590,18 +591,18 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows an authenticated user to execute a denial-of-service (DoS) attack on the SurrealDB server by crafting a malicious query with a deeply nested chain of operators. This can lead to server crashes, resulting in downtime and potential disruption of services.",
+      "impact_assessment": "An authenticated user can exploit this vulnerability to crash the SurrealDB server, leading to a denial of service. This could disrupt operations and availability of services relying on the database.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
         "E-commerce",
-        "Education"
+        "Telecommunications"
       ],
       "recommended_actions": [
-        "Implement a query length or complexity limit to prevent excessively long or deeply nested queries from being processed.",
-        "Update the SurrealDB server to the latest version once a patch is available to address this vulnerability.",
-        "Monitor and log query patterns to detect and block suspicious or overly complex queries from authenticated users."
+        "Implement query length and complexity limits at the application layer to prevent excessively long operator chains.",
+        "Update SurrealDB to the latest version as soon as a patch addressing this vulnerability is released.",
+        "Monitor and log database queries to detect and mitigate suspicious activity from authenticated users."
       ],
       "urgency": "medium"
     },
@@ -663,7 +664,7 @@
     ],
     "ai_analysis": {
       "risk_score": 55,
-      "impact_assessment": "This vulnerability allows unauthorized users to infer the relative ordering of a hidden field's values, potentially exposing sensitive information indirectly. While the actual field values are not revealed, the ability to deduce their order could aid in further exploitation or information gathering.",
+      "impact_assessment": "This vulnerability allows unauthorized users to infer the relative ordering of a restricted field's values by exploiting the indexed ORDER BY functionality. While the actual field values remain hidden, the ability to deduce their order could lead to indirect exposure of sensitive information, potentially aiding in further attacks or data correlation.",
       "affected_industries": [
         "Technology",
         "Finance",
@@ -672,9 +673,9 @@
         "Government"
       ],
       "recommended_actions": [
-        "Update to the latest patched version of SurrealDB as soon as a fix is released to address this vulnerability.",
-        "Review and audit database permissions and access policies to ensure sensitive fields are not indexed unnecessarily.",
-        "Implement monitoring and logging to detect unusual query patterns that may indicate exploitation attempts."
+        "Implement a patch or update from the SurrealDB maintainers as soon as it becomes available to address the issue.",
+        "Restrict or monitor the use of ORDER BY queries on sensitive fields, especially those with field-level SELECT permissions.",
+        "Conduct a review of database configurations and permissions to ensure that sensitive data is adequately protected against similar inference attacks."
       ],
       "urgency": "medium"
     },
@@ -737,23 +738,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows an attacker to exploit Server-Side Request Forgery (SSRF) by redirecting JWT key fetch requests to unauthorized or malicious endpoints. This could lead to unauthorized access, data exfiltration, or further exploitation of internal services.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
       "affected_industries": [
         "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Government"
+        "General"
       ],
       "recommended_actions": [
-        "Implement stricter validation for redirect targets in the JWKS URL fetching process to ensure they comply with the original allowlist.",
-        "Update the `reqwest` client configuration to disable automatic HTTP redirect following or introduce custom redirect handling with proper validation.",
-        "Monitor and audit network traffic for unusual or unauthorized requests originating from the application to detect potential exploitation attempts."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-4xgf-cpjx-pc3j",
@@ -808,18 +806,18 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows authenticated users with contributor-level access or higher to inject malicious scripts into pages via the Anchor block. These scripts can execute whenever a user visits the affected page, potentially leading to data theft, session hijacking, or other malicious actions.",
+      "impact_assessment": "The vulnerability allows authenticated attackers with contributor-level access or higher to inject malicious scripts into pages via the Anchor block. These scripts can execute when users access the compromised pages, potentially leading to session hijacking, data theft, or defacement of the website.",
       "affected_industries": [
         "E-commerce",
         "Media and Publishing",
         "Education",
-        "Nonprofits",
-        "Small and Medium Businesses"
+        "Small and Medium Businesses",
+        "Non-profits"
       ],
       "recommended_actions": [
-        "Update the Pagelayer plugin to the latest version as soon as a patch is released by the vendor.",
-        "Restrict contributor-level access to only trusted users and review user roles and permissions.",
-        "Implement a web application firewall (WAF) to detect and block malicious scripts at runtime."
+        "Update the Pagelayer plugin to the latest patched version as soon as it becomes available.",
+        "Restrict contributor-level access to trusted users only and review user roles and permissions.",
+        "Implement a Web Application Firewall (WAF) to detect and block malicious scripts and inputs."
       ],
       "urgency": "high"
     },
@@ -873,20 +871,23 @@
       "https://www.wordfence.com/threat-intel/vulnerabilities/id/dd9650e6-7c3c-4510-9749-a3503924855f?source=cve"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9134.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to inject malicious JavaScript code into the FooGallery plugin's 'custom_attribute_key' shortcode parameter, potentially leading to stored cross-site scripting (XSS) attacks. This can result in unauthorized access, data theft, session hijacking, or defacement of websites using the plugin.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "E-commerce",
+        "Media and Publishing",
+        "Education",
+        "Nonprofits",
+        "Small and Medium Businesses"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Update the FooGallery plugin to the latest patched version as soon as a fix is released by the vendor.",
+        "Implement a web application firewall (WAF) to detect and block malicious payloads targeting this vulnerability.",
+        "Regularly audit and sanitize user inputs and outputs to prevent XSS vulnerabilities, especially in plugins and third-party integrations."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 60
+    "risk_score": 65
   },
   {
     "id": "cve-CVE-2026-9109",
