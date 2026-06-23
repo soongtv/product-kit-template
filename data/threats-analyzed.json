@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1782227807554-1",
+    "id": "twitter-1782245755140-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-23T15:16:47.554Z",
+    "timestamp": "2026-06-23T20:15:55.140Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1782227807554-1",
+    "id": "hn-1782245755140-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-23T15:16:47.554Z",
+    "timestamp": "2026-06-23T20:15:55.140Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -37,7 +37,44 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
+      "impact_assessment": "The open-source vulnerability scanner itself poses minimal risk, but improper implementation or reliance on it without proper validation could lead to missed vulnerabilities or false positives. Additionally, if the tool contains flaws or is compromised, it could introduce risks to organizations using it.",
+      "affected_industries": [
+        "Technology",
+        "Software Development",
+        "Cybersecurity",
+        "E-commerce"
+      ],
+      "recommended_actions": [
+        "Evaluate the tool in a controlled environment to ensure its reliability and accuracy before deployment.",
+        "Use the tool as a supplementary measure alongside other vulnerability management processes, not as a sole dependency.",
+        "Monitor the tool's updates and community feedback for any reported issues or improvements."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-7cqp-7cfv-6c3q",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T19:11:27Z",
+    "title": "AVideo Meet lugin: anonymous-to-admin stored XSS via unescaped participant User-Agent in getMeetInfo.json.php Participants panel",
+    "description": "### Summary\n\nThe Meet plugin stores the raw HTTP `User-Agent` header of every meeting participant and later renders it without output encoding in the meeting-management (\"Participants\") panel that the meeting host and site administrators open. An anonymous, unauthenticated attacker can join any public meeting while sending a `User-Agent` header containing an HTML payload. The payload is persisted in `meet_join_log.user_agent` and, when the host or an administrator opens the participant list, is ",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-7cqp-7cfv-6c3q",
+    "affected_packages": [
+      "wwbn/avideo"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
       "affected_industries": [
         "Technology",
         "General"
@@ -47,67 +84,73 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "low"
+      "urgency": "medium"
     },
-    "risk_score": 25
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-xpqg-5hj3-ggmh",
+    "id": "gh-GHSA-phv5-334h-mxcw",
     "source": "GitHub Security",
-    "timestamp": "2026-06-23T12:31:35Z",
-    "title": "Open VSX Registry does not sanitize SVG files uploaded as extension icons prior to storage, and...",
-    "description": "Open VSX Registry does not sanitize SVG files uploaded as extension icons prior to storage, and serves them with Content-Type: image/svg+xml without security headers such as Content-Security-Policy or Content-Disposition: attachment. This allows an attacker to publish an extension with a malicious SVG icon and achieve stored cross-site scripting (XSS) when a user navigates directly to the icon URL.\n\n\n\n\nOn deployments using local storage, script execution occurs within the Open VSX application or",
-    "severity": "medium",
-    "cve_id": "CVE-2026-4983",
-    "ghsa_id": "GHSA-xpqg-5hj3-ggmh",
-    "affected_packages": [],
+    "timestamp": "2026-06-23T19:09:29Z",
+    "title": "motionEye Partial Authentication Bypass: Unauthenticated Admin Credential Theft via Path Traversal",
+    "description": "# Partial Authentication Bypass: Unauthenticated Admin Credential Theft via Path Traversal\n\n### Summary\n\nMyself and others have reported several RCE vulnerabilities to this project. However, due to the nature of the app, these are largely not of all that much value, as there is built-in functionality to run commands upon certain actions — i.e. RCE is by design.\n\nWith that in mind, I endeavored to find some sort of auth bypass, and was slightly successful.\n\nWhen the admin password is set but the ",
+    "severity": "critical",
+    "cve_id": null,
+    "ghsa_id": "GHSA-phv5-334h-mxcw",
+    "affected_packages": [
+      "motioneye"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to execute stored cross-site scripting (XSS) attacks by uploading malicious SVG files as extension icons. This could lead to unauthorized script execution, data theft, or compromise of user accounts within the Open VSX Registry or related applications.",
+      "risk_score": 92,
+      "impact_assessment": "This vulnerability allows unauthenticated attackers to bypass authentication mechanisms and potentially steal admin credentials via path traversal. This could lead to unauthorized access, system compromise, data breaches, and further exploitation of the system.",
       "affected_industries": [
-        "Software Development",
-        "DevOps",
-        "Cloud Services",
-        "Open Source Platforms"
+        "Video Surveillance",
+        "IoT and Smart Devices",
+        "Home Security Systems",
+        "Small and Medium Enterprises (SMEs)"
       ],
       "recommended_actions": [
-        "Implement input sanitization to validate and sanitize uploaded SVG files, ensuring they do not contain malicious scripts.",
-        "Add security headers such as Content-Security-Policy and Content-Disposition to mitigate the risk of XSS and prevent direct execution of malicious scripts.",
-        "Conduct a security audit of the Open VSX Registry platform to identify and patch similar vulnerabilities."
+        "Immediately apply access control measures, such as restricting access to the motionEye interface to trusted IP addresses or VPNs.",
+        "Update the motionEye application to the latest version, or apply any available patches addressing this vulnerability.",
+        "Conduct a thorough review of system logs to identify any unauthorized access or suspicious activity, and rotate admin credentials immediately."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 65
+    "risk_score": 92
   },
   {
-    "id": "gh-GHSA-hp5g-5g9f-49wq",
+    "id": "gh-GHSA-qxvg-h7q2-hcxh",
     "source": "GitHub Security",
-    "timestamp": "2026-06-23T09:32:23Z",
-    "title": "In ManageEngine ADSelfService Plus, RecoveryManager Plus, M365 Manager Plus, and ADAudit Plus,...",
-    "description": "In ManageEngine ADSelfService Plus, RecoveryManager Plus, M365 Manager Plus, and ADAudit Plus, the SSO tickets generated to authenticate that session could be predicted\n by an unauthenticated user, leading to account takeover.",
+    "timestamp": "2026-06-23T18:53:04Z",
+    "title": "motionEye: LFI → pass‑the‑hash admin → unsafe restore → unauth action exec (RCE)",
+    "description": "## Summary\nA multi‑stage chain in motionEye leads to remote code execution. The chain combines:\n\n1. **Arbitrary file read (LFI)** via the picture download endpoint for **local motion cameras** using absolute paths.\n2. **Pass‑the‑hash admin auth** due to accepting request signatures computed with password hashes.\n3. **Unsafe config restore** that extracts attacker‑controlled tarballs into `CONF_PATH`.\n4. **Unauthenticated action execution** via `/action/<id>/<action>`.\n\nIf the **normal user passw",
     "severity": "critical",
-    "cve_id": "CVE-2026-11374",
-    "ghsa_id": "GHSA-hp5g-5g9f-49wq",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-qxvg-h7q2-hcxh",
+    "affected_packages": [
+      "motioneye"
+    ],
     "cwes": [
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "references": [
-      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-11374.",
+      "impact_assessment": "Potential security vulnerability with critical severity. ",
       "affected_industries": [
         "Technology",
         "General"
@@ -122,14 +165,306 @@
     "risk_score": 90
   },
   {
-    "id": "gh-GHSA-vwqx-9g89-x938",
+    "id": "gh-GHSA-j67x-q29f-qcvv",
     "source": "GitHub Security",
-    "timestamp": "2026-06-23T09:32:23Z",
-    "title": "An high privileged remote attacker can access a hidden configuration method, that should not be...",
-    "description": "An high privileged remote attacker can access a hidden configuration method, that should not be accessible by any user, to modify critical program parameters. This can result in a total loss of confidentiality, integrity and availability.",
+    "timestamp": "2026-06-23T18:37:51Z",
+    "title": "motionEye's missing authentication on ActionHandler allows unauthenticated camera action execution",
+    "description": "## Summary\n\nThe `ActionHandler.post()` method in motionEye has no authentication decorator, allowing any unauthenticated attacker to trigger camera actions including snapshots, recording start/stop, and configured action scripts (PTZ controls, alarm triggers, etc.).\n\n## Vulnerability Details\n\n**File**: `motioneye/handlers/action.py` — `ActionHandler.post()` line 36\n**CWE**: CWE-862 — Missing Authorization\n**CVSS**: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N = 5.3 Medium\n\n### Vulnerable Code\n\n`",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55863",
+    "ghsa_id": "GHSA-j67x-q29f-qcvv",
+    "affected_packages": [
+      "motioneye"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55863.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-rw9q-97r9-8gvh",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T18:32:46Z",
+    "title": "motionEye's Absolute Path Traversal in Media File Handlers Allows Arbitrary File Read",
+    "description": "### Summary\n\nmEye contains an absolute path traversal vulnerability in multiple media file handlers that allows an attacker to read arbitrary files from the filesystem.\n\nThe affected handlers accept a user-controlled filename parameter and construct filesystem paths using `os.path.join()`. When an absolute path is supplied, Python discards the configured media directory and returns the attacker-supplied path directly. The application then bypasses Tornado's built-in path validation by overriding",
     "severity": "high",
-    "cve_id": "CVE-2026-10521",
-    "ghsa_id": "GHSA-vwqx-9g89-x938",
+    "cve_id": "CVE-2026-55488",
+    "ghsa_id": "GHSA-rw9q-97r9-8gvh",
+    "affected_packages": [
+      "motioneye"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55488.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-m6x2-4hhh-669j",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T18:31:45Z",
+    "title": "CMS (Cryptographic Message Syntax) parsing in gpgsm in GnuPG through 2.5.20 mishandles the CMS...",
+    "description": "CMS (Cryptographic Message Syntax) parsing in gpgsm in GnuPG through 2.5.20 mishandles the CMS format for AES-GCM because aes-ICVlen is supposed to be 12 bytes but 4 bytes is accepted. NOTE: this is related to CVE-2026-34182.",
+    "severity": "low",
+    "cve_id": "CVE-2026-57062",
+    "ghsa_id": "GHSA-m6x2-4hhh-669j",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 35,
+      "impact_assessment": "The vulnerability in CMS parsing within gpgsm in GnuPG could allow for improper handling of AES-GCM encryption, potentially leading to weakened cryptographic integrity or exploitation in specific scenarios. However, the severity is low due to the limited scope and complexity of exploitation.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Government",
+        "Healthcare"
+      ],
+      "recommended_actions": [
+        "Update GnuPG to the latest patched version as soon as a fix is released.",
+        "Review and monitor systems using GnuPG for any signs of exploitation or unusual activity.",
+        "Educate system administrators and developers about the vulnerability to ensure proper cryptographic practices."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 35
+  },
+  {
+    "id": "gh-GHSA-xpv7-vm32-p7wv",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T18:31:45Z",
+    "title": "GNU libidn before 1.44 is prone to out-of-bounds reads of uninitialized memory in the ToUnicode...",
+    "description": "GNU libidn before 1.44 is prone to out-of-bounds reads of uninitialized memory in the ToUnicode APIs because of mishandling in idna_to_unicode_internal. The affected code is not present in libidn2.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-57053",
+    "ghsa_id": "GHSA-xpv7-vm32-p7wv",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-57053.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-h8rc-w822-q8vq",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T18:31:44Z",
+    "title": "In OpenStack Swift before 2.37.2, proxy-server does not strip internal update headers (X...",
+    "description": "In OpenStack Swift before 2.37.2, proxy-server does not strip internal update headers (X-Container-Host, X-Container-Device, X-Delete-At-Host, X-Delete-At-Device) from client requests before forwarding them to object-servers. An authenticated user with write access can inject these headers to redirect container update requests to an attacker-controlled server, enabling server-side request forgery. The SSRF requests expose internal cluster metadata including storage policy indexes, partition mapp",
+    "severity": "medium",
+    "cve_id": "CVE-2026-50221",
+    "ghsa_id": "GHSA-h8rc-w822-q8vq",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 72,
+      "impact_assessment": "This vulnerability allows an authenticated user with write access to exploit server-side request forgery (SSRF) by injecting internal update headers. This can expose sensitive internal cluster metadata, including storage policy indexes and partition mappings, and potentially redirect container update requests to attacker-controlled servers. The impact includes data exposure, unauthorized access, and potential disruption of services.",
+      "affected_industries": [
+        "Cloud Service Providers",
+        "Technology",
+        "Telecommunications",
+        "Healthcare",
+        "Financial Services"
+      ],
+      "recommended_actions": [
+        "Upgrade OpenStack Swift to version 2.37.2 or later to address the vulnerability.",
+        "Implement strict input validation and filtering to prevent unauthorized header injection.",
+        "Monitor and audit logs for unusual activity, such as unexpected redirections or unauthorized access attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 72
+  },
+  {
+    "id": "gh-GHSA-mhwh-83qc-j6x4",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T18:31:43Z",
+    "title": "MuPDF before 1.27.0-rc1 contains an uncontrolled recursion vulnerability in the EPUB CSS...",
+    "description": "MuPDF before 1.27.0-rc1 contains an uncontrolled recursion vulnerability in the EPUB CSS rendering engine that allows remote attackers to cause a denial of service by supplying a maliciously crafted EPUB file with deeply nested HTML elements and inline CSS styles. The function value_from_inheritable_property() in css-apply.c recurses through the CSS property inheritance chain without a depth limit, exhausting the process stack and causing a crash in any application using MuPDF for EPUB rendering",
+    "severity": "high",
+    "cve_id": "CVE-2025-71382",
+    "ghsa_id": "GHSA-mhwh-83qc-j6x4",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 78,
+      "impact_assessment": "The vulnerability in MuPDF's EPUB CSS rendering engine could allow attackers to craft malicious EPUB files that cause denial of service (DoS) by exhausting system resources, potentially disrupting applications and services relying on MuPDF for EPUB rendering.",
+      "affected_industries": [
+        "Publishing",
+        "E-Book Platforms",
+        "Education",
+        "Media and Entertainment",
+        "Software Development"
+      ],
+      "recommended_actions": [
+        "Update to MuPDF version 1.27.0-rc1 or later to patch the vulnerability.",
+        "Implement input validation and sandboxing mechanisms to prevent malicious EPUB files from crashing the application.",
+        "Monitor application logs for signs of unusual resource consumption or crashes related to EPUB rendering."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 78
+  },
+  {
+    "id": "gh-GHSA-g345-7jg6-m22p",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T18:31:43Z",
+    "title": "When using the \"configparser\" module to write configuration files\ncontaining multi-line text...",
+    "description": "When using the \"configparser\" module to write configuration files\ncontaining multi-line text values with carriage return characters (\\r) the\nresulting file could be injected with unexpected keys and values if the\nattacker controls the written value.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-0864",
+    "ghsa_id": "GHSA-g345-7jg6-m22p",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-0864.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-p284-r695-7gxf",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T18:31:43Z",
+    "title": "dhcpcd through 10.3.2, fixed in commit 78ea09e, contains a heap use-after-free vulnerability in...",
+    "description": "dhcpcd through 10.3.2, fixed in commit 78ea09e, contains a heap use-after-free vulnerability in the control socket handling within src/control.c that allows local unprivileged attackers to trigger memory corruption when privilege separation is disabled. Attackers can connect to the control socket and send a privileged command such as -x, causing control_recvdata() to free the client object while the same READ+HANGUP event subsequently reaches control_hangup() with the stale pointer, resulting in",
+    "severity": "medium",
+    "cve_id": "CVE-2026-56117",
+    "ghsa_id": "GHSA-p284-r695-7gxf",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-56117.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-vfc3-qmm8-3gx5",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T18:31:43Z",
+    "title": "An issue in the sqlo_untry component of openlink virtuoso-opensource v7.2.11 allows attackers to...",
+    "description": "An issue in the sqlo_untry component of openlink virtuoso-opensource v7.2.11 allows attackers to cause a Denial of Service (DoS) via crafted SQL statements.",
+    "severity": "high",
+    "cve_id": "CVE-2025-61029",
+    "ghsa_id": "GHSA-vfc3-qmm8-3gx5",
     "affected_packages": [],
     "cwes": [
       null
@@ -140,279 +475,67 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 92,
-      "impact_assessment": "A high privileged remote attacker exploiting this vulnerability can access a hidden configuration method to modify critical program parameters, leading to a complete compromise of confidentiality, integrity, and availability of the affected system.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-61029.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-c3m4-5fm5-h4c4",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T18:31:43Z",
+    "title": "Acrobat Reader versions 2020.009.20074, 2020.001.30002, 2017.011.30171, 2015.006.30523 and...",
+    "description": "Acrobat Reader versions 2020.009.20074, 2020.001.30002, 2017.011.30171, 2015.006.30523 and earlier are affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to disclose sensitive information. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+    "severity": "medium",
+    "cve_id": "CVE-2020-9711",
+    "ghsa_id": "GHSA-c3m4-5fm5-h4c4",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to disclose sensitive information by exploiting an out-of-bounds read. This could lead to exposure of confidential data if a user is tricked into opening a malicious file.",
       "affected_industries": [
         "Finance",
         "Healthcare",
         "Government",
-        "Technology",
-        "Energy"
+        "Education",
+        "Technology"
       ],
       "recommended_actions": [
-        "Immediately apply any available patches or updates provided by the vendor to mitigate the vulnerability.",
-        "Restrict remote access to high-privileged accounts and implement multi-factor authentication (MFA) for all privileged users.",
-        "Conduct a thorough audit of system configurations and monitor for any unauthorized changes or suspicious activity."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 92
-  },
-  {
-    "id": "gh-GHSA-v62r-5pwf-6945",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T09:32:23Z",
-    "title": "The Frontend File Manager Plugin WordPress plugin through 23.6 does not sanitise nor escape a...",
-    "description": "The Frontend File Manager Plugin WordPress plugin through 23.6 does not sanitise nor escape a filename submitted to the frontend file-rename endpoint before storing it as post meta and rendering it back on the admin File Manager listing, leading to a Stored Cross-Site Scripting vulnerability exploitable by users with Subscriber-level access and above against an administrator viewing the file management interface.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-8378",
-    "ghsa_id": "GHSA-v62r-5pwf-6945",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-8378.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Update to the latest version of Acrobat Reader to ensure the vulnerability is patched.",
+        "Educate users to avoid opening files from untrusted or unknown sources.",
+        "Implement endpoint protection solutions to detect and block malicious files."
       ],
       "urgency": "medium"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-2hm5-4cpf-66vx",
+    "id": "gh-GHSA-8q8g-fjv5-5h56",
     "source": "GitHub Security",
-    "timestamp": "2026-06-23T09:32:23Z",
-    "title": "The Infility Global WordPress plugin before 2.15.19 does not properly sanitize and escape some...",
-    "description": "The Infility Global WordPress plugin before 2.15.19 does not properly sanitize and escape some parameters before using them in SQL statements, leading to a SQL Injection vulnerability exploitable by authenticated users with Subscriber-level access and above.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-8163",
-    "ghsa_id": "GHSA-2hm5-4cpf-66vx",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-8163.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-rq65-66g5-5pg2",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T09:32:23Z",
-    "title": "Mojolicious::Plugin::Web::Auth::OAuth2 versions through 0.17 for Perl have an insecure default...",
-    "description": "Mojolicious::Plugin::Web::Auth::OAuth2 versions through 0.17 for Perl have an insecure default state parameter.\n\nWhen no state generator is specified in the constructor, the module defaults to using a SHA-1 hash of predictable and low-entropy sources, including the epoch time (which is leaked via the HTTP Date header) and a call to Perl's built-in rand function.\n\nA predictable state allows an attacker to hijack another user's session through cross site request forgery (CSRF).",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-9733",
-    "ghsa_id": "GHSA-rq65-66g5-5pg2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The insecure default state parameter in Mojolicious::Plugin::Web::Auth::OAuth2 versions through 0.17 allows attackers to predict state values, enabling session hijacking via CSRF attacks. This could lead to unauthorized access to user accounts and sensitive data.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Update to a patched version of Mojolicious::Plugin::Web::Auth::OAuth2 that addresses the insecure default state parameter.",
-        "Implement a custom state generator with high-entropy random values to mitigate predictability.",
-        "Conduct a security audit of OAuth2 implementations to identify and address similar vulnerabilities."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-x74w-29rh-ccvr",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T09:32:23Z",
-    "title": "The Simple Basic Contact Form WordPress plugin through 20250114 does not escape user-supplied...",
-    "description": "The Simple Basic Contact Form WordPress plugin through 20250114 does not escape user-supplied input before reflecting it into the contact form output on validation errors, leading to a Reflected Cross-Site Scripting vulnerability that unauthenticated attackers can exploit against site visitors via a crafted link or cross-site form submission.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-8172",
-    "ghsa_id": "GHSA-x74w-29rh-ccvr",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to execute Reflected Cross-Site Scripting (XSS) attacks by exploiting unescaped user input in the contact form. This can lead to the execution of malicious scripts in the context of site visitors' browsers, potentially resulting in data theft, session hijacking, or phishing attacks.",
-      "affected_industries": [
-        "E-commerce",
-        "Media and Publishing",
-        "Education",
-        "Healthcare",
-        "Small and Medium Businesses"
-      ],
-      "recommended_actions": [
-        "Immediately update the Simple Basic Contact Form WordPress plugin to a patched version (if available) or disable the plugin temporarily to prevent exploitation.",
-        "Implement a web application firewall (WAF) to detect and block malicious requests targeting this vulnerability.",
-        "Conduct a security audit of the website to identify and mitigate other potential vulnerabilities."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-jgxx-4fc8-ff8f",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T09:32:23Z",
-    "title": "The Infility Global Infility Global WordPress plugin before 2.15.20 for WordPress does not...",
-    "description": "The Infility Global Infility Global WordPress plugin before 2.15.20 for WordPress does not sanitize or validate the orderby and order parameters in the import_list(), url_detail(), and file_detail() admin page callbacks before using them in SQL queries, allowing authenticated attackers with Editor-level access or higher to perform time-based blind SQL injection and extract sensitive data from the database. The ImportData module must be enabled via the Infility Global WordPress plugin before 2.15",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-7842",
-    "ghsa_id": "GHSA-jgxx-4fc8-ff8f",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-7842.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-9v4r-j6qw-wjw2",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T09:32:23Z",
-    "title": "The Frontend File Manager Plugin WordPress plugin through 23.6 does not properly enforce its...",
-    "description": "The Frontend File Manager Plugin WordPress plugin through 23.6 does not properly enforce its nonce check on the file download handler, allowing unauthenticated attackers to download files uploaded by any user through the Frontend File Manager Plugin WordPress plugin through 23.6 by iterating identifiers.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-8379",
-    "ghsa_id": "GHSA-9v4r-j6qw-wjw2",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in the Frontend File Manager Plugin for WordPress allows unauthenticated attackers to exploit improper nonce validation, enabling them to download sensitive files uploaded by any user. This could lead to data breaches, exposure of sensitive information, and potential compliance violations.",
-      "affected_industries": [
-        "E-commerce",
-        "Media and Publishing",
-        "Education",
-        "Healthcare",
-        "Small and Medium Businesses"
-      ],
-      "recommended_actions": [
-        "Immediately update the Frontend File Manager Plugin to a patched version (if available) or temporarily disable the plugin until a fix is released.",
-        "Restrict access to the affected WordPress site by implementing IP whitelisting or other access control mechanisms to limit exposure to unauthorized users.",
-        "Review server logs for any unauthorized file download activity and assess the extent of potential data exposure."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-q9v2-7m5w-4693",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T06:30:41Z",
-    "title": "All versions of the package expr-eval are vulnerable to Code Execution via the toJSFunction() API...",
-    "description": "All versions of the package expr-eval are vulnerable to Code Execution via the toJSFunction() API. An attacker can execute arbitrary JavaScript by supplying crafted expressions that are compiled into native code using new Function(). Because user-controlled expressions are transformed directly into executable JavaScript, attackers can escape the intended expression sandbox and run arbitrary code within the application's context.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-12866",
-    "ghsa_id": "GHSA-q9v2-7m5w-4693",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 95,
-      "impact_assessment": "The vulnerability in the expr-eval package allows attackers to execute arbitrary JavaScript code via the toJSFunction() API. This can lead to unauthorized access, data exfiltration, privilege escalation, or complete system compromise, depending on the application's context and permissions.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Education",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Immediately upgrade to a patched version of the expr-eval package if available. If no patch is available, consider replacing the library with a secure alternative.",
-        "Implement strict input validation and sanitization to prevent user-controlled expressions from being passed to the toJSFunction() API.",
-        "Review and monitor application logs for any suspicious activity or unauthorized code execution attempts."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 95
-  },
-  {
-    "id": "gh-GHSA-wcvf-3x75-j4c6",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T06:30:41Z",
-    "title": "A flaw was found in OpenSSH. A local unprivileged attacker on a Linux client host can hijack...",
-    "description": "A flaw was found in OpenSSH. A local unprivileged attacker on a Linux client host can hijack client-side X11 forwarding connections. This is possible by pre-binding the preferred abstract X socket name when X11 forwarding is enabled and a local UNIX-domain X socket is used. A successful attack can compromise the confidentiality of forwarded X11 traffic, including sensitive window contents and input, and may allow some manipulation of the forwarded session.",
+    "timestamp": "2026-06-23T18:31:43Z",
+    "title": "dhcpcd through 10.3.2, fixed in commit 2f00c7b, contains a one-byte stack out-of-bounds write...",
+    "description": "dhcpcd through 10.3.2, fixed in commit 2f00c7b, contains a one-byte stack out-of-bounds write vulnerability in dhcp6_makemessage() in src/dhcp6.c that allows unauthenticated same-link attackers to write beyond a fixed local buffer by serializing an oversized RFC6603 OPTION_PD_EXCLUDE option body. Attackers can send a crafted DHCPv6 ADVERTISE message containing an IA_PD IAPREFIX /0 with a valid OPTION_PD_EXCLUDE using an exclude prefix length of /121 through /128 to trigger the out-of-bounds writ",
     "severity": "medium",
-    "cve_id": "CVE-2026-55655",
-    "ghsa_id": "GHSA-wcvf-3x75-j4c6",
+    "cve_id": "CVE-2026-56114",
+    "ghsa_id": "GHSA-8q8g-fjv5-5h56",
     "affected_packages": [],
     "cwes": [
       null
@@ -424,35 +547,40 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55655.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows unauthenticated attackers on the same network link to exploit a one-byte stack out-of-bounds write, potentially leading to memory corruption, application crashes, or further exploitation depending on the system's configuration and mitigations.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Telecommunications",
+        "Internet Service Providers",
+        "Enterprise IT",
+        "IoT Device Manufacturers",
+        "Cloud Service Providers"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Upgrade to the latest version of dhcpcd that includes the fix (commit 2f00c7b or later).",
+        "Implement network segmentation to limit exposure to untrusted devices on the same link.",
+        "Monitor DHCPv6 traffic for anomalous or malicious activity, and apply intrusion detection/prevention systems where possible."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-5mx2-7g4j-9m39",
+    "id": "gh-GHSA-2qgp-6c6g-cmwv",
     "source": "GitHub Security",
-    "timestamp": "2026-06-23T06:30:41Z",
-    "title": "A flaw was found in OpenSSH. This vulnerability, a heap out-of-bounds read, occurs during the...",
-    "description": "A flaw was found in OpenSSH. This vulnerability, a heap out-of-bounds read, occurs during the cleanup of GSSAPI (Generic Security Service Application Programming Interface) indicators when a trailing NULL termination is missing in the auth-indicators array. A remote attacker, under specific configurations involving GSSAPI authentication and a Kerberos environment, could exploit this to cause the SSH authentication path to crash or abort. This leads to a denial of service (DoS), impacting the ava",
+    "timestamp": "2026-06-23T18:31:43Z",
+    "title": "GNU SASL before 2.2.4 lacks sanitization of a short challenge in _gsasl_ntlm_client_step in the...",
+    "description": "GNU SASL before 2.2.4 lacks sanitization of a short challenge in _gsasl_ntlm_client_step in the NTLM client, which could result in memory disclosure via a crafted server.",
     "severity": "low",
-    "cve_id": "CVE-2026-55654",
-    "ghsa_id": "GHSA-5mx2-7g4j-9m39",
+    "cve_id": "CVE-2026-56968",
+    "ghsa_id": "GHSA-2qgp-6c6g-cmwv",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null,
@@ -460,7 +588,7 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-55654.",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-56968.",
       "affected_industries": [
         "Technology",
         "General"
@@ -475,14 +603,14 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-28f3-55mq-pp68",
+    "id": "gh-GHSA-7gcw-w6h6-wm6p",
     "source": "GitHub Security",
-    "timestamp": "2026-06-23T06:30:41Z",
-    "title": "A flaw was found in OpenSSH. A malicious SSH server can exploit a double free vulnerability in...",
-    "description": "A flaw was found in OpenSSH. A malicious SSH server can exploit a double free vulnerability in the Diffie-Hellman Group Exchange (DH-GEX) client path. This occurs during FIPS (Federal Information Processing Standards) mode known-group validation when the client processes attacker-controlled DH-GEX group parameters. Successful exploitation leads to client-side process termination, resulting in a Denial of Service (DoS).",
-    "severity": "medium",
-    "cve_id": "CVE-2026-55653",
-    "ghsa_id": "GHSA-28f3-55mq-pp68",
+    "timestamp": "2026-06-23T18:31:43Z",
+    "title": "An issue in the sqlo_try_in_loop component of openlink virtuoso-opensource v7.2.11 allows...",
+    "description": "An issue in the sqlo_try_in_loop component of openlink virtuoso-opensource v7.2.11 allows attackers to cause a Denial of Service (DoS) via crafted SQL statements.",
+    "severity": "high",
+    "cve_id": "CVE-2025-61024",
+    "ghsa_id": "GHSA-7gcw-w6h6-wm6p",
     "affected_packages": [],
     "cwes": [
       null
@@ -490,12 +618,11 @@
     "references": [
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55653.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-61024.",
       "affected_industries": [
         "Technology",
         "General"
@@ -505,63 +632,24 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-4852-997v-4274",
+    "id": "gh-GHSA-vh4p-87xg-jc4x",
     "source": "GitHub Security",
-    "timestamp": "2026-06-23T03:31:43Z",
-    "title": "Overview: \nA vulnerability has been found in FAST/TOOLS and CI Server. The web server may return...",
-    "description": "Overview: \nA vulnerability has been found in FAST/TOOLS and CI Server. The web server may return a response containing the CI Server setting information. This information could \nbe exploited by an attacker for other attacks. \n\nThe affected products and versions are as follows:\n\nFAST/TOOLS (Packages: RVSVRN, UNSVRN, HMIWEB, FTEES, HMIMOB) R9.01 to R10.04\n\nCI Server (All packages) R1.01 to R1.04",
-    "severity": "high",
-    "cve_id": "CVE-2026-11833",
-    "ghsa_id": "GHSA-4852-997v-4274",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows unauthorized access to sensitive CI Server configuration information, which could be exploited by attackers to launch further attacks, such as privilege escalation, data exfiltration, or service disruption.",
-      "affected_industries": [
-        "Industrial Automation",
-        "Energy",
-        "Manufacturing",
-        "Utilities",
-        "Oil and Gas"
-      ],
-      "recommended_actions": [
-        "Immediately apply vendor-provided patches or updates to affected versions of FAST/TOOLS and CI Server.",
-        "Restrict access to the web server by implementing network segmentation and access controls to limit exposure.",
-        "Conduct a thorough review of server logs to identify any signs of exploitation and monitor for suspicious activity."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-h345-75vh-jjwf",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T00:30:29Z",
-    "title": "Nuxt versions 4.0.0 before 4.4.7 and 3.x before 3.21.7 fail to validate script-capable URLs in...",
-    "description": "Nuxt versions 4.0.0 before 4.4.7 and 3.x before 3.21.7 fail to validate script-capable URLs in the navigateTo open option, allowing client-side script execution. Attackers can supply javascript: URLs through the open parameter to execute arbitrary scripts in the application's origin when user-controlled input is passed to navigateTo.",
+    "timestamp": "2026-06-23T18:31:43Z",
+    "title": "dhcpcd through 10.3.2, fixed in commit 5733d3c, contains a heap use-after-free vulnerability that...",
+    "description": "dhcpcd through 10.3.2, fixed in commit 5733d3c, contains a heap use-after-free vulnerability that allows unauthenticated same-link attackers to crash the daemon by sending a crafted DHCPv6 RENEW reply with RFC6603 OPTION_PD_EXCLUDE and both preferred and valid lifetimes set to zero. Attackers acting as or impersonating a DHCPv6 server can trigger dhcp6_deprecatedele() to free a delegated child address while an outer TAILQ_FOREACH_SAFE iterator in dhcp6_deprecateaddrs() still holds the freed poin",
     "severity": "medium",
-    "cve_id": "CVE-2026-56698",
-    "ghsa_id": "GHSA-h345-75vh-jjwf",
+    "cve_id": "CVE-2026-56113",
+    "ghsa_id": "GHSA-vh4p-87xg-jc4x",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
       null,
       null,
       null,
@@ -569,32 +657,32 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to execute arbitrary scripts in the application's origin, potentially leading to cross-site scripting (XSS) attacks, data theft, session hijacking, or other client-side attacks. This can compromise user data and application integrity.",
+      "impact_assessment": "The vulnerability allows unauthenticated attackers on the same network to crash the dhcpcd daemon, potentially causing denial of service (DoS) conditions. This could disrupt network connectivity and operations, particularly in environments relying on DHCPv6 for IP address management.",
       "affected_industries": [
-        "E-commerce",
-        "Healthcare",
-        "Finance",
-        "Education",
-        "Technology"
+        "Telecommunications",
+        "Internet Service Providers",
+        "Enterprise IT",
+        "IoT and Smart Devices",
+        "Cloud Service Providers"
       ],
       "recommended_actions": [
-        "Upgrade to Nuxt version 4.4.7 or later for the 4.x branch, or version 3.21.7 or later for the 3.x branch to patch the vulnerability.",
-        "Implement strict input validation and sanitization for user-controlled inputs passed to the navigateTo function.",
-        "Enable Content Security Policy (CSP) headers to mitigate the impact of potential script injection attacks."
+        "Upgrade to the latest version of dhcpcd where the vulnerability is fixed (commit 5733d3c or later).",
+        "Implement network segmentation to limit exposure to unauthenticated same-link attackers.",
+        "Monitor and filter DHCPv6 traffic to detect and block malicious packets containing crafted OPTION_PD_EXCLUDE fields."
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-g898-grjx-8jm3",
+    "id": "gh-GHSA-vhmp-9f3g-3f36",
     "source": "GitHub Security",
-    "timestamp": "2026-06-23T00:30:29Z",
-    "title": "Nuxt versions 4.0.0 before 4.4.7 and 3.x before 3.21.7 accept protocol-relative paths such as /...",
-    "description": "Nuxt versions 4.0.0 before 4.4.7 and 3.x before 3.21.7 accept protocol-relative paths such as //evil.com in the reloadNuxtApp function; these pass the script-protocol check but resolve to a cross-origin URL against the current page protocol. Attackers can inject paths like //evil.com to redirect users to attacker-controlled hosts, enabling phishing and OAuth authorization-code theft.",
+    "timestamp": "2026-06-23T18:31:43Z",
+    "title": "dhcpcd through 10.3.2, fixed in commit 2f00c7b, contains a one-byte stack out-of-bounds write...",
+    "description": "dhcpcd through 10.3.2, fixed in commit 2f00c7b, contains a one-byte stack out-of-bounds write vulnerability in dhcp6_makemessage() in src/dhcp6.c that allows unauthenticated same-link attackers to write beyond a fixed local buffer by serializing an oversized RFC6603 OPTION_PD_EXCLUDE option body. Attackers can send a crafted DHCPv6 ADVERTISE message containing an IA_PD IAPREFIX /0 with a valid OPTION_PD_EXCLUDE using an exclude prefix length of /121 through /128 to trigger the out-of-bounds writ",
     "severity": "medium",
-    "cve_id": "CVE-2026-56697",
-    "ghsa_id": "GHSA-g898-grjx-8jm3",
+    "cve_id": "CVE-2026-56115",
+    "ghsa_id": "GHSA-vhmp-9f3g-3f36",
     "affected_packages": [],
     "cwes": [
       null
@@ -603,13 +691,11 @@
       null,
       null,
       null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-56697.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-56115.",
       "affected_industries": [
         "Technology",
         "General"
@@ -624,17 +710,15 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-wv27-2vqp-j7g5",
+    "id": "gh-GHSA-g36w-q35r-qvg3",
     "source": "GitHub Security",
-    "timestamp": "2026-06-23T00:03:43Z",
-    "title": "Gogs has the ability to import local repositories via Mirror Settings",
-    "description": "### Summary\nThe Gogs Mirror Settings functionality provide an alternative way from the well protected New Migration functionality for any authenticated users to import local repositories. This issue stems from a lack of validation of SaveAddress function.\n\n### Details\nHere is the function implementation of the secure New Migration functionality.\n<img width=\"1200\" height=\"755\" alt=\"image\" src=\"https://github.com/user-attachments/assets/a6c2f307-715e-4451-bbc1-7bd934d56f96\" />\n\nHere is the functio",
+    "timestamp": "2026-06-23T18:31:43Z",
+    "title": "dhcpcd through 10.3.2, fixed in commit 708b4a5, contains a memory leak vulnerability in the IPv6...",
+    "description": "dhcpcd through 10.3.2, fixed in commit 708b4a5, contains a memory leak vulnerability in the IPv6 Router Advertisement route information handling that allows an unauthenticated same-link attacker to cause denial of service by sending crafted Router Advertisements. Attackers can repeatedly send Router Advertisements containing Route Information options with a lifetime of zero, triggering unfreed allocations in routeinfo_findalloc() that cause linear memory exhaustion and eventual daemon crash.",
     "severity": "high",
-    "cve_id": "CVE-2026-52801",
-    "ghsa_id": "GHSA-wv27-2vqp-j7g5",
-    "affected_packages": [
-      "gogs.io/gogs"
-    ],
+    "cve_id": "CVE-2026-56116",
+    "ghsa_id": "GHSA-g36w-q35r-qvg3",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -642,12 +726,48 @@
       null,
       null,
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The memory leak vulnerability in dhcpcd through 10.3.2 could allow unauthenticated attackers on the same network to cause a denial of service by exhausting memory resources. This could lead to service disruptions, particularly in environments relying on IPv6 for network configuration.",
+      "affected_industries": [
+        "Telecommunications",
+        "Internet Service Providers",
+        "Cloud Service Providers",
+        "Enterprise IT",
+        "IoT and Smart Devices"
+      ],
+      "recommended_actions": [
+        "Immediately update dhcpcd to a version that includes the fix (commit 708b4a5 or later).",
+        "Implement network monitoring to detect and block suspicious or excessive Router Advertisements on the same link.",
+        "Apply rate-limiting or filtering for IPv6 Router Advertisements to mitigate potential abuse."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-grqm-7w8c-xf5j",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T18:31:43Z",
+    "title": "Adobe Acrobat and Reader versions 2020.009.20074 and earlier, 2020.001.30002, 2017.011.30171 and...",
+    "description": "Adobe Acrobat and Reader versions 2020.009.20074 and earlier, 2020.001.30002, 2017.011.30171 and earlier, and 2015.006.30523 and earlier are affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to disclose sensitive information. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+    "severity": "medium",
+    "cve_id": "CVE-2020-9713",
+    "ghsa_id": "GHSA-grqm-7w8c-xf5j",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-52801.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2020-9713.",
       "affected_industries": [
         "Technology",
         "General"
@@ -657,129 +777,9 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-pwx3-qcgw-vh7h",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T00:02:44Z",
-    "title": "Gogs Vulnerable to CSRF Leading to Organization Owner Takeover",
-    "description": "## Summary\n\nIn **Gogs 0.14.1**, organization team member management can be performed via **GET requests without CSRF protection**.\nIf a victim who is an **organization owner** is logged in and is tricked into visiting a crafted link, an attacker-controlled user can be added to the **Owners** team. As a result, the attacker gains **organization owner–equivalent privileges**.\n\n---\n\n## Description\n\nWhen a victim is logged in as an organization owner, **team member management endpoints are exposed v",
-    "severity": "high",
-    "cve_id": "CVE-2026-52800",
-    "ghsa_id": "GHSA-pwx3-qcgw-vh7h",
-    "affected_packages": [
-      "gogs.io/gogs"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-52800.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-p9f5-h3rx-j5qw",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-22T23:59:03Z",
-    "title": "Gogs Missing Authorization in Attachment Download",
-    "description": "## Summary\n\nIn Gogs 0.14.1, `GET /attachments/:uuid` returns the raw attachment file **without verifying whether the requester has view permission for the associated Issue/Comment/Release or the repository**.\nIn a test environment with `REQUIRE_SIGNIN_VIEW = false`, we confirmed that **an unauthenticated user can download attachments belonging to a private repository**.\n\n## Description\n\n`/attachments/:uuid` retrieves an attachment record solely by the UUID provided in the URL and returns the cor",
-    "severity": "high",
-    "cve_id": "CVE-2026-52799",
-    "ghsa_id": "GHSA-p9f5-h3rx-j5qw",
-    "affected_packages": [
-      "gogs.io/gogs"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows unauthorized users to download sensitive attachments from private repositories, potentially exposing confidential data such as intellectual property, credentials, or other sensitive files. This could lead to data breaches, reputational damage, and compliance violations.",
-      "affected_industries": [
-        "Software Development",
-        "Technology",
-        "Financial Services",
-        "Healthcare",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Upgrade Gogs to the latest version where the vulnerability is patched (if available).",
-        "Enable `REQUIRE_SIGNIN_VIEW = true` in the configuration to restrict access to authenticated users only.",
-        "Audit access logs to identify any unauthorized downloads and assess potential data exposure."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-jq8v-rmf6-65jw",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-22T23:58:46Z",
-    "title": "Gogs has Stored XSS in `.ipynb` Preview",
-    "description": "# Summary\n\nAlthough `.ipynb` previews are sanitized on the server side via `/-/api/sanitize_ipynb`, the inserted content is **re-rendered on the client side without sanitization** using `marked()` on elements with the `.nb-markdown-cell` class. During this process, links containing schemes such as `javascript:` can be regenerated.\n\nAs a result, when a victim views an attacker-crafted `.ipynb` file and clicks the link, **arbitrary JavaScript is executed in the Gogs origin**, leading to a click-ba",
-    "severity": "high",
-    "cve_id": "CVE-2026-52798",
-    "ghsa_id": "GHSA-jq8v-rmf6-65jw",
-    "affected_packages": [
-      "gogs.io/gogs"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to execute arbitrary JavaScript in the Gogs origin, potentially leading to session hijacking, data theft, or further exploitation of users viewing malicious .ipynb files.",
-      "affected_industries": [
-        "Software Development",
-        "Data Science",
-        "Education",
-        "Research"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patch provided by Gogs to address CVE-2026-52798.",
-        "Implement additional client-side sanitization for .ipynb previews to ensure links with unsafe schemes are blocked.",
-        "Educate users on the risks of opening untrusted .ipynb files and encourage caution when clicking links within such files."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
+    "risk_score": 50
   },
   {
     "id": "cve-CVE-2025-10262",
@@ -861,17 +861,20 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-7273.",
+      "impact_assessment": "The vulnerability allows an unauthenticated attacker on the LAN to execute arbitrary OS commands, potentially leading to full system compromise, data exfiltration, or network disruption.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Telecommunications",
+        "Small and Medium Enterprises (SMEs)",
+        "Education",
+        "Healthcare",
+        "Retail"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update the Zyxel GS1900-48HPv2 firmware to the latest patched version, if available, or contact Zyxel support for guidance.",
+        "Implement network segmentation to isolate the affected devices from critical systems and limit LAN access to trusted users only.",
+        "Monitor network traffic for unusual activity and configure intrusion detection/prevention systems to detect and block malicious HTTP requests targeting the vulnerability."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
     "risk_score": 85
   },
