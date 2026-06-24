@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1782245755140-1",
+    "id": "twitter-1782274320552-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-23T20:15:55.140Z",
+    "timestamp": "2026-06-24T04:12:00.552Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1782245755140-1",
+    "id": "hn-1782274320552-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-23T20:15:55.140Z",
+    "timestamp": "2026-06-24T04:12:00.552Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -37,33 +37,627 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "The open-source vulnerability scanner itself poses minimal risk, but improper implementation or reliance on it without proper validation could lead to missed vulnerabilities or false positives. Additionally, if the tool contains flaws or is compromised, it could introduce risks to organizations using it.",
+      "impact_assessment": "Potential security vulnerability with low severity. ",
       "affected_industries": [
         "Technology",
-        "Software Development",
-        "Cybersecurity",
-        "E-commerce"
+        "General"
       ],
       "recommended_actions": [
-        "Evaluate the tool in a controlled environment to ensure its reliability and accuracy before deployment.",
-        "Use the tool as a supplementary measure alongside other vulnerability management processes, not as a sole dependency.",
-        "Monitor the tool's updates and community feedback for any reported issues or improvements."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "low"
     },
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-7cqp-7cfv-6c3q",
+    "id": "gh-GHSA-gf5w-3f8w-9fm6",
     "source": "GitHub Security",
-    "timestamp": "2026-06-23T19:11:27Z",
-    "title": "AVideo Meet lugin: anonymous-to-admin stored XSS via unescaped participant User-Agent in getMeetInfo.json.php Participants panel",
-    "description": "### Summary\n\nThe Meet plugin stores the raw HTTP `User-Agent` header of every meeting participant and later renders it without output encoding in the meeting-management (\"Participants\") panel that the meeting host and site administrators open. An anonymous, unauthenticated attacker can join any public meeting while sending a `User-Agent` header containing an HTML payload. The payload is persisted in `meet_join_log.user_agent` and, when the host or an administrator opens the participant list, is ",
+    "timestamp": "2026-06-24T00:30:31Z",
+    "title": "FlatPress versions prior to commit 10be83c, contains a stored cross-site scripting vulnerability...",
+    "description": "FlatPress versions prior to commit 10be83c, contains a stored cross-site scripting vulnerability in comment and contact forms where name, URL, and email fields are rendered without proper output encoding in Smarty templates. Attackers can inject arbitrary HTML and JavaScript through these fields to execute malicious scripts in browsers of viewers including administrators, or bypass URL scheme validation to inject javascript: or data: URIs.",
+    "severity": "high",
+    "cve_id": "CVE-2026-56785",
+    "ghsa_id": "GHSA-gf5w-3f8w-9fm6",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows attackers to inject malicious scripts into comment and contact forms, potentially leading to session hijacking, data theft, phishing attacks, or administrative account compromise. This could severely impact the confidentiality, integrity, and availability of the affected systems.",
+      "affected_industries": [
+        "Blogging Platforms",
+        "Content Management Systems",
+        "Small and Medium Enterprises (SMEs)",
+        "Web Hosting Services"
+      ],
+      "recommended_actions": [
+        "Upgrade FlatPress to the latest version that includes commit 10be83c or later to patch the vulnerability.",
+        "Implement input validation and output encoding for all user-supplied data in forms to prevent injection attacks.",
+        "Perform a security audit of the application to identify and mitigate similar vulnerabilities in other components."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-g2fx-c284-xq7h",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T00:30:31Z",
+    "title": "Anthropic Claude Desktop Cowork VM image handling (confirmed across v1.1348.0 through v1.2278.0,...",
+    "description": "Anthropic Claude Desktop Cowork VM image handling (confirmed across v1.1348.0 through v1.2278.0, including v1.1348.0, v1.1617.0, and v1.2278.0) validates only file presence and a version marker string before booting rootfs.img, but does not verify image content integrity at time-of-use. A local attacker with unprivileged code execution as the victim macOS user can modify the VM root filesystem image and have it trusted on subsequent Cowork VM boots, enabling persistent arbitrary code execution i",
+    "severity": "high",
+    "cve_id": "CVE-2026-7574",
+    "ghsa_id": "GHSA-g2fx-c284-xq7h",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-7574.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-r6vh-m36j-r62m",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T00:30:31Z",
+    "title": "Fortra File Integrity Monitoring (FIM), formerly Tripwire Enterprise, versions prior to 9.4.0.1...",
+    "description": "Fortra File Integrity Monitoring (FIM), formerly Tripwire Enterprise, versions prior to 9.4.0.1 contain a stored cross-site scripting (XSS) vulnerability in the Asset View UI component. An authenticated user with sufficient privileges to create or modify affected node or database configuration fields could store script content that may be rendered as HTML instead of safely escaped text when the affected Asset View UI content is displayed.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-12163",
+    "ghsa_id": "GHSA-r6vh-m36j-r62m",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows an authenticated user with sufficient privileges to inject malicious scripts into the Asset View UI component, potentially leading to unauthorized actions, data theft, or compromise of other users' sessions when the malicious content is rendered.",
+      "affected_industries": [
+        "Finance",
+        "Healthcare",
+        "Government",
+        "Retail",
+        "Energy",
+        "Technology"
+      ],
+      "recommended_actions": [
+        "Upgrade to Fortra File Integrity Monitoring (FIM) version 9.4.0.1 or later to patch the vulnerability.",
+        "Restrict user privileges to only those necessary for their role to limit the ability to exploit the vulnerability.",
+        "Implement input validation and output encoding for user-supplied data in the Asset View UI component to prevent XSS attacks."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-wqxf-pjxh-hh4h",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T00:30:31Z",
+    "title": "When using the \"tarfile\" module with a file opened in \"streaming mode\" (mode=\"r|\") the tarfile...",
+    "description": "When using the \"tarfile\" module with a file opened in \"streaming mode\" (mode=\"r|\") the tarfile module did not properly handle EOF, meaning an archive could be parsed in an infinite loop.",
+    "severity": "high",
+    "cve_id": "CVE-2026-11972",
+    "ghsa_id": "GHSA-wqxf-pjxh-hh4h",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-11972.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-3x8g-cjc2-45qp",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T00:30:31Z",
+    "title": "Fortra File Integrity Monitoring (FIM), formerly Tripwire Enterprise, versions prior to 9.4.0 may...",
+    "description": "Fortra File Integrity Monitoring (FIM), formerly Tripwire Enterprise, versions prior to 9.4.0 may assign incorrect or elevated effective permissions to users created by the tetool import command while FIM is running, particularly when the import also creates or changes roles or role-permission relationships.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-12164",
+    "ghsa_id": "GHSA-3x8g-cjc2-45qp",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability may allow unauthorized users to gain elevated permissions within the Fortra File Integrity Monitoring system, potentially leading to unauthorized access, data manipulation, or system compromise.",
+      "affected_industries": [
+        "Financial Services",
+        "Healthcare",
+        "Government",
+        "Retail",
+        "Technology"
+      ],
+      "recommended_actions": [
+        "Upgrade Fortra File Integrity Monitoring (FIM) to version 9.4.0 or later to mitigate the vulnerability.",
+        "Audit user roles and permissions within the system to identify and correct any unintended elevated permissions.",
+        "Monitor system logs for unusual activity that may indicate exploitation of this vulnerability."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-pwpj-p52h-q484",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T23:12:04Z",
+    "title": "Snipe-IT API Vulnerable to Cross-Tenant Accessory Injection",
+    "description": "### Impact\nA cross-tenant data injection vulnerability was identified in the Snipe-IT Accessories API when Full Multiple Companies Support (FMCS) is enabled. A low-privileged authenticated user belonging to one company can create an accessory record under another company by supplying a foreign company_id value in the API request body.\n\nThe issue occurs because the API create path mass-assigns request parameters directly to the Accessory model, and the Accessory model allows company_id to be mass",
+    "severity": "high",
+    "cve_id": "CVE-2026-54329",
+    "ghsa_id": "GHSA-pwpj-p52h-q484",
+    "affected_packages": [
+      "snipe/snipe-it"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54329.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-6mmj-jhqj-6c6q",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T23:11:26Z",
+    "title": "Snipe-IT's S3 signature image retrieval lacks authorization before temporary URL ",
+    "description": "### Impact\n Snipe-IT S3 signature image retrieval lacks authorization before temporary URL.\n\nOn S3-backed deployments, authenticated users who know a signature filename can obtain a 5-minute signed S3 URL because the S3 branch returns before the `authorize()` call used by the local-file branch.\n\n## Key evidence\n`routes/web.php:135-143`; `app/Http/Controllers/ActionlogController.php:16-44`; `app/Http/Controllers/Account/AcceptanceController.php:160,175`; `app/Listeners/LogListener.php:56`; `app/H",
+    "severity": "low",
+    "cve_id": "CVE-2026-55542",
+    "ghsa_id": "GHSA-6mmj-jhqj-6c6q",
+    "affected_packages": [
+      "snipe/snipe-it"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-55542.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-x667-r589-43m7",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T23:06:59Z",
+    "title": "Snipe-IT has Improper Authorization in File Deletion (IDOR)",
+    "description": "### Impact\nA vulnerability was identified in Snipe-IT v8.4.0 (build 21280-g91a95dbc6) that allows any authenticated user with generic asset edit permissions to delete files attached to any asset in the system, regardless of ownership or company assignment. This constitutes an Insecure Direct Object Reference (IDOR) vulnerability caused by a class-level authorization check in the file deletion endpoint, where an instance-level check is required.\n\nThe vulnerability exists in both the web and API c",
+    "severity": "low",
+    "cve_id": "CVE-2026-55519",
+    "ghsa_id": "GHSA-x667-r589-43m7",
+    "affected_packages": [
+      "snipe/snipe-it"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 35,
+      "impact_assessment": "The vulnerability allows unauthorized deletion of files attached to assets, which could lead to data loss and disrupt operations. However, the impact is limited to authenticated users with generic asset edit permissions, reducing the overall severity.",
+      "affected_industries": [
+        "IT Asset Management",
+        "Technology",
+        "Education",
+        "Healthcare",
+        "Finance"
+      ],
+      "recommended_actions": [
+        "Update Snipe-IT to the latest patched version as soon as a fix is released.",
+        "Restrict user permissions to limit access to generic asset edit capabilities to only trusted users.",
+        "Monitor file deletion activity logs to identify any unauthorized or suspicious behavior."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 35
+  },
+  {
+    "id": "gh-GHSA-hf68-g98v-wp9g",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T23:06:18Z",
+    "title": "Snipe-IT Vulnerable to Privilege Escalation via Missing admin Permission Check in User Creation",
+    "description": "### Impact\nThe `store()` method in both the web and API `UsersController` only strips the superuser permission when a non-superuser creates a user. It does not strip the admin permission. This allows any authenticated user with the `users.create` permission to create a new user with full admin privileges.\n\nThe `users.create permission`  may commonly be delegated to HR staff, department leads, or similar roles.\n\n### Patches\nPatched in [aea3877718](https://github.com/grokability/snipe-it/commit/ae",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55483",
+    "ghsa_id": "GHSA-hf68-g98v-wp9g",
+    "affected_packages": [
+      "snipe/snipe-it"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55483.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-33g4-646g-qwmm",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T23:03:47Z",
+    "title": "Snipe-IT has Multi-Tenancy Bypass via Bulk Asset Update",
+    "description": "### Impact\nThe `BulkAssetsController::update()` method accepts `company_id` directly from user input without calling `Company::getIdForCurrentUser()`, the standard company-scoping function used by every other controller in the codebase. A non-superadmin user can move assets across company boundaries, breaking multi-tenancy isolation.\n\n### Patches\nPatched in https://github.com/grokability/snipe-it/commit/d58fda626e8febfeff4cabbc20ba03edfc411e18",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55482",
+    "ghsa_id": "GHSA-33g4-646g-qwmm",
+    "affected_packages": [
+      "snipe/snipe-it"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows non-superadmin users to bypass multi-tenancy restrictions, enabling unauthorized movement of assets across company boundaries. This could lead to data leakage, unauthorized access, or disruption of operations in multi-tenant environments.",
+      "affected_industries": [
+        "IT Services",
+        "Healthcare",
+        "Finance",
+        "Education",
+        "Retail"
+      ],
+      "recommended_actions": [
+        "Immediately apply the patch provided in https://github.com/grokability/snipe-it/commit/d58fda626e8febfeff4cabbc20ba03edfc411e18 to mitigate the vulnerability.",
+        "Audit all asset movements and access logs to identify any potential exploitation of this vulnerability prior to patching.",
+        "Implement stricter access controls and monitoring for multi-tenancy environments to detect and prevent unauthorized actions."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-6x4j-8954-5hxm",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T23:03:20Z",
+    "title": "Snipe-IT has a 2FA reset privilege bypass",
+    "description": "### Impact\nA user who can edit other users could reset a superadmin's 2FA.\n\n### Patches\nPatched in 8.5.0",
+    "severity": "medium",
+    "cve_id": "CVE-2026-50550",
+    "ghsa_id": "GHSA-6x4j-8954-5hxm",
+    "affected_packages": [
+      "snipe/snipe-it"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows a user with permissions to edit other users to reset the two-factor authentication (2FA) of a superadmin, potentially leading to unauthorized access to sensitive administrative functions.",
+      "affected_industries": [
+        "IT and Technology",
+        "Healthcare",
+        "Finance",
+        "Education",
+        "Government",
+        "Retail"
+      ],
+      "recommended_actions": [
+        "Immediately update Snipe-IT to version 8.5.0 or later to patch the vulnerability.",
+        "Review and limit user permissions to ensure only trusted personnel can edit other users.",
+        "Enable logging and monitoring to detect any unauthorized 2FA resets or suspicious activity."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-p68w-rgmg-3c2v",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T23:02:03Z",
+    "title": "Snipe-IT Vulnerable to User Account Escalation via CSV Import",
+    "description": "### Impact\nThe CSV user import in update mode bypasses user-edit authorization. A user with only the `import` permission can overwrite any non-admin user's email by uploading a CSV, then trigger a password reset to take over the account.\n\n`UserImporter.php` checks the `canEditAuthFields` gate and tries to strip auth fields from the model:\n\n```php\n// app/Importer/UserImporter.php:107-114\nif (Auth::check() && (! Gate::allows('canEditAuthFields', $user))) {\n    unset($user->username);\n    unset($us",
+    "severity": "medium",
+    "cve_id": "CVE-2026-49976",
+    "ghsa_id": "GHSA-p68w-rgmg-3c2v",
+    "affected_packages": [
+      "snipe/snipe-it"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-49976.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-w2j7-f3c6-g8cw",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T22:46:31Z",
+    "title": "Flask-Security has an Open Redirect issue",
+    "description": "# Open Redirect in Flask-Security\n\n## Summary\n\n`flask_security.utils.validate_redirect_url()` can allow an attacker-controlled redirect URL when subdomain redirects are enabled.\n\nThe bypass uses a backslash inside the URL authority/host:\n\n```text\nhttp://evil.com\\.whitelist.com\nhttp://evil.com%5C.whitelist.com\n```\n\nPython's `urlsplit()` parses the full authority as `evil.com\\.whitelist.com` or `evil.com%5C.whitelist.com`. Because the value ends with `.whitelist.com`, `validate_redirect_url()` acc",
     "severity": "medium",
     "cve_id": null,
-    "ghsa_id": "GHSA-7cqp-7cfv-6c3q",
+    "ghsa_id": "GHSA-w2j7-f3c6-g8cw",
     "affected_packages": [
-      "wwbn/avideo"
+      "Flask-Security"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-mr8g-2mj4-pcq2",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T22:32:04Z",
+    "title": "Snipe-IT's TOTP is Brute-Forceable Due to Missing Rate Limiting on `POST /two-factor`",
+    "description": "### Impact\n`POST /two-factor` had no rate limiting, lockout, or attempt counter. An attacker with valid credentials can submit unlimited TOTP guesses. The TOTP implementation accepts the current code plus one step on either side (`config/google2fa.php window=1`), so at any instant 3 of 1,000,000 codes are accepted.\n\nAfter a correct guess the attacker holds a fully authenticated session. If the instance is configured with 2FA in optional mode (`two_factor_enabled='1'`), the attacker can additiona",
+    "severity": "medium",
+    "cve_id": "CVE-2026-49870",
+    "ghsa_id": "GHSA-mr8g-2mj4-pcq2",
+    "affected_packages": [
+      "snipe/snipe-it"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers with valid credentials to bypass two-factor authentication (2FA) by brute-forcing TOTP codes due to the lack of rate limiting. This could lead to unauthorized access to sensitive systems and data, compromising user accounts and potentially exposing critical information.",
+      "affected_industries": [
+        "IT and Software Development",
+        "Healthcare",
+        "Finance",
+        "Government",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Implement rate limiting, lockout mechanisms, and attempt counters for the `POST /two-factor` endpoint to mitigate brute-force attacks.",
+        "Update the TOTP configuration to reduce the acceptance window (`config/google2fa.php window`) to minimize the number of valid codes at any given time.",
+        "Encourage users to enable 2FA in mandatory mode (`two_factor_enabled='2'`) to ensure stronger authentication practices."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-8c6h-7g6x-m5x4",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T22:27:34Z",
+    "title": "phpMyFAQ: Missing userHasPermission() in 4 API write endpoints (CVE-2026-24421 Incomplete Fix)",
+    "description": "Missing Authorization in API CategoryController —  CVE-2026-24421 fixed BackupController by adding userHasPermission(PermissionType::BACKUP). The same fix was NOT applied to 4 other write endpoints in the public API.  All 4 only call hasValidToken() (shared API key) but never call userHasPermission(), allowing any API token holder to perform admin operations regardless of their user permissions.\n\n## Summary\n\nCVE-2026-24421 fixed BackupController by adding: $this->userHasPermission(PermissionType",
+    "severity": "medium",
+    "cve_id": "CVE-2026-49205",
+    "ghsa_id": "GHSA-8c6h-7g6x-m5x4",
+    "affected_packages": [
+      "thorsten/phpmyfaq",
+      "phpmyfaq/phpmyfaq"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-49205.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-6f75-x745-xcpr",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T22:24:59Z",
+    "title": "Snipe-IT: Bulk editing users allowed `ldap_import` and `activated_in` bulk editing users",
+    "description": "### Impact\nThe vulnerability allows a non-admin user holding only the granular `users.edit` permission to lock every admin out of the instance  by editing the `activated` flag (which determines whether or not a user can login) and the `ldap_import` flag, which determines whether or not the user can request a password reset.\n\n### Patches\nPatched in https://github.com/grokability/snipe-it/commit/403f9c848b05274642f64450696bdcdc242a352a",
+    "severity": "high",
+    "cve_id": "CVE-2026-48507",
+    "ghsa_id": "GHSA-6f75-x745-xcpr",
+    "affected_packages": [
+      "snipe/snipe-it"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48507.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-wcmj-x466-56mm",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T22:23:01Z",
+    "title": "OpenTofu: Provider cache installation follows root-module-controlled package directory symlink and writes outside the working tree",
+    "description": "## Summary\n\nIf a symlink already exists under the `.terraform/providers` directory where a provider package needs to be installed, `tofu init` would follow that symlink and install the new package content into it.\n\nIf an attacker can coerce an operator into running `tofu init` in a directory whose contents are attacker-controlled, they can include such a symlink along with instruction to install an attacker-controlled provider package at the path of that symlink, which would then cause OpenTofu ",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-wcmj-x466-56mm",
+    "affected_packages": [
+      "github.com/opentofu/opentofu",
+      "github.com/opentofu/opentofu"
     ],
     "cwes": [
       null
@@ -89,68 +683,263 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-phv5-334h-mxcw",
+    "id": "gh-GHSA-44wp-g8f4-f4v5",
     "source": "GitHub Security",
-    "timestamp": "2026-06-23T19:09:29Z",
-    "title": "motionEye Partial Authentication Bypass: Unauthenticated Admin Credential Theft via Path Traversal",
-    "description": "# Partial Authentication Bypass: Unauthenticated Admin Credential Theft via Path Traversal\n\n### Summary\n\nMyself and others have reported several RCE vulnerabilities to this project. However, due to the nature of the app, these are largely not of all that much value, as there is built-in functionality to run commands upon certain actions — i.e. RCE is by design.\n\nWith that in mind, I endeavored to find some sort of auth bypass, and was slightly successful.\n\nWhen the admin password is set but the ",
-    "severity": "critical",
-    "cve_id": null,
-    "ghsa_id": "GHSA-phv5-334h-mxcw",
+    "timestamp": "2026-06-23T22:16:58Z",
+    "title": "Filament: Unauthenticated temporary file upload on auth pages",
+    "description": "Any schema can contain a file upload form field, so Filament applies Livewire's `WithFileUploads` trait to the Livewire component the schema is embedded in. However, some schemas, such as the panel login form, do not require file uploads, and exposing unauthenticated temporary file uploads on these components is not an acceptable risk. On these components, an unauthenticated attacker could upload arbitrary files to the application's temporary storage, which could be abused to exhaust disk space ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48500",
+    "ghsa_id": "GHSA-44wp-g8f4-f4v5",
     "affected_packages": [
-      "motioneye"
+      "filament/filament",
+      "filament/filament",
+      "filament/filament"
     ],
     "cwes": [
       null
     ],
     "references": [
       null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 92,
-      "impact_assessment": "This vulnerability allows unauthenticated attackers to bypass authentication mechanisms and potentially steal admin credentials via path traversal. This could lead to unauthorized access, system compromise, data breaches, and further exploitation of the system.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows unauthenticated attackers to upload arbitrary files to the application's temporary storage. This could lead to disk space exhaustion, potentially causing service disruptions, denial of service, or application instability.",
       "affected_industries": [
-        "Video Surveillance",
-        "IoT and Smart Devices",
-        "Home Security Systems",
-        "Small and Medium Enterprises (SMEs)"
+        "Technology",
+        "E-commerce",
+        "Finance",
+        "Healthcare",
+        "Education"
       ],
       "recommended_actions": [
-        "Immediately apply access control measures, such as restricting access to the motionEye interface to trusted IP addresses or VPNs.",
-        "Update the motionEye application to the latest version, or apply any available patches addressing this vulnerability.",
-        "Conduct a thorough review of system logs to identify any unauthorized access or suspicious activity, and rotate admin credentials immediately."
+        "Disable file upload functionality on authentication-related components where it is not required.",
+        "Implement strict validation and access controls to prevent unauthenticated file uploads.",
+        "Monitor and limit temporary storage usage to prevent disk space exhaustion."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-f2r5-5m7w-p5cx",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T22:16:14Z",
+    "title": "opentelemetry-ebpf-profiler: Unprivileged process can trigger a denial of service on the ebpf-profiler agent",
+    "description": "### Summary\n\nAn unprivileged process can easily trigger the `processPIDEvents` goroutine to be blocked indefinitely, preventing the goroutine from analyzing any new ELF file. The goroutine stays blocked in the `openat2` syscall forever and the profiler can no longer work properly, it is a denial of service.\n\n### Impact\n\nThe impact is limited to denial-of-service on the ebpf-profiler agent:\n- There has to be a malicious workload albeit unprivileged.\n- No exfiltration of data. No loss of data.\n\n##",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48496",
+    "ghsa_id": "GHSA-f2r5-5m7w-p5cx",
+    "affected_packages": [
+      "go.opentelemetry.io/ebpf-profiler"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48496.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-52fw-7fw2-fmv5",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-23T22:12:11Z",
+    "title": "Snipe-IT Vulnerable to Privilege Escalation for self via API Permissions Assignment",
+    "description": "### Impact\nA user with only users.edit AND api permissions can send a PATCH to /api/v1/users/{their_own_id} and grant themselves any permission except admin and superuser — for example `assets.view`, `assets.create`, `reports.view`, import, etc.\n\n### Patches\nPatched in https://github.com/grokability/snipe-it/pull/19024",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48493",
+    "ghsa_id": "GHSA-52fw-7fw2-fmv5",
+    "affected_packages": [
+      "snipe/snipe-it"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows users with limited permissions to escalate their privileges via API calls, potentially leading to unauthorized access to sensitive data and system functionality. This could compromise the integrity and confidentiality of the affected system.",
+      "affected_industries": [
+        "IT Asset Management",
+        "Healthcare",
+        "Finance",
+        "Education",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately update Snipe-IT to the patched version that addresses CVE-2026-48493.",
+        "Audit user permissions and API access logs to identify any potential misuse or unauthorized privilege escalation.",
+        "Implement stricter access controls and monitoring for API endpoints to detect and prevent privilege escalation attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "cve-CVE-2026-35275",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-17T10:40:19.767",
+    "title": "CVE-2026-35275 - Vulnerability in the Oracle VM VirtualBox product of Oracle Virtualization (component: Shared Folder",
+    "description": "Vulnerability in the Oracle VM VirtualBox product of Oracle Virtualization (component: Shared Folders).   The supported version that is affected is 7.2.8. Difficult to exploit vulnerability allows low privileged attacker with logon to the infrastructure where Oracle VM VirtualBox executes to compromise Oracle VM VirtualBox.  While the vulnerability is in Oracle VM VirtualBox, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle VM VirtualBox accessible data as well as  unauthorized access to critical data or complete access to all Oracle VM VirtualBox accessible data. CVSS 3.1 Base Score 7.5 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N).",
+    "severity": "high",
+    "cve_id": "CVE-2026-35275",
+    "cvss_score": 7.5,
+    "affected_products": [
+      "cpe:2.3:a:oracle:vm_virtualbox:7.2.8:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35275.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-35274",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-17T10:40:19.663",
+    "title": "CVE-2026-35274 - Vulnerability in the PeopleSoft Enterprise PT PeopleTools product of Oracle PeopleSoft (component: D",
+    "description": "Vulnerability in the PeopleSoft Enterprise PT PeopleTools product of Oracle PeopleSoft (component: Deployment Package).  Supported versions that are affected are 8.61 and  8.62. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise PeopleSoft Enterprise PT PeopleTools.  Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all PeopleSoft Enterprise PT PeopleTools accessible data as well as  unauthorized update, insert or delete access to some of PeopleSoft Enterprise PT PeopleTools accessible data. CVSS 3.1 Base Score 8.2 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N).",
+    "severity": "high",
+    "cve_id": "CVE-2026-35274",
+    "cvss_score": 8.2,
+    "affected_products": [],
+    "references": [
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
+    ],
+    "ai_analysis": {
+      "risk_score": 92,
+      "impact_assessment": "This vulnerability allows unauthenticated attackers to gain unauthorized access to critical data or full access to all data within the PeopleSoft Enterprise PT PeopleTools system. Exploitation could lead to data breaches, exposure of sensitive information, and potential disruption of business operations.",
+      "affected_industries": [
+        "Finance",
+        "Healthcare",
+        "Education",
+        "Government",
+        "Retail",
+        "Manufacturing"
+      ],
+      "recommended_actions": [
+        "Immediately apply the latest security patches provided by Oracle for PeopleSoft Enterprise PT PeopleTools versions 8.61 and 8.62.",
+        "Implement network-level access controls to restrict HTTP access to the PeopleSoft system from untrusted sources.",
+        "Conduct a thorough review of system logs to identify any potential unauthorized access or exploitation attempts."
       ],
       "urgency": "critical"
     },
     "risk_score": 92
   },
   {
-    "id": "gh-GHSA-qxvg-h7q2-hcxh",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:53:04Z",
-    "title": "motionEye: LFI → pass‑the‑hash admin → unsafe restore → unauth action exec (RCE)",
-    "description": "## Summary\nA multi‑stage chain in motionEye leads to remote code execution. The chain combines:\n\n1. **Arbitrary file read (LFI)** via the picture download endpoint for **local motion cameras** using absolute paths.\n2. **Pass‑the‑hash admin auth** due to accepting request signatures computed with password hashes.\n3. **Unsafe config restore** that extracts attacker‑controlled tarballs into `CONF_PATH`.\n4. **Unauthenticated action execution** via `/action/<id>/<action>`.\n\nIf the **normal user passw",
+    "id": "cve-CVE-2026-35272",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-17T10:40:19.453",
+    "title": "CVE-2026-35272 - Vulnerability in the PeopleSoft Enterprise PT PeopleTools product of Oracle PeopleSoft (component: D",
+    "description": "Vulnerability in the PeopleSoft Enterprise PT PeopleTools product of Oracle PeopleSoft (component: Deployment Package).  Supported versions that are affected are 8.61 and  8.62. Easily exploitable vulnerability allows unauthenticated attacker with logon to the infrastructure where PeopleSoft Enterprise PT PeopleTools executes to compromise PeopleSoft Enterprise PT PeopleTools.  Successful attacks of this vulnerability can result in takeover of PeopleSoft Enterprise PT PeopleTools. CVSS 3.1 Base Score 8.4 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
+    "severity": "high",
+    "cve_id": "CVE-2026-35272",
+    "cvss_score": 8.4,
+    "affected_products": [],
+    "references": [
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35272.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-35271",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-17T10:40:19.343",
+    "title": "CVE-2026-35271 - Vulnerability in the PeopleSoft Enterprise PT PeopleTools product of Oracle PeopleSoft (component: W",
+    "description": "Vulnerability in the PeopleSoft Enterprise PT PeopleTools product of Oracle PeopleSoft (component: Weblogic).  Supported versions that are affected are 8.61 and  8.62. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise PeopleSoft Enterprise PT PeopleTools.  While the vulnerability is in PeopleSoft Enterprise PT PeopleTools, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all PeopleSoft Enterprise PT PeopleTools accessible data as well as  unauthorized access to critical data or complete access to all PeopleSoft Enterprise PT PeopleTools accessible data. CVSS 3.1 Base Score 8.7 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N).",
+    "severity": "high",
+    "cve_id": "CVE-2026-35271",
+    "cvss_score": 8.7,
+    "affected_products": [],
+    "references": [
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35271.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-35270",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-17T10:40:19.233",
+    "title": "CVE-2026-35270 - Vulnerability in the Oracle WebCenter Content product of Oracle Fusion Middleware (component: Conten",
+    "description": "Vulnerability in the Oracle WebCenter Content product of Oracle Fusion Middleware (component: Content Server).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows high privileged attacker with network access via HTTP to compromise Oracle WebCenter Content.  While the vulnerability is in Oracle WebCenter Content, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle WebCenter Content. CVSS 3.1 Base Score 9.1 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).",
     "severity": "critical",
-    "cve_id": null,
-    "ghsa_id": "GHSA-qxvg-h7q2-hcxh",
-    "affected_packages": [
-      "motioneye"
-    ],
-    "cwes": [
-      null,
-      null,
-      null,
-      null,
-      null
+    "cve_id": "CVE-2026-35270",
+    "cvss_score": 9.1,
+    "affected_products": [
+      "cpe:2.3:a:oracle:webcenter_content:12.2.1.4.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:webcenter_content:14.1.2.0.0:*:*:*:*:*:*:*"
     ],
     "references": [
-      null,
-      null
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
     ],
     "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. ",
+      "risk_score": 100,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-35270.",
       "affected_industries": [
         "Technology",
         "General"
@@ -162,612 +951,59 @@
       ],
       "urgency": "critical"
     },
-    "risk_score": 90
+    "risk_score": 100
   },
   {
-    "id": "gh-GHSA-j67x-q29f-qcvv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:37:51Z",
-    "title": "motionEye's missing authentication on ActionHandler allows unauthenticated camera action execution",
-    "description": "## Summary\n\nThe `ActionHandler.post()` method in motionEye has no authentication decorator, allowing any unauthenticated attacker to trigger camera actions including snapshots, recording start/stop, and configured action scripts (PTZ controls, alarm triggers, etc.).\n\n## Vulnerability Details\n\n**File**: `motioneye/handlers/action.py` — `ActionHandler.post()` line 36\n**CWE**: CWE-862 — Missing Authorization\n**CVSS**: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N = 5.3 Medium\n\n### Vulnerable Code\n\n`",
-    "severity": "medium",
-    "cve_id": "CVE-2026-55863",
-    "ghsa_id": "GHSA-j67x-q29f-qcvv",
-    "affected_packages": [
-      "motioneye"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55863.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-rw9q-97r9-8gvh",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:32:46Z",
-    "title": "motionEye's Absolute Path Traversal in Media File Handlers Allows Arbitrary File Read",
-    "description": "### Summary\n\nmEye contains an absolute path traversal vulnerability in multiple media file handlers that allows an attacker to read arbitrary files from the filesystem.\n\nThe affected handlers accept a user-controlled filename parameter and construct filesystem paths using `os.path.join()`. When an absolute path is supplied, Python discards the configured media directory and returns the attacker-supplied path directly. The application then bypasses Tornado's built-in path validation by overriding",
+    "id": "cve-CVE-2026-35269",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-17T10:40:19.130",
+    "title": "CVE-2026-35269 - Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: REST WebServic",
+    "description": "Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: REST WebServices).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Identity Manager.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Identity Manager accessible data. CVSS 3.1 Base Score 7.5 (Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).",
     "severity": "high",
-    "cve_id": "CVE-2026-55488",
-    "ghsa_id": "GHSA-rw9q-97r9-8gvh",
-    "affected_packages": [
-      "motioneye"
-    ],
-    "cwes": [
-      null
+    "cve_id": "CVE-2026-35269",
+    "cvss_score": 7.5,
+    "affected_products": [
+      "cpe:2.3:a:oracle:identity_manager:12.2.1.4.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:identity_manager:14.1.2.1.0:*:*:*:*:*:*:*"
     ],
     "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55488.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-m6x2-4hhh-669j",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:45Z",
-    "title": "CMS (Cryptographic Message Syntax) parsing in gpgsm in GnuPG through 2.5.20 mishandles the CMS...",
-    "description": "CMS (Cryptographic Message Syntax) parsing in gpgsm in GnuPG through 2.5.20 mishandles the CMS format for AES-GCM because aes-ICVlen is supposed to be 12 bytes but 4 bytes is accepted. NOTE: this is related to CVE-2026-34182.",
-    "severity": "low",
-    "cve_id": "CVE-2026-57062",
-    "ghsa_id": "GHSA-m6x2-4hhh-669j",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 35,
-      "impact_assessment": "The vulnerability in CMS parsing within gpgsm in GnuPG could allow for improper handling of AES-GCM encryption, potentially leading to weakened cryptographic integrity or exploitation in specific scenarios. However, the severity is low due to the limited scope and complexity of exploitation.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Government",
-        "Healthcare"
-      ],
-      "recommended_actions": [
-        "Update GnuPG to the latest patched version as soon as a fix is released.",
-        "Review and monitor systems using GnuPG for any signs of exploitation or unusual activity.",
-        "Educate system administrators and developers about the vulnerability to ensure proper cryptographic practices."
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 35
-  },
-  {
-    "id": "gh-GHSA-xpv7-vm32-p7wv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:45Z",
-    "title": "GNU libidn before 1.44 is prone to out-of-bounds reads of uninitialized memory in the ToUnicode...",
-    "description": "GNU libidn before 1.44 is prone to out-of-bounds reads of uninitialized memory in the ToUnicode APIs because of mishandling in idna_to_unicode_internal. The affected code is not present in libidn2.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-57053",
-    "ghsa_id": "GHSA-xpv7-vm32-p7wv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-57053.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-h8rc-w822-q8vq",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:44Z",
-    "title": "In OpenStack Swift before 2.37.2, proxy-server does not strip internal update headers (X...",
-    "description": "In OpenStack Swift before 2.37.2, proxy-server does not strip internal update headers (X-Container-Host, X-Container-Device, X-Delete-At-Host, X-Delete-At-Device) from client requests before forwarding them to object-servers. An authenticated user with write access can inject these headers to redirect container update requests to an attacker-controlled server, enabling server-side request forgery. The SSRF requests expose internal cluster metadata including storage policy indexes, partition mapp",
-    "severity": "medium",
-    "cve_id": "CVE-2026-50221",
-    "ghsa_id": "GHSA-h8rc-w822-q8vq",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "This vulnerability allows an authenticated user with write access to exploit server-side request forgery (SSRF) by injecting internal update headers. This can expose sensitive internal cluster metadata, including storage policy indexes and partition mappings, and potentially redirect container update requests to attacker-controlled servers. The impact includes data exposure, unauthorized access, and potential disruption of services.",
-      "affected_industries": [
-        "Cloud Service Providers",
-        "Technology",
-        "Telecommunications",
-        "Healthcare",
-        "Financial Services"
-      ],
-      "recommended_actions": [
-        "Upgrade OpenStack Swift to version 2.37.2 or later to address the vulnerability.",
-        "Implement strict input validation and filtering to prevent unauthorized header injection.",
-        "Monitor and audit logs for unusual activity, such as unexpected redirections or unauthorized access attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-mhwh-83qc-j6x4",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:43Z",
-    "title": "MuPDF before 1.27.0-rc1 contains an uncontrolled recursion vulnerability in the EPUB CSS...",
-    "description": "MuPDF before 1.27.0-rc1 contains an uncontrolled recursion vulnerability in the EPUB CSS rendering engine that allows remote attackers to cause a denial of service by supplying a maliciously crafted EPUB file with deeply nested HTML elements and inline CSS styles. The function value_from_inheritable_property() in css-apply.c recurses through the CSS property inheritance chain without a depth limit, exhausting the process stack and causing a crash in any application using MuPDF for EPUB rendering",
-    "severity": "high",
-    "cve_id": "CVE-2025-71382",
-    "ghsa_id": "GHSA-mhwh-83qc-j6x4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 78,
-      "impact_assessment": "The vulnerability in MuPDF's EPUB CSS rendering engine could allow attackers to craft malicious EPUB files that cause denial of service (DoS) by exhausting system resources, potentially disrupting applications and services relying on MuPDF for EPUB rendering.",
-      "affected_industries": [
-        "Publishing",
-        "E-Book Platforms",
-        "Education",
-        "Media and Entertainment",
-        "Software Development"
-      ],
-      "recommended_actions": [
-        "Update to MuPDF version 1.27.0-rc1 or later to patch the vulnerability.",
-        "Implement input validation and sandboxing mechanisms to prevent malicious EPUB files from crashing the application.",
-        "Monitor application logs for signs of unusual resource consumption or crashes related to EPUB rendering."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 78
-  },
-  {
-    "id": "gh-GHSA-g345-7jg6-m22p",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:43Z",
-    "title": "When using the \"configparser\" module to write configuration files\ncontaining multi-line text...",
-    "description": "When using the \"configparser\" module to write configuration files\ncontaining multi-line text values with carriage return characters (\\r) the\nresulting file could be injected with unexpected keys and values if the\nattacker controls the written value.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-0864",
-    "ghsa_id": "GHSA-g345-7jg6-m22p",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-0864.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-p284-r695-7gxf",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:43Z",
-    "title": "dhcpcd through 10.3.2, fixed in commit 78ea09e, contains a heap use-after-free vulnerability in...",
-    "description": "dhcpcd through 10.3.2, fixed in commit 78ea09e, contains a heap use-after-free vulnerability in the control socket handling within src/control.c that allows local unprivileged attackers to trigger memory corruption when privilege separation is disabled. Attackers can connect to the control socket and send a privileged command such as -x, causing control_recvdata() to free the client object while the same READ+HANGUP event subsequently reaches control_hangup() with the stale pointer, resulting in",
-    "severity": "medium",
-    "cve_id": "CVE-2026-56117",
-    "ghsa_id": "GHSA-p284-r695-7gxf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-56117.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-vfc3-qmm8-3gx5",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:43Z",
-    "title": "An issue in the sqlo_untry component of openlink virtuoso-opensource v7.2.11 allows attackers to...",
-    "description": "An issue in the sqlo_untry component of openlink virtuoso-opensource v7.2.11 allows attackers to cause a Denial of Service (DoS) via crafted SQL statements.",
-    "severity": "high",
-    "cve_id": "CVE-2025-61029",
-    "ghsa_id": "GHSA-vfc3-qmm8-3gx5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-61029.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-c3m4-5fm5-h4c4",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:43Z",
-    "title": "Acrobat Reader versions 2020.009.20074, 2020.001.30002, 2017.011.30171, 2015.006.30523 and...",
-    "description": "Acrobat Reader versions 2020.009.20074, 2020.001.30002, 2017.011.30171, 2015.006.30523 and earlier are affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to disclose sensitive information. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-    "severity": "medium",
-    "cve_id": "CVE-2020-9711",
-    "ghsa_id": "GHSA-c3m4-5fm5-h4c4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to disclose sensitive information by exploiting an out-of-bounds read. This could lead to exposure of confidential data if a user is tricked into opening a malicious file.",
-      "affected_industries": [
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Education",
-        "Technology"
-      ],
-      "recommended_actions": [
-        "Update to the latest version of Acrobat Reader to ensure the vulnerability is patched.",
-        "Educate users to avoid opening files from untrusted or unknown sources.",
-        "Implement endpoint protection solutions to detect and block malicious files."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-8q8g-fjv5-5h56",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:43Z",
-    "title": "dhcpcd through 10.3.2, fixed in commit 2f00c7b, contains a one-byte stack out-of-bounds write...",
-    "description": "dhcpcd through 10.3.2, fixed in commit 2f00c7b, contains a one-byte stack out-of-bounds write vulnerability in dhcp6_makemessage() in src/dhcp6.c that allows unauthenticated same-link attackers to write beyond a fixed local buffer by serializing an oversized RFC6603 OPTION_PD_EXCLUDE option body. Attackers can send a crafted DHCPv6 ADVERTISE message containing an IA_PD IAPREFIX /0 with a valid OPTION_PD_EXCLUDE using an exclude prefix length of /121 through /128 to trigger the out-of-bounds writ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-56114",
-    "ghsa_id": "GHSA-8q8g-fjv5-5h56",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers on the same network link to exploit a one-byte stack out-of-bounds write, potentially leading to memory corruption, application crashes, or further exploitation depending on the system's configuration and mitigations.",
-      "affected_industries": [
-        "Telecommunications",
-        "Internet Service Providers",
-        "Enterprise IT",
-        "IoT Device Manufacturers",
-        "Cloud Service Providers"
-      ],
-      "recommended_actions": [
-        "Upgrade to the latest version of dhcpcd that includes the fix (commit 2f00c7b or later).",
-        "Implement network segmentation to limit exposure to untrusted devices on the same link.",
-        "Monitor DHCPv6 traffic for anomalous or malicious activity, and apply intrusion detection/prevention systems where possible."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-2qgp-6c6g-cmwv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:43Z",
-    "title": "GNU SASL before 2.2.4 lacks sanitization of a short challenge in _gsasl_ntlm_client_step in the...",
-    "description": "GNU SASL before 2.2.4 lacks sanitization of a short challenge in _gsasl_ntlm_client_step in the NTLM client, which could result in memory disclosure via a crafted server.",
-    "severity": "low",
-    "cve_id": "CVE-2026-56968",
-    "ghsa_id": "GHSA-2qgp-6c6g-cmwv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-56968.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-7gcw-w6h6-wm6p",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:43Z",
-    "title": "An issue in the sqlo_try_in_loop component of openlink virtuoso-opensource v7.2.11 allows...",
-    "description": "An issue in the sqlo_try_in_loop component of openlink virtuoso-opensource v7.2.11 allows attackers to cause a Denial of Service (DoS) via crafted SQL statements.",
-    "severity": "high",
-    "cve_id": "CVE-2025-61024",
-    "ghsa_id": "GHSA-7gcw-w6h6-wm6p",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-61024.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-vh4p-87xg-jc4x",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:43Z",
-    "title": "dhcpcd through 10.3.2, fixed in commit 5733d3c, contains a heap use-after-free vulnerability that...",
-    "description": "dhcpcd through 10.3.2, fixed in commit 5733d3c, contains a heap use-after-free vulnerability that allows unauthenticated same-link attackers to crash the daemon by sending a crafted DHCPv6 RENEW reply with RFC6603 OPTION_PD_EXCLUDE and both preferred and valid lifetimes set to zero. Attackers acting as or impersonating a DHCPv6 server can trigger dhcp6_deprecatedele() to free a delegated child address while an outer TAILQ_FOREACH_SAFE iterator in dhcp6_deprecateaddrs() still holds the freed poin",
-    "severity": "medium",
-    "cve_id": "CVE-2026-56113",
-    "ghsa_id": "GHSA-vh4p-87xg-jc4x",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers on the same network to crash the dhcpcd daemon, potentially causing denial of service (DoS) conditions. This could disrupt network connectivity and operations, particularly in environments relying on DHCPv6 for IP address management.",
-      "affected_industries": [
-        "Telecommunications",
-        "Internet Service Providers",
-        "Enterprise IT",
-        "IoT and Smart Devices",
-        "Cloud Service Providers"
-      ],
-      "recommended_actions": [
-        "Upgrade to the latest version of dhcpcd where the vulnerability is fixed (commit 5733d3c or later).",
-        "Implement network segmentation to limit exposure to unauthenticated same-link attackers.",
-        "Monitor and filter DHCPv6 traffic to detect and block malicious packets containing crafted OPTION_PD_EXCLUDE fields."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-vhmp-9f3g-3f36",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:43Z",
-    "title": "dhcpcd through 10.3.2, fixed in commit 2f00c7b, contains a one-byte stack out-of-bounds write...",
-    "description": "dhcpcd through 10.3.2, fixed in commit 2f00c7b, contains a one-byte stack out-of-bounds write vulnerability in dhcp6_makemessage() in src/dhcp6.c that allows unauthenticated same-link attackers to write beyond a fixed local buffer by serializing an oversized RFC6603 OPTION_PD_EXCLUDE option body. Attackers can send a crafted DHCPv6 ADVERTISE message containing an IA_PD IAPREFIX /0 with a valid OPTION_PD_EXCLUDE using an exclude prefix length of /121 through /128 to trigger the out-of-bounds writ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-56115",
-    "ghsa_id": "GHSA-vhmp-9f3g-3f36",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-56115.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-g36w-q35r-qvg3",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:43Z",
-    "title": "dhcpcd through 10.3.2, fixed in commit 708b4a5, contains a memory leak vulnerability in the IPv6...",
-    "description": "dhcpcd through 10.3.2, fixed in commit 708b4a5, contains a memory leak vulnerability in the IPv6 Router Advertisement route information handling that allows an unauthenticated same-link attacker to cause denial of service by sending crafted Router Advertisements. Attackers can repeatedly send Router Advertisements containing Route Information options with a lifetime of zero, triggering unfreed allocations in routeinfo_findalloc() that cause linear memory exhaustion and eventual daemon crash.",
-    "severity": "high",
-    "cve_id": "CVE-2026-56116",
-    "ghsa_id": "GHSA-g36w-q35r-qvg3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The memory leak vulnerability in dhcpcd through 10.3.2 could allow unauthenticated attackers on the same network to cause a denial of service by exhausting memory resources. This could lead to service disruptions, particularly in environments relying on IPv6 for network configuration.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35269.",
       "affected_industries": [
-        "Telecommunications",
-        "Internet Service Providers",
-        "Cloud Service Providers",
-        "Enterprise IT",
-        "IoT and Smart Devices"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update dhcpcd to a version that includes the fix (commit 708b4a5 or later).",
-        "Implement network monitoring to detect and block suspicious or excessive Router Advertisements on the same link.",
-        "Apply rate-limiting or filtering for IPv6 Router Advertisements to mitigate potential abuse."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "high"
     },
     "risk_score": 85
   },
   {
-    "id": "gh-GHSA-grqm-7w8c-xf5j",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-23T18:31:43Z",
-    "title": "Adobe Acrobat and Reader versions 2020.009.20074 and earlier, 2020.001.30002, 2017.011.30171 and...",
-    "description": "Adobe Acrobat and Reader versions 2020.009.20074 and earlier, 2020.001.30002, 2017.011.30171 and earlier, and 2015.006.30523 and earlier are affected by an out-of-bounds read vulnerability that could lead to disclosure of sensitive memory. An attacker could leverage this vulnerability to disclose sensitive information. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-    "severity": "medium",
-    "cve_id": "CVE-2020-9713",
-    "ghsa_id": "GHSA-grqm-7w8c-xf5j",
-    "affected_packages": [],
-    "cwes": [
-      null
+    "id": "cve-CVE-2026-35268",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-17T10:40:19.020",
+    "title": "CVE-2026-35268 - Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: Core).  Suppor",
+    "description": "Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: Core).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows low privileged attacker with network access via T3, IIOP to compromise Identity Manager.  While the vulnerability is in Identity Manager, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Identity Manager. CVSS 3.1 Base Score 9.9 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).",
+    "severity": "critical",
+    "cve_id": "CVE-2026-35268",
+    "cvss_score": 9.9,
+    "affected_products": [
+      "cpe:2.3:a:oracle:identity_manager:12.2.1.4.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:identity_manager:14.1.2.1.0:*:*:*:*:*:*:*"
     ],
     "references": [
-      null,
-      null,
-      null
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2020-9713.",
+      "risk_score": 100,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-35268.",
       "affected_industries": [
         "Technology",
         "General"
@@ -776,329 +1012,30 @@
         "Review affected systems",
         "Apply security patches if available",
         "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "cve-CVE-2025-10262",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-16T06:16:57.063",
-    "title": "CVE-2025-10262 - Nokia SR Linux is vulnerable to local privilege escalation vulnerability due to unsanitized format v",
-    "description": "Nokia SR Linux is vulnerable to local privilege escalation vulnerability due to unsanitized format validation. Successful exploitation of this vulnerability may allow an authenticated user to execute arbitrary commands with superuser privileges.",
-    "severity": "medium",
-    "cve_id": "CVE-2025-10262",
-    "cvss_score": 6.3,
-    "affected_products": [],
-    "references": [
-      "https://www.nokia.com/we-are-nokia/security/product-security-advisory/cve-2025-10262/"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-10262.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-6964",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-16T04:17:26.917",
-    "title": "CVE-2026-6964 - The Video Conferencing with Zoom plugin for WordPress is vulnerable to authorization bypass in all v",
-    "description": "The Video Conferencing with Zoom plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 4.6.7. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to obtain the site's Zoom SDK API key and a freshly-signed JWT that can be used with the Zoom Web SDK to join any Zoom meeting associated with those credentials without a legitimate invitation.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6964",
-    "cvss_score": 5.3,
-    "affected_products": [],
-    "references": [
-      "https://plugins.trac.wordpress.org/browser/video-conferencing-with-zoom-api/tags/4.6.6/includes/admin/class-zvc-admin-ajax.php#L183",
-      "https://plugins.trac.wordpress.org/browser/video-conferencing-with-zoom-api/tags/4.6.6/includes/template-functions.php#L558",
-      "https://plugins.trac.wordpress.org/browser/video-conferencing-with-zoom-api/tags/4.6.7/includes/admin/class-zvc-admin-ajax.php#L183",
-      "https://plugins.trac.wordpress.org/browser/video-conferencing-with-zoom-api/tags/4.6.7/includes/template-functions.php#L558",
-      "https://plugins.trac.wordpress.org/browser/video-conferencing-with-zoom-api/trunk/includes/admin/class-zvc-admin-ajax.php#L183",
-      "https://plugins.trac.wordpress.org/browser/video-conferencing-with-zoom-api/trunk/includes/template-functions.php#L558",
-      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3565576%40video-conferencing-with-zoom-api&new=3565576%40video-conferencing-with-zoom-api&sfp_email=&sfph_mail=",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/328a4d88-afa2-4305-a8e5-73e626e9f53f?source=cve"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6964.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-7273",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-16T03:16:13.557",
-    "title": "CVE-2026-7273 - A stack-based buffer overflow vulnerability in the CGI program of Zyxel GS1900-48HPv2 firmware versi",
-    "description": "A stack-based buffer overflow vulnerability in the CGI program of Zyxel GS1900-48HPv2 firmware versions through 2.90(ABTQ.1)C0 could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.",
-    "severity": "high",
-    "cve_id": "CVE-2026-7273",
-    "cvss_score": 8.8,
-    "affected_products": [],
-    "references": [
-      "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-stack-based-buffer-overflow-vulnerability-in-gs1900-series-switches-06-16-2026"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows an unauthenticated attacker on the LAN to execute arbitrary OS commands, potentially leading to full system compromise, data exfiltration, or network disruption.",
-      "affected_industries": [
-        "Telecommunications",
-        "Small and Medium Enterprises (SMEs)",
-        "Education",
-        "Healthcare",
-        "Retail"
-      ],
-      "recommended_actions": [
-        "Immediately update the Zyxel GS1900-48HPv2 firmware to the latest patched version, if available, or contact Zyxel support for guidance.",
-        "Implement network segmentation to isolate the affected devices from critical systems and limit LAN access to trusted users only.",
-        "Monitor network traffic for unusual activity and configure intrusion detection/prevention systems to detect and block malicious HTTP requests targeting the vulnerability."
       ],
       "urgency": "critical"
     },
-    "risk_score": 85
+    "risk_score": 100
   },
   {
-    "id": "cve-CVE-2026-42014",
+    "id": "cve-CVE-2026-35267",
     "source": "NVD CVE",
-    "timestamp": "2026-06-16T02:16:19.140",
-    "title": "CVE-2026-42014 - A flaw was found in GnuTLS. The `gnutls_pkcs11_token_set_pin` function, used for changing the Securi",
-    "description": "A flaw was found in GnuTLS. The `gnutls_pkcs11_token_set_pin` function, used for changing the Security Officer PIN, can lead to a use-after-free vulnerability. This occurs when an attacker attempts to change the PIN with a NULL old PIN for a token that lacks a protected authentication path.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-42014",
-    "cvss_score": 6.6,
-    "affected_products": [],
-    "references": [
-      "https://access.redhat.com/errata/RHSA-2026:20611",
-      "https://access.redhat.com/errata/RHSA-2026:20612",
-      "https://access.redhat.com/errata/RHSA-2026:20613",
-      "https://access.redhat.com/errata/RHSA-2026:26319",
-      "https://access.redhat.com/errata/RHSA-2026:26409",
-      "https://access.redhat.com/security/cve/CVE-2026-42014",
-      "https://bugzilla.redhat.com/show_bug.cgi?id=2467451",
-      "https://gitlab.com/gnutls/gnutls/-/issues/1766",
-      "https://www.gnutls.org/security-new.html#GNUTLS-SA-2026-04-29-9"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-42014.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-1767",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-16T02:16:18.447",
-    "title": "CVE-2026-1767 - A flaw was found in the GNOME localsearch (previously known as tracker-miners) MP3 Extractor `tracke",
-    "description": "A flaw was found in the GNOME localsearch (previously known as tracker-miners) MP3 Extractor `tracker-extract-mp3` component. A remote attacker could exploit this heap buffer overflow vulnerability by providing a specially crafted MP3 file containing malformed ID3 tags. This incorrect length calculation during the parsing of performer tags can lead to a read beyond the allocated buffer, potentially causing a Denial of Service (DoS) due to a crash or enabling information disclosure.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-1767",
-    "cvss_score": 5.6,
-    "affected_products": [
-      "cpe:2.3:a:gnome:localsearch:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:redhat:enterprise_linux:8.0:*:*:*:*:*:*:*",
-      "cpe:2.3:o:redhat:enterprise_linux:9.0:*:*:*:*:*:*:*",
-      "cpe:2.3:o:redhat:enterprise_linux:10.0:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://access.redhat.com/security/cve/CVE-2026-1767",
-      "https://bugzilla.redhat.com/show_bug.cgi?id=2435983"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-1767.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-1766",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-16T02:16:18.313",
-    "title": "CVE-2026-1766 - A flaw was found in GNOME localsearch (previously known as tracker-miners) MP3 Extractor, specifical",
-    "description": "A flaw was found in GNOME localsearch (previously known as tracker-miners) MP3 Extractor, specifically within the tracker-extract-mp3 component. This heap buffer overflow vulnerability occurs when processing specially crafted MP3 files containing malformed ID3v2.3 COMM (Comment) tags. An attacker could exploit this by providing a malicious MP3 file, leading to a denial of service (DoS), which causes an application crash, and potentially disclosing sensitive information from the heap memory.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-1766",
-    "cvss_score": 5.6,
-    "affected_products": [
-      "cpe:2.3:a:gnome:localsearch:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:redhat:enterprise_linux:8.0:*:*:*:*:*:*:*",
-      "cpe:2.3:o:redhat:enterprise_linux:9.0:*:*:*:*:*:*:*",
-      "cpe:2.3:o:redhat:enterprise_linux:10.0:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://access.redhat.com/security/cve/CVE-2026-1766",
-      "https://bugzilla.redhat.com/show_bug.cgi?id=2435982"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-1766.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-1765",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-16T02:16:18.170",
-    "title": "CVE-2026-1765 - A flaw was found in the `tracker-extract-mp3` component of GNOME localsearch (previously known as tr",
-    "description": "A flaw was found in the `tracker-extract-mp3` component of GNOME localsearch (previously known as tracker-miners). This vulnerability, a heap buffer overflow, occurs when processing specially crafted MP3 files. A remote attacker could exploit this by providing a malicious MP3 file, leading to a Denial of Service (DoS) where the application crashes. It may also potentially expose sensitive information from the system's memory.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-1765",
-    "cvss_score": 5.6,
-    "affected_products": [],
-    "references": [
-      "https://access.redhat.com/security/cve/CVE-2026-1765",
-      "https://bugzilla.redhat.com/show_bug.cgi?id=2435981"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-1765.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-1764",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-16T02:16:17.103",
-    "title": "CVE-2026-1764 - A flaw was found in GNOME localsearch (previously known as tracker-miners) MP3 Extractor. When proce",
-    "description": "A flaw was found in GNOME localsearch (previously known as tracker-miners) MP3 Extractor. When processing specially crafted MP3 files containing ID3v2.4 tags, a missing bounds check in the `extract_performers_tags` function can lead to a heap buffer overflow. This vulnerability allows a remote attacker to cause a Denial of Service (DoS) by triggering a read of unmapped memory. In some cases, it could also lead to information disclosure by reading visible heap data.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-1764",
-    "cvss_score": 5.6,
-    "affected_products": [
-      "cpe:2.3:a:gnome:localsearch:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:redhat:enterprise_linux:8.0:*:*:*:*:*:*:*",
-      "cpe:2.3:o:redhat:enterprise_linux:9.0:*:*:*:*:*:*:*",
-      "cpe:2.3:o:redhat:enterprise_linux:10.0:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://access.redhat.com/security/cve/CVE-2026-1764",
-      "https://bugzilla.redhat.com/show_bug.cgi?id=2435980"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-1764.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-12162",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-16T01:16:23.937",
-    "title": "CVE-2026-12162 - Improper host validation in the social login autofill feature in \nDevolutions Remote Desktop Manager",
-    "description": "Improper host validation in the social login autofill feature in \nDevolutions Remote Desktop Manager 2026.2.8 allows an attacker to \ndisclose stored social login credentials via a crafted web entry \npointing to a provider lookalike domain.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-12162",
-    "cvss_score": 5.5,
-    "affected_products": [
-      "cpe:2.3:a:devolutions:remote_desktop_manager:*:*:*:*:*:windows:*:*"
-    ],
-    "references": [
-      "https://devolutions.net/security/advisories/DEVO-2026-0018/"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-12162.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-12161",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-16T01:16:22.950",
-    "title": "CVE-2026-12161 - Improper input validation in the SSH Elevate Shell feature in \nDevolutions Remote Desktop Manager 20",
-    "description": "Improper input validation in the SSH Elevate Shell feature in \nDevolutions Remote Desktop Manager 2026.2.7 allows an authenticated user\n with permission to create or modify a shared SSH entry to execute \narbitrary commands on a remote SSH host using stored elevation \ncredentials via a crafted alternate username and user interaction with \nthe Elevate Shell action.",
+    "timestamp": "2026-06-17T10:40:18.920",
+    "title": "CVE-2026-35267 - Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: REST WebServic",
+    "description": "Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: REST WebServices).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Identity Manager.  Successful attacks of this vulnerability can result in takeover of Identity Manager. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
     "severity": "high",
-    "cve_id": "CVE-2026-12161",
+    "cve_id": "CVE-2026-35267",
     "cvss_score": 8.8,
     "affected_products": [
-      "cpe:2.3:a:devolutions:remote_desktop_manager:*:*:*:*:*:windows:*:*"
+      "cpe:2.3:a:oracle:identity_manager:12.2.1.4.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:identity_manager:14.1.2.1.0:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://devolutions.net/security/advisories/DEVO-2026-0018/"
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12161.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35267.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1113,28 +1050,120 @@
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-9262",
+    "id": "cve-CVE-2026-35265",
     "source": "NVD CVE",
-    "timestamp": "2026-06-16T00:16:36.020",
-    "title": "CVE-2026-9262 - Use of a non-secure protocol as the default FTP configuration in Canon EOS Network Setting Tool Vers",
-    "description": "Use of a non-secure protocol as the default FTP configuration in Canon EOS Network Setting Tool Version 1.5.0 or earlier",
+    "timestamp": "2026-06-17T10:40:18.710",
+    "title": "CVE-2026-35265 - Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: Security).  Su",
+    "description": "Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: Security).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Identity Manager.  Successful attacks of this vulnerability can result in takeover of Identity Manager. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "severity": "high",
+    "cve_id": "CVE-2026-35265",
+    "cvss_score": 8.8,
+    "affected_products": [
+      "cpe:2.3:a:oracle:identity_manager:12.2.1.4.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:identity_manager:14.1.2.1.0:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35265.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-35263",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-17T10:40:18.600",
+    "title": "CVE-2026-35263 - Vulnerability in the WebLogic Server product of Oracle Fusion Middleware (component: Core).  Support",
+    "description": "Vulnerability in the WebLogic Server product of Oracle Fusion Middleware (component: Core).  Supported versions that are affected are 14.1.2.0.0 and  15.1.1.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise WebLogic Server.  While the vulnerability is in WebLogic Server, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of WebLogic Server. CVSS 3.1 Base Score 9.9 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).",
+    "severity": "critical",
+    "cve_id": "CVE-2026-35263",
+    "cvss_score": 9.9,
+    "affected_products": [
+      "cpe:2.3:a:oracle:weblogic_server:14.1.2.0.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:weblogic_server:15.1.1.0.0:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
+    ],
+    "ai_analysis": {
+      "risk_score": 100,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-35263.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 100
+  },
+  {
+    "id": "cve-CVE-2026-35262",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-17T10:40:18.493",
+    "title": "CVE-2026-35262 - Vulnerability in the Oracle Data Integrator product of Oracle Fusion Middleware (component: Market P",
+    "description": "Vulnerability in the Oracle Data Integrator product of Oracle Fusion Middleware (component: Market Place).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Data Integrator.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Data Integrator accessible data as well as  unauthorized access to critical data or complete access to all Oracle Data Integrator accessible data and unauthorized ability to cause a partial denial of service (partial DOS) of Oracle Data Integrator. CVSS 3.1 Base Score 8.3 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L).",
+    "severity": "high",
+    "cve_id": "CVE-2026-35262",
+    "cvss_score": 8.3,
+    "affected_products": [
+      "cpe:2.3:a:oracle:data_integrator:12.2.1.4.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:data_integrator:14.1.2.0.0:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35262.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-35261",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-17T10:40:18.383",
+    "title": "CVE-2026-35261 - Vulnerability in the Oracle Access Manager product of Oracle Fusion Middleware (component: Authentic",
+    "description": "Vulnerability in the Oracle Access Manager product of Oracle Fusion Middleware (component: Authentication Engine).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Access Manager.  Successful attacks of this vulnerability can result in  unauthorized update, insert or delete access to some of Oracle Access Manager accessible data as well as  unauthorized read access to a subset of Oracle Access Manager accessible data. CVSS 3.1 Base Score 6.5 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).",
     "severity": "medium",
-    "cve_id": "CVE-2026-9262",
+    "cve_id": "CVE-2026-35261",
     "cvss_score": 6.5,
     "affected_products": [
-      "cpe:2.3:a:canon:eos_network_setting_tool:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
+      "cpe:2.3:a:oracle:access_manager:12.2.1.4.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:access_manager:14.1.2.1.0:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://canon.jp/support/support-info/260615vulnerability-response",
-      "https://psirt.canon/advisory-information/cp2026-005/",
-      "https://www.canon-europe.com/support/product-security/",
-      "https://www.usa.canon.com/about-us/to-our-customers/cpa2026-005-vulnerability-remediation-for-eos-network-setting-tool"
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9262.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-35261.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1149,28 +1178,24 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-9261",
+    "id": "cve-CVE-2026-35259",
     "source": "NVD CVE",
-    "timestamp": "2026-06-16T00:16:35.887",
-    "title": "CVE-2026-9261 - Use of weak SSH cryptographic algorithms in Canon EOS Network Setting Tool Version 1.5.0 or earlier",
-    "description": "Use of weak SSH cryptographic algorithms in Canon EOS Network Setting Tool Version 1.5.0 or earlier",
-    "severity": "medium",
-    "cve_id": "CVE-2026-9261",
-    "cvss_score": 6.8,
+    "timestamp": "2026-06-17T10:40:18.280",
+    "title": "CVE-2026-35259 - Vulnerability in the WebLogic Server product of Oracle Fusion Middleware (component: Console).  Supp",
+    "description": "Vulnerability in the WebLogic Server product of Oracle Fusion Middleware (component: Console).  Supported versions that are affected are 14.1.2.0.0 and  15.1.1.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTPS to compromise WebLogic Server.  Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in takeover of WebLogic Server. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).",
+    "severity": "high",
+    "cve_id": "CVE-2026-35259",
+    "cvss_score": 8.8,
     "affected_products": [
-      "cpe:2.3:a:canon:eos_network_setting_tool:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
+      "cpe:2.3:a:oracle:weblogic_server:14.1.2.0.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:weblogic_server:15.1.1.0.0:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://canon.jp/support/support-info/260615vulnerability-response",
-      "https://psirt.canon/advisory-information/cp2026-005/",
-      "https://www.canon-europe.com/support/product-security/",
-      "https://www.usa.canon.com/about-us/to-our-customers/cpa2026-005-vulnerability-remediation-for-eos-network-setting-tool"
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9261.",
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35259.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1180,33 +1205,29 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 60
+    "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-9260",
+    "id": "cve-CVE-2026-35258",
     "source": "NVD CVE",
-    "timestamp": "2026-06-16T00:16:35.757",
-    "title": "CVE-2026-9260 - Use of hard-coded cryptographic keys in Canon EOS Network Setting Tool Version 1.5.0 or earlier",
-    "description": "Use of hard-coded cryptographic keys in Canon EOS Network Setting Tool Version 1.5.0 or earlier",
-    "severity": "medium",
-    "cve_id": "CVE-2026-9260",
-    "cvss_score": 6.2,
+    "timestamp": "2026-06-17T10:40:17.287",
+    "title": "CVE-2026-35258 - Vulnerability in the WebLogic Server product of Oracle Fusion Middleware (component: Console).  Supp",
+    "description": "Vulnerability in the WebLogic Server product of Oracle Fusion Middleware (component: Console).  Supported versions that are affected are 14.1.2.0.0 and  15.1.1.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTPS to compromise WebLogic Server.  Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in WebLogic Server, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all WebLogic Server accessible data as well as  unauthorized access to critical data or complete access to all WebLogic Server accessible data. CVSS 3.1 Base Score 8.7 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N).",
+    "severity": "high",
+    "cve_id": "CVE-2026-35258",
+    "cvss_score": 8.7,
     "affected_products": [
-      "cpe:2.3:a:canon:eos_network_setting_tool:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
+      "cpe:2.3:a:oracle:weblogic_server:14.1.2.0.0:*:*:*:*:*:*:*",
+      "cpe:2.3:a:oracle:weblogic_server:15.1.1.0.0:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://canon.jp/support/support-info/260615vulnerability-response",
-      "https://psirt.canon/advisory-information/cp2026-005/",
-      "https://www.canon-europe.com/support/product-security/",
-      "https://www.usa.canon.com/about-us/to-our-customers/cpa2026-005-vulnerability-remediation-for-eos-network-setting-tool"
+      "https://www.oracle.com/security-alerts/cspujun2026.html"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9260.",
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35258.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1216,33 +1237,26 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 60
+    "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-9259",
+    "id": "cve-CVE-2026-12348",
     "source": "NVD CVE",
-    "timestamp": "2026-06-16T00:16:35.623",
-    "title": "CVE-2026-9259 - Improper validation of server certificates in Canon EOS Network Setting Tool Version 1.5.0 or earlie",
-    "description": "Improper validation of server certificates in Canon EOS Network Setting Tool Version 1.5.0 or earlier",
-    "severity": "medium",
-    "cve_id": "CVE-2026-9259",
-    "cvss_score": 6.5,
-    "affected_products": [
-      "cpe:2.3:a:canon:eos_network_setting_tool:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
+    "timestamp": "2026-06-17T10:14:49.290",
+    "title": "CVE-2026-12348 - Address bar spoofing in Arc Search for Android allows a remote attacker to display a trusted domain ",
+    "description": "Address bar spoofing in Arc Search for Android allows a remote attacker to display a trusted domain in the address bar while rendering attacker-controlled content, enabling phishing.",
+    "severity": "high",
+    "cve_id": "CVE-2026-12348",
+    "cvss_score": 7.4,
+    "affected_products": [],
     "references": [
-      "https://canon.jp/support/support-info/260615vulnerability-response",
-      "https://psirt.canon/advisory-information/cp2026-005/",
-      "https://www.canon-europe.com/support/product-security/",
-      "https://www.usa.canon.com/about-us/to-our-customers/cpa2026-005-vulnerability-remediation-for-eos-network-setting-tool"
+      "https://hackerone.com/reports/3705306"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9259.",
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12348.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1252,44 +1266,8 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-9258",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-16T00:16:35.460",
-    "title": "CVE-2026-9258 - Improper validation of SSH host keys in Canon EOS Network Setting Tool Version 1.5.0 or earlier",
-    "description": "Improper validation of SSH host keys in Canon EOS Network Setting Tool Version 1.5.0 or earlier",
-    "severity": "medium",
-    "cve_id": "CVE-2026-9258",
-    "cvss_score": 6.5,
-    "affected_products": [
-      "cpe:2.3:a:canon:eos_network_setting_tool:*:*:*:*:*:*:*:*",
-      "cpe:2.3:o:apple:macos:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:microsoft:windows:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://canon.jp/support/support-info/260615vulnerability-response",
-      "https://psirt.canon/advisory-information/cp2026-005/",
-      "https://www.canon-europe.com/support/product-security/",
-      "https://www.usa.canon.com/about-us/to-our-customers/cpa2026-005-vulnerability-remediation-for-eos-network-setting-tool"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9258.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
+    "risk_score": 85
   }
 ]
