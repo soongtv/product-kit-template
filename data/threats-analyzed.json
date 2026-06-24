@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1782312447126-1",
+    "id": "twitter-1782331022040-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-24T14:47:27.126Z",
+    "timestamp": "2026-06-24T19:57:02.040Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -11,28 +11,28 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code at scale, potentially leading to data encryption, service outages, and financial losses.",
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud environments. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code, potentially leading to data encryption, service disruptions, and financial losses.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
-        "E-commerce",
-        "Media and Entertainment",
+        "Retail",
+        "Manufacturing",
         "Government"
       ],
       "recommended_actions": [
-        "Conduct an immediate review of CI/CD pipeline security, including access controls, code signing, and monitoring for unauthorized changes.",
-        "Implement robust backup strategies for cloud-hosted data and ensure backups are stored in isolated environments to prevent ransomware encryption.",
-        "Deploy advanced threat detection tools to monitor for unusual activity within cloud environments, particularly around CI/CD pipelines."
+        "Conduct an immediate review of CI/CD pipelines to identify and remediate any unauthorized access or misconfigurations.",
+        "Implement robust monitoring and anomaly detection tools to identify unusual activity within cloud environments.",
+        "Ensure regular backups of critical data are performed and stored securely offline to mitigate the impact of ransomware attacks."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "hn-1782312447126-1",
+    "id": "hn-1782331022040-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-24T14:47:27.126Z",
+    "timestamp": "2026-06-24T19:57:02.040Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -56,14 +56,47 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-vwrr-994w-h832",
+    "id": "gh-GHSA-665r-cj9v-w263",
     "source": "GitHub Security",
-    "timestamp": "2026-06-24T12:30:31Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: skbuff: fix missing...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: skbuff: fix missing zerocopy reference in pskb_carve helpers\n\npskb_carve_inside_header() and pskb_carve_inside_nonlinear() both copy\nthe old skb_shared_info header into a new buffer via memcpy(), which\nincludes the destructor_arg pointer (uarg) for MSG_ZEROCOPY skbs.\nNeither function calls net_zcopy_get() for the new shinfo, creating an\nunaccounted holder: every skb_shared_info with destructor_arg set will\ncall skb_zcopy_c",
+    "timestamp": "2026-06-24T18:32:48Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: fix zones_cond memory...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: fix zones_cond memory leak on zone revalidation error paths\n\nWhen blk_revalidate_disk_zones() fails after disk_revalidate_zone_resources()\nhas allocated args.zones_cond, the memory is leaked because no error path\nfrees it.",
     "severity": "unknown",
-    "cve_id": "CVE-2026-52943",
-    "ghsa_id": "GHSA-vwrr-994w-h832",
+    "cve_id": "CVE-2026-53127",
+    "ghsa_id": "GHSA-665r-cj9v-w263",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53127.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-2j9j-p8f4-hwp3",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:48Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/omfs: reject...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/omfs: reject s_sys_blocksize smaller than OMFS_DIR_START\n\nomfs_fill_super() rejects oversized s_sys_blocksize values (> PAGE_SIZE),\nbut it does not reject values smaller than OMFS_DIR_START (0x1b8 = 440).\n\nLater, omfs_make_empty() uses\n\n    sbi->s_sys_blocksize - OMFS_DIR_START\n\nas the length argument to memset().  Since s_sys_blocksize is u32,\na crafted filesystem image with s_sys_blocksize < OMFS_DIR_START causes\nan unsign",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53130",
+    "ghsa_id": "GHSA-2j9j-p8f4-hwp3",
     "affected_packages": [],
     "cwes": [],
     "references": [
@@ -80,7 +113,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52943.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53130.",
       "affected_industries": [
         "Technology",
         "General"
@@ -95,502 +128,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-v762-vr2v-9263",
+    "id": "gh-GHSA-jmxg-xc7h-vhvv",
     "source": "GitHub Security",
-    "timestamp": "2026-06-24T12:30:31Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix FSCTL permission...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix FSCTL permission bypass by adding a permission check for FSCTL_SET_SPARSE\n\nFSCTL_SET_SPARSE in fsctl_set_sparse() modifies the file's sparse\nattribute and saves it through xattr without any permission checks.\n\nThis exposes two issues:\n\n1) A client on a read-only share can change the sparse attribute\n   on files it opened, even though the share is read-only.\n   Other FSCTL write operations already check\n   test_tree_c",
+    "timestamp": "2026-06-24T18:32:48Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nvdpa: use generic...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvdpa: use generic driver_override infrastructure\n\nWhen a driver is probed through __driver_attach(), the bus' match()\ncallback is called without the device lock held, thus accessing the\ndriver_override field without a lock, which can cause a UAF.\n\nFix this by using the driver-core driver_override infrastructure taking\ncare of proper locking internally.\n\nNote that calling match() from __driver_attach() without the device lock\nhe",
     "severity": "unknown",
-    "cve_id": "CVE-2026-52944",
-    "ghsa_id": "GHSA-v762-vr2v-9263",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability allows unauthorized modification of file attributes (e.g., sparse attribute) on read-only shares, potentially leading to data integrity issues or bypassing intended access controls. This could be exploited by malicious actors to manipulate file properties inappropriately.",
-      "affected_industries": [
-        "Cloud Service Providers",
-        "Enterprise IT",
-        "Data Storage and Backup Solutions",
-        "Media and Entertainment",
-        "Software Development"
-      ],
-      "recommended_actions": [
-        "Apply the latest Linux kernel patches that address CVE-2026-52944 to ensure the vulnerability is mitigated.",
-        "Audit and monitor file access logs to detect any unusual or unauthorized modifications to file attributes, especially on read-only shares.",
-        "Restrict access to ksmbd services to trusted clients and networks, and implement additional network segmentation where possible."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-2h5c-f427-3wjr",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T12:30:31Z",
-    "title": "Argument Injection in TortoiseGitBlame via Malicious Git History Filenames Leads to Arbitrary...",
-    "description": "Argument Injection in TortoiseGitBlame via Malicious Git History Filenames Leads to Arbitrary File Write in TortoiseGit",
-    "severity": "medium",
-    "cve_id": "CVE-2026-11968",
-    "ghsa_id": "GHSA-2h5c-f427-3wjr",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11968.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-jmg8-x6hq-972w",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T12:30:31Z",
-    "title": "Server-Side Request Forgery (SSRF) (CWE-918) in the PDF generation endpoint GET /api/reports/{id}...",
-    "description": "Server-Side Request Forgery (SSRF) (CWE-918) in the PDF generation endpoint GET /api/reports/{id}/pdf (backend/main.py) in ccyl13 Pentestify 1.0.0 and lower allows remote attackers to make the server issue requests to arbitrary internal or external URLs, including cloud metadata services, and return the rendered content in the resulting PDF via a crafted Host header, because the target URL is built from request.base_url without validation.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13150",
-    "ghsa_id": "GHSA-jmg8-x6hq-972w",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13150.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-rj87-rfcc-35pw",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:49Z",
-    "title": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')...",
-    "description": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection') vulnerability in FunnelKit Funnel Builder by FunnelKit allows Blind SQL Injection.\n\nThis issue affects Funnel Builder by FunnelKit: from n/a through 3.15.0.5.",
-    "severity": "high",
-    "cve_id": "CVE-2026-56052",
-    "ghsa_id": "GHSA-rj87-rfcc-35pw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The SQL Injection vulnerability in FunnelKit Funnel Builder allows attackers to execute arbitrary SQL commands on the database, potentially leading to unauthorized data access, data exfiltration, data corruption, or complete database compromise. This could result in significant data breaches, financial losses, and reputational damage.",
-      "affected_industries": [
-        "E-commerce",
-        "Marketing and Advertising",
-        "Small and Medium Businesses (SMBs)",
-        "Technology and SaaS"
-      ],
-      "recommended_actions": [
-        "Immediately update FunnelKit Funnel Builder to the latest patched version, if available, or disable the plugin until a fix is released.",
-        "Implement web application firewalls (WAFs) to detect and block malicious SQL injection attempts.",
-        "Conduct a thorough review of database logs to identify any signs of unauthorized access or suspicious activity."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-x48q-47qq-gv8g",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:49Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: avoid NULL deref of...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: avoid NULL deref of conn->lnk in smc_msg_event tracepoint\n\nThe smc_msg_event tracepoint class, shared by smc_tx_sendmsg and\nsmc_rx_recvmsg, unconditionally dereferences smc->conn.lnk:\n\n\t__string(name, smc->conn.lnk->ibname)\n\nconn->lnk is only set for SMC-R; for SMC-D it is NULL. Other code on\nthese paths already handles this (e.g. !conn->lnk in\nSMC_STAT_RMB_TX_SIZE_SMALL()). With the tracepoint enabled, the first\nsendm",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52941",
-    "ghsa_id": "GHSA-x48q-47qq-gv8g",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52941.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-7mf5-pgq8-jhcp",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:49Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ntun: zero the whole vnet...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntun: zero the whole vnet header in tun_put_user()\n\ntun_put_user() declares an on-stack struct virtio_net_hdr_v1_hash_tunnel\nwithout zeroing it. For a non-tunnel skb, virtio_net_hdr_tnl_from_skb()\nonly initializes the first 10 bytes (sizeof(struct virtio_net_hdr)),\nleaving bytes 10..23 (num_buffers and the hash/tunnel fields) as stack\ngarbage.\n\nAn unprivileged user can set the vnet header size to 24 with\nTUNSETVNETHDRSZ, so __tu",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52940",
-    "ghsa_id": "GHSA-7mf5-pgq8-jhcp",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52940.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-qqfq-fg56-qv34",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:49Z",
-    "title": "The Ultimate Member plugin for WordPress is vulnerable to Account Takeover via Password Reset...",
-    "description": "The Ultimate Member plugin for WordPress is vulnerable to Account Takeover via Password Reset Link Disclosure in all versions up to and including 2.11.4. This is due to a chain of three logic bugs: (1) an MD5 hash fallback in get_directory_by_hash() that allows any post to be used as a member directory by computing SUBSTRING(MD5(post_id), 11, 5), (2) a strstr() parsing logic flaw in post_data() that allows bypassing WordPress's protected meta key restrictions by placing '_um_' anywhere in the me",
-    "severity": "high",
-    "cve_id": "CVE-2026-7761",
-    "ghsa_id": "GHSA-qqfq-fg56-qv34",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in the Ultimate Member plugin for WordPress allows attackers to perform account takeovers by exploiting a chain of logic bugs in the password reset functionality. This could lead to unauthorized access to user accounts, data breaches, and potential privilege escalation.",
-      "affected_industries": [
-        "E-commerce",
-        "Media and Publishing",
-        "Education",
-        "Nonprofits",
-        "Small and Medium Businesses"
-      ],
-      "recommended_actions": [
-        "Immediately update the Ultimate Member plugin to the latest patched version (if available) or disable the plugin temporarily until a fix is released.",
-        "Implement additional security measures such as two-factor authentication (2FA) for user accounts to mitigate the risk of unauthorized access.",
-        "Monitor logs for suspicious activity, especially related to password reset requests, and notify users to update their passwords as a precaution."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-3p98-fq5j-wx55",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:49Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_log: validate...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_log: validate MAC header was set before dumping it\n\nThe fallback path of dump_mac_header() guards the MAC header access\nonly with \"skb->mac_header != skb->network_header\", without checking\nskb_mac_header_was_set(). When the MAC header is unset, mac_header is\n0xffff, so the test passes and skb_mac_header(skb) returns\nskb->head + 0xffff, ~64 KiB past the buffer; the loop then reads\ndev->hard_header_len bytes out of ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52942",
-    "ghsa_id": "GHSA-3p98-fq5j-wx55",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in the Linux kernel's netfilter component could allow unauthorized memory access, potentially leading to information disclosure, system crashes, or privilege escalation. This poses a significant risk to systems relying on the affected kernel versions.",
-      "affected_industries": [
-        "Cloud Service Providers",
-        "Telecommunications",
-        "Internet of Things (IoT)",
-        "Healthcare",
-        "Finance",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Immediately update to the latest Linux kernel version that includes the patch for CVE-2026-52942.",
-        "Audit and monitor systems for any signs of exploitation, such as unusual memory access patterns or crashes.",
-        "Apply network segmentation and access controls to limit exposure of vulnerable systems."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-772w-g99g-gjqj",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:49Z",
-    "title": "Improper output neutralization for logs vulnerability in upKeeper Solutions upKeeper Instant...",
-    "description": "Improper output neutralization for logs vulnerability in upKeeper Solutions upKeeper Instant Privilege Access on Windows allows Log Injection-Tampering-Forging.\n\nThis issue affects upKeeper Instant Privilege Access: through 1.6.1.",
-    "severity": "high",
-    "cve_id": "CVE-2026-10745",
-    "ghsa_id": "GHSA-772w-g99g-gjqj",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to inject, tamper, or forge log entries, potentially leading to unauthorized access, data manipulation, or obfuscation of malicious activities. This can hinder forensic investigations and compromise system integrity.",
-      "affected_industries": [
-        "IT Services",
-        "Healthcare",
-        "Finance",
-        "Government",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Immediately update upKeeper Instant Privilege Access to the latest patched version beyond 1.6.1 to mitigate the vulnerability.",
-        "Implement strict monitoring and auditing of logs to detect any anomalies or signs of tampering.",
-        "Educate system administrators and security teams about the vulnerability and ensure proper access controls are in place."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-v4hw-q98x-8jmm",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: purge outqueue on...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: purge outqueue on stale COOKIE-ECHO handling\n\nsctp_stream_update() is only invoked when the association is moved into\nCOOKIE_WAIT during association setup/reconfiguration. In this path, the\noutbound stream scheduler state (stream->out_curr) is expected to be\nclean, since no user data should have been transmitted yet unless the\nstate machine has already partially progressed.\n\nHowever, a corner case exists in sctp_sf_do_5_2",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52924",
-    "ghsa_id": "GHSA-v4hw-q98x-8jmm",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52924.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-vg8w-8f3p-9p3c",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nvrf: Fix a potential NPD...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvrf: Fix a potential NPD when removing a port from a VRF\n\nRCU readers that identified a net device as a VRF port using\nnetif_is_l3_slave() assume that a subsequent call to\nnetdev_master_upper_dev_get_rcu() will return a VRF device. They then\ncontinue to dereference its l3mdev operations.\n\nThis assumption is not always correct and can result in a NPD [1]. There\nis no RCU synchronization when removing a port from a VRF, so it is\n",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52925",
-    "ghsa_id": "GHSA-vg8w-8f3p-9p3c",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52925.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-w473-pp3w-rqc2",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: tvlv: reject...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: tvlv: reject oversized TVLV packets\n\nbatadv_tvlv_container_ogm_append() builds a TVLV packet section from\nthe tvlv.container_list. The total size of this section is computed by\nbatadv_tvlv_container_list_size(), which sums the sizes of all registered\ncontainers.\n\nThe return type and accumulator in batadv_tvlv_container_list_size() were\nu16. If the accumulated size exceeds U16_MAX, the value wraps around,\ncausing the",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52934",
-    "ghsa_id": "GHSA-w473-pp3w-rqc2",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52934.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-vgrc-x22q-wc53",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix NULL pointer...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Fix NULL pointer dereference in bpf_sk_storage_clone and diag paths\n\nbpf_selem_unlink_nofail() sets SDATA(selem)->smap to NULL before\nremoving the selem from the storage hlist. A concurrent RCU reader in\nbpf_sk_storage_clone() can observe the selem still on the list with\nsmap already NULL, causing a NULL pointer dereference.\n\n general protection fault, probably for non-canonical address 0xdffffc000000000a:\n KASAN: null-ptr",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52938",
-    "ghsa_id": "GHSA-vgrc-x22q-wc53",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52938.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-2xmc-f6qc-h4h9",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ntap: fix stack info leak in...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntap: fix stack info leak in tap_ioctl() SIOCGIFHWADDR\n\nIn the SIOCGIFHWADDR path, tap_ioctl() copies 16 bytes of an\nuninitialised on-stack struct sockaddr_storage to userspace via\nifr_hwaddr, but netif_get_mac_address() only writes sa_family and\ndev->addr_len (6 for Ethernet) bytes, leaving sa_data[6..13] uninitialised.\n\nThose 8 trailing bytes leak kernel stack contents; SIOCGIFHWADDR on a\nmacvtap chardev returns kernel .text a",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52937",
-    "ghsa_id": "GHSA-2xmc-f6qc-h4h9",
+    "cve_id": "CVE-2026-53118",
+    "ghsa_id": "GHSA-jmxg-xc7h-vhvv",
     "affected_packages": [],
     "cwes": [],
     "references": [
@@ -602,127 +147,7 @@
     ],
     "ai_analysis": {
       "risk_score": 72,
-      "impact_assessment": "This vulnerability allows leakage of uninitialized kernel stack memory to userspace, potentially exposing sensitive kernel data. Attackers could exploit this information to facilitate further attacks, such as bypassing kernel defenses or escalating privileges.",
-      "affected_industries": [
-        "Cloud Service Providers",
-        "Telecommunications",
-        "Internet of Things (IoT)",
-        "Enterprise IT",
-        "Data Centers"
-      ],
-      "recommended_actions": [
-        "Update Linux kernel to the latest version that includes the patch for CVE-2026-52937.",
-        "Conduct a thorough review of systems to identify and mitigate any potential exposure from previously leaked kernel stack data.",
-        "Implement strict access controls and monitoring to detect and prevent unauthorized access to systems running vulnerable kernel versions."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-xwx9-x5x2-3cmw",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: tp_meter: avoid...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbatman-adv: tp_meter: avoid use of uninit sender vars\n\nbatadv_tp_recv_ack() and batadv_tp_stop() are only valid for tp_vars in the\nBATADV_TP_SENDER role. When called with a BATADV_TP_RECEIVER role, it\nproceeds to read sender-only members that were never initialized, leading\nto undefined behavior.\n\nThis can be triggered when a node that is currently acting as a receiver in\nan ongoing tp_meter session receives a malicious ACK pac",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52931",
-    "ghsa_id": "GHSA-xwx9-x5x2-3cmw",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52931.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-9xww-vmqg-jh2q",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: espintcp: do not reuse...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: espintcp: do not reuse an in-progress partial send\n\nespintcp keeps a single in-flight transmit in ctx->partial.\nBefore building a new sk_msg, espintcp_sendmsg() first tries to flush\nthat state through espintcp_push_msgs().\n\nFor blocking callers, espintcp_push_msgs() may return success even when\nthe previous partial send is still pending. espintcp_sendmsg() would\nthen reinitialize emsg->skmsg and reuse ctx->partial while t",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52935",
-    "ghsa_id": "GHSA-9xww-vmqg-jh2q",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52935.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-c6h6-mmcc-x4qj",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ebtables: fix OOB...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ebtables: fix OOB read in compat_mtw_from_user\n\nLuxiao Xu says:\n\n The function compat_mtw_from_user() converts ebtables extensions from\n 32-bit user structures to kernel native structures. However, it lacks\n proper validation of the user-supplied match_size/target_size.\n\n When certain extensions are processed, the kernel-side translation\n logic may perform memory accesses based on the extension's expected\n size. If t",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52927",
-    "ghsa_id": "GHSA-c6h6-mmcc-x4qj",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability in the Linux kernel's netfilter ebtables module could allow an attacker to exploit improper validation of user-supplied data, potentially leading to out-of-bounds (OOB) memory reads. This could result in information disclosure, denial of service, or other undefined behavior depending on the context of the exploit.",
+      "impact_assessment": "The vulnerability in the Linux kernel's vdpa subsystem could lead to a Use-After-Free (UAF) condition, potentially allowing attackers to exploit the system for privilege escalation, denial of service, or arbitrary code execution. This poses a significant risk to systems relying on the affected kernel versions.",
       "affected_industries": [
         "Cloud Computing",
         "Telecommunications",
@@ -731,23 +156,96 @@
         "Data Centers"
       ],
       "recommended_actions": [
-        "Apply the latest Linux kernel patches that address CVE-2026-52927 to ensure the vulnerability is resolved.",
-        "Conduct a thorough review of systems using ebtables and netfilter to identify potential exposure and mitigate risks.",
-        "Monitor system logs and network activity for any unusual behavior that could indicate exploitation attempts."
+        "Immediately update to the latest patched version of the Linux kernel that resolves CVE-2026-53118.",
+        "Review and monitor systems for unusual activity or signs of exploitation, especially in environments using the vdpa subsystem.",
+        "Implement additional monitoring and logging to detect potential exploitation attempts targeting this vulnerability."
       ],
       "urgency": "high"
     },
-    "risk_score": 75
+    "risk_score": 72
   },
   {
-    "id": "gh-GHSA-v4gx-744x-jr2m",
+    "id": "gh-GHSA-9m96-3qwq-4728",
     "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/rds: fix NULL deref in...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/rds: fix NULL deref in rds_ib_send_cqe_handler() on masked atomic completion\n\nrds_ib_xmit_atomic() always programs a masked atomic opcode\n(IB_WR_MASKED_ATOMIC_CMP_AND_SWP or IB_WR_MASKED_ATOMIC_FETCH_AND_ADD)\nfor every RDS atomic cmsg.  But the completion-side switch in\nrds_ib_send_unmap_op() only handles the non-masked opcodes, so a masked\natomic completion falls through to default and returns rm == NULL while\nsend->s_op i",
+    "timestamp": "2026-06-24T18:32:48Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd: fix array_state=clear...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd: fix array_state=clear sysfs deadlock\n\nWhen \"clear\" is written to array_state, md_attr_store() breaks sysfs\nactive protection so the array can delete itself from its own sysfs\nstore method.\n\nHowever, md_attr_store() currently drops the mddev reference before\ncalling sysfs_unbreak_active_protection(). Once do_md_stop(..., 0)\nhas made the mddev eligible for delayed deletion, the temporary\nkobject reference taken by sysfs_break",
     "severity": "unknown",
-    "cve_id": "CVE-2026-52939",
-    "ghsa_id": "GHSA-v4gx-744x-jr2m",
+    "cve_id": "CVE-2026-53125",
+    "ghsa_id": "GHSA-9m96-3qwq-4728",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53125.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-2mp2-fxxh-hv2j",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:48Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-cgroup: fix disk...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-cgroup: fix disk reference leak in blkcg_maybe_throttle_current()\n\nAdd the missing put_disk() on the error path in\nblkcg_maybe_throttle_current(). When blkcg lookup, blkg lookup, or\nblkg_tryget() fails, the function jumps to the out label which only\ncalls rcu_read_unlock() but does not release the disk reference acquired\nby blkcg_schedule_throttle() via get_device(). Since current->throttle_disk\nis already set to NULL befor",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53126",
+    "ghsa_id": "GHSA-2mp2-fxxh-hv2j",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in the Linux kernel could lead to resource leaks, such as disk reference leaks, which may degrade system performance over time or cause system instability. This could be exploited in specific scenarios to disrupt services or cause denial of service (DoS).",
+      "affected_industries": [
+        "Cloud Service Providers",
+        "Data Centers",
+        "Telecommunications",
+        "Embedded Systems",
+        "IoT Devices"
+      ],
+      "recommended_actions": [
+        "Immediately update the Linux kernel to the latest version that includes the patch for CVE-2026-53126.",
+        "Monitor systems for unusual disk activity or performance degradation that may indicate exploitation attempts.",
+        "Conduct a thorough review of systems running affected Linux kernel versions and prioritize patching critical infrastructure."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-gp4w-ghc6-9x53",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:48Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrbd: Balance RCU calls in...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrbd: Balance RCU calls in drbd_adm_dump_devices()\n\nMake drbd_adm_dump_devices() call rcu_read_lock() before\nrcu_read_unlock() is called. This has been detected by the Clang\nthread-safety analyzer.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53128",
+    "ghsa_id": "GHSA-gp4w-ghc6-9x53",
     "affected_packages": [],
     "cwes": [],
     "references": [
@@ -764,7 +262,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52939.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53128.",
       "affected_industries": [
         "Technology",
         "General"
@@ -779,14 +277,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-5j7v-37xj-7vhm",
+    "id": "gh-GHSA-h8rj-w8q4-6g6r",
     "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: stream: fully roll...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: stream: fully roll back denied add-stream state\n\nWhen ADD_OUT_STREAMS is denied, SCTP only shrinks the queued chunks and\nthen lowers outcnt. That leaves removed stream metadata behind, so a\nlater re-add can reuse a stale ext and hit a null-pointer dereference in\nthe scheduler get path.\n\nFix the rollback by tearing down the removed stream state the same way\nother stream resizes do. Unschedule the current scheduler state, d",
+    "timestamp": "2026-06-24T18:32:48Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\namd-pstate: Fix memory leak...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\namd-pstate: Fix memory leak in amd_pstate_epp_cpu_init()\n\nOn failure to set the epp, the function amd_pstate_epp_cpu_init()\nreturns with an error code without freeing the cpudata object that was\nallocated at the beginning of the function.\n\nEnsure that the cpudata object is freed before returning from the\nfunction.\n\nThis memory leak was discovered by Claude Opus 4.6 with the aid of\nChris Mason's AI review-prompts\n(https://github",
     "severity": "unknown",
-    "cve_id": "CVE-2026-52929",
-    "ghsa_id": "GHSA-5j7v-37xj-7vhm",
+    "cve_id": "CVE-2026-53121",
+    "ghsa_id": "GHSA-h8rj-w8q4-6g6r",
     "affected_packages": [],
     "cwes": [],
     "references": [
@@ -794,6 +292,36 @@
       null,
       null,
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53121.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-76p3-3v32-9xxh",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:48Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/mbcache: cancel shrink...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/mbcache: cancel shrink work before destroying the cache\n\nmb_cache_destroy() calls shrinker_free() and then frees all cache\nentries and the cache itself, but it does not cancel the pending\nc_shrink_work work item first.\n\nIf mb_cache_entry_create() schedules c_shrink_work via schedule_work()\nand the work item is still pending or running when mb_cache_destroy()\nruns, mb_cache_shrink_worker() will access the cache after its memo",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53129",
+    "ghsa_id": "GHSA-76p3-3v32-9xxh",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
       null,
       null,
       null,
@@ -803,22 +331,449 @@
     ],
     "ai_analysis": {
       "risk_score": 72,
-      "impact_assessment": "The vulnerability in the Linux kernel's SCTP stream handling could allow attackers to exploit a null-pointer dereference, potentially leading to system crashes or denial-of-service (DoS) conditions. This could impact systems relying on SCTP for communication, particularly in environments where SCTP is used for signaling or data transport.",
+      "impact_assessment": "The vulnerability in the Linux kernel's mbcache subsystem could lead to a use-after-free condition if a scheduled shrink work item accesses the cache after it has been destroyed. This could potentially allow attackers to exploit the system, leading to crashes, data corruption, or arbitrary code execution.",
       "affected_industries": [
-        "Telecommunications",
         "Cloud Service Providers",
-        "Data Centers",
-        "IoT and Embedded Systems",
-        "Financial Services"
+        "Web Hosting",
+        "Telecommunications",
+        "Embedded Systems",
+        "IoT Device Manufacturers",
+        "Enterprise IT"
       ],
       "recommended_actions": [
-        "Immediately apply the patch or update to the latest Linux kernel version that addresses CVE-2026-52929.",
-        "Conduct a review of systems and applications utilizing SCTP to identify potential exposure to this vulnerability.",
-        "Implement monitoring and logging to detect unusual SCTP traffic patterns that could indicate exploitation attempts."
+        "Ensure that all Linux systems are updated to the latest kernel version where this vulnerability has been patched.",
+        "Monitor system logs and kernel behavior for any unusual activity that may indicate exploitation attempts.",
+        "Implement runtime protections and memory safety mechanisms to mitigate potential use-after-free vulnerabilities."
       ],
       "urgency": "high"
     },
     "risk_score": 72
+  },
+  {
+    "id": "gh-GHSA-xq85-jg4p-xf7w",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:48Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nublk: reset per-IO canceled...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nublk: reset per-IO canceled flag on each fetch\n\nIf a ublk server starts recovering devices but dies before issuing fetch\ncommands for all IOs, cancellation of the fetch commands that were\nsuccessfully issued may never complete. This is because the per-IO\ncanceled flag can remain set even after the fetch for that IO has been\nsubmitted - the per-IO canceled flags for all IOs in a queue are reset\ntogether only once all IOs for tha",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53124",
+    "ghsa_id": "GHSA-xq85-jg4p-xf7w",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53124.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-95m4-5hjq-cmvv",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:48Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: use generic...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: use generic driver_override infrastructure\n\nWhen a driver is probed through __driver_attach(), the bus' match()\ncallback is called without the device lock held, thus accessing the\ndriver_override field without a lock, which can cause a UAF.\n\nFix this by using the driver-core driver_override infrastructure taking\ncare of proper locking internally.\n\nNote that calling match() from __driver_attach() without the device lock\nhel",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53120",
+    "ghsa_id": "GHSA-95m4-5hjq-cmvv",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 78,
+      "impact_assessment": "The vulnerability in the Linux kernel's PCI driver handling could lead to a Use-After-Free (UAF) condition, potentially allowing attackers to execute arbitrary code, cause system crashes, or escalate privileges. This poses a significant risk to systems running affected Linux kernel versions.",
+      "affected_industries": [
+        "Cloud Computing",
+        "Telecommunications",
+        "Internet of Things (IoT)",
+        "Data Centers",
+        "Embedded Systems"
+      ],
+      "recommended_actions": [
+        "Immediately update to the latest Linux kernel version that includes the patch for CVE-2026-53120.",
+        "Review and monitor systems for any signs of exploitation or unusual activity, particularly in environments where PCI devices are used.",
+        "Implement strict access controls and network segmentation to limit the potential impact of exploitation."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 78
+  },
+  {
+    "id": "gh-GHSA-qcjh-44gv-7799",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:48Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix deadlock between...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix deadlock between reflink and transaction commit when using flushoncommit\n\nWhen using the flushoncommit mount option, we can have a deadlock between\na transaction commit and a reflink operation that copied an inline extent\nto an offset beyond the current i_size of the destination node.\n\nThe deadlock happens like this:\n\n1) Task A clones an inline extent from inode X to an offset of inode Y\n   that is beyond Y's current",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53122",
+    "ghsa_id": "GHSA-qcjh-44gv-7799",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 72,
+      "impact_assessment": "The vulnerability in the Linux kernel's Btrfs file system could lead to a system deadlock when using the 'flushoncommit' mount option. This may result in system crashes, data corruption, or unavailability of critical services relying on the affected file system.",
+      "affected_industries": [
+        "Cloud Service Providers",
+        "Data Centers",
+        "Web Hosting Services",
+        "Telecommunications",
+        "Enterprise IT"
+      ],
+      "recommended_actions": [
+        "Immediately update to the latest Linux kernel version that includes the patch for CVE-2026-53122.",
+        "Audit systems using the Btrfs file system with the 'flushoncommit' mount option and assess the risk of potential deadlocks.",
+        "Implement monitoring and alerting mechanisms to detect unusual system behavior or performance degradation in systems using Btrfs."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 72
+  },
+  {
+    "id": "gh-GHSA-26h7-ghcj-373h",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:48Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd: wake raid456 reshape...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd: wake raid456 reshape waiters before suspend\n\nDuring raid456 reshape, direct IO across the reshape position can sleep\nin raid5_make_request() waiting for reshape progress while still\nholding an active_io reference. If userspace then freezes reshape and\nwrites md/suspend_lo or md/suspend_hi, mddev_suspend() kills active_io\nand waits for all in-flight IO to drain.\n\nThis can deadlock: the IO needs reshape progress to continue, ",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53123",
+    "ghsa_id": "GHSA-26h7-ghcj-373h",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53123.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-pjmw-5mrc-f36h",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:48Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/wmi: use generic...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/wmi: use generic driver_override infrastructure\n\nWhen a driver is probed through __driver_attach(), the bus' match()\ncallback is called without the device lock held, thus accessing the\ndriver_override field without a lock, which can cause a UAF.\n\nFix this by using the driver-core driver_override infrastructure taking\ncare of proper locking internally.\n\nNote that calling match() from __driver_attach() without the device",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53119",
+    "ghsa_id": "GHSA-pjmw-5mrc-f36h",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53119.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-x2xc-9pfh-8g6q",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:47Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Switch CONFIG_CFI_CLANG...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Switch CONFIG_CFI_CLANG to CONFIG_CFI\n\nThis was renamed in commit 23ef9d439769 (\"kcfi: Rename CONFIG_CFI_CLANG\nto CONFIG_CFI\") as it is now a compiler-agnostic option. Using the wrong\nname results in the code getting compiled out. Meaning the CFI failures\nfor btf_dtor_kfunc_t would still trigger.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53099",
+    "ghsa_id": "GHSA-x2xc-9pfh-8g6q",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 72,
+      "impact_assessment": "The vulnerability affects the Linux kernel's handling of Control Flow Integrity (CFI) when using the BPF subsystem. If improperly configured, this could lead to potential exploitation by attackers to bypass security mechanisms or cause system instability.",
+      "affected_industries": [
+        "Cloud Computing",
+        "Telecommunications",
+        "Internet of Things (IoT)",
+        "Data Centers",
+        "Embedded Systems"
+      ],
+      "recommended_actions": [
+        "Ensure all systems running affected Linux kernel versions are updated to include the patch resolving this vulnerability.",
+        "Audit and verify kernel configurations to confirm that CONFIG_CFI is properly enabled and configured.",
+        "Monitor for any unusual activity or exploitation attempts targeting the BPF subsystem in your environment."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 72
+  },
+  {
+    "id": "gh-GHSA-8c24-7wp3-q8gp",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:47Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Do not allow deleting...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Do not allow deleting local storage in NMI\n\nCurrently, local storage may deadlock when deferring freeing selem or\nlocal storage through kfree_rcu(), call_rcu() or call_rcu_tasks_trace()\nin NMI or reentrant. Since deleting selem in NMI is an unlikely use\ncase, partially mitigate it by returning error when calling from\nbpf_xxx_storage_delete() helpers in NMI. Note that, it is still possible\nto deadlock through reentrant. A f",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53106",
+    "ghsa_id": "GHSA-8c24-7wp3-q8gp",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53106.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-2w76-gx46-cq6p",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:47Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7915: fix use...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7915: fix use-after-free bugs in mt7915_mac_dump_work()\n\nWhen the mt7915 pci chip is detaching, the mt7915_crash_data is\nreleased in mt7915_coredump_unregister(). However, the work item\ndump_work may still be running or pending, leading to UAF bugs\nwhen the already freed crash_data is dereferenced again in\nmt7915_mac_dump_work().\n\nThe race condition can occur as follows:\n\nCPU 0 (removal path)               | CPU 1",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53098",
+    "ghsa_id": "GHSA-2w76-gx46-cq6p",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53098.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-w826-vj56-vqh9",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:47Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/cio: use generic...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/cio: use generic driver_override infrastructure\n\nWhen a driver is probed through __driver_attach(), the bus' match()\ncallback is called without the device lock held, thus accessing the\ndriver_override field without a lock, which can cause a UAF.\n\nFix this by using the driver-core driver_override infrastructure taking\ncare of proper locking internally.\n\nNote that calling match() from __driver_attach() without the device loc",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53117",
+    "ghsa_id": "GHSA-w826-vj56-vqh9",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53117.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-jp54-xjfc-9fqx",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:47Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7925: fix...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7925: fix potential deadlock in mt7925_roc_abort_sync\n\nroc_abort_sync() can deadlock with roc_work(). roc_work() holds\ndev->mt76.mutex, while cancel_work_sync() waits for roc_work()\nto finish. If the caller already owns the same mutex, both\nsides block and no progress is possible.\n\nThis deadlock can occur during station removal when\nmt76_sta_state() -> mt76_sta_remove() ->\nmt7925_mac_sta_remove_link() -> mt7925_ma",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53103",
+    "ghsa_id": "GHSA-jp54-xjfc-9fqx",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 55,
+      "impact_assessment": "The vulnerability involves a potential deadlock in the Linux kernel's mt76 WiFi driver, specifically affecting the mt7925 chipset. This could lead to system instability or denial of service (DoS) in scenarios where the deadlock condition is triggered, particularly during station removal processes.",
+      "affected_industries": [
+        "Telecommunications",
+        "IoT",
+        "Consumer Electronics",
+        "Enterprise IT"
+      ],
+      "recommended_actions": [
+        "Apply the latest Linux kernel patch that resolves CVE-2026-53103 to affected systems.",
+        "Audit systems using the mt76 WiFi driver to identify potential exposure to this vulnerability.",
+        "Monitor vendor advisories and security bulletins for further updates or mitigations."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 55
+  },
+  {
+    "id": "gh-GHSA-vhcc-wfm4-93ww",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:47Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7921: fix...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7921: fix potential deadlock in mt7921_roc_abort_sync\n\nroc_abort_sync() can deadlock with roc_work(). roc_work() holds\ndev->mt76.mutex, while cancel_work_sync() waits for roc_work()\nto finish. If the caller already owns the same mutex, both\nsides block and no progress is possible.\n\nThis deadlock can occur during station removal when\nmt76_sta_state() -> mt76_sta_remove() -> mt7921_mac_sta_remove() ->\nmt7921_roc_abo",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53101",
+    "ghsa_id": "GHSA-vhcc-wfm4-93ww",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53101.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-m2xr-rm39-xmjv",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T18:32:47Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: Fix memory leak...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: Fix memory leak destroying device\n\nAll MT76 rx queues have an associated page_pool even if the queue is not\nassociated to a NAPI (e.g. WED RRO queues with WED enabled). Destroy the\npage_pool running mt76_dma_cleanup routine during module unload.\nMoreover returns pages to the page pool if WED is not enabled for WED RRO\nqueues.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-53104",
+    "ghsa_id": "GHSA-m2xr-rm39-xmjv",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in the Linux kernel's MT76 WiFi driver could lead to a memory leak, potentially causing system instability or resource exhaustion. This could be exploited in specific scenarios, particularly in environments relying on MT76-based WiFi devices.",
+      "affected_industries": [
+        "Telecommunications",
+        "Internet of Things (IoT)",
+        "Cloud Service Providers",
+        "Embedded Systems"
+      ],
+      "recommended_actions": [
+        "Ensure the Linux kernel is updated to the latest version that includes the patch for CVE-2026-53104.",
+        "Audit systems using MT76-based WiFi devices to identify potential exposure and apply mitigations if updates are not immediately feasible.",
+        "Monitor system performance for signs of resource exhaustion or instability, particularly in environments using MT76 WiFi drivers."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
   },
   {
     "id": "cve-CVE-2026-35275",
@@ -837,15 +792,19 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35275.",
+      "impact_assessment": "This vulnerability in Oracle VM VirtualBox's Shared Folders component allows a low-privileged attacker with access to the infrastructure to compromise the VirtualBox environment. The scope change indicates that successful exploitation could extend to other connected systems or products, potentially leading to data breaches, privilege escalation, or disruption of services.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Cloud Service Providers",
+        "IT and Software Development",
+        "Financial Services",
+        "Healthcare",
+        "Government",
+        "Education"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately apply the latest security patches or updates provided by Oracle for VirtualBox version 7.2.8.",
+        "Restrict access to the VirtualBox infrastructure by limiting user permissions and ensuring only trusted users have access.",
+        "Monitor systems for unusual activity or signs of exploitation, and implement network segmentation to limit the impact of a potential breach."
       ],
       "urgency": "high"
     },
@@ -865,24 +824,20 @@
       "https://www.oracle.com/security-alerts/cspujun2026.html"
     ],
     "ai_analysis": {
-      "risk_score": 92,
-      "impact_assessment": "This vulnerability allows unauthenticated attackers to exploit the PeopleSoft Enterprise PT PeopleTools product, potentially leading to unauthorized access to sensitive data or full compromise of all accessible data. This could result in data breaches, financial losses, and reputational damage.",
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35274.",
       "affected_industries": [
-        "Finance",
-        "Healthcare",
-        "Education",
-        "Government",
-        "Retail",
-        "Manufacturing"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately apply the latest security patches provided by Oracle for PeopleSoft Enterprise PT PeopleTools versions 8.61 and 8.62.",
-        "Implement network-level restrictions to limit HTTP access to trusted IP ranges and deploy a Web Application Firewall (WAF) to monitor and block malicious traffic.",
-        "Conduct a thorough review of access logs to identify any signs of unauthorized access or exploitation attempts."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
-    "risk_score": 92
+    "risk_score": 85
   },
   {
     "id": "cve-CVE-2026-35272",
