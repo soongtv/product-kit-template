@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1782294227884-1",
+    "id": "twitter-1782312447126-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-24T09:43:47.884Z",
+    "timestamp": "2026-06-24T14:47:27.126Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,8 +10,38 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "risk_score": 85,
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code at scale, potentially leading to data encryption, service outages, and financial losses.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Media and Entertainment",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Conduct an immediate review of CI/CD pipeline security, including access controls, code signing, and monitoring for unauthorized changes.",
+        "Implement robust backup strategies for cloud-hosted data and ensure backups are stored in isolated environments to prevent ransomware encryption.",
+        "Deploy advanced threat detection tools to monitor for unusual activity within cloud environments, particularly around CI/CD pipelines."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "hn-1782312447126-1",
+    "source": "HackerNews",
+    "timestamp": "2026-06-24T14:47:27.126Z",
+    "title": "Show HN: Open-source vulnerability scanner",
+    "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
+    "severity": "low",
+    "references": [
+      "https://news.ycombinator.com/item?id=123"
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. ",
       "affected_industries": [
         "Technology",
         "General"
@@ -21,38 +51,155 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "hn-1782294227884-1",
-    "source": "HackerNews",
-    "timestamp": "2026-06-24T09:43:47.884Z",
-    "title": "Show HN: Open-source vulnerability scanner",
-    "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
-    "severity": "low",
-    "references": [
-      "https://news.ycombinator.com/item?id=123"
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "The tool itself does not pose a direct security threat but could be misused by malicious actors to identify vulnerabilities in targeted systems. Additionally, reliance on an unvetted open-source tool could introduce risks if the tool contains flaws or backdoors.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "E-commerce"
-      ],
-      "recommended_actions": [
-        "Evaluate the tool's source code and community reputation before adoption to ensure it is secure and trustworthy.",
-        "Use the tool in isolated or controlled environments to prevent accidental exposure of sensitive data.",
-        "Complement the tool with other established vulnerability management practices and tools to ensure comprehensive coverage."
-      ],
       "urgency": "low"
     },
     "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-vwrr-994w-h832",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T12:30:31Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: skbuff: fix missing...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: skbuff: fix missing zerocopy reference in pskb_carve helpers\n\npskb_carve_inside_header() and pskb_carve_inside_nonlinear() both copy\nthe old skb_shared_info header into a new buffer via memcpy(), which\nincludes the destructor_arg pointer (uarg) for MSG_ZEROCOPY skbs.\nNeither function calls net_zcopy_get() for the new shinfo, creating an\nunaccounted holder: every skb_shared_info with destructor_arg set will\ncall skb_zcopy_c",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-52943",
+    "ghsa_id": "GHSA-vwrr-994w-h832",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52943.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-v762-vr2v-9263",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T12:30:31Z",
+    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix FSCTL permission...",
+    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix FSCTL permission bypass by adding a permission check for FSCTL_SET_SPARSE\n\nFSCTL_SET_SPARSE in fsctl_set_sparse() modifies the file's sparse\nattribute and saves it through xattr without any permission checks.\n\nThis exposes two issues:\n\n1) A client on a read-only share can change the sparse attribute\n   on files it opened, even though the share is read-only.\n   Other FSCTL write operations already check\n   test_tree_c",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-52944",
+    "ghsa_id": "GHSA-v762-vr2v-9263",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 72,
+      "impact_assessment": "The vulnerability allows unauthorized modification of file attributes (e.g., sparse attribute) on read-only shares, potentially leading to data integrity issues or bypassing intended access controls. This could be exploited by malicious actors to manipulate file properties inappropriately.",
+      "affected_industries": [
+        "Cloud Service Providers",
+        "Enterprise IT",
+        "Data Storage and Backup Solutions",
+        "Media and Entertainment",
+        "Software Development"
+      ],
+      "recommended_actions": [
+        "Apply the latest Linux kernel patches that address CVE-2026-52944 to ensure the vulnerability is mitigated.",
+        "Audit and monitor file access logs to detect any unusual or unauthorized modifications to file attributes, especially on read-only shares.",
+        "Restrict access to ksmbd services to trusted clients and networks, and implement additional network segmentation where possible."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 72
+  },
+  {
+    "id": "gh-GHSA-2h5c-f427-3wjr",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T12:30:31Z",
+    "title": "Argument Injection in TortoiseGitBlame via Malicious Git History Filenames Leads to Arbitrary...",
+    "description": "Argument Injection in TortoiseGitBlame via Malicious Git History Filenames Leads to Arbitrary File Write in TortoiseGit",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11968",
+    "ghsa_id": "GHSA-2h5c-f427-3wjr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11968.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-jmg8-x6hq-972w",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-24T12:30:31Z",
+    "title": "Server-Side Request Forgery (SSRF) (CWE-918) in the PDF generation endpoint GET /api/reports/{id}...",
+    "description": "Server-Side Request Forgery (SSRF) (CWE-918) in the PDF generation endpoint GET /api/reports/{id}/pdf (backend/main.py) in ccyl13 Pentestify 1.0.0 and lower allows remote attackers to make the server issue requests to arbitrary internal or external URLs, including cloud metadata services, and return the rendered content in the resulting PDF via a crafted Host header, because the target URL is built from request.base_url without validation.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13150",
+    "ghsa_id": "GHSA-jmg8-x6hq-972w",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13150.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-rj87-rfcc-35pw",
@@ -73,20 +220,22 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-56052.",
+      "risk_score": 85,
+      "impact_assessment": "The SQL Injection vulnerability in FunnelKit Funnel Builder allows attackers to execute arbitrary SQL commands on the database, potentially leading to unauthorized data access, data exfiltration, data corruption, or complete database compromise. This could result in significant data breaches, financial losses, and reputational damage.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "E-commerce",
+        "Marketing and Advertising",
+        "Small and Medium Businesses (SMBs)",
+        "Technology and SaaS"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update FunnelKit Funnel Builder to the latest patched version, if available, or disable the plugin until a fix is released.",
+        "Implement web application firewalls (WAFs) to detect and block malicious SQL injection attempts.",
+        "Conduct a thorough review of database logs to identify any signs of unauthorized access or suspicious activity."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
     "id": "gh-GHSA-x48q-47qq-gv8g",
@@ -110,23 +259,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in the Linux kernel could lead to a NULL pointer dereference in specific scenarios involving SMC-R and SMC-D connections. This may result in system crashes or denial of service (DoS) when the tracepoint is enabled, potentially impacting system stability and availability.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52941.",
       "affected_industries": [
-        "Cloud Service Providers",
-        "Telecommunications",
-        "Financial Services",
-        "Healthcare",
-        "Technology"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Apply the latest Linux kernel patch that resolves CVE-2026-52941 to mitigate the vulnerability.",
-        "Review and disable unnecessary tracepoints in the kernel to reduce attack surface.",
-        "Monitor systems for unusual behavior or crashes related to SMC-R or SMC-D connections and investigate promptly."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-7mf5-pgq8-jhcp",
@@ -190,20 +336,23 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-7761.",
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in the Ultimate Member plugin for WordPress allows attackers to perform account takeovers by exploiting a chain of logic bugs in the password reset functionality. This could lead to unauthorized access to user accounts, data breaches, and potential privilege escalation.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "E-commerce",
+        "Media and Publishing",
+        "Education",
+        "Nonprofits",
+        "Small and Medium Businesses"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update the Ultimate Member plugin to the latest patched version (if available) or disable the plugin temporarily until a fix is released.",
+        "Implement additional security measures such as two-factor authentication (2FA) for user accounts to mitigate the risk of unauthorized access.",
+        "Monitor logs for suspicious activity, especially related to password reset requests, and notify users to update their passwords as a precaution."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
     "id": "gh-GHSA-3p98-fq5j-wx55",
@@ -228,20 +377,24 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52942.",
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in the Linux kernel's netfilter component could allow unauthorized memory access, potentially leading to information disclosure, system crashes, or privilege escalation. This poses a significant risk to systems relying on the affected kernel versions.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Cloud Service Providers",
+        "Telecommunications",
+        "Internet of Things (IoT)",
+        "Healthcare",
+        "Finance",
+        "Government"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update to the latest Linux kernel version that includes the patch for CVE-2026-52942.",
+        "Audit and monitor systems for any signs of exploitation, such as unusual memory access patterns or crashes.",
+        "Apply network segmentation and access controls to limit exposure of vulnerable systems."
       ],
-      "urgency": "medium"
+      "urgency": "critical"
     },
-    "risk_score": 50
+    "risk_score": 85
   },
   {
     "id": "gh-GHSA-772w-g99g-gjqj",
@@ -263,7 +416,7 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to inject, tamper, or forge logs, potentially enabling them to cover their tracks, manipulate audit trails, or execute further attacks by exploiting log-based systems. This could compromise system integrity and hinder forensic investigations.",
+      "impact_assessment": "The vulnerability allows attackers to inject, tamper, or forge log entries, potentially leading to unauthorized access, data manipulation, or obfuscation of malicious activities. This can hinder forensic investigations and compromise system integrity.",
       "affected_industries": [
         "IT Services",
         "Healthcare",
@@ -272,9 +425,9 @@
         "Education"
       ],
       "recommended_actions": [
-        "Immediately update upKeeper Instant Privilege Access to the latest patched version if available.",
-        "Implement strict input validation and sanitization for log entries to prevent injection attacks.",
-        "Monitor and audit logs for any signs of tampering or unusual activity, and deploy intrusion detection systems."
+        "Immediately update upKeeper Instant Privilege Access to the latest patched version beyond 1.6.1 to mitigate the vulnerability.",
+        "Implement strict monitoring and auditing of logs to detect any anomalies or signs of tampering.",
+        "Educate system administrators and security teams about the vulnerability and ensure proper access controls are in place."
       ],
       "urgency": "critical"
     },
@@ -304,23 +457,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability in the Linux kernel's SCTP (Stream Control Transmission Protocol) handling could allow malicious actors to exploit a corner case during the association setup or reconfiguration process. This may lead to unexpected behavior or potential denial of service (DoS) attacks, especially in systems relying on SCTP for critical communication.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52924.",
       "affected_industries": [
-        "Telecommunications",
-        "Cloud Service Providers",
-        "Financial Services",
-        "IoT and Embedded Systems",
-        "Government and Defense"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update to the latest Linux kernel version that includes the patch for CVE-2026-52924.",
-        "Conduct a thorough review of systems and applications utilizing SCTP to identify potential exposure and implement additional monitoring for unusual traffic patterns.",
-        "Apply network-level mitigations, such as filtering or rate-limiting SCTP traffic, to reduce the risk of exploitation until the patch is applied."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 72
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-vg8w-8f3p-9p3c",
@@ -417,23 +567,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability in the Linux kernel's BPF subsystem could lead to a NULL pointer dereference, potentially causing system crashes or denial of service (DoS). This could impact systems relying on BPF for network filtering, monitoring, or other kernel-level operations.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52938.",
       "affected_industries": [
-        "Cloud Computing",
-        "Telecommunications",
-        "Financial Services",
-        "Healthcare",
-        "Technology"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update to the latest Linux kernel version that includes the patch for CVE-2026-52938.",
-        "Review and test all systems utilizing BPF to ensure stability after applying the patch.",
-        "Implement monitoring to detect and mitigate potential exploitation attempts until the patch is applied."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 72
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-2xmc-f6qc-h4h9",
@@ -454,20 +601,23 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52937.",
+      "risk_score": 72,
+      "impact_assessment": "This vulnerability allows leakage of uninitialized kernel stack memory to userspace, potentially exposing sensitive kernel data. Attackers could exploit this information to facilitate further attacks, such as bypassing kernel defenses or escalating privileges.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Cloud Service Providers",
+        "Telecommunications",
+        "Internet of Things (IoT)",
+        "Enterprise IT",
+        "Data Centers"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Update Linux kernel to the latest version that includes the patch for CVE-2026-52937.",
+        "Conduct a thorough review of systems to identify and mitigate any potential exposure from previously leaked kernel stack data.",
+        "Implement strict access controls and monitoring to detect and prevent unauthorized access to systems running vulnerable kernel versions."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 72
   },
   {
     "id": "gh-GHSA-xwx9-x5x2-3cmw",
@@ -532,23 +682,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability in the Linux kernel's xfrm ESP-in-TCP implementation could allow attackers to exploit improper handling of partial sends, potentially leading to data corruption, denial of service, or information leakage. This issue may affect systems relying on ESP-in-TCP for secure communications.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52935.",
       "affected_industries": [
-        "Telecommunications",
-        "Cloud Service Providers",
-        "Financial Services",
-        "Healthcare",
-        "Government"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately apply the latest Linux kernel patches that address CVE-2026-52935 to mitigate the vulnerability.",
-        "Conduct a comprehensive review of systems using ESP-in-TCP to identify potential exposure and ensure proper configurations.",
-        "Monitor network traffic for unusual activity or exploitation attempts targeting ESP-in-TCP and implement intrusion detection systems if not already in place."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 72
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-c6h6-mmcc-x4qj",
@@ -574,20 +721,23 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52927.",
+      "risk_score": 75,
+      "impact_assessment": "The vulnerability in the Linux kernel's netfilter ebtables module could allow an attacker to exploit improper validation of user-supplied data, potentially leading to out-of-bounds (OOB) memory reads. This could result in information disclosure, denial of service, or other undefined behavior depending on the context of the exploit.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Cloud Computing",
+        "Telecommunications",
+        "Internet of Things (IoT)",
+        "Enterprise IT",
+        "Data Centers"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Apply the latest Linux kernel patches that address CVE-2026-52927 to ensure the vulnerability is resolved.",
+        "Conduct a thorough review of systems using ebtables and netfilter to identify potential exposure and mitigate risks.",
+        "Monitor system logs and network activity for any unusual behavior that could indicate exploitation attempts."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 75
   },
   {
     "id": "gh-GHSA-v4gx-744x-jr2m",
@@ -613,23 +763,20 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability in the Linux kernel could allow for a NULL pointer dereference in certain atomic operations, potentially leading to kernel crashes or denial-of-service (DoS) attacks. This could disrupt systems relying on the affected kernel version.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52939.",
       "affected_industries": [
-        "Cloud Computing",
-        "Telecommunications",
-        "Financial Services",
-        "Healthcare",
-        "Technology"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately apply the latest security patches for the Linux kernel to mitigate the vulnerability.",
-        "Review and update systems to ensure they are running a supported and patched version of the Linux kernel.",
-        "Monitor system logs for any unusual activity that could indicate exploitation of this vulnerability."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 72
+    "risk_score": 50
   },
   {
     "id": "gh-GHSA-5j7v-37xj-7vhm",
@@ -655,178 +802,23 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52929.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-3v47-mwg3-xvq2",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ipset: stop hash:...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: ipset: stop hash:* range iteration at end\n\nThe following hash set variants:\n\nhash:ip,mark\nhash:ip,port\nhash:ip,port,ip\nhash:ip,port,net\n\niterate IPv4 ranges with a 32-bit iterator.\n\nThe iterator must stop once the last address in the requested range has\nbeen processed. Advancing it once more can move the traversal state past\nthe end of the request, so a later retry may continue from an unintended\nposition.\n\nHandle th",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52921",
-    "ghsa_id": "GHSA-3v47-mwg3-xvq2",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-52921.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-jvgr-44j9-74mp",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: ipcomp: Free...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm: ipcomp: Free destination pages on acomp errors\n\nMove the out_free_req label up by a couple of lines so that the\nallocated dst SG list gets freed on error as well as success.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52932",
-    "ghsa_id": "GHSA-jvgr-44j9-74mp",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "This vulnerability in the Linux kernel could allow attackers to exploit improper memory handling in the IP compression (ipcomp) module, potentially leading to denial of service (DoS) or other stability issues. Systems relying on xfrm and ipcomp for secure communications are particularly at risk.",
+      "risk_score": 72,
+      "impact_assessment": "The vulnerability in the Linux kernel's SCTP stream handling could allow attackers to exploit a null-pointer dereference, potentially leading to system crashes or denial-of-service (DoS) conditions. This could impact systems relying on SCTP for communication, particularly in environments where SCTP is used for signaling or data transport.",
       "affected_industries": [
         "Telecommunications",
         "Cloud Service Providers",
-        "Enterprise IT",
-        "Internet of Things (IoT)",
-        "Government and Defense"
+        "Data Centers",
+        "IoT and Embedded Systems",
+        "Financial Services"
       ],
       "recommended_actions": [
-        "Immediately apply the latest Linux kernel patches that address CVE-2026-52932 to prevent exploitation.",
-        "Conduct a review of systems utilizing xfrm and ipcomp to ensure proper configuration and monitoring for unusual activity.",
-        "Implement runtime monitoring tools to detect and mitigate potential exploitation attempts in real-time."
+        "Immediately apply the patch or update to the latest Linux kernel version that addresses CVE-2026-52929.",
+        "Conduct a review of systems and applications utilizing SCTP to identify potential exposure to this vulnerability.",
+        "Implement monitoring and logging to detect unusual SCTP traffic patterns that could indicate exploitation attempts."
       ],
       "urgency": "high"
     },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-37vf-c5qj-3jr7",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/poll: fix signed...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nio_uring/poll: fix signed comparison in io_poll_get_ownership()\n\nio_poll_get_ownership() uses a signed comparison to check whether\npoll_refs has reached the threshold for the slowpath:\n\n    if (unlikely(atomic_read(&req->poll_refs) >= IO_POLL_REF_BIAS))\n\natomic_read() returns int (signed). When IO_POLL_CANCEL_FLAG\n(BIT(31)) is set in poll_refs, the value becomes negative in\nsigned arithmetic, so the >= 128 comparison always eva",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52933",
-    "ghsa_id": "GHSA-37vf-c5qj-3jr7",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability in the Linux kernel's io_uring/poll mechanism could allow improper handling of poll references, potentially leading to privilege escalation or denial of service attacks. This poses a significant risk to systems relying on io_uring for high-performance I/O operations.",
-      "affected_industries": [
-        "Cloud Computing",
-        "Web Hosting",
-        "Telecommunications",
-        "Financial Services",
-        "Healthcare"
-      ],
-      "recommended_actions": [
-        "Immediately update the Linux kernel to the latest version that includes the patch for CVE-2026-52933.",
-        "Perform a thorough risk assessment to identify systems using io_uring and prioritize their updates.",
-        "Monitor system logs for unusual activity related to io_uring operations and implement additional security controls if necessary."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-rf7j-4mgx-52c3",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T09:30:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: serialize...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: serialize accept_q access\n\nbt_sock_poll() walks the accept queue without synchronization, while\nchild teardown can unlink the same socket and drop its last reference.\nThe unsynchronized accept queue walk has existed since the initial\nBluetooth import.\n\nProtect accept_q with a dedicated lock for queue updates and polling.\nAlso rework bt_accept_dequeue() to take temporary child references under\nthe queue lock before dr",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52918",
-    "ghsa_id": "GHSA-rf7j-4mgx-52c3",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "This vulnerability in the Linux kernel's Bluetooth stack could allow unauthorized access or manipulation of the accept queue, potentially leading to denial-of-service attacks or exploitation of Bluetooth-connected devices. It may impact systems relying on Bluetooth communication for critical operations.",
-      "affected_industries": [
-        "IoT (Internet of Things)",
-        "Healthcare",
-        "Automotive",
-        "Consumer Electronics",
-        "Telecommunications"
-      ],
-      "recommended_actions": [
-        "Update Linux kernel to the latest version that includes the patch for CVE-2026-52918.",
-        "Conduct a thorough review of Bluetooth-related services and dependencies to ensure proper synchronization mechanisms are in place.",
-        "Monitor systems for unusual Bluetooth activity and implement additional logging to detect potential exploitation attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
+    "risk_score": 72
   },
   {
     "id": "cve-CVE-2026-35275",
@@ -873,20 +865,24 @@
       "https://www.oracle.com/security-alerts/cspujun2026.html"
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35274.",
+      "risk_score": 92,
+      "impact_assessment": "This vulnerability allows unauthenticated attackers to exploit the PeopleSoft Enterprise PT PeopleTools product, potentially leading to unauthorized access to sensitive data or full compromise of all accessible data. This could result in data breaches, financial losses, and reputational damage.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "Education",
+        "Government",
+        "Retail",
+        "Manufacturing"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately apply the latest security patches provided by Oracle for PeopleSoft Enterprise PT PeopleTools versions 8.61 and 8.62.",
+        "Implement network-level restrictions to limit HTTP access to trusted IP ranges and deploy a Web Application Firewall (WAF) to monitor and block malicious traffic.",
+        "Conduct a thorough review of access logs to identify any signs of unauthorized access or exploitation attempts."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 85
+    "risk_score": 92
   },
   {
     "id": "cve-CVE-2026-35272",
