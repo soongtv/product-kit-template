@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1782331022040-1",
+    "id": "twitter-1782360729341-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-24T19:57:02.040Z",
+    "timestamp": "2026-06-25T04:12:09.341Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -11,7 +11,7 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud environments. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code, potentially leading to data encryption, service disruptions, and financial losses.",
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code, potentially leading to data encryption, service disruptions, and financial losses.",
       "affected_industries": [
         "Technology",
         "Finance",
@@ -21,18 +21,18 @@
         "Government"
       ],
       "recommended_actions": [
-        "Conduct an immediate review of CI/CD pipelines to identify and remediate any unauthorized access or misconfigurations.",
-        "Implement robust monitoring and anomaly detection tools to identify unusual activity within cloud environments.",
-        "Ensure regular backups of critical data are performed and stored securely offline to mitigate the impact of ransomware attacks."
+        "Implement strict access controls and monitor CI/CD pipelines for unauthorized changes or suspicious activity.",
+        "Regularly back up critical data and ensure backups are stored in isolated, secure environments to prevent ransomware impact.",
+        "Deploy endpoint detection and response (EDR) solutions and conduct regular vulnerability assessments to identify and patch potential weaknesses."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "hn-1782331022040-1",
+    "id": "hn-1782360729341-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-24T19:57:02.040Z",
+    "timestamp": "2026-06-25T04:12:09.341Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -40,8 +40,44 @@
       "https://news.ycombinator.com/item?id=123"
     ],
     "ai_analysis": {
+      "risk_score": 20,
+      "impact_assessment": "The open-source vulnerability scanner itself does not pose a direct threat, but its widespread adoption could lead to potential misuse by malicious actors to identify and exploit vulnerabilities in unpatched systems. Additionally, reliance on an unvetted tool may introduce risks if the tool has its own vulnerabilities or inaccuracies.",
+      "affected_industries": [
+        "Technology",
+        "Software Development",
+        "Cybersecurity",
+        "Open-Source Projects"
+      ],
+      "recommended_actions": [
+        "Conduct a thorough security review of the tool before integrating it into your workflow.",
+        "Monitor for any updates or disclosures about vulnerabilities in the tool itself.",
+        "Educate teams on the importance of validating results from automated tools and applying patches responsibly."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 20
+  },
+  {
+    "id": "gh-GHSA-x3f7-qmw7-g6pj",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T03:31:41Z",
+    "title": "Path Traversal vulnerability in the create_archive function of Rapid7 InsightConnect Compression...",
+    "description": "Path Traversal vulnerability in the create_archive function of Rapid7 InsightConnect Compression Plugin on Linux allows authenticated attackers to write to unintended file paths via crafted filename input. The impact is limited to file corruption as content cannot be controlled by the attacker.",
+    "severity": "low",
+    "cve_id": "CVE-2026-8662",
+    "ghsa_id": "GHSA-x3f7-qmw7-g6pj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-8662.",
       "affected_industries": [
         "Technology",
         "General"
@@ -56,962 +92,417 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-665r-cj9v-w263",
+    "id": "gh-GHSA-83v3-8pj5-wm26",
     "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: fix zones_cond memory...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblock: fix zones_cond memory leak on zone revalidation error paths\n\nWhen blk_revalidate_disk_zones() fails after disk_revalidate_zone_resources()\nhas allocated args.zones_cond, the memory is leaked because no error path\nfrees it.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53127",
-    "ghsa_id": "GHSA-665r-cj9v-w263",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53127.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-2j9j-p8f4-hwp3",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/omfs: reject...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/omfs: reject s_sys_blocksize smaller than OMFS_DIR_START\n\nomfs_fill_super() rejects oversized s_sys_blocksize values (> PAGE_SIZE),\nbut it does not reject values smaller than OMFS_DIR_START (0x1b8 = 440).\n\nLater, omfs_make_empty() uses\n\n    sbi->s_sys_blocksize - OMFS_DIR_START\n\nas the length argument to memset().  Since s_sys_blocksize is u32,\na crafted filesystem image with s_sys_blocksize < OMFS_DIR_START causes\nan unsign",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53130",
-    "ghsa_id": "GHSA-2j9j-p8f4-hwp3",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53130.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-jmxg-xc7h-vhvv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nvdpa: use generic...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvdpa: use generic driver_override infrastructure\n\nWhen a driver is probed through __driver_attach(), the bus' match()\ncallback is called without the device lock held, thus accessing the\ndriver_override field without a lock, which can cause a UAF.\n\nFix this by using the driver-core driver_override infrastructure taking\ncare of proper locking internally.\n\nNote that calling match() from __driver_attach() without the device lock\nhe",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53118",
-    "ghsa_id": "GHSA-jmxg-xc7h-vhvv",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability in the Linux kernel's vdpa subsystem could lead to a Use-After-Free (UAF) condition, potentially allowing attackers to exploit the system for privilege escalation, denial of service, or arbitrary code execution. This poses a significant risk to systems relying on the affected kernel versions.",
-      "affected_industries": [
-        "Cloud Computing",
-        "Telecommunications",
-        "Internet of Things (IoT)",
-        "Enterprise IT",
-        "Data Centers"
-      ],
-      "recommended_actions": [
-        "Immediately update to the latest patched version of the Linux kernel that resolves CVE-2026-53118.",
-        "Review and monitor systems for unusual activity or signs of exploitation, especially in environments using the vdpa subsystem.",
-        "Implement additional monitoring and logging to detect potential exploitation attempts targeting this vulnerability."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-9m96-3qwq-4728",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd: fix array_state=clear...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd: fix array_state=clear sysfs deadlock\n\nWhen \"clear\" is written to array_state, md_attr_store() breaks sysfs\nactive protection so the array can delete itself from its own sysfs\nstore method.\n\nHowever, md_attr_store() currently drops the mddev reference before\ncalling sysfs_unbreak_active_protection(). Once do_md_stop(..., 0)\nhas made the mddev eligible for delayed deletion, the temporary\nkobject reference taken by sysfs_break",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53125",
-    "ghsa_id": "GHSA-9m96-3qwq-4728",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53125.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-2mp2-fxxh-hv2j",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-cgroup: fix disk...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nblk-cgroup: fix disk reference leak in blkcg_maybe_throttle_current()\n\nAdd the missing put_disk() on the error path in\nblkcg_maybe_throttle_current(). When blkcg lookup, blkg lookup, or\nblkg_tryget() fails, the function jumps to the out label which only\ncalls rcu_read_unlock() but does not release the disk reference acquired\nby blkcg_schedule_throttle() via get_device(). Since current->throttle_disk\nis already set to NULL befor",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53126",
-    "ghsa_id": "GHSA-2mp2-fxxh-hv2j",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in the Linux kernel could lead to resource leaks, such as disk reference leaks, which may degrade system performance over time or cause system instability. This could be exploited in specific scenarios to disrupt services or cause denial of service (DoS).",
-      "affected_industries": [
-        "Cloud Service Providers",
-        "Data Centers",
-        "Telecommunications",
-        "Embedded Systems",
-        "IoT Devices"
-      ],
-      "recommended_actions": [
-        "Immediately update the Linux kernel to the latest version that includes the patch for CVE-2026-53126.",
-        "Monitor systems for unusual disk activity or performance degradation that may indicate exploitation attempts.",
-        "Conduct a thorough review of systems running affected Linux kernel versions and prioritize patching critical infrastructure."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-gp4w-ghc6-9x53",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrbd: Balance RCU calls in...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndrbd: Balance RCU calls in drbd_adm_dump_devices()\n\nMake drbd_adm_dump_devices() call rcu_read_lock() before\nrcu_read_unlock() is called. This has been detected by the Clang\nthread-safety analyzer.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53128",
-    "ghsa_id": "GHSA-gp4w-ghc6-9x53",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53128.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-h8rj-w8q4-6g6r",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\namd-pstate: Fix memory leak...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\namd-pstate: Fix memory leak in amd_pstate_epp_cpu_init()\n\nOn failure to set the epp, the function amd_pstate_epp_cpu_init()\nreturns with an error code without freeing the cpudata object that was\nallocated at the beginning of the function.\n\nEnsure that the cpudata object is freed before returning from the\nfunction.\n\nThis memory leak was discovered by Claude Opus 4.6 with the aid of\nChris Mason's AI review-prompts\n(https://github",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53121",
-    "ghsa_id": "GHSA-h8rj-w8q4-6g6r",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53121.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-76p3-3v32-9xxh",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/mbcache: cancel shrink...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/mbcache: cancel shrink work before destroying the cache\n\nmb_cache_destroy() calls shrinker_free() and then frees all cache\nentries and the cache itself, but it does not cancel the pending\nc_shrink_work work item first.\n\nIf mb_cache_entry_create() schedules c_shrink_work via schedule_work()\nand the work item is still pending or running when mb_cache_destroy()\nruns, mb_cache_shrink_worker() will access the cache after its memo",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53129",
-    "ghsa_id": "GHSA-76p3-3v32-9xxh",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability in the Linux kernel's mbcache subsystem could lead to a use-after-free condition if a scheduled shrink work item accesses the cache after it has been destroyed. This could potentially allow attackers to exploit the system, leading to crashes, data corruption, or arbitrary code execution.",
-      "affected_industries": [
-        "Cloud Service Providers",
-        "Web Hosting",
-        "Telecommunications",
-        "Embedded Systems",
-        "IoT Device Manufacturers",
-        "Enterprise IT"
-      ],
-      "recommended_actions": [
-        "Ensure that all Linux systems are updated to the latest kernel version where this vulnerability has been patched.",
-        "Monitor system logs and kernel behavior for any unusual activity that may indicate exploitation attempts.",
-        "Implement runtime protections and memory safety mechanisms to mitigate potential use-after-free vulnerabilities."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-xq85-jg4p-xf7w",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nublk: reset per-IO canceled...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nublk: reset per-IO canceled flag on each fetch\n\nIf a ublk server starts recovering devices but dies before issuing fetch\ncommands for all IOs, cancellation of the fetch commands that were\nsuccessfully issued may never complete. This is because the per-IO\ncanceled flag can remain set even after the fetch for that IO has been\nsubmitted - the per-IO canceled flags for all IOs in a queue are reset\ntogether only once all IOs for tha",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53124",
-    "ghsa_id": "GHSA-xq85-jg4p-xf7w",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53124.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-95m4-5hjq-cmvv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: use generic...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nPCI: use generic driver_override infrastructure\n\nWhen a driver is probed through __driver_attach(), the bus' match()\ncallback is called without the device lock held, thus accessing the\ndriver_override field without a lock, which can cause a UAF.\n\nFix this by using the driver-core driver_override infrastructure taking\ncare of proper locking internally.\n\nNote that calling match() from __driver_attach() without the device lock\nhel",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53120",
-    "ghsa_id": "GHSA-95m4-5hjq-cmvv",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 78,
-      "impact_assessment": "The vulnerability in the Linux kernel's PCI driver handling could lead to a Use-After-Free (UAF) condition, potentially allowing attackers to execute arbitrary code, cause system crashes, or escalate privileges. This poses a significant risk to systems running affected Linux kernel versions.",
-      "affected_industries": [
-        "Cloud Computing",
-        "Telecommunications",
-        "Internet of Things (IoT)",
-        "Data Centers",
-        "Embedded Systems"
-      ],
-      "recommended_actions": [
-        "Immediately update to the latest Linux kernel version that includes the patch for CVE-2026-53120.",
-        "Review and monitor systems for any signs of exploitation or unusual activity, particularly in environments where PCI devices are used.",
-        "Implement strict access controls and network segmentation to limit the potential impact of exploitation."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 78
-  },
-  {
-    "id": "gh-GHSA-qcjh-44gv-7799",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix deadlock between...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbtrfs: fix deadlock between reflink and transaction commit when using flushoncommit\n\nWhen using the flushoncommit mount option, we can have a deadlock between\na transaction commit and a reflink operation that copied an inline extent\nto an offset beyond the current i_size of the destination node.\n\nThe deadlock happens like this:\n\n1) Task A clones an inline extent from inode X to an offset of inode Y\n   that is beyond Y's current",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53122",
-    "ghsa_id": "GHSA-qcjh-44gv-7799",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability in the Linux kernel's Btrfs file system could lead to a system deadlock when using the 'flushoncommit' mount option. This may result in system crashes, data corruption, or unavailability of critical services relying on the affected file system.",
-      "affected_industries": [
-        "Cloud Service Providers",
-        "Data Centers",
-        "Web Hosting Services",
-        "Telecommunications",
-        "Enterprise IT"
-      ],
-      "recommended_actions": [
-        "Immediately update to the latest Linux kernel version that includes the patch for CVE-2026-53122.",
-        "Audit systems using the Btrfs file system with the 'flushoncommit' mount option and assess the risk of potential deadlocks.",
-        "Implement monitoring and alerting mechanisms to detect unusual system behavior or performance degradation in systems using Btrfs."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-26h7-ghcj-373h",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd: wake raid456 reshape...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmd: wake raid456 reshape waiters before suspend\n\nDuring raid456 reshape, direct IO across the reshape position can sleep\nin raid5_make_request() waiting for reshape progress while still\nholding an active_io reference. If userspace then freezes reshape and\nwrites md/suspend_lo or md/suspend_hi, mddev_suspend() kills active_io\nand waits for all in-flight IO to drain.\n\nThis can deadlock: the IO needs reshape progress to continue, ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53123",
-    "ghsa_id": "GHSA-26h7-ghcj-373h",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53123.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-pjmw-5mrc-f36h",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/wmi: use generic...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nplatform/wmi: use generic driver_override infrastructure\n\nWhen a driver is probed through __driver_attach(), the bus' match()\ncallback is called without the device lock held, thus accessing the\ndriver_override field without a lock, which can cause a UAF.\n\nFix this by using the driver-core driver_override infrastructure taking\ncare of proper locking internally.\n\nNote that calling match() from __driver_attach() without the device",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53119",
-    "ghsa_id": "GHSA-pjmw-5mrc-f36h",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53119.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-x2xc-9pfh-8g6q",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:47Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Switch CONFIG_CFI_CLANG...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Switch CONFIG_CFI_CLANG to CONFIG_CFI\n\nThis was renamed in commit 23ef9d439769 (\"kcfi: Rename CONFIG_CFI_CLANG\nto CONFIG_CFI\") as it is now a compiler-agnostic option. Using the wrong\nname results in the code getting compiled out. Meaning the CFI failures\nfor btf_dtor_kfunc_t would still trigger.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53099",
-    "ghsa_id": "GHSA-x2xc-9pfh-8g6q",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability affects the Linux kernel's handling of Control Flow Integrity (CFI) when using the BPF subsystem. If improperly configured, this could lead to potential exploitation by attackers to bypass security mechanisms or cause system instability.",
-      "affected_industries": [
-        "Cloud Computing",
-        "Telecommunications",
-        "Internet of Things (IoT)",
-        "Data Centers",
-        "Embedded Systems"
-      ],
-      "recommended_actions": [
-        "Ensure all systems running affected Linux kernel versions are updated to include the patch resolving this vulnerability.",
-        "Audit and verify kernel configurations to confirm that CONFIG_CFI is properly enabled and configured.",
-        "Monitor for any unusual activity or exploitation attempts targeting the BPF subsystem in your environment."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-8c24-7wp3-q8gp",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:47Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Do not allow deleting...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nbpf: Do not allow deleting local storage in NMI\n\nCurrently, local storage may deadlock when deferring freeing selem or\nlocal storage through kfree_rcu(), call_rcu() or call_rcu_tasks_trace()\nin NMI or reentrant. Since deleting selem in NMI is an unlikely use\ncase, partially mitigate it by returning error when calling from\nbpf_xxx_storage_delete() helpers in NMI. Note that, it is still possible\nto deadlock through reentrant. A f",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53106",
-    "ghsa_id": "GHSA-8c24-7wp3-q8gp",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53106.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-2w76-gx46-cq6p",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:47Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7915: fix use...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7915: fix use-after-free bugs in mt7915_mac_dump_work()\n\nWhen the mt7915 pci chip is detaching, the mt7915_crash_data is\nreleased in mt7915_coredump_unregister(). However, the work item\ndump_work may still be running or pending, leading to UAF bugs\nwhen the already freed crash_data is dereferenced again in\nmt7915_mac_dump_work().\n\nThe race condition can occur as follows:\n\nCPU 0 (removal path)               | CPU 1",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53098",
-    "ghsa_id": "GHSA-2w76-gx46-cq6p",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53098.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-w826-vj56-vqh9",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:47Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/cio: use generic...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ns390/cio: use generic driver_override infrastructure\n\nWhen a driver is probed through __driver_attach(), the bus' match()\ncallback is called without the device lock held, thus accessing the\ndriver_override field without a lock, which can cause a UAF.\n\nFix this by using the driver-core driver_override infrastructure taking\ncare of proper locking internally.\n\nNote that calling match() from __driver_attach() without the device loc",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53117",
-    "ghsa_id": "GHSA-w826-vj56-vqh9",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53117.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-jp54-xjfc-9fqx",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:47Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7925: fix...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7925: fix potential deadlock in mt7925_roc_abort_sync\n\nroc_abort_sync() can deadlock with roc_work(). roc_work() holds\ndev->mt76.mutex, while cancel_work_sync() waits for roc_work()\nto finish. If the caller already owns the same mutex, both\nsides block and no progress is possible.\n\nThis deadlock can occur during station removal when\nmt76_sta_state() -> mt76_sta_remove() ->\nmt7925_mac_sta_remove_link() -> mt7925_ma",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53103",
-    "ghsa_id": "GHSA-jp54-xjfc-9fqx",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 55,
-      "impact_assessment": "The vulnerability involves a potential deadlock in the Linux kernel's mt76 WiFi driver, specifically affecting the mt7925 chipset. This could lead to system instability or denial of service (DoS) in scenarios where the deadlock condition is triggered, particularly during station removal processes.",
-      "affected_industries": [
-        "Telecommunications",
-        "IoT",
-        "Consumer Electronics",
-        "Enterprise IT"
-      ],
-      "recommended_actions": [
-        "Apply the latest Linux kernel patch that resolves CVE-2026-53103 to affected systems.",
-        "Audit systems using the mt76 WiFi driver to identify potential exposure to this vulnerability.",
-        "Monitor vendor advisories and security bulletins for further updates or mitigations."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 55
-  },
-  {
-    "id": "gh-GHSA-vhcc-wfm4-93ww",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:47Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7921: fix...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: mt7921: fix potential deadlock in mt7921_roc_abort_sync\n\nroc_abort_sync() can deadlock with roc_work(). roc_work() holds\ndev->mt76.mutex, while cancel_work_sync() waits for roc_work()\nto finish. If the caller already owns the same mutex, both\nsides block and no progress is possible.\n\nThis deadlock can occur during station removal when\nmt76_sta_state() -> mt76_sta_remove() -> mt7921_mac_sta_remove() ->\nmt7921_roc_abo",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53101",
-    "ghsa_id": "GHSA-vhcc-wfm4-93ww",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53101.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-m2xr-rm39-xmjv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-24T18:32:47Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: Fix memory leak...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: mt76: Fix memory leak destroying device\n\nAll MT76 rx queues have an associated page_pool even if the queue is not\nassociated to a NAPI (e.g. WED RRO queues with WED enabled). Destroy the\npage_pool running mt76_dma_cleanup routine during module unload.\nMoreover returns pages to the page pool if WED is not enabled for WED RRO\nqueues.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53104",
-    "ghsa_id": "GHSA-m2xr-rm39-xmjv",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in the Linux kernel's MT76 WiFi driver could lead to a memory leak, potentially causing system instability or resource exhaustion. This could be exploited in specific scenarios, particularly in environments relying on MT76-based WiFi devices.",
-      "affected_industries": [
-        "Telecommunications",
-        "Internet of Things (IoT)",
-        "Cloud Service Providers",
-        "Embedded Systems"
-      ],
-      "recommended_actions": [
-        "Ensure the Linux kernel is updated to the latest version that includes the patch for CVE-2026-53104.",
-        "Audit systems using MT76-based WiFi devices to identify potential exposure and apply mitigations if updates are not immediately feasible.",
-        "Monitor system performance for signs of resource exhaustion or instability, particularly in environments using MT76 WiFi drivers."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "cve-CVE-2026-35275",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:19.767",
-    "title": "CVE-2026-35275 - Vulnerability in the Oracle VM VirtualBox product of Oracle Virtualization (component: Shared Folder",
-    "description": "Vulnerability in the Oracle VM VirtualBox product of Oracle Virtualization (component: Shared Folders).   The supported version that is affected is 7.2.8. Difficult to exploit vulnerability allows low privileged attacker with logon to the infrastructure where Oracle VM VirtualBox executes to compromise Oracle VM VirtualBox.  While the vulnerability is in Oracle VM VirtualBox, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle VM VirtualBox accessible data as well as  unauthorized access to critical data or complete access to all Oracle VM VirtualBox accessible data. CVSS 3.1 Base Score 7.5 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:N).",
+    "timestamp": "2026-06-25T03:31:41Z",
+    "title": "OS Command Injection vulnerability in the ping action of Rapid7 InsightConnect Ping Plugin on...",
+    "description": "OS Command Injection vulnerability in the ping action of Rapid7 InsightConnect Ping Plugin on Linux allows remote attackers to execute arbitrary OS commands via the host parameter due to insufficient input validation when constructing shell commands.",
     "severity": "high",
-    "cve_id": "CVE-2026-35275",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:oracle:vm_virtualbox:7.2.8:*:*:*:*:*:*:*"
+    "cve_id": "CVE-2026-8660",
+    "ghsa_id": "GHSA-83v3-8pj5-wm26",
+    "affected_packages": [],
+    "cwes": [
+      null
     ],
     "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-8660.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-jpr4-h957-w6xg",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T03:31:41Z",
+    "title": "OS Command Injection vulnerability in Rapid7 InsightConnect Tcpdump Plugin on Linux allows...",
+    "description": "OS Command Injection vulnerability in Rapid7 InsightConnect Tcpdump Plugin on Linux allows authenticated attackers to execute arbitrary OS commands via the options or filter parameters due to insufficient input sanitization in shell command construction.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8658",
+    "ghsa_id": "GHSA-jpr4-h957-w6xg",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8658.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-5854-xw4j-hrh6",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T03:31:41Z",
+    "title": "OS Command Injection vulnerability in the traceroute action of Rapid7 InsightConnect Traceroute...",
+    "description": "OS Command Injection vulnerability in the traceroute action of Rapid7 InsightConnect Traceroute Plugin on Linux allows remote attackers to execute arbitrary OS commands via the host, port, max_ttl, count, or time_out request parameters due to insufficient input validation when constructing shell commands.",
+    "severity": "high",
+    "cve_id": "CVE-2026-8666",
+    "ghsa_id": "GHSA-5854-xw4j-hrh6",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "This vulnerability in Oracle VM VirtualBox's Shared Folders component allows a low-privileged attacker with access to the infrastructure to compromise the VirtualBox environment. The scope change indicates that successful exploitation could extend to other connected systems or products, potentially leading to data breaches, privilege escalation, or disruption of services.",
+      "impact_assessment": "The OS Command Injection vulnerability in the Rapid7 InsightConnect Traceroute Plugin allows remote attackers to execute arbitrary OS commands on the underlying Linux system. This could lead to unauthorized access, data exfiltration, system compromise, or lateral movement within the network.",
       "affected_industries": [
-        "Cloud Service Providers",
-        "IT and Software Development",
+        "Technology",
         "Financial Services",
+        "Healthcare",
+        "Government",
+        "Retail",
+        "Energy"
+      ],
+      "recommended_actions": [
+        "Immediately update the Rapid7 InsightConnect Traceroute Plugin to the latest patched version, if available, or apply any vendor-provided mitigations.",
+        "Implement input validation and sanitization for all user-supplied parameters (host, port, max_ttl, count, time_out) to prevent malicious command injection.",
+        "Restrict access to the affected service using network segmentation, firewalls, or access control lists (ACLs) to limit exposure to trusted sources only."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-4v5r-xr6m-8fwr",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T03:31:41Z",
+    "title": "OS Command Injection vulnerability in the TR action of Rapid7 InsightConnect Translate Plugin on...",
+    "description": "OS Command Injection vulnerability in the TR action of Rapid7 InsightConnect Translate Plugin on Linux allows remote attackers to execute arbitrary OS commands via the text or expression parameters due to insufficient input sanitization in shell command construction.",
+    "severity": "high",
+    "cve_id": "CVE-2026-8665",
+    "ghsa_id": "GHSA-4v5r-xr6m-8fwr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The OS Command Injection vulnerability in the Rapid7 InsightConnect Translate Plugin allows remote attackers to execute arbitrary OS commands, potentially leading to unauthorized access, data exfiltration, service disruption, or complete system compromise.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Government",
+        "Retail",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Immediately apply any available patches or updates provided by Rapid7 to mitigate the vulnerability.",
+        "Implement input validation and sanitization mechanisms to prevent malicious input from being executed as OS commands.",
+        "Restrict access to the affected plugin by limiting its use to trusted networks and users until the vulnerability is resolved."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-p5pq-c6vw-g6xp",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T03:31:41Z",
+    "title": "OS Command Injection vulnerability in Rapid7 InsightConnect Finger Plugin on Linux allows...",
+    "description": "OS Command Injection vulnerability in Rapid7 InsightConnect Finger Plugin on Linux allows authenticated attackers to execute arbitrary OS commands via the user or host parameters due to insufficient input validation in shell command construction.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-8664",
+    "ghsa_id": "GHSA-p5pq-c6vw-g6xp",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8664.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-xqrw-3c79-7qc7",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T03:31:40Z",
+    "title": "OS Command Injection vulnerability in the process_string action of Rapid7 InsightConnect AWK...",
+    "description": "OS Command Injection vulnerability in the process_string action of Rapid7 InsightConnect AWK Plugin on Linux allows remote attackers to execute arbitrary OS commands via the text or expression parameters due to unsafe shell command construction in the processing pipeline.",
+    "severity": "high",
+    "cve_id": "CVE-2026-8592",
+    "ghsa_id": "GHSA-xqrw-3c79-7qc7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-8592.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-9723-5cpr-v9rm",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T03:31:40Z",
+    "title": "Arbitrary File Write vulnerability in Rapid7 InsightConnect Sed Plugin on Linux allows...",
+    "description": "Arbitrary File Write vulnerability in Rapid7 InsightConnect Sed Plugin on Linux allows authenticated attackers to write attacker-controlled content to arbitrary file paths via the expression parameter.",
+    "severity": "high",
+    "cve_id": "CVE-2026-9154",
+    "ghsa_id": "GHSA-9723-5cpr-v9rm",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9154.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-v6m6-hc9j-5r5w",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T03:31:40Z",
+    "title": "Arbitrary File Read vulnerability in Rapid7 InsightConnect Sed Plugin on Linux allows...",
+    "description": "Arbitrary File Read vulnerability in Rapid7 InsightConnect Sed Plugin on Linux allows authenticated attackers to read arbitrary files via the expression parameter due to insufficient input validation.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9153",
+    "ghsa_id": "GHSA-v6m6-hc9j-5r5w",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9153.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-v3gg-5r82-j6rc",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T03:31:40Z",
+    "title": "OS Command Injection vulnerability in Rapid7 InsightConnect Sed Plugin on Linux allows...",
+    "description": "OS Command Injection vulnerability in Rapid7 InsightConnect Sed Plugin on Linux allows authenticated attackers to execute arbitrary OS commands via the expression parameter due to insufficient input validation.",
+    "severity": "high",
+    "cve_id": "CVE-2026-9155",
+    "ghsa_id": "GHSA-v3gg-5r82-j6rc",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9155.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-w3gf-4959-2377",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T03:31:40Z",
+    "title": "sys/kern/sysv_sem.c in OpenBSD through 7.9 has a use-after-free allowing local privilege...",
+    "description": "sys/kern/sysv_sem.c in OpenBSD through 7.9 has a use-after-free allowing local privilege escalation to root. This is a context switch use-after-free after tsleep in sys_semget().",
+    "severity": "high",
+    "cve_id": "CVE-2026-57589",
+    "ghsa_id": "GHSA-w3gf-4959-2377",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in sys/kern/sysv_sem.c in OpenBSD through 7.9 allows local attackers to escalate privileges to root, potentially compromising the entire system. This could lead to unauthorized access, data breaches, or further exploitation of the affected system.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
         "Healthcare",
         "Government",
         "Education"
       ],
       "recommended_actions": [
-        "Immediately apply the latest security patches or updates provided by Oracle for VirtualBox version 7.2.8.",
-        "Restrict access to the VirtualBox infrastructure by limiting user permissions and ensuring only trusted users have access.",
-        "Monitor systems for unusual activity or signs of exploitation, and implement network segmentation to limit the impact of a potential breach."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-35274",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:19.663",
-    "title": "CVE-2026-35274 - Vulnerability in the PeopleSoft Enterprise PT PeopleTools product of Oracle PeopleSoft (component: D",
-    "description": "Vulnerability in the PeopleSoft Enterprise PT PeopleTools product of Oracle PeopleSoft (component: Deployment Package).  Supported versions that are affected are 8.61 and  8.62. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise PeopleSoft Enterprise PT PeopleTools.  Successful attacks of this vulnerability can result in  unauthorized access to critical data or complete access to all PeopleSoft Enterprise PT PeopleTools accessible data as well as  unauthorized update, insert or delete access to some of PeopleSoft Enterprise PT PeopleTools accessible data. CVSS 3.1 Base Score 8.2 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:N).",
-    "severity": "high",
-    "cve_id": "CVE-2026-35274",
-    "cvss_score": 8.2,
-    "affected_products": [],
-    "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35274.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-35272",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:19.453",
-    "title": "CVE-2026-35272 - Vulnerability in the PeopleSoft Enterprise PT PeopleTools product of Oracle PeopleSoft (component: D",
-    "description": "Vulnerability in the PeopleSoft Enterprise PT PeopleTools product of Oracle PeopleSoft (component: Deployment Package).  Supported versions that are affected are 8.61 and  8.62. Easily exploitable vulnerability allows unauthenticated attacker with logon to the infrastructure where PeopleSoft Enterprise PT PeopleTools executes to compromise PeopleSoft Enterprise PT PeopleTools.  Successful attacks of this vulnerability can result in takeover of PeopleSoft Enterprise PT PeopleTools. CVSS 3.1 Base Score 8.4 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H).",
-    "severity": "high",
-    "cve_id": "CVE-2026-35272",
-    "cvss_score": 8.4,
-    "affected_products": [],
-    "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35272.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-35271",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:19.343",
-    "title": "CVE-2026-35271 - Vulnerability in the PeopleSoft Enterprise PT PeopleTools product of Oracle PeopleSoft (component: W",
-    "description": "Vulnerability in the PeopleSoft Enterprise PT PeopleTools product of Oracle PeopleSoft (component: Weblogic).  Supported versions that are affected are 8.61 and  8.62. Difficult to exploit vulnerability allows unauthenticated attacker with network access via HTTP to compromise PeopleSoft Enterprise PT PeopleTools.  While the vulnerability is in PeopleSoft Enterprise PT PeopleTools, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all PeopleSoft Enterprise PT PeopleTools accessible data as well as  unauthorized access to critical data or complete access to all PeopleSoft Enterprise PT PeopleTools accessible data. CVSS 3.1 Base Score 8.7 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:H/A:N).",
-    "severity": "high",
-    "cve_id": "CVE-2026-35271",
-    "cvss_score": 8.7,
-    "affected_products": [],
-    "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35271.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-35270",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:19.233",
-    "title": "CVE-2026-35270 - Vulnerability in the Oracle WebCenter Content product of Oracle Fusion Middleware (component: Conten",
-    "description": "Vulnerability in the Oracle WebCenter Content product of Oracle Fusion Middleware (component: Content Server).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows high privileged attacker with network access via HTTP to compromise Oracle WebCenter Content.  While the vulnerability is in Oracle WebCenter Content, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Oracle WebCenter Content. CVSS 3.1 Base Score 9.1 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H).",
-    "severity": "critical",
-    "cve_id": "CVE-2026-35270",
-    "cvss_score": 9.1,
-    "affected_products": [
-      "cpe:2.3:a:oracle:webcenter_content:12.2.1.4.0:*:*:*:*:*:*:*",
-      "cpe:2.3:a:oracle:webcenter_content:14.1.2.0.0:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 100,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-35270.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately apply any available patches or updates from the OpenBSD project to mitigate the vulnerability.",
+        "Restrict local access to trusted users only and monitor for unusual activity on affected systems.",
+        "Conduct a security audit to identify and address any potential exploitation of this vulnerability."
       ],
       "urgency": "critical"
     },
-    "risk_score": 100
-  },
-  {
-    "id": "cve-CVE-2026-35269",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:19.130",
-    "title": "CVE-2026-35269 - Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: REST WebServic",
-    "description": "Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: REST WebServices).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Identity Manager.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Identity Manager accessible data. CVSS 3.1 Base Score 7.5 (Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N).",
-    "severity": "high",
-    "cve_id": "CVE-2026-35269",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:oracle:identity_manager:12.2.1.4.0:*:*:*:*:*:*:*",
-      "cpe:2.3:a:oracle:identity_manager:14.1.2.1.0:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35269.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-35268",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:19.020",
-    "title": "CVE-2026-35268 - Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: Core).  Suppor",
-    "description": "Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: Core).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows low privileged attacker with network access via T3, IIOP to compromise Identity Manager.  While the vulnerability is in Identity Manager, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of Identity Manager. CVSS 3.1 Base Score 9.9 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).",
-    "severity": "critical",
-    "cve_id": "CVE-2026-35268",
-    "cvss_score": 9.9,
-    "affected_products": [
-      "cpe:2.3:a:oracle:identity_manager:12.2.1.4.0:*:*:*:*:*:*:*",
-      "cpe:2.3:a:oracle:identity_manager:14.1.2.1.0:*:*:*:*:*:*:*"
+    "id": "gh-GHSA-qrh4-m2m7-cgg3",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T00:33:24Z",
+    "title": "Quest NetVault Backup NVBULibraryPort SQL Injection Remote Code Execution Vulnerability. This...",
+    "description": "Quest NetVault Backup NVBULibraryPort SQL Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBULibraryPort JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied string bef",
+    "severity": "high",
+    "cve_id": "CVE-2026-9784",
+    "ghsa_id": "GHSA-qrh4-m2m7-cgg3",
+    "affected_packages": [],
+    "cwes": [
+      null
     ],
     "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
-      "risk_score": 100,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-35268.",
+      "risk_score": 85,
+      "impact_assessment": "This vulnerability allows remote attackers to bypass authentication and execute arbitrary code, potentially leading to full system compromise, data exfiltration, or service disruption.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "IT Services",
+        "Cloud Service Providers",
+        "Healthcare",
+        "Financial Services",
+        "Government"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately apply the latest security patch provided by Quest to address CVE-2026-9784.",
+        "Restrict access to the NVBULibraryPort service to trusted IP addresses using firewall rules.",
+        "Monitor logs for unusual activity, especially around authentication bypass attempts and JSON-RPC messages."
       ],
       "urgency": "critical"
     },
-    "risk_score": 100
+    "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-35267",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:18.920",
-    "title": "CVE-2026-35267 - Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: REST WebServic",
-    "description": "Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: REST WebServices).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Identity Manager.  Successful attacks of this vulnerability can result in takeover of Identity Manager. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "id": "gh-GHSA-g493-6gcx-x935",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T00:33:24Z",
+    "title": "Quest NetVault Backup NVBULogDaemon Command Injection Remote Code Execution Vulnerability. This...",
+    "description": "Quest NetVault Backup NVBULogDaemon Command Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBULogDaemon JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied string bef",
     "severity": "high",
-    "cve_id": "CVE-2026-35267",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:oracle:identity_manager:12.2.1.4.0:*:*:*:*:*:*:*",
-      "cpe:2.3:a:oracle:identity_manager:14.1.2.1.0:*:*:*:*:*:*:*"
+    "cve_id": "CVE-2026-9787",
+    "ghsa_id": "GHSA-g493-6gcx-x935",
+    "affected_packages": [],
+    "cwes": [
+      null
     ],
     "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35267.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9787.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1023,27 +514,30 @@
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "cve-CVE-2026-35265",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:18.710",
-    "title": "CVE-2026-35265 - Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: Security).  Su",
-    "description": "Vulnerability in the Identity Manager product of Oracle Fusion Middleware (component: Security).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Identity Manager.  Successful attacks of this vulnerability can result in takeover of Identity Manager. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H).",
+    "id": "gh-GHSA-qc3q-wgvh-ww57",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T00:33:24Z",
+    "title": "Quest NetVault Backup NVBULibrarySlot SQL Injection Remote Code Execution Vulnerability. This...",
+    "description": "Quest NetVault Backup NVBULibrarySlot SQL Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBULibrarySlot JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied string bef",
     "severity": "high",
-    "cve_id": "CVE-2026-35265",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:oracle:identity_manager:12.2.1.4.0:*:*:*:*:*:*:*",
-      "cpe:2.3:a:oracle:identity_manager:14.1.2.1.0:*:*:*:*:*:*:*"
+    "cve_id": "CVE-2026-9785",
+    "ghsa_id": "GHSA-qc3q-wgvh-ww57",
+    "affected_packages": [],
+    "cwes": [
+      null
     ],
     "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35265.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9785.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1055,27 +549,30 @@
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "cve-CVE-2026-35263",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:18.600",
-    "title": "CVE-2026-35263 - Vulnerability in the WebLogic Server product of Oracle Fusion Middleware (component: Core).  Support",
-    "description": "Vulnerability in the WebLogic Server product of Oracle Fusion Middleware (component: Core).  Supported versions that are affected are 14.1.2.0.0 and  15.1.1.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise WebLogic Server.  While the vulnerability is in WebLogic Server, attacks may significantly impact additional products (scope change).  Successful attacks of this vulnerability can result in takeover of WebLogic Server. CVSS 3.1 Base Score 9.9 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H).",
-    "severity": "critical",
-    "cve_id": "CVE-2026-35263",
-    "cvss_score": 9.9,
-    "affected_products": [
-      "cpe:2.3:a:oracle:weblogic_server:14.1.2.0.0:*:*:*:*:*:*:*",
-      "cpe:2.3:a:oracle:weblogic_server:15.1.1.0.0:*:*:*:*:*:*:*"
+    "id": "gh-GHSA-qhv7-8f66-468j",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T00:33:24Z",
+    "title": "Quest NetVault Backup NVBUDashboard SQL Injection Remote Code Execution Vulnerability. This...",
+    "description": "Quest NetVault Backup NVBUDashboard SQL Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBUDashboard JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied string before ",
+    "severity": "high",
+    "cve_id": "CVE-2026-9786",
+    "ghsa_id": "GHSA-qhv7-8f66-468j",
+    "affected_packages": [],
+    "cwes": [
+      null
     ],
     "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
-      "risk_score": 100,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-35263.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9786.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1084,30 +581,147 @@
         "Review affected systems",
         "Apply security patches if available",
         "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-2gj9-425g-wxfr",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T00:33:24Z",
+    "title": "Quest NetVault Backup NVBURemovableMedia SQL Injection Remote Code Execution Vulnerability. This...",
+    "description": "Quest NetVault Backup NVBURemovableMedia SQL Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBURemovableMedia JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied stri",
+    "severity": "high",
+    "cve_id": "CVE-2026-9783",
+    "ghsa_id": "GHSA-2gj9-425g-wxfr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 92,
+      "impact_assessment": "This vulnerability allows remote attackers to execute arbitrary code on systems running Quest NetVault Backup. Exploitation could lead to full system compromise, data breaches, or disruption of backup operations. The authentication bypass increases the likelihood of successful exploitation.",
+      "affected_industries": [
+        "Information Technology",
+        "Healthcare",
+        "Financial Services",
+        "Government",
+        "Education",
+        "Energy"
+      ],
+      "recommended_actions": [
+        "Apply the latest security patches or updates provided by Quest to address CVE-2026-9783 immediately.",
+        "Implement additional network segmentation and access controls to limit exposure of the Quest NetVault Backup system to untrusted networks.",
+        "Monitor system logs and network traffic for unusual activity, particularly related to NVBURemovableMedia JSON-RPC messages, and enable intrusion detection/prevention systems."
       ],
       "urgency": "critical"
     },
-    "risk_score": 100
+    "risk_score": 92
   },
   {
-    "id": "cve-CVE-2026-35262",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:18.493",
-    "title": "CVE-2026-35262 - Vulnerability in the Oracle Data Integrator product of Oracle Fusion Middleware (component: Market P",
-    "description": "Vulnerability in the Oracle Data Integrator product of Oracle Fusion Middleware (component: Market Place).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTP to compromise Oracle Data Integrator.  Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all Oracle Data Integrator accessible data as well as  unauthorized access to critical data or complete access to all Oracle Data Integrator accessible data and unauthorized ability to cause a partial denial of service (partial DOS) of Oracle Data Integrator. CVSS 3.1 Base Score 8.3 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:L).",
+    "id": "gh-GHSA-fv4p-f98h-cj9r",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T00:33:23Z",
+    "title": "Quest NetVault Backup NVBURASDevice SQL Injection Remote Code Execution Vulnerability. This...",
+    "description": "Quest NetVault Backup NVBURASDevice SQL Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBURASDevice JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied string before ",
     "severity": "high",
-    "cve_id": "CVE-2026-35262",
-    "cvss_score": 8.3,
-    "affected_products": [
-      "cpe:2.3:a:oracle:data_integrator:12.2.1.4.0:*:*:*:*:*:*:*",
-      "cpe:2.3:a:oracle:data_integrator:14.1.2.0.0:*:*:*:*:*:*:*"
+    "cve_id": "CVE-2026-9781",
+    "ghsa_id": "GHSA-fv4p-f98h-cj9r",
+    "affected_packages": [],
+    "cwes": [
+      null
     ],
     "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35262.",
+      "risk_score": 92,
+      "impact_assessment": "This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup, potentially leading to full system compromise, data exfiltration, or service disruption. The ability to bypass authentication exacerbates the risk.",
+      "affected_industries": [
+        "Information Technology",
+        "Financial Services",
+        "Healthcare",
+        "Government",
+        "Education",
+        "Energy and Utilities"
+      ],
+      "recommended_actions": [
+        "Immediately apply the latest security patch or update provided by Quest for NetVault Backup to address CVE-2026-9781.",
+        "Implement network segmentation to limit access to the Quest NetVault Backup system and restrict it to trusted hosts only.",
+        "Monitor logs for unusual activity, particularly around NVBURASDevice JSON-RPC messages, and review authentication mechanisms for potential abuse."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 92
+  },
+  {
+    "id": "gh-GHSA-cqcc-c9q9-x82m",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T00:33:23Z",
+    "title": "A buffer overflow in the gf_media_import function (/media_tools/av_parsers.c) of GPAC Project...",
+    "description": "A buffer overflow in the gf_media_import function (/media_tools/av_parsers.c) of GPAC Project/MP4Box before 26.02.0 allows attackers to cause a Denial of Service (DoS) via supplying a crafted input.",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-60474",
+    "ghsa_id": "GHSA-cqcc-c9q9-x82m",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-60474.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-vm9v-g522-qr6w",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T00:33:23Z",
+    "title": "Quest NetVault Backup NVBUDeviceDrive SQL Injection Remote Code Execution Vulnerability. This...",
+    "description": "Quest NetVault Backup NVBUDeviceDrive SQL Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBUDeviceDrive JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied string bef",
+    "severity": "high",
+    "cve_id": "CVE-2026-9782",
+    "ghsa_id": "GHSA-vm9v-g522-qr6w",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9782.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1119,27 +733,111 @@
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "cve-CVE-2026-35261",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:18.383",
-    "title": "CVE-2026-35261 - Vulnerability in the Oracle Access Manager product of Oracle Fusion Middleware (component: Authentic",
-    "description": "Vulnerability in the Oracle Access Manager product of Oracle Fusion Middleware (component: Authentication Engine).  Supported versions that are affected are 12.2.1.4.0 and  14.1.2.1.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTP to compromise Oracle Access Manager.  Successful attacks of this vulnerability can result in  unauthorized update, insert or delete access to some of Oracle Access Manager accessible data as well as  unauthorized read access to a subset of Oracle Access Manager accessible data. CVSS 3.1 Base Score 6.5 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N).",
+    "id": "gh-GHSA-frqr-h5vc-vr89",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T00:33:23Z",
+    "title": "OS Command Injection vulnerability in Rapid7 InsightConnect SQLmap Plugin on Linux allows...",
+    "description": "OS Command Injection vulnerability in Rapid7 InsightConnect SQLmap Plugin on Linux allows authenticated attackers to execute arbitrary OS commands via the api_host or api_port parameters during connection configuration due to insufficient input validation.",
     "severity": "medium",
-    "cve_id": "CVE-2026-35261",
-    "cvss_score": 6.5,
-    "affected_products": [
-      "cpe:2.3:a:oracle:access_manager:12.2.1.4.0:*:*:*:*:*:*:*",
-      "cpe:2.3:a:oracle:access_manager:14.1.2.1.0:*:*:*:*:*:*:*"
+    "cve_id": "CVE-2026-8659",
+    "ghsa_id": "GHSA-frqr-h5vc-vr89",
+    "affected_packages": [],
+    "cwes": [
+      null
     ],
     "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "The OS Command Injection vulnerability in the Rapid7 InsightConnect SQLmap Plugin on Linux allows authenticated attackers to execute arbitrary OS commands, potentially leading to unauthorized system control, data exfiltration, or service disruption. The risk is heightened due to the possibility of privilege escalation and lateral movement within the affected environment.",
+      "affected_industries": [
+        "Technology",
+        "Financial Services",
+        "Healthcare",
+        "Retail",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately apply patches or updates provided by Rapid7 to address the vulnerability (CVE-2026-8659).",
+        "Restrict access to the plugin by limiting it to trusted users and networks, and implement strict input validation where possible.",
+        "Monitor logs and network activity for any unusual behavior or signs of exploitation, and enable alerting for suspicious API interactions."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "cve-CVE-2026-11777",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T06:16:57.320",
+    "title": "CVE-2026-11777 - The Form Maker by 10Web – Mobile-Friendly Drag & Drop Contact Form Builder plugin for WordPress is v",
+    "description": "The Form Maker by 10Web – Mobile-Friendly Drag & Drop Contact Form Builder plugin for WordPress is vulnerable to generic SQL Injection via the 'name' parameter in all versions up to, and including, 1.15.43 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11777",
+    "cvss_score": 4.9,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.41/admin/controllers/Select_data_from_db.php#L84",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.41/admin/models/FMSelectDataFromDb.php#L88",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.41/admin/models/FMSelectDataFromDb.php#L94",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.41/form-maker.php#L911",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.43/admin/controllers/Select_data_from_db.php#L84",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.43/admin/models/FMSelectDataFromDb.php#L88",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.43/admin/models/FMSelectDataFromDb.php#L94",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.43/form-maker.php#L911",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3567408%40form-maker&new=3567408%40form-maker&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/513f407d-e90f-4fd1-82dd-c28bab9f76d0?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows authenticated attackers with administrator-level access to execute arbitrary SQL queries, potentially leading to data leakage, database corruption, or unauthorized data manipulation. While the attacker requires admin privileges, the impact can be severe if exploited.",
+      "affected_industries": [
+        "E-commerce",
+        "Media and Publishing",
+        "Education",
+        "Healthcare",
+        "Small and Medium Businesses using WordPress"
+      ],
+      "recommended_actions": [
+        "Immediately update the plugin to a patched version if available or disable it temporarily to mitigate the risk.",
+        "Restrict administrator-level access to trusted users only and review existing admin accounts for suspicious activity.",
+        "Implement a web application firewall (WAF) to detect and block SQL injection attempts."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "cve-CVE-2026-11776",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T06:16:57.200",
+    "title": "CVE-2026-11776 - The Form Maker by 10Web – Mobile-Friendly Drag & Drop Contact Form Builder plugin for WordPress is v",
+    "description": "The Form Maker by 10Web – Mobile-Friendly Drag & Drop Contact Form Builder plugin for WordPress is vulnerable to generic SQL Injection via the 'groupids' parameter in all versions up to, and including, 1.15.43 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11776",
+    "cvss_score": 4.9,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.41/admin/controllers/Generete_csv.php#L33",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.41/form-maker.php#L873",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.41/framework/WDW_FM_Library.php#L4682",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.41/framework/WDW_FM_Library.php#L4748",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.43/admin/controllers/Generete_csv.php#L33",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.43/form-maker.php#L873",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.43/framework/WDW_FM_Library.php#L4682",
+      "https://plugins.trac.wordpress.org/browser/form-maker/tags/1.15.43/framework/WDW_FM_Library.php#L4748",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3567408%40form-maker&new=3567408%40form-maker&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/b7850e73-8ffd-46d4-97c6-5343486a31dc?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-35261.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11776.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1154,85 +852,457 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-35259",
+    "id": "cve-CVE-2026-11402",
     "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:18.280",
-    "title": "CVE-2026-35259 - Vulnerability in the WebLogic Server product of Oracle Fusion Middleware (component: Console).  Supp",
-    "description": "Vulnerability in the WebLogic Server product of Oracle Fusion Middleware (component: Console).  Supported versions that are affected are 14.1.2.0.0 and  15.1.1.0.0. Easily exploitable vulnerability allows unauthenticated attacker with network access via HTTPS to compromise WebLogic Server.  Successful attacks require human interaction from a person other than the attacker. Successful attacks of this vulnerability can result in takeover of WebLogic Server. CVSS 3.1 Base Score 8.8 (Confidentiality, Integrity and Availability impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H).",
-    "severity": "high",
-    "cve_id": "CVE-2026-35259",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:oracle:weblogic_server:14.1.2.0.0:*:*:*:*:*:*:*",
-      "cpe:2.3:a:oracle:weblogic_server:15.1.1.0.0:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35259.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-35258",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:40:17.287",
-    "title": "CVE-2026-35258 - Vulnerability in the WebLogic Server product of Oracle Fusion Middleware (component: Console).  Supp",
-    "description": "Vulnerability in the WebLogic Server product of Oracle Fusion Middleware (component: Console).  Supported versions that are affected are 14.1.2.0.0 and  15.1.1.0.0. Easily exploitable vulnerability allows low privileged attacker with network access via HTTPS to compromise WebLogic Server.  Successful attacks require human interaction from a person other than the attacker and while the vulnerability is in WebLogic Server, attacks may significantly impact additional products (scope change). Successful attacks of this vulnerability can result in  unauthorized creation, deletion or modification access to critical data or all WebLogic Server accessible data as well as  unauthorized access to critical data or complete access to all WebLogic Server accessible data. CVSS 3.1 Base Score 8.7 (Confidentiality and Integrity impacts).  CVSS Vector: (CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:H/A:N).",
-    "severity": "high",
-    "cve_id": "CVE-2026-35258",
-    "cvss_score": 8.7,
-    "affected_products": [
-      "cpe:2.3:a:oracle:weblogic_server:14.1.2.0.0:*:*:*:*:*:*:*",
-      "cpe:2.3:a:oracle:weblogic_server:15.1.1.0.0:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.oracle.com/security-alerts/cspujun2026.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35258.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-12348",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-17T10:14:49.290",
-    "title": "CVE-2026-12348 - Address bar spoofing in Arc Search for Android allows a remote attacker to display a trusted domain ",
-    "description": "Address bar spoofing in Arc Search for Android allows a remote attacker to display a trusted domain in the address bar while rendering attacker-controlled content, enabling phishing.",
-    "severity": "high",
-    "cve_id": "CVE-2026-12348",
-    "cvss_score": 7.4,
+    "timestamp": "2026-06-18T06:16:57.080",
+    "title": "CVE-2026-11402 - The Services Section Block – Showcase Service Details in Grid or Columns plugin for WordPress is vul",
+    "description": "The Services Section Block – Showcase Service Details in Grid or Columns plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'link' Block Attribute in all versions up to, and including, 1.4.4 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The payload persists inside HTML comments in post_content, bypassing wp_kses_post sanitization at save time, and executes via both the primary service link anchor and a secondary title-wrapped anchor when the linkIn option is set to 'title'.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11402",
+    "cvss_score": 6.4,
     "affected_products": [],
     "references": [
-      "https://hackerone.com/reports/3705306"
+      "https://plugins.trac.wordpress.org/browser/services-section/trunk/build/service/render.php#L2",
+      "https://plugins.trac.wordpress.org/browser/services-section/trunk/build/service/view.js#L1",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3570724%40services-section&new=3570724%40services-section&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/8e796458-acd4-4334-af1c-29c82f0791ac?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11402.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-11360",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T06:16:56.957",
+    "title": "CVE-2026-11360 - The Advanced Order Export For WooCommerce plugin for WordPress is vulnerable to generic SQL Injectio",
+    "description": "The Advanced Order Export For WooCommerce plugin for WordPress is vulnerable to generic SQL Injection via the 'sort_direction' parameter in all versions up to, and including, 4.0.10 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with shop manager-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The endpoint requires a valid woe_nonce and Shop Manager-level capabilities (view_woocommerce_reports or export_woocommerce_orders), and wp_magic_quotes protection is stripped via stripslashes_deep() before processing, allowing quote and backslash characters to survive intact into the SQL context.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11360",
+    "cvss_score": 4.9,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/woo-order-export-lite/tags/4.0.7/classes/admin/tabs/ajax/trait-wc-order-export-admin-tab-abstract-ajax-export.php#L13",
+      "https://plugins.trac.wordpress.org/browser/woo-order-export-lite/tags/4.0.7/classes/class-wc-order-export-admin.php#L550",
+      "https://plugins.trac.wordpress.org/browser/woo-order-export-lite/tags/4.0.7/classes/core/class-wc-order-export-engine.php#L378",
+      "https://plugins.trac.wordpress.org/browser/woo-order-export-lite/tags/4.0.7/classes/core/class-wc-order-export-engine.php#L531",
+      "https://plugins.trac.wordpress.org/browser/woo-order-export-lite/tags/4.0.7/classes/core/class-wc-order-export-engine.php#L537",
+      "https://plugins.trac.wordpress.org/browser/woo-order-export-lite/tags/4.0.7/classes/core/class-wc-order-export-engine.php#L649",
+      "https://plugins.trac.wordpress.org/browser/woo-order-export-lite/tags/4.0.9/classes/admin/tabs/ajax/trait-wc-order-export-admin-tab-abstract-ajax-export.php#L13",
+      "https://plugins.trac.wordpress.org/browser/woo-order-export-lite/tags/4.0.9/classes/class-wc-order-export-admin.php#L550",
+      "https://plugins.trac.wordpress.org/browser/woo-order-export-lite/tags/4.0.9/classes/core/class-wc-order-export-engine.php#L378",
+      "https://plugins.trac.wordpress.org/browser/woo-order-export-lite/tags/4.0.9/classes/core/class-wc-order-export-engine.php#L531",
+      "https://plugins.trac.wordpress.org/browser/woo-order-export-lite/tags/4.0.9/classes/core/class-wc-order-export-engine.php#L537",
+      "https://plugins.trac.wordpress.org/browser/woo-order-export-lite/tags/4.0.9/classes/core/class-wc-order-export-engine.php#L649",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3564108%40woo-order-export-lite&new=3564108%40woo-order-export-lite&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/0b395777-2e2a-4dc3-9b0c-ce4c9d22d7e9?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11360.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-11358",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T06:16:56.833",
+    "title": "CVE-2026-11358 - The Orbit Fox: Duplicate Page, Menu Icons, SVG Support, Cookie Notice, Custom Fonts & More plugin fo",
+    "description": "The Orbit Fox: Duplicate Page, Menu Icons, SVG Support, Cookie Notice, Custom Fonts & More plugin for WordPress is vulnerable to Stored Cross-Site Scripting via admin settings in all versions up to, and including, 3.0.6 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with administrator-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has been disabled.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11358",
+    "cvss_score": 4.4,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/themeisle-companion/tags/3.0.5/obfx_modules/menu-icons/init.php#L118",
+      "https://plugins.trac.wordpress.org/browser/themeisle-companion/tags/3.0.5/obfx_modules/menu-icons/init.php#L296",
+      "https://plugins.trac.wordpress.org/browser/themeisle-companion/tags/3.0.6/obfx_modules/menu-icons/init.php#L118",
+      "https://plugins.trac.wordpress.org/browser/themeisle-companion/tags/3.0.6/obfx_modules/menu-icons/init.php#L296",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3574306%40themeisle-companion&new=3574306%40themeisle-companion&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/beb1268c-b680-4ebe-8fe2-65f656390038?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11358.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-11357",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T06:16:56.703",
+    "title": "CVE-2026-11357 - The Kadence Blocks — Page Builder Toolkit for Gutenberg Editor plugin for WordPress is vulnerable to",
+    "description": "The Kadence Blocks — Page Builder Toolkit for Gutenberg Editor plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 3.7.5 via the editor_assets_variables. This makes it possible for authenticated attackers, with contributor-level access and above, to extract the site's connected Kadence account license key, license owner email, api_key, api_email, and license domain from the browser console by inspecting window.kadence_blocks_params.proData. Exploitation requires only that an administrator has previously connected a valid Kadence license; the full credential bundle is then readable by any Contributor-level user from the block editor client context without any server-side request manipulation.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11357",
+    "cvss_score": 4.3,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.6.7/includes/class-kadence-blocks-editor-assets.php#L291",
+      "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.6.7/includes/class-kadence-blocks-editor-assets.php#L337",
+      "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.6.7/includes/helper-functions.php#L286",
+      "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.7.5/includes/class-kadence-blocks-editor-assets.php#L291",
+      "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.7.5/includes/class-kadence-blocks-editor-assets.php#L337",
+      "https://plugins.trac.wordpress.org/browser/kadence-blocks/tags/3.7.5/includes/helper-functions.php#L286",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3569191%40kadence-blocks&new=3569191%40kadence-blocks&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/fa62c795-57b8-48e5-a49f-2e1f3c792c87?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11357.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-10736",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T06:16:56.573",
+    "title": "CVE-2026-10736 - The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to generic S",
+    "description": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to generic SQL Injection via the 'data' parameter in all versions up to, and including, 3.9.11 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-10736",
+    "cvss_score": 4.9,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/3.9.11/classes/Input.php#L78",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/3.9.11/models/WithdrawModel.php#L118",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/3.9.11/models/WithdrawModel.php#L169",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/3.9.11/views/pages/withdraw_requests.php#L29",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/3.9.8/classes/Input.php#L78",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/3.9.8/models/WithdrawModel.php#L118",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/3.9.8/models/WithdrawModel.php#L169",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/3.9.8/views/pages/withdraw_requests.php#L29",
+      "https://plugins.trac.wordpress.org/changeset/3565513/tutor/tags/3.9.12/models/WithdrawModel.php",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/1e193bb9-bb16-4a77-877b-fa0ab29a6c74?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-10736.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-10623",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T06:16:56.427",
+    "title": "CVE-2026-10623 - The PressPrimer Quiz – AI Quiz Maker, Exam Builder & LMS Assessment Plugin plugin for WordPress is v",
+    "description": "The PressPrimer Quiz – AI Quiz Maker, Exam Builder & LMS Assessment Plugin plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 2.3.0 via the 'rule_id' parameter due to missing validation on a user controlled key. This makes it possible for authenticated attackers, with custom-level access and above, to modify or delete quiz rules belonging to other teachers, resulting in unauthorized tampering of another user's quiz structure.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-10623",
+    "cvss_score": 4.3,
+    "affected_products": [],
+    "references": [
+      "https://github.com/PressPrimer/pressprimer-quiz/commit/1795687",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.1.0/includes/api/class-ppq-rest-controller.php#L1703",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.1.0/includes/api/class-ppq-rest-controller.php#L1786",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.1.0/includes/api/class-ppq-rest-controller.php#L1813",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.1.0/includes/api/class-ppq-rest-controller.php#L1860",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.1.0/includes/api/class-ppq-rest-controller.php#L1923",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.1.0/includes/api/class-ppq-rest-controller.php#L1963",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.1.0/includes/api/class-ppq-rest-controller.php#L434",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.2.2/includes/api/class-ppq-rest-controller.php#L1703",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.2.2/includes/api/class-ppq-rest-controller.php#L1786",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.2.2/includes/api/class-ppq-rest-controller.php#L1813",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.2.2/includes/api/class-ppq-rest-controller.php#L1860",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.2.2/includes/api/class-ppq-rest-controller.php#L1923",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.2.2/includes/api/class-ppq-rest-controller.php#L1963",
+      "https://plugins.trac.wordpress.org/browser/pressprimer-quiz/tags/2.2.2/includes/api/class-ppq-rest-controller.php#L434",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/150ac796-d77b-4915-8bbf-9f9b54be8eaf?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-10623.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-10029",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T06:16:55.747",
+    "title": "CVE-2026-10029 - The Event Koi Lite – Events Calendar, Event Management, RSVP, and Tickets plugin for WordPress is vu",
+    "description": "The Event Koi Lite – Events Calendar, Event Management, RSVP, and Tickets plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 1.3.13.1 via the get_events. This makes it possible for unauthenticated attackers to extract sensitive data including virtual meeting URLs, physical location data, latitude/longitude coordinates, Google Maps links, and RSVP configuration belonging to draft, pending, and private events that are otherwise inaccessible via public URLs.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-10029",
+    "cvss_score": 5.3,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/eventkoi-lite/tags/1.3.0.3/includes/api/class-event.php#L151",
+      "https://plugins.trac.wordpress.org/browser/eventkoi-lite/tags/1.3.0.3/includes/api/class-event.php#L40",
+      "https://plugins.trac.wordpress.org/browser/eventkoi-lite/tags/1.3.0.3/includes/api/class-events.php#L39",
+      "https://plugins.trac.wordpress.org/browser/eventkoi-lite/tags/1.3.0.3/includes/api/class-events.php#L49",
+      "https://plugins.trac.wordpress.org/browser/eventkoi-lite/tags/1.3.0.3/includes/core/class-events.php#L270",
+      "https://plugins.trac.wordpress.org/browser/eventkoi-lite/tags/1.3.12.2/includes/api/class-event.php#L151",
+      "https://plugins.trac.wordpress.org/browser/eventkoi-lite/tags/1.3.12.2/includes/api/class-event.php#L40",
+      "https://plugins.trac.wordpress.org/browser/eventkoi-lite/tags/1.3.12.2/includes/api/class-events.php#L39",
+      "https://plugins.trac.wordpress.org/browser/eventkoi-lite/tags/1.3.12.2/includes/api/class-events.php#L49",
+      "https://plugins.trac.wordpress.org/browser/eventkoi-lite/tags/1.3.12.2/includes/core/class-events.php#L270",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3561415%40eventkoi-lite&new=3561415%40eventkoi-lite&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/b1be4b6c-ce48-49a2-8d2c-89c9611c8750?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-10029.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-12505",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T04:16:44.850",
+    "title": "CVE-2026-12505 - A flaw was found in the cifs-utils package where the cifs.upcall helper fails to securely drop its r",
+    "description": "A flaw was found in the cifs-utils package where the cifs.upcall helper fails to securely drop its root privileges before looking up user information inside a user-controlled environment. A local, low privileged attacker can exploit this by using a crafted request_key payload to trick the root-owned helper into entering a custom environment (namespace) containing a malicious NSS module. This forces the system to load the attacker's controlled NSS Module and configuration, allowing them to execute arbitrary commands as the root user, elevating their privileges and fully compromising the system.",
+    "severity": "high",
+    "cve_id": "CVE-2026-12505",
+    "cvss_score": 7.8,
+    "affected_products": [],
+    "references": [
+      "https://access.redhat.com/security/cve/CVE-2026-12505",
+      "https://bugzilla.redhat.com/show_bug.cgi?id=2489805",
+      "https://git.samba.org/?p=cifs-utils.git;a=commit;h=972c5b5ff95e3e812bc8daa72d0383654ab0dba7"
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12348.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12505.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-12407",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T04:16:34.867",
+    "title": "CVE-2026-12407 - The E2Pdf – Export Pdf Tool for WordPress plugin for WordPress is vulnerable to Missing Authorizatio",
+    "description": "The E2Pdf – Export Pdf Tool for WordPress plugin for WordPress is vulnerable to Missing Authorization in versions up to, and including, 1.32.26. This is due to the screen_action() function lacking a dedicated capability check and nonce verification — when invoked via the ?action=screen routing path the controller's index_action() nonce gate is bypassed entirely — while reading an attacker-controlled option name and value from $_POST['wp_screen_options'] and passing them directly to update_option() with no allowlist, relying solely on the page-level e2pdf_templates capability which the plugin's own Permissions UI allows administrators to grant to any role including Subscriber, Contributor, Author, or Editor. This makes it possible for authenticated attackers, with a custom role that has been granted the e2pdf_templates capability, to overwrite arbitrary WordPress options such as default_role and thereby escalate their privileges to administrator.",
+    "severity": "high",
+    "cve_id": "CVE-2026-12407",
+    "cvss_score": 8.8,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/e2pdf/tags/1.32.11/classes/controller/e2pdf-templates.php#L1233",
+      "https://plugins.trac.wordpress.org/browser/e2pdf/tags/1.32.11/classes/controller/e2pdf-templates.php#L1235",
+      "https://plugins.trac.wordpress.org/browser/e2pdf/tags/1.32.11/classes/controller/e2pdf-templates.php#L23",
+      "https://plugins.trac.wordpress.org/browser/e2pdf/tags/1.32.11/classes/helper/e2pdf-view.php#L90",
+      "https://plugins.trac.wordpress.org/browser/e2pdf/tags/1.32.26/classes/controller/e2pdf-templates.php#L1233",
+      "https://plugins.trac.wordpress.org/browser/e2pdf/tags/1.32.26/classes/controller/e2pdf-templates.php#L1235",
+      "https://plugins.trac.wordpress.org/browser/e2pdf/tags/1.32.26/classes/controller/e2pdf-templates.php#L23",
+      "https://plugins.trac.wordpress.org/browser/e2pdf/tags/1.32.26/classes/helper/e2pdf-view.php#L90",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3574750%40e2pdf&new=3574750%40e2pdf&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/ee4c5d34-74cb-443b-9323-90580dbe675e?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12407.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-10023",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T04:16:33.803",
+    "title": "CVE-2026-10023 - The Dokan: AI Powered WooCommerce Multivendor Marketplace Solution – Build Your Own Amazon, eBay, Et",
+    "description": "The Dokan: AI Powered WooCommerce Multivendor Marketplace Solution – Build Your Own Amazon, eBay, Etsy plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 5.0.3 via the change_order_status, add_order_note, delete_order_note, add_shipping_tracking_info, grant_access_to_download, and revoke_access_to_download AJAX handlers due to missing ownership validation on a user-controlled order ID key. This makes it possible for authenticated attackers, with custom vendor-level access and above, to modify the status of arbitrary orders, add attacker-controlled notes to any order (including customer-facing notes that trigger WooCommerce notification emails to buyers), delete any order note or WordPress comment by ID regardless of ownership, inject fake shipping tracking information on any order, and grant or revoke downloadable-product permissions on any order in the marketplace. Critically, nonce validity is not a barrier to exploitation: each of these AJAX handlers generates and embeds its nonce on the authenticated vendor's own dashboard order pages (e.g., /dashboard/orders/?order_id=OWN_ORDER_ID), which the attacker legitimately controls. The attacker harvests a valid nonce from their own order detail page and replays it against a victim order ID — the nonce only proves the request originates from a logged-in session, not that the order belongs to that vendor. This directly rebuts the prior rejection reasoning that 'users cannot generate valid nonces on command': vendor users can and do generate valid nonces on demand simply by loading their own dashboard pages. Source-code analysis confirmed the vulnerable code path is present and unpatched through version 5.0.1.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-10023",
+    "cvss_score": 4.3,
+    "affected_products": [],
+    "references": [
+      "https://github.com/getdokan/dokan/pull/3246",
+      "https://plugins.trac.wordpress.org/browser/dokan-lite/tags/5.0.1/includes/Ajax.php#L225",
+      "https://plugins.trac.wordpress.org/browser/dokan-lite/tags/5.0.1/includes/Ajax.php#L293",
+      "https://plugins.trac.wordpress.org/browser/dokan-lite/tags/5.0.1/includes/Ajax.php#L378",
+      "https://plugins.trac.wordpress.org/browser/dokan-lite/tags/5.0.1/includes/Ajax.php#L400",
+      "https://plugins.trac.wordpress.org/browser/dokan-lite/tags/5.0.1/includes/Ajax.php#L439",
+      "https://plugins.trac.wordpress.org/browser/dokan-lite/tags/5.0.1/includes/Ajax.php#L511",
+      "https://plugins.trac.wordpress.org/browser/dokan-lite/tags/5.0.1/includes/Install/Installer.php#L209",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3564542%40dokan-lite&new=3564542%40dokan-lite&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/998e545c-2ad5-48ec-bad1-d346170af408?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-10023.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-12569",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T01:18:12.040",
+    "title": "CVE-2026-12569 - A critical remote code execution (RCE) vulnerability has been reported in PTC Windchill PDMlink and ",
+    "description": "A critical remote code execution (RCE) vulnerability has been reported in PTC Windchill PDMlink and PTC FlexPLM. The vulnerability may be exploited through the deserialization of untrusted data.   *  This advisory also applies to all CPS versions\n  *  The identified vulnerability also impacts Windchill and FlexPLM releases prior to 11.0 M030",
+    "severity": "medium",
+    "cve_id": "CVE-2026-12569",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://www.ptc.com/en/support/article/CS473270"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-12569.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-48768",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T00:16:23.887",
+    "title": "CVE-2026-48768 - TypeBot is a chatbot builder tool. In versions 3.16.1 and earlier, POST /api/blocks/file-input/v3/ge",
+    "description": "TypeBot is a chatbot builder tool. In versions 3.16.1 and earlier, POST /api/blocks/file-input/v3/generate-upload-url is unauthenticated and uses unsanitized fileName input to construct public/ S3 object keys, while issuing presigned PUT URLs that do not bind Content-Type. As a result, any anonymous visitor to a published bot with a file input can upload attacker-controlled HTML, SVG, or JS to attacker-chosen subpaths, including other tenants’ publicly served result paths, enabling arbitrary content hosting and potential stored XSS on the storage origin. ../ traversal is blocked by S3/MinIO canonicalization (signature mismatch), but forward-slash path injection is exploitable. This issue has been fixed in version 3.17.0.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-48768",
+    "cvss_score": 9.3,
+    "affected_products": [],
+    "references": [
+      "https://github.com/baptisteArno/typebot.io/releases/tag/v3.17.0",
+      "https://github.com/baptisteArno/typebot.io/security/advisories/GHSA-fp7x-6pqh-vhvf",
+      "https://github.com/baptisteArno/typebot.io/security/advisories/GHSA-fp7x-6pqh-vhvf"
+    ],
+    "ai_analysis": {
+      "risk_score": 100,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-48768.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 100
+  },
+  {
+    "id": "cve-CVE-2026-48764",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-18T00:16:23.363",
+    "title": "CVE-2026-48764 - TypeBot is a chatbot builder tool. In versions prior to 3.17.2, SSRF validation is implemented by re",
+    "description": "TypeBot is a chatbot builder tool. In versions prior to 3.17.2, SSRF validation is implemented by resolving a hostname once and checking whether the resolved IP belongs to a forbidden range allowing for DNS rebinding bypass. The root cause is a time-of-check to time-of-use gap in the SSRF guard. The validator resolves the hostname and approves it, but the later request path performs a fresh resolution and connects to whatever IP the hostname maps to at that moment. The actual outbound request is then performed later using the original hostname, without pinning the validated IP to the network connection. An attacker who can supply a URL to a public bot that performs a server-side HTTP Request block or server-side script fetch can use DNS rebinding to pass the initial validation and still force the server to connect to a private or metadata address during the real request. This enables server-side access to private network services, cloud metadata endpoints, and other internal HTTP targets that the validator was intended to block. The exact downstream impact depends on the reachable internal services. Concrete consequences include metadata disclosure, access to internal admin panels, credential theft from metadata services, and further compromise through internal-only HTTP interfaces. This issue has been fixed in version 3.17.2.",
+    "severity": "high",
+    "cve_id": "CVE-2026-48764",
+    "cvss_score": 8.2,
+    "affected_products": [],
+    "references": [
+      "https://github.com/baptisteArno/typebot.io/commit/f56c3c3f771df13a8c11e88f500dfdd78981bed1",
+      "https://github.com/baptisteArno/typebot.io/releases/tag/v3.17.2",
+      "https://github.com/baptisteArno/typebot.io/security/advisories/GHSA-hgqq-whf5-mrrf",
+      "https://github.com/baptisteArno/typebot.io/security/advisories/GHSA-hgqq-whf5-mrrf"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48764.",
       "affected_industries": [
         "Technology",
         "General"
