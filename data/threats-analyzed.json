@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1782398813730-1",
+    "id": "twitter-1782418342480-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-25T14:46:53.730Z",
+    "timestamp": "2026-06-25T20:12:22.480Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1782398813730-1",
+    "id": "hn-1782418342480-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-25T14:46:53.730Z",
+    "timestamp": "2026-06-25T20:12:22.480Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,52 +52,325 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-27xg-fw4v-jgv6",
+    "id": "gh-GHSA-cj9g-3mj2-g8vv",
     "source": "GitHub Security",
-    "timestamp": "2026-06-25T12:32:10Z",
-    "title": "An attacker can send a web request that causes unlimited memory \nallocation in the internal web...",
-    "description": "An attacker can send a web request that causes unlimited memory \nallocation in the internal web server, leading to a denial of service. \nThe internal web server is disabled by default.",
+    "timestamp": "2026-06-25T19:51:36Z",
+    "title": "MessagePack-CSharp: JSON conversion APIs can recurse without consistent depth enforcement",
+    "description": "## Summary\n\nMessagePack-CSharp's JSON conversion helpers contain multiple recursion paths that do not consistently enforce a depth limit. These paths are in the JSON conversion component rather than normal typed MessagePack deserialization.\n\nThree related issues are covered by this advisory:\n\n1. `MessagePackSerializer.ConvertFromJson` recursively processes nested JSON arrays and objects in `FromJsonCore()` without consulting `MessagePackSecurity.MaximumObjectGraphDepth`.\n2. `TinyJsonReader.ReadN",
     "severity": "medium",
-    "cve_id": "CVE-2026-42005",
-    "ghsa_id": "GHSA-27xg-fw4v-jgv6",
-    "affected_packages": [],
-    "cwes": [],
+    "cve_id": "CVE-2026-48512",
+    "ghsa_id": "GHSA-cj9g-3mj2-g8vv",
+    "affected_packages": [
+      "MessagePack",
+      "MessagePack"
+    ],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 55,
-      "impact_assessment": "The vulnerability allows an attacker to exploit the internal web server by sending a crafted request that causes unlimited memory allocation, potentially leading to a denial of service (DoS). While the internal web server is disabled by default, systems where it is enabled are at risk of service disruption.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in MessagePack-CSharp's JSON conversion APIs could allow attackers to exploit uncontrolled recursion, potentially leading to stack overflow or denial of service (DoS) attacks. This could disrupt applications relying on MessagePack for JSON processing, particularly those handling untrusted or user-supplied JSON data.",
+      "affected_industries": [
+        "Software Development",
+        "Web Applications",
+        "Cloud Services",
+        "IoT (Internet of Things)"
+      ],
+      "recommended_actions": [
+        "Update to the latest patched version of MessagePack-CSharp that addresses CVE-2026-48512 and enforces consistent depth limits in JSON conversion.",
+        "Implement input validation and sanitization to restrict excessively nested JSON data before processing.",
+        "Enable or configure application-level safeguards, such as request size limits and timeout mechanisms, to mitigate potential DoS attacks."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-2x83-8g95-xh59",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T19:36:23Z",
+    "title": "MessagePack-CSharp: ExpandoObject formatter can perform quadratic insertion work on untrusted maps",
+    "description": "## Summary\n\n`ExpandoObjectFormatter.Deserialize` populates `System.Dynamic.ExpandoObject` by calling `IDictionary<string, object>.Add` for each map entry. `ExpandoObject` internally maintains member names in array-like structures, so inserting many distinct keys can require repeated linear scans and array copies.\n\nFor large attacker-controlled maps, this produces quadratic CPU and allocation behavior. The issue is especially surprising because `ExpandoObjectResolver.Options` is configured with `",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48511",
+    "ghsa_id": "GHSA-2x83-8g95-xh59",
+    "affected_packages": [
+      "MessagePack",
+      "MessagePack"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48511.",
       "affected_industries": [
         "Technology",
-        "E-commerce",
-        "Healthcare",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-v72x-2h86-7f8m",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T18:53:44Z",
+    "title": "MessagePack-CSharp: LZ4 decompression allocates from unbounded declared output lengths",
+    "description": "## Summary\n\nWhen MessagePack-CSharp decompresses `Lz4Block` or `Lz4BlockArray` payloads, it reads declared uncompressed lengths from the wire and allocates output buffers based on those lengths before validating that the compressed data is valid or that the declared expansion is reasonable.\n\nA small payload can claim a very large uncompressed length and force a large allocation before LZ4 decoding begins.\n\n## Impact\n\nApplications are affected when they deserialize attacker-controlled MessagePack",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48510",
+    "ghsa_id": "GHSA-v72x-2h86-7f8m",
+    "affected_packages": [
+      "MessagePack",
+      "MessagePack"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to exploit the LZ4 decompression process by declaring unreasonably large uncompressed lengths, potentially leading to Denial of Service (DoS) attacks due to excessive memory allocation. This could crash applications or degrade their performance significantly.",
+      "affected_industries": [
+        "Technology",
         "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Gaming",
+        "IoT"
+      ],
+      "recommended_actions": [
+        "Update to the latest patched version of MessagePack-CSharp that addresses CVE-2026-48510 to ensure proper validation of declared uncompressed lengths.",
+        "Implement input validation and size limits on untrusted data before deserializing MessagePack payloads to mitigate potential exploitation.",
+        "Monitor application memory usage and set resource limits to prevent excessive memory allocation that could lead to service disruption."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-2f33-pr97-265q",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T18:52:46Z",
+    "title": "MessagePack-CSharp: ASP.NET Core MessagePackInputFormatter defaults to TrustedData for HTTP request bodies",
+    "description": "## Summary\n\nThe parameterless `MessagePackInputFormatter()` constructor uses default serializer options, which resolve to `MessagePackSerializerOptions.Standard` with `MessagePackSecurity.TrustedData`. The formatter is designed for ASP.NET Core MVC request bodies, which commonly cross an HTTP trust boundary.\n\nThis insecure default can expose applications to denial-of-service attacks that `MessagePackSecurity.UntrustedData` is intended to mitigate, such as hash-collision attacks against dictionar",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48509",
+    "ghsa_id": "GHSA-2f33-pr97-265q",
+    "affected_packages": [
+      "MessagePack",
+      "MessagePack"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The use of insecure default serializer options in MessagePack-CSharp's ASP.NET Core MessagePackInputFormatter can allow attackers to exploit hash-collision vulnerabilities, potentially leading to denial-of-service (DoS) attacks. Applications processing untrusted HTTP request bodies are particularly at risk.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
         "Government"
       ],
       "recommended_actions": [
-        "Verify if the internal web server is enabled and disable it if not required.",
-        "Apply the latest security patches or updates provided by the vendor to address CVE-2026-42005.",
-        "Implement rate-limiting and memory usage monitoring for web server requests to mitigate potential exploitation."
+        "Update to a patched version of MessagePack-CSharp that defaults to MessagePackSecurity.UntrustedData for HTTP request bodies.",
+        "Manually configure the MessagePackInputFormatter to use MessagePackSecurity.UntrustedData if an update is not immediately available.",
+        "Conduct a security review of applications using MessagePack-CSharp to identify potential vulnerabilities and implement mitigations."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-qcqw-jwxc-2hqg",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T18:48:39Z",
+    "title": "Lemur has an authorization bypass in StrictRolePermission / AuthorityCreatorPermission",
+    "description": "## Summary\n\n`StrictRolePermission` and `AuthorityCreatorPermission` in `lemur/auth/permissions.py` call `flask_principal.Permission.__init__()` with zero `Need`s when their config flags are unset. Both flags defaulted to `False` in code prior to the fix, so this was the state of any Lemur install that hadn't explicitly opted in.\n\nFlask-Principal's `Permission.allows()` returns `True` whenever `self.needs` is empty. The `.can()` gate therefore passes for every authenticated identity, including th",
+    "severity": "high",
+    "cve_id": "CVE-2026-48508",
+    "ghsa_id": "GHSA-qcqw-jwxc-2hqg",
+    "affected_packages": [
+      "lemur"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48508.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-vh6j-jc39-fggf",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T18:46:24Z",
+    "title": "MessagePack-CSharp: MessagePackReader.Skip can recurse without enforcing maximum object graph depth",
+    "description": "## Summary\n\n`MessagePackReader.TrySkip()` recursively descends into nested arrays and maps without incrementing the reader depth or calling the configured depth checks. This bypasses `MessagePackSecurity.MaximumObjectGraphDepth`, the library's documented protection against deeply nested object graphs.\n\nMany generated and dynamic formatters call `reader.Skip()` when they encounter unknown map keys, unknown array members, ignored fields, or data that should be skipped for forward compatibility. A ",
+    "severity": "high",
+    "cve_id": "CVE-2026-48506",
+    "ghsa_id": "GHSA-vh6j-jc39-fggf",
+    "affected_packages": [
+      "MessagePack",
+      "MessagePack"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48506.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-mc5j-f6wx-h9qh",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T18:45:45Z",
+    "title": "Filament: Multi-factor authentication (app) recovery codes can still be used multiple times via concurrent submission",
+    "description": "A flaw in the handling of recovery codes for **app-based multi-factor authentication** allows the same recovery code to be reused via concurrent submission. This issue does **not** affect email-based MFA. It also only applies when recovery codes are enabled.\n\nIf an attacker gains access to both the user's password and their recovery codes, they get two authenticated sessions per recovery code burned instead of one, or more if they batch the parallel submissions wider, materially extending the at",
+    "severity": "high",
+    "cve_id": "CVE-2026-48505",
+    "ghsa_id": "GHSA-mc5j-f6wx-h9qh",
+    "affected_packages": [
+      "filament/filament",
+      "filament/filament"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48505.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-w9wp-h8wv-79jx",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T18:40:04Z",
+    "title": "opentelemetry_sdk has unbounded memory allocation in W3C Baggage propagation",
+    "description": "## Summary\n\n`BaggagePropagator::extract_with_context` in `opentelemetry_sdk` did not enforce the W3C Baggage size limits before parsing an inbound `baggage` header. A large attacker-controlled header could cause unnecessary CPU work and short-lived heap allocations while parsing entries that would later be discarded by the SDK's baggage storage limits.\n\nThe SDK now applies limits aligned with the W3C Baggage limits:\n\n  - 64 list-members\n  - 8192 bytes total\n\n## Impact\n\nServices that accept untru",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48504",
+    "ghsa_id": "GHSA-w9wp-h8wv-79jx",
+    "affected_packages": [
+      "opentelemetry_sdk"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 55,
+      "impact_assessment": "The vulnerability allows attackers to exploit unbounded memory allocation in the opentelemetry_sdk by sending large, attacker-controlled baggage headers. This could lead to increased CPU usage, memory exhaustion, and potential denial of service (DoS) for affected systems.",
+      "affected_industries": [
+        "Cloud Services",
+        "E-commerce",
+        "Financial Services",
+        "Healthcare",
+        "Telecommunications",
+        "Technology"
+      ],
+      "recommended_actions": [
+        "Update to the latest version of opentelemetry_sdk that enforces the W3C Baggage limits (64 list-members and 8192 bytes total).",
+        "Implement input validation and size checks for incoming baggage headers at the application layer to mitigate potential abuse.",
+        "Monitor systems for unusual memory or CPU usage patterns that could indicate exploitation attempts."
       ],
       "urgency": "medium"
     },
     "risk_score": 55
   },
   {
-    "id": "gh-GHSA-2pv9-hj5w-6p36",
+    "id": "gh-GHSA-382j-8mxh-c7x2",
     "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: mcast: Fix use-after...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: mcast: Fix use-after-free when processing MLD queries\n\nWhen processing an MLD query, a pointer to the multicast group address\nis retrieved when initially parsing the packet. This pointer is later\ndereferenced without being reloaded despite the fact that the skb header\nmight have been reallocated following the pskb_may_pull() calls, leading\nto a use-after-free [1].\n\nFix by copying the multicast group address when the packe",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53275",
-    "ghsa_id": "GHSA-2pv9-hj5w-6p36",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
+    "timestamp": "2026-06-25T18:35:48Z",
+    "title": "MessagePack-CSharp: Denial of service vulnerabilities can swamp the CPU or crash the process with stack and heap overflows",
+    "description": "## Summary\n\n`MessagePackReader.ReadDateTime()` can allocate stack memory based on an attacker-controlled MessagePack extension length. In the slow path for timestamp extension parsing, the computed `tokenSize` includes the extension body length from the wire and is used in a `stackalloc` operation before the extension length is validated as one of the valid timestamp sizes.\n\nA very small payload can claim a large timestamp extension body and cause a stack allocation large enough to trigger an un",
+    "severity": "high",
+    "cve_id": "CVE-2026-48502",
+    "ghsa_id": "GHSA-382j-8mxh-c7x2",
+    "affected_packages": [
+      "MessagePack"
+    ],
+    "cwes": [
       null,
       null,
       null,
@@ -108,159 +381,47 @@
       null,
       null
     ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53275.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-q972-3fgv-wchc",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ntee: optee: prevent use...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntee: optee: prevent use-after-free when the client exits before the supplicant\n\nCommit 70b0d6b0a199 (\"tee: optee: Fix supplicant wait loop\") made the\nclient wait as killable so it can be interrupted during shutdown or\nafter a supplicant crash. This changes the original lifetime expectations:\nthe client task can now terminate while the supplicant is still processing\nits request.\n\nIf the client exits first it removes the request ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53273",
-    "ghsa_id": "GHSA-q972-3fgv-wchc",
-    "affected_packages": [],
-    "cwes": [],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "This vulnerability in the Linux kernel's OP-TEE subsystem could lead to use-after-free conditions, potentially allowing attackers to exploit memory corruption, cause system crashes, or execute arbitrary code. The impact is significant for systems relying on secure execution environments.",
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in MessagePack-CSharp allows attackers to exploit the `ReadDateTime()` method to cause denial of service (DoS) by overwhelming the CPU or crashing the process through stack and heap overflows. This can disrupt services and lead to potential downtime or degraded performance in applications relying on MessagePack for serialization.",
       "affected_industries": [
-        "Technology",
-        "Telecommunications",
-        "IoT",
+        "Software Development",
+        "Cloud Services",
+        "Financial Services",
+        "E-commerce",
         "Healthcare",
-        "Automotive"
+        "IoT"
       ],
       "recommended_actions": [
-        "Update to the latest version of the Linux kernel that includes the patch for CVE-2026-53273.",
-        "Conduct a thorough review of systems using OP-TEE to identify potential exposure and apply mitigations where necessary.",
-        "Monitor system logs and network activity for signs of exploitation or abnormal behavior."
+        "Immediately update to the latest patched version of MessagePack-CSharp that addresses CVE-2026-48502.",
+        "Implement input validation and size limits for MessagePack payloads to mitigate potential exploitation.",
+        "Conduct a thorough review of all applications using MessagePack-CSharp to identify and mitigate potential exposure."
       ],
       "urgency": "high"
     },
-    "risk_score": 72
+    "risk_score": 85
   },
   {
-    "id": "gh-GHSA-3j2m-3xq8-9948",
+    "id": "gh-GHSA-g697-2xrc-gc46",
     "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: conntrack_irc:...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: conntrack_irc: fix possible out-of-bounds read\n\nWhen parsing fails after we've matched the command string we\nshould bail out instead of trying to match a different command.\n\nThis helper should be deprecated, given prevalence of TLS I doubt it has\nany relevance in 2026.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53268",
-    "ghsa_id": "GHSA-3j2m-3xq8-9948",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
+    "timestamp": "2026-06-25T18:34:18Z",
+    "title": "amazon-braket-sdk vulnerable to Insecure Deserialization via pickle.loads()",
+    "description": "**Summary**\nAmazon Braket SDK is an open-source Python library for interacting with the Amazon Braket quantum computing service, including managing hybrid quantum jobs and retrieving job results. An issue exists where, under certain circumstances, a remote authenticated user with S3 write access to a Braket job output bucket can achieve arbitrary code execution by exploiting insecure deserialization in the job results processing component.\n\n**Impact**\nThe SDK's deserialize_values() function read",
+    "severity": "high",
+    "cve_id": "CVE-2026-9291",
+    "ghsa_id": "GHSA-g697-2xrc-gc46",
+    "affected_packages": [
+      "amazon-braket-sdk"
+    ],
+    "cwes": [
       null
     ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53268.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-257g-7vrp-j9f8",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm cache policy smq: check...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndm cache policy smq: check allocation under invalidate lock\n\ncommit 2d1f7b65f5de (\"dm cache policy smq: fix missing locks in\ninvalidating cache blocks\") added mq->lock around the destructive part of\nsmq_invalidate_mapping(), but left the e->allocated check outside the\ncritical section.\n\nThat leaves a check-then-act race. Two concurrent invalidators can both\nobserve e->allocated as true before either of them takes mq->lock. The\n",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53265",
-    "ghsa_id": "GHSA-257g-7vrp-j9f8",
-    "affected_packages": [],
-    "cwes": [],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53265.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-r42m-j2mw-2qf9",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nipvs: clear the svc...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipvs: clear the svc scheduler ptr early on edit\n\nip_vs_edit_service() while unbinding the old scheduler clears\nthe svc->scheduler ptr after the scheduler module initiates\nRCU callbacks. This can cause packets to use the old\nscheduler at the time when svc->sched_data is already freed\nafter RCU grace period.\n\nFix it by clearing the ptr early in ip_vs_unbind_scheduler(),\nbefore the done_service method schedules any RCU callbacks.\n",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53270",
-    "ghsa_id": "GHSA-r42m-j2mw-2qf9",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -269,79 +430,37 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "This vulnerability in the Linux kernel's IPVS service scheduler could allow packets to use an outdated scheduler, potentially leading to data corruption, service instability, or unintended routing behavior. It poses a significant risk to systems relying on IPVS for load balancing and packet scheduling.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9291.",
       "affected_industries": [
-        "Cloud Computing",
-        "Telecommunications",
-        "Web Hosting",
-        "Enterprise IT",
-        "E-commerce"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update the Linux kernel to the latest version that includes the patch for CVE-2026-53270.",
-        "Conduct a thorough review of systems utilizing IPVS to ensure proper functionality after applying the patch.",
-        "Monitor network traffic and logs for any anomalies that may indicate exploitation attempts or residual issues."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "high"
     },
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-q96w-jfjr-xww5",
+    "id": "gh-GHSA-w39p-vh2g-g8g5",
     "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ndevlink: Release nested...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndevlink: Release nested relation on devlink free\n\ndevlink relation state is normally released from devl_unregister(), which\ncalls devlink_rel_put(). This misses devlink instances that get a nested\nrelation before registration and then fail probe before devl_register() is\nreached.\n\nThat flow can happen for SFs. The child devlink gets linked to its\nparent before registration, then a later probe error calls devlink_free()\ndirectly",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53261",
-    "ghsa_id": "GHSA-q96w-jfjr-xww5",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
+    "timestamp": "2026-06-25T18:32:35Z",
+    "title": "LangGraph SDK has unsafe URL path construction",
+    "description": "## Summary\n\n`langgraph-sdk` constructs HTTP request paths for resource operations by interpolating caller-supplied identifier values into URL templates. Without sanitization of those values, identifiers that contain characters with special meaning in URL paths could cause the resulting request to address a different resource (and potentially a different resource type) than the SDK method's call site indicates. In deployments where the SDK receives identifier values that originate from untrusted ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48776",
+    "ghsa_id": "GHSA-w39p-vh2g-g8g5",
+    "affected_packages": [
+      "langgraph-sdk"
+    ],
+    "cwes": [
       null,
       null
     ],
-    "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "This vulnerability in the Linux kernel could lead to improper handling of devlink relations during device registration and failure scenarios, potentially causing system instability or denial-of-service conditions. It may also expose systems to security risks if exploited by attackers.",
-      "affected_industries": [
-        "Cloud Computing",
-        "Telecommunications",
-        "IoT (Internet of Things)",
-        "Data Centers",
-        "Embedded Systems"
-      ],
-      "recommended_actions": [
-        "Update Linux kernel to the latest version that includes the patch for CVE-2026-53261.",
-        "Conduct a thorough review of systems using devlink to ensure proper configuration and mitigate potential risks.",
-        "Monitor vendor security advisories and apply updates promptly to prevent exploitation."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-vq3g-6qwh-5wj2",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: act_api: use RCU...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/sched: act_api: use RCU with deferred freeing for action lifecycle\n\nWhen NEWTFILTER and DELFILTER are run concurrently it is possible to create a\nrace with an associated action.\n\nLet's illustrate with CPU0 running NEWTFILTER and CPU1 running DELFILTER:\n\n 0: mutex_lock() <-- holds the idr lock\n 0: rcu_read_lock()\n 0: p = idr_find(idr, index) <-- action p is valid (RCU protects IDR)\n 0: mutex_unlock() <-- releases the idr loc",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53264",
-    "ghsa_id": "GHSA-vq3g-6qwh-5wj2",
-    "affected_packages": [],
-    "cwes": [],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -349,7 +468,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53264.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48776.",
       "affected_industries": [
         "Technology",
         "General"
@@ -364,14 +483,164 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-m8g6-vrr2-x7ff",
+    "id": "gh-GHSA-cj56-5c53-9qjf",
     "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "\"Remember me\" cookie age is not verified on the server. This potentially allows an attacker to...",
-    "description": "\"Remember me\" cookie age is not verified on the server. This potentially allows an attacker to intercept a valid cookie and reuse it indefinitely, even after the configured expiration time has passed.\nThis issue affects all Apache Shiro versions from 1.2.4 through 2.x, and 3.0.0-alpha-1, only when RememberMe functionality is enabled.\n\n\nUpgrade to version 3.0.0 or later, which fixes the issue.",
+    "timestamp": "2026-06-25T18:30:41Z",
+    "title": "wolfSSL_PKCS7_verify() returning success for a degenerate (certs-only) PKCS#7 object that...",
+    "description": "wolfSSL_PKCS7_verify() returning success for a degenerate (certs-only) PKCS#7 object that contains no signer. Such an object has empty signerInfos, so the underlying signed-data verification succeeds without authenticating any content. The compatibility-layer verify path now rejects the object when no signer signature has actually been verified, so a PKCS#7 carrying no valid signature is no longer reported as verified. This is enforced regardless of the PKCS7_NOVERIFY flag, which only suppresses",
+    "severity": "high",
+    "cve_id": "CVE-2026-55961",
+    "ghsa_id": "GHSA-cj56-5c53-9qjf",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55961.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-hvwm-w7rw-23cv",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T18:30:41Z",
+    "title": "Bleichenbacher padding oracle in PKCS#7 KTRI decryption. When decrypting PKCS#7 EnvelopedData...",
+    "description": "Bleichenbacher padding oracle in PKCS#7 KTRI decryption. When decrypting PKCS#7 EnvelopedData using RSA PKCS#1 v1.5 key transport, wolfSSL returned distinguishable error codes depending on whether RSA padding validation failed versus whether the decrypted content was malformed. An attacker able to submit crafted EnvelopedData messages and observe error responses could use this as a padding oracle to incrementally recover the encrypted Content Encryption Key (CEK). The fix generates a determinist",
+    "severity": "medium",
+    "cve_id": "CVE-2026-6291",
+    "ghsa_id": "GHSA-hvwm-w7rw-23cv",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to exploit a padding oracle in PKCS#7 KTRI decryption, enabling them to recover the encrypted Content Encryption Key (CEK). This could lead to unauthorized decryption of sensitive data, compromising confidentiality.",
+      "affected_industries": [
+        "Financial Services",
+        "Healthcare",
+        "E-commerce",
+        "Government",
+        "Technology"
+      ],
+      "recommended_actions": [
+        "Update to the latest version of wolfSSL where the vulnerability is patched to ensure secure handling of PKCS#7 EnvelopedData decryption.",
+        "Implement network-level monitoring to detect and block suspicious crafted EnvelopedData messages targeting this vulnerability.",
+        "Conduct a security review of systems using RSA PKCS#1 v1.5 key transport to identify and mitigate potential exposure."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-h6gc-rmv2-74g6",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T18:30:41Z",
+    "title": "Heap buffer overread in wc_PKCS7_DecodeEnvelopedData when parsing crafted PKCS7 EnvelopedData....",
+    "description": "Heap buffer overread in wc_PKCS7_DecodeEnvelopedData when parsing crafted PKCS7 EnvelopedData. This could theoretically be triggered by attacker-supplied data delivered via S/MIME or CMS.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-6094",
+    "ghsa_id": "GHSA-h6gc-rmv2-74g6",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to exploit a heap buffer overread in the wc_PKCS7_DecodeEnvelopedData function, potentially leading to information disclosure or application crashes. This could be triggered via malicious S/MIME or CMS data.",
+      "affected_industries": [
+        "Finance",
+        "Healthcare",
+        "Government",
+        "Technology",
+        "E-commerce"
+      ],
+      "recommended_actions": [
+        "Update to the latest version of the affected library or software that addresses CVE-2026-6094.",
+        "Implement strict input validation and sanitization for PKCS7 EnvelopedData to mitigate exploitation risks.",
+        "Monitor and analyze network traffic for signs of malicious S/MIME or CMS payloads."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-mhq8-94h7-mrgx",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T18:30:41Z",
+    "title": "Partial-chain certificate verification may accept chains that terminate at a peer-supplied,...",
+    "description": "Partial-chain certificate verification may accept chains that terminate at a peer-supplied, untrusted intermediate certificate rather than a trusted anchor. An attacker could present a chain that ends at an intermediate they control and have it accepted as valid. This affects the OpenSSL compatibility certificate-path-building path (wolfSSL_X509_verify_cert / X509_STORE, OPENSSL_EXTRA) when the X509_V_FLAG_PARTIAL_CHAIN verify flag is enabled.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-6091",
+    "ghsa_id": "GHSA-mhq8-94h7-mrgx",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows an attacker to exploit partial-chain certificate verification, potentially enabling them to present a malicious certificate chain that is incorrectly validated as trusted. This could lead to man-in-the-middle attacks, data interception, or unauthorized access to sensitive systems.",
+      "affected_industries": [
+        "Financial Services",
+        "Healthcare",
+        "E-commerce",
+        "Telecommunications",
+        "Cloud Service Providers",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately disable the X509_V_FLAG_PARTIAL_CHAIN verify flag in configurations unless explicitly required and fully understood.",
+        "Update to the latest version of wolfSSL or OpenSSL that includes a patch for CVE-2026-6091, if available.",
+        "Conduct a thorough review of certificate validation processes and ensure only trusted certificate chains are accepted."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-q4q5-jx42-4xp9",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T18:30:41Z",
+    "title": "AES-GCM encryption/decryption with extremely large cumulative single message sizes (>64 GiB) were...",
+    "description": "AES-GCM encryption/decryption with extremely large cumulative single message sizes (>64 GiB) were not properly rejected by the streaming APIs, allowing counter wrap, keystream reuse, and consequent plaintext recovery.",
     "severity": "low",
-    "cve_id": "CVE-2026-56130",
-    "ghsa_id": "GHSA-m8g6-vrr2-x7ff",
+    "cve_id": "CVE-2026-55967",
+    "ghsa_id": "GHSA-q4q5-jx42-4xp9",
     "affected_packages": [],
     "cwes": [
       null
@@ -384,7 +653,7 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-56130.",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-55967.",
       "affected_industries": [
         "Technology",
         "General"
@@ -399,243 +668,14 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-7m9q-85qj-rc4g",
+    "id": "gh-GHSA-wrw6-8jh4-qvcx",
     "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: synproxy: add...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: synproxy: add mutex to guard hook reference counting\n\nAs the synproxy infrastructure register netfilter hooks on-demand when a\nuser adds the first iptables target or nftables expression, if done\nconcurrently they can race each other.\n\nIntroduce a mutex to serialize the refcount control blocks access from\nboth frontends. While a per namespace mutex might be more efficient, it\nis not needed for target/expression like S",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53269",
-    "ghsa_id": "GHSA-7m9q-85qj-rc4g",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53269.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-xmhg-rr34-2chj",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: bridge: make...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: bridge: make ebt_snat ARP rewrite writable\n\nThe ebtables SNAT target keeps the Ethernet source address rewrite\nbehind skb_ensure_writable(skb, 0).  This is intentional: at the bridge\nebtables hooks the Ethernet header is addressed through\nskb_mac_header()/eth_hdr(), while skb->data points at the Ethernet\npayload.  Asking skb_ensure_writable() for ETH_HLEN bytes would check\nthe payload, not the Ethernet header, and wo",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53266",
-    "ghsa_id": "GHSA-xmhg-rr34-2chj",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "This vulnerability in the Linux kernel's netfilter bridge functionality could allow unauthorized modification of ARP packets, potentially leading to network disruptions, ARP spoofing, or man-in-the-middle attacks. The issue affects systems using ebtables SNAT target functionality in their network configurations.",
-      "affected_industries": [
-        "Cloud Service Providers",
-        "Telecommunications",
-        "Enterprise IT",
-        "Internet of Things (IoT)",
-        "Data Centers"
-      ],
-      "recommended_actions": [
-        "Immediately update the Linux kernel to the latest patched version that addresses CVE-2026-53266.",
-        "Review and audit network configurations, especially those using ebtables SNAT functionality, to ensure no unauthorized changes have occurred.",
-        "Monitor network traffic for unusual ARP activity or signs of ARP spoofing, and implement additional network segmentation or ARP security measures if necessary."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-hxmm-jmj9-253j",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix NULL-deref of...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix NULL-deref of opinfo->conn in oplock/lease break notifiers\n\nsmb2_oplock_break_noti() and smb2_lease_break_noti() read opinfo->conn\ninto a local with neither READ_ONCE() nor a NULL check.  Both run from\noplock_break() after opinfo_get_list() has dropped ci->m_lock, so a\nconcurrent SMB2 LOGOFF (session_fd_check()) can set op->conn = NULL\nunder ci->m_lock within that window.  ksmbd_conn_r_count_inc(conn) then\nwrites thr",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53271",
-    "ghsa_id": "GHSA-hxmm-jmj9-253j",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53271.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-fq9x-8g2w-4p5r",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\n6lowpan: fix off-by-one in...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\n6lowpan: fix off-by-one in multicast context address compression\n\nThe second memcpy in lowpan_iphc_mcast_ctx_addr_compress() uses\n&data[1] as destination and &ipaddr->s6_addr[11] as source, but\nboth should be offset by one: &data[2] and &ipaddr->s6_addr[12]\nrespectively.\n\nThis off-by-one has two consequences:\n1. data[1] is overwritten with s6_addr[11], corrupting the RIID\n   field in the compressed multicast address\n2. data[5] ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53263",
-    "ghsa_id": "GHSA-fq9x-8g2w-4p5r",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 45,
-      "impact_assessment": "The vulnerability is an off-by-one error in the Linux kernel's 6LoWPAN implementation, which could lead to data corruption in compressed multicast addresses. While this issue may not directly lead to remote code execution or privilege escalation, it could disrupt IoT and embedded device communication relying on 6LoWPAN, potentially causing service interruptions or degraded performance.",
-      "affected_industries": [
-        "Internet of Things (IoT)",
-        "Telecommunications",
-        "Embedded Systems",
-        "Smart Home Devices",
-        "Industrial Automation"
-      ],
-      "recommended_actions": [
-        "Ensure that all Linux-based systems, especially those using 6LoWPAN, are updated to the latest kernel version that includes the patch for CVE-2026-53263.",
-        "Conduct a review of devices and systems utilizing 6LoWPAN to identify potential exposure to this vulnerability.",
-        "Implement network monitoring to detect unusual behavior or communication issues in IoT and embedded devices."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 45
-  },
-  {
-    "id": "gh-GHSA-22m3-g27g-5h2v",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: fix sleep-inside...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet/smc: fix sleep-inside-lock in __smc_setsockopt() causing local DoS\n\nA logic flaw in __smc_setsockopt() allows a local unprivileged user to\ncause a Denial of Service (DoS) by holding the socket lock indefinitely.\n\nThe function __smc_setsockopt() calls copy_from_sockptr() while holding\nlock_sock(sk). By passing a userfaultfd-monitored memory page (or\nFUSE-backed memory on systems where unprivileged userfaultfd is disabled)\nas",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53274",
-    "ghsa_id": "GHSA-22m3-g27g-5h2v",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53274.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-8x67-x273-g37h",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "A vulnerability in Apache Kvrocks.\n\nThis issue affects Apache Kvrocks: from 2.6.0 through 2.15.0....",
-    "description": "A vulnerability in Apache Kvrocks.\n\nThis issue affects Apache Kvrocks: from 2.6.0 through 2.15.0.\n\nUsers are recommended to upgrade to version 2.16.0, which fixes the issue.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54226",
-    "ghsa_id": "GHSA-8x67-x273-g37h",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54226.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-qj64-jj84-w38j",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "When using Apache Shiro with the shiro-guice module in a web servlet context, a specially crafted...",
-    "description": "When using Apache Shiro with the shiro-guice module in a web servlet context, a specially crafted HTTP request may cause an authentication bypass.\nThis vulnerability is similar to  https://www.cve.org/CVERecord?id=CVE-2020-1957 https://www.cve.org/CVERecord , except that it affects the `shiro-guice` module instead of the `shiro-spring` module.\n\nThis issue affects all Apache Shiro versions through 2.x, and 3.0.0-alpha-1 only when using `shiro-guice` module in a web servlet context.\n\nUpgrade to ve",
+    "timestamp": "2026-06-25T18:30:41Z",
+    "title": "X.509 trust-chain bypass (path-depth exhaustion) in the OpenSSL compatibility certificate...",
+    "description": "X.509 trust-chain bypass (path-depth exhaustion) in the OpenSSL compatibility certificate verifier (wolfSSL_X509_verify_cert()). This affects only builds with --enable-opensslextra whose application calls X509_verify_cert() with caller-supplied untrusted intermediates; for those users it is critical, otherwise the library is unaffected. Native wolfSSL TLS/DTLS usage is not impacted. X509_verify_cert() returned success based only on the last verified link rather than on reaching a trust anchor: w",
     "severity": "high",
-    "cve_id": "CVE-2026-56091",
-    "ghsa_id": "GHSA-qj64-jj84-w38j",
+    "cve_id": "CVE-2026-11999",
+    "ghsa_id": "GHSA-wrw6-8jh4-qvcx",
     "affected_packages": [],
     "cwes": [
       null
@@ -643,40 +683,39 @@
     "references": [
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This vulnerability allows an attacker to bypass authentication mechanisms in web applications using Apache Shiro with the shiro-guice module in a servlet context. Exploitation could lead to unauthorized access to sensitive data and systems.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-11999.",
       "affected_industries": [
         "Technology",
-        "E-commerce",
-        "Financial Services",
-        "Healthcare",
-        "Government"
+        "General"
       ],
       "recommended_actions": [
-        "Upgrade to the latest version of Apache Shiro that addresses this vulnerability, ensuring the shiro-guice module is patched.",
-        "Review and implement additional authentication mechanisms to mitigate risks in case of exploitation.",
-        "Conduct a security audit of web applications using Apache Shiro to identify potential misconfigurations or vulnerabilities."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-fgxj-vfg7-cpqq",
+    "id": "gh-GHSA-q929-g23j-2rc7",
     "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Take the SRCU...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Take the SRCU lock for page table walks in fault injection and AT emulation\n\nwalk_s1() and kvm_walk_nested_s2() expect to be called while holding\nkvm->srcu to guard against memslot changes. While this is generally\nthe case, __kvm_at_s12() and __kvm_find_s1_desc_level() call into the\nrespective walkers without taking kvm->srcu.\n\nFix by acquiring kvm->srcu prior to the table walk in both instances.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53277",
-    "ghsa_id": "GHSA-fgxj-vfg7-cpqq",
+    "timestamp": "2026-06-25T18:30:41Z",
+    "title": "A flaw was found in Keycloak's client registration service. A remote attacker, possessing a...",
+    "description": "A flaw was found in Keycloak's client registration service. A remote attacker, possessing a previously issued Registration Access Token (RAT), could exploit this vulnerability to re-enable a client that an administrator had explicitly disabled. This bypasses security controls, allowing the attacker to reset the client's secret and potentially regain privileged API access. The primary impact includes unauthorized information disclosure and potential integrity compromise.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9705",
+    "ghsa_id": "GHSA-q929-g23j-2rc7",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -684,7 +723,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53277.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9705.",
       "affected_industries": [
         "Technology",
         "General"
@@ -699,112 +738,74 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-pc3h-m9mc-v77g",
+    "id": "gh-GHSA-gfv4-4vr2-rr4g",
     "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs: fix use-after-free on...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nerofs: fix use-after-free on sbi->sync_decompress\n\nz_erofs_decompress_kickoff() can race with filesystem unmount, causing\na use-after-free on sbi->sync_decompress.\n\nWhen I/O completes, z_erofs_endio() calls z_erofs_decompress_kickoff()\nto queue z_erofs_decompressqueue_work() asynchronously. Then, after all\nfolios are unlocked, unmount workflow can proceed and sbi will be freed\nbefore accessing to sbi->sync_decompress.\n\nThread (",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53272",
-    "ghsa_id": "GHSA-pc3h-m9mc-v77g",
+    "timestamp": "2026-06-25T18:30:41Z",
+    "title": "A flaw was found in org.keycloak.authorization. An authenticated user with a granted User-Managed...",
+    "description": "A flaw was found in org.keycloak.authorization. An authenticated user with a granted User-Managed Access (UMA) permission ticket for one resource can exploit this by using a specific permission request prefix to bypass per-resource access control. This allows the user to gain unauthorized access to all resources of that type within the same resource server, even if they do not have a ticket for those specific resources. This vulnerability requires the resource server to be configured in PERMISSI",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9799",
+    "ghsa_id": "GHSA-gfv4-4vr2-rr4g",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      null,
-      null,
       null,
       null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability in the Linux kernel could allow a use-after-free condition during filesystem unmount operations, potentially leading to system crashes, data corruption, or exploitation by attackers to execute arbitrary code. This poses a significant risk to systems relying on the affected kernel versions.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9799.",
       "affected_industries": [
-        "Cloud Computing",
-        "Web Hosting",
-        "Telecommunications",
-        "Financial Services",
-        "Healthcare",
-        "Government"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update to the latest Linux kernel version that includes the patch for CVE-2026-53272.",
-        "Perform a thorough review of systems to identify and mitigate any potential exploitation of this vulnerability.",
-        "Implement monitoring and logging to detect unusual activity related to filesystem operations."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-rmcj-82cr-27rx",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-25T18:30:41Z",
+    "title": "A flaw was found in Keycloak. A missing authorization check in the GroupResource.addChild()...",
+    "description": "A flaw was found in Keycloak. A missing authorization check in the GroupResource.addChild() endpoint within the Admin REST API allows an authenticated user with limited administrative privileges to reparent any existing group. When Fine-Grained Admin Permissions v2 (FGAPv2) is enabled, an attacker with management rights over a single low-privilege group can reparent a highly privileged group (such as one possessing the realm-admin role) under their managed group.\n\nBecause group permissions follo",
+    "severity": "high",
+    "cve_id": "CVE-2026-9099",
+    "ghsa_id": "GHSA-rmcj-82cr-27rx",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9099.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "high"
     },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-mrf2-hc9c-229v",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nft_ct: bail out...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nft_ct: bail out on template ct in get eval\n\nI noticed this issue while looking at a historic syzbot report [1].\n\nA rule like the one below is enough to trigger the bug:\n\n    table ip t {\n        chain pre {\n            type filter hook prerouting priority raw;\n            ct zone set 1\n            ct original saddr 1.2.3.4 accept\n        }\n    }\n\nThe first expression attaches a per-cpu template ct via\nnft_ct_set_zon",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53267",
-    "ghsa_id": "GHSA-mrf2-hc9c-229v",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53267.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-h5cp-pgfw-22wh",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-25T09:31:23Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: Fix a use...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: ISO: Fix a use-after-free of the hci_conn pointer\n\nIn iso_sock_rebind_bc(), the bis pointer is cached, then the socket lock is\ndropped:\n\tbis = iso_pi(sk)->conn->hcon;\n\t/* Release the socket before lookups since that requires hci_dev_lock\n\t * which shall not be acquired while holding sock_lock for proper\n\t * ordering.\n\t */\n\trelease_sock(sk);\n\thci_dev_lock(bis->hdev);\n\nDuring the unlocked window, could a concurrent clo",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53276",
-    "ghsa_id": "GHSA-h5cp-pgfw-22wh",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53276.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
+    "risk_score": 75
   },
   {
     "id": "cve-CVE-2026-11777",
@@ -830,18 +831,18 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows authenticated attackers with administrator-level access to exploit SQL injection, potentially leading to data exfiltration, unauthorized data manipulation, or complete database compromise. This could result in data breaches, website defacement, or disruption of services.",
+      "impact_assessment": "The vulnerability allows authenticated attackers with administrator-level access to execute arbitrary SQL queries, potentially leading to data exfiltration, unauthorized data modification, or complete database compromise. This could result in data breaches, loss of sensitive information, or disruption of services.",
       "affected_industries": [
         "E-commerce",
         "Media and Publishing",
         "Education",
-        "Non-Profit Organizations",
-        "Small and Medium Businesses"
+        "Healthcare",
+        "Small and Medium Businesses (SMBs)"
       ],
       "recommended_actions": [
-        "Update the Form Maker by 10Web plugin to the latest patched version as soon as it becomes available.",
-        "Restrict administrator-level access to trusted users only and enforce strong authentication mechanisms such as multi-factor authentication (MFA).",
-        "Regularly monitor and audit database queries and logs for any suspicious activity or unauthorized access."
+        "Immediately update the Form Maker plugin to a patched version (if available) or disable the plugin until a fix is released.",
+        "Restrict administrator-level access to trusted personnel only and review user permissions to minimize potential misuse.",
+        "Implement a Web Application Firewall (WAF) to detect and block SQL injection attempts as an additional layer of protection."
       ],
       "urgency": "high"
     },
@@ -903,20 +904,20 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows authenticated attackers with contributor-level access or higher to inject malicious scripts into WordPress pages. These scripts can execute whenever a user visits the affected page, potentially leading to session hijacking, phishing, or other malicious activities. The persistence of the payload increases the risk of exploitation.",
+      "impact_assessment": "The vulnerability allows authenticated attackers with contributor-level access or higher to inject malicious scripts into pages, leading to potential data theft, session hijacking, or defacement. The impact is limited to authenticated users but poses a significant risk if exploited.",
       "affected_industries": [
         "E-commerce",
         "Media and Publishing",
         "Education",
-        "Nonprofits",
-        "Small and Medium Businesses"
+        "Small and Medium Businesses",
+        "Nonprofits"
       ],
       "recommended_actions": [
-        "Update the 'Services Section Block – Showcase Service Details in Grid or Columns' plugin to a patched version (if available) or disable the plugin until a fix is released.",
-        "Restrict contributor-level access to only trusted users and review user roles and permissions to minimize exposure.",
-        "Implement a Web Application Firewall (WAF) to detect and block malicious scripts and monitor for unusual activity on affected WordPress sites."
+        "Update the plugin to a patched version as soon as it becomes available or disable it temporarily if no fix exists.",
+        "Restrict user roles and permissions to limit contributor-level access to trusted users only.",
+        "Implement a web application firewall (WAF) to detect and block malicious scripts targeting this vulnerability."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
     "risk_score": 65
   },
