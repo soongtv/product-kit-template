@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1782484768810-1",
+    "id": "twitter-1782504045685-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-26T14:39:28.810Z",
+    "timestamp": "2026-06-26T20:00:45.685Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,29 +10,25 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat, as it exploits compromised CI/CD pipelines to deploy malicious code. This can lead to widespread service disruptions, data breaches, financial losses, and reputational damage for affected organizations.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
       "affected_industries": [
         "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Media and Entertainment",
-        "Government"
+        "General"
       ],
       "recommended_actions": [
-        "Conduct an immediate review of CI/CD pipelines to identify and mitigate unauthorized access or vulnerabilities.",
-        "Implement robust monitoring and alerting mechanisms for unusual activity in cloud environments and CI/CD tools.",
-        "Ensure regular backups of critical data are performed and stored securely offline to mitigate the impact of ransomware attacks."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "hn-1782484768810-1",
+    "id": "hn-1782504045685-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-26T14:39:28.810Z",
+    "timestamp": "2026-06-26T20:00:45.685Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -56,26 +52,27 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-27p2-fpv6-cj8c",
+    "id": "gh-GHSA-qh5x-rfwf-rvfv",
     "source": "GitHub Security",
-    "timestamp": "2026-06-26T12:30:30Z",
-    "title": "libnfs through 6.0.2 before 935b8db has an xid integer underflow in READ_IOVEC in...",
-    "description": "libnfs through 6.0.2 before 935b8db has an xid integer underflow in READ_IOVEC in rpc_read_from_socket in lib/socket.c during a connection to a crafted NFS server, when the expected pdu size exceeds the absolute pdu size from the xid/record-marker.",
+    "timestamp": "2026-06-26T19:58:12Z",
+    "title": "Hysteria vulnerable to server crash when max_datagram_frame_size very small",
+    "description": "### Summary\n\nAn authenticated client can crash the Hysteria server by advertising a very small QUIC `max_datagram_frame_size` and then triggering a UDP response from the server. When the server tries to send the UDP response back via QUIC DATAGRAM, quic-go returns `DatagramTooLargeError`. The server then attempts to fragment the Hysteria UDP message, but the fragmentation code does not handle the case where the UDP message header itself is larger than the maximum datagram payload size. This resu",
     "severity": "high",
-    "cve_id": "CVE-2026-57918",
-    "ghsa_id": "GHSA-27p2-fpv6-cj8c",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-qh5x-rfwf-rvfv",
+    "affected_packages": [
+      "github.com/apernet/hysteria"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-57918.",
+      "impact_assessment": "Potential security vulnerability with high severity. ",
       "affected_industries": [
         "Technology",
         "General"
@@ -90,26 +87,28 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-x6vc-x4v4-hjhr",
+    "id": "gh-GHSA-vgrc-hq28-p3xp",
     "source": "GitHub Security",
-    "timestamp": "2026-06-26T12:30:30Z",
-    "title": "By sending a deeply nested ASN1 structure to a Apache Kerby client or service, it's possible to...",
-    "description": "By sending a deeply nested ASN1 structure to a Apache Kerby client or service, it's possible to trigger a StackOverFlow Exception which can lead to denial of service issues. Users are recommended to upgrade to version 2.1.2, which fixes this issue.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-57914",
-    "ghsa_id": "GHSA-x6vc-x4v4-hjhr",
-    "affected_packages": [],
+    "timestamp": "2026-06-26T19:48:50Z",
+    "title": "Hysteria has an authenticated UDP ACL bypass that enables localhost and private-network UDP SSRF",
+    "description": "## Summary\n\nHysteria's UDP relay treats the destination address as packet-scoped, but ACL and outbound policy are applied only once when a new UDP session is created. After an authenticated client opens a UDP session using an allowed first destination, later packets in the same `Session ID` can be sent to different destinations without re-running ACL evaluation.\n\nThis allows an authenticated user to bypass server-side UDP ACL rules and reach localhost or RFC1918/private-network UDP services from",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-vgrc-hq28-p3xp",
+    "affected_packages": [
+      "github.com/apernet/hysteria/core/v2"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
       null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability allows an attacker to exploit a StackOverflow Exception by sending a deeply nested ASN1 structure to an Apache Kerby client or service. This can result in a denial-of-service (DoS) condition, disrupting the availability of the service.",
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows an authenticated user to bypass UDP ACL rules, potentially enabling unauthorized access to localhost or private-network services. This could lead to data exfiltration, service disruption, or lateral movement within the network.",
       "affected_industries": [
         "Technology",
         "Telecommunications",
@@ -118,25 +117,28 @@
         "Government"
       ],
       "recommended_actions": [
-        "Upgrade all Apache Kerby clients and services to version 2.1.2 or later to mitigate the vulnerability.",
-        "Implement input validation to limit the depth of ASN1 structures processed by the application.",
-        "Monitor and log unusual traffic patterns to detect potential exploitation attempts."
+        "Immediately update Hysteria to the latest patched version if available, or apply any recommended mitigations from the vendor.",
+        "Implement strict network segmentation and monitoring to limit access to private-network and localhost services.",
+        "Review and strengthen authentication and access control mechanisms for Hysteria deployments to minimize exposure."
       ],
       "urgency": "high"
     },
-    "risk_score": 72
+    "risk_score": 85
   },
   {
-    "id": "gh-GHSA-p8c2-86p5-3rcc",
+    "id": "gh-GHSA-5vwr-qchf-q4pf",
     "source": "GitHub Security",
-    "timestamp": "2026-06-26T12:30:30Z",
-    "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')...",
-    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Tim Strifler Exclusive Addons Elementor allows Stored XSS.\n\nThis issue affects Exclusive Addons Elementor: from n/a through 2.7.9.8.",
+    "timestamp": "2026-06-26T19:47:24Z",
+    "title": "@cyclonedx/cdxgen: Maven project scanning may allow shell command injection through repository-controlled module paths",
+    "description": "## Summary\n\nA command injection vulnerability existed in the Maven scanning flow of cdxgen before version 12.4.3.\n\nWhen cdxgen scanned an attacker-controlled Maven project, repository-controlled paths could be used in the Maven command construction. In affected versions, some Maven invocations were executed with `shell: true`. A directory name containing shell metacharacters could therefore be interpreted by the shell instead of being treated only as a filesystem path.\n\nThis could allow an attac",
     "severity": "medium",
-    "cve_id": "CVE-2026-57620",
-    "ghsa_id": "GHSA-p8c2-86p5-3rcc",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-5vwr-qchf-q4pf",
+    "affected_packages": [
+      "@cyclonedx/cdxgen"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
@@ -145,42 +147,49 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-57620.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to execute arbitrary shell commands by exploiting repository-controlled paths in Maven project scanning. This could lead to unauthorized access, data exfiltration, or system compromise.",
       "affected_industries": [
+        "Software Development",
         "Technology",
-        "General"
+        "DevOps",
+        "Cloud Services"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Upgrade cdxgen to version 12.4.3 or later to mitigate the vulnerability.",
+        "Audit Maven project repositories for potentially malicious or untrusted paths.",
+        "Implement strict input validation and sanitization for repository-controlled paths in build and scanning workflows."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-q2wr-7pw7-p6fg",
+    "id": "gh-GHSA-4c8j-mgm4-qqvp",
     "source": "GitHub Security",
-    "timestamp": "2026-06-26T12:30:30Z",
-    "title": "Johnson & Johnson Campus Recruiting before 2025-10-31 allows viewing of data provided by...",
-    "description": "Johnson & Johnson Campus Recruiting before 2025-10-31 allows viewing of data provided by recruited students, and notes entered about students by interviewers.",
+    "timestamp": "2026-06-26T19:26:43Z",
+    "title": "Remark42: Cross-Site Scripting (XSS) on /api/v1/img via content-type spoofing",
+    "description": "### Summary\nThe remark42 image proxy fetches an arbitrary remote URL and re-serves the response from remark42's own origin. The download path decides whether the fetched resource is an image by looking only at the `Content-Type` header the remote server claims — it never inspects the actual bytes. The serving path then derives the response `Content-Type` by sniffing those bytes with `http.DetectContentType`.\n\nAn attacker hosts a URL that sets `Content-Type` to `image/png` but returns an HTML/Jav",
     "severity": "high",
-    "cve_id": "CVE-2026-57912",
-    "ghsa_id": "GHSA-q2wr-7pw7-p6fg",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-48788",
+    "ghsa_id": "GHSA-4c8j-mgm4-qqvp",
+    "affected_packages": [
+      "github.com/umputun/remark42"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-57912.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48788.",
       "affected_industries": [
         "Technology",
         "General"
@@ -195,60 +204,72 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-pxg7-h6wr-852q",
+    "id": "gh-GHSA-cr2j-534f-mf3g",
     "source": "GitHub Security",
-    "timestamp": "2026-06-26T12:30:30Z",
-    "title": "Johnson & Johnson Audit Tracking Management System (ATMS) before 2026-04-21 allows viewing of...",
-    "description": "Johnson & Johnson Audit Tracking Management System (ATMS) before 2026-04-21 allows viewing of meeting minutes and transcripts.",
-    "severity": "high",
-    "cve_id": "CVE-2026-57913",
-    "ghsa_id": "GHSA-pxg7-h6wr-852q",
-    "affected_packages": [],
+    "timestamp": "2026-06-26T19:20:33Z",
+    "title": "Apptainer has incorrect path matching for 'limit container paths' directive ",
+    "description": "### Impact\n\nThe `limit container paths directive` in `apptainer.conf` is intended to allow a system administrator limit the paths from which containers can be run, under setuid mode. Due to incorrect matching of a path string, sibling directories with similar names may incorrectly be allowed.\n\nFor example, the configuration:\n```\nlimit container paths = /data/safe\n```\nWill also allow containers in /data/safe-but-unsafe to be run.\n\n### Patches\n\nThe issue is patched in apptainer version 1.5.1.\n\n###",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48785",
+    "ghsa_id": "GHSA-cr2j-534f-mf3g",
+    "affected_packages": [
+      "github.com/apptainer/apptainer"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-57913.",
+      "risk_score": 65,
+      "impact_assessment": "The incorrect path matching in the 'limit container paths' directive could allow unauthorized or unsafe containers to be executed, potentially leading to privilege escalation, data breaches, or execution of malicious code. This poses a significant risk in environments where container security is critical.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Cloud Computing",
+        "Research and Development",
+        "Healthcare",
+        "Finance",
+        "Government"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Upgrade to Apptainer version 1.5.1 or later, as the issue has been patched in this version.",
+        "Review and audit the 'limit container paths' configuration to ensure no unintended directories are accessible.",
+        "Implement additional monitoring and logging for container execution to detect any unauthorized activity."
       ],
       "urgency": "high"
     },
-    "risk_score": 75
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-xmw8-pxhc-cq64",
+    "id": "gh-GHSA-cg7w-rg45-pc59",
     "source": "GitHub Security",
-    "timestamp": "2026-06-26T12:30:29Z",
-    "title": "A vulnerability exists in the netclient and factory services of Reolink Home Hub (versions prior...",
-    "description": "A vulnerability exists in the netclient and factory services of Reolink Home Hub (versions prior to v3.3.0.456_26031911) due to the possibility of brute-force cracking the credentials. This issue could allow attackers on the same local network to intercept traffic between the Hub and associated cameras and compromise the credentials of connected cameras.",
+    "timestamp": "2026-06-26T19:17:56Z",
+    "title": "pydantic-ai: SSRF blocklist bypass via IPv4-compatible, SIIT/IVI, and local NAT64 IPv6 addresses (incomplete fix of CVE-2026-46678)",
+    "description": "## Summary\n\nWhen an application using Pydantic AI opts a URL into `force_download='allow-local'` (which disables the default block on private/internal IPs) **and runs on a network that routes the affected IPv6 transition forms (NAT64- or ISATAP-configured networks)**, the cloud-metadata blocklist could be bypassed by encoding the metadata IP in an IPv6 transition form that the previous fix did not decode — IPv4-compatible IPv6 (`::a.b.c.d`), the NAT64 RFC 8215 local-use prefix (`64:ff9b:1::/48`)",
     "severity": "medium",
-    "cve_id": "CVE-2026-57473",
-    "ghsa_id": "GHSA-xmw8-pxhc-cq64",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-48782",
+    "ghsa_id": "GHSA-cg7w-rg45-pc59",
+    "affected_packages": [
+      "pydantic-ai-slim",
+      "pydantic-ai",
+      "pydantic-ai",
+      "pydantic-ai-slim"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-57473.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48782.",
       "affected_industries": [
         "Technology",
         "General"
@@ -263,102 +284,65 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-r578-whjq-mcfv",
+    "id": "gh-GHSA-f6m5-xw2g-xc4x",
     "source": "GitHub Security",
-    "timestamp": "2026-06-26T12:30:29Z",
-    "title": "A flaw was found in KubeVirt's migration proxy. When spec.configuration.migrations.disableTLS is...",
-    "description": "A flaw was found in KubeVirt's migration proxy. When spec.configuration.migrations.disableTLS is set to true on the KubeVirt custom resource, the target virt-handler binds a plain TCP listener on all interfaces (0.0.0.0/::) on a random port with no authentication, peer allow-list, or handshake token. This listener proxies directly into the target virt-launcher's virtqemud control socket. An attacker with a running pod on the cluster network can connect to this listener and issue unfiltered libvi",
-    "severity": "high",
-    "cve_id": "CVE-2026-13325",
-    "ghsa_id": "GHSA-r578-whjq-mcfv",
-    "affected_packages": [],
+    "timestamp": "2026-06-26T19:13:18Z",
+    "title": "Incus has an arbitrary file write on its client due to trusted image hash",
+    "description": "### Summary\n\nAn arbitrary file write exists in the Incus client when a malicious image server returns a crafted `Incus-Image-Hash` header. This can lead to arbitrary command execution as root on the server.\n\n\n### Details\n\n- `cmd/incusd/images.go:611-684` handles `source.type=url` by HEADing the user-supplied URL, reading `Incus-Image-Hash` and `Incus-Image-URL`, and passing them to `imageDownload()` as `Alias`  and `Server`.\n- `cmd/incusd/daemon_images.go:91-92` defaults `fp` to the caller-contr",
+    "severity": "critical",
+    "cve_id": "CVE-2026-48769",
+    "ghsa_id": "GHSA-f6m5-xw2g-xc4x",
+    "affected_packages": [
+      "github.com/lxc/incus/v7/cmd/incusd"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows an attacker with access to the cluster network to exploit the insecure TCP listener and issue unfiltered libvirt commands to the virt-launcher control socket. This could lead to unauthorized access, manipulation of virtual machines, or potential denial-of-service attacks.",
+      "risk_score": 95,
+      "impact_assessment": "The vulnerability allows an attacker to exploit the Incus client by crafting a malicious image server that returns a manipulated 'Incus-Image-Hash' header. This can result in arbitrary file writes and potentially lead to remote command execution as root, compromising the entire system.",
       "affected_industries": [
         "Cloud Service Providers",
-        "Telecommunications",
-        "Healthcare",
-        "Financial Services",
-        "Government"
+        "Data Centers",
+        "DevOps and IT Infrastructure",
+        "Software Development",
+        "Hosting Providers"
       ],
       "recommended_actions": [
-        "Immediately update KubeVirt to a patched version that addresses CVE-2026-13325.",
-        "Ensure that 'spec.configuration.migrations.disableTLS' is not set to true in the KubeVirt custom resource configuration.",
-        "Implement network segmentation and restrict pod-to-pod communication to mitigate the risk of exploitation."
+        "Immediately update the Incus client to the latest patched version if available, or apply any security patches addressing CVE-2026-48769.",
+        "Implement strict input validation and sanitization for all user-supplied URLs and headers to mitigate arbitrary file writes.",
+        "Restrict network access to trusted image servers and monitor traffic for suspicious activity involving 'Incus-Image-Hash' headers."
       ],
       "urgency": "critical"
     },
-    "risk_score": 85
+    "risk_score": 95
   },
   {
-    "id": "gh-GHSA-9639-6pf9-jh9r",
+    "id": "gh-GHSA-jfc7-64v2-mr8c",
     "source": "GitHub Security",
-    "timestamp": "2026-06-26T12:30:29Z",
-    "title": "A Code Injection vulnerability existed in Trellix Network Security CM and NX. A locally...",
-    "description": "A Code Injection vulnerability existed in Trellix Network Security CM and NX. A locally authenticated admin user can execute arbitrary code using the web interface and Alert artifact details.",
-    "severity": "high",
-    "cve_id": "CVE-2025-7958",
-    "ghsa_id": "GHSA-9639-6pf9-jh9r",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows a locally authenticated admin user to execute arbitrary code via the web interface, potentially leading to unauthorized system control, data breaches, or disruption of network security operations.",
-      "affected_industries": [
-        "Financial Services",
-        "Healthcare",
-        "Government",
-        "Technology",
-        "Telecommunications",
-        "Energy"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patches or updates provided by Trellix to address CVE-2025-7958.",
-        "Restrict and monitor admin access to the affected systems, ensuring only trusted personnel have access.",
-        "Conduct a security audit to identify any unauthorized activity or exploitation of the vulnerability."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-9754-6rhw-gj3h",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-26T12:30:29Z",
-    "title": "A vulnerability in jupyter/nbconvert versions <= 7.17.0 allows for Cross-site Scripting (XSS) via...",
-    "description": "A vulnerability in jupyter/nbconvert versions <= 7.17.0 allows for Cross-site Scripting (XSS) via unsanitized `text/vnd.mermaid` output in HTML exports. The `data_mermaid` block in `share/templates/lab/base.html.j2` renders `text/vnd.mermaid` cell output directly into HTML without escaping, enabling attackers to inject arbitrary HTML/JavaScript by breaking out of the `<pre>` tag. This vulnerability impacts any server using nbconvert to render notebooks as HTML, allowing attackers to execute arbi",
+    "timestamp": "2026-06-26T19:11:19Z",
+    "title": "@sigstore/core has DSSE payloadType type-binding failure",
+    "description": "### Impact\nThe `preAuthEncoding` function in `@sigstore/core` uses Node.js `'ascii'` encoding when converting the PAE (Pre-Authentication Encoding) string to bytes. This allows `payloadType` to be mutated after signing without invalidating the signature, breaking the type-binding guarantee that DSSE is designed to provide.\n\nIn `packages/core/src/dsse.ts`, the PAE function builds a string containing `payloadType` and then encodes it with `Buffer.from(prefix, 'ascii')`.\n\nIn Node.js, `'ascii'` enco",
     "severity": "medium",
-    "cve_id": "CVE-2026-6658",
-    "ghsa_id": "GHSA-9754-6rhw-gj3h",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-48758",
+    "ghsa_id": "GHSA-jfc7-64v2-mr8c",
+    "affected_packages": [
+      "@sigstore/core"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6658.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48758.",
       "affected_industries": [
         "Technology",
         "General"
@@ -373,246 +357,175 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-vcwj-3q56-r32w",
+    "id": "gh-GHSA-xhqx-mgh3-3h7q",
     "source": "GitHub Security",
-    "timestamp": "2026-06-26T09:30:47Z",
-    "title": "Bytes::Random::Secure::Tiny versions through 1.011 for Perl share internal state across forked...",
-    "description": "Bytes::Random::Secure::Tiny versions through 1.011 for Perl share internal state across forked processes.\n\nWhen an object is initialised before forking, then the internal state for the PRNG is shared across processes and identical random streams will be produced.\n\nSecrets generated in multiprocess applications are predictable across processes.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-11702",
-    "ghsa_id": "GHSA-vcwj-3q56-r32w",
-    "affected_packages": [],
+    "timestamp": "2026-06-26T19:07:54Z",
+    "title": "Incus: CreateCustomVolumeFromBackup nil-pointer dereference on volume_snapshots[*].expires_at (sibling-field variant of GHSA-r7w7)",
+    "description": "## Summary\n\n`(*backend).CreateCustomVolumeFromBackup` in [`internal/server/storage/backend.go`](https://github.com/lxc/incus/blob/985a1dedf9f3e7ba729c93b654905ed510de25c2/internal/server/storage/backend.go) contains an unguarded `*time.Time` dereference on the `ExpiresAt` field of every volume-snapshot entry in an imported custom-volume backup. An authenticated user with `can_create_storage_volumes` permission on any project can crash the `incusd` daemon by uploading a backup tarball whose `volu",
+    "severity": "low",
+    "cve_id": "CVE-2026-48756",
+    "ghsa_id": "GHSA-xhqx-mgh3-3h7q",
+    "affected_packages": [
+      "github.com/lxc/incus/v7/cmd/incusd"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null,
-      null,
-      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-48756.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-v6mj-8pf4-hhw4",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-26T19:03:31Z",
+    "title": "Incus has an argument injection in backup compression algorithm leading to AFW and ACE",
+    "description": "### Summary\n\nImproper validation of user-provided backup compression algorithm leads to argument injection in the constructed command line. This leads to an arbitrary file write on the host, possibly leading to arbitrary command execution.\n\n\n### Details\n\nIncus validates `compression_algorithm` by parsing it into fields and checking only the first token against an allowlist:\n\n```go\nfields, err := shellquote.Split(value)\n...\nif !slices.Contains([]string{\"bzip2\", \"gzip\", \"lz4\", \"lzma\", \"pigz\", \"pzs",
+    "severity": "critical",
+    "cve_id": "CVE-2026-48755",
+    "ghsa_id": "GHSA-v6mj-8pf4-hhw4",
+    "affected_packages": [
+      "github.com/lxc/incus/v7/cmd/incusd"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability in Bytes::Random::Secure::Tiny allows predictable random number generation across forked processes, potentially exposing sensitive data or secrets in multiprocess applications. This could lead to compromised security in systems relying on randomness for cryptographic operations.",
+      "risk_score": 95,
+      "impact_assessment": "The vulnerability allows attackers to inject malicious arguments into the backup compression algorithm, potentially leading to arbitrary file writes and command execution on the host. This could result in data breaches, system compromise, or further exploitation of the affected systems.",
       "affected_industries": [
-        "Finance",
+        "Cloud Service Providers",
+        "Data Backup and Recovery Services",
+        "Enterprise IT",
         "Healthcare",
+        "Financial Services",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately update to the latest patched version of Incus that addresses CVE-2026-48755.",
+        "Implement strict input validation and sanitization for user-provided values in backup configurations.",
+        "Conduct a security audit of systems using Incus to identify potential exploitation and mitigate risks."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 95
+  },
+  {
+    "id": "gh-GHSA-4xg6-52mh-fpw8",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-26T18:52:46Z",
+    "title": "Incus: Nil-pointer dereference in createDependentVolumesFromBackup on disk.{Volume,VolumeSnapshots,Pool}",
+    "description": "## Summary\n\n`(*backend).createDependentVolumesFromBackup` in [`internal/server/storage/backend.go`](https://github.com/lxc/incus/blob/d768f81c0a1d985f35ae56219519822b080bf5e3/internal/server/storage/backend.go) contains a cluster of unguarded pointer derefs on every dependent-volume entry's `VolumeSnapshots[i]`, `Volume`, and `Pool` sub-fields. An authenticated user with `can_create_instances` permission on any project can crash the `incusd` daemon by uploading an instance backup tarball whose `",
+    "severity": "low",
+    "cve_id": "CVE-2026-48754",
+    "ghsa_id": "GHSA-4xg6-52mh-fpw8",
+    "affected_packages": [
+      "github.com/lxc/incus/v7/cmd/incusd"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-48754.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-ccjc-4qc3-jxqc",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-26T18:47:25Z",
+    "title": "Incus has an arbitrary file write via path traversal in S3 multipart upload",
+    "description": "## Summary\n\nThe S3 protocol upload endpoint is vulnerable to path traversal and allows creation of arbitrary files on the host. This behavior could lead to arbitrary command execution.\n\nIn `internal/server/storage/s3/local/multipart.go`, user-controlled upload ID is appended to the uploads directory unsanitized; https://github.com/lxc/incus/blob/40dd4f151d52c06b178482aa2518abfb9df3e6fb/internal/server/storage/s3/local/multipart.go#L33\n\n## PoC\n\n### Setup\n\n```\n# Expose the S3 API and create a buck",
+    "severity": "critical",
+    "cve_id": "CVE-2026-48753",
+    "ghsa_id": "GHSA-ccjc-4qc3-jxqc",
+    "affected_packages": [
+      "github.com/lxc/incus/v7/cmd/incusd"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 95,
+      "impact_assessment": "The vulnerability allows attackers to exploit a path traversal flaw in the S3 multipart upload functionality, enabling arbitrary file creation on the host. This could potentially lead to arbitrary command execution, unauthorized access, data breaches, or compromise of the underlying system.",
+      "affected_industries": [
+        "Cloud Service Providers",
         "E-commerce",
+        "Financial Services",
+        "Healthcare",
         "Technology",
-        "Government"
+        "Media and Entertainment"
       ],
       "recommended_actions": [
-        "Upgrade to a patched version of Bytes::Random::Secure::Tiny once available, or use an alternative library that ensures independent random streams across forked processes.",
-        "Avoid initializing PRNG objects before forking processes in affected versions, and reinitialize the PRNG after forking.",
-        "Conduct a security audit of applications using this library to identify and mitigate potential vulnerabilities."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-97gw-4hgp-77mp",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-26T09:30:47Z",
-    "title": "The User Registration & Membership – Free & Paid Memberships, Subscriptions, Content Restriction,...",
-    "description": "The User Registration & Membership – Free & Paid Memberships, Subscriptions, Content Restriction, User Profile, Custom User Registration & Login Builder plugin for WordPress is vulnerable to unauthorized modification of data due to missing validation checks in the confirm_payment() function in all versions up to, and including, 5.2.0. This makes it possible for unauthenticated attackers to bypass payment processing and activate paid memberships.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-1869",
-    "ghsa_id": "GHSA-97gw-4hgp-77mp",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-1869.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-r57w-h3mc-4jrv",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-26T09:30:47Z",
-    "title": "Bytes::Random::Secure versions through 0.29 for Perl share internal state across forked processes...",
-    "description": "Bytes::Random::Secure versions through 0.29 for Perl share internal state across forked processes.\n\nWhen an object is initialised before forking, or when the functional interface is used, then the internal state for the PRNG is shared across processes and identical random streams will be produced.\n\nSecrets generated in multiprocess applications are predictable across processes.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-11625",
-    "ghsa_id": "GHSA-r57w-h3mc-4jrv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-11625.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-pf4w-4444-q95v",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-26T09:30:47Z",
-    "title": "An unauthenticated\nstack-based buffer overflow vulnerability exists in ssvr in GeoVision\nGV...",
-    "description": "An unauthenticated\nstack-based buffer overflow vulnerability exists in ssvr in GeoVision\nGV-LPC2011 and GV-LPC2211 V1.12 and earlier. The vulnerability is caused by\ninsufficient bounds checking when parsing RTSP Digest authentication fields. A\nremote attacker may exploit this vulnerability by sending a crafted RTSP\nrequest containing overly long authentication data, resulting in memory\ncorruption, denial of service, or potentially arbitrary code execution.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-57880",
-    "ghsa_id": "GHSA-pf4w-4444-q95v",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 92,
-      "impact_assessment": "The vulnerability allows remote attackers to exploit a stack-based buffer overflow in GeoVision GV-LPC2011 and GV-LPC2211 devices, potentially leading to memory corruption, denial of service, or arbitrary code execution. This could compromise device functionality and enable further attacks on connected systems.",
-      "affected_industries": [
-        "Surveillance and Security Systems",
-        "Critical Infrastructure",
-        "Government",
-        "Retail",
-        "Transportation"
-      ],
-      "recommended_actions": [
-        "Immediately apply any available patches or firmware updates from GeoVision to address CVE-2026-57880.",
-        "Implement network segmentation to isolate vulnerable devices from critical systems and restrict access to RTSP services.",
-        "Monitor network traffic for unusual or suspicious RTSP requests and consider deploying intrusion detection/prevention systems (IDS/IPS)."
+        "Immediately sanitize and validate user-controlled inputs, especially the upload ID, to prevent path traversal attacks.",
+        "Apply patches or updates provided by the vendor to address the vulnerability (CVE-2026-48753).",
+        "Conduct a thorough security review of the S3 API configuration and monitor for any unauthorized file creation or suspicious activity."
       ],
       "urgency": "critical"
     },
-    "risk_score": 92
+    "risk_score": 95
   },
   {
-    "id": "gh-GHSA-45jw-wjqw-9fq9",
+    "id": "gh-GHSA-vxp5-584q-c479",
     "source": "GitHub Security",
-    "timestamp": "2026-06-26T09:30:47Z",
-    "title": "An unauthenticated\nstack-based buffer overflow vulnerability exists in vlsvr in GeoVision\nGV...",
-    "description": "An unauthenticated\nstack-based buffer overflow vulnerability exists in vlsvr in GeoVision\nGV-LPC2011 and GV-LPC2211 V1.12 and earlier. The vulnerability is caused by\ninsufficient length validation when processing remote login data. A remote\nattacker may exploit this vulnerability by sending crafted login data with\noverly long input, resulting in memory corruption, denial of service, or potentially\narbitrary code execution.",
+    "timestamp": "2026-06-26T18:46:31Z",
+    "title": "Incus has arbitrary file read+write on host via templates/ symlink in malicious image",
+    "description": "### Summary\n\nA specially crafted image or instance backup can be used to read or create/write arbitrary files on the host; possibly leading to arbitrary command execution.\n\n\n### Details\n\nFor container images, `internal/server/storage/utils.go` calls `archive.Unpack(imageFile, destPath, ...)`. The tar extraction path in `shared/archive/archive.go` excludes device nodes, but it does not reject a top-level `templates` symlink.\n\nFor instance backups, `internal/server/storage/drivers/driver_dir_volum",
     "severity": "critical",
-    "cve_id": "CVE-2026-57881",
-    "ghsa_id": "GHSA-45jw-wjqw-9fq9",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-48752",
+    "ghsa_id": "GHSA-vxp5-584q-c479",
+    "affected_packages": [
+      "github.com/lxc/incus/v7/cmd/incusd"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 92,
-      "impact_assessment": "The vulnerability allows unauthenticated remote attackers to exploit a stack-based buffer overflow, potentially leading to memory corruption, denial of service, or arbitrary code execution. This could result in system compromise, data breaches, or service outages.",
-      "affected_industries": [
-        "Surveillance and Security Systems",
-        "Critical Infrastructure",
-        "Retail",
-        "Transportation",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Immediately apply any available patches or firmware updates provided by GeoVision for the affected devices.",
-        "Implement network segmentation and restrict access to the vulnerable devices by using firewalls or VPNs to limit exposure to untrusted networks.",
-        "Monitor network traffic for suspicious activity targeting the affected devices and deploy intrusion detection/prevention systems to identify and block potential exploitation attempts."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 92
-  },
-  {
-    "id": "gh-GHSA-3ff2-4v74-vhq8",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-26T09:30:47Z",
-    "title": "An unauthenticated\nformat string vulnerability exists in vlsvr in GeoVision GV-LPC2011 and\nGV...",
-    "description": "An unauthenticated\nformat string vulnerability exists in vlsvr in GeoVision GV-LPC2011 and\nGV-LPC2211 V1.12 and earlier. The vulnerability is caused by improper handling\nof externally controlled input during log message formatting in the login\nprocessing path. A remote attacker may exploit this vulnerability by sending\ncrafted login data, potentially causing information disclosure, memory\ncorruption, or a denial of service.",
-    "severity": "high",
-    "cve_id": "CVE-2026-57877",
-    "ghsa_id": "GHSA-3ff2-4v74-vhq8",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-57877.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-6h6x-9v89-8vrr",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-26T09:30:47Z",
-    "title": "An unauthenticated\nstack-based buffer overflow vulnerability exists in thttpd in GeoVision\nGV...",
-    "description": "An unauthenticated\nstack-based buffer overflow vulnerability exists in thttpd in GeoVision\nGV-LPC2011 and GV-LPC2211 V1.12 and earlier. The vulnerability is caused by\ninsufficient bounds checking when processing web request parameters in a\nspecific request path. A remote attacker may exploit this vulnerability by\nsending a crafted HTTP request with overly long input, resulting in memory\ncorruption, denial of service, or potentially arbitrary code execution.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-57878",
-    "ghsa_id": "GHSA-6h6x-9v89-8vrr",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-57878.",
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-48752.",
       "affected_industries": [
         "Technology",
         "General"
@@ -627,51 +540,14 @@
     "risk_score": 90
   },
   {
-    "id": "gh-GHSA-mm39-vhxr-6hjg",
+    "id": "gh-GHSA-jmr9-qjv8-65gv",
     "source": "GitHub Security",
-    "timestamp": "2026-06-26T09:30:47Z",
-    "title": "An unauthenticated\nstack-based buffer overflow vulnerability exists in ssvr in GeoVision\nGV...",
-    "description": "An unauthenticated\nstack-based buffer overflow vulnerability exists in ssvr in GeoVision\nGV-LPC2011 and GV-LPC2211 V1.12 and earlier. The vulnerability is caused by\ninsufficient bounds checking when processing RTSP custom authentication data. A\nremote attacker may exploit this vulnerability by sending a crafted RTSP\nrequest, resulting in memory corruption, denial of service, or potentially\narbitrary code execution.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-57879",
-    "ghsa_id": "GHSA-mm39-vhxr-6hjg",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 92,
-      "impact_assessment": "The vulnerability allows unauthenticated remote attackers to exploit a stack-based buffer overflow in GeoVision GV-LPC2011 and GV-LPC2211 devices, potentially leading to memory corruption, denial of service, or arbitrary code execution. This could result in system compromise, service disruption, or unauthorized control of affected devices.",
-      "affected_industries": [
-        "Surveillance and Security",
-        "Critical Infrastructure",
-        "Government",
-        "Retail",
-        "Transportation"
-      ],
-      "recommended_actions": [
-        "Immediately apply any available patches or firmware updates provided by GeoVision to address the vulnerability.",
-        "Implement network segmentation and restrict access to devices running the vulnerable software to trusted IP ranges only.",
-        "Monitor network traffic for unusual RTSP activity and deploy intrusion detection/prevention systems to block malicious requests."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 92
-  },
-  {
-    "id": "gh-GHSA-r865-x64g-f9mm",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-26T09:30:46Z",
-    "title": "The WSO2 API Manager's message flow component, when processing WS-Addressing headers, does not...",
-    "description": "The WSO2 API Manager's message flow component, when processing WS-Addressing headers, does not sufficiently validate or restrict user-controlled input within these headers. This omission allows an attacker to manipulate WS-Addressing headers to specify arbitrary destinations for server-initiated requests.\n\nSuccessful exploitation allows an unauthenticated attacker to control the destination of server-initiated requests originating from the WSO2 API Manager. This direct control can enable unautho",
+    "timestamp": "2026-06-26T18:34:00Z",
+    "title": "extract-zip does not validate symlink targets when extracting zip archives. When processing a...",
+    "description": "extract-zip does not validate symlink targets when extracting zip archives. When processing a malicious zip file containing a symlink with a relative path like '../../../../etc/passwd', extract-zip will extract the symlink without validation, allowing it to point outside the extraction directory. Depending on how extract-zip is used, an attacker could read or write to arbitrary files.",
     "severity": "high",
-    "cve_id": "CVE-2026-2053",
-    "ghsa_id": "GHSA-r865-x64g-f9mm",
+    "cve_id": "CVE-2026-56876",
+    "ghsa_id": "GHSA-jmr9-qjv8-65gv",
     "affected_packages": [],
     "cwes": [
       null
@@ -679,70 +555,39 @@
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-2053.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-9qp6-g7r6-cvp4",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-26T09:30:46Z",
-    "title": "An unauthenticated\nout-of-bounds write vulnerability exists in onvif.cgi in GeoVision GV-LPC2011...",
-    "description": "An unauthenticated\nout-of-bounds write vulnerability exists in onvif.cgi in GeoVision GV-LPC2011\nand GV-LPC2211 V1.12 and earlier. The vulnerability is caused by insufficient\nbounds checking when processing HTTP request body data. A remote attacker may\nexploit this vulnerability by sending a crafted request with excessive input,\ncausing memory corruption and resulting in a denial of service.",
-    "severity": "high",
-    "cve_id": "CVE-2026-57876",
-    "ghsa_id": "GHSA-9qp6-g7r6-cvp4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows unauthenticated remote attackers to exploit an out-of-bounds write, potentially causing memory corruption, denial of service, or enabling further attacks such as remote code execution. This poses a significant risk to affected devices and networks.",
+      "impact_assessment": "The vulnerability in extract-zip allows attackers to exploit symlinks in malicious zip files to access or modify arbitrary files outside the intended extraction directory. This could lead to unauthorized access to sensitive data or system compromise.",
       "affected_industries": [
-        "Surveillance and Security",
-        "Critical Infrastructure",
-        "Retail",
-        "Transportation",
-        "Government"
+        "Technology",
+        "E-commerce",
+        "Finance",
+        "Healthcare",
+        "Government",
+        "Education"
       ],
       "recommended_actions": [
-        "Immediately apply any available firmware updates or patches from GeoVision to address the vulnerability.",
-        "Implement network segmentation and restrict access to affected devices by using firewalls and VPNs to limit exposure to untrusted networks.",
-        "Monitor network traffic for unusual activity targeting the affected devices and enable logging to detect potential exploitation attempts."
+        "Immediately update to the latest patched version of extract-zip if available, or apply any vendor-provided mitigations.",
+        "Implement strict validation of zip file contents before extraction, including checking for symlinks and ensuring they do not point outside the intended directory.",
+        "Restrict file permissions and run the extraction process in a sandboxed or isolated environment to limit potential damage."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "gh-GHSA-9hv4-r5p9-3gf6",
+    "id": "gh-GHSA-jg8r-5jh2-v2xj",
     "source": "GitHub Security",
-    "timestamp": "2026-06-26T09:30:46Z",
-    "title": "An unauthenticated\nNULL pointer dereference vulnerability exists in the HTTP request parsing...",
-    "description": "An unauthenticated\nNULL pointer dereference vulnerability exists in the HTTP request parsing logic\nof multiple CGI components in GeoVision GV-LPC2011 and GV-LPC2211 V1.12 and\nearlier. The vulnerability is caused by improper validation of required HTTP\nrequest metadata before it is used by the affected components. A remote attacker\nmay exploit this vulnerability by sending a specially crafted HTTP request,\ncausing the affected process to crash and resulting in a denial of service.",
-    "severity": "high",
-    "cve_id": "CVE-2026-57875",
-    "ghsa_id": "GHSA-9hv4-r5p9-3gf6",
+    "timestamp": "2026-06-26T18:33:59Z",
+    "title": "An Improper Authorization vulnerability exists in PayloadCMS version 3.84.1 due to insufficient...",
+    "description": "An Improper Authorization vulnerability exists in PayloadCMS version 3.84.1 due to insufficient access control on the account unlock operation.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11779",
+    "ghsa_id": "GHSA-jg8r-5jh2-v2xj",
     "affected_packages": [],
     "cwes": [
       null
@@ -750,11 +595,47 @@
     "references": [
       null,
       null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11779.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-rc6m-346q-rgq6",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-26T18:33:59Z",
+    "title": "Pagekit CMS 1.0.18 contains a privilege escalation vulnerability that allows authenticated users...",
+    "description": "Pagekit CMS 1.0.18 contains a privilege escalation vulnerability that allows authenticated users with the 'user: manage users' permission to escalate privileges by assigning arbitrary custom roles to themselves due to missing authorization checks in UserApiController::saveAction(). Attackers can assign themselves a custom role with the 'system: manage packages' permission and then upload and install a malicious PHP package through the admin package installer to achieve remote code execution.",
+    "severity": "high",
+    "cve_id": "CVE-2026-57518",
+    "ghsa_id": "GHSA-rc6m-346q-rgq6",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-57875.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-57518.",
       "affected_industries": [
         "Technology",
         "General"
@@ -767,6 +648,148 @@
       "urgency": "high"
     },
     "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-4p38-3jmx-75vr",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-26T18:33:59Z",
+    "title": "Kernel driver ProcessMonitorDriver.sys in Safetica's endpoint client x64 , versions 10.5.75.0 and...",
+    "description": "Kernel driver ProcessMonitorDriver.sys in Safetica's endpoint client x64 , versions 10.5.75.0 and 11.11.4.0, allows unprivileged user to abuse IOCTL path and terminate protected system processes.",
+    "severity": "high",
+    "cve_id": "CVE-2026-0828",
+    "ghsa_id": "GHSA-4p38-3jmx-75vr",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-0828.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-c839-jg98-xwx3",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-26T18:33:59Z",
+    "title": "Unauthenticated remote information disclosure vulnerability in Ollama's model quantization engine...",
+    "description": "Unauthenticated remote information disclosure vulnerability in Ollama's model quantization engine allows an attacker to read and exfiltrate the server's heap memory, potentially leading to sensitive data exposure, further compromise, and stealthy persistence.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-5757",
+    "ghsa_id": "GHSA-c839-jg98-xwx3",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows unauthenticated attackers to read and exfiltrate heap memory from the server running Ollama's model quantization engine. This could lead to the exposure of sensitive data, including credentials, encryption keys, or proprietary model information. Additionally, it may enable further compromise of the system or allow attackers to establish stealthy persistence.",
+      "affected_industries": [
+        "Artificial Intelligence",
+        "Technology",
+        "Cloud Computing",
+        "Healthcare",
+        "Finance"
+      ],
+      "recommended_actions": [
+        "Immediately apply any available patches or updates provided by Ollama to address CVE-2026-5757.",
+        "Implement network segmentation and firewall rules to restrict unauthorized access to systems running the vulnerable engine.",
+        "Conduct a thorough review of server logs to identify any signs of exploitation or unauthorized access, and rotate potentially exposed credentials and keys."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-9fjc-whw6-cqfc",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-26T18:33:59Z",
+    "title": "A flaw was found in KubeVirt's network annotation generator. When a tenant creates a...",
+    "description": "A flaw was found in KubeVirt's network annotation generator. When a tenant creates a VirtualMachineInstance with a Multus network configuration, the supplied networkName value is written verbatim into the launcher pod's v1.multus-cni.io/default-network annotation without format validation or sanitization. The only admission check rejects empty strings; no DNS-1123 format validation, JSON detection, or special character rejection is performed. When the ExternalNetResourceInjection Beta feature ga",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13434",
+    "ghsa_id": "GHSA-9fjc-whw6-cqfc",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The flaw in KubeVirt's network annotation generator could allow malicious tenants to inject arbitrary or malformed data into the network annotations of launcher pods. This may lead to potential denial-of-service attacks, privilege escalation, or unauthorized access to sensitive resources within the Kubernetes cluster.",
+      "affected_industries": [
+        "Cloud Service Providers",
+        "Telecommunications",
+        "Healthcare",
+        "Finance",
+        "Technology"
+      ],
+      "recommended_actions": [
+        "Implement input validation and sanitization for the networkName value to ensure compliance with DNS-1123 format and reject special characters or malformed data.",
+        "Disable or restrict the ExternalNetResourceInjection Beta feature if not required, or apply strict role-based access control (RBAC) policies to limit tenant permissions.",
+        "Monitor and audit VirtualMachineInstance creation logs for suspicious or malformed network annotations to detect potential exploitation attempts."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-hwpp-2m5q-2cw8",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-26T18:33:59Z",
+    "title": "Kernel software installed and running inside a Host VM may post improper commands to the GPU...",
+    "description": "Kernel software installed and running inside a Host VM may post improper commands to the GPU Firmware to trigger a memory read or write outside the permitted range of memory for the host kernel.\n\n\n\nAddresses passed to the GPU Firmware can be used by the Firmware for more privileged memory accesses than are permitted by the system.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-45195",
+    "ghsa_id": "GHSA-hwpp-2m5q-2cw8",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-45195.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
   },
   {
     "id": "cve-CVE-2026-10034",
@@ -823,21 +846,17 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "This vulnerability allows attackers to perform a Denial-of-Service (DoS) attack on the 10G iSCSI interface of Hitachi Virtual Storage Platform devices, potentially disrupting storage services and causing downtime for critical systems.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-7737.",
       "affected_industries": [
-        "Financial Services",
-        "Healthcare",
-        "Manufacturing",
-        "Telecommunications",
-        "Government",
-        "Cloud Service Providers"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update affected Hitachi Virtual Storage Platform devices to the latest firmware version that addresses this vulnerability.",
-        "Implement network segmentation and access controls to restrict exposure of the 10G iSCSI interface to untrusted networks.",
-        "Monitor storage platform logs for unusual activity or signs of exploitation and establish an incident response plan."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
     "risk_score": 85
   },
@@ -857,20 +876,22 @@
       "https://www.mitsubishielectric.com/psirt/vulnerability/pdf/2026-003_en.pdf"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8806.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows a remote attacker to cause a denial-of-service (DoS) condition by overwhelming the Ethernet module with communication packets. This can disrupt industrial control systems, halt operations, and potentially lead to financial losses or safety risks in critical environments.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Manufacturing",
+        "Industrial Automation",
+        "Energy and Utilities",
+        "Transportation and Logistics"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Apply firmware updates or patches provided by Mitsubishi Electric as soon as they become available.",
+        "Implement network segmentation to isolate critical systems and limit exposure to external traffic.",
+        "Deploy rate-limiting and intrusion detection/prevention systems (IDS/IPS) to monitor and block abnormal traffic patterns targeting the Ethernet module."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 60
+    "risk_score": 65
   },
   {
     "id": "cve-CVE-2026-8805",
