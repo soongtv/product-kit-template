@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1782830071504-1",
+    "id": "twitter-1782850071892-1",
     "source": "Twitter Security",
-    "timestamp": "2026-06-30T14:34:31.504Z",
+    "timestamp": "2026-06-30T20:07:51.892Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -11,28 +11,28 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By compromising CI/CD pipelines, attackers can deploy malicious code at scale, potentially leading to data encryption, service disruption, and financial losses.",
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure could lead to significant data loss, operational downtime, and financial damage. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code across multiple environments, potentially affecting production systems and sensitive data.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
-        "E-commerce",
-        "Media and Entertainment",
+        "Retail",
+        "Manufacturing",
         "Government"
       ],
       "recommended_actions": [
-        "Immediately review and secure CI/CD pipelines by implementing multi-factor authentication (MFA), access controls, and code integrity checks.",
-        "Conduct a thorough audit of cloud infrastructure to identify and patch vulnerabilities, especially those related to access management and misconfigurations.",
-        "Implement robust backup and disaster recovery plans to ensure data can be restored in case of ransomware encryption."
+        "Implement strict access controls and multi-factor authentication (MFA) for CI/CD pipelines and cloud infrastructure.",
+        "Conduct immediate security audits of CI/CD pipelines to identify and remediate vulnerabilities or misconfigurations.",
+        "Deploy advanced endpoint detection and response (EDR) solutions and monitor for unusual activity in cloud environments."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "hn-1782830071504-1",
+    "id": "hn-1782850071892-1",
     "source": "HackerNews",
-    "timestamp": "2026-06-30T14:34:31.504Z",
+    "timestamp": "2026-06-30T20:07:51.892Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -56,26 +56,288 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-92mj-xr7p-2g9c",
+    "id": "gh-GHSA-pgcq-8grm-5rx9",
     "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:53Z",
-    "title": "Redeight CMS version 1.0 uses the MD5 algorithm without a salt to store user passwords. Because...",
-    "description": "Redeight CMS version 1.0 uses the MD5 algorithm without a salt to store user passwords. Because MD5 is a cryptographically broken algorithm and lacks salting, attackers who obtain the password hashes can trivially reverse them using rainbow tables, leading to the exposure of plaintext credentials.",
+    "timestamp": "2026-06-30T19:11:24Z",
+    "title": "Paymenter has race condition in payWithCredit() that enables credit double-spend",
+    "description": "### Summary\nThe credit payment implementation in `app/Livewire/Invoices/Show.php` executes a pessimistic row lock (`lockForUpdate()`) outside of an active database transaction. Because MySQL/MariaDB requires an enclosing transaction to enforce row-level locks, the guard is ineffective. Concurrent payment requests can exploit this race condition to read the same credit balance simultaneously, allowing users to pay multiple invoices using the same credit balance.\n\n### Technical Details\nThe issue o",
     "severity": "medium",
-    "cve_id": "CVE-2026-53692",
-    "ghsa_id": "GHSA-92mj-xr7p-2g9c",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-55219",
+    "ghsa_id": "GHSA-pgcq-8grm-5rx9",
+    "affected_packages": [
+      "paymenter/paymenter"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "The race condition in the payWithCredit() function allows users to exploit a concurrency issue, enabling unauthorized double-spending of credit balances. This could lead to financial losses, fraudulent transactions, and reputational damage for affected organizations.",
+      "affected_industries": [
+        "E-commerce",
+        "Financial Services",
+        "Subscription-based Platforms",
+        "SaaS Providers"
+      ],
+      "recommended_actions": [
+        "Implement proper database transaction management by enclosing the lockForUpdate() call within an active transaction to ensure row-level locking is enforced.",
+        "Conduct a thorough code review to identify and address similar concurrency issues in other parts of the application.",
+        "Deploy monitoring and alerting mechanisms to detect unusual payment activity, such as multiple payments processed simultaneously for the same credit balance."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-pp85-5j63-xpq3",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-30T18:48:57Z",
+    "title": "Open Babel has Use-after-free in GAMESS GAMESSOutputFormat::ReadMolecule",
+    "description": "### Summary\n\nA memory-safety vulnerability in Open Babel's GAMESS output parser\ncaused a use-after-free when reading a crafted input file.\n\n### Details\n\nThe flaw was in `GAMESSOutputFormat::ReadMolecule`. A malformed input\ncaused the parser to dereference a stale pointer after the underlying\nobject had been freed.\n\n### Impact\n\nOpen Babel is a C++ library and CLI used to read and write chemistry\nfile formats; it is shipped by Linux distributions and embedded in\nservices that may parse untrusted i",
+    "severity": "low",
+    "cve_id": "CVE-2025-10994",
+    "ghsa_id": "GHSA-pp85-5j63-xpq3",
+    "affected_packages": [
+      "openbabel"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2025-10994.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-rxpr-wq63-jr7p",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-30T18:47:28Z",
+    "title": "Open Babel has a NULL pointer dereference in CDXML OBAtom::GetExplicitValence",
+    "description": "### Summary\n\nA memory-safety vulnerability in Open Babel's CDXML file format parser\ncaused a NULL pointer dereference when reading a crafted input file.\n\n### Details\n\nThe flaw was in `OBAtom::GetExplicitValence` as called from the CDXML\nparser. A malformed fragment caused the parser to invoke the method\non a NULL atom pointer.\n\n### Impact\n\nOpen Babel is a C++ library and CLI used to read and write chemistry\nfile formats; it is shipped by Linux distributions and embedded in\nservices that may pars",
+    "severity": "low",
+    "cve_id": "CVE-2026-3408",
+    "ghsa_id": "GHSA-rxpr-wq63-jr7p",
+    "affected_packages": [
+      "openbabel"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-3408.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-4w5w-4fhm-q483",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-30T18:47:00Z",
+    "title": "Open Babel has NULL pointer dereference in MOL2 OBAtom::SetFormalCharge",
+    "description": "### Summary\n\nA memory-safety vulnerability in Open Babel's MOL2 file format parser\ncaused a NULL pointer dereference when reading a crafted input file.\n\n### Details\n\nThe flaw was in `OBAtom::SetFormalCharge` as called from the MOL2\nparser. A malformed atom record caused the parser to call the method\non a NULL atom pointer.\n\n### Impact\n\nOpen Babel is a C++ library and CLI used to read and write chemistry\nfile formats; it is shipped by Linux distributions and embedded in\nservices that may parse un",
+    "severity": "low",
+    "cve_id": "CVE-2026-2705",
+    "ghsa_id": "GHSA-4w5w-4fhm-q483",
+    "affected_packages": [
+      "openbabel"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 35,
+      "impact_assessment": "The vulnerability allows a crafted MOL2 file to cause a NULL pointer dereference, potentially leading to application crashes or denial of service. However, exploitation is limited to specific use cases involving the parsing of MOL2 files.",
+      "affected_industries": [
+        "Pharmaceuticals",
+        "Chemical Research",
+        "Bioinformatics"
+      ],
+      "recommended_actions": [
+        "Update to the latest version of Open Babel that includes the patch for CVE-2026-2705.",
+        "Implement input validation and sanitization for MOL2 files before parsing them.",
+        "Monitor and restrict the use of untrusted MOL2 files in critical workflows."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 35
+  },
+  {
+    "id": "gh-GHSA-6xw4-2g22-26h8",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-30T18:46:12Z",
+    "title": "Open Babel has an out-of-bounds read in CIF transform3d::DescribeAsString",
+    "description": "> ### Summary\n>\n> A memory-safety vulnerability in Open Babel's CIF file format parser\n> allowed an out-of-bounds read when reading a crafted input file.\n>\n> ### Details\n>\n> The flaw was in `OpenBabel::transform3d::DescribeAsString`. A malformed\n> symmetry-operation string caused the parser to read past the end of its\n> internal buffer while formatting the description.\n>\n> ### Impact\n>\n> Open Babel is a C++ library and CLI used to read and write chemistry\n> file formats; it is shipped by Linux d",
+    "severity": "low",
+    "cve_id": "CVE-2026-2704",
+    "ghsa_id": "GHSA-6xw4-2g22-26h8",
+    "affected_packages": [
+      "openbabel"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-2704.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-h8vq-8gpg-mhcg",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-30T18:43:45Z",
+    "title": "Twig: Sandbox property allowlist bypass via the `column` filter under `SourcePolicyInterface`",
+    "description": "### Description\n\nThis is a residual bypass of CVE-2026-46635 / GHSA-vcc8-phrv-43wj that only affects sandboxing enabled through `SourcePolicyInterface` (and not the regular global sandbox mode).\n\n`CoreExtension::column()` receives the active sandbox state via the `needs_is_sandboxed` channel as a boolean `$isSandboxed`, but then routes the per-element property reads through `SandboxExtension::checkPropertyAllowed()` without forwarding the current `Source`. `SandboxExtension::checkPropertyAllowed",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48808",
+    "ghsa_id": "GHSA-h8vq-8gpg-mhcg",
+    "affected_packages": [
+      "twig/twig"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "This vulnerability allows attackers to bypass the sandbox property allowlist under certain conditions, potentially leading to unauthorized access or data leakage. It specifically affects applications using Twig's sandboxing feature with SourcePolicyInterface, leaving them exposed to malicious activity.",
+      "affected_industries": [
+        "Web Development",
+        "E-commerce",
+        "Content Management Systems",
+        "Software-as-a-Service (SaaS)"
+      ],
+      "recommended_actions": [
+        "Update to the latest version of Twig that patches CVE-2026-48808 to mitigate the vulnerability.",
+        "Review and audit the use of SourcePolicyInterface in your application to ensure proper sandboxing configurations.",
+        "Implement additional input validation and monitoring to detect and block potential exploitation attempts."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-8x9c-rmqh-456c",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-30T18:43:23Z",
+    "title": "Twig: Sandbox `__toString()` policy bypass via `Traversable` in `join` and `replace` filters",
+    "description": "### Description\n\nThis is a residual bypass of CVE-2026-47732 / GHSA-pr2w-4gpj-cpq4 left after the initial fix for unguarded `__toString()` calls. It covers two related coercion points that were not caught by the original patch.\n\n**`Traversable` in `join` and `replace` filters.** `SandboxExtension::ensureToStringAllowed()` recurses into PHP arrays so that a `Stringable` object hidden inside an array argument cannot be string-coerced without consulting the security policy. The recursion stops at P",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48807",
+    "ghsa_id": "GHSA-8x9c-rmqh-456c",
+    "affected_packages": [
+      "twig/twig"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53692.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48807.",
       "affected_industries": [
         "Technology",
         "General"
@@ -90,26 +352,219 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-gxmr-q5p5-p9w5",
+    "id": "gh-GHSA-5v5v-ww74-355v",
     "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:53Z",
-    "title": "An Unrestricted File Upload vulnerability in Redeight CMS version 1.0 allows authenticated...",
-    "description": "An Unrestricted File Upload vulnerability in Redeight CMS version 1.0 allows authenticated attackers to achieve Remote Code Execution via the POST \"/admin/index.php?module=pages&mode=FileAdd\" endpoint. The application fails to validate file extensions and MIME types, permitting the upload of arbitrary PHP scripts to the publicly accessible \"/uploads/files/\" directory where they can be executed directly by the web server.",
-    "severity": "high",
-    "cve_id": "CVE-2026-53691",
-    "ghsa_id": "GHSA-gxmr-q5p5-p9w5",
-    "affected_packages": [],
+    "timestamp": "2026-06-30T18:42:49Z",
+    "title": "Twig: Sandbox `__toString()` policy bypass via dynamic mapping keys",
+    "description": "### Description\n\nThis is a residual bypass of CVE-2026-47732 / GHSA-pr2w-4gpj-cpq4 left after the initial fix for unguarded `__toString()` calls.\n\nIn 3.26.0 the sandbox visitor was extended to wrap every child node that its parent will string-coerce at runtime with `CheckToStringNode`, gated by the new `CoercesChildrenToStringInterface`. `ArrayExpression` did not implement the interface for its mapping keys: when a dynamic key expression resolves to a `Stringable` object, `ArrayExpression::compi",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48806",
+    "ghsa_id": "GHSA-5v5v-ww74-355v",
+    "affected_packages": [
+      "twig/twig"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48806.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-p42q-9prx-q5wq",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-30T18:41:30Z",
+    "title": "Twig: Sandbox state regression in deprecated internal wrappers in `src/Resources/core.php`",
+    "description": "### Description\n\nThe 3.26.0 source-policy hardening changed the signature of `CoreExtension::checkArrow()` to take a boolean `$isSandboxed` instead of an `Environment`, and added the same `$isSandboxed` argument to `CoreExtension::arraySome()` and `CoreExtension::arrayEvery()`. Compiled templates were updated to pass the per-source sandbox state computed at the call site.\n\nThe deprecated internal wrappers exposed in `src/Resources/core.php` for legacy third-party code (`twig_check_arrow_in_sandb",
+    "severity": "low",
+    "cve_id": "CVE-2026-48805",
+    "ghsa_id": "GHSA-p42q-9prx-q5wq",
+    "affected_packages": [
+      "twig/twig"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "The vulnerability involves a regression in sandbox state handling within deprecated internal wrappers in Twig. This could potentially allow misuse of sandboxing features in specific scenarios, but the overall risk is low due to the limited scope of affected functionality and the fact that it primarily impacts legacy third-party code.",
+      "affected_industries": [
+        "Web Development",
+        "Content Management Systems (CMS)",
+        "E-commerce Platforms"
+      ],
+      "recommended_actions": [
+        "Update to the latest version of Twig to ensure all security patches and fixes are applied.",
+        "Audit and refactor any legacy third-party code that relies on deprecated internal wrappers in Twig.",
+        "Enable sandboxing only for trusted and well-maintained code to minimize potential misuse."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-9c54-x2g4-v92j",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-30T18:40:39Z",
+    "title": "Sigstore Timestamp Authority has OOM due to unbounded metric label cardinality",
+    "description": "### Impact\n\nAn unauthenticated remote attacker can trigger unbounded memory growth on the timestamp authority server.\n\nThis vulnerability exists because the global `wrapMetrics` middleware records the raw HTTP request path (`r.URL.Path`) and raw HTTP request method (`r.Method`) as Prometheus labels for latency and request count metric vectors. Since this middleware runs before standard routing occurs, it executes for all incoming requests, including those for unmatched paths (yielding 404 respon",
+    "severity": "medium",
+    "cve_id": "CVE-2026-49835",
+    "ghsa_id": "GHSA-9c54-x2g4-v92j",
+    "affected_packages": [
+      "github.com/sigstore/timestamp-authority/v2",
+      "github.com/sigstore/timestamp-authority"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-49835.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-f5mr-q85p-6hh6",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-30T18:38:45Z",
+    "title": "Fulcio has OIDC Discovery Redirect Following Allows SSRF and JWKS Substitution for Meta-Issuer Paths, with Kubernetes Service-Account Token Leakage",
+    "description": "## Impact\n\nThree security vulnerabilities were identified in the OIDC Discovery client:\n\n1. **Blind Server-Side Request Forgery (SSRF) via Cross-Host Redirects**:\n   Fulcio uses an HTTP client to fetch OIDC discovery metadata (`/.well-known/openid-configuration`). Prior to this fix, if a configured issuer returned an HTTP redirect to a different host, the client followed it by default. This allowed a compromised or malicious issuer to redirect Fulcio's discovery requests to internal-only systems",
+    "severity": "high",
+    "cve_id": "CVE-2026-49478",
+    "ghsa_id": "GHSA-f5mr-q85p-6hh6",
+    "affected_packages": [
+      "github.com/sigstore/fulcio"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows attackers to exploit a blind SSRF via cross-host redirects, potentially exposing sensitive internal systems and enabling JWKS substitution attacks. This could lead to unauthorized access, data exfiltration, or further compromise of Kubernetes service-account tokens, which are critical for authentication and authorization in Kubernetes environments.",
+      "affected_industries": [
+        "Cloud Computing",
+        "Technology",
+        "Financial Services",
+        "Healthcare",
+        "E-commerce"
+      ],
+      "recommended_actions": [
+        "Immediately update Fulcio to the latest patched version that addresses CVE-2026-49478.",
+        "Implement strict validation and whitelisting of OIDC issuer endpoints to prevent redirection to unauthorized hosts.",
+        "Conduct a thorough review of Kubernetes service-account token usage and rotate any potentially exposed tokens."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-85jm-cwp2-mvpv",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-30T18:36:12Z",
+    "title": "CefSharp.Common: `FolderSchemeHandlerFactory` path boundary check can expose files outside the configured root folder",
+    "description": "### Summary\n\n`FolderSchemeHandlerFactory` was intended to restrict served files to a configured `rootFolder`, but its path validation used a raw string prefix check. A request could escape to a sibling directory whose full path starts with the root folder path, allowing files outside the configured root to be served.\n\n### Details\n\nIn affected versions, `FolderSchemeHandlerFactory` canonicalized `rootFolder`, decoded the request path, combined it with the root, and then allowed the file when:\n\n``",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48796",
+    "ghsa_id": "GHSA-85jm-cwp2-mvpv",
+    "affected_packages": [
+      "CefSharp.Common"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48796.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-qcm7-3vpr-hj5h",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-30T18:34:32Z",
+    "title": "@adonisjs/bodyparser has an incomplete fix for CVE-2026-25754",
+    "description": "### Summary\n\nThe fix for [GHSA-f5x2-vj4h-vg4c](https://github.com/adonisjs/core/security/advisories/GHSA-f5x2-vj4h-vg4c) / CVE-2026-25754 introduced in commit [`40e1c71`](https://github.com/adonisjs/bodyparser/commit/40e1c71f958cffb74f6b91bed6630dca979062ed) is incomplete and can be bypassed through nested prototype pollution payloads.\n\nThe original patch replaced the internal `FormFields` storage object with `Object.create(null)`, preventing direct payloads such as `__proto__.polluted`. However",
+    "severity": "high",
+    "cve_id": "CVE-2026-48795",
+    "ghsa_id": "GHSA-qcm7-3vpr-hj5h",
+    "affected_packages": [
+      "@adonisjs/bodyparser",
+      "@adonisjs/bodyparser"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-53691.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48795.",
       "affected_industries": [
         "Technology",
         "General"
@@ -124,15 +579,96 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-5gfq-2rx4-6vwv",
+    "id": "gh-GHSA-389x-rgxr-8m33",
     "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:53Z",
-    "title": "Net::BitTorrent versions through 2.0.1 for Perl write files outside the download directory via...",
-    "description": "Net::BitTorrent versions through 2.0.1 for Perl write files outside the download directory via path traversal in peer-supplied metadata.\n\nNet::BitTorrent validates file path components only on the .torrent-file ingest path. The peer and magnet metadata path (_on_metadata_received, reached from the BEP09 ut_metadata extension) passes attacker-supplied file names straight to Storage::add_file and Storage::_parse_file_tree, where Path::Tiny's child() does not collapse \"..\". A v2 file tree key, a v1",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-57079",
-    "ghsa_id": "GHSA-5gfq-2rx4-6vwv",
-    "affected_packages": [],
+    "timestamp": "2026-06-30T18:33:20Z",
+    "title": "oban_web missing authorization check on `save-job` event handler",
+    "description": "### Summary\n\n`oban_web` 2.12.0 through the current unpatched release exposes a `save-job` LiveView event handler that performs no authorization check, allowing any authenticated user (including those with `:read_only` access) to overwrite a queued job's `worker` field with any other `Oban.Worker` module present in the application. On the job's next execution attempt, Oban dispatches `perform/1` on the attacker-chosen module instead of the intended one.\n\n### Details\n\nIn `lib/oban/web/live/jobs/de",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48592",
+    "ghsa_id": "GHSA-389x-rgxr-8m33",
+    "affected_packages": [
+      "oban_web"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48592.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-6xh2-93p9-vqh4",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-30T18:32:49Z",
+    "title": "oban_web: Unbounded range expansion in cron describe causes memory exhaustion",
+    "description": "### Summary\n\n`oban_web` 2.12.0 introduced a cron expression parser that expands `-`-separated ranges without validating the endpoints. An attacker with access to schedule cron jobs can submit a malicious expression; when any user with dashboard access views the cron job list, `Oban.Web.CronExpr.describe/1` is called to render it, triggering allocation of gigabytes of memory and stalling or crashing the BEAM node.\n\n### Details\n\n**1. Scheduling:** The attacker submits a cron job with a malicious e",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48593",
+    "ghsa_id": "GHSA-6xh2-93p9-vqh4",
+    "affected_packages": [
+      "oban_web"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48593.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-x7qq-m748-8p2c",
+    "source": "GitHub Security",
+    "timestamp": "2026-06-30T18:31:50Z",
+    "title": "Probo has an open redirect bypass via path normalization",
+    "description": "### Impact\nProbo's `saferedirect` package validates redirect URLs used across authentication flows (OIDC, SAML, session transfer, OAuth connectors, and trust-center magic links). The validator only inspected the second character of relative paths, so a URL like `/../\\evil.com` passed validation because the second character is `.`. Go's `http.Redirect` normalizes this path to `/\\evil.com` before setting the `Location` header. Browsers can interpret the backslash as a host separator and redirect t",
+    "severity": "medium",
+    "cve_id": "CVE-2026-49820",
+    "ghsa_id": "GHSA-x7qq-m748-8p2c",
+    "affected_packages": [
+      "go.probo.inc/probo"
+    ],
     "cwes": [
       null
     ],
@@ -142,32 +678,30 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This vulnerability allows attackers to perform path traversal attacks, enabling them to write files outside the intended download directory. This could lead to arbitrary file creation, modification, or overwriting, potentially resulting in privilege escalation, data corruption, or system compromise.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-49820.",
       "affected_industries": [
         "Technology",
-        "Media and Entertainment",
-        "Software Development",
-        "Telecommunications"
+        "General"
       ],
       "recommended_actions": [
-        "Immediately upgrade to a patched version of Net::BitTorrent if available, or apply any mitigations provided by the maintainers.",
-        "Implement strict input validation and sanitization for file paths to prevent path traversal attacks.",
-        "Restrict permissions of the application to limit its ability to write files outside designated directories."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 85
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-722f-j64m-mq4x",
+    "id": "gh-GHSA-wpx4-jm4h-w8j6",
     "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:53Z",
-    "title": "An SQL Injection vulnerability exists in Redeight CMS version 1.0 via the \"userEmail\" parameter...",
-    "description": "An SQL Injection vulnerability exists in Redeight CMS version 1.0 via the \"userEmail\" parameter in the POST \"/admin/index.php\" login endpoint. The application fails to sanitize user input and directly interpolates it into SQL queries without using prepared statements, which allows unauthenticated remote attackers to execute arbitrary SQL commands and extract sensitive database information.",
+    "timestamp": "2026-06-30T18:31:40Z",
+    "title": "Woodpecker before 3.15.0 matches the ApprovalAllowedUsers bypass list against pipeline.Author....",
+    "description": "Woodpecker before 3.15.0 matches the ApprovalAllowedUsers bypass list against pipeline.Author. For the GitLab forge driver, pipeline.Author is populated from the git commit author name (commit.author.name) carried in the webhook payload, which is attacker-controlled and not verified by GitLab. A user who can open a merge request from a fork can set the commit author name to match an entry in ApprovalAllowedUsers, causing needsApproval to return false so the pipeline runs without the required app",
     "severity": "critical",
-    "cve_id": "CVE-2026-53690",
-    "ghsa_id": "GHSA-722f-j64m-mq4x",
+    "cve_id": "CVE-2026-58370",
+    "ghsa_id": "GHSA-wpx4-jm4h-w8j6",
     "affected_packages": [],
     "cwes": [
       null
@@ -175,42 +709,6 @@
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 95,
-      "impact_assessment": "This vulnerability allows unauthenticated remote attackers to execute arbitrary SQL commands, potentially leading to data breaches, unauthorized access, and full compromise of the database. Sensitive information such as user credentials, financial data, and other critical records may be exposed or manipulated.",
-      "affected_industries": [
-        "Technology",
-        "E-commerce",
-        "Healthcare",
-        "Finance",
-        "Education",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Immediately apply input sanitization and use prepared statements or parameterized queries to prevent SQL injection.",
-        "Deploy a web application firewall (WAF) to detect and block malicious SQL injection attempts.",
-        "Update to a patched version of Redeight CMS, if available, or contact the vendor for a security fix."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 95
-  },
-  {
-    "id": "gh-GHSA-rh6c-c6qm-xq64",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:53Z",
-    "title": "Hospital Queuing Management developed by Advantech has a Sensitive Data Exposure vulnerability,...",
-    "description": "Hospital Queuing Management developed by Advantech has a Sensitive Data Exposure vulnerability, allowing unauthenticated remote attackers to access a specific URL to obtain API documentation.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-14162",
-    "ghsa_id": "GHSA-rh6c-c6qm-xq64",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
       null,
       null,
       null,
@@ -218,30 +716,32 @@
     ],
     "ai_analysis": {
       "risk_score": 92,
-      "impact_assessment": "The vulnerability in the Hospital Queuing Management system allows unauthenticated remote attackers to access sensitive API documentation, potentially exposing sensitive patient data, operational details, and system configurations. This could lead to data breaches, unauthorized system access, and exploitation of other vulnerabilities.",
+      "impact_assessment": "The vulnerability allows attackers to bypass approval mechanisms in the Woodpecker CI/CD system by exploiting an unverified commit author name. This could lead to unauthorized pipeline execution, potentially introducing malicious code, compromising build integrity, or exposing sensitive data.",
       "affected_industries": [
-        "Healthcare",
-        "Medical Technology",
-        "IT Services for Healthcare"
+        "Software Development",
+        "Technology",
+        "DevOps",
+        "Cloud Services",
+        "Open Source Projects"
       ],
       "recommended_actions": [
-        "Immediately restrict access to the affected URL by implementing proper authentication and authorization mechanisms.",
-        "Conduct a thorough review of the exposed API documentation to identify and mitigate any additional vulnerabilities or sensitive data leaks.",
-        "Apply security patches or updates provided by Advantech and monitor for any further advisories related to CVE-2026-14162."
+        "Upgrade to Woodpecker version 3.15.0 or later to patch the vulnerability.",
+        "Implement additional validation mechanisms for commit author names to ensure they are verified against trusted sources.",
+        "Review and monitor pipeline configurations and logs for any unauthorized or suspicious activity."
       ],
       "urgency": "critical"
     },
     "risk_score": 92
   },
   {
-    "id": "gh-GHSA-jg5p-684r-wfw3",
+    "id": "gh-GHSA-6w4x-5vf2-7756",
     "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:53Z",
-    "title": "Improper neutralization of special elements used in an SQL command ('SQL injection')...",
-    "description": "Improper neutralization of special elements used in an SQL command ('SQL injection') vulnerability in Eksagate Electronic Engineering and Computer Industry Trade Inc. SYSGUARD 6001 allows Blind SQL Injection.\n\nThis issue affects SYSGUARD 6001: from 2.0.2 before 6.1.16.0. \nNOTE: The vendor was contacted and it was learned that the product is not supported.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-8402",
-    "ghsa_id": "GHSA-jg5p-684r-wfw3",
+    "timestamp": "2026-06-30T18:31:40Z",
+    "title": "JeecgBoot through 3.9.2 contains a broken access control vulnerability that allows authenticated...",
+    "description": "JeecgBoot through 3.9.2 contains a broken access control vulnerability that allows authenticated low-privilege users to perform full create, read, update, and delete operations on OpenAPI credentials by accessing the OpenApiAuthController and OpenApiPermissionController endpoints which lack Shiro authorization annotations. Attackers can exploit the unenforced access controls to list, add, edit, and delete all AK/SK credential pairs, with the list endpoint returning secret keys in plaintext, enab",
+    "severity": "high",
+    "cve_id": "CVE-2026-58377",
+    "ghsa_id": "GHSA-6w4x-5vf2-7756",
     "affected_packages": [],
     "cwes": [
       null
@@ -249,33 +749,37 @@
     "references": [
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-8402.",
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in JeecgBoot through 3.9.2 allows authenticated low-privilege users to gain unauthorized access to sensitive OpenAPI credentials, including secret keys in plaintext. This could lead to unauthorized access to APIs, data breaches, and potential misuse of API functionalities.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update JeecgBoot to a patched version (if available) or apply any security patches provided by the vendor.",
+        "Implement additional access control mechanisms, such as role-based access control (RBAC), to restrict access to sensitive endpoints.",
+        "Rotate all API keys and secret keys stored in the system to mitigate the risk of unauthorized access."
       ],
       "urgency": "critical"
     },
-    "risk_score": 90
+    "risk_score": 85
   },
   {
-    "id": "gh-GHSA-3x8p-9jc8-598w",
+    "id": "gh-GHSA-8j74-6fjm-pjr7",
     "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:53Z",
-    "title": "Net::BitTorrent versions through 2.0.1 for Perl generate the MSE Diffie-Hellman private key with...",
-    "description": "Net::BitTorrent versions through 2.0.1 for Perl generate the MSE Diffie-Hellman private key with a non-cryptographic PRNG.\n\nThe MSE (Message Stream Encryption) handshake derives its 160-bit Diffie-Hellman private key from Perl's rand(), a non-cryptographic drand48-class generator seeded once per process, in KeyExchange.pm. The shared secret and the RC4 keys derived from it (the SHA-1 of \"keyA\" or \"keyB\", the shared secret, and the infohash) therefore depend entirely on a predictable PRNG. The sa",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-57082",
-    "ghsa_id": "GHSA-3x8p-9jc8-598w",
+    "timestamp": "2026-06-30T18:31:40Z",
+    "title": "Hermes WebUI before 0.51.521 validates the workspace of an imported session under the active...",
+    "description": "Hermes WebUI before 0.51.521 validates the workspace of an imported session under the active named profile but constructs the Session object without setting its profile in the /api/session/import handler, so the imported session is persisted with a null profile. Because a null profile is treated as the default profile by the profile authorization check, a user on the default profile can export the imported session transcript and use its session identifier to read files from the named profile's w",
+    "severity": "medium",
+    "cve_id": "CVE-2026-58174",
+    "ghsa_id": "GHSA-8j74-6fjm-pjr7",
     "affected_packages": [],
     "cwes": [
       null
@@ -283,11 +787,15 @@
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-57082.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-58174.",
       "affected_industries": [
         "Technology",
         "General"
@@ -302,87 +810,23 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-39fp-mc5w-p8hh",
+    "id": "gh-GHSA-9cq9-w9qm-wc9p",
     "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:53Z",
-    "title": "Net::BitTorrent versions through 2.0.1 for Perl allow remote memory exhaustion via deeply nested...",
-    "description": "Net::BitTorrent versions through 2.0.1 for Perl allow remote memory exhaustion via deeply nested bencoded input.\n\nbdecode recurses once per nested list or dictionary level with no depth cap, and each recursive call receives the remaining buffer by value while the list and dictionary branches capture the whole remainder, so every live recursion frame keeps its own copy of the shrinking buffer (O(N^2) bytes for an N-deep input). The decoder runs on every untrusted bencode source: .torrent files, B",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-57081",
-    "ghsa_id": "GHSA-39fp-mc5w-p8hh",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-57081.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-h9mr-rh28-v9r2",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:53Z",
-    "title": "Net::BitTorrent versions through 2.0.1 for Perl allow remote memory exhaustion via an uncapped...",
-    "description": "Net::BitTorrent versions through 2.0.1 for Perl allow remote memory exhaustion via an uncapped peer-wire message-length prefix.\n\nThe peer-wire framing in _process_messages trusts the 4-byte length prefix sent by a connected peer with no upper bound, while receive_data appends every inbound byte to the input buffer. A peer announces a length prefix of up to about 4 GiB and then streams bytes; the decoder waits until the buffer holds the full message before processing it, so the buffer grows witho",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-57080",
-    "ghsa_id": "GHSA-h9mr-rh28-v9r2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-57080.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-h3wp-wq8p-j642",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:52Z",
-    "title": "Hospital Quening Management developed by Advantech has a Sensitive Data Exposure vulnerability,...",
-    "description": "Hospital Quening Management developed by Advantech has a Sensitive Data Exposure vulnerability, allowing unauthenticated remote attackers to access a specific URL to obtain API documentation.",
+    "timestamp": "2026-06-30T18:31:40Z",
+    "title": "SeaweedFS before 4.34 contains a path traversal vulnerability in the S3 gateway...",
+    "description": "SeaweedFS before 4.34 contains a path traversal vulnerability in the S3 gateway DeleteMultipleObjectsHandler that allows authenticated S3 principals with write access to a single bucket to delete arbitrary objects in other tenants' buckets by supplying object keys containing ../ sequences in the DeleteObjects XML request body. Attackers can bypass authorization controls through a confused deputy condition, as the validateRequestPath middleware only inspects URL-captured path variables and never ",
     "severity": "high",
-    "cve_id": "CVE-2026-14161",
-    "ghsa_id": "GHSA-h3wp-wq8p-j642",
+    "cve_id": "CVE-2026-58372",
+    "ghsa_id": "GHSA-9cq9-w9qm-wc9p",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null,
@@ -390,7 +834,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-14161.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-58372.",
       "affected_industries": [
         "Technology",
         "General"
@@ -403,375 +847,6 @@
       "urgency": "high"
     },
     "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-xjwq-9jw5-jf7w",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:52Z",
-    "title": "Improper Input Validation vulnerability in Apache ActiveMQ, Apache ActiveMQ All, Apache ActiveMQ...",
-    "description": "Improper Input Validation vulnerability in Apache ActiveMQ, Apache ActiveMQ All, Apache ActiveMQ Stomp.\n\nA remote unauthenticated peer that can reach an exposed STOMP connector can trigger denial-of-service behavior by sending a negative content-length. For the NIO STOMP transport, an attacker can keep streaming body bytes and grow the per-connection command buffer beyond configured limits to cause OOM. For the blocking STOMP protocol, an error will instead force abnormal transport exception han",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-49432",
-    "ghsa_id": "GHSA-xjwq-9jw5-jf7w",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-49432.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-gvp3-3684-gppw",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:52Z",
-    "title": "DBIx::QuickORM versions before 0.000026 for Perl allow SQL injection via unquoted SQL identifiers...",
-    "description": "DBIx::QuickORM versions before 0.000026 for Perl allow SQL injection via unquoted SQL identifiers.\n\nThe default SQL builder, a SQL::Abstract subclass, sets bindtype in its constructor but never quote_char, so SQL::Abstract emits identifiers verbatim. Caller-supplied identifiers (order_by, where-clause column keys, field and returning lists, upsert columns, and join aliases) reach the SQL string raw, while values are placeholder-bound and unaffected.\n\nA caller that forwards untrusted input to an ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-13766",
-    "ghsa_id": "GHSA-gvp3-3684-gppw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 78,
-      "impact_assessment": "The vulnerability allows SQL injection attacks due to unquoted SQL identifiers, potentially leading to unauthorized data access, data manipulation, or database compromise. This can severely impact the confidentiality, integrity, and availability of the affected systems.",
-      "affected_industries": [
-        "Technology",
-        "E-commerce",
-        "Finance",
-        "Healthcare",
-        "Education",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Update to DBIx::QuickORM version 0.000026 or later to mitigate the vulnerability.",
-        "Review and sanitize all user-supplied inputs to ensure they are properly validated and escaped before being used in SQL queries.",
-        "Conduct a security audit of applications using DBIx::QuickORM to identify and remediate any potential exploitation of this vulnerability."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 78
-  },
-  {
-    "id": "gh-GHSA-mhp6-f224-j2c3",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:52Z",
-    "title": "Missing Authorization vulnerability in Apache ActiveMQ Broker, Apache ActiveMQ All, Apache...",
-    "description": "Missing Authorization vulnerability in Apache ActiveMQ Broker, Apache ActiveMQ All, Apache ActiveMQ.\n\nApache ActiveMQ Classic temporary destinations are expected to be isolated to the connection that created them. The isolation can be broken as this is only checked in the client, allowing a different connection to consume from another connection's temporary\ndestination.\nThis issue affects Apache ActiveMQ Broker: before 5.19.8, from 6.0.0 before 6.2.7; Apache ActiveMQ All: before 5.19.8, from 6.0",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-54475",
-    "ghsa_id": "GHSA-mhp6-f224-j2c3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 78,
-      "impact_assessment": "The missing authorization vulnerability in Apache ActiveMQ could allow unauthorized access to temporary destinations, potentially leading to data breaches, unauthorized message consumption, or disruption of message flow in affected systems.",
-      "affected_industries": [
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Telecommunications",
-        "Government",
-        "Technology"
-      ],
-      "recommended_actions": [
-        "Immediately upgrade Apache ActiveMQ Broker to version 5.19.8 or 6.2.7, or later versions, to patch the vulnerability.",
-        "Review and restrict network access to the ActiveMQ service to trusted systems only, using firewalls or access control lists.",
-        "Monitor ActiveMQ logs for any unusual or unauthorized access patterns, particularly related to temporary destinations."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 78
-  },
-  {
-    "id": "gh-GHSA-f77w-px59-cqf5",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:52Z",
-    "title": "Memory Allocation with Excessive Size Value vulnerability in Apache ActiveMQ, Apache ActiveMQ All...",
-    "description": "Memory Allocation with Excessive Size Value vulnerability in Apache ActiveMQ, Apache ActiveMQ All, Apache ActiveMQ Client, Apache ActiveMQ Broker.\n\nAn authenticated user can cause a broker DoS by sending a crafted OpenWire Message with a large encoded size value for the map. OpenWire message property maps are unmarshaled without size validation which can trigger OOM and crash the broker.\nThis issue affects Apache ActiveMQ: before 5.19.8, from 6.0.0 before 6.2.7; Apache ActiveMQ All: before 5.19.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53917",
-    "ghsa_id": "GHSA-f77w-px59-cqf5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This vulnerability allows an authenticated attacker to exploit a flaw in Apache ActiveMQ's OpenWire protocol, leading to a Denial of Service (DoS) by causing the broker to run out of memory and crash. This can disrupt message broker services, potentially impacting critical business operations and data flows.",
-      "affected_industries": [
-        "Financial Services",
-        "E-commerce",
-        "Telecommunications",
-        "Healthcare",
-        "Government",
-        "Technology"
-      ],
-      "recommended_actions": [
-        "Upgrade Apache ActiveMQ to version 5.19.8 or later, or 6.2.7 or later, as these versions contain the necessary patches to address the vulnerability.",
-        "Implement strict access controls and monitor authenticated user activity to detect and mitigate potential exploitation attempts.",
-        "Enable resource limits and monitoring on the broker to detect abnormal memory usage and prevent crashes caused by excessive memory allocation."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-9qj4-v6r6-3wmx",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:52Z",
-    "title": "Denial of Service via Out of Memory vulnerability in Apache ActiveMQ Broker, Apache ActiveMQ,...",
-    "description": "Denial of Service via Out of Memory vulnerability in Apache ActiveMQ Broker, Apache ActiveMQ, Apache ActiveMQ All.\n\nFollowing the fix for  CVE-2026-49270 an unauthenticated attacker can now cause broker OOM by sending an repeated BrokerInfo commands without sending a ConnectionInfo, until the broker will crash with OOM.\nThis issue affects Apache ActiveMQ Broker: from 5.19.7 before 5.19.8, from 6.2.6 before 6.2.7; Apache ActiveMQ: from 5.19.7 before 5.19.8, from 6.2.6 before 6.2.7; Apache ActiveM",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-50750",
-    "ghsa_id": "GHSA-9qj4-v6r6-3wmx",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-50750.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-2q9g-8573-3265",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:52Z",
-    "title": "Memory Allocation with Excessive Size Value vulnerability in Apache ActiveMQ, Apache ActiveMQ All...",
-    "description": "Memory Allocation with Excessive Size Value vulnerability in Apache ActiveMQ, Apache ActiveMQ All, Apache ActiveMQ Stomp.\n\n\nAn unauthenticated client that opens a STOMP NIO connection can send header bytes that never terminate which makes the broker buffer them without limit, exhausting the JVM heap. \nThis issue affects Apache ActiveMQ: before 5.19.8, from 6.0.0 before 6.2.7; Apache ActiveMQ All: before 5.19.8, from 6.0.0 before 6.2.7; Apache ActiveMQ Stomp: before 5.19.8, from 6.0.0 before 6.2.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53916",
-    "ghsa_id": "GHSA-2q9g-8573-3265",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-53916.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-j548-68g5-9j7x",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:52Z",
-    "title": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')...",
-    "description": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Apache ActiveMQ, Apache ActiveMQ Web Console.\n\nThe browse page in the web console renders a message Id directly without sanitization. This allows an authenticated producer to send a message with a JMS message ID that has been crafted to contain HTML/JavaScript such that when an administrator browses the queue in the Web Console, the payload executes in their browser.\nThis issue affects Apache Ac",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-52760",
-    "ghsa_id": "GHSA-j548-68g5-9j7x",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "This vulnerability allows an authenticated attacker to execute arbitrary JavaScript in the browser of an administrator viewing the Apache ActiveMQ Web Console. This could lead to session hijacking, data theft, or further exploitation of the administrator's privileges.",
-      "affected_industries": [
-        "Financial Services",
-        "Healthcare",
-        "E-commerce",
-        "Telecommunications",
-        "Technology"
-      ],
-      "recommended_actions": [
-        "Update to the latest patched version of Apache ActiveMQ that addresses CVE-2026-52760.",
-        "Implement input sanitization and output encoding for all user-supplied data rendered in the web console.",
-        "Restrict access to the Apache ActiveMQ Web Console to trusted IP addresses or use a VPN for administrative access."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-7259-vf48-52q3",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:52Z",
-    "title": "Memory Allocation with Excessive Size Value vulnerability in Apache ActiveMQ Client, Apache...",
-    "description": "Memory Allocation with Excessive Size Value vulnerability in Apache ActiveMQ Client, Apache ActiveMQ, Apache ActiveMQ All.\n\nAn unauthenticated network attacker can cause a broker DoS by sending a crafted WireFormatInfo frame with a malicious large size value. The value is not validate and causes the broker to attempt allocation during pre-auth negotiation which can trigger OOM and crash the broker.\nThis issue affects Apache ActiveMQ Client: before 5.19.8, from 6.0.0 before 6.2.7; Apache ActiveMQ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-50734",
-    "ghsa_id": "GHSA-7259-vf48-52q3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-50734.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-h5gm-rvw6-2xpx",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:52Z",
-    "title": "Improper Input Validation vulnerability in Apache ActiveMQ Broker, Apache ActiveMQ, Apache...",
-    "description": "Improper Input Validation vulnerability in Apache ActiveMQ Broker, Apache ActiveMQ, Apache ActiveMQ All.\n\nAn attacker that has access to publish or modify entries in LDAP that match the configured searchBase and searchFilter can instantiate denied transports inside the broker JVM. This can be used to fetch an attacker URL and spawn a second BrokerService inside the same JVM.\nThis issue affects Apache ActiveMQ Broker: before 5.19.8, from 6.0.0 before 6.2.7; Apache ActiveMQ: before 5.19.8, from 6.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-49434",
-    "ghsa_id": "GHSA-h5gm-rvw6-2xpx",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This vulnerability allows attackers to exploit LDAP misconfigurations to instantiate unauthorized transports within the broker JVM, potentially enabling remote code execution, unauthorized service creation, and data exfiltration.",
-      "affected_industries": [
-        "Finance",
-        "Healthcare",
-        "Retail",
-        "Technology",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Upgrade Apache ActiveMQ Broker to version 5.19.8 or later, and Apache ActiveMQ to version 6.2.7 or later to mitigate the vulnerability.",
-        "Review and restrict LDAP configurations, ensuring that searchBase and searchFilter entries are properly validated and secured.",
-        "Monitor ActiveMQ Broker logs for suspicious activity, such as unauthorized service creation or unusual transport instantiations."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-f892-4h9f-j7g9",
-    "source": "GitHub Security",
-    "timestamp": "2026-06-30T12:31:52Z",
-    "title": "Improper Authorization vulnerability in Apache ActiveMQ.\n\nAn authenticated low-privilege Web...",
-    "description": "Improper Authorization vulnerability in Apache ActiveMQ.\n\nAn authenticated low-privilege Web Console user by default can access /admin/* paths in the Web Console. The default Jetty settings incorrectly did not limit those paths to only admins.\nThis issue affects Apache ActiveMQ: before 5.19.8, from 6.0.0 before 6.2.7.\n\nUsers are recommended to upgrade to version 6.2.7 or 5.19.8, which fixes the issue.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-49877",
-    "ghsa_id": "GHSA-f892-4h9f-j7g9",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability allows authenticated low-privilege users to access administrative paths in the Apache ActiveMQ Web Console, potentially leading to unauthorized administrative actions, data exposure, or system misconfiguration.",
-      "affected_industries": [
-        "Financial Services",
-        "Healthcare",
-        "E-commerce",
-        "Telecommunications",
-        "Technology",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Upgrade Apache ActiveMQ to version 6.2.7 or 5.19.8 immediately to address the vulnerability.",
-        "Restrict access to the Web Console using network-level controls, such as firewalls or VPNs, to limit exposure.",
-        "Review and update user roles and permissions to ensure that low-privilege users cannot access administrative paths."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
   },
   {
     "id": "cve-CVE-2026-9733",
@@ -790,20 +865,24 @@
       "http://www.openwall.com/lists/oss-security/2026/06/23/1"
     ],
     "ai_analysis": {
-      "risk_score": 100,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-9733.",
+      "risk_score": 92,
+      "impact_assessment": "The vulnerability in Mojolicious::Plugin::Web::Auth::OAuth2 allows attackers to exploit a predictable state parameter, enabling session hijacking through CSRF attacks. This could lead to unauthorized access to user accounts, sensitive data exposure, and potential compromise of application integrity.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government",
+        "Education"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update to a patched version of Mojolicious::Plugin::Web::Auth::OAuth2 that addresses the insecure default state parameter.",
+        "Implement a custom state generator in the OAuth2 plugin configuration to ensure high entropy and unpredictability.",
+        "Conduct a security audit of applications using this plugin to identify and mitigate any potential exploitation of this vulnerability."
       ],
       "urgency": "critical"
     },
-    "risk_score": 100
+    "risk_score": 92
   },
   {
     "id": "cve-CVE-2026-10521",
@@ -819,20 +898,24 @@
       "https://www.certvde.com/en/advisories/VDE-2026-068/"
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-10521.",
+      "risk_score": 92,
+      "impact_assessment": "The vulnerability allows a high-privileged remote attacker to exploit a hidden configuration method, leading to a complete compromise of confidentiality, integrity, and availability. This could result in unauthorized access, data breaches, service disruption, and potential control over critical systems.",
       "affected_industries": [
+        "Financial Services",
+        "Healthcare",
+        "Energy and Utilities",
+        "Government",
         "Technology",
-        "General"
+        "Manufacturing"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately apply any available patches or updates provided by the vendor to address CVE-2026-10521.",
+        "Restrict remote access to critical systems by implementing network segmentation and enforcing least privilege principles.",
+        "Conduct a thorough review of system logs to detect any signs of unauthorized access or exploitation attempts."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 85
+    "risk_score": 92
   },
   {
     "id": "cve-CVE-2026-8379",
