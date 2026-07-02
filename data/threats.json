@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1783002041414-1",
+    "id": "twitter-1783021383122-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-02T14:20:41.414Z",
+    "timestamp": "2026-07-02T19:43:03.122Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1783002041414-1",
+    "id": "hn-1783021383122-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-02T14:20:41.414Z",
+    "timestamp": "2026-07-02T19:43:03.122Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,22 +26,24 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-gcfq-8gqf-4876",
+    "id": "gh-GHSA-h72h-ppcx-998p",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T13:50:45Z",
-    "title": "GoFiber Vulnerable to X-Real-IP Spoofing via Header.Add() in BalancerForward",
-    "description": "## Summary\n\nThe `BalancerForward` proxy helper in GoFiber uses `Header.Add()` instead of `Header.Set()` when injecting the `X-Real-IP` header. This appends the real client IP as a second header value rather than replacing any attacker-supplied value. Upstream servers that read the first `X-Real-IP` header (nginx, Express, most HTTP servers) use the attacker's spoofed IP for logging, rate limiting, and access control.\n\n## Vulnerable Code\n\n**File:** `middleware/proxy/proxy.go`, lines 270-285\n\n```g",
-    "severity": "medium",
-    "cve_id": "CVE-2026-45045",
-    "ghsa_id": "GHSA-gcfq-8gqf-4876",
+    "timestamp": "2026-07-02T19:42:05Z",
+    "title": "Zebra has pre-handshake buffer capacity reservation based on attacker-claimed body length",
+    "description": "### Am I affected\n\nYou are affected if:\n\n1. You run `zebrad` up to and including `v4.4.1`.\n2. Your node accepts inbound P2P connections (`network.listen_addr` is set, which is the default).\n\n### Summary\n\nThe P2P codec's `Codec::decode()` method calls `src.reserve(body_len + HEADER_LEN)` after parsing a 24-byte protocol header, using the attacker-claimed `body_len` field. This reserves up to `MAX_PROTOCOL_MESSAGE_LEN` (~2 MiB) of virtual buffer capacity per connection before any body bytes arrive",
+    "severity": "low",
+    "cve_id": null,
+    "ghsa_id": "GHSA-h72h-ppcx-998p",
     "affected_packages": [
-      "github.com/gofiber/fiber/v3",
-      "github.com/gofiber/fiber/v2"
+      "zebra-network",
+      "zebrad"
     ],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null
     ],
@@ -49,21 +51,22 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-g5vh-55hw-rxm8",
+    "id": "gh-GHSA-4fc2-h7jh-287c",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T13:46:25Z",
-    "title": "GoFiber Vulnerable to Username Enumeration via Timing Oracle in BasicAuth Default Authorizer",
-    "description": "## Summary\n\nThe default `Authorizer` function in GoFiber's BasicAuth middleware uses short-circuit evaluation that skips password hash comparison for non-existent usernames. With bcrypt-hashed passwords (the primary use case), the timing difference between a valid and invalid username is approximately 1,000,000:1 (~100ms vs ~100ns), enabling reliable remote username enumeration.\n\n## Vulnerable Code\n\n**File:** `middleware/basicauth/config.go`, lines 126-138\n\n```go\nif cfg.Authorizer == nil {\n    v",
+    "timestamp": "2026-07-02T19:39:02Z",
+    "title": "zebrad has mempool transaction admission denial via single-peer inbound queue saturation",
+    "description": "### Am I affected\n\nYou are affected if:\n\n1. You run `zebrad` up to and including `v4.4.1`.\n2. Your node accepts inbound P2P connections (`network.listen_addr` is set, which is the default).\n3. Your node's mempool is active (node is synced near the chain tip).\n\nAll default configurations are affected.\n\n### Summary\n\nA single unauthenticated P2P peer can monopolize all 25 inbound mempool download/verification slots (`MAX_INBOUND_CONCURRENCY`) by advertising fake transaction IDs. While the slots are",
     "severity": "medium",
-    "cve_id": "CVE-2026-44332",
-    "ghsa_id": "GHSA-g5vh-55hw-rxm8",
+    "cve_id": "CVE-2026-52732",
+    "ghsa_id": "GHSA-4fc2-h7jh-287c",
     "affected_packages": [
-      "github.com/gofiber/fiber/v3"
+      "zebrad"
     ],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null
     ],
@@ -71,19 +74,26 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-xmfw-955c-7j22",
+    "id": "gh-GHSA-c8w6-x74f-vmg3",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:03Z",
-    "title": "Contributor Cross Site Scripting (XSS) in Structured Content <= 1.7.0 versions.",
-    "description": "Contributor Cross Site Scripting (XSS) in Structured Content <= 1.7.0 versions.",
+    "timestamp": "2026-07-02T19:37:58Z",
+    "title": "zebrad vulnerable to full node denial of service via crafted Sapling receiver in z_listunifiedreceivers",
+    "description": "### Am I affected\n\nYou are affected if:\n\n1. You run `zebrad` up to and including `v4.4.1`.\n2. Your `zebrad.toml` sets `rpc.listen_addr` to a TCP address (RPC server is enabled).\n3. An attacker can authenticate to the RPC endpoint. With the default `enable_cookie_auth = true`, this requires the attacker to read the `.cookie` file (typically local access). With `enable_cookie_auth = false`, any network client reaching the RPC port can trigger it.\n\n### Summary\n\nThe `z_listunifiedreceivers` RPC hand",
     "severity": "medium",
-    "cve_id": "CVE-2026-57763",
-    "ghsa_id": "GHSA-xmfw-955c-7j22",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-c8w6-x74f-vmg3",
+    "affected_packages": [
+      "zebra-rpc",
+      "zebrad"
+    ],
     "cwes": [
+      null,
+      null,
+      null,
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
@@ -92,15 +102,69 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-5rmv-7mhc-rw9q",
+    "id": "gh-GHSA-f9ff-5x35-7gfw",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:03Z",
-    "title": "Contributor SQL Injection in WP EasyCart <= 5.9.0 versions.",
-    "description": "Contributor SQL Injection in WP EasyCart <= 5.9.0 versions.",
+    "timestamp": "2026-07-02T19:35:03Z",
+    "title": "Grackle: Fail-open authorization in the MCP tool layer lets scoped agents perform cross-task and cross-session mutations (IDOR)",
+    "description": "## Summary\n\nAuthorization for scoped (agent) MCP callers is enforced **inline, per tool**, and is applied inconsistently — several mutating tools silently omit the ancestry/workspace check that their siblings perform. Because the MCP server authenticates all outbound gRPC with the full server API key and the backend gRPC handlers perform **no caller-based authorization**, the MCP tool layer is the *sole* authorization boundary. A malicious or prompt-injected scoped agent can therefore perform cr",
     "severity": "high",
-    "cve_id": "CVE-2026-57765",
-    "ghsa_id": "GHSA-5rmv-7mhc-rw9q",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-f9ff-5x35-7gfw",
+    "affected_packages": [
+      "@grackle-ai/mcp",
+      "@grackle-ai/plugin-core",
+      "@grackle-ai/auth"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-443g-gwgp-49x4",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-02T19:34:21Z",
+    "title": "zebrad vulnerable to getblocks/getheaders locator CPU amplification via uncapped vector length",
+    "description": "### Am I affected\n\nYou are affected if:\n\n1. You run `zebrad` up to and including `v4.4.1`.\n2. Your node accepts inbound P2P connections.\n\n### Summary\n\nThe `read_getblocks` and `read_getheaders` codec paths accepted block locator vectors up to approximately 65,535 entries (the generic `TrustedPreallocate` ceiling derived from `MAX_PROTOCOL_MESSAGE_LEN`), rather than the protocol-specification limit of 101 entries (matching zcashd's `MAX_LOCATOR_SZ`). Each entry in the locator vector triggers a pe",
+    "severity": "low",
+    "cve_id": null,
+    "ghsa_id": "GHSA-443g-gwgp-49x4",
+    "affected_packages": [
+      "zebrad",
+      "zebra-chain"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-qv2r-v3mx-f4pf",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-02T19:28:03Z",
+    "title": "zebrad has full node denial of service via non-ASCII LongPollId in getblocktemplate",
+    "description": "### Am I affected\n\nYou are affected if:\n\n1. You run `zebrad` up to and including `v4.4.1`.\n2. Your `zebrad.toml` sets `rpc.listen_addr` to a TCP address (RPC server is enabled).\n3. An attacker can authenticate to the RPC endpoint. With the default `enable_cookie_auth = true`, this requires the attacker to read the `.cookie` file. With `enable_cookie_auth = false`, any network client reaching the RPC port can trigger it.\n\n### Summary\n\nThe `getblocktemplate` RPC handler panics when parsing a `Long",
+    "severity": "medium",
+    "cve_id": "CVE-2026-52731",
+    "ghsa_id": "GHSA-qv2r-v3mx-f4pf",
+    "affected_packages": [
+      "zebra-rpc",
+      "zebrad"
+    ],
     "cwes": [
       null
     ],
@@ -113,15 +177,20 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-jq6p-fffc-h97g",
+    "id": "gh-GHSA-fcmw-wx57-9p75",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:03Z",
-    "title": "Unauthenticated Cross Site Request Forgery (CSRF) in WPIDE – File Manager & Code Editor <= 3.5.6...",
-    "description": "Unauthenticated Cross Site Request Forgery (CSRF) in WPIDE – File Manager & Code Editor <= 3.5.6 versions.",
+    "timestamp": "2026-07-02T19:25:18Z",
+    "title": "Mautic has SQL Injection in API Contact Filtering",
+    "description": "### Summary\nAn SQL injection vulnerability exists in Mautic's API contact filtering mechanism. Due to insufficient recursive sanitization of nested query parameters, an authenticated API user can bypass input filtering and inject arbitrary SQL commands.\n\n### Impact\nAn authenticated user with API access can exploit this vulnerability to execute arbitrary SQL queries against the underlying database. This allows unauthorized retrieval of sensitive database contents—including user credentials, syste",
     "severity": "high",
-    "cve_id": "CVE-2026-57766",
-    "ghsa_id": "GHSA-jq6p-fffc-h97g",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-4776",
+    "ghsa_id": "GHSA-fcmw-wx57-9p75",
+    "affected_packages": [
+      "mautic/core",
+      "mautic/core",
+      "mautic/core",
+      "mautic/core"
+    ],
     "cwes": [
       null
     ],
@@ -134,20 +203,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-q8gg-w774-849h",
+    "id": "gh-GHSA-q4rm-m6xh-5pv7",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:03Z",
-    "title": "Author Cross Site Scripting (XSS) in Simple URLs <= 151 versions.",
-    "description": "Author Cross Site Scripting (XSS) in Simple URLs <= 151 versions.",
+    "timestamp": "2026-07-02T19:23:49Z",
+    "title": "Froxlor customer can create MySQL databases on disallowed servers via Mysqls.add API",
+    "description": "## Summary\n\nThe `Mysqls.add` API command (`lib/Froxlor/Api/Commands/Mysqls.php`) accepts a customer-controlled `mysql_server` parameter and only validates that the value is numeric and that the server index exists in `userdata.inc.php`. It never checks the value against the calling customer's `allowed_mysqlserver` allowlist. A customer can therefore create a database, plus a MySQL user with a password they choose, on any MySQL server the operator has configured — including servers that were expl",
     "severity": "medium",
-    "cve_id": "CVE-2026-57762",
-    "ghsa_id": "GHSA-q8gg-w774-849h",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-q4rm-m6xh-5pv7",
+    "affected_packages": [
+      "froxlor/froxlor"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null
     ],
@@ -155,20 +225,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-7xv8-5jwr-q8vr",
+    "id": "gh-GHSA-mr9h-45p9-fg8h",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:03Z",
-    "title": "Contributor Cross Site Scripting (XSS) in Surbma | Yoast SEO Breadcrumb Shortcode <= 1.2 versions.",
-    "description": "Contributor Cross Site Scripting (XSS) in Surbma | Yoast SEO Breadcrumb Shortcode <= 1.2 versions.",
+    "timestamp": "2026-07-02T19:23:31Z",
+    "title": "Froxlor: Authenticated customers can read other customers' allowed sender aliases",
+    "description": "## Summary\n\nAn authenticated customer can read other customers' allowed sender aliases from Froxlor's sender-delete confirmation page when `mail.enable_allow_sender` is enabled. `customer_email.php` loads `allowed_sender` by global auto-increment `senderid` alone, so a customer can enumerate foreign sender alias IDs and make Froxlor disclose those values in the confirmation dialog for the attacker's own mailbox.\n\n## Details\n\nThe vulnerable read lives in `customer_email.php`:\n\n```php\n$senderid = ",
     "severity": "medium",
-    "cve_id": "CVE-2026-57764",
-    "ghsa_id": "GHSA-7xv8-5jwr-q8vr",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-mr9h-45p9-fg8h",
+    "affected_packages": [
+      "froxlor/froxlor"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null
     ],
@@ -176,99 +247,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-92qf-5wrq-7gjm",
+    "id": "gh-GHSA-v5ff-xmfp-p245",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:02Z",
-    "title": "Missing Authorization vulnerability in Sendcloud Sendcloud Shipping allows Exploiting Incorrectly...",
-    "description": "Missing Authorization vulnerability in Sendcloud Sendcloud Shipping allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects Sendcloud Shipping: from n/a through 1.0.29.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-57760",
-    "ghsa_id": "GHSA-92qf-5wrq-7gjm",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-86pc-wv97-h27m",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:02Z",
-    "title": "Contributor Cross Site Scripting (XSS) in TheFox <= 3.9.70 versions.",
-    "description": "Contributor Cross Site Scripting (XSS) in TheFox <= 3.9.70 versions.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-57684",
-    "ghsa_id": "GHSA-86pc-wv97-h27m",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-q6f8-4vjv-w4qf",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:02Z",
-    "title": "Unauthenticated Sensitive Data Exposure in Kit (formerly ConvertKit) for WooCommerce <= 2.1.5...",
-    "description": "Unauthenticated Sensitive Data Exposure in Kit (formerly ConvertKit) for WooCommerce <= 2.1.5 versions.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-57753",
-    "ghsa_id": "GHSA-q6f8-4vjv-w4qf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-c6wx-4wg3-cr9h",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:02Z",
-    "title": "Unauthenticated Cross Site Request Forgery (CSRF) in Werkstatt <= 4.7.2 versions.",
-    "description": "Unauthenticated Cross Site Request Forgery (CSRF) in Werkstatt <= 4.7.2 versions.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-57690",
-    "ghsa_id": "GHSA-c6wx-4wg3-cr9h",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-r89c-xvf4-jw2p",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:02Z",
-    "title": "Unauthenticated Cross Site Request Forgery (CSRF) in ProfileGrid  <= 5.9.9.7 versions.",
-    "description": "Unauthenticated Cross Site Request Forgery (CSRF) in ProfileGrid  <= 5.9.9.7 versions.",
+    "timestamp": "2026-07-02T19:22:31Z",
+    "title": "electerm has Command Injection in File System Operations (rmrf, mv, cp)",
+    "description": "### Impact\n\nA command injection vulnerability exists in electerm's file system operations (`rmrf`, `mv`, `cp`) in `src/app/lib/fs.js`. These functions construct shell commands by interpolating file paths directly into command strings without escaping shell metacharacters.\n\n**Vulnerable functions:**\n- `rmrf()` - Uses `rm -rf \"${path}\"` (double quotes, vulnerable to `\"` injection)\n- `mv()` - Uses `mv '${from}' '${to}'` (single quotes, vulnerable to `'` injection)\n- `cp()` - Uses `cp -r \"${from}\" \"",
     "severity": "high",
-    "cve_id": "CVE-2026-57759",
-    "ghsa_id": "GHSA-r89c-xvf4-jw2p",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-49255",
+    "ghsa_id": "GHSA-v5ff-xmfp-p245",
+    "affected_packages": [
+      "electerm"
+    ],
     "cwes": [
       null
     ],
@@ -281,20 +270,161 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-4whc-9fj9-8jg8",
+    "id": "gh-GHSA-4q9j-6299-gxmr",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:02Z",
-    "title": "Subscriber Broken Access Control in Martfury - WooCommerce Marketplace WordPress Theme <= 3.2.8...",
-    "description": "Subscriber Broken Access Control in Martfury - WooCommerce Marketplace WordPress Theme <= 3.2.8 versions.",
+    "timestamp": "2026-07-02T19:21:30Z",
+    "title": "Dragonfly Manager OAuth provider client_secret disclosure via unauthenticated GET /api/v1/oauth",
+    "description": "### Summary\n\nThe Dragonfly Manager exposes `GET /api/v1/oauth` and `GET /api/v1/oauth/:id` to unauthenticated clients. The response body deserializes the entire `manager/models.Oauth` struct, which includes the `client_secret` field. Any network-reachable attacker can read the OAuth client secrets configured for `github` or `google` providers, defeating the confidentiality guarantee of those secrets and enabling subsequent abuse against the connected identity providers.\n\n### Affected versions\n\n`",
+    "severity": "low",
+    "cve_id": "CVE-2026-49254",
+    "ghsa_id": "GHSA-4q9j-6299-gxmr",
+    "affected_packages": [
+      "d7y.io/dragonfly/v2"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-38j7-23hf-9mhc",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-02T19:20:20Z",
+    "title": "electerm has Path Traversal in Zmodem and Trzsz Download Filename Handling",
+    "description": "### Impact\n\nA path traversal vulnerability exists in the Zmodem and Trzsz file download handlers in electerm. When receiving files via Zmodem or Trzsz protocols, electerm uses the remote-supplied filename directly in `path.join()` with the user-selected download directory without sanitization.\n\nA malicious SSH server or remote shell process can send a specially crafted filename such as `../escaped.txt` to escape the user-selected download directory and write files to arbitrary locations on the u",
+    "severity": "high",
+    "cve_id": "CVE-2026-49253",
+    "ghsa_id": "GHSA-38j7-23hf-9mhc",
+    "affected_packages": [
+      "electerm"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-525m-7f82-2mf7",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-02T19:18:41Z",
+    "title": "@conform-to/dom parseSubmission vulnerable to CPU exhaustion when parsing many unique form fields",
+    "description": "A CPU exhaustion vulnerability exists in Conform's [`parseSubmission`](https://conform.guide/api/react/future/parseSubmission) future API when parsing `FormData` or `URLSearchParams` submissions with many unique field names. The parser previously looked up values by field name, which could require repeated scans of the submitted entries and cause excessive synchronous CPU work if an attacker supplies a crafted submission.\n\n> [!NOTE]\n> The patched version fixes this by iterating submitted entries",
+    "severity": "high",
+    "cve_id": "CVE-2026-49250",
+    "ghsa_id": "GHSA-525m-7f82-2mf7",
+    "affected_packages": [
+      "@conform-to/dom"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-vv65-f55v-xm6g",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-02T19:16:57Z",
+    "title": "Grackle has command/argument injection in the git worktree executor that enables RCE on provisioned hosts via an unsanitized task branch name (shell:true)",
+    "description": "## Summary\n\nThe default git executor used for all worktree operations spawns `git` through a shell, and the untrusted task **branch** name flows into the command unsanitized. A caller able to reach the PowerLine `SpawnSession` RPC (a malicious or compromised agent acting through the orchestration layer, or any client able to spawn a task) can achieve **arbitrary command execution** as the PowerLine user on every provisioned environment (SSH host, Docker container, or Codespace), escaping the age",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-vv65-f55v-xm6g",
+    "affected_packages": [
+      "@grackle-ai/runtime-sdk",
+      "@grackle-ai/powerline"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-gg9x-qcx2-xmrh",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-02T19:12:08Z",
+    "title": "joserfc: HS256/HS384/HS512 verify accepts empty/nil HMAC key (cross-language sibling of CVE-2026-45363)",
+    "description": "### Summary\n\n`joserfc.jwt.decode` accepts attacker-forged HMAC-signed tokens when the\ncaller-supplied verification key is the empty string or `None`.\n`HMACAlgorithm.sign` and `HMACAlgorithm.verify` in\n[`src/joserfc/_rfc7518/jws_algs.py:62-70`](https://github.com/authlib/joserfc/blob/1ddca8f3c73ff47e3bc3ac06cb0c08a9535677ec/src/joserfc/_rfc7518/jws_algs.py#L62-L70) feed whatever\n`OctKey.get_op_key(...)` produced into `hmac.new(...)`, and `OctKey.import_key`\nonly emits a `SecurityWarning` when the",
+    "severity": "high",
+    "cve_id": "CVE-2026-49852",
+    "ghsa_id": "GHSA-gg9x-qcx2-xmrh",
+    "affected_packages": [
+      "joserfc"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-3vcg-pv95-pq54",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-02T19:09:30Z",
+    "title": "SFTPGo has stored XSS via inline parameter on public shares and user file download",
+    "description": "## Summary\n\nThe inline query parameter on the browsable-share file download and on the authenticated user file download suppressed Content-Disposition: attachment, so an HTML file stored in a share or home directory could be served as text/html and execute in SFTPGo's web origin (stored XSS).\n\n## Impact\n\nLow. Exploitation requires the attacker to place the file and a victim to open the crafted link — a URL the WebClient never generates, so it requires social engineering — and the practical condi",
+    "severity": "low",
+    "cve_id": "CVE-2026-49245",
+    "ghsa_id": "GHSA-3vcg-pv95-pq54",
+    "affected_packages": [
+      "github.com/drakkan/sftpgo/v2"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-h64p-8h4r-6gfh",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-02T19:09:13Z",
+    "title": "SFTPGo has path confinement bypass in public browsable share partial ZIP download",
+    "description": "## Summary\n\nThe public web-client endpoint for partial ZIP downloads of a browsable share did not correctly confine the client-supplied files entries to the shared directory. A requester able to reach a public share could read files located outside the shared directory, as long as the target's canonical path begins with the shared directory's name.\n\n## Patches\n\nFixed in v2.7.3. The fix replaces the raw prefix check with a directory-boundary–aware check.",
     "severity": "medium",
-    "cve_id": "CVE-2026-57685",
-    "ghsa_id": "GHSA-4whc-9fj9-8jg8",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-49244",
+    "ghsa_id": "GHSA-h64p-8h4r-6gfh",
+    "affected_packages": [
+      "github.com/drakkan/sftpgo/v2"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null
     ],
@@ -302,36 +432,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-5979-4pcv-7m6g",
+    "id": "gh-GHSA-93q6-wwjh-jc6h",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:02Z",
-    "title": "Unauthenticated Cross Site Request Forgery (CSRF) in SEOWP <= 3.12.2 versions.",
-    "description": "Unauthenticated Cross Site Request Forgery (CSRF) in SEOWP <= 3.12.2 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-57761",
-    "ghsa_id": "GHSA-5979-4pcv-7m6g",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-vv3p-3x4h-5p84",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:02Z",
-    "title": "Unauthenticated Broken Access Control in ez Form Calculator Premium <= 2.14.1.2 versions.",
-    "description": "Unauthenticated Broken Access Control in ez Form Calculator Premium <= 2.14.1.2 versions.",
+    "timestamp": "2026-07-02T19:08:45Z",
+    "title": "@asymmetric-effort/specifyjs: CSS expression sanitization is bypassable in renderToString",
+    "description": "## Finding\n\n**Location**: `core/src/server/render-to-string.ts:307-311`\n\nCSS value sanitization stripped `expression(` and `url(javascript:` using simple regex, but could be bypassed with CSS unicode escapes (`\\65xpression(`), null bytes, or CSS comments (`exp/**/ression(`).\n\n**Mitigating Factor**: These CSS injection vectors only work in legacy browsers (IE6-IE10). SpecifyJS targets modern browsers.\n\n## Status\n\n**Fixed in v0.2.136** — CSS sanitization now normalizes unicode escapes and strips C",
     "severity": "medium",
-    "cve_id": "CVE-2026-57750",
-    "ghsa_id": "GHSA-vv3p-3x4h-5p84",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-50290",
+    "ghsa_id": "GHSA-93q6-wwjh-jc6h",
+    "affected_packages": [
+      "@asymmetric-effort/specifyjs"
+    ],
     "cwes": [
       null
     ],
@@ -344,36 +455,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-g8qg-f769-3pm2",
+    "id": "gh-GHSA-j5qp-p44g-2m49",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:02Z",
-    "title": "Unauthenticated Cross Site Request Forgery (CSRF) in Heateor Social Login <= 1.1.39 versions.",
-    "description": "Unauthenticated Cross Site Request Forgery (CSRF) in Heateor Social Login <= 1.1.39 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-57751",
-    "ghsa_id": "GHSA-g8qg-f769-3pm2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-9g2q-p42j-2pr4",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:02Z",
-    "title": "Contributor Broken Access Control in Flatsome <= 3.20.5 versions.",
-    "description": "Contributor Broken Access Control in Flatsome <= 3.20.5 versions.",
+    "timestamp": "2026-07-02T19:08:04Z",
+    "title": "@asymmetric-effort/specifyjs: No redirect target validation in secureFetch",
+    "description": "## Finding\n\n**Location**: `core/src/shared/secure-fetch.ts`\n\n`assertSecureUrl` validated only the initial request URL. The `fetch()` API follows redirects by default (up to 20 hops). A request to a valid `https://` URL could redirect to `http://internal-service/` or other unvalidated destinations.\n\n## Status\n\n**Fixed in v0.2.136** — `secureFetch` now defaults to `redirect: 'error'` which rejects any redirect. Callers can override with `{ redirect: 'follow' }` if they trust the target.",
     "severity": "medium",
-    "cve_id": "CVE-2026-57731",
-    "ghsa_id": "GHSA-9g2q-p42j-2pr4",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-j5qp-p44g-2m49",
+    "affected_packages": [
+      "@asymmetric-effort/specifyjs"
+    ],
     "cwes": [
       null
     ],
@@ -386,57 +478,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-9547-xvvm-938r",
+    "id": "gh-GHSA-2944-57xv-2682",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:02Z",
-    "title": "Unauthenticated Cross Site Scripting (XSS) in Simple Link Directory <= 15.0.5 versions.",
-    "description": "Unauthenticated Cross Site Scripting (XSS) in Simple Link Directory <= 15.0.5 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-57682",
-    "ghsa_id": "GHSA-9547-xvvm-938r",
-    "affected_packages": [],
-    "cwes": [
-      null
+    "timestamp": "2026-07-02T19:07:44Z",
+    "title": "@asymmetric-effort/specifyjs: `data:` URI allowed without size restriction",
+    "description": "## Finding\n\n**Location**: `core/src/shared/secure-fetch.ts:33-35`\n\n`data:` URIs were allowed without any restriction. While `data:` URIs don't make network requests, they can be used for memory exhaustion via very large data URIs.\n\n## Status\n\n**Fixed in v0.2.136** — `data:` URIs are now limited to 1MB. URIs exceeding this limit throw an error.",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-2944-57xv-2682",
+    "affected_packages": [
+      "@asymmetric-effort/specifyjs"
     ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-2p2x-wcrm-mwm9",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:02Z",
-    "title": "Unauthenticated Cross Site Request Forgery (CSRF) in Permalink Manager for WooCommerce <= 1.0.8.2...",
-    "description": "Unauthenticated Cross Site Request Forgery (CSRF) in Permalink Manager for WooCommerce <= 1.0.8.2 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-57758",
-    "ghsa_id": "GHSA-2p2x-wcrm-mwm9",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-cjmw-28wm-95mp",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T12:31:02Z",
-    "title": "Contributor SQL Injection in iNET Webkit 1.2.4 versions.",
-    "description": "Contributor SQL Injection in iNET Webkit 1.2.4 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-57752",
-    "ghsa_id": "GHSA-cjmw-28wm-95mp",
-    "affected_packages": [],
     "cwes": [
       null
     ],
