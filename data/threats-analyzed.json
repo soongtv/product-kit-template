@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1783021383122-1",
+    "id": "twitter-1783050926591-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-02T19:43:03.122Z",
+    "timestamp": "2026-07-03T03:55:26.591Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,25 +10,30 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "risk_score": 85,
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. Compromised CI/CD pipelines can lead to widespread deployment of malicious code, resulting in data encryption, service disruptions, financial losses, and potential data breaches.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "Retail",
+        "Manufacturing",
+        "Government",
+        "Media and Entertainment"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately review and secure CI/CD pipelines by implementing multi-factor authentication (MFA) and restricting access to critical systems.",
+        "Conduct a thorough audit of cloud infrastructure for any signs of compromise and ensure regular backups are stored offline.",
+        "Deploy advanced endpoint detection and response (EDR) solutions to monitor and mitigate ransomware activity in real-time."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
-    "id": "hn-1783021383122-1",
+    "id": "hn-1783050926591-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-02T19:43:03.122Z",
+    "timestamp": "2026-07-03T03:55:26.591Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,149 +57,31 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-h72h-ppcx-998p",
+    "id": "gh-GHSA-c67p-rxvq-wp57",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:42:05Z",
-    "title": "Zebra has pre-handshake buffer capacity reservation based on attacker-claimed body length",
-    "description": "### Am I affected\n\nYou are affected if:\n\n1. You run `zebrad` up to and including `v4.4.1`.\n2. Your node accepts inbound P2P connections (`network.listen_addr` is set, which is the default).\n\n### Summary\n\nThe P2P codec's `Codec::decode()` method calls `src.reserve(body_len + HEADER_LEN)` after parsing a 24-byte protocol header, using the attacker-claimed `body_len` field. This reserves up to `MAX_PROTOCOL_MESSAGE_LEN` (~2 MiB) of virtual buffer capacity per connection before any body bytes arrive",
-    "severity": "low",
-    "cve_id": null,
-    "ghsa_id": "GHSA-h72h-ppcx-998p",
-    "affected_packages": [
-      "zebra-network",
-      "zebrad"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-4fc2-h7jh-287c",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:39:02Z",
-    "title": "zebrad has mempool transaction admission denial via single-peer inbound queue saturation",
-    "description": "### Am I affected\n\nYou are affected if:\n\n1. You run `zebrad` up to and including `v4.4.1`.\n2. Your node accepts inbound P2P connections (`network.listen_addr` is set, which is the default).\n3. Your node's mempool is active (node is synced near the chain tip).\n\nAll default configurations are affected.\n\n### Summary\n\nA single unauthenticated P2P peer can monopolize all 25 inbound mempool download/verification slots (`MAX_INBOUND_CONCURRENCY`) by advertising fake transaction IDs. While the slots are",
-    "severity": "medium",
-    "cve_id": "CVE-2026-52732",
-    "ghsa_id": "GHSA-4fc2-h7jh-287c",
-    "affected_packages": [
-      "zebrad"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "This vulnerability allows a single unauthenticated P2P peer to monopolize all inbound mempool transaction slots by advertising fake transaction IDs. This can lead to a denial of service (DoS) condition, preventing legitimate transactions from being processed and potentially disrupting network operations.",
-      "affected_industries": [
-        "Cryptocurrency",
-        "Blockchain",
-        "Financial Services",
-        "Technology"
-      ],
-      "recommended_actions": [
-        "Upgrade `zebrad` to a version newer than v4.4.1 once a patched release is available.",
-        "Restrict inbound P2P connections by modifying the `network.listen_addr` configuration to limit exposure.",
-        "Implement rate-limiting or peer verification mechanisms to mitigate the risk of single-peer saturation."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-c8w6-x74f-vmg3",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:37:58Z",
-    "title": "zebrad vulnerable to full node denial of service via crafted Sapling receiver in z_listunifiedreceivers",
-    "description": "### Am I affected\n\nYou are affected if:\n\n1. You run `zebrad` up to and including `v4.4.1`.\n2. Your `zebrad.toml` sets `rpc.listen_addr` to a TCP address (RPC server is enabled).\n3. An attacker can authenticate to the RPC endpoint. With the default `enable_cookie_auth = true`, this requires the attacker to read the `.cookie` file (typically local access). With `enable_cookie_auth = false`, any network client reaching the RPC port can trigger it.\n\n### Summary\n\nThe `z_listunifiedreceivers` RPC hand",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-c8w6-x74f-vmg3",
-    "affected_packages": [
-      "zebra-rpc",
-      "zebrad"
-    ],
-    "cwes": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 55,
-      "impact_assessment": "The vulnerability allows an attacker to cause a denial of service (DoS) on the affected `zebrad` full node by exploiting the `z_listunifiedreceivers` RPC handler. This could disrupt blockchain operations and availability for nodes running the vulnerable software, potentially impacting services relying on the node for blockchain data.",
-      "affected_industries": [
-        "Cryptocurrency",
-        "Blockchain Technology",
-        "Financial Services"
-      ],
-      "recommended_actions": [
-        "Upgrade to the latest version of `zebrad` that addresses this vulnerability, as soon as a patch is available.",
-        "Ensure that RPC endpoints are not exposed to untrusted networks and are protected by strong authentication mechanisms.",
-        "Restrict access to the `.cookie` file by implementing proper file permissions and limiting local access to trusted users only."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 55
-  },
-  {
-    "id": "gh-GHSA-f9ff-5x35-7gfw",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:35:03Z",
-    "title": "Grackle: Fail-open authorization in the MCP tool layer lets scoped agents perform cross-task and cross-session mutations (IDOR)",
-    "description": "## Summary\n\nAuthorization for scoped (agent) MCP callers is enforced **inline, per tool**, and is applied inconsistently — several mutating tools silently omit the ancestry/workspace check that their siblings perform. Because the MCP server authenticates all outbound gRPC with the full server API key and the backend gRPC handlers perform **no caller-based authorization**, the MCP tool layer is the *sole* authorization boundary. A malicious or prompt-injected scoped agent can therefore perform cr",
+    "timestamp": "2026-07-03T03:34:13Z",
+    "title": "The AR for WordPress plugin for WordPress is vulnerable to Directory Traversal in all versions up...",
+    "description": "The AR for WordPress plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 8.40 via the 'file' parameter parameter. This makes it possible for unauthenticated attackers to read the contents of arbitrary files on the server, which can contain sensitive information. Exploitation requires an attacker to first obtain a valid nonce and secure nonce via the publicly accessible ar_get_fresh_nonce and ar_process_user_image nopriv AJAX handlers, and to reproduce ",
     "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-f9ff-5x35-7gfw",
-    "affected_packages": [
-      "@grackle-ai/mcp",
-      "@grackle-ai/plugin-core",
-      "@grackle-ai/auth"
-    ],
+    "cve_id": "CVE-2026-14327",
+    "ghsa_id": "GHSA-c67p-rxvq-wp57",
+    "affected_packages": [],
     "cwes": [
-      null,
-      null,
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-14327.",
       "affected_industries": [
         "Technology",
         "General"
@@ -209,56 +96,15 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-443g-gwgp-49x4",
+    "id": "gh-GHSA-6vqf-8qmc-rjr8",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:34:21Z",
-    "title": "zebrad vulnerable to getblocks/getheaders locator CPU amplification via uncapped vector length",
-    "description": "### Am I affected\n\nYou are affected if:\n\n1. You run `zebrad` up to and including `v4.4.1`.\n2. Your node accepts inbound P2P connections.\n\n### Summary\n\nThe `read_getblocks` and `read_getheaders` codec paths accepted block locator vectors up to approximately 65,535 entries (the generic `TrustedPreallocate` ceiling derived from `MAX_PROTOCOL_MESSAGE_LEN`), rather than the protocol-specification limit of 101 entries (matching zcashd's `MAX_LOCATOR_SZ`). Each entry in the locator vector triggers a pe",
-    "severity": "low",
-    "cve_id": null,
-    "ghsa_id": "GHSA-443g-gwgp-49x4",
-    "affected_packages": [
-      "zebrad",
-      "zebra-chain"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-qv2r-v3mx-f4pf",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:28:03Z",
-    "title": "zebrad has full node denial of service via non-ASCII LongPollId in getblocktemplate",
-    "description": "### Am I affected\n\nYou are affected if:\n\n1. You run `zebrad` up to and including `v4.4.1`.\n2. Your `zebrad.toml` sets `rpc.listen_addr` to a TCP address (RPC server is enabled).\n3. An attacker can authenticate to the RPC endpoint. With the default `enable_cookie_auth = true`, this requires the attacker to read the `.cookie` file. With `enable_cookie_auth = false`, any network client reaching the RPC port can trigger it.\n\n### Summary\n\nThe `getblocktemplate` RPC handler panics when parsing a `Long",
+    "timestamp": "2026-07-03T03:34:13Z",
+    "title": "An Improper Export of Android Application Components vulnerability in ASUS Router App allows a...",
+    "description": "An Improper Export of Android Application Components vulnerability in ASUS Router App allows a third-party application on the same device to send a crafted Intent that causes ASUS Router App to open an specified URL.\nRefer to the '\nSecurity Update for ASUS Router Android App ' section on the ASUS Security Advisory for more information.",
     "severity": "medium",
-    "cve_id": "CVE-2026-52731",
-    "ghsa_id": "GHSA-qv2r-v3mx-f4pf",
-    "affected_packages": [
-      "zebra-rpc",
-      "zebrad"
-    ],
+    "cve_id": "CVE-2026-12960",
+    "ghsa_id": "GHSA-6vqf-8qmc-rjr8",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -269,85 +115,48 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows an attacker to cause a denial of service (DoS) on the `zebrad` full node by exploiting the `getblocktemplate` RPC handler with a malformed LongPollId. This could disrupt blockchain operations and availability for affected nodes.",
+      "impact_assessment": "The vulnerability allows a malicious third-party application on the same device to exploit the ASUS Router App by sending crafted Intents, potentially leading to unauthorized URL redirection, data leakage, or phishing attacks.",
       "affected_industries": [
-        "Blockchain",
-        "Cryptocurrency",
-        "Financial Technology"
+        "Telecommunications",
+        "Home Networking",
+        "Small and Medium Businesses (SMBs)",
+        "Consumer Electronics"
       ],
       "recommended_actions": [
-        "Upgrade to a patched version of `zebrad` beyond v4.4.1 as soon as it becomes available.",
-        "Restrict access to the RPC endpoint by ensuring proper authentication mechanisms are in place, such as keeping `enable_cookie_auth` enabled and securing the `.cookie` file.",
-        "Implement network-level restrictions (e.g., firewalls) to limit access to the RPC port to trusted IP addresses only."
+        "Update the ASUS Router App to the latest version as per the ASUS Security Advisory to patch the vulnerability.",
+        "Restrict installation of untrusted third-party applications on devices with the ASUS Router App installed.",
+        "Enable application-level permissions to limit the ability of third-party apps to send Intents to sensitive applications."
       ],
       "urgency": "medium"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-fcmw-wx57-9p75",
+    "id": "gh-GHSA-64rj-8mhx-6c97",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:25:18Z",
-    "title": "Mautic has SQL Injection in API Contact Filtering",
-    "description": "### Summary\nAn SQL injection vulnerability exists in Mautic's API contact filtering mechanism. Due to insufficient recursive sanitization of nested query parameters, an authenticated API user can bypass input filtering and inject arbitrary SQL commands.\n\n### Impact\nAn authenticated user with API access can exploit this vulnerability to execute arbitrary SQL queries against the underlying database. This allows unauthorized retrieval of sensitive database contents—including user credentials, syste",
-    "severity": "high",
-    "cve_id": "CVE-2026-4776",
-    "ghsa_id": "GHSA-fcmw-wx57-9p75",
-    "affected_packages": [
-      "mautic/core",
-      "mautic/core",
-      "mautic/core",
-      "mautic/core"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The SQL injection vulnerability in Mautic's API contact filtering mechanism allows authenticated API users to execute arbitrary SQL commands. This can lead to unauthorized access to sensitive database contents, including user credentials and system data, potentially compromising the entire application.",
-      "affected_industries": [
-        "Marketing and Advertising",
-        "E-commerce",
-        "Healthcare",
-        "Finance",
-        "Technology"
-      ],
-      "recommended_actions": [
-        "Immediately update Mautic to the latest patched version addressing CVE-2026-4776, if available.",
-        "Restrict API access to trusted users and implement strict access controls to minimize exposure.",
-        "Conduct a thorough review of database logs for any signs of suspicious activity or unauthorized access."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-q4rm-m6xh-5pv7",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:23:49Z",
-    "title": "Froxlor customer can create MySQL databases on disallowed servers via Mysqls.add API",
-    "description": "## Summary\n\nThe `Mysqls.add` API command (`lib/Froxlor/Api/Commands/Mysqls.php`) accepts a customer-controlled `mysql_server` parameter and only validates that the value is numeric and that the server index exists in `userdata.inc.php`. It never checks the value against the calling customer's `allowed_mysqlserver` allowlist. A customer can therefore create a database, plus a MySQL user with a password they choose, on any MySQL server the operator has configured — including servers that were expl",
+    "timestamp": "2026-07-03T03:34:13Z",
+    "title": "The Cookie Banner for GDPR / CCPA – WPLP Cookie Consent plugin for WordPress is vulnerable to...",
+    "description": "The Cookie Banner for GDPR / CCPA – WPLP Cookie Consent plugin for WordPress is vulnerable to generic SQL Injection via the 's' parameter in all versions up to, and including, 4.3.5 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive ",
     "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-q4rm-m6xh-5pv7",
-    "affected_packages": [
-      "froxlor/froxlor"
-    ],
+    "cve_id": "CVE-2026-12920",
+    "ghsa_id": "GHSA-64rj-8mhx-6c97",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-12920.",
       "affected_industries": [
         "Technology",
         "General"
@@ -362,54 +171,15 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-mr9h-45p9-fg8h",
+    "id": "gh-GHSA-2844-p28c-wcj6",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:23:31Z",
-    "title": "Froxlor: Authenticated customers can read other customers' allowed sender aliases",
-    "description": "## Summary\n\nAn authenticated customer can read other customers' allowed sender aliases from Froxlor's sender-delete confirmation page when `mail.enable_allow_sender` is enabled. `customer_email.php` loads `allowed_sender` by global auto-increment `senderid` alone, so a customer can enumerate foreign sender alias IDs and make Froxlor disclose those values in the confirmation dialog for the attacker's own mailbox.\n\n## Details\n\nThe vulnerable read lives in `customer_email.php`:\n\n```php\n$senderid = ",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-mr9h-45p9-fg8h",
-    "affected_packages": [
-      "froxlor/froxlor"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 55,
-      "impact_assessment": "The vulnerability allows authenticated users to enumerate and access other customers' allowed sender aliases, potentially leading to unauthorized access to sensitive email configuration data. This could result in privacy violations, phishing attacks, or misuse of email systems.",
-      "affected_industries": [
-        "Web Hosting Providers",
-        "Email Service Providers",
-        "IT Services",
-        "Small and Medium Enterprises using Froxlor"
-      ],
-      "recommended_actions": [
-        "Immediately update Froxlor to the latest version if a patch is available to address this vulnerability.",
-        "Disable the 'mail.enable_allow_sender' feature temporarily if it is not critical to operations.",
-        "Implement additional access control checks to ensure that users can only access their own sender alias data."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 55
-  },
-  {
-    "id": "gh-GHSA-v5ff-xmfp-p245",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:22:31Z",
-    "title": "electerm has Command Injection in File System Operations (rmrf, mv, cp)",
-    "description": "### Impact\n\nA command injection vulnerability exists in electerm's file system operations (`rmrf`, `mv`, `cp`) in `src/app/lib/fs.js`. These functions construct shell commands by interpolating file paths directly into command strings without escaping shell metacharacters.\n\n**Vulnerable functions:**\n- `rmrf()` - Uses `rm -rf \"${path}\"` (double quotes, vulnerable to `\"` injection)\n- `mv()` - Uses `mv '${from}' '${to}'` (single quotes, vulnerable to `'` injection)\n- `cp()` - Uses `cp -r \"${from}\" \"",
+    "timestamp": "2026-07-03T03:34:13Z",
+    "title": "External Control of File Name or Path vulnerability in ASUS Business Manager allows a local user...",
+    "description": "External Control of File Name or Path vulnerability in ASUS Business Manager allows a local user to execute arbitrary code with SYSTEM privileges via a tampered IPC message.\nRefer to the '\nSecurity Update for ASUS Business Manager ' section on the ASUS Security Advisory for more information.",
     "severity": "high",
-    "cve_id": "CVE-2026-49255",
-    "ghsa_id": "GHSA-v5ff-xmfp-p245",
-    "affected_packages": [
-      "electerm"
-    ],
+    "cve_id": "CVE-2026-8921",
+    "ghsa_id": "GHSA-2844-p28c-wcj6",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -420,7 +190,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-49255.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-8921.",
       "affected_industries": [
         "Technology",
         "General"
@@ -435,28 +205,26 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-4q9j-6299-gxmr",
+    "id": "gh-GHSA-59p6-mhgr-2mp7",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:21:30Z",
-    "title": "Dragonfly Manager OAuth provider client_secret disclosure via unauthenticated GET /api/v1/oauth",
-    "description": "### Summary\n\nThe Dragonfly Manager exposes `GET /api/v1/oauth` and `GET /api/v1/oauth/:id` to unauthenticated clients. The response body deserializes the entire `manager/models.Oauth` struct, which includes the `client_secret` field. Any network-reachable attacker can read the OAuth client secrets configured for `github` or `google` providers, defeating the confidentiality guarantee of those secrets and enabling subsequent abuse against the connected identity providers.\n\n### Affected versions\n\n`",
-    "severity": "low",
-    "cve_id": "CVE-2026-49254",
-    "ghsa_id": "GHSA-4q9j-6299-gxmr",
-    "affected_packages": [
-      "d7y.io/dragonfly/v2"
-    ],
+    "timestamp": "2026-07-03T03:34:13Z",
+    "title": "** UNSUPPORTED WHEN ASSIGNED ** Improper Validation of Specified Quantity in Input in the ASUS AI...",
+    "description": "** UNSUPPORTED WHEN ASSIGNED ** Improper Validation of Specified Quantity in Input in the ASUS AI Suite 3 driver allows a local user to access unintended memory regions via crafted IOCTL requests, leading to privilege escalation.",
+    "severity": "high",
+    "cve_id": "CVE-2022-4989",
+    "ghsa_id": "GHSA-59p6-mhgr-2mp7",
+    "affected_packages": [],
     "cwes": [
-      null,
       null
     ],
     "references": [
       null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-49254.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2022-4989.",
       "affected_industries": [
         "Technology",
         "General"
@@ -466,22 +234,20 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "low"
+      "urgency": "high"
     },
-    "risk_score": 25
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-38j7-23hf-9mhc",
+    "id": "gh-GHSA-8fqj-x6jv-392p",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:20:20Z",
-    "title": "electerm has Path Traversal in Zmodem and Trzsz Download Filename Handling",
-    "description": "### Impact\n\nA path traversal vulnerability exists in the Zmodem and Trzsz file download handlers in electerm. When receiving files via Zmodem or Trzsz protocols, electerm uses the remote-supplied filename directly in `path.join()` with the user-selected download directory without sanitization.\n\nA malicious SSH server or remote shell process can send a specially crafted filename such as `../escaped.txt` to escape the user-selected download directory and write files to arbitrary locations on the u",
+    "timestamp": "2026-07-03T03:34:13Z",
+    "title": "** UNSUPPORTED WHEN ASSIGNED ** Improper Validation of Specified Quantity in Input in the ASUS AI...",
+    "description": "** UNSUPPORTED WHEN ASSIGNED ** Improper Validation of Specified Quantity in Input in the ASUS AI Suite 3 driver allows a local user to bypass security validation and access restricted memory blocks via crafted IOCTL requests, leading to privilege escalation.",
     "severity": "high",
-    "cve_id": "CVE-2026-49253",
-    "ghsa_id": "GHSA-38j7-23hf-9mhc",
-    "affected_packages": [
-      "electerm"
-    ],
+    "cve_id": "CVE-2022-4990",
+    "ghsa_id": "GHSA-8fqj-x6jv-392p",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -492,306 +258,49 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The path traversal vulnerability allows attackers to write files to arbitrary locations on the user's system, potentially leading to unauthorized data modification, system compromise, or exploitation of sensitive files.",
+      "impact_assessment": "The vulnerability allows a local attacker to bypass security validation and access restricted memory blocks, potentially leading to privilege escalation. This could result in unauthorized access, data theft, or system compromise.",
       "affected_industries": [
         "Technology",
+        "Manufacturing",
+        "Healthcare",
         "Finance",
-        "Healthcare",
-        "Government",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Update electerm to the latest patched version that addresses CVE-2026-49253.",
-        "Implement strict filename validation and sanitization in file handling processes to prevent path traversal attacks.",
-        "Restrict file download permissions and monitor file system activity for unusual behavior."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-525m-7f82-2mf7",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:18:41Z",
-    "title": "@conform-to/dom parseSubmission vulnerable to CPU exhaustion when parsing many unique form fields",
-    "description": "A CPU exhaustion vulnerability exists in Conform's [`parseSubmission`](https://conform.guide/api/react/future/parseSubmission) future API when parsing `FormData` or `URLSearchParams` submissions with many unique field names. The parser previously looked up values by field name, which could require repeated scans of the submitted entries and cause excessive synchronous CPU work if an attacker supplies a crafted submission.\n\n> [!NOTE]\n> The patched version fixes this by iterating submitted entries",
-    "severity": "high",
-    "cve_id": "CVE-2026-49250",
-    "ghsa_id": "GHSA-525m-7f82-2mf7",
-    "affected_packages": [
-      "@conform-to/dom"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-49250.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-vv65-f55v-xm6g",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:16:57Z",
-    "title": "Grackle has command/argument injection in the git worktree executor that enables RCE on provisioned hosts via an unsanitized task branch name (shell:true)",
-    "description": "## Summary\n\nThe default git executor used for all worktree operations spawns `git` through a shell, and the untrusted task **branch** name flows into the command unsanitized. A caller able to reach the PowerLine `SpawnSession` RPC (a malicious or compromised agent acting through the orchestration layer, or any client able to spawn a task) can achieve **arbitrary command execution** as the PowerLine user on every provisioned environment (SSH host, Docker container, or Codespace), escaping the age",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-vv65-f55v-xm6g",
-    "affected_packages": [
-      "@grackle-ai/runtime-sdk",
-      "@grackle-ai/powerline"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-gg9x-qcx2-xmrh",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:12:08Z",
-    "title": "joserfc: HS256/HS384/HS512 verify accepts empty/nil HMAC key (cross-language sibling of CVE-2026-45363)",
-    "description": "### Summary\n\n`joserfc.jwt.decode` accepts attacker-forged HMAC-signed tokens when the\ncaller-supplied verification key is the empty string or `None`.\n`HMACAlgorithm.sign` and `HMACAlgorithm.verify` in\n[`src/joserfc/_rfc7518/jws_algs.py:62-70`](https://github.com/authlib/joserfc/blob/1ddca8f3c73ff47e3bc3ac06cb0c08a9535677ec/src/joserfc/_rfc7518/jws_algs.py#L62-L70) feed whatever\n`OctKey.get_op_key(...)` produced into `hmac.new(...)`, and `OctKey.import_key`\nonly emits a `SecurityWarning` when the",
-    "severity": "high",
-    "cve_id": "CVE-2026-49852",
-    "ghsa_id": "GHSA-gg9x-qcx2-xmrh",
-    "affected_packages": [
-      "joserfc"
-    ],
-    "cwes": [
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-49852.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-3vcg-pv95-pq54",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:09:30Z",
-    "title": "SFTPGo has stored XSS via inline parameter on public shares and user file download",
-    "description": "## Summary\n\nThe inline query parameter on the browsable-share file download and on the authenticated user file download suppressed Content-Disposition: attachment, so an HTML file stored in a share or home directory could be served as text/html and execute in SFTPGo's web origin (stored XSS).\n\n## Impact\n\nLow. Exploitation requires the attacker to place the file and a victim to open the crafted link — a URL the WebClient never generates, so it requires social engineering — and the practical condi",
-    "severity": "low",
-    "cve_id": "CVE-2026-49245",
-    "ghsa_id": "GHSA-3vcg-pv95-pq54",
-    "affected_packages": [
-      "github.com/drakkan/sftpgo/v2"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "The vulnerability allows stored XSS attacks via crafted HTML files served as text/html in SFTPGo's web origin. Exploitation requires social engineering and user interaction, limiting its practical impact. However, successful exploitation could lead to unauthorized script execution in the victim's browser.",
-      "affected_industries": [
-        "Technology",
-        "Cloud Storage Providers",
-        "Web Hosting Services",
-        "Enterprises using SFTPGo for file sharing"
-      ],
-      "recommended_actions": [
-        "Update SFTPGo to the latest patched version that addresses CVE-2026-49245.",
-        "Implement strict Content Security Policy (CSP) headers to mitigate XSS risks.",
-        "Educate users about the risks of clicking on unverified or suspicious links to reduce the likelihood of successful social engineering attacks."
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-h64p-8h4r-6gfh",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:09:13Z",
-    "title": "SFTPGo has path confinement bypass in public browsable share partial ZIP download",
-    "description": "## Summary\n\nThe public web-client endpoint for partial ZIP downloads of a browsable share did not correctly confine the client-supplied files entries to the shared directory. A requester able to reach a public share could read files located outside the shared directory, as long as the target's canonical path begins with the shared directory's name.\n\n## Patches\n\nFixed in v2.7.3. The fix replaces the raw prefix check with a directory-boundary–aware check.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-49244",
-    "ghsa_id": "GHSA-h64p-8h4r-6gfh",
-    "affected_packages": [
-      "github.com/drakkan/sftpgo/v2"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-49244.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-93q6-wwjh-jc6h",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:08:45Z",
-    "title": "@asymmetric-effort/specifyjs: CSS expression sanitization is bypassable in renderToString",
-    "description": "## Finding\n\n**Location**: `core/src/server/render-to-string.ts:307-311`\n\nCSS value sanitization stripped `expression(` and `url(javascript:` using simple regex, but could be bypassed with CSS unicode escapes (`\\65xpression(`), null bytes, or CSS comments (`exp/**/ression(`).\n\n**Mitigating Factor**: These CSS injection vectors only work in legacy browsers (IE6-IE10). SpecifyJS targets modern browsers.\n\n## Status\n\n**Fixed in v0.2.136** — CSS sanitization now normalizes unicode escapes and strips C",
-    "severity": "medium",
-    "cve_id": "CVE-2026-50290",
-    "ghsa_id": "GHSA-93q6-wwjh-jc6h",
-    "affected_packages": [
-      "@asymmetric-effort/specifyjs"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 45,
-      "impact_assessment": "The vulnerability allows CSS injection by bypassing sanitization mechanisms, potentially enabling attackers to execute malicious code in legacy browsers (IE6-IE10). However, the impact is limited as SpecifyJS primarily targets modern browsers.",
-      "affected_industries": [
-        "Web Development",
-        "E-commerce",
-        "Technology",
-        "Media"
-      ],
-      "recommended_actions": [
-        "Upgrade to SpecifyJS version 0.2.136 or later to ensure the vulnerability is patched.",
-        "Audit your codebase for any dependencies or libraries using older versions of SpecifyJS and update them.",
-        "If supporting legacy browsers is necessary, implement additional server-side sanitization to mitigate CSS injection risks."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 45
-  },
-  {
-    "id": "gh-GHSA-j5qp-p44g-2m49",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:08:04Z",
-    "title": "@asymmetric-effort/specifyjs: No redirect target validation in secureFetch",
-    "description": "## Finding\n\n**Location**: `core/src/shared/secure-fetch.ts`\n\n`assertSecureUrl` validated only the initial request URL. The `fetch()` API follows redirects by default (up to 20 hops). A request to a valid `https://` URL could redirect to `http://internal-service/` or other unvalidated destinations.\n\n## Status\n\n**Fixed in v0.2.136** — `secureFetch` now defaults to `redirect: 'error'` which rejects any redirect. Callers can override with `{ redirect: 'follow' }` if they trust the target.",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-j5qp-p44g-2m49",
-    "affected_packages": [
-      "@asymmetric-effort/specifyjs"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to exploit unvalidated redirect targets in the 'secureFetch' function, potentially exposing sensitive internal services or enabling man-in-the-middle attacks. This could lead to data breaches, unauthorized access, or service disruptions.",
-      "affected_industries": [
-        "Technology",
-        "Financial Services",
-        "Healthcare",
-        "E-commerce",
         "Government"
       ],
       "recommended_actions": [
-        "Upgrade to version 0.2.136 or later of the @asymmetric-effort/specifyjs library to ensure the vulnerability is patched.",
-        "Audit all applications using the 'secureFetch' function to identify and mitigate any potential misuse of the 'redirect' option.",
-        "Implement additional monitoring and logging to detect suspicious redirect behavior in applications using this library."
+        "Immediately update to the latest version of ASUS AI Suite 3 if a patch is available, or disable the affected driver if no patch exists.",
+        "Implement endpoint protection and monitoring to detect and block unauthorized IOCTL requests.",
+        "Restrict local user access to systems running ASUS AI Suite 3 to minimize the risk of exploitation."
       ],
-      "urgency": "medium"
+      "urgency": "critical"
     },
-    "risk_score": 65
+    "risk_score": 85
   },
   {
-    "id": "gh-GHSA-2944-57xv-2682",
+    "id": "gh-GHSA-8rwq-pvxh-vj87",
     "source": "GitHub Security",
-    "timestamp": "2026-07-02T19:07:44Z",
-    "title": "@asymmetric-effort/specifyjs: `data:` URI allowed without size restriction",
-    "description": "## Finding\n\n**Location**: `core/src/shared/secure-fetch.ts:33-35`\n\n`data:` URIs were allowed without any restriction. While `data:` URIs don't make network requests, they can be used for memory exhaustion via very large data URIs.\n\n## Status\n\n**Fixed in v0.2.136** — `data:` URIs are now limited to 1MB. URIs exceeding this limit throw an error.",
+    "timestamp": "2026-07-03T03:34:13Z",
+    "title": "The weDocs: AI Powered Knowledge Base, Docs, Documentation, Wiki & AI Chatbot plugin for...",
+    "description": "The weDocs: AI Powered Knowledge Base, Docs, Documentation, Wiki & AI Chatbot plugin for WordPress is vulnerable to Missing Authorization in versions up to and including 2.3.0. This is due to a missing capability check on the do_migration() function registered as the wedocs_migrate_betterdocs_to_wedocs AJAX action, which performs no nonce verification via check_ajax_referer() and no capability check via current_user_can() before executing sensitive operations. This makes it possible for authenti",
     "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-2944-57xv-2682",
-    "affected_packages": [
-      "@asymmetric-effort/specifyjs"
-    ],
+    "cve_id": "CVE-2026-12729",
+    "ghsa_id": "GHSA-8rwq-pvxh-vj87",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-12729.",
       "affected_industries": [
         "Technology",
         "General"
@@ -806,24 +315,289 @@
     "risk_score": 50
   },
   {
-    "id": "cve-CVE-2026-9786",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:48.850",
-    "title": "CVE-2026-9786 - Quest NetVault Backup NVBUDashboard SQL Injection Remote Code Execution Vulnerability. This vulnerab",
-    "description": "Quest NetVault Backup NVBUDashboard SQL Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBUDashboard JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries. An attacker can leverage this vulnerability to execute code in the context of NETWORK SERVICE. Was ZDI-CAN-27626.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9786",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:quest:netvault_backup:*:*:*:*:*:*:*:*"
+    "id": "gh-GHSA-pr6j-r5mf-cj49",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-03T03:34:13Z",
+    "title": "The weDocs: AI Powered Knowledge Base, Docs, Documentation, Wiki & AI Chatbot plugin for...",
+    "description": "The weDocs: AI Powered Knowledge Base, Docs, Documentation, Wiki & AI Chatbot plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'sectionTitleTag' and 'articleTitleTag' Block Attributes in all versions up to, and including, 2.3.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected pa",
+    "severity": "medium",
+    "cve_id": "CVE-2026-12731",
+    "ghsa_id": "GHSA-pr6j-r5mf-cj49",
+    "affected_packages": [],
+    "cwes": [
+      null
     ],
     "references": [
-      "https://support.quest.com/technical-documents/netvault/14.0.2/release-notes#TOPIC-2338529",
-      "https://www.zerodayinitiative.com/advisories/ZDI-26-375/"
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows authenticated attackers with contributor-level access or higher to inject malicious scripts into pages. These scripts can execute whenever a user accesses the affected pages, potentially leading to data theft, session hijacking, or further exploitation of the system.",
+      "affected_industries": [
+        "Technology",
+        "E-commerce",
+        "Media and Publishing",
+        "Education",
+        "Nonprofits"
+      ],
+      "recommended_actions": [
+        "Update the weDocs plugin to a patched version as soon as it becomes available. Monitor the plugin's GitHub repository or vendor website for updates.",
+        "Restrict access to contributor-level accounts and above by reviewing user roles and permissions. Remove unnecessary accounts or downgrade permissions where applicable.",
+        "Implement a Web Application Firewall (WAF) to detect and block malicious scripts and monitor for unusual activity on WordPress sites."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-fm2m-jw2h-jf5r",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-03T03:34:13Z",
+    "title": "The weDocs: AI Powered Knowledge Base, Docs, Documentation, Wiki & AI Chatbot plugin for...",
+    "description": "The weDocs: AI Powered Knowledge Base, Docs, Documentation, Wiki & AI Chatbot plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'connectorWidth' Block Attribute in all versions up to, and including, 2.3.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-12734",
+    "ghsa_id": "GHSA-fm2m-jw2h-jf5r",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-12734.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-9qxq-9wpj-4f86",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-03T00:31:55Z",
+    "title": "The admin panel lacks standard security headers, enabling clickjacking and cross-site scripting...",
+    "description": "The admin panel lacks standard security headers, enabling clickjacking and cross-site scripting attacks.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-54477",
+    "ghsa_id": "GHSA-9qxq-9wpj-4f86",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54477.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-h2w9-p676-66ch",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-03T00:31:55Z",
+    "title": "An Out-of-bounds Write vulnerability in WatchGuard Fireware OS may allow an unauthenticated...",
+    "description": "An Out-of-bounds Write vulnerability in WatchGuard Fireware OS may allow an unauthenticated attacker on the same local network segment to execute arbitrary code.\n\n\n\n\nThis vulnerability affects Fireware OS 11.0 up to and including 11.12.4_Update1, 12.0 up to and including 12.12 and 2025.1 up to and including 2026.2.",
+    "severity": "high",
+    "cve_id": "CVE-2026-8247",
+    "ghsa_id": "GHSA-h2w9-p676-66ch",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9786.",
+      "impact_assessment": "The vulnerability allows an unauthenticated attacker on the same local network segment to execute arbitrary code, potentially leading to full system compromise, data exfiltration, or disruption of network services.",
+      "affected_industries": [
+        "Healthcare",
+        "Financial Services",
+        "Government",
+        "Retail",
+        "Education",
+        "Technology"
+      ],
+      "recommended_actions": [
+        "Immediately apply the latest security patches or updates provided by WatchGuard for Fireware OS to mitigate the vulnerability.",
+        "Restrict access to the affected devices by implementing network segmentation and limiting exposure to trusted hosts only.",
+        "Monitor network traffic for suspicious activity and review system logs for signs of exploitation attempts."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-pfg9-vjvh-f5rw",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-03T00:31:55Z",
+    "title": "The Azure Blob Storage container used for Gardyn device logs is publicly listable without...",
+    "description": "The Azure Blob Storage container used for Gardyn device logs is publicly listable without authentication. A malicious user would be able to access any device log file available in the blob storage container.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55726",
+    "ghsa_id": "GHSA-pfg9-vjvh-f5rw",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55726.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-22gx-ghv9-47gj",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-03T00:31:55Z",
+    "title": "Gardyn devices expose a privileged iothubowner key. Access to this key will allow a malicious...",
+    "description": "Gardyn devices expose a privileged iothubowner key. Access to this key will allow a malicious user to invoke an IoTHub Registry Manager function which returns connection information for all Gardyn Home Kit and Studio devices. Access to this key also allows a malicious user to execute arbitrary commands on a specific connected device and may allow the malicious user to pivot to other devices on the user's network.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-13768",
+    "ghsa_id": "GHSA-22gx-ghv9-47gj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 95,
+      "impact_assessment": "The exposure of the privileged iothubowner key in Gardyn devices allows attackers to gain full control over IoTHub Registry Manager functions. This could lead to unauthorized access to sensitive connection information for all Gardyn devices, execution of arbitrary commands on connected devices, and potential lateral movement to other devices on the user's network, posing significant risks to privacy, security, and operational integrity.",
+      "affected_industries": [
+        "Smart Home Technology",
+        "Consumer Electronics",
+        "IoT Device Manufacturers",
+        "Agriculture Technology"
+      ],
+      "recommended_actions": [
+        "Immediately revoke and rotate the exposed iothubowner key to prevent further unauthorized access.",
+        "Deploy a firmware update to all Gardyn devices to address the vulnerability and ensure secure key management practices.",
+        "Conduct a network-wide security audit to identify and mitigate any potential lateral movement or compromised devices."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 95
+  },
+  {
+    "id": "gh-GHSA-jw2p-m8jh-c458",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-03T00:31:54Z",
+    "title": "In exception circumstances, WatchGuard Fireware OS on a FireCluster may use a hard-coded...",
+    "description": "In exception circumstances, WatchGuard Fireware OS on a FireCluster may use a hard-coded encryption key to encrypt saved credentials for Access Portal resources.\n\nThis vulnerability affects Fireware OS 12.1 up to and including 12.12 and 2025.1 up to and including 2026.2. This vulnerability does not affect devices that do not support the Access Portal feature or standalone Fireboxes not deployed in a FireCluster.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13728",
+    "ghsa_id": "GHSA-jw2p-m8jh-c458",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows unauthorized access to sensitive credentials due to the use of a hard-coded encryption key in certain circumstances. This could lead to credential compromise and unauthorized access to Access Portal resources.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Retail",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately update Fireware OS to the latest patched version that addresses CVE-2026-13728.",
+        "Disable the Access Portal feature if not required, especially on FireClusters, until the vulnerability is resolved.",
+        "Conduct a security audit to identify any compromised credentials and rotate them as necessary."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-x7ww-rpf2-73gx",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-03T00:31:54Z",
+    "title": "An Out-of-bounds Write vulnerability in WatchGuard Fireware OS ikestubd process could allow an...",
+    "description": "An Out-of-bounds Write vulnerability in WatchGuard Fireware OS ikestubd process could allow an authenticated privileged user to execute arbitrary code via a specially crafted requests to the Management Web UI.This vulnerability affects Fireware OS 12.1 up to and including 12.12 and 2025.1 up to and including 2026.2.",
+    "severity": "high",
+    "cve_id": "CVE-2026-13383",
+    "ghsa_id": "GHSA-x7ww-rpf2-73gx",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-13383.",
       "affected_industries": [
         "Technology",
         "General"
@@ -835,63 +609,307 @@
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "cve-CVE-2026-9785",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:48.737",
-    "title": "CVE-2026-9785 - Quest NetVault Backup NVBULibrarySlot SQL Injection Remote Code Execution Vulnerability. This vulner",
-    "description": "Quest NetVault Backup NVBULibrarySlot SQL Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBULibrarySlot JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries. An attacker can leverage this vulnerability to execute code in the context of NETWORK SERVICE. Was ZDI-CAN-27630.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9785",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:quest:netvault_backup:*:*:*:*:*:*:*:*"
+    "id": "gh-GHSA-8pfv-rw6v-3qpv",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-03T00:31:54Z",
+    "title": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting')...",
+    "description": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in WatchGuard Fireware OS SIP Proxy module allows Stored XSS. This vulnerability is an additional unmitigated attack path for CVE-2025-6947.\n\nThis issue affects Fireware OS 12.0 up to and including 12.12, 12.5 up to and including 12.5.18, and 2025.1 up to and including 2026.2.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13377",
+    "ghsa_id": "GHSA-8pfv-rw6v-3qpv",
+    "affected_packages": [],
+    "cwes": [
+      null
     ],
     "references": [
-      "https://support.quest.com/technical-documents/netvault/14.0.2/release-notes#TOPIC-2338529",
-      "https://www.zerodayinitiative.com/advisories/ZDI-26-374/"
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This vulnerability allows remote attackers to execute arbitrary code on Quest NetVault Backup installations, potentially leading to full system compromise, data theft, or service disruption. The authentication bypass increases the likelihood of exploitation.",
+      "risk_score": 70,
+      "impact_assessment": "The Stored XSS vulnerability in the WatchGuard Fireware OS SIP Proxy module could allow attackers to inject malicious scripts that execute in the context of the user's browser. This can lead to session hijacking, data theft, or unauthorized actions performed on behalf of the user.",
       "affected_industries": [
         "Information Technology",
-        "Cloud Service Providers",
+        "Telecommunications",
         "Financial Services",
         "Healthcare",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately update Fireware OS to the latest patched version that addresses CVE-2026-13377.",
+        "Implement web application firewalls (WAFs) to detect and block malicious input targeting XSS vulnerabilities.",
+        "Conduct a thorough review of access logs to identify any potential exploitation attempts and monitor for suspicious activity."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 70
+  },
+  {
+    "id": "gh-GHSA-vjhv-mh94-cxp5",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-03T00:31:54Z",
+    "title": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting')...",
+    "description": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in WatchGuard Fireware OS (ConnectWise Technology Integration module) allows Stored XSS. This vulnerability is an additional unmitigated attack path for CVE-2025-13937.\n\n\nThis issue affects Fireware OS 12.4 up to and including 12.12, 12.5 up to and including 12.5.18, and 2025.1 up to and including 2026.2.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13374",
+    "ghsa_id": "GHSA-vjhv-mh94-cxp5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13374.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-6xrf-cr85-wvqp",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-03T00:31:54Z",
+    "title": "An Out-of-bounds Write vulnerability in WatchGuard Fireware OS wgagent process could allow an...",
+    "description": "An Out-of-bounds Write vulnerability in WatchGuard Fireware OS wgagent process could allow an authenticated privileged user to execute arbitrary code via a specially crafted requests to the Management Web UI.This vulnerability affects Fireware OS 12.1 up to and including 12.12 and 2025.1 up to and including 2026.2.",
+    "severity": "high",
+    "cve_id": "CVE-2026-13384",
+    "ghsa_id": "GHSA-6xrf-cr85-wvqp",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-13384.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-vxh9-mg9h-h952",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-03T00:31:54Z",
+    "title": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting')...",
+    "description": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in WatchGuard Fireware OS (Tigerpaw Technology Integration module) allows Stored XSS. This vulnerability is an additional unmitigated attack path for CVE-2025-13936.\n\n\nThis issue affects Fireware OS 12.4 up to and including 12.12, 12.5 up to and including 12.5.18, and 2025.1 up to and including 2026.2.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13373",
+    "ghsa_id": "GHSA-vxh9-mg9h-h952",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13373.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-hprc-6hj7-jj8j",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-03T00:31:54Z",
+    "title": "An authenticated administrator can trigger a denial-of-service condition in the Fireware...",
+    "description": "An authenticated administrator can trigger a denial-of-service condition in the Fireware Management Web UI by sending malformed or crafted data to the put_data endpoint, which performs unsafe deserialization of the attacker-supplied input.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13371",
+    "ghsa_id": "GHSA-hprc-6hj7-jj8j",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13371.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "cve-CVE-2026-48928",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-26T02:16:52.610",
+    "title": "CVE-2026-48928 - A inconsistency in Node.js hostname matching can cause a trust-policy bypass in multi-context mTLS s",
+    "description": "A inconsistency in Node.js hostname matching can cause a trust-policy bypass in multi-context mTLS setups.\r\n\r\nThis vulnerability affects all supported release lines: **Node.js 22**, **Node.js 24**, and **Node.js 26**.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48928",
+    "cvss_score": 5.4,
+    "affected_products": [
+      "cpe:2.3:a:nodejs:node.js:22.22.3:*:*:*:-:*:*:*",
+      "cpe:2.3:a:nodejs:node.js:24.16.0:*:*:*:-:*:*:*",
+      "cpe:2.3:a:nodejs:node.js:26.3.0:*:*:*:-:*:*:*"
+    ],
+    "references": [
+      "https://nodejs.org/en/blog/vulnerability/june-2026-security-releases"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48928.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-48619",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-26T02:16:52.507",
+    "title": "CVE-2026-48619 - A flaw in Node.js HTTP/2 client allows a server to send an unlimited number of ORIGIN frames, which ",
+    "description": "A flaw in Node.js HTTP/2 client allows a server to send an unlimited number of ORIGIN frames, which could lead to an Out of Memory error on the client.\r\n\r\nThis vulnerability affects all supported release lines: **Node.js 22**, **Node.js 24**, and **Node.js 26**.",
+    "severity": "high",
+    "cve_id": "CVE-2026-48619",
+    "cvss_score": 7.5,
+    "affected_products": [
+      "cpe:2.3:a:nodejs:node.js:22.22.3:*:*:*:-:*:*:*",
+      "cpe:2.3:a:nodejs:node.js:24.16.0:*:*:*:-:*:*:*",
+      "cpe:2.3:a:nodejs:node.js:26.3.0:*:*:*:-:*:*:*"
+    ],
+    "references": [
+      "https://nodejs.org/en/blog/vulnerability/june-2026-security-releases"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in Node.js HTTP/2 client allows malicious servers to exploit an unlimited number of ORIGIN frames, potentially causing Out of Memory (OOM) errors on the client side. This can lead to denial-of-service (DoS) attacks, disrupting applications and services relying on Node.js.",
+      "affected_industries": [
+        "Technology",
+        "E-commerce",
+        "Financial Services",
+        "Healthcare",
+        "Media and Entertainment"
+      ],
+      "recommended_actions": [
+        "Upgrade to patched versions of Node.js as soon as they are released by the Node.js team.",
+        "Implement rate-limiting and memory usage monitoring for HTTP/2 connections to mitigate potential exploitation.",
+        "Restrict or validate trusted servers for HTTP/2 connections to reduce exposure to malicious actors."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-48618",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-26T02:16:52.397",
+    "title": "CVE-2026-48618 - A flaw in Node.js TLS hostname handling can cause Node.js unicode dot separator handling can lead to",
+    "description": "A flaw in Node.js TLS hostname handling can cause Node.js unicode dot separator handling can lead to tls wildcard-depth authentication bypass due to resolver and verifier hostname normalization mismat.\r\n\r\nThis can lead to confidentiality impact or bypass of the intended security boundary under affected configurations.\r\n\r\nThis vulnerability affects all supported release lines: **Node.js 22**, **Node.js 24**, and **Node.js 26**.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48618",
+    "cvss_score": 6.5,
+    "affected_products": [
+      "cpe:2.3:a:nodejs:node.js:22.22.3:*:*:*:-:*:*:*",
+      "cpe:2.3:a:nodejs:node.js:24.16.0:*:*:*:-:*:*:*",
+      "cpe:2.3:a:nodejs:node.js:26.3.0:*:*:*:-:*:*:*"
+    ],
+    "references": [
+      "https://nodejs.org/en/blog/vulnerability/june-2026-security-releases"
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in Node.js TLS hostname handling can allow attackers to bypass authentication mechanisms, potentially leading to unauthorized access or data exposure. This poses a significant risk to systems relying on TLS for secure communications.",
+      "affected_industries": [
+        "Technology",
+        "E-commerce",
+        "Finance",
+        "Healthcare",
         "Government",
-        "Education"
+        "Telecommunications"
       ],
       "recommended_actions": [
-        "Immediately apply the latest security patch or update provided by Quest to address CVE-2026-9785.",
-        "Implement network segmentation to restrict access to Quest NetVault Backup systems and limit exposure to potential attackers.",
-        "Enable robust monitoring and logging to detect any unauthorized access or suspicious activity related to NVBULibrarySlot JSON-RPC messages."
+        "Immediately apply patches or updates provided by the Node.js team for versions 22, 24, and 26 to address the vulnerability.",
+        "Review and audit TLS configurations to ensure proper hostname normalization and wildcard handling.",
+        "Monitor systems for unusual activity or unauthorized access attempts, particularly on services relying on Node.js."
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 65
   },
   {
-    "id": "cve-CVE-2026-9784",
+    "id": "cve-CVE-2026-48615",
     "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:48.627",
-    "title": "CVE-2026-9784 - Quest NetVault Backup NVBULibraryPort SQL Injection Remote Code Execution Vulnerability. This vulner",
-    "description": "Quest NetVault Backup NVBULibraryPort SQL Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBULibraryPort JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries. An attacker can leverage this vulnerability to execute code in the context of NETWORK SERVICE. Was ZDI-CAN-27631.",
+    "timestamp": "2026-06-26T02:16:52.273",
+    "title": "CVE-2026-48615 - A flaw in Node.js proxy tunnel error handling could expose proxy credentials in `ERR_PROXY_TUNNEL` e",
+    "description": "A flaw in Node.js proxy tunnel error handling could expose proxy credentials in `ERR_PROXY_TUNNEL` error messages.\r\n\r\nWhen proxy credentials are embedded in the proxy URL, they may be exposed through error handling paths and captured by logs, diagnostics, or other error consumers.\r\n\r\nThis vulnerability affects all supported release lines: **Node.js 22**, **Node.js 24**, and **Node.js 26**.",
     "severity": "high",
-    "cve_id": "CVE-2026-9784",
-    "cvss_score": 8.8,
+    "cve_id": "CVE-2026-48615",
+    "cvss_score": 7.5,
     "affected_products": [
-      "cpe:2.3:a:quest:netvault_backup:*:*:*:*:*:*:*:*"
+      "cpe:2.3:a:nodejs:node.js:22.22.3:*:*:*:-:*:*:*",
+      "cpe:2.3:a:nodejs:node.js:24.16.0:*:*:*:-:*:*:*",
+      "cpe:2.3:a:nodejs:node.js:26.3.0:*:*:*:-:*:*:*"
     ],
     "references": [
-      "https://support.quest.com/technical-documents/netvault/14.0.2/release-notes#TOPIC-2338529",
-      "https://www.zerodayinitiative.com/advisories/ZDI-26-373/"
+      "https://nodejs.org/en/blog/vulnerability/june-2026-security-releases"
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9784.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48615.",
       "affected_industries": [
         "Technology",
         "General"
@@ -906,152 +924,28 @@
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-9783",
+    "id": "cve-CVE-2026-13226",
     "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:48.520",
-    "title": "CVE-2026-9783 - Quest NetVault Backup NVBURemovableMedia SQL Injection Remote Code Execution Vulnerability. This vul",
-    "description": "Quest NetVault Backup NVBURemovableMedia SQL Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBURemovableMedia JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries. An attacker can leverage this vulnerability to execute code in the context of NETWORK SERVICE. Was ZDI-CAN-27632.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9783",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:quest:netvault_backup:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://support.quest.com/technical-documents/netvault/14.0.2/release-notes#TOPIC-2338529",
-      "https://www.zerodayinitiative.com/advisories/ZDI-26-372/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9783.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-9782",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:48.407",
-    "title": "CVE-2026-9782 - Quest NetVault Backup NVBUDeviceDrive SQL Injection Remote Code Execution Vulnerability. This vulner",
-    "description": "Quest NetVault Backup NVBUDeviceDrive SQL Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBUDeviceDrive JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries. An attacker can leverage this vulnerability to execute code in the context of NETWORK SERVICE. Was ZDI-CAN-27633.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9782",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:quest:netvault_backup:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://support.quest.com/technical-documents/netvault/14.0.2/release-notes#TOPIC-2338529",
-      "https://www.zerodayinitiative.com/advisories/ZDI-26-371/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9782.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-9781",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:48.293",
-    "title": "CVE-2026-9781 - Quest NetVault Backup NVBURASDevice SQL Injection Remote Code Execution Vulnerability. This vulnerab",
-    "description": "Quest NetVault Backup NVBURASDevice SQL Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBURASDevice JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries. An attacker can leverage this vulnerability to execute code in the context of NETWORK SERVICE. Was ZDI-CAN-27648.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9781",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:quest:netvault_backup:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://support.quest.com/technical-documents/netvault/14.0.2/release-notes#TOPIC-2338529",
-      "https://www.zerodayinitiative.com/advisories/ZDI-26-370/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9781.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-9780",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:48.187",
-    "title": "CVE-2026-9780 - Quest NetVault Backup addclient3 Cross-Site Scripting Authentication Bypass Vulnerability. This vuln",
-    "description": "Quest NetVault Backup addclient3 Cross-Site Scripting Authentication Bypass Vulnerability. This vulnerability allows remote attackers to bypass authentication on affected installations of Quest NetVault Backup. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe specific flaw exists within the addclient3 webpage. The issue results from the lack of proper validation of user-supplied data, which can lead to the injection of an arbitrary script. An attacker can leverage this in conjunction with other vulnerabilities to execute arbitrary code in the context of SYSTEM. Was ZDI-CAN-27666.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9780",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:quest:netvault_backup:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://support.quest.com/technical-documents/netvault/14.0.2/release-notes#TOPIC-2338529",
-      "https://www.zerodayinitiative.com/advisories/ZDI-26-369/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9780.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-8663",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:48.070",
-    "title": "CVE-2026-8663 - OS Command Injection vulnerability in Rapid7 InsightConnect RPM Plugin on Linux allows authenticated",
-    "description": "OS Command Injection vulnerability in Rapid7 InsightConnect RPM Plugin on Linux allows authenticated attackers to execute arbitrary OS commands via the repo, key, or name parameters due to insufficient input sanitization in shell command construction.",
+    "timestamp": "2026-06-26T02:16:51.877",
+    "title": "CVE-2026-13226 - The Groundhogg — CRM, Newsletters, and Marketing Automation plugin for WordPress is vulnerable to ge",
+    "description": "The Groundhogg — CRM, Newsletters, and Marketing Automation plugin for WordPress is vulnerable to generic SQL Injection via the 'after' parameter in all versions up to, and including, 4.5.4 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with Sales Manager-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The AJAX handler wp_ajax_groundhogg_get_contacts_table has its capability check commented out and performs no nonce verification, meaning any authenticated user regardless of role can reach the vulnerable code path.",
     "severity": "medium",
-    "cve_id": "CVE-2026-8663",
-    "cvss_score": 6,
-    "affected_products": [
-      "cpe:2.3:a:rapid7:insightconnect_rpm:*:*:*:*:*:rapid7:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*"
-    ],
+    "cve_id": "CVE-2026-13226",
+    "cvss_score": 6.5,
+    "affected_products": [],
     "references": [
-      "https://extensions.rapid7.com/extension/rpm"
+      "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.4/admin/contacts/contacts-page.php#L766",
+      "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.4/admin/contacts/tables/contacts-table.php#L101",
+      "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.4/includes/contact-query.php#L2586",
+      "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.4/includes/functions.php#L679",
+      "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.4/includes/legacy-contact-query.php#L1013",
+      "https://plugins.trac.wordpress.org/browser/groundhogg/tags/4.5.4/includes/legacy-contact-query.php#L1017",
+      "https://plugins.trac.wordpress.org/changeset?sfp_email=&sfph_mail=&reponame=&old=3585561%40groundhogg&new=3585561%40groundhogg&sfp_email=&sfph_mail=",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/f2ba40d9-2d37-453a-a731-078f1de1fc69?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8663.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13226.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1066,24 +960,108 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-8659",
+    "id": "cve-CVE-2026-9222",
     "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:47.937",
-    "title": "CVE-2026-8659 - OS Command Injection vulnerability in Rapid7 InsightConnect SQLmap Plugin on Linux allows authentica",
-    "description": "OS Command Injection vulnerability in Rapid7 InsightConnect SQLmap Plugin on Linux allows authenticated attackers to execute arbitrary OS commands via the api_host or api_port parameters during connection configuration due to insufficient input validation.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-8659",
-    "cvss_score": 6,
-    "affected_products": [
-      "cpe:2.3:a:rapid7:insightconnect_sqlmap:*:*:*:*:*:rapid7:*:*",
-      "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*"
-    ],
+    "timestamp": "2026-06-26T00:16:55.647",
+    "title": "CVE-2026-9222 - Setracker2 Android Companion App com.tgelec.setracker versions 3.1.5 and prior only require the pass",
+    "description": "Setracker2 Android Companion App com.tgelec.setracker versions 3.1.5 and prior only require the password hash when authenticating with backend services from the client. This could allow an attacker, who knows the hash, to authenticate and gain full access.",
+    "severity": "high",
+    "cve_id": "CVE-2026-9222",
+    "cvss_score": 8.1,
+    "affected_products": [],
     "references": [
-      "https://extensions.rapid7.com/extension/sqlmap"
+      "https://raw.githubusercontent.com/cisagov/CSAF/refs/heads/develop/csaf_files/VA/white/2026/va-26-176-01.json"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9222.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-9221",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-26T00:16:55.500",
+    "title": "CVE-2026-9221 - The Setracker2 Android Companion App (com.tgelec.setracker) versions 3.1.5 and earlier uses MD5 to g",
+    "description": "The Setracker2 Android Companion App (com.tgelec.setracker) versions 3.1.5 and earlier uses MD5 to generate a request signature for authenticating communications between the mobile client and the backend REST API. Attackers could potentially reverse the signature to recover the session ID. With the session ID exposed, an attacker could impersonate the legitimate user and issue authenticated API requests.",
+    "severity": "high",
+    "cve_id": "CVE-2026-9221",
+    "cvss_score": 7.5,
+    "affected_products": [],
+    "references": [
+      "https://raw.githubusercontent.com/cisagov/CSAF/refs/heads/develop/csaf_files/VA/white/2026/va-26-176-01.json"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9221.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-9220",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-26T00:16:55.367",
+    "title": "CVE-2026-9220 - Setracker2 Android Companion App com.tgelec.setracker versions 3.1.5 and prior encrypts requests bet",
+    "description": "Setracker2 Android Companion App com.tgelec.setracker versions 3.1.5 and prior encrypts requests between the watch and its backend with static hardcoded AES keys and initialization vectors. This allows an attacker to decrypt Setracker2 watch traffic.",
+    "severity": "high",
+    "cve_id": "CVE-2026-9220",
+    "cvss_score": 7.5,
+    "affected_products": [],
+    "references": [
+      "https://raw.githubusercontent.com/cisagov/CSAF/refs/heads/develop/csaf_files/VA/white/2026/va-26-176-01.json"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9220.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-9219",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-26T00:16:55.213",
+    "title": "CVE-2026-9219 - Setracker2 Android Companion App com.tgelec.setracker versions 3.1.5 and prior have a predictable re",
+    "description": "Setracker2 Android Companion App com.tgelec.setracker versions 3.1.5 and prior have a predictable registration ID derived from IMEI. The enrollment system lacks additional authentication before assignment. If an attacker is able to obtain the registration ID, they would be able to arbitrarily enroll watches belonging to other users.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9219",
+    "cvss_score": 6.5,
+    "affected_products": [],
+    "references": [
+      "https://raw.githubusercontent.com/cisagov/CSAF/refs/heads/develop/csaf_files/VA/white/2026/va-26-176-01.json"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8659.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9219.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1098,157 +1076,22 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-7570",
+    "id": "cve-CVE-2026-43920",
     "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:47.823",
-    "title": "CVE-2026-7570 - Quest NetVault Backup NVBUDashboard SQL Injection Remote Code Execution Vulnerability. This vulnerab",
-    "description": "Quest NetVault Backup NVBUDashboard SQL Injection Remote Code Execution Vulnerability. This vulnerability allows remote attackers to execute arbitrary code on affected installations of Quest NetVault Backup. Although authentication is required to exploit this vulnerability, the existing authentication mechanism can be bypassed.\n\nThe specific flaw exists within the processing of NVBUDashboard JSON-RPC messages. The issue results from the lack of proper validation of a user-supplied string before using it to construct SQL queries. An attacker can leverage this vulnerability to execute code in the context of NETWORK SERVICE. Was ZDI-CAN-27809.",
-    "severity": "high",
-    "cve_id": "CVE-2026-7570",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:quest:netvault_backup:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://support.quest.com/technical-documents/netvault/14.0.2/release-notes#TOPIC-2338529",
-      "https://www.zerodayinitiative.com/advisories/ZDI-26-368/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-7570.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-7569",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:47.707",
-    "title": "CVE-2026-7569 - Quest NetVault Backup viewclient Cross-Site Scripting Authentication Bypass Vulnerability. This vuln",
-    "description": "Quest NetVault Backup viewclient Cross-Site Scripting Authentication Bypass Vulnerability. This vulnerability allows remote attackers to bypass authentication on affected installations of Quest NetVault Backup. User interaction is required to exploit this vulnerability in that the target must visit a malicious page or open a malicious file.\n\nThe specific flaw exists within the viewclient webpage. The issue results from the lack of proper validation of user-supplied data, which can lead to the injection of an arbitrary script. An attacker can leverage this in conjunction with other vulnerabilities to execute arbitrary code in the context of SYSTEM. Was ZDI-CAN-28202.",
-    "severity": "high",
-    "cve_id": "CVE-2026-7569",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:quest:netvault_backup:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://support.quest.com/technical-documents/netvault/14.0.2/release-notes#TOPIC-2338529",
-      "https://www.zerodayinitiative.com/advisories/ZDI-26-377/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-7569.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-40079",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:47.570",
-    "title": "CVE-2026-40079 - Cacti is an open source performance and fault management framework. Versions 1.2.30 and prior are vu",
-    "description": "Cacti is an open source performance and fault management framework. Versions 1.2.30 and prior are vulnerable to Command Injection due to lack of sanitization in the escape_command() function. The escape_command() function at lib/rrd.php is a no-op: it returns $command unchanged. The command line built by rrdtool_function_graph() is passed through this function and then to shell_exec($full_commandline). The risk is in __rrd_execute() where text_format values from graph templates (which may contain host variable substitutions) reach shell_exec without adequate escaping. This issue has been addressed in version 1.2.31.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-40079",
-    "cvss_score": 9.8,
-    "affected_products": [
-      "cpe:2.3:a:cacti:cacti:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/Cacti/cacti/commit/4c09efaebf3a9faec66969d0b5c4aceaf397f37f",
-      "https://github.com/Cacti/cacti/security/advisories/GHSA-xq98-376r-hv9j"
-    ],
-    "ai_analysis": {
-      "risk_score": 100,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-40079.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 100
-  },
-  {
-    "id": "cve-CVE-2026-39951",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:47.403",
-    "title": "CVE-2026-39951 - Cacti is an open source performance and fault management framework. Versions 1.2.30 and prior have a",
-    "description": "Cacti is an open source performance and fault management framework. Versions 1.2.30 and prior have a Stored SQL Injection vulnerability through graph_name_regexp in the Reports feature. This issue has been fixed in version 1.2.31.",
-    "severity": "high",
-    "cve_id": "CVE-2026-39951",
-    "cvss_score": 7.6,
-    "affected_products": [
-      "cpe:2.3:a:cacti:cacti:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/Cacti/cacti/commit/4c09efaebf3a9faec66969d0b5c4aceaf397f37f",
-      "https://github.com/Cacti/cacti/security/advisories/GHSA-pf37-v86f-5xwp"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-39951.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2025-60473",
-    "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:47.267",
-    "title": "CVE-2025-60473 - A NULL pointer dereference in the gf_filter_in_parent_chain function (/filter_core/filter_pid.c) of ",
-    "description": "A NULL pointer dereference in the gf_filter_in_parent_chain function (/filter_core/filter_pid.c) of GPAC Project/MP4Box before 26.02.0 allows attackers to cause a Denial of Service (DoS) via supplying a crafted file.",
+    "timestamp": "2026-06-26T00:16:52.817",
+    "title": "CVE-2026-43920 - FOSSBilling is a free, open-source billing and client management system. In versions 0.5.4 through 0",
+    "description": "FOSSBilling is a free, open-source billing and client management system. In versions 0.5.4 through 0.7.2, the /run-patcher maintenance endpoint in FOSSBilling was accessible without authentication, which allowed unauthenticated remote users to trigger update patch routines that modify configuration files, execute database schema changes, perform filesystem mutations, and clear caches. The /run-patcher endpoint executes privileged maintenance operations - configuration migrations, database patch execution (including ALTER TABLE, DROP TABLE, UPDATE statements), filesystem deletions and renames, and cache clearing - without requiring administrator authentication, CSRF validation, or CLI context. An unauthenticated remote attacker can trigger these operations by sending a simple HTTP GET request to /run-patcher, which can be abused for denial-of-service attacks. Certain patches (e.g., batch token regeneration for all admin and client accounts in patch 53, and session invalidation) are disruptive even when re-executed against an already-patched instance. Repeated or concurrent requests may also cause inconsistent database state. This issue has been fixed in version 0.8.0.",
     "severity": "medium",
-    "cve_id": "CVE-2025-60473",
-    "cvss_score": 5.5,
-    "affected_products": [
-      "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*"
-    ],
+    "cve_id": "CVE-2026-43920",
+    "cvss_score": null,
+    "affected_products": [],
     "references": [
-      "https://github.com/gpac/gpac/commit/b8d80b44718de10b101e1d7fc17c84d69feb092e",
-      "https://github.com/gpac/gpac/issues/3285",
-      "https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/36/36_gf_filter_in_parent_chain_filter_core_filter_pid_c_2145",
-      "https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/36/README.md",
-      "https://infosec.exchange/@sigdevel/116780471059317580",
-      "http://www.openwall.com/lists/oss-security/2026/06/27/3",
-      "https://github.com/gpac/gpac/issues/3285"
+      "https://github.com/FOSSBilling/FOSSBilling/releases/tag/0.8.0",
+      "https://github.com/FOSSBilling/FOSSBilling/security/advisories/GHSA-prx6-m547-rfmg"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-60473.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-43920.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1263,29 +1106,142 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2025-60466",
+    "id": "cve-CVE-2026-13322",
     "source": "NVD CVE",
-    "timestamp": "2026-06-25T00:17:46.883",
-    "title": "CVE-2025-60466 - A use-after-free in the gf_filter_pid_get_packet function (/filter_core/filter_pid.c) of GPAC Projec",
-    "description": "A use-after-free in the gf_filter_pid_get_packet function (/filter_core/filter_pid.c) of GPAC Project/MP4Box before 26.02.0 allows attackers to cause a Denial of Service (DoS) via supplying a crafted media file.",
-    "severity": "medium",
-    "cve_id": "CVE-2025-60466",
-    "cvss_score": 5,
-    "affected_products": [
-      "cpe:2.3:a:gpac:gpac:*:*:*:*:*:*:*:*"
-    ],
+    "timestamp": "2026-06-26T00:16:51.397",
+    "title": "CVE-2026-13322 - A flaw was found in KubeVirt's downward metrics virtio-serial server. The server reads guest request",
+    "description": "A flaw was found in KubeVirt's downward metrics virtio-serial server. The server reads guest requests using textproto.Reader.ReadLine(), which buffers input indefinitely until a newline character is received, with no length limit or read deadline. A user with access to a VM guest that has the downward metrics virtio-serial device configured can write a continuous byte stream to the device, causing unbounded memory allocation in the virt-handler process until it is OOM-killed.",
+    "severity": "low",
+    "cve_id": "CVE-2026-13322",
+    "cvss_score": 3.8,
+    "affected_products": [],
     "references": [
-      "https://github.com/gpac/gpac/commit/4a7ea06dd1b2cc65fe0dabc60189eb6bc814f7bb",
-      "https://github.com/gpac/gpac/issues/3284",
-      "https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/35/35_gf_filter_pid_get_packet_filter_core_filter_pid_c_6827",
-      "https://github.com/sigdevel/pocs/blob/main/res/gpac/MP4Box/35/README.md",
-      "https://infosec.exchange/@sigdevel/116780402249845037",
-      "http://www.openwall.com/lists/oss-security/2026/06/27/2",
-      "https://github.com/gpac/gpac/issues/3284"
+      "https://access.redhat.com/security/cve/CVE-2026-13322",
+      "https://bugzilla.redhat.com/show_bug.cgi?id=2492681"
+    ],
+    "ai_analysis": {
+      "risk_score": 35,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-13322.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 35
+  },
+  {
+    "id": "cve-CVE-2026-13318",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-26T00:16:51.277",
+    "title": "CVE-2026-13318 - A server-side request forgery (SSRF) flaw was found in KubeVirt's virt-api port-forward handler. Whe",
+    "description": "A server-side request forgery (SSRF) flaw was found in KubeVirt's virt-api port-forward handler. When processing a port-forward request to a VirtualMachineInstance (VMI), virt-api reads the target IP from vmi.Status.Interfaces[0].IP and passes it directly to net.Dial() without validation. For VMIs using non-masquerade network bindings (bridge or secondary-only), this IP is reported by the QEMU guest agent running inside the VM and is fully controllable by the VM owner. An attacker with kubevirt.io:edit permissions can create a VM with a modified guest agent that reports an arbitrary IP address, then request port-forward to establish a bidirectional TCP tunnel from virt-api's cluster-internal network position to any routable destination, bypassing NetworkPolicy isolation.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13318",
+    "cvss_score": 6.4,
+    "affected_products": [],
+    "references": [
+      "https://access.redhat.com/security/cve/CVE-2026-13318",
+      "https://bugzilla.redhat.com/show_bug.cgi?id=2492659"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-60466.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13318.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-13218",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-26T00:16:51.147",
+    "title": "CVE-2026-13218 - A flaw was found in KubeVirt's virt-handler network cache handling. The WriteToCachedFile function w",
+    "description": "A flaw was found in KubeVirt's virt-handler network cache handling. The WriteToCachedFile function writes data to a launcher-rooted path using os.WriteFile and os.Chown without symlink protection. A user with access to the virt-launcher container can plant a symlink at the cache file path, causing virt-handler to follow it and overwrite an arbitrary host file with JSON content and change its ownership.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13218",
+    "cvss_score": 4.2,
+    "affected_products": [],
+    "references": [
+      "https://access.redhat.com/security/cve/CVE-2026-13218",
+      "https://bugzilla.redhat.com/show_bug.cgi?id=2492654"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13218.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-13083",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-26T00:16:50.883",
+    "title": "CVE-2026-13083 - A flaw was found in the Pen Drive report generator. Cluster-sourced data is rendered into HTML repor",
+    "description": "A flaw was found in the Pen Drive report generator. Cluster-sourced data is rendered into HTML reports without proper escaping or sanitization. An attacker with cluster administrator privileges can inject a stored cross-site scripting (XSS) payload into cluster objects (such as ClusterVersion spec.channel) that executes in the browser of any user who opens the generated HTML report.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13083",
+    "cvss_score": 6.9,
+    "affected_products": [],
+    "references": [
+      "https://access.redhat.com/security/cve/CVE-2026-13083",
+      "https://bugzilla.redhat.com/show_bug.cgi?id=2491886"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13083.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-12993",
+    "source": "NVD CVE",
+    "timestamp": "2026-06-26T00:16:50.760",
+    "title": "CVE-2026-12993 - A flaw was found in Apicurio Registry. The DocumentBuilderAccessor correctly blocks external DTD and",
+    "description": "A flaw was found in Apicurio Registry. The DocumentBuilderAccessor correctly blocks external DTD and schema access but does not disable DOCTYPE declarations or enable FEATURE_SECURE_PROCESSING. An attacker with artifact-write permission can upload XML documents with internal entity-expansion payloads (billion-laughs variant) that cause CPU and heap exhaustion, partially mitigated by the JAXP default 64,000 entity-expansion limit.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-12993",
+    "cvss_score": 6.5,
+    "affected_products": [],
+    "references": [
+      "https://access.redhat.com/security/cve/CVE-2026-12993",
+      "https://bugzilla.redhat.com/show_bug.cgi?id=2491692"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-12993.",
       "affected_industries": [
         "Technology",
         "General"
