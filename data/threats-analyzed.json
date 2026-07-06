@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1783352979921-1",
+    "id": "twitter-1783368473655-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-06T15:49:39.921Z",
+    "timestamp": "2026-07-06T20:07:53.655Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -10,25 +10,29 @@
       "https://twitter.com/security/status/123"
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "risk_score": 85,
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code, potentially leading to data encryption, service disruption, and financial losses.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Media and Entertainment",
+        "Government"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Audit and secure CI/CD pipelines by implementing strong authentication mechanisms, such as multi-factor authentication (MFA), and monitoring for unusual activity.",
+        "Regularly back up critical data and ensure backups are stored in isolated environments to prevent ransomware from encrypting them.",
+        "Deploy endpoint detection and response (EDR) solutions and conduct regular security training for developers and IT staff to recognize and mitigate potential threats."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 75
+    "risk_score": 85
   },
   {
-    "id": "hn-1783352979921-1",
+    "id": "hn-1783368473655-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-06T15:49:39.921Z",
+    "timestamp": "2026-07-06T20:07:53.655Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -37,71 +41,77 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "The tool itself does not pose an immediate security threat but could be leveraged by attackers to identify vulnerabilities in poorly secured systems if misused. The potential impact is low due to the absence of malicious intent and the open-source nature of the tool.",
+      "impact_assessment": "Potential security vulnerability with low severity. ",
       "affected_industries": [
         "Technology",
-        "Software Development",
-        "Cybersecurity"
+        "General"
       ],
       "recommended_actions": [
-        "Evaluate the tool's source code and functionality to ensure it aligns with organizational security policies before use.",
-        "Educate development and security teams on the proper use of vulnerability scanners to avoid exposing sensitive information.",
-        "Monitor community discussions and updates about the tool to stay informed about potential misuse or vulnerabilities in the tool itself."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "low"
     },
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-xm42-w58j-mp94",
+    "id": "gh-GHSA-xv5w-cw7x-72gj",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T15:30:49Z",
-    "title": "A validation vulnerability has been identified in certain web features related to file management...",
-    "description": "A validation vulnerability has been identified in certain web features related to file management or upload in several products of the TAO 2.0 suite. This vulnerability could allow an attacker capable of interacting with the affected feature to attempt to access file system resources outside the scope intended by the application.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-7185",
-    "ghsa_id": "GHSA-xm42-w58j-mp94",
-    "affected_packages": [],
+    "timestamp": "2026-07-06T19:55:34Z",
+    "title": "id: pretty-print uses effective GID instead of effective UID for name lookup",
+    "description": "The id utility in uutils coreutils exhibits incorrect behavior in its \"pretty print\" output when the real UID and effective UID differ. The implementation incorrectly uses the effective GID instead of the effective UID when performing a name lookup for the effective user. This results in misleading diagnostic output that can cause automated scripts or system administrators to make incorrect decisions regarding file permissions or access control.\n\n---\n_Zellic finding 3.73. Reported in the Zellic ",
+    "severity": "low",
+    "cve_id": "CVE-2026-35371",
+    "ghsa_id": "GHSA-xv5w-cw7x-72gj",
+    "affected_packages": [
+      "uu_id"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to perform path traversal attacks, potentially accessing sensitive file system resources outside the intended scope of the application. This could lead to data exposure, unauthorized access, or compromise of the underlying server.",
+      "risk_score": 25,
+      "impact_assessment": "The issue causes the id utility to provide misleading output regarding user identity, which could lead to incorrect decisions in file permission or access control management. However, the severity is low as it does not directly enable privilege escalation or compromise system integrity.",
       "affected_industries": [
-        "Education Technology",
-        "E-Learning Platforms",
-        "Software as a Service (SaaS)",
-        "Enterprise Software"
+        "IT and Software Development",
+        "Cloud Service Providers",
+        "System Administration"
       ],
       "recommended_actions": [
-        "Immediately apply any available patches or updates provided by the vendor for the TAO 2.0 suite to address CVE-2026-7185.",
-        "Implement strict input validation and sanitization on all file management and upload features to prevent path traversal attacks.",
-        "Conduct a security audit of the affected systems to identify any unauthorized access or exploitation attempts."
+        "Update to the latest patched version of uutils coreutils once available to address the issue.",
+        "Review and validate any automated scripts or tools that rely on the id utility for user identity verification to ensure they are not impacted by this behavior.",
+        "Implement additional logging or monitoring to detect potential misconfigurations caused by this issue."
       ],
-      "urgency": "high"
+      "urgency": "low"
     },
-    "risk_score": 65
+    "risk_score": 25
   },
   {
-    "id": "gh-GHSA-cx44-fgg3-fcp4",
+    "id": "gh-GHSA-p6rv-2qpm-fwvg",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T15:30:48Z",
-    "title": "Imager::File::JPEG versions before 1.003 for Perl leak heap memory when reading a JPEG with...",
-    "description": "Imager::File::JPEG versions before 1.003 for Perl leak heap memory when reading a JPEG with repeated APP13 markers in i_readjpeg_wiol.\n\ni_readjpeg_wiol walks the marker list libjpeg returns and, for each APP13 marker, allocates a new buffer with *iptc_itext = mymalloc(...) and overwrites the previous pointer without freeing it. Only the final payload is later turned into a Perl scalar and freed, so a JPEG with N such markers leaks the first N-1 payloads on every read.\n\nIn a long-lived process, s",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-13708",
-    "ghsa_id": "GHSA-cx44-fgg3-fcp4",
-    "affected_packages": [],
+    "timestamp": "2026-07-06T19:55:15Z",
+    "title": "kill: 'kill -1' parsed as PID -1, sending SIGTERM to all processes (system crash / DoS)",
+    "description": "`kill -1` is incorrectly parsed as a positional `pid = -1`; combined with the default SIGTERM this calls `kill(-1, SIGTERM)`, signaling nearly every process the caller can see. GNU `kill` recognizes `-1`/`-9` as signals and reports \"not enough arguments\".\n\n```\n$ kill -1        # uutils: kill(-1, SIGTERM) -> mass termination / crash\n$ kill -1        # GNU: kill: not enough arguments\n```\n\n**Impact:** a user running `kill -1` mass-terminates processes, potentially crashing the system. Recommendatio",
+    "severity": "medium",
+    "cve_id": "CVE-2026-35369",
+    "ghsa_id": "GHSA-p6rv-2qpm-fwvg",
+    "affected_packages": [
+      "uu_kill"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null,
@@ -109,7 +119,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-13708.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-35369.",
       "affected_industries": [
         "Technology",
         "General"
@@ -124,26 +134,32 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-rwhm-c36w-484h",
+    "id": "gh-GHSA-gwm6-q8ch-hcfr",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T15:30:48Z",
-    "title": "A memory leak in OpenVPN version 2.5.0 through 2.5.11, 2.6.0 through 2.6.20 and 2.7_alpha1...",
-    "description": "A memory leak in OpenVPN version 2.5.0 through 2.5.11, 2.6.0 through 2.6.20 and 2.7_alpha1 through 2.7.4 allows remote attackers with a valid tls-crypt-v2 client key to potentially cause a denial of service",
+    "timestamp": "2026-07-06T19:54:56Z",
+    "title": "install -D: symlink race in directory creation allows arbitrary file overwrite",
+    "description": "The `-D` path runs `fs::create_dir_all` on a pathname then later opens the destination via path-based `File::create`/`fs::copy`, neither anchored to a directory fd. Between the two, an attacker can replace a path component with a symlink, redirecting the write.\n\n**Impact:** an attacker with concurrent write access to the destination tree can redirect a privileged `install -D` to an arbitrary location, enabling arbitrary file overwrite with attacker-controlled content. Recommendation: use dirfd-b",
     "severity": "medium",
-    "cve_id": "CVE-2026-13698",
-    "ghsa_id": "GHSA-rwhm-c36w-484h",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-35356",
+    "ghsa_id": "GHSA-gwm6-q8ch-hcfr",
+    "affected_packages": [
+      "uu_install"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
+      null,
+      null,
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13698.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-35356.",
       "affected_industries": [
         "Technology",
         "General"
@@ -158,15 +174,17 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-c7fj-r3pq-5ph5",
+    "id": "gh-GHSA-wv33-5pxh-r7j7",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T15:30:48Z",
-    "title": "A flaw was found in GIMP's PNM file format parser. When parsing a specially crafted PNM file, the...",
-    "description": "A flaw was found in GIMP's PNM file format parser. When parsing a specially crafted PNM file, the pnmscanner_gettoken() function writes a null terminator one byte past the end of a stack-allocated buffer due to an off-by-one error in the loop boundary check. This could lead to memory corruption, potentially resulting in denial of service or arbitrary code execution.",
-    "severity": "high",
-    "cve_id": "CVE-2026-58380",
-    "ghsa_id": "GHSA-c7fj-r3pq-5ph5",
-    "affected_packages": [],
+    "timestamp": "2026-07-06T19:54:33Z",
+    "title": "cut: -s (only-delimited) ignored when delimiter is a newline",
+    "description": "The cut utility in uutils coreutils incorrectly handles the -s (only-delimited) option when a newline character is specified as the delimiter. The implementation fails to verify the only_delimited flag in the cut_fields_newline_char_delim function, causing the utility to print non-delimited lines that should have been suppressed. This can lead to unexpected data being passed to downstream scripts that rely on strict output filtering.\n\n---\n_Zellic finding 3.22. Reported in the Zellic *uutils core",
+    "severity": "low",
+    "cve_id": "CVE-2026-35343",
+    "ghsa_id": "GHSA-wv33-5pxh-r7j7",
+    "affected_packages": [
+      "uu_cut"
+    ],
     "cwes": [
       null
     ],
@@ -179,8 +197,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-58380.",
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-35343.",
       "affected_industries": [
         "Technology",
         "General"
@@ -190,20 +208,62 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "low"
     },
-    "risk_score": 75
+    "risk_score": 25
   },
   {
-    "id": "gh-GHSA-pmgh-mrwc-qw67",
+    "id": "gh-GHSA-239g-2685-54x3",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T15:30:48Z",
-    "title": "Imager versions before 1.032 for Perl have a heap out-of-bounds read in the bundled Imager::File:...",
-    "description": "Imager versions before 1.032 for Perl have a heap out-of-bounds read in the bundled Imager::File::SGI reader via a 16-bit RLE literal run in read_rgb_16_rle.\n\nread_rgb_16_rle guards each literal run with if (count > data_left), but count is a pixel count while every 16-bit sample consumes two bytes. The copy loop reads inp[0] * 256 + inp[1] and advances two bytes per pixel, so a run with data_left / 2 < count <= data_left passes the guard yet consumes 2 * count bytes and reads past the end of th",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-13705",
-    "ghsa_id": "GHSA-pmgh-mrwc-qw67",
-    "affected_packages": [],
+    "timestamp": "2026-07-06T19:54:08Z",
+    "title": "install: TOCTOU symlink race (unlink-then-create without O_EXCL) allows arbitrary file overwrite",
+    "description": "`copy_file` in `install/src/install.rs` removes the destination then recreates it by pathname via `File::create` / `fs::copy` without `O_EXCL`/`create_new`. Between the unlink and the recreate, a local attacker with write access to the destination directory can drop in a symlink and redirect the write.\n\n**Impact:** when `install` runs privileged into an attacker-writable directory (staging/build paths), the race allows redirecting writes to arbitrary files and overwriting sensitive system files ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-35355",
+    "ghsa_id": "GHSA-239g-2685-54x3",
+    "affected_packages": [
+      "uu_install"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-35355.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-jcjr-rh8q-7xqf",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-06T19:53:39Z",
+    "title": "ln: rejects non-UTF-8 source filenames in target-directory mode",
+    "description": "In target-directory forms (`ln SOURCE... DIRECTORY`), `ln` rejects source paths with non-UTF-8 filename bytes, while GNU accepts them. Breaks GNU compatibility for byte-oriented filenames on Unix filesystems.\n\nPoC:\n```\nname=$(printf 'bad_\\377'); mkdir dst; : > \"$name\"; ln \"$name\" dst\n# GNU: exit 0, creates dst/bad_\\377 ; uutils: exit 1, dst empty\n```\n\n---\n_Zellic private finding (zellic-ext/coreutils-private PR #84). Reported in the Zellic *uutils coreutils Program Security Assessment* (for Cano",
+    "severity": "low",
+    "cve_id": "CVE-2026-35373",
+    "ghsa_id": "GHSA-jcjr-rh8q-7xqf",
+    "affected_packages": [
+      "uu_ln"
+    ],
     "cwes": [
       null
     ],
@@ -214,41 +274,39 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability in Imager versions before 1.032 for Perl allows a heap out-of-bounds read, which could potentially lead to application crashes, data corruption, or exposure of sensitive data. This could be exploited by attackers to cause denial of service or gain unauthorized access to memory.",
+      "risk_score": 25,
+      "impact_assessment": "The issue affects compatibility between GNU and uutils coreutils when handling non-UTF-8 filenames in target-directory mode. This could lead to operational disruptions or errors in environments relying on byte-oriented filenames, but it does not pose a direct security threat such as data leakage or system compromise.",
       "affected_industries": [
         "Software Development",
-        "Web Development",
-        "E-commerce",
-        "Media and Entertainment",
-        "Technology Services"
+        "System Administration",
+        "Cloud Infrastructure"
       ],
       "recommended_actions": [
-        "Upgrade to Imager version 1.032 or later to patch the vulnerability.",
-        "Conduct a thorough review of applications using Imager to identify potential exposure and mitigate risks.",
-        "Implement input validation and boundary checks in applications to prevent exploitation of similar vulnerabilities."
+        "Ensure compatibility testing between GNU and uutils coreutils in environments where non-UTF-8 filenames are used.",
+        "Update documentation to clarify the behavior of uutils coreutils and provide guidance for handling non-UTF-8 filenames.",
+        "Monitor upstream patches or updates to uutils coreutils for a potential fix to align behavior with GNU standards."
       ],
-      "urgency": "high"
+      "urgency": "low"
     },
-    "risk_score": 72
+    "risk_score": 25
   },
   {
-    "id": "gh-GHSA-r4c4-62x2-m3ww",
+    "id": "gh-GHSA-6gcw-w7cp-94g9",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T12:31:31Z",
-    "title": "A vulnerability was determined in GPAC up to 2.5-DEV. This vulnerability affects the function...",
-    "description": "A vulnerability was determined in GPAC up to 2.5-DEV. This vulnerability affects the function gf_isom_nalu_sample_rewrite of the file src/isomedia/avc_ext.c of the component MP4Box. This manipulation of the argument nalu_out_bs causes double free. It is possible to launch the attack on the local host. The exploit has been publicly disclosed and may be utilized. Patch name: f29f955f2a3b5e8e507caad3e52319f961bf37bf. To fix this issue, it is recommended to deploy a patch.",
+    "timestamp": "2026-07-06T19:51:22Z",
+    "title": "comm: lossy UTF-8 conversion silently corrupts non-UTF-8 output",
+    "description": "The comm utility in uutils coreutils silently corrupts data by performing lossy UTF-8 conversion on all output lines. The implementation uses String::from_utf8_lossy(), which replaces invalid UTF-8 byte sequences with the Unicode replacement character (U+FFFD). This behavior differs from GNU comm, which processes raw bytes and preserves the original input. This results in corrupted output when the utility is used to compare binary files or files using non-UTF-8 legacy encodings.\n\n---\n_Zellic fin",
     "severity": "low",
-    "cve_id": "CVE-2025-15667",
-    "ghsa_id": "GHSA-r4c4-62x2-m3ww",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-35346",
+    "ghsa_id": "GHSA-6gcw-w7cp-94g9",
+    "affected_packages": [
+      "uu_comm"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -259,31 +317,33 @@
     ],
     "ai_analysis": {
       "risk_score": 35,
-      "impact_assessment": "The vulnerability in GPAC up to 2.5-DEV could allow an attacker to exploit a double-free issue in the MP4Box component, potentially leading to application crashes or arbitrary code execution. However, the attack requires local access, reducing its overall severity.",
+      "impact_assessment": "The issue causes silent corruption of data when using the comm utility in uutils coreutils, particularly for non-UTF-8 encoded files or binary files. This could lead to incorrect comparisons and loss of data integrity, especially in workflows involving legacy encodings or binary data processing.",
       "affected_industries": [
-        "Media and Entertainment",
         "Software Development",
-        "Streaming Services"
+        "Data Processing",
+        "IT Operations"
       ],
       "recommended_actions": [
-        "Immediately apply the patch f29f955f2a3b5e8e507caad3e52319f961bf37bf to mitigate the vulnerability.",
-        "Conduct a review of systems using GPAC to identify and update affected versions.",
-        "Implement monitoring to detect any unusual activity that may indicate exploitation attempts."
+        "Avoid using the affected version of uutils coreutils for processing non-UTF-8 or binary files.",
+        "Switch to GNU coreutils or another alternative that preserves raw byte input for file comparisons.",
+        "Monitor for updates or patches addressing this vulnerability in uutils coreutils."
       ],
       "urgency": "low"
     },
     "risk_score": 35
   },
   {
-    "id": "gh-GHSA-3wg7-wrw9-8qvf",
+    "id": "gh-GHSA-2w8r-9xj7-69j5",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T12:31:31Z",
-    "title": "A vulnerability was identified in GPAC up to b40ce70f5. This issue affects the function...",
-    "description": "A vulnerability was identified in GPAC up to b40ce70f5. This issue affects the function sgpd_del_entry of the file src/isomedia/box_code_base.c of the component MP4Box. Such manipulation of the argument data leads to heap-based buffer overflow. Local access is required to approach this attack. The exploit is publicly available and might be used. The name of the patch is f29f955f2a3b5e8e507caad3e52319f961bf37bf. It is advisable to implement a patch to correct this issue.",
+    "timestamp": "2026-07-06T19:50:41Z",
+    "title": "mktemp: empty TMPDIR creates temp files in CWD instead of /tmp",
+    "description": "The mktemp utility in uutils coreutils fails to properly handle an empty TMPDIR environment variable. Unlike GNU mktemp, which falls back to /tmp when TMPDIR is an empty string, the uutils implementation treats the empty string as a valid path. This causes temporary files to be created in the current working directory (CWD) instead of the intended secure temporary directory. If the CWD is more permissive or accessible to other users than /tmp, it may lead to unintended information disclosure or ",
     "severity": "low",
-    "cve_id": "CVE-2025-15668",
-    "ghsa_id": "GHSA-3wg7-wrw9-8qvf",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-35342",
+    "ghsa_id": "GHSA-2w8r-9xj7-69j5",
+    "affected_packages": [
+      "uu_mktemp"
+    ],
     "cwes": [
       null
     ],
@@ -293,15 +353,11 @@
       null,
       null,
       null,
-      null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2025-15668.",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-35342.",
       "affected_industries": [
         "Technology",
         "General"
@@ -316,14 +372,55 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-4q88-82vm-7283",
+    "id": "gh-GHSA-4x34-chg5-mwjj",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T12:31:31Z",
-    "title": "Improper certificate validation vulnerability in B&R Industrial Automation GmbH APROL.\n\nThis...",
-    "description": "Improper certificate validation vulnerability in B&R Industrial Automation GmbH APROL.\n\nThis issue affects APROL: before R 4.4-01P5.",
+    "timestamp": "2026-07-06T19:27:41Z",
+    "title": "chmod: recursive mode returns exit code 0 even when some files fail (last-file-wins)",
+    "description": "In `Chmoder::chmod()` the recursive branch overwrites the running result instead of accumulating it, so the exit code reflects only the *last* file processed:\n\n```\nif self.recursive {\n    r = self.walk_dir_with_context(file, true);   // overwrites r\n} else {\n    r = self.chmod_file(file).and(r);\n}\n```\n\n**PoC:** GNU returns 1 when a file fails; uutils returns 0 if the last entry succeeds:\n\n```\n$ chmod -R 0755 chmod-bug/root chmod-bug/user  # GNU -> ret=1\n$ uutils chmod -R 0755 chmod-bug/root chmo",
+    "severity": "medium",
+    "cve_id": "CVE-2026-35339",
+    "ghsa_id": "GHSA-4x34-chg5-mwjj",
+    "affected_packages": [
+      "uu_chmod"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-35339.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-29pr-6qrg-q2x4",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-06T18:31:17Z",
+    "title": "An improper authorization vulnerability in the Plesk XML API allows an authenticated user to...",
+    "description": "An improper authorization vulnerability in the Plesk XML API allows an authenticated user to inject arbitrary configuration directives, resulting in arbitrary file write as root and full privilege escalation on the underlying server.",
     "severity": "critical",
-    "cve_id": "CVE-2026-6900",
-    "ghsa_id": "GHSA-4q88-82vm-7283",
+    "cve_id": "CVE-2026-48614",
+    "ghsa_id": "GHSA-29pr-6qrg-q2x4",
     "affected_packages": [],
     "cwes": [
       null
@@ -335,7 +432,7 @@
     ],
     "ai_analysis": {
       "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-6900.",
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-48614.",
       "affected_industries": [
         "Technology",
         "General"
@@ -350,50 +447,14 @@
     "risk_score": 90
   },
   {
-    "id": "gh-GHSA-65g5-qf5m-jpxh",
+    "id": "gh-GHSA-7g4w-hpm5-fjj3",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T12:31:31Z",
-    "title": "Untrusted Search Path vulnerability in B&R Industrial Automation GmbH APROL.\n\nThis issue affects...",
-    "description": "Untrusted Search Path vulnerability in B&R Industrial Automation GmbH APROL.\n\nThis issue affects APROL: before R 4.4-01P5.",
-    "severity": "high",
-    "cve_id": "CVE-2026-6901",
-    "ghsa_id": "GHSA-65g5-qf5m-jpxh",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The Untrusted Search Path vulnerability in B&R Industrial Automation GmbH APROL could allow attackers to execute arbitrary code by exploiting the software's improper handling of file paths. This can lead to unauthorized access, potential system compromise, and disruption of industrial processes.",
-      "affected_industries": [
-        "Manufacturing",
-        "Energy",
-        "Utilities",
-        "Industrial Automation"
-      ],
-      "recommended_actions": [
-        "Upgrade APROL to version R 4.4-01P5 or later to mitigate the vulnerability.",
-        "Conduct a thorough review of systems using APROL to identify and remediate any unauthorized changes or suspicious activity.",
-        "Implement application whitelisting and restrict file execution paths to trusted directories only."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-gqrf-mwwc-fmq5",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-06T12:31:30Z",
-    "title": "The software accepts user-supplied input via a URL parameter without adequate output encoding...",
-    "description": "The software accepts user-supplied input via a URL parameter without adequate output encoding before reflecting it back to the user's browser. This condition allows an attacker to inject malicious script content into pages served by the application.\n\nBy leveraging this weakness, an attacker can cause the user's browser to redirect to a malicious website, modify the UI of the webpage, or retrieve information from the browser. However, the impact is mitigated by the use of httpOnly flags on sessio",
+    "timestamp": "2026-07-06T18:31:16Z",
+    "title": "The Reviews Widgets for Google, Yelp & TripAdvisor plugin for WordPress is vulnerable to Stored...",
+    "description": "The Reviews Widgets for Google, Yelp & TripAdvisor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'page_id' shortcode attribute of the [fbrev] shortcode in versions up to and including 2.7.3. This is due to insufficient input sanitization and output escaping in the Feed_Shortcode::fbrev() method, which passes the raw shortcode attribute through Feed_Old::get_feed() into the View::render() method, where it is echoed directly into the data-id HTML attribute without esc_a",
     "severity": "medium",
-    "cve_id": "CVE-2025-8591",
-    "ghsa_id": "GHSA-gqrf-mwwc-fmq5",
+    "cve_id": "CVE-2026-12154",
+    "ghsa_id": "GHSA-7g4w-hpm5-fjj3",
     "affected_packages": [],
     "cwes": [
       null
@@ -401,33 +462,40 @@
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-8591.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to execute malicious scripts in the context of a user's browser by exploiting the stored XSS flaw. This could lead to data theft, session hijacking, or unauthorized actions on affected websites. The impact is significant for websites relying on this plugin for displaying reviews, especially if user trust is compromised.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Hospitality",
+        "E-commerce",
+        "Travel and Tourism",
+        "Small and Medium Businesses",
+        "Digital Marketing"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update the Reviews Widgets for Google, Yelp & TripAdvisor plugin to a patched version if available. If no patch is available, disable the plugin temporarily.",
+        "Implement a web application firewall (WAF) to detect and block malicious payloads targeting this vulnerability.",
+        "Review and sanitize user inputs and outputs in custom WordPress plugins or themes to prevent similar vulnerabilities."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-hh8r-75r6-qrg9",
+    "id": "gh-GHSA-7ppx-3g3p-7823",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T12:31:30Z",
-    "title": "Improper Input Validation vulnerability in Apache Camel.\n\nThis issue affects Apache Camel: from 4...",
-    "description": "Improper Input Validation vulnerability in Apache Camel.\n\nThis issue affects Apache Camel: from 4.8.0 through 4.18.2, from 4.19.0 through 4.20.0.\n\nUsers are recommended to upgrade to version 4.18.3, 4.21.0, which fixes the issue.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-49042",
-    "ghsa_id": "GHSA-hh8r-75r6-qrg9",
+    "timestamp": "2026-07-06T18:31:16Z",
+    "title": "ColdFusion versions 2025.9, 2023.20 and earlier are affected by an Improper Input Validation...",
+    "description": "ColdFusion versions 2025.9, 2023.20 and earlier are affected by an Improper Input Validation vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue does not require user interaction. Scope is changed.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-48316",
+    "ghsa_id": "GHSA-7ppx-3g3p-7823",
     "affected_packages": [],
     "cwes": [
       null
@@ -438,67 +506,33 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-49042.",
+      "risk_score": 92,
+      "impact_assessment": "This vulnerability allows attackers to execute arbitrary code without user interaction, potentially leading to system compromise, data theft, or service disruption.",
       "affected_industries": [
         "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-7469-8h9r-c5xc",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-06T12:31:30Z",
-    "title": "The throttling event handling mechanism in multiple WSO2 products accepts user-supplied JSON...",
-    "description": "The throttling event handling mechanism in multiple WSO2 products accepts user-supplied JSON payloads without sufficient validation of their structure and content. This allows an unauthenticated remote attacker to inject malicious JSON data that can lead to a persistent denial of service condition.\n\nSuccessful exploitation of this vulnerability can disrupt the API Gateway, preventing legitimate API traffic from being processed and impacting complete service availability. The denial of service is",
-    "severity": "high",
-    "cve_id": "CVE-2026-4249",
-    "ghsa_id": "GHSA-7469-8h9r-c5xc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in the throttling event handling mechanism of WSO2 products allows unauthenticated attackers to inject malicious JSON payloads, leading to a persistent denial of service (DoS). This can disrupt the API Gateway, halting legitimate API traffic and causing significant service outages.",
-      "affected_industries": [
         "Finance",
         "Healthcare",
         "E-commerce",
-        "Telecommunications",
-        "Technology"
+        "Government"
       ],
       "recommended_actions": [
-        "Apply the latest security patches or updates provided by WSO2 to address CVE-2026-4249 immediately.",
-        "Implement strict input validation and sanitization mechanisms for JSON payloads at the API Gateway level to prevent malicious data injection.",
-        "Monitor API Gateway traffic for unusual patterns or spikes that could indicate exploitation attempts and deploy rate-limiting or throttling rules as necessary."
+        "Immediately apply patches or updates provided by Adobe for affected ColdFusion versions.",
+        "Implement strict input validation and monitoring to detect and block suspicious activity.",
+        "Review and enhance access controls to limit the scope of potential exploitation."
       ],
       "urgency": "critical"
     },
-    "risk_score": 85
+    "risk_score": 92
   },
   {
-    "id": "gh-GHSA-v3mh-27qj-w836",
+    "id": "gh-GHSA-g4fv-7mf3-543r",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T12:31:30Z",
-    "title": "Apache Airflow's Google provider operators `GCSToSFTPOperator` and ...",
-    "description": "Apache Airflow's Google provider operators `GCSToSFTPOperator` and `GCSTimeSpanFileTransformOperator` joined GCS object names returned by the bucket listing API directly to a destination filesystem path without normalisation or containment check. A user with write access to the source GCS bucket (typically a different trust principal than the DAG author — partner uploads, ingest-only service accounts, public-data buckets) could create an object whose name contains `..` segments and cause the DAG",
+    "timestamp": "2026-07-06T18:31:15Z",
+    "title": "Untrusted Java Deserialization in Apache OpenNLP SvmDoccatModel\n\nVersions Affected:\n  before 3.0...",
+    "description": "Untrusted Java Deserialization in Apache OpenNLP SvmDoccatModel\n\nVersions Affected:\n  before 3.0.0-M4 (libsvm document categorization module; introduced in\n  OPENNLP-1808 and only present on the 3.x line)\n\nDescription:\nSvmDoccatModel.deserialize(InputStream) reads an attacker-controlled\nstream with java.io.ObjectInputStream and calls readObject() without an\nObjectInputFilter installed. ObjectInputStream materialises every class\nreferenced in the stream before the resulting object is cast to\nSvmD",
     "severity": "unknown",
-    "cve_id": "CVE-2026-49297",
-    "ghsa_id": "GHSA-v3mh-27qj-w836",
+    "cve_id": "CVE-2026-43825",
+    "ghsa_id": "GHSA-g4fv-7mf3-543r",
     "affected_packages": [],
     "cwes": [
       null
@@ -506,13 +540,11 @@
     "references": [
       null,
       null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-49297.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-43825.",
       "affected_industries": [
         "Technology",
         "General"
@@ -527,14 +559,120 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-67j5-pj6c-m82p",
+    "id": "gh-GHSA-v5xx-3hcf-fm67",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T12:31:30Z",
-    "title": "An authenticated user could manipulate a company ID parameter in a POST request to the backend to...",
-    "description": "An authenticated user could manipulate a company ID parameter in a POST request to the backend to gain unauthorised access to other companies hosted within the same subdomain environment. The application does not adequately verify whether the requested company ID belongs to the authenticated user’s session, resulting in a cross-tenant authorisation bypass. If this vulnerability is successfully exploited, it allows unauthorised access to sensitive customer information, including billing data, and",
+    "timestamp": "2026-07-06T18:31:15Z",
+    "title": "A high-severity vulnerability exists in a web application component of BeyondTrust Remote Support...",
+    "description": "A high-severity vulnerability exists in a web application component of BeyondTrust Remote Support and Privileged Remote Access related to the processing of certain input parameters. Insufficient validation of user-supplied input may allow an authenticated attacker with limited privileges to access unintended resources or data beyond their authorization scope. Exploitation is restricted to accounts with specific permissions.",
+    "severity": "high",
+    "cve_id": "CVE-2026-40141",
+    "ghsa_id": "GHSA-v5xx-3hcf-fm67",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-40141.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-m6c7-7xhp-6vhc",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-06T18:31:14Z",
+    "title": "An authentication bypass vulnerability exists in\nthe default SFTP server component utilized...",
+    "description": "An authentication bypass vulnerability exists in\nthe default SFTP server component utilized across the Ciena products listed. This vulnerability allows a remote, unauthenticated attacker to bypass\nsecurity controls and gain unauthorized access to the underlying filesystem.\nSuccessful exploitation could allow an attacker to read or modify system files.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-5268",
+    "ghsa_id": "GHSA-m6c7-7xhp-6vhc",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-5268.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-8v46-5p7g-p46j",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-06T18:31:14Z",
+    "title": "BeyondTrust Remote Support and Privileged Remote Access contain a high-severity pre...",
+    "description": "BeyondTrust Remote Support and Privileged Remote Access contain a high-severity pre-authentication vulnerability in the network communication subsystem. Insufficient validation of client-supplied input may allow an unauthenticated remote attacker to trigger a denial-of-service condition affecting appliance availability.",
+    "severity": "high",
+    "cve_id": "CVE-2026-40140",
+    "ghsa_id": "GHSA-8v46-5p7g-p46j",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in BeyondTrust Remote Support and Privileged Remote Access allows unauthenticated remote attackers to exploit insufficient input validation, potentially causing a denial-of-service (DoS) condition. This could disrupt critical operations and availability of the affected systems.",
+      "affected_industries": [
+        "Healthcare",
+        "Financial Services",
+        "Government",
+        "Technology",
+        "Retail",
+        "Energy and Utilities"
+      ],
+      "recommended_actions": [
+        "Immediately apply the latest security patches or updates provided by BeyondTrust to address CVE-2026-40140.",
+        "Implement network segmentation and restrict access to BeyondTrust appliances to trusted IP ranges to minimize exposure.",
+        "Monitor network traffic for unusual activity and configure intrusion detection/prevention systems (IDS/IPS) to detect potential exploitation attempts."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-hcrc-2pw3-4v88",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-06T18:31:14Z",
+    "title": "A critical pre-authentication vulnerability exists in the authentication subsystem of BeyondTrust...",
+    "description": "A critical pre-authentication vulnerability exists in the authentication subsystem of BeyondTrust Remote Support and Privileged Remote Access. Improper validation of authentication data may allow a network-positioned attacker to bypass access controls and gain unauthorized access to the appliance, including accounts with elevated privileges. Exploitation requires a specific authentication configuration to be enabled",
     "severity": "critical",
-    "cve_id": "CVE-2026-12686",
-    "ghsa_id": "GHSA-67j5-pj6c-m82p",
+    "cve_id": "CVE-2026-40138",
+    "ghsa_id": "GHSA-hcrc-2pw3-4v88",
     "affected_packages": [],
     "cwes": [
       null
@@ -546,32 +684,67 @@
     ],
     "ai_analysis": {
       "risk_score": 95,
-      "impact_assessment": "The vulnerability allows authenticated users to perform cross-tenant authorization bypass, potentially exposing sensitive customer information such as billing data. This could lead to data breaches, regulatory non-compliance, and reputational damage.",
+      "impact_assessment": "This vulnerability allows a network-positioned attacker to bypass authentication and gain unauthorized access to BeyondTrust appliances, potentially compromising sensitive systems and data, including accounts with elevated privileges. This could lead to data breaches, system disruptions, and unauthorized control over critical infrastructure.",
       "affected_industries": [
-        "SaaS Platforms",
-        "Finance",
+        "Financial Services",
         "Healthcare",
-        "E-commerce",
-        "Enterprise Software"
+        "Government",
+        "Energy and Utilities",
+        "Technology",
+        "Retail"
       ],
       "recommended_actions": [
-        "Implement strict server-side validation to ensure that the company ID parameter in the POST request matches the authenticated user's session.",
-        "Conduct a thorough security audit of all authorization mechanisms to identify and fix similar vulnerabilities.",
-        "Deploy monitoring and logging to detect and alert on unusual access patterns or unauthorized access attempts."
+        "Immediately apply any patches or updates provided by BeyondTrust to address CVE-2026-40138.",
+        "Review and disable the specific authentication configuration that enables this vulnerability, if applicable.",
+        "Conduct a thorough audit of access logs to identify any signs of unauthorized access or exploitation."
       ],
       "urgency": "critical"
     },
     "risk_score": 95
   },
   {
-    "id": "gh-GHSA-46jf-c9vx-hh79",
+    "id": "gh-GHSA-5wv8-v74x-qrjc",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T12:31:30Z",
-    "title": "Improper Input Validation vulnerability in Apache Camel.\n\nThis issue affects Apache Camel:...",
-    "description": "Improper Input Validation vulnerability in Apache Camel.\n\nThis issue affects Apache Camel: through 4.14.7, from 4.15.0 through 4.18.2, from 4.19.0 through 4.20.0.\n\nUsers are recommended to upgrade to version 4.14.8, 4.18.3, 4.21.0, which fixes the issue.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-46587",
-    "ghsa_id": "GHSA-46jf-c9vx-hh79",
+    "timestamp": "2026-07-06T18:31:14Z",
+    "title": "A critical pre-authentication vulnerability exists in the authentication subsystem of BeyondTrust...",
+    "description": "A critical pre-authentication vulnerability exists in the authentication subsystem of BeyondTrust Remote Support. Improper processing of authentication requests may allow an unauthenticated remote attacker to bypass access controls and gain unauthorized access to the appliance, including accounts with elevated privileges. Exploitation requires a specific authentication configuration to be enabled.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-40139",
+    "ghsa_id": "GHSA-5wv8-v74x-qrjc",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-40139.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-m5x7-29rp-3xmr",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-06T18:31:13Z",
+    "title": "OpenVPN version 2.6.0 through 2.6.20 and 2.7_alpha1 through 2.7.4 allows remote attackers to...",
+    "description": "OpenVPN version 2.6.0 through 2.6.20 and 2.7_alpha1 through 2.7.4 allows remote attackers to cause a denial of service via a malformed authentication token that triggers a reachable assertion when external-auth is enabled",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13122",
+    "ghsa_id": "GHSA-m5x7-29rp-3xmr",
     "affected_packages": [],
     "cwes": [
       null
@@ -583,7 +756,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-46587.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13122.",
       "affected_industries": [
         "Technology",
         "General"
@@ -598,91 +771,24 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-5g68-f6xg-vf2r",
+    "id": "gh-GHSA-4c7q-4928-8445",
     "source": "GitHub Security",
-    "timestamp": "2026-07-06T12:31:30Z",
-    "title": "Improper Input Validation vulnerability in Apache Camel.\n\nThis issue affects Apache Camel:...",
-    "description": "Improper Input Validation vulnerability in Apache Camel.\n\nThis issue affects Apache Camel: through 4.14.7, from 4.15.0 through 4.18.2, from 4.19.0 through 4.20.0.\n\nUsers are recommended to upgrade to version 4.14.8, 4.18.3, 4.21.0, which fixes the issue.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-46588",
-    "ghsa_id": "GHSA-5g68-f6xg-vf2r",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-46588.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-hjg2-f45w-c566",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-06T09:30:31Z",
-    "title": "Generation of Error Message Containing Sensitive Information vulnerability in Apache Camel...",
-    "description": "Generation of Error Message Containing Sensitive Information vulnerability in Apache Camel Undertow Component.\n\nThe camel-undertow HTTP server consumer exposes a muteException option that controls what is returned to the client when a route processing error occurs. This option defaulted to false, whereas the other Camel HTTP server components (camel-http / camel-jetty / camel-servlet and camel-platform-http) default it to true. With muteException=false, when a request triggers an exception durin",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-56139",
-    "ghsa_id": "GHSA-hjg2-f45w-c566",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability allows sensitive information to be exposed in error messages when the muteException option is set to false in the camel-undertow HTTP server consumer. This could lead to information disclosure, aiding attackers in reconnaissance or exploitation.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Immediately update Apache Camel to the latest version that addresses CVE-2026-56139.",
-        "Review and set the muteException option to true in the camel-undertow HTTP server consumer configuration to prevent sensitive information exposure.",
-        "Conduct a thorough audit of server logs and error messages to ensure no sensitive data has already been leaked."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-fw53-q2vg-jr6g",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-06T09:30:31Z",
-    "title": "A flaw was found in Red Hat Advanced Cluster Security for Kubernetes (RHACS). Central does not...",
-    "description": "A flaw was found in Red Hat Advanced Cluster Security for Kubernetes (RHACS). Central does not limit the depth of GraphQL queries served on the authenticated GraphQL API. An authenticated user with a valid API token can send deeply nested queries that cause excessive resource consumption in Central, resulting in a denial of service for the management plane.",
+    "timestamp": "2026-07-06T17:41:45Z",
+    "title": "chmod: --preserve-root bypassed by any path that resolves to root (e.g. /../)",
+    "description": "`Chmoder::chmod()` only compares the literal argument against `Path::new(\"/\")`, so the `--preserve-root` guard is bypassed by any path that *resolves* to root — a symlink to `/` or simply `/../`.\n\n```\nif self.recursive && self.preserve_root && file == Path::new(\"/\") {\n    return Err(ChmodError::PreserveRoot(\"/\".to_string()).into());\n}\n```\n\n**PoC** — recursively chmods the entire filesystem to `000` despite `--preserve-root`:\n\n```\nchmod -R --preserve-root 000 /../ -v\n```\n\n**Impact:** `--preserve-",
     "severity": "high",
-    "cve_id": "CVE-2026-9165",
-    "ghsa_id": "GHSA-fw53-q2vg-jr6g",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-35338",
+    "ghsa_id": "GHSA-4c7q-4928-8445",
+    "affected_packages": [
+      "uu_chmod"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null,
@@ -690,7 +796,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9165.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-35338.",
       "affected_industries": [
         "Technology",
         "General"
@@ -703,78 +809,6 @@
       "urgency": "high"
     },
     "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-qvc3-6q9x-95pj",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-06T09:30:30Z",
-    "title": "Improper Authentication, Missing Authentication for Critical Function, Not Failing Securely (...",
-    "description": "Improper Authentication, Missing Authentication for Critical Function, Not Failing Securely ('Failing Open') vulnerability in Apache Camel Keycloak Component.\n\nThe KeycloakSecurityPolicy of camel-keycloak guards a route by running KeycloakSecurityProcessor.beforeProcess(), which performs three checks in sequence: it rejects a request that carries no access token, then - only if requiredRoles is non-empty - validates the roles, and - only if requiredPermissions is non-empty - validates the permis",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-53913",
-    "ghsa_id": "GHSA-qvc3-6q9x-95pj",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability in Apache Camel Keycloak Component could allow unauthorized access to critical functions or sensitive data due to improper authentication mechanisms and failure to securely reject invalid requests ('Failing Open'). This may lead to privilege escalation or data breaches.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Upgrade to the latest patched version of Apache Camel Keycloak Component as soon as it becomes available.",
-        "Implement additional authentication and authorization checks at the application level to mitigate risks until the patch is applied.",
-        "Conduct a thorough security audit of systems using the affected component to identify potential exploitation."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-463m-2hr2-q2j7",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-06T09:30:30Z",
-    "title": "Improper Input Validation, Improper Neutralization of Special Elements in Output Used by a...",
-    "description": "Improper Input Validation, Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection') vulnerability in Apache Camel IRC component.\n\nThe camel-irc producer chooses the destination of an outgoing IRC message from the irc.sendTo Exchange header (the constant IrcConstants.IRC_SEND_TO, value irc.sendTo); when that header is present it overrides the channel list configured on the endpoint, and the message is sent only to the specified destination. This and the c",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-49097",
-    "ghsa_id": "GHSA-463m-2hr2-q2j7",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-49097.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
   },
   {
     "id": "cve-CVE-2026-13527",
@@ -796,18 +830,18 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to perform SQL injection via the course_year_section parameter in the /preview4.php file, potentially leading to unauthorized access, data leakage, or database manipulation.",
+      "impact_assessment": "The vulnerability allows attackers to perform SQL injection, potentially leading to unauthorized access to sensitive data, database manipulation, and system compromise. Exploits are publicly available, increasing the risk of exploitation.",
       "affected_industries": [
         "Education",
         "Software Development",
         "IT Services"
       ],
       "recommended_actions": [
-        "Immediately apply input validation and sanitization on the course_year_section parameter to prevent SQL injection.",
-        "Update or patch the Class and Exam Timetabling System to the latest version if a fix is available.",
-        "Monitor server logs for unusual activity, especially targeting /preview4.php, and implement Web Application Firewall (WAF) rules to block malicious requests."
+        "Immediately apply input validation and sanitization for the 'course_year_section' parameter in the /preview4.php file.",
+        "Update the SourceCodester Class and Exam Timetabling System to the latest version if a patch is available.",
+        "Implement web application firewalls (WAF) to monitor and block malicious SQL injection attempts."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
     "risk_score": 85
   },
@@ -864,20 +898,21 @@
       "https://vuldb.com/vuln/374533/cti"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13525.",
+      "risk_score": 75,
+      "impact_assessment": "The vulnerability allows remote attackers to execute SQL injection attacks, potentially leading to unauthorized access to sensitive employee data, data manipulation, or complete database compromise.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Human Resources",
+        "Small and Medium Enterprises",
+        "Software Development"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately apply patches or updates provided by CodeAstro to mitigate the vulnerability.",
+        "Implement input validation and sanitization to prevent SQL injection attacks.",
+        "Monitor systems for unusual activity and review logs for signs of exploitation."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 60
+    "risk_score": 75
   },
   {
     "id": "cve-CVE-2026-13524",
