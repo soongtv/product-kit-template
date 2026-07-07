@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1783436024275-1",
+    "id": "twitter-1783454817320-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-07T14:53:44.275Z",
+    "timestamp": "2026-07-07T20:06:57.320Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -11,28 +11,28 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code, leading to data encryption, service disruption, and potential data exfiltration. This could result in operational downtime, financial losses, and reputational damage.",
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services, potentially leading to data encryption, service disruption, and financial losses. The use of compromised CI/CD pipelines increases the risk of widespread deployment and lateral movement within affected environments.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
         "Retail",
-        "Government",
-        "Education"
+        "Manufacturing",
+        "Government"
       ],
       "recommended_actions": [
-        "Implement strict access controls and regularly audit permissions for CI/CD pipelines to prevent unauthorized access.",
-        "Monitor cloud environments for unusual activity, such as unexpected changes in CI/CD configurations or deployment patterns.",
-        "Regularly back up critical data and ensure backups are stored in isolated environments to facilitate recovery in case of ransomware attacks."
+        "Immediately review and secure CI/CD pipelines by implementing strong authentication, access controls, and regular code integrity checks.",
+        "Conduct a comprehensive audit of cloud infrastructure for vulnerabilities and ensure all systems are patched and up-to-date.",
+        "Establish and test incident response plans specifically tailored to ransomware attacks on cloud environments, including regular backups stored offline."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "hn-1783436024275-1",
+    "id": "hn-1783454817320-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-07T14:53:44.275Z",
+    "timestamp": "2026-07-07T20:06:57.320Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -56,17 +56,16 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-c8m7-r2jv-rw63",
+    "id": "gh-GHSA-7856-g3gv-9wq8",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:02:43Z",
-    "title": "EGroupware Vulnerable to Local File Inclusion via file:// URI in Mail Compose",
-    "description": "### Summary\nThe function processes image URLs embedded in an HTML email body without validating or restricting URI schemes. The check `!str_starts_with($myUrl, 'http')` evaluates to true for `file://` URIs, causing `file_get_contents($basedir . urldecode($myUrl))` to read arbitrary files from the server filesystem and embed them as inline MIME attachments in outgoing email.\n\nstr_starts_with('file:///etc/passwd', 'http') → **false**\n!false → **true**\n\n\n```php\n// api/src/Mail.php  \nforeach($images",
-    "severity": "medium",
-    "cve_id": "CVE-2026-45016",
-    "ghsa_id": "GHSA-c8m7-r2jv-rw63",
+    "timestamp": "2026-07-07T20:04:22Z",
+    "title": "netfoil: Attacker controlled data written to logs",
+    "description": "### Summary\nDomain names were written to the log without first being validated to contain allowed characters.\n\n### Impact\nDepends on how the logs were used.",
+    "severity": "low",
+    "cve_id": null,
+    "ghsa_id": "GHSA-7856-g3gv-9wq8",
     "affected_packages": [
-      "egroupware/egroupware",
-      "egroupware/egroupware"
+      "github.com/tinfoil-factory/netfoil"
     ],
     "cwes": [
       null
@@ -76,48 +75,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "The vulnerability allows attackers to exploit the Local File Inclusion (LFI) flaw to read arbitrary files from the server filesystem, potentially exposing sensitive information such as configuration files, credentials, or other private data. This could lead to further compromise of the affected system or unauthorized access to sensitive information.",
-      "affected_industries": [
-        "Technology",
-        "Healthcare",
-        "Finance",
-        "Government",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Immediately apply any available patches or updates provided by the EGroupware development team to address CVE-2026-45016.",
-        "Restrict file system access permissions for the web server user to limit exposure of sensitive files in case of exploitation.",
-        "Implement input validation and sanitize URI schemes in the application to ensure only safe and expected schemes (e.g., 'http' and 'https') are processed."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-hwpq-hmq9-wj77",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:02:10Z",
-    "title": "ONNX has Null Pointer Dereference in Upsample Version Converter Adapter (Zero Inputs)",
-    "description": "### Summary\n\nNull pointer dereference (SIGSEGV) in `Upsample_6_7::adapt_upsample_6_7()` (`onnx/version_converter/adapters/upsample_6_7.h:31`) when `convert_version()` processes a model with an Upsample node that has zero inputs. The adapter accesses `node->inputs()[0]->sizes()` without checking input count. 107-byte PoC crashes on Release build.\n\nThis is the same class of bug as the Cast adapter advisory (separate report) but in a different adapter, different file, and different operator.\n\n### D",
-    "severity": "medium",
-    "cve_id": "CVE-2026-44512",
-    "ghsa_id": "GHSA-hwpq-hmq9-wj77",
-    "affected_packages": [
-      "onnx"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-44512.",
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. ",
       "affected_industries": [
         "Technology",
         "General"
@@ -127,33 +86,32 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "low"
     },
-    "risk_score": 50
+    "risk_score": 25
   },
   {
-    "id": "gh-GHSA-26v7-h57m-gh9m",
+    "id": "gh-GHSA-3g4q-2f67-2gvh",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:01:49Z",
-    "title": "New API is vulnerable to CSRF through user email binding",
-    "description": "## Summary\n\nThe email and WeChat account binding endpoints used GET requests for state-changing account operations. In deployments where session cookies could be sent on cross-site navigations, an attacker could trigger a logged-in user's browser to bind an attacker-controlled email address or OAuth identity.\n\nAffected endpoints included:\n\n- `GET /api/oauth/email/bind`\n- `GET /api/oauth/wechat/bind`\n\n## Impact\n\nA successful attack could change account binding state. For email binding, the attack",
-    "severity": "medium",
-    "cve_id": "CVE-2026-44342",
-    "ghsa_id": "GHSA-26v7-h57m-gh9m",
+    "timestamp": "2026-07-07T20:04:01Z",
+    "title": "netfoil has a resource leak in LRU cache",
+    "description": "### Summary\nWhen an entry was removed from the LRU cache, a pointer to the removed element was not properly cleaned up.\n\n### Impact\nA local attacker can get netfoil to use more memory. By default this is limited to 100MB via systemd, which would trigger service restarts when reached.",
+    "severity": "low",
+    "cve_id": null,
+    "ghsa_id": "GHSA-3g4q-2f67-2gvh",
     "affected_packages": [
-      "github.com/QuantumNous/new-api"
+      "github.com/tinfoil-factory/netfoil"
     ],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-44342.",
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. ",
       "affected_industries": [
         "Technology",
         "General"
@@ -163,22 +121,21 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "low"
     },
-    "risk_score": 50
+    "risk_score": 25
   },
   {
-    "id": "gh-GHSA-8737-2x9g-xjj7",
+    "id": "gh-GHSA-59qp-cfj3-rp64",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:01:31Z",
-    "title": "EGroupware has Authenticated RCE via Malicious eTemplate Upload",
-    "description": "## Summary\n\nAn authenticated administrator can achieve OS-level Remote Code Execution (RCE) by uploading a malicious eTemplate XML file (`.xet`) to the VFS `/etemplates` mount.\n\nThe `Widget::expand_name()` method passes template widget attribute values directly into a PHP `eval()` call with only double-quote escaping applied - **backtick characters are not escaped**.\n\nIn PHP, backticks inside a double-quoted `eval()` string execute shell commands. This allows an admin-level user to escalate from",
-    "severity": "high",
-    "cve_id": "CVE-2026-40187",
-    "ghsa_id": "GHSA-8737-2x9g-xjj7",
+    "timestamp": "2026-07-07T20:03:49Z",
+    "title": "netfoil has a domain name filter bypass via multiple questions",
+    "description": "### Summary\nPotential bypass of domain name filter by crafting a DNS request with multiple questions, with the first question being legitimate.\n\n### Impact\nDepends on a local attackers ability to craft multiple questions and the remote DoH server supporting them.",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-59qp-cfj3-rp64",
     "affected_packages": [
-      "egroupware/egroupware",
-      "egroupware/egroupware"
+      "github.com/tinfoil-factory/netfoil"
     ],
     "cwes": [
       null,
@@ -189,50 +146,47 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This vulnerability allows an authenticated administrator to achieve OS-level Remote Code Execution (RCE) by exploiting improper input handling in the eTemplate XML file upload functionality. If exploited, this could lead to full system compromise, data theft, or service disruption.",
+      "risk_score": 55,
+      "impact_assessment": "The vulnerability allows attackers to bypass domain name filters by crafting DNS requests with multiple questions, potentially enabling unauthorized access to restricted domains or malicious sites.",
       "affected_industries": [
-        "Technology",
-        "Healthcare",
-        "Education",
-        "Government",
-        "Finance"
+        "Telecommunications",
+        "Internet Service Providers",
+        "Cybersecurity Solutions",
+        "Enterprise IT"
       ],
       "recommended_actions": [
-        "Immediately apply any available patches or updates provided by the EGroupware development team to address CVE-2026-40187.",
-        "Restrict administrative access to trusted personnel only and enforce strong authentication mechanisms, such as multi-factor authentication (MFA).",
-        "Conduct a thorough review of server logs to identify any signs of exploitation and ensure that no malicious eTemplate files have been uploaded."
+        "Update DNS filtering systems to reject or properly handle DNS requests containing multiple questions.",
+        "Monitor and analyze DNS traffic for unusual patterns that may indicate exploitation attempts.",
+        "Engage with DNS software vendors to ensure patches or mitigations are applied promptly."
       ],
-      "urgency": "critical"
+      "urgency": "medium"
     },
-    "risk_score": 85
+    "risk_score": 55
   },
   {
-    "id": "gh-GHSA-qj4x-9g63-25g6",
+    "id": "gh-GHSA-fqf6-gxhh-2xhw",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:01:21Z",
-    "title": "XWiki Platform Old Core: Resource path traversal via /skin/ action endpoint in Jetty 12+",
-    "description": "### Impact\n\nWith Jetty 12+ a user can craft a URL to access any resource the Jetty instance is allowed to access.\n\nFor example `http://[host]/xwiki/bin/skin/..%252f/..%252f..%252f..%252f..%252f..%252f..%252f..%252fetc/passwd` allows downloading the content of the /etc/passwd file, provided Jetty is allowed to read it, and if your XWiki webapp is located exactly 5 levels below `/` (like `/var/lib/jetty/webapps/xwiki`, which is the case in the docker image, for example).\n\nAnother example which doe",
+    "timestamp": "2026-07-07T19:36:17Z",
+    "title": "uutils coreutils: cp/install/mv/ln --suffix alone does not enable backup mode (silent data loss vs GNU)",
+    "description": "`determine_backup_mode` in `src/uucore/src/lib/features/backup_control.rs` only checks `--backup`/`-b` and returns `BackupMode::None` when only `--suffix` is given. GNU enables backup mode when `--suffix` is used alone (defaulting to existing/numbered, or `$VERSION_CONTROL`). Affects `cp`, `install`, `mv`, `ln` which share this code.\n\n```\n# uutils: no backup created\n$ coreutils cp --suffix=.bak src dest      # dest.bak NOT created\n# GNU: dest.bak created\n$ cp --suffix=.bak src dest\n```\n\n**Impact",
     "severity": "high",
-    "cve_id": "CVE-2026-34151",
-    "ghsa_id": "GHSA-qj4x-9g63-25g6",
+    "cve_id": null,
+    "ghsa_id": "GHSA-fqf6-gxhh-2xhw",
     "affected_packages": [
-      "org.xwiki.platform:xwiki-platform-oldcore",
-      "org.xwiki.platform:xwiki-platform-oldcore"
+      "uucore"
     ],
     "cwes": [
+      null,
       null
     ],
     "references": [
-      null,
-      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-34151.",
+      "impact_assessment": "Potential security vulnerability with high severity. ",
       "affected_industries": [
         "Technology",
         "General"
@@ -247,17 +201,201 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-6qcr-qxgr-m7fv",
+    "id": "gh-GHSA-g84h-j7jj-x32p",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:01:12Z",
-    "title": "New API: SSRF Protection Bypass via Unresolved Hostname in Notification URLs",
-    "description": "## Summary\n\nThe default SSRF protection configuration did not apply IP filtering to hostnames. With `ApplyIPFilterForDomain` disabled by default, URL validation checked domain allow/block rules but did not resolve a hostname and validate the resolved IP address. Authenticated users could configure notification URLs for Webhook, Bark, or Gotify notifications and point a hostname at an internal or metadata IP address.\n\n## Impact\n\nA regular authenticated user could cause the server to send notifica",
-    "severity": "high",
-    "cve_id": "CVE-2026-33655",
-    "ghsa_id": "GHSA-6qcr-qxgr-m7fv",
+    "timestamp": "2026-07-07T19:35:57Z",
+    "title": "@aborruso/ckan-mcp-server: SSRF via base_url allows access to internal networks (Potential fix bypass of CVE-2026-33060)",
+    "description": "### Summary\nA known vulnerability CVE-2026-33060 indicated tools including ckan_package_search and sparql_query that accept a base_url parameter had the risk of making HTTP requests to arbitrary endpoints without restriction. A fix was applied to filter out ip addresses. However, a method to bypass exists.\n\n### Details\nCKAN MCP Server validates caller-supplied CKAN server URLs by inspecting only the parsed hostname string before issuing outbound HTTP requests. In `src/utils/http.ts`, hostname al",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53509",
+    "ghsa_id": "GHSA-g84h-j7jj-x32p",
     "affected_packages": [
-      "github.com/QuantumNous/new-api"
+      "@aborruso/ckan-mcp-server"
     ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "The vulnerability allows Server-Side Request Forgery (SSRF), enabling attackers to potentially access internal networks, sensitive data, or execute unauthorized actions by bypassing the fix for CVE-2026-33060. This could lead to data breaches, unauthorized access, or lateral movement within a network.",
+      "affected_industries": [
+        "Government",
+        "Education",
+        "Non-profits",
+        "Technology",
+        "Healthcare"
+      ],
+      "recommended_actions": [
+        "Implement stricter validation of the base_url parameter, ensuring both hostname and IP address verification to prevent bypass techniques.",
+        "Monitor and log all outbound HTTP requests for anomalous or unauthorized activity to detect potential exploitation attempts.",
+        "Apply network segmentation and firewall rules to restrict access to internal resources from untrusted sources."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-9cv5-2h9v-98p5",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T18:30:44Z",
+    "title": "MSI Feature Manager contains a local privilege escalation vulnerability in the KernCoreLib64.sys...",
+    "description": "MSI Feature Manager contains a local privilege escalation vulnerability in the KernCoreLib64.sys kernel driver that allows any locally logged-on user to perform arbitrary physical memory read/write and unrestricted I/O port operations by accessing exposed IOCTL handlers without administrator privileges. Attackers can exploit the accessible device object through IOCTL handlers to manipulate kernel objects, tamper with kernel-mode callbacks, bypass Protected Process Light protections, and disable ",
+    "severity": "high",
+    "cve_id": "CVE-2026-57851",
+    "ghsa_id": "GHSA-9cv5-2h9v-98p5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-57851.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-7xcj-pxq8-grgf",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T18:30:43Z",
+    "title": "AWS Research and Engineering Studio (RES) is an open-source solution that enables researchers and...",
+    "description": "AWS Research and Engineering Studio (RES) is an open-source solution that enables researchers and engineers to create and manage secure virtual desktops and computing resources on AWS.\n\n\n\nImproper link resolution before file access issue (CWE-59) in the Auth.GetUserPrivateKey API. An authenticated remote user could read arbitrary files on the cluster-manager EC2 instance by replacing their SSH private key file (~/.ssh/id_rsa) with a symbolic link targeting any file on the host. Because the clust",
+    "severity": "high",
+    "cve_id": "CVE-2026-14904",
+    "ghsa_id": "GHSA-7xcj-pxq8-grgf",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-14904.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-3cpr-2h94-j6qj",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T18:30:43Z",
+    "title": "Vtiger CRM before 8.4.0 contains an authenticated file upload vulnerability that allows low...",
+    "description": "Vtiger CRM before 8.4.0 contains an authenticated file upload vulnerability that allows low-privileged users to achieve remote code execution by uploading a .phar file containing arbitrary PHP code through the Documents module, bypassing the extension denylist in config.inc.php which omits the .phar extension. The uploaded file is stored with its original .phar extension under the web-accessible storage directory, and a misconfigured .htaccess using Apache 2.2 syntax is silently ignored on Apach",
+    "severity": "high",
+    "cve_id": "CVE-2026-23697",
+    "ghsa_id": "GHSA-3cpr-2h94-j6qj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows low-privileged users to upload malicious .phar files, leading to remote code execution. This could result in unauthorized access, data breaches, or full system compromise, especially if the CRM contains sensitive customer or business data.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Retail",
+        "Education",
+        "Small and Medium Enterprises (SMEs)"
+      ],
+      "recommended_actions": [
+        "Upgrade to Vtiger CRM version 8.4.0 or later to patch the vulnerability.",
+        "Review and update the .htaccess configuration to ensure proper handling of file extensions and denylist enforcement.",
+        "Conduct a security audit to identify and remove any malicious files that may have been uploaded through this vulnerability."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-jf2j-jhvf-rc56",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T18:30:43Z",
+    "title": "Vtiger CRM through 8.4.0 contains an authenticated remote code execution vulnerability in the...",
+    "description": "Vtiger CRM through 8.4.0 contains an authenticated remote code execution vulnerability in the admin module import feature that allows administrator-level attackers to upload arbitrary PHP files by submitting a crafted zip archive through the ModuleManager import function, which extracts contents directly into the modules/ directory under the web root without validating file types beyond the manifest.xml descriptor. Attackers can place executable PHP files in the modules/ directory that become di",
+    "severity": "high",
+    "cve_id": "CVE-2026-23698",
+    "ghsa_id": "GHSA-jf2j-jhvf-rc56",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-23698.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-j3v3-cjmx-765g",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T18:30:42Z",
+    "title": "A Weak Password Recovery Mechanism for Forgotten Password exists in Esri Portal for ArcGIS...",
+    "description": "A Weak Password Recovery Mechanism for Forgotten Password exists in Esri Portal for ArcGIS versions 12.1 and earlier on Windows, Linux and Kubernetes. A remote, unauthorized attacker may assume ownership of a user’s account by manipulating this mechanism. ArcGIS Administrators should configure an email server with ArcGIS Enterprise to facilitate user self-service password recovery. The ability for an administrator to reset a user’s password remains unchanged.",
+    "severity": "high",
+    "cve_id": "CVE-2026-13020",
+    "ghsa_id": "GHSA-j3v3-cjmx-765g",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -267,71 +405,68 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This vulnerability allows authenticated users to bypass SSRF protection by exploiting unresolved hostnames in notification URLs. Attackers could potentially access internal or metadata IP addresses, leading to unauthorized access to sensitive internal systems or data exfiltration.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-13020.",
       "affected_industries": [
         "Technology",
-        "Financial Services",
-        "Healthcare",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-rfhw-2486-47r9",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T18:30:42Z",
+    "title": "A flaw was found in Jastow. Jastow is vulnerable to Cross-Site Scripting (XSS) attack. If using a...",
+    "description": "A flaw was found in Jastow. Jastow is vulnerable to Cross-Site Scripting (XSS) attack. If using a set of combined configuration to allow unescaped characters in URL with embedded Undertow and Jastow, a server might be vulnerable to improper input handling.",
+    "severity": "medium",
+    "cve_id": "CVE-2025-12799",
+    "ghsa_id": "GHSA-rfhw-2486-47r9",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to execute arbitrary scripts in the context of a user's browser, potentially leading to data theft, session hijacking, or malicious redirection. This can compromise sensitive user data and degrade trust in affected systems.",
+      "affected_industries": [
+        "Technology",
         "E-commerce",
+        "Finance",
+        "Healthcare",
         "Government"
       ],
       "recommended_actions": [
-        "Immediately enable `ApplyIPFilterForDomain` to enforce IP filtering for hostnames and validate resolved IP addresses.",
-        "Update the affected software to the latest version that includes a patch for CVE-2026-33655.",
-        "Conduct a security review of all configured notification URLs to ensure no malicious or unauthorized entries are present."
+        "Apply the latest security patches or updates provided by the Jastow development team to mitigate the vulnerability.",
+        "Review and sanitize all user inputs, especially those that are embedded in URLs or passed to the Undertow server, to prevent XSS attacks.",
+        "Implement Content Security Policy (CSP) headers to limit the execution of unauthorized scripts in the browser."
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 65
   },
   {
-    "id": "gh-GHSA-h9qx-v5xp-ph8p",
+    "id": "gh-GHSA-6rrr-4jqj-5947",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:01:01Z",
-    "title": "EGroupware has a Remote Code Execution Vulnerability",
-    "description": "## Summary\nA critical vulnerability has been identified in EGroupware that may lead to Remote Code Execution (RCE).\nThe issue allows an authenticated attacker to execute arbitrary commands on the server. If user self-registration is enabled, the vulnerability may be exploitable without prior authentication.\n\nThe vulnerability stems from improper authorization checks combined with a file write primitive and an arbitrary file read vulnerability, which together enable full system compromise.\n\n## De",
+    "timestamp": "2026-07-07T18:30:42Z",
+    "title": "Esri Portal for ArcGIS versions 12.1 and earlier on Windows, Linux and Kubernetes have a missing...",
+    "description": "Esri Portal for ArcGIS versions 12.1 and earlier on Windows, Linux and Kubernetes have a missing authentication for critical function vulnerability allows a remote, unauthenticated attacker to access an unprotected API.",
     "severity": "critical",
-    "cve_id": "CVE-2026-27823",
-    "ghsa_id": "GHSA-h9qx-v5xp-ph8p",
-    "affected_packages": [
-      "egroupware/egroupware",
-      "egroupware/egroupware"
-    ],
-    "cwes": [
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-27823.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-6xf8-9p5r-2vcr",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:36Z",
-    "title": "Missing Authorization vulnerability in HAVELSAN Inc. Liman MYS allows Accessing Functionality Not...",
-    "description": "Missing Authorization vulnerability in HAVELSAN Inc. Liman MYS allows Accessing Functionality Not Properly Constrained by ACLs.\n\nThis issue affects Liman MYS: before release.Master.1107.",
-    "severity": "high",
-    "cve_id": "CVE-2026-11340",
-    "ghsa_id": "GHSA-6xf8-9p5r-2vcr",
+    "cve_id": "CVE-2026-13019",
+    "ghsa_id": "GHSA-6rrr-4jqj-5947",
     "affected_packages": [],
     "cwes": [
       null
@@ -342,334 +477,48 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-11340.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-44vj-xc6r-j6m3",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:36Z",
-    "title": "Improper neutralization of special elements used in an LDAP query ('LDAP injection')...",
-    "description": "Improper neutralization of special elements used in an LDAP query ('LDAP injection') vulnerability in HAVELSAN Inc. Liman MYS allows LDAP Injection.\n\nThis issue affects Liman MYS: before release.Master.1107.",
-    "severity": "high",
-    "cve_id": "CVE-2026-13696",
-    "ghsa_id": "GHSA-44vj-xc6r-j6m3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to exploit LDAP injection, potentially leading to unauthorized access, data exfiltration, privilege escalation, or manipulation of directory services. This could compromise sensitive user or organizational data stored in the affected system.",
+      "risk_score": 95,
+      "impact_assessment": "The vulnerability allows a remote, unauthenticated attacker to exploit a missing authentication mechanism in a critical API, potentially leading to unauthorized access, data exfiltration, system compromise, or further exploitation of connected systems.",
       "affected_industries": [
         "Government",
-        "Defense",
-        "Healthcare",
-        "Finance",
-        "Technology"
-      ],
-      "recommended_actions": [
-        "Immediately update Liman MYS to the latest patched version (release.Master.1107 or later) to mitigate the vulnerability.",
-        "Conduct a thorough review of LDAP query handling within the application to ensure proper input sanitization and parameterized queries.",
-        "Perform a security audit of systems using Liman MYS to identify potential exploitation and monitor for suspicious LDAP activity."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-8x3h-9qcg-hv3j",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:36Z",
-    "title": "Module::Load versions before 0.22 for Perl allow arbitrary modules outside of @INC to be loaded.\n...",
-    "description": "Module::Load versions before 0.22 for Perl allow arbitrary modules outside of @INC to be loaded.\n\nModule names starting with \"::\" could be passed to the load function to specify arbitrary module paths.\n\nAttackers able to influence module names passed to load could use that bug to execute arbitrary code.",
-    "severity": "unknown",
-    "cve_id": "CVE-2011-10043",
-    "ghsa_id": "GHSA-8x3h-9qcg-hv3j",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2011-10043.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-4fh7-7jx4-8f6c",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:36Z",
-    "title": "Before apache-airflow 3.3.0, a user authorized to read one Dag could disclose the source of other...",
-    "description": "Before apache-airflow 3.3.0, a user authorized to read one Dag could disclose the source of other Dags co-located in the same source file. `GET /api/v2/dagSources/{dag_id}` — and the equivalent Dag-source view in the UI — returned the entire source file without redacting Dags the caller was not authorized to read, bypassing per-DAG read authorization. Deployments that co-locate multiple Dags in a single file and rely on per-DAG access control to limit source visibility are affected; single-Dag-p",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-49296",
-    "ghsa_id": "GHSA-4fh7-7jx4-8f6c",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-49296.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-cmjg-6q27-6fr4",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:36Z",
-    "title": "Improper verification of cryptographic signature vulnerability in HAVELSAN Inc. Liman MYS allows...",
-    "description": "Improper verification of cryptographic signature vulnerability in HAVELSAN Inc. Liman MYS allows Fake the Source of Data.\n\nThis issue affects Liman MYS: before release.Master.1107.",
-    "severity": "high",
-    "cve_id": "CVE-2026-11348",
-    "ghsa_id": "GHSA-cmjg-6q27-6fr4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-11348.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-22hf-vx2v-gjff",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:36Z",
-    "title": "In Apache Airflow before 3.3.0, the REST API task-instance detail and list\nendpoints returned a...",
-    "description": "In Apache Airflow before 3.3.0, the REST API task-instance detail and list\nendpoints returned a deferred task's trigger kwargs without masking. When a\ndeferred operator passed a secret (for example a provider API key) into its\ntrigger, any authenticated user with DAG-scoped task-instance read access for\nthat DAG could read that secret in clear text while the task was deferred.\nUsers should upgrade to apache-airflow 3.3.0 or later, which masks sensitive\nvalues in trigger kwargs returned by the AP",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-49487",
-    "ghsa_id": "GHSA-22hf-vx2v-gjff",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability exposes sensitive information, such as API keys, in clear text through the REST API task-instance endpoints. This could lead to unauthorized access to third-party services or data breaches if exploited by malicious actors.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "E-commerce",
-        "Telecommunications"
-      ],
-      "recommended_actions": [
-        "Upgrade to Apache Airflow version 3.3.0 or later, where sensitive values in trigger kwargs are masked.",
-        "Restrict access to the REST API task-instance endpoints to only trusted and necessary users.",
-        "Audit existing DAGs and deferred tasks to ensure no sensitive information is exposed in trigger kwargs."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-2943-9672-r45w",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "A bug in `BaseSerialization.deserialize()` allowed unrestricted `import_string()` of attacker...",
-    "description": "A bug in `BaseSerialization.deserialize()` allowed unrestricted `import_string()` of attacker-controlled class paths when the Scheduler / API Server loaded a serialized DAG: a DAG author could embed a malicious trigger into a DAG to gain remote code execution on the API Server / Scheduler process, crossing the Airflow security boundary that DAG-author code must never execute in those processes. Users are advised to upgrade to `apache-airflow` 3.3.0 or later. As a defense-in-depth mitigation, dep",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-33264",
-    "ghsa_id": "GHSA-2943-9672-r45w",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-33264.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-3wmf-whvw-c22m",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "The encryption algorithm used to protect the configuration of user accounts, stored in the built...",
-    "description": "The encryption algorithm used to protect the configuration of user accounts, stored in the built-in user directory of PcVue projects, all versions prior to 17.0.0, is not strong enough for the level of protection required. A local attacker could alter the existing configuration and ultimately gain privileged access to the PcVue application.",
-    "severity": "high",
-    "cve_id": "CVE-2026-14868",
-    "ghsa_id": "GHSA-3wmf-whvw-c22m",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The weak encryption algorithm used in PcVue projects prior to version 17.0.0 allows local attackers to potentially alter user account configurations and gain privileged access, leading to unauthorized control of the application and potential compromise of sensitive data.",
-      "affected_industries": [
-        "Industrial Automation",
-        "Energy",
+        "Utilities",
         "Transportation",
-        "Manufacturing",
-        "Utilities"
-      ],
-      "recommended_actions": [
-        "Upgrade PcVue to version 17.0.0 or later to ensure stronger encryption mechanisms are in place.",
-        "Restrict physical and local access to systems running vulnerable versions of PcVue to trusted personnel only.",
-        "Conduct a security audit of user account configurations and monitor for any unauthorized changes or suspicious activity."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-2vq9-j58h-2qj3",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "A flaw was found in SSSD's LDAP sudo provider. When the ldap_sudo_search_base option is not...",
-    "description": "A flaw was found in SSSD's LDAP sudo provider. When the ldap_sudo_search_base option is not explicitly configured, SSSD searches the entire LDAP directory tree for sudoRole objects. An authenticated attacker with write access to any subtree can inject a sudoRole object granting root-level sudo privileges on all SSSD-enrolled hosts.",
-    "severity": "high",
-    "cve_id": "CVE-2026-14474",
-    "ghsa_id": "GHSA-2vq9-j58h-2qj3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "This vulnerability allows an authenticated attacker with write access to any subtree in the LDAP directory to inject malicious sudoRole objects, potentially granting root-level privileges on all SSSD-enrolled hosts. This could lead to unauthorized access, privilege escalation, and complete system compromise.",
-      "affected_industries": [
-        "Enterprise IT",
+        "Energy",
+        "Telecommunications",
         "Healthcare",
-        "Financial Services",
-        "Government",
-        "Education",
-        "Telecommunications"
+        "Financial Services"
       ],
       "recommended_actions": [
-        "Immediately configure the 'ldap_sudo_search_base' option in SSSD to limit the search scope to a specific and secure subtree, preventing unauthorized access to the entire LDAP directory.",
-        "Apply the latest security patches or updates provided by the SSSD maintainers to address CVE-2026-14474.",
-        "Conduct an audit of LDAP directory permissions to ensure that write access is restricted to trusted administrators only."
+        "Immediately apply any available patches or updates provided by Esri to mitigate the vulnerability.",
+        "Restrict access to the affected API by implementing network-level controls, such as firewalls or VPNs, to limit exposure to trusted IP ranges.",
+        "Conduct a security audit of systems running Esri Portal for ArcGIS to identify any unauthorized access or suspicious activity."
       ],
       "urgency": "critical"
     },
-    "risk_score": 85
+    "risk_score": 95
   },
   {
-    "id": "gh-GHSA-63cg-fqr3-853j",
+    "id": "gh-GHSA-9458-4323-hx4r",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "Credentials of built-in users are insecurely stored in the User directory of PcVue projects, all...",
-    "description": "Credentials of built-in users are insecurely stored in the User directory of PcVue projects, all versions prior to 17.0.0. A local attacker could retrieve users’ credentials. \n\nActive Directory accounts are not affected by this vulnerability.",
+    "timestamp": "2026-07-07T18:30:42Z",
+    "title": "A flaw was found in 389-ds-base where the LDBM backend attribute encryption uses a hardcoded...",
+    "description": "A flaw was found in 389-ds-base where the LDBM backend attribute encryption uses a hardcoded static initialization vector for AES-CBC and 3DES-CBC operations, allowing an attacker with privileged filesystem access to detect plaintext equality across encrypted entries by comparing ciphertext blocks.",
     "severity": "medium",
-    "cve_id": "CVE-2026-14867",
-    "ghsa_id": "GHSA-63cg-fqr3-853j",
+    "cve_id": "CVE-2026-14969",
+    "ghsa_id": "GHSA-9458-4323-hx4r",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-14867.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-14969.",
       "affected_industries": [
         "Technology",
         "General"
@@ -684,15 +533,95 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-v6qh-pm8g-3c5w",
+    "id": "gh-GHSA-m678-vwg3-59mp",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "A path traversal flaw was found in SSSD's AD GPO provider. The ad_gpo_extract_smb_components()...",
-    "description": "A path traversal flaw was found in SSSD's AD GPO provider. The ad_gpo_extract_smb_components() function does not sanitize .. sequences in the gPCFileSysPath LDAP attribute, allowing an attacker with AD GPO management access to write files outside the GPO cache directory as root. On default RHEL configurations with SELinux enforcing, this can be used to inject Kerberos configuration leading to authentication bypass.",
-    "severity": "high",
-    "cve_id": "CVE-2026-14476",
-    "ghsa_id": "GHSA-v6qh-pm8g-3c5w",
+    "timestamp": "2026-07-07T18:30:41Z",
+    "title": "A logic vulnerability was found in GStreamer's webrtcbin component. The _check_sdp_crypto()...",
+    "description": "A logic vulnerability was found in GStreamer's webrtcbin component. The _check_sdp_crypto() function contains an inverted boolean condition that causes it to accept remote SDP offers or answers that lack the required a=fingerprint attribute, while incorrectly rejecting those that include it. An attacker with the ability to intercept and modify WebRTC signaling messages could exploit this to bypass the SDP-level DTLS certificate fingerprint binding, weakening defenses against man-in-the-middle at",
+    "severity": "low",
+    "cve_id": "CVE-2026-14935",
+    "ghsa_id": "GHSA-m678-vwg3-59mp",
     "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 45,
+      "impact_assessment": "The logic vulnerability in GStreamer's webrtcbin component could allow attackers to bypass SDP-level DTLS certificate fingerprint binding, potentially enabling man-in-the-middle attacks. This weakens the security of WebRTC communications, exposing sensitive data to interception or tampering.",
+      "affected_industries": [
+        "Telecommunications",
+        "Video Conferencing",
+        "Streaming Services",
+        "IoT and Smart Devices"
+      ],
+      "recommended_actions": [
+        "Apply the latest patch or update for GStreamer as soon as it becomes available to address CVE-2026-14935.",
+        "Monitor WebRTC signaling traffic for anomalies or signs of tampering, especially in environments where GStreamer is used.",
+        "Implement additional security measures, such as end-to-end encryption, to mitigate the risk of man-in-the-middle attacks."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 45
+  },
+  {
+    "id": "gh-GHSA-jgx9-jr5x-mvpv",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T16:51:30Z",
+    "title": "Open WebUI has Blind Server Side Request Forgery in its Image Edit Functionality",
+    "description": "### Summary\nThere is a blind server side request forgery in the functionality that allows editing an image via a prompt. The affected function will perform a GET request on the URL provided by the user. There is no restriction on the domain of the provided URL allowing the local address space to be interacted with. Since the SSRF is blind (the response cannot be read) impact is port scanning of the local network because it can be confirmed if the port is open based on if the GET request failed.\n",
+    "severity": "medium",
+    "cve_id": "CVE-2026-34225",
+    "ghsa_id": "GHSA-jgx9-jr5x-mvpv",
+    "affected_packages": [
+      "open-webui"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to perform blind server-side request forgery (SSRF) by exploiting the image editing functionality. This can lead to unauthorized port scanning of internal networks, potentially exposing sensitive information about open services and network topology.",
+      "affected_industries": [
+        "Technology",
+        "E-commerce",
+        "Healthcare",
+        "Finance",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Implement strict URL validation and filtering to ensure that only trusted domains are allowed in the image editing functionality.",
+        "Restrict access to internal network resources by implementing network segmentation and firewalls to prevent unauthorized requests.",
+        "Apply patches or updates provided by the software vendor to address CVE-2026-34225 as soon as they are available."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-vjm7-m4xh-7wrc",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T16:51:22Z",
+    "title": "Open WebUI vulnerable to Stored XSS via iFrame embeds in response messages",
+    "description": "### Summary\nManually modifying chat history allows setting the `embeds` property on a response message, the content of which is loaded into an iFrame with a sandbox that has `allow-scripts` and `allow-same-origin` set, ignoring the \"iframe Sandbox Allow Same Origin\" configuration. This enables stored XSS on the affected chat. This also triggers when the chat is in the shared format. The result is a shareable link containing the payload that can be distributed to any other users on the instance.\n",
+    "severity": "high",
+    "cve_id": "CVE-2026-26193",
+    "ghsa_id": "GHSA-vjm7-m4xh-7wrc",
+    "affected_packages": [
+      "open-webui"
+    ],
     "cwes": [
       null
     ],
@@ -704,7 +633,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-14476.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-26193.",
       "affected_industries": [
         "Technology",
         "General"
@@ -719,15 +648,17 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-2g8g-f92j-g4gq",
+    "id": "gh-GHSA-xc8p-9rr6-97r2",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "A heap buffer overflow flaw was found in the SASL I/O layer of 389 Directory Server\n(389-ds-base)...",
-    "description": "A heap buffer overflow flaw was found in the SASL I/O layer of 389 Directory Server\n(389-ds-base). After a successful SASL bind with integrity protection (SSF > 0),\nan authenticated attacker can send a specially crafted oversized LDAP UNBIND packet\nthat is copied into a 512-byte heap receive buffer without a bounds check in\nsasl_io_recv() in sasl_io.c. This allows up to approximately 2 megabytes of\nattacker-controlled data to overflow the buffer, causing a denial of service (server\ncrash). In Fr",
+    "timestamp": "2026-07-07T16:51:13Z",
+    "title": "Open WebUI vulnerable to Stored XSS via iFrame in citations model",
+    "description": "### Summary\nManually modifying chat history allows setting the `html` property within document metadata. This causes the frontend to enter a code path that treats document contents as HTML, and render them in an iFrame when the citation is previewed. This allows stored XSS via a weaponised document payload in a chat. The payload also executes when the citation is viewed on a shared chat.\n\n### Details\nThe vulnerability stems from how iFrame are implemented here:\nhttps://github.com/open-webui/open",
     "severity": "high",
-    "cve_id": "CVE-2026-11610",
-    "ghsa_id": "GHSA-2g8g-f92j-g4gq",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-26192",
+    "ghsa_id": "GHSA-xc8p-9rr6-97r2",
+    "affected_packages": [
+      "open-webui"
+    ],
     "cwes": [
       null
     ],
@@ -739,7 +670,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-11610.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-26192.",
       "affected_industries": [
         "Technology",
         "General"
@@ -754,19 +685,102 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-9933-5rrp-mfwx",
+    "id": "gh-GHSA-9f4f-jv96-8766",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "The Config API in Apache Airflow surfaced per-key secrets-backend overrides (environment...",
-    "description": "The Config API in Apache Airflow surfaced per-key secrets-backend overrides (environment variables like `AIRFLOW__SECRETS__BACKEND_KWARG__SECRET_ID` and `AIRFLOW__WORKERS__SECRETS_BACKEND_KWARG__SECRET_ID`) as synthetic config options whose option names were not in `sensitive_config_values`, so the masker did not redact them. An authenticated UI/API user with Config read permission could retrieve plaintext secrets-backend credentials (Vault `role_id` / `secret_id`, etc.) from the Config API outp",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-48892",
-    "ghsa_id": "GHSA-9933-5rrp-mfwx",
+    "timestamp": "2026-07-07T16:50:59Z",
+    "title": "Open WebUI vulnerable to stored XSS via unescaped markdown token in MarkdownTokens.svelte leading to full account takeover and RCE via functions",
+    "description": "### Summary\n\nA vulnerability in the way certain html tags in chat messages are rendered allows attackers to inject JavaScript code into a chat transcript. The JavaScript code will be executed in the user's browser every time that chat transcript is opened, allowing attackers to retrieve the user's access token and gain full control over their account. Chat transcripts can be shared with other users in the same server, or with the whole open-webui community if \"Enable Community Sharing\" is enable",
+    "severity": "high",
+    "cve_id": "CVE-2025-46719",
+    "ghsa_id": "GHSA-9f4f-jv96-8766",
+    "affected_packages": [
+      "open-webui"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-46719.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-8gh5-qqh8-hq3x",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T16:50:43Z",
+    "title": "Open WebUI  allows limited stored XSS vila uploaded html file",
+    "description": "### Summary\nLow privileged users can upload HTML files which contain JavaScript code via the `/api/v1/files/` backend endpoint. This endpoint returns a file id, which can be used to open the file in the browser and trigger the JavaScript code in the user's browser. Under the default settings, files uploaded by low-privileged users can only be viewed by admins or themselves, limiting the impact of this vulnerability.\n\n### Details\n\nThe following HTTP request can be sent to the backend server to up",
+    "severity": "medium",
+    "cve_id": "CVE-2025-46571",
+    "ghsa_id": "GHSA-8gh5-qqh8-hq3x",
+    "affected_packages": [
+      "open-webui"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 55,
+      "impact_assessment": "The vulnerability allows low-privileged users to upload HTML files containing malicious JavaScript, which can execute in the browser of users (typically admins or the uploader themselves) who open the file. This could lead to stored XSS attacks, potentially exposing sensitive admin data or session hijacking under specific conditions.",
+      "affected_industries": [
+        "Technology",
+        "Healthcare",
+        "Finance",
+        "E-commerce",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Implement strict input validation and sanitization for uploaded files to prevent the inclusion of executable JavaScript code.",
+        "Restrict access to uploaded files by default and enforce role-based access controls to minimize exposure to unauthorized users.",
+        "Update the application to escape or neutralize any JavaScript code execution when rendering uploaded files in the browser."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 55
+  },
+  {
+    "id": "gh-GHSA-crhf-3pfg-w68w",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T15:32:57Z",
+    "title": "An issue was discovered in Django 6.0 before 6.0.7 and 5.2 before 5.2.16.\n`django.contrib.gis...",
+    "description": "An issue was discovered in Django 6.0 before 6.0.7 and 5.2 before 5.2.16.\n`django.contrib.gis.gdal.GDALRaster` over-reads its in-memory buffer when constructed from a bytes object, which can disclose adjacent memory or cause service degradation via a potential segmentation fault when the `vsi_buffer` property is accessed.\nEarlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected.\nDjango would like to thank Bence Nagy for reporting this issue",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53877",
+    "ghsa_id": "GHSA-crhf-3pfg-w68w",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null,
@@ -774,7 +788,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-48892.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53877.",
       "affected_industries": [
         "Technology",
         "General"
@@ -832,19 +846,20 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability in Delta Electronics DVP12SE PLCs allows attackers to exploit the Modbus TCP service to consume system resources without limits, potentially leading to denial-of-service conditions. This could disrupt industrial processes and automation systems reliant on these PLCs.",
+      "impact_assessment": "The vulnerability in Delta Electronics DVP12SE PLCs could allow attackers to exploit the Modbus TCP service, potentially leading to denial-of-service conditions or resource exhaustion, disrupting industrial processes.",
       "affected_industries": [
         "Manufacturing",
         "Energy",
         "Utilities",
-        "Automation"
+        "Automotive",
+        "Industrial Automation"
       ],
       "recommended_actions": [
-        "Apply firmware updates or patches provided by Delta Electronics to address the vulnerability.",
-        "Implement network segmentation to isolate PLCs and restrict access to the Modbus TCP service.",
-        "Deploy intrusion detection systems (IDS) to monitor and block abnormal traffic targeting the PLCs."
+        "Apply firmware updates or patches provided by Delta Electronics to mitigate the vulnerability.",
+        "Implement network segmentation to isolate PLCs from public or untrusted networks and restrict access to Modbus TCP services.",
+        "Deploy intrusion detection and prevention systems to monitor and block suspicious activity targeting PLCs."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
     "risk_score": 65
   },
@@ -864,19 +879,15 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows authenticated attackers with subscriber-level access and above to delete arbitrary files on the server, potentially leading to remote code execution. This could compromise the integrity, availability, and confidentiality of the affected WordPress site.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12240.",
       "affected_industries": [
-        "E-commerce",
-        "Media and Publishing",
-        "Education",
-        "Healthcare",
-        "Small Businesses",
-        "Nonprofits"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update the Export User Data plugin to the latest patched version if available, or disable the plugin temporarily until a fix is released.",
-        "Restrict access to subscriber-level accounts and audit user permissions to minimize the risk of exploitation.",
-        "Implement file integrity monitoring and backup critical files like wp-config.php to ensure quick recovery in case of exploitation."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "high"
     },

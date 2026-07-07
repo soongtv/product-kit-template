@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1783436024275-1",
+    "id": "twitter-1783454817320-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-07T14:53:44.275Z",
+    "timestamp": "2026-07-07T20:06:57.320Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1783436024275-1",
+    "id": "hn-1783454817320-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-07T14:53:44.275Z",
+    "timestamp": "2026-07-07T20:06:57.320Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,19 +26,63 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-c8m7-r2jv-rw63",
+    "id": "gh-GHSA-7856-g3gv-9wq8",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:02:43Z",
-    "title": "EGroupware Vulnerable to Local File Inclusion via file:// URI in Mail Compose",
-    "description": "### Summary\nThe function processes image URLs embedded in an HTML email body without validating or restricting URI schemes. The check `!str_starts_with($myUrl, 'http')` evaluates to true for `file://` URIs, causing `file_get_contents($basedir . urldecode($myUrl))` to read arbitrary files from the server filesystem and embed them as inline MIME attachments in outgoing email.\n\nstr_starts_with('file:///etc/passwd', 'http') → **false**\n!false → **true**\n\n\n```php\n// api/src/Mail.php  \nforeach($images",
+    "timestamp": "2026-07-07T20:04:22Z",
+    "title": "netfoil: Attacker controlled data written to logs",
+    "description": "### Summary\nDomain names were written to the log without first being validated to contain allowed characters.\n\n### Impact\nDepends on how the logs were used.",
+    "severity": "low",
+    "cve_id": null,
+    "ghsa_id": "GHSA-7856-g3gv-9wq8",
+    "affected_packages": [
+      "github.com/tinfoil-factory/netfoil"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-3g4q-2f67-2gvh",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T20:04:01Z",
+    "title": "netfoil has a resource leak in LRU cache",
+    "description": "### Summary\nWhen an entry was removed from the LRU cache, a pointer to the removed element was not properly cleaned up.\n\n### Impact\nA local attacker can get netfoil to use more memory. By default this is limited to 100MB via systemd, which would trigger service restarts when reached.",
+    "severity": "low",
+    "cve_id": null,
+    "ghsa_id": "GHSA-3g4q-2f67-2gvh",
+    "affected_packages": [
+      "github.com/tinfoil-factory/netfoil"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-59qp-cfj3-rp64",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T20:03:49Z",
+    "title": "netfoil has a domain name filter bypass via multiple questions",
+    "description": "### Summary\nPotential bypass of domain name filter by crafting a DNS request with multiple questions, with the first question being legitimate.\n\n### Impact\nDepends on a local attackers ability to craft multiple questions and the remote DoH server supporting them.",
     "severity": "medium",
-    "cve_id": "CVE-2026-45016",
-    "ghsa_id": "GHSA-c8m7-r2jv-rw63",
+    "cve_id": null,
+    "ghsa_id": "GHSA-59qp-cfj3-rp64",
     "affected_packages": [
-      "egroupware/egroupware",
-      "egroupware/egroupware"
+      "github.com/tinfoil-factory/netfoil"
     ],
     "cwes": [
+      null,
       null
     ],
     "references": [
@@ -49,16 +93,40 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-hwpq-hmq9-wj77",
+    "id": "gh-GHSA-fqf6-gxhh-2xhw",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:02:10Z",
-    "title": "ONNX has Null Pointer Dereference in Upsample Version Converter Adapter (Zero Inputs)",
-    "description": "### Summary\n\nNull pointer dereference (SIGSEGV) in `Upsample_6_7::adapt_upsample_6_7()` (`onnx/version_converter/adapters/upsample_6_7.h:31`) when `convert_version()` processes a model with an Upsample node that has zero inputs. The adapter accesses `node->inputs()[0]->sizes()` without checking input count. 107-byte PoC crashes on Release build.\n\nThis is the same class of bug as the Cast adapter advisory (separate report) but in a different adapter, different file, and different operator.\n\n### D",
+    "timestamp": "2026-07-07T19:36:17Z",
+    "title": "uutils coreutils: cp/install/mv/ln --suffix alone does not enable backup mode (silent data loss vs GNU)",
+    "description": "`determine_backup_mode` in `src/uucore/src/lib/features/backup_control.rs` only checks `--backup`/`-b` and returns `BackupMode::None` when only `--suffix` is given. GNU enables backup mode when `--suffix` is used alone (defaulting to existing/numbered, or `$VERSION_CONTROL`). Affects `cp`, `install`, `mv`, `ln` which share this code.\n\n```\n# uutils: no backup created\n$ coreutils cp --suffix=.bak src dest      # dest.bak NOT created\n# GNU: dest.bak created\n$ cp --suffix=.bak src dest\n```\n\n**Impact",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-fqf6-gxhh-2xhw",
+    "affected_packages": [
+      "uucore"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-g84h-j7jj-x32p",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T19:35:57Z",
+    "title": "@aborruso/ckan-mcp-server: SSRF via base_url allows access to internal networks (Potential fix bypass of CVE-2026-33060)",
+    "description": "### Summary\nA known vulnerability CVE-2026-33060 indicated tools including ckan_package_search and sparql_query that accept a base_url parameter had the risk of making HTTP requests to arbitrary endpoints without restriction. A fix was applied to filter out ip addresses. However, a method to bypass exists.\n\n### Details\nCKAN MCP Server validates caller-supplied CKAN server URLs by inspecting only the parsed hostname string before issuing outbound HTTP requests. In `src/utils/http.ts`, hostname al",
     "severity": "medium",
-    "cve_id": "CVE-2026-44512",
-    "ghsa_id": "GHSA-hwpq-hmq9-wj77",
+    "cve_id": "CVE-2026-53509",
+    "ghsa_id": "GHSA-g84h-j7jj-x32p",
     "affected_packages": [
-      "onnx"
+      "@aborruso/ckan-mcp-server"
     ],
     "cwes": [
       null
@@ -73,70 +141,130 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-26v7-h57m-gh9m",
+    "id": "gh-GHSA-9cv5-2h9v-98p5",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:01:49Z",
-    "title": "New API is vulnerable to CSRF through user email binding",
-    "description": "## Summary\n\nThe email and WeChat account binding endpoints used GET requests for state-changing account operations. In deployments where session cookies could be sent on cross-site navigations, an attacker could trigger a logged-in user's browser to bind an attacker-controlled email address or OAuth identity.\n\nAffected endpoints included:\n\n- `GET /api/oauth/email/bind`\n- `GET /api/oauth/wechat/bind`\n\n## Impact\n\nA successful attack could change account binding state. For email binding, the attack",
+    "timestamp": "2026-07-07T18:30:44Z",
+    "title": "MSI Feature Manager contains a local privilege escalation vulnerability in the KernCoreLib64.sys...",
+    "description": "MSI Feature Manager contains a local privilege escalation vulnerability in the KernCoreLib64.sys kernel driver that allows any locally logged-on user to perform arbitrary physical memory read/write and unrestricted I/O port operations by accessing exposed IOCTL handlers without administrator privileges. Attackers can exploit the accessible device object through IOCTL handlers to manipulate kernel objects, tamper with kernel-mode callbacks, bypass Protected Process Light protections, and disable ",
+    "severity": "high",
+    "cve_id": "CVE-2026-57851",
+    "ghsa_id": "GHSA-9cv5-2h9v-98p5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-7xcj-pxq8-grgf",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T18:30:43Z",
+    "title": "AWS Research and Engineering Studio (RES) is an open-source solution that enables researchers and...",
+    "description": "AWS Research and Engineering Studio (RES) is an open-source solution that enables researchers and engineers to create and manage secure virtual desktops and computing resources on AWS.\n\n\n\nImproper link resolution before file access issue (CWE-59) in the Auth.GetUserPrivateKey API. An authenticated remote user could read arbitrary files on the cluster-manager EC2 instance by replacing their SSH private key file (~/.ssh/id_rsa) with a symbolic link targeting any file on the host. Because the clust",
+    "severity": "high",
+    "cve_id": "CVE-2026-14904",
+    "ghsa_id": "GHSA-7xcj-pxq8-grgf",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-3cpr-2h94-j6qj",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T18:30:43Z",
+    "title": "Vtiger CRM before 8.4.0 contains an authenticated file upload vulnerability that allows low...",
+    "description": "Vtiger CRM before 8.4.0 contains an authenticated file upload vulnerability that allows low-privileged users to achieve remote code execution by uploading a .phar file containing arbitrary PHP code through the Documents module, bypassing the extension denylist in config.inc.php which omits the .phar extension. The uploaded file is stored with its original .phar extension under the web-accessible storage directory, and a misconfigured .htaccess using Apache 2.2 syntax is silently ignored on Apach",
+    "severity": "high",
+    "cve_id": "CVE-2026-23697",
+    "ghsa_id": "GHSA-3cpr-2h94-j6qj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-jf2j-jhvf-rc56",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T18:30:43Z",
+    "title": "Vtiger CRM through 8.4.0 contains an authenticated remote code execution vulnerability in the...",
+    "description": "Vtiger CRM through 8.4.0 contains an authenticated remote code execution vulnerability in the admin module import feature that allows administrator-level attackers to upload arbitrary PHP files by submitting a crafted zip archive through the ModuleManager import function, which extracts contents directly into the modules/ directory under the web root without validating file types beyond the manifest.xml descriptor. Attackers can place executable PHP files in the modules/ directory that become di",
+    "severity": "high",
+    "cve_id": "CVE-2026-23698",
+    "ghsa_id": "GHSA-jf2j-jhvf-rc56",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-j3v3-cjmx-765g",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T18:30:42Z",
+    "title": "A Weak Password Recovery Mechanism for Forgotten Password exists in Esri Portal for ArcGIS...",
+    "description": "A Weak Password Recovery Mechanism for Forgotten Password exists in Esri Portal for ArcGIS versions 12.1 and earlier on Windows, Linux and Kubernetes. A remote, unauthorized attacker may assume ownership of a user’s account by manipulating this mechanism. ArcGIS Administrators should configure an email server with ArcGIS Enterprise to facilitate user self-service password recovery. The ability for an administrator to reset a user’s password remains unchanged.",
+    "severity": "high",
+    "cve_id": "CVE-2026-13020",
+    "ghsa_id": "GHSA-j3v3-cjmx-765g",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-rfhw-2486-47r9",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T18:30:42Z",
+    "title": "A flaw was found in Jastow. Jastow is vulnerable to Cross-Site Scripting (XSS) attack. If using a...",
+    "description": "A flaw was found in Jastow. Jastow is vulnerable to Cross-Site Scripting (XSS) attack. If using a set of combined configuration to allow unescaped characters in URL with embedded Undertow and Jastow, a server might be vulnerable to improper input handling.",
     "severity": "medium",
-    "cve_id": "CVE-2026-44342",
-    "ghsa_id": "GHSA-26v7-h57m-gh9m",
-    "affected_packages": [
-      "github.com/QuantumNous/new-api"
-    ],
+    "cve_id": "CVE-2025-12799",
+    "ghsa_id": "GHSA-rfhw-2486-47r9",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-8737-2x9g-xjj7",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:01:31Z",
-    "title": "EGroupware has Authenticated RCE via Malicious eTemplate Upload",
-    "description": "## Summary\n\nAn authenticated administrator can achieve OS-level Remote Code Execution (RCE) by uploading a malicious eTemplate XML file (`.xet`) to the VFS `/etemplates` mount.\n\nThe `Widget::expand_name()` method passes template widget attribute values directly into a PHP `eval()` call with only double-quote escaping applied - **backtick characters are not escaped**.\n\nIn PHP, backticks inside a double-quoted `eval()` string execute shell commands. This allows an admin-level user to escalate from",
-    "severity": "high",
-    "cve_id": "CVE-2026-40187",
-    "ghsa_id": "GHSA-8737-2x9g-xjj7",
-    "affected_packages": [
-      "egroupware/egroupware",
-      "egroupware/egroupware"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-qj4x-9g63-25g6",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:01:21Z",
-    "title": "XWiki Platform Old Core: Resource path traversal via /skin/ action endpoint in Jetty 12+",
-    "description": "### Impact\n\nWith Jetty 12+ a user can craft a URL to access any resource the Jetty instance is allowed to access.\n\nFor example `http://[host]/xwiki/bin/skin/..%252f/..%252f..%252f..%252f..%252f..%252f..%252f..%252fetc/passwd` allows downloading the content of the /etc/passwd file, provided Jetty is allowed to read it, and if your XWiki webapp is located exactly 5 levels below `/` (like `/var/lib/jetty/webapps/xwiki`, which is the case in the docker image, for example).\n\nAnother example which doe",
-    "severity": "high",
-    "cve_id": "CVE-2026-34151",
-    "ghsa_id": "GHSA-qj4x-9g63-25g6",
-    "affected_packages": [
-      "org.xwiki.platform:xwiki-platform-oldcore",
-      "org.xwiki.platform:xwiki-platform-oldcore"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
       null,
       null,
       null,
@@ -146,62 +274,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-6qcr-qxgr-m7fv",
+    "id": "gh-GHSA-6rrr-4jqj-5947",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:01:12Z",
-    "title": "New API: SSRF Protection Bypass via Unresolved Hostname in Notification URLs",
-    "description": "## Summary\n\nThe default SSRF protection configuration did not apply IP filtering to hostnames. With `ApplyIPFilterForDomain` disabled by default, URL validation checked domain allow/block rules but did not resolve a hostname and validate the resolved IP address. Authenticated users could configure notification URLs for Webhook, Bark, or Gotify notifications and point a hostname at an internal or metadata IP address.\n\n## Impact\n\nA regular authenticated user could cause the server to send notifica",
-    "severity": "high",
-    "cve_id": "CVE-2026-33655",
-    "ghsa_id": "GHSA-6qcr-qxgr-m7fv",
-    "affected_packages": [
-      "github.com/QuantumNous/new-api"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-h9qx-v5xp-ph8p",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T13:01:01Z",
-    "title": "EGroupware has a Remote Code Execution Vulnerability",
-    "description": "## Summary\nA critical vulnerability has been identified in EGroupware that may lead to Remote Code Execution (RCE).\nThe issue allows an authenticated attacker to execute arbitrary commands on the server. If user self-registration is enabled, the vulnerability may be exploitable without prior authentication.\n\nThe vulnerability stems from improper authorization checks combined with a file write primitive and an arbitrary file read vulnerability, which together enable full system compromise.\n\n## De",
+    "timestamp": "2026-07-07T18:30:42Z",
+    "title": "Esri Portal for ArcGIS versions 12.1 and earlier on Windows, Linux and Kubernetes have a missing...",
+    "description": "Esri Portal for ArcGIS versions 12.1 and earlier on Windows, Linux and Kubernetes have a missing authentication for critical function vulnerability allows a remote, unauthenticated attacker to access an unprotected API.",
     "severity": "critical",
-    "cve_id": "CVE-2026-27823",
-    "ghsa_id": "GHSA-h9qx-v5xp-ph8p",
-    "affected_packages": [
-      "egroupware/egroupware",
-      "egroupware/egroupware"
-    ],
-    "cwes": [
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-6xf8-9p5r-2vcr",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:36Z",
-    "title": "Missing Authorization vulnerability in HAVELSAN Inc. Liman MYS allows Accessing Functionality Not...",
-    "description": "Missing Authorization vulnerability in HAVELSAN Inc. Liman MYS allows Accessing Functionality Not Properly Constrained by ACLs.\n\nThis issue affects Liman MYS: before release.Master.1107.",
-    "severity": "high",
-    "cve_id": "CVE-2026-11340",
-    "ghsa_id": "GHSA-6xf8-9p5r-2vcr",
+    "cve_id": "CVE-2026-13019",
+    "ghsa_id": "GHSA-6rrr-4jqj-5947",
     "affected_packages": [],
     "cwes": [
       null
@@ -215,190 +295,63 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-44vj-xc6r-j6m3",
+    "id": "gh-GHSA-9458-4323-hx4r",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:36Z",
-    "title": "Improper neutralization of special elements used in an LDAP query ('LDAP injection')...",
-    "description": "Improper neutralization of special elements used in an LDAP query ('LDAP injection') vulnerability in HAVELSAN Inc. Liman MYS allows LDAP Injection.\n\nThis issue affects Liman MYS: before release.Master.1107.",
-    "severity": "high",
-    "cve_id": "CVE-2026-13696",
-    "ghsa_id": "GHSA-44vj-xc6r-j6m3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-8x3h-9qcg-hv3j",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:36Z",
-    "title": "Module::Load versions before 0.22 for Perl allow arbitrary modules outside of @INC to be loaded.\n...",
-    "description": "Module::Load versions before 0.22 for Perl allow arbitrary modules outside of @INC to be loaded.\n\nModule names starting with \"::\" could be passed to the load function to specify arbitrary module paths.\n\nAttackers able to influence module names passed to load could use that bug to execute arbitrary code.",
-    "severity": "unknown",
-    "cve_id": "CVE-2011-10043",
-    "ghsa_id": "GHSA-8x3h-9qcg-hv3j",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-4fh7-7jx4-8f6c",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:36Z",
-    "title": "Before apache-airflow 3.3.0, a user authorized to read one Dag could disclose the source of other...",
-    "description": "Before apache-airflow 3.3.0, a user authorized to read one Dag could disclose the source of other Dags co-located in the same source file. `GET /api/v2/dagSources/{dag_id}` — and the equivalent Dag-source view in the UI — returned the entire source file without redacting Dags the caller was not authorized to read, bypassing per-DAG read authorization. Deployments that co-locate multiple Dags in a single file and rely on per-DAG access control to limit source visibility are affected; single-Dag-p",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-49296",
-    "ghsa_id": "GHSA-4fh7-7jx4-8f6c",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-cmjg-6q27-6fr4",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:36Z",
-    "title": "Improper verification of cryptographic signature vulnerability in HAVELSAN Inc. Liman MYS allows...",
-    "description": "Improper verification of cryptographic signature vulnerability in HAVELSAN Inc. Liman MYS allows Fake the Source of Data.\n\nThis issue affects Liman MYS: before release.Master.1107.",
-    "severity": "high",
-    "cve_id": "CVE-2026-11348",
-    "ghsa_id": "GHSA-cmjg-6q27-6fr4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-22hf-vx2v-gjff",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:36Z",
-    "title": "In Apache Airflow before 3.3.0, the REST API task-instance detail and list\nendpoints returned a...",
-    "description": "In Apache Airflow before 3.3.0, the REST API task-instance detail and list\nendpoints returned a deferred task's trigger kwargs without masking. When a\ndeferred operator passed a secret (for example a provider API key) into its\ntrigger, any authenticated user with DAG-scoped task-instance read access for\nthat DAG could read that secret in clear text while the task was deferred.\nUsers should upgrade to apache-airflow 3.3.0 or later, which masks sensitive\nvalues in trigger kwargs returned by the AP",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-49487",
-    "ghsa_id": "GHSA-22hf-vx2v-gjff",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-2943-9672-r45w",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "A bug in `BaseSerialization.deserialize()` allowed unrestricted `import_string()` of attacker...",
-    "description": "A bug in `BaseSerialization.deserialize()` allowed unrestricted `import_string()` of attacker-controlled class paths when the Scheduler / API Server loaded a serialized DAG: a DAG author could embed a malicious trigger into a DAG to gain remote code execution on the API Server / Scheduler process, crossing the Airflow security boundary that DAG-author code must never execute in those processes. Users are advised to upgrade to `apache-airflow` 3.3.0 or later. As a defense-in-depth mitigation, dep",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-33264",
-    "ghsa_id": "GHSA-2943-9672-r45w",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3wmf-whvw-c22m",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "The encryption algorithm used to protect the configuration of user accounts, stored in the built...",
-    "description": "The encryption algorithm used to protect the configuration of user accounts, stored in the built-in user directory of PcVue projects, all versions prior to 17.0.0, is not strong enough for the level of protection required. A local attacker could alter the existing configuration and ultimately gain privileged access to the PcVue application.",
-    "severity": "high",
-    "cve_id": "CVE-2026-14868",
-    "ghsa_id": "GHSA-3wmf-whvw-c22m",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-2vq9-j58h-2qj3",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "A flaw was found in SSSD's LDAP sudo provider. When the ldap_sudo_search_base option is not...",
-    "description": "A flaw was found in SSSD's LDAP sudo provider. When the ldap_sudo_search_base option is not explicitly configured, SSSD searches the entire LDAP directory tree for sudoRole objects. An authenticated attacker with write access to any subtree can inject a sudoRole object granting root-level sudo privileges on all SSSD-enrolled hosts.",
-    "severity": "high",
-    "cve_id": "CVE-2026-14474",
-    "ghsa_id": "GHSA-2vq9-j58h-2qj3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-63cg-fqr3-853j",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "Credentials of built-in users are insecurely stored in the User directory of PcVue projects, all...",
-    "description": "Credentials of built-in users are insecurely stored in the User directory of PcVue projects, all versions prior to 17.0.0. A local attacker could retrieve users’ credentials. \n\nActive Directory accounts are not affected by this vulnerability.",
+    "timestamp": "2026-07-07T18:30:42Z",
+    "title": "A flaw was found in 389-ds-base where the LDBM backend attribute encryption uses a hardcoded...",
+    "description": "A flaw was found in 389-ds-base where the LDBM backend attribute encryption uses a hardcoded static initialization vector for AES-CBC and 3DES-CBC operations, allowing an attacker with privileged filesystem access to detect plaintext equality across encrypted entries by comparing ciphertext blocks.",
     "severity": "medium",
-    "cve_id": "CVE-2026-14867",
-    "ghsa_id": "GHSA-63cg-fqr3-853j",
+    "cve_id": "CVE-2026-14969",
+    "ghsa_id": "GHSA-9458-4323-hx4r",
     "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-m678-vwg3-59mp",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T18:30:41Z",
+    "title": "A logic vulnerability was found in GStreamer's webrtcbin component. The _check_sdp_crypto()...",
+    "description": "A logic vulnerability was found in GStreamer's webrtcbin component. The _check_sdp_crypto() function contains an inverted boolean condition that causes it to accept remote SDP offers or answers that lack the required a=fingerprint attribute, while incorrectly rejecting those that include it. An attacker with the ability to intercept and modify WebRTC signaling messages could exploit this to bypass the SDP-level DTLS certificate fingerprint binding, weakening defenses against man-in-the-middle at",
+    "severity": "low",
+    "cve_id": "CVE-2026-14935",
+    "ghsa_id": "GHSA-m678-vwg3-59mp",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-jgx9-jr5x-mvpv",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T16:51:30Z",
+    "title": "Open WebUI has Blind Server Side Request Forgery in its Image Edit Functionality",
+    "description": "### Summary\nThere is a blind server side request forgery in the functionality that allows editing an image via a prompt. The affected function will perform a GET request on the URL provided by the user. There is no restriction on the domain of the provided URL allowing the local address space to be interacted with. Since the SSRF is blind (the response cannot be read) impact is port scanning of the local network because it can be confirmed if the port is open based on if the GET request failed.\n",
+    "severity": "medium",
+    "cve_id": "CVE-2026-34225",
+    "ghsa_id": "GHSA-jgx9-jr5x-mvpv",
+    "affected_packages": [
+      "open-webui"
+    ],
     "cwes": [
       null
     ],
@@ -411,15 +364,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-v6qh-pm8g-3c5w",
+    "id": "gh-GHSA-vjm7-m4xh-7wrc",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "A path traversal flaw was found in SSSD's AD GPO provider. The ad_gpo_extract_smb_components()...",
-    "description": "A path traversal flaw was found in SSSD's AD GPO provider. The ad_gpo_extract_smb_components() function does not sanitize .. sequences in the gPCFileSysPath LDAP attribute, allowing an attacker with AD GPO management access to write files outside the GPO cache directory as root. On default RHEL configurations with SELinux enforcing, this can be used to inject Kerberos configuration leading to authentication bypass.",
+    "timestamp": "2026-07-07T16:51:22Z",
+    "title": "Open WebUI vulnerable to Stored XSS via iFrame embeds in response messages",
+    "description": "### Summary\nManually modifying chat history allows setting the `embeds` property on a response message, the content of which is loaded into an iFrame with a sandbox that has `allow-scripts` and `allow-same-origin` set, ignoring the \"iframe Sandbox Allow Same Origin\" configuration. This enables stored XSS on the affected chat. This also triggers when the chat is in the shared format. The result is a shareable link containing the payload that can be distributed to any other users on the instance.\n",
     "severity": "high",
-    "cve_id": "CVE-2026-14476",
-    "ghsa_id": "GHSA-v6qh-pm8g-3c5w",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-26193",
+    "ghsa_id": "GHSA-vjm7-m4xh-7wrc",
+    "affected_packages": [
+      "open-webui"
+    ],
     "cwes": [
       null
     ],
@@ -433,15 +388,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-2g8g-f92j-g4gq",
+    "id": "gh-GHSA-xc8p-9rr6-97r2",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "A heap buffer overflow flaw was found in the SASL I/O layer of 389 Directory Server\n(389-ds-base)...",
-    "description": "A heap buffer overflow flaw was found in the SASL I/O layer of 389 Directory Server\n(389-ds-base). After a successful SASL bind with integrity protection (SSF > 0),\nan authenticated attacker can send a specially crafted oversized LDAP UNBIND packet\nthat is copied into a 512-byte heap receive buffer without a bounds check in\nsasl_io_recv() in sasl_io.c. This allows up to approximately 2 megabytes of\nattacker-controlled data to overflow the buffer, causing a denial of service (server\ncrash). In Fr",
+    "timestamp": "2026-07-07T16:51:13Z",
+    "title": "Open WebUI vulnerable to Stored XSS via iFrame in citations model",
+    "description": "### Summary\nManually modifying chat history allows setting the `html` property within document metadata. This causes the frontend to enter a code path that treats document contents as HTML, and render them in an iFrame when the citation is previewed. This allows stored XSS via a weaponised document payload in a chat. The payload also executes when the citation is viewed on a shared chat.\n\n### Details\nThe vulnerability stems from how iFrame are implemented here:\nhttps://github.com/open-webui/open",
     "severity": "high",
-    "cve_id": "CVE-2026-11610",
-    "ghsa_id": "GHSA-2g8g-f92j-g4gq",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-26192",
+    "ghsa_id": "GHSA-xc8p-9rr6-97r2",
+    "affected_packages": [
+      "open-webui"
+    ],
     "cwes": [
       null
     ],
@@ -455,19 +412,73 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-9933-5rrp-mfwx",
+    "id": "gh-GHSA-9f4f-jv96-8766",
     "source": "GitHub Security",
-    "timestamp": "2026-07-07T12:31:35Z",
-    "title": "The Config API in Apache Airflow surfaced per-key secrets-backend overrides (environment...",
-    "description": "The Config API in Apache Airflow surfaced per-key secrets-backend overrides (environment variables like `AIRFLOW__SECRETS__BACKEND_KWARG__SECRET_ID` and `AIRFLOW__WORKERS__SECRETS_BACKEND_KWARG__SECRET_ID`) as synthetic config options whose option names were not in `sensitive_config_values`, so the masker did not redact them. An authenticated UI/API user with Config read permission could retrieve plaintext secrets-backend credentials (Vault `role_id` / `secret_id`, etc.) from the Config API outp",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-48892",
-    "ghsa_id": "GHSA-9933-5rrp-mfwx",
+    "timestamp": "2026-07-07T16:50:59Z",
+    "title": "Open WebUI vulnerable to stored XSS via unescaped markdown token in MarkdownTokens.svelte leading to full account takeover and RCE via functions",
+    "description": "### Summary\n\nA vulnerability in the way certain html tags in chat messages are rendered allows attackers to inject JavaScript code into a chat transcript. The JavaScript code will be executed in the user's browser every time that chat transcript is opened, allowing attackers to retrieve the user's access token and gain full control over their account. Chat transcripts can be shared with other users in the same server, or with the whole open-webui community if \"Enable Community Sharing\" is enable",
+    "severity": "high",
+    "cve_id": "CVE-2025-46719",
+    "ghsa_id": "GHSA-9f4f-jv96-8766",
+    "affected_packages": [
+      "open-webui"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-8gh5-qqh8-hq3x",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T16:50:43Z",
+    "title": "Open WebUI  allows limited stored XSS vila uploaded html file",
+    "description": "### Summary\nLow privileged users can upload HTML files which contain JavaScript code via the `/api/v1/files/` backend endpoint. This endpoint returns a file id, which can be used to open the file in the browser and trigger the JavaScript code in the user's browser. Under the default settings, files uploaded by low-privileged users can only be viewed by admins or themselves, limiting the impact of this vulnerability.\n\n### Details\n\nThe following HTTP request can be sent to the backend server to up",
+    "severity": "medium",
+    "cve_id": "CVE-2025-46571",
+    "ghsa_id": "GHSA-8gh5-qqh8-hq3x",
+    "affected_packages": [
+      "open-webui"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-crhf-3pfg-w68w",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-07T15:32:57Z",
+    "title": "An issue was discovered in Django 6.0 before 6.0.7 and 5.2 before 5.2.16.\n`django.contrib.gis...",
+    "description": "An issue was discovered in Django 6.0 before 6.0.7 and 5.2 before 5.2.16.\n`django.contrib.gis.gdal.GDALRaster` over-reads its in-memory buffer when constructed from a bytes object, which can disclose adjacent memory or cause service degradation via a potential segmentation fault when the `vsi_buffer` property is accessed.\nEarlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected.\nDjango would like to thank Bence Nagy for reporting this issue",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53877",
+    "ghsa_id": "GHSA-crhf-3pfg-w68w",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null,
