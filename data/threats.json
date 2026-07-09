@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1783591524985-1",
+    "id": "twitter-1783610797421-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-09T10:05:24.985Z",
+    "timestamp": "2026-07-09T15:26:37.421Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1783591524985-1",
+    "id": "hn-1783610797421-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-09T10:05:24.985Z",
+    "timestamp": "2026-07-09T15:26:37.421Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,24 +26,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-vvcw-jcq9-759q",
+    "id": "gh-GHSA-382c-vx95-w3p5",
     "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:29Z",
-    "title": "The Bookero.pl – system rezerwacji online plugin for WordPress is vulnerable to Stored Cross-Site...",
-    "description": "The Bookero.pl – system rezerwacji online plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the `bookero_products` shortcode's `hide_products` (and `filter_products`) attributes in versions up to and including 2.2. This is due to insufficient input sanitization and output escaping in the `bookero_products()` function — the raw attribute value is concatenated directly into an inline `<script>` block without any escaping. This makes it possible for authenticated attackers with ",
+    "timestamp": "2026-07-09T13:44:51Z",
+    "title": "Gittensory: Missing contributor-scoped access control on profile endpoint and MCP tool leaks miner financial data",
+    "description": "### Summary\n \n`GET /v1/contributors/:login/profile` and the `gittensory_get_contributor_profile` MCP tool skip the contributor-scoped access check that every sibling endpoint enforces. Any authenticated session/API/MCP token holder can read any contributor's profile; for confirmed Gittensor miners that exposes `alphaPerDay`, `taoPerDay`, `usdPerDay` (and the `hotkey` on the REST path). Authenticated cross-contributor disclosure, CWE-284 / IDOR.\n \n### Details\n \nIn `src/api/routes.ts` the profile ",
     "severity": "medium",
-    "cve_id": "CVE-2026-6910",
-    "ghsa_id": "GHSA-vvcw-jcq9-759q",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-382c-vx95-w3p5",
+    "affected_packages": [
+      "@jsonbored/gittensory-mcp"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -52,15 +49,62 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-4jrp-wrhh-5622",
+    "id": "gh-GHSA-hm42-q32m-vj4f",
     "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:29Z",
-    "title": "A denial-of-service vulnerability caused by unbounded resource allocation was discovered in the...",
-    "description": "A denial-of-service vulnerability caused by unbounded resource allocation was discovered in the audit logging functionality, due to a missing size limit on input recorded into audit entries. An unauthenticated attacker can submit requests containing excessively large input that is recorded into audit entries, possibly exhausting the available disk space and rendering the system inoperable.",
+    "timestamp": "2026-07-09T13:44:40Z",
+    "title": "Admidio: CSRF on Plugin Install, Uninstall, and Update via Unprotected GET Requests",
+    "description": "## Summary\n\nThe `modules/plugins.php` endpoint handles plugin installation, uninstallation, and update operations via GET requests without CSRF token validation. Because these are top-level navigations, browsers include `SameSite=Lax` session cookies. An attacker crafts a malicious page that, when an authenticated administrator visits it, triggers arbitrary plugin operations. The uninstall operation executes DROP TABLE SQL scripts and destroys plugin data.\n\n## Details\n\n`modules/plugins.php` read",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53760",
+    "ghsa_id": "GHSA-hm42-q32m-vj4f",
+    "affected_packages": [
+      "admidio/admidio"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-86vw-x4ww-x467",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-09T13:44:12Z",
+    "title": "Craft CMS: RCE via missing cleanseConfig in FieldsController::actionRenderCardPreview",
+    "description": "The `actionRenderCardPreview()` method in `FieldsController` passes the `fieldLayoutConfig` POST parameter directly to `Fields::createLayout()` without calling `Component::cleanseConfig()`. This allows Yii2 event handler injection via `on eventName` keys in the config array, leading to arbitrary code execution.\n\nThis is the same vulnerability pattern that was fixed in GHSA-4484-8v2f-5748 (same file, `_fldComponent` method correctly uses `cleanseConfig`), GHSA-qx2q-q59v-wf3j (EntryTypesController",
     "severity": "high",
-    "cve_id": "CVE-2026-31984",
-    "ghsa_id": "GHSA-4jrp-wrhh-5622",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-86vw-x4ww-x467",
+    "affected_packages": [
+      "craftcms/cms"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-c43v-4cr8-6mvp",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-09T13:44:06Z",
+    "title": "Craft CMS has authenticated path traversal in `assets/icon`, allowing local `.svg` file read",
+    "description": "### Summary\n\nAn authenticated path traversal in `assets/icon` allows local SVG file read by passing traversal sequences in the `extension` parameter. The issue is caused by file existence checks happening before extension validation.\n\n### Details\nThe endpoint:\n- `src/controllers/AssetsController.php:1115-1123`\n- `actionIcon(string $extension)` calls `Assets::iconPath($extension)` and returns `sendFile($path, ...)`.\n\nIn `Assets::iconPath()`:\n- Path is built from user-controlled `extension`:\n  - `",
+    "severity": "low",
+    "cve_id": null,
+    "ghsa_id": "GHSA-c43v-4cr8-6mvp",
+    "affected_packages": [
+      "craftcms/cms",
+      "craftcms/cms"
+    ],
     "cwes": [
       null
     ],
@@ -73,19 +117,22 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-w68v-42v6-6q7h",
+    "id": "gh-GHSA-9pmc-p236-855h",
     "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:29Z",
-    "title": "An Incorrect Privilege Assignment vulnerability was discovered in the synchronization...",
-    "description": "An Incorrect Privilege Assignment vulnerability was discovered in the synchronization functionality due to Arc sensors receiving CLI permissions. An authenticated user with limited privileges can push administrative CLI commands through the sync, altering the device configuration, and/or affecting its availability.",
+    "timestamp": "2026-07-09T13:43:13Z",
+    "title": "Ruby CSS Parser: SSRF and Local File Disclosure in `CssParser::Parser#read_remote_file`",
+    "description": "## Summary\n\n`CssParser::Parser#read_remote_file` (and therefore `load_uri!`, and the `@import`-following branch of `add_block!`) issues HTTP/HTTPS requests against any host, port and URI it is handed, with no scheme allowlist, no host / IP filtering, and no protection against link-local, loopback or RFC‑1918 addresses. `Location:` redirects are followed recursively back into the same function, which **also services `file://` URIs**, so a single attacker-controlled HTTP redirect upgrades the bug ",
     "severity": "high",
-    "cve_id": "CVE-2026-33390",
-    "ghsa_id": "GHSA-w68v-42v6-6q7h",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-53727",
+    "ghsa_id": "GHSA-9pmc-p236-855h",
+    "affected_packages": [
+      "css_parser"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
@@ -94,30 +141,61 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-hjcg-vxr5-fgc7",
+    "id": "gh-GHSA-7cmj-v6x8-frvv",
     "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:29Z",
-    "title": "The Popup Maker – Boost Sales, Conversions, Optins, Subscribers with the Ultimate WP Popup...",
-    "description": "The Popup Maker – Boost Sales, Conversions, Optins, Subscribers with the Ultimate WP Popup Builder plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 1.22.0. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with editor-level access and above, to install and activate an arbitrary plugin from an attacker-controlled URL, leading to remote code execution. ",
+    "timestamp": "2026-07-09T13:43:03Z",
+    "title": "org.hl7.fhir.core: ReDoS via FHIRPath matches()/replaceMatches() in FHIR Validator HTTP Endpoint",
+    "description": "# Summary\nAll implementations of FHIRPathEngine accept arbitrary FHIRPath expressions and evaluate them without input validation. The utility intended to secure this evaluation did so incorrectly, and did not fully cover all places in which evaluation was being done. An attacker can send a resource containing an evil regex pattern that causes catastrophic backtracking, exhausting system resources, and causing Denial-of-Service.\n\n## Details\nThe vulnerability exists in regex execution in FHIRPathE",
     "severity": "high",
-    "cve_id": "CVE-2026-8848",
-    "ghsa_id": "GHSA-hjcg-vxr5-fgc7",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-49485",
+    "ghsa_id": "GHSA-7cmj-v6x8-frvv",
+    "affected_packages": [
+      "ca.uhn.hapi.fhir:org.hl7.fhir.dstu2",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.dstu2016may",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.dstu3",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.r4",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.r4b",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.r5",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.validation",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.validation.cli",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.dstu2",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.dstu2016may",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.dstu3",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.r4",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.r4b",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.r5",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.validation",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.validation.cli"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
       null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-8f95-v3jq-cj86",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-09T13:42:46Z",
+    "title": "pymonocypher: Potential heap buffer overflow on nb_blocks in argon2i_32 when provided buffer is too small",
+    "description": "### Impact\nThe argon2i_32 implementation does not check the nb_blocks size.  If the caller does not provide a sufficiently large buffer based on the API contract, then argon2i_32 will write past the end of the buffer and possibly corrupt the heap.\n\n### Patches\nFixed in 4.0.2.8, which now verifies that nb_blocks is large enough.  See [90ff5b1](https://github.com/jetperch/pymonocypher/commit/90ff5b13b13b5673c372e188f482d8c172e6ab86).\n\n### Workarounds\nProvide a correctly sized nb_blocks buffer.\n\npy",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53720",
+    "ghsa_id": "GHSA-8f95-v3jq-cj86",
+    "affected_packages": [
+      "pymonocypher"
+    ],
+    "cwes": [
       null,
       null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
+      null
+    ],
+    "references": [
       null,
       null,
       null
@@ -126,28 +204,22 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-6h77-cm5j-f2x9",
+    "id": "gh-GHSA-rqrh-8wpv-x7hh",
     "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:29Z",
-    "title": "The Connect Contact Form 7 and Mailchimp plugin for WordPress is vulnerable to Stored Cross-Site...",
-    "description": "The Connect Contact Form 7 and Mailchimp plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Mailchimp Merge Field Values in all versions up to, and including, 0.9.78.06 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The injected payload is only triggered when a privileged user (Administrator) performs a Contact ",
+    "timestamp": "2026-07-09T13:41:35Z",
+    "title": "Note Mark: Path traversal via unsanitized book/note slug in migrate export (sibling of GHSA-g49p)",
+    "description": "## Summary\n\nNote Mark validates book and note `slug` values with the OpenAPI/huma tag `pattern:\"[a-z0-9-]+\"`. huma compiles this with `regexp.MustCompile(s.Pattern)` and tests it with `patternRe.MatchString(str)`, an UNANCHORED match. Because the pattern is not anchored (`^...$`), any string that merely CONTAINS one `[a-z0-9-]` substring passes validation. A slug such as `../../../../../../tmp/escape` is accepted and stored verbatim.\n\nThe data-export CLI commands (`note-mark migrate export` and ",
     "severity": "high",
-    "cve_id": "CVE-2026-15000",
-    "ghsa_id": "GHSA-6h77-cm5j-f2x9",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-50553",
+    "ghsa_id": "GHSA-rqrh-8wpv-x7hh",
+    "affected_packages": [
+      "github.com/enchant97/note-mark/backend"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -156,16 +228,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-jmhq-wjwf-9x96",
+    "id": "gh-GHSA-588f-fvcv-xhvf",
     "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:29Z",
-    "title": "A Missing Authentication vulnerability was discovered in the SSH keys synchronization endpoint....",
-    "description": "A Missing Authentication vulnerability was discovered in the SSH keys synchronization endpoint. An unauthenticated attacker can send a request to the SSH keys synchronization endpoint and obtain the list of users that have uploaded their public SSH keys, their groups, and the uploaded public SSH keys.",
+    "timestamp": "2026-07-09T13:41:29Z",
+    "title": "Note Mark: Unauthenticated disclosure of soft-deleted note metadata via deleted=true on public books",
+    "description": "Summary\n\n  GET /api/books/{bookID}/notes is an unauthenticated endpoint that accepts a \"deleted\" query parameter. When the request is ?deleted=true, the\n  service runs the query with Unscoped() (bypassing GORM's soft-delete scope) but keeps the read-authorization clause as \"owner_id = ? OR is_public\n  = ?\". As a result, any unauthenticated caller can enumerate the metadata of soft-deleted (\"trashed\") notes belonging to any public book — notes\n  the owner explicitly deleted and expected to be rem",
     "severity": "medium",
-    "cve_id": "CVE-2026-31983",
-    "ghsa_id": "GHSA-jmhq-wjwf-9x96",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-50554",
+    "ghsa_id": "GHSA-588f-fvcv-xhvf",
+    "affected_packages": [
+      "github.com/enchant97/note-mark/backend"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
@@ -177,20 +252,22 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-r8ph-vcp7-p3mx",
+    "id": "gh-GHSA-836r-79rf-4m37",
     "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:29Z",
-    "title": "When the upstream Guardian or CMC was configured in the Remote Collector via n2os-tui, the...",
-    "description": "When the upstream Guardian or CMC was configured in the Remote Collector via n2os-tui, the generated configuration disabled TLS certificate verification, and no option was provided to enable it. A malicious actor could perform a man-in-the-middle attack and intercept the communication between the Remote Collector and the Guardian or CMC. This could result in theft of the sync token, impersonation of the server, injection of spoofed data (such as false asset information or vulnerabilities) into t",
+    "timestamp": "2026-07-09T13:37:46Z",
+    "title": "Soup Sieve: Regular Expression Denial of Service (ReDoS) via Selector Parser",
+    "description": "### Summary\n\nThe CSS selector parser in soupsieve (the CSS selector engine for Beautiful Soup 4) contains a regular expression vulnerable to catastrophic backtracking. When processing an attribute selector with an unterminated quoted value, the `VALUE` regex pattern in `css_parser.py` enters exponential backtracking. A payload of only **300 bytes** causes the regex engine to hang for **over 3 seconds**, enabling a trivial Regular Expression Denial of Service (ReDoS) attack.\n\nTo be completely tra",
     "severity": "high",
-    "cve_id": "CVE-2026-31985",
-    "ghsa_id": "GHSA-r8ph-vcp7-p3mx",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-49477",
+    "ghsa_id": "GHSA-836r-79rf-4m37",
+    "affected_packages": [
+      "soupsieve"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
-      null,
       null,
       null
     ],
@@ -198,24 +275,68 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-v9rj-7f7r-32jj",
+    "id": "gh-GHSA-2wc2-fm75-p42x",
     "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:29Z",
-    "title": "The Age Verification & Identity Verification by Token of Trust plugin for WordPress is vulnerable...",
-    "description": "The Age Verification & Identity Verification by Token of Trust plugin for WordPress is vulnerable to unauthorized access in all versions up to and including 4.0.2. This is due to the handle_export_table() function being registered on the WordPress 'init' hook, which fires for all requests, including those from unauthenticated visitors, without any capability check. This makes it possible for unauthenticated attackers to download a CSV file containing sensitive WooCommerce donation data, includin",
+    "timestamp": "2026-07-09T13:37:40Z",
+    "title": "Soup Sieve has Memory Exhaustion via Large Comma-Separated Selector Lists",
+    "description": "### Summary\n\nThe CSS selector parser in soupsieve (the CSS selector engine for Beautiful Soup 4) allocates unbounded memory when compiling large comma-separated selector lists. An attacker who can supply a crafted CSS selector string to `soupsieve.compile()` or Beautiful Soup's `.select()` / `.select_one()` can cause the application to allocate hundreds of megabytes of heap memory from a relatively small input, leading to memory exhaustion and denial of service.\n\nTo be completely transparent, AI",
+    "severity": "high",
+    "cve_id": "CVE-2026-49476",
+    "ghsa_id": "GHSA-2wc2-fm75-p42x",
+    "affected_packages": [
+      "soupsieve"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-52vm-mxx8-f227",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-09T13:37:34Z",
+    "title": "Phantom: Arbitrary file write and decode-bomb DoS via unconfined MCP tool paths",
+    "description": "### Impact\n\nIn Phantom <= 1.3.0, when `PHANTOM_OUTPUT_DIR` was unset (the default), the MCP tools accepted arbitrary absolute output paths with no confinement. Anything able to send tool calls (e.g. an AI agent driving the MCP interface) could **write or overwrite arbitrary files** the process user can write — including shell startup files (`~/.zshrc`) or a Reaper `__startup.lua`, which is effectively local code execution on a developer workstation.\n\nSeparately, the stem-separation and render pa",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-52vm-mxx8-f227",
+    "affected_packages": [
+      "phantom-audio"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-q6gh-6v2r-hjv3",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-09T13:36:56Z",
+    "title": "Micronaut: DefaultHttpClient follows redirects, forwarding Authorization, Cookie, and Proxy-Authorization headers",
+    "description": "### Impact\n\n> DefaultHttpClient follows redirects and forwards Authorization, Cookie, and Proxy-Authorization headers to redirect targets across domain boundaries. The blocklist only filters Host/Connection/TE/CT/CL.\n> Additionally, no maximum redirect count exists, enabling infinite loop DoS.\n> Affected: DefaultHttpClient.java lines 231-245, 1591, 2071\n\n> Suggested fix: Strip sensitive headers on cross-domain redirects\n\n### Patches\nIt has been patched for versions: \n\nFor Micronaut 5, versions e",
     "severity": "medium",
-    "cve_id": "CVE-2026-7558",
-    "ghsa_id": "GHSA-v9rj-7f7r-32jj",
-    "affected_packages": [],
-    "cwes": [
-      null
+    "cve_id": null,
+    "ghsa_id": "GHSA-q6gh-6v2r-hjv3",
+    "affected_packages": [
+      "io.micronaut:micronaut-http-client",
+      "io.micronaut:micronaut-http-client",
+      "io.micronaut:micronaut-http-client"
     ],
+    "cwes": [],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -226,20 +347,48 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-5g4m-c643-h8fj",
+    "id": "gh-GHSA-387m-935m-c4vw",
     "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:29Z",
-    "title": "A Stored HTML Injection vulnerability was discovered in the Diagram tab and Graph view due to a...",
-    "description": "A Stored HTML Injection vulnerability was discovered in the Diagram tab and Graph view due to a shared input validation function being insufficiently restrictive. An authenticated user with administrative privileges can inject malicious HTML tags into N2OS configuration data through multiple input vectors. When a victim views the affected data in the Diagram tab and Graph view, the injected HTML renders in their browser, enabling phishing and possibly open redirect attacks. Full XSS exploitation",
+    "timestamp": "2026-07-09T13:36:49Z",
+    "title": "Micronaut doesn't set a maximum redirect count for its HTTP Client, enabling infinite loop DoS",
+    "description": "The Netty-based Micronaut HTTP Client does not impose a limit on HTTP redirections, potentially allowing an infinite redirect loop that could lead to a denial-of-service attack.\n\n### Patches\n\nThe following versions are patched: \n\n- For Micronaut 5, versions equal or greater than [5.0.1](https://github.com/micronaut-projects/micronaut-core/releases/v5.0.1) >=\n- For Micronaut 4, versions equal or greater than [4.10.24](https://github.com/micronaut-projects/micronaut-core/releases/v4.10.24) >=\n- Fo",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-387m-935m-c4vw",
+    "affected_packages": [
+      "io.micronaut:micronaut-http-client",
+      "io.micronaut:micronaut-http-client",
+      "io.micronaut:micronaut-http-client"
+    ],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-c2f9-4mc8-j656",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-09T13:35:28Z",
+    "title": "pyLoad: Unbounded Memory Growth Leading to DoS and Potential DDoS in EventManager",
+    "description": "## Description:\nThe `EventManager` module in `pyload` manages a list of `Client` instances for subscribing to events. The addition of each unique `uuid` from the `get_events` API causes the creation of a `Client` instance that gets appended to the `clients` list. Although there is a `clean()` method available in the `EventManager` module for removing non-responding `Client` instances, this method is never used in the `EventManager` or in the entire core application code. Consequently, this cause",
     "severity": "medium",
-    "cve_id": "CVE-2026-31981",
-    "ghsa_id": "GHSA-5g4m-c643-h8fj",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-48987",
+    "ghsa_id": "GHSA-c2f9-4mc8-j656",
+    "affected_packages": [
+      "pyload-ng"
+    ],
     "cwes": [
+      null,
+      null,
       null
     ],
     "references": [
-      null,
       null,
       null
     ],
@@ -247,19 +396,50 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-mhgm-6mc5-8v9j",
+    "id": "gh-GHSA-m5x5-28jr-gpjj",
     "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:29Z",
-    "title": "An Open Redirect vulnerability was discovered in the SAML Single Sign-On functionality due to...",
-    "description": "An Open Redirect vulnerability was discovered in the SAML Single Sign-On functionality due to insufficient validation of a user-controlled redirection parameter. An unauthenticated attacker can craft a request to the SAML sign-in endpoint and poison the cached SAML redirection for other users who subsequently initiate SAML Single Sign-On, enabling phishing and credential-theft attacks, as well as disrupting SAML authentication for all affected users.",
+    "timestamp": "2026-07-09T13:35:22Z",
+    "title": "pyLoad: SSRF guard bypass via IPv6 6to4/NAT64 transition wrappers of internal IPs",
+    "description": "## Summary\n\n`is_global_address` in [`src/pyload/core/utils/web/check.py`](https://github.com/pyload/pyload/blob/1b12dc7f348db8c144e0f39215680415e90ca4d2/src/pyload/core/utils/web/check.py) is the central guard against SSRF-style outbound connections in pyload-ng. It tests whether a given IP is \"globally routable\" via Python's `ipaddress.ip_address(value).is_global`, and callers treat `not is_global` as \"deny\":\n\n```python\ndef is_global_address(value):\n    try:\n        return ipaddress.ip_address(",
     "severity": "medium",
-    "cve_id": "CVE-2026-31982",
-    "ghsa_id": "GHSA-mhgm-6mc5-8v9j",
+    "cve_id": "CVE-2026-48737",
+    "ghsa_id": "GHSA-m5x5-28jr-gpjj",
+    "affected_packages": [
+      "pyload-ng"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-3h8r-9w82-hxmh",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-09T12:30:29Z",
+    "title": "A vulnerability has been found in GNU LibreDWG up to 0.13.4. The affected element is the function...",
+    "description": "A vulnerability has been found in GNU LibreDWG up to 0.13.4. The affected element is the function dwg_bmp of the file src/dwg.c of the component BMP Image Handler. Such manipulation leads to heap-based buffer overflow. The attack must be carried out locally. The exploit has been disclosed to the public and may be used. Upgrading to version 0.14 is sufficient to fix this issue. The name of the patch is 18fd542bb4d5ccedf9de12052bf50068b2b26f06. It is suggested to upgrade the affected component.",
+    "severity": "low",
+    "cve_id": "CVE-2026-15182",
+    "ghsa_id": "GHSA-3h8r-9w82-hxmh",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null
@@ -268,19 +448,20 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-wf3h-wgr2-59j7",
+    "id": "gh-GHSA-qjph-9jxc-9pcm",
     "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:29Z",
-    "title": "The Block, Suspend, Report for BuddyPress plugin for WordPress is vulnerable to Stored Cross-Site...",
-    "description": "The Block, Suspend, Report for BuddyPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'link' parameter in versions up to and including 3.6.4. This is due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers with subscriber-level access and above to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+    "timestamp": "2026-07-09T12:30:28Z",
+    "title": "The Employee, Leave and Recruitment Management System – Crew HRM plugin for WordPress is...",
+    "description": "The Employee, Leave and Recruitment Management System – Crew HRM plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 1.2.2. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to delete, archive, unarchive, and duplicate arbitrary job listings — along with their associated stages, meta, addresses, and applications — ",
     "severity": "medium",
-    "cve_id": "CVE-2026-4653",
-    "ghsa_id": "GHSA-wf3h-wgr2-59j7",
+    "cve_id": "CVE-2026-9237",
+    "ghsa_id": "GHSA-qjph-9jxc-9pcm",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null,
@@ -294,19 +475,25 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-2h97-jww5-mwvc",
+    "id": "gh-GHSA-ggxj-99vw-g2xw",
     "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:29Z",
-    "title": "Permissive Cross-Origin Resource Sharing (CORS) in the REST API (helix-rest, org.apache.helix...",
-    "description": "Permissive Cross-Origin Resource Sharing (CORS) in the REST API (helix-rest, org.apache.helix.rest.server.filters.CORSFilter) in Apache Helix through 2.0.0 on all platforms allows a remote attacker controlling a web page visited by an authorized user to read responses from and issue cross-origin requests to administrative REST endpoints via a cross-origin request from an arbitrary origin, since the filter unconditionally returns Access-Control-Allow-Origin: * together with Access-Control-Allow-C",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-57111",
-    "ghsa_id": "GHSA-2h97-jww5-mwvc",
+    "timestamp": "2026-07-09T12:30:28Z",
+    "title": "The Divi Torque Lite – Divi Theme, Divi Builder & Extra Theme plugin for WordPress is vulnerable...",
+    "description": "The Divi Torque Lite – Divi Theme, Divi Builder & Extra Theme plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 4.2.3. This is due to the use of '__return_true' as the permission_callback for the /install_plugin and /activate_plugin REST API endpoints, which bypasses WordPress's built-in REST API nonce verification. Although the endpoint callbacks contain internal current_user_can() checks, the absence of nonce verification means that a forged",
+    "severity": "high",
+    "cve_id": "CVE-2026-4275",
+    "ghsa_id": "GHSA-ggxj-99vw-g2xw",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null,
@@ -316,219 +503,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-cxpp-m57j-hhq8",
+    "id": "gh-GHSA-x7cc-jgf9-8v48",
     "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:29Z",
-    "title": "The Backup and Staging by WP Time Capsule plugin for WordPress is vulnerable to Sensitive...",
-    "description": "The Backup and Staging by WP Time Capsule plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 1.22.26 via the download_recent_decrypted_file_wptc. This makes it possible for authenticated attackers, with subscriber-level access and above, to extract download the most recently admin-decrypted SQL database backup, which typically contains password hashes, user credentials, and other sensitive site configuration data stored in the 'recent_decry",
+    "timestamp": "2026-07-09T12:30:28Z",
+    "title": "The DHL eCommerce (Benelux) for WooCommerce plugin for WordPress is vulnerable to unauthorized...",
+    "description": "The DHL eCommerce (Benelux) for WooCommerce plugin for WordPress is vulnerable to unauthorized modification and loss of data due to a missing capability check and missing nonce verification on the create_label() and delete_label() functions in versions up to, and including, 2.2.3. These functions are wired to the wp_ajax_dhlpwc_label_create and wp_ajax_dhlpwc_label_delete hooks and act on an attacker-supplied post_id (WooCommerce order ID). This makes it possible for authenticated attackers, wit",
     "severity": "medium",
-    "cve_id": "CVE-2026-8996",
-    "ghsa_id": "GHSA-cxpp-m57j-hhq8",
+    "cve_id": "CVE-2026-9235",
+    "ghsa_id": "GHSA-x7cc-jgf9-8v48",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-v367-5mw9-22gq",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:28Z",
-    "title": "The Download Manager plugin for WordPress is vulnerable to Stored Cross-Site Scripting via ...",
-    "description": "The Download Manager plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'note_before' and 'note_after' Shortcode Attributes in all versions up to, and including, 3.3.61 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Because wp_kses_post filters post content on save for use",
-    "severity": "medium",
-    "cve_id": "CVE-2026-14343",
-    "ghsa_id": "GHSA-v367-5mw9-22gq",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-hcgf-cxhm-8vcm",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:28Z",
-    "title": "The GamiPress – Gamification plugin to reward points, achievements, badges & ranks in WordPress...",
-    "description": "The GamiPress – Gamification plugin to reward points, achievements, badges & ranks in WordPress plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 7.9.4 via the 'access' parameter due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to view private GamiPress activity log entries belonging to any user, including badge earnings, points balance changes, and event records from integrated plu",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13450",
-    "ghsa_id": "GHSA-hcgf-cxhm-8vcm",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-26hr-8h4j-gxx3",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:28Z",
-    "title": "The miniOrange OTP Login, Verification and SMS Notifications plugin for WordPress is vulnerable...",
-    "description": "The miniOrange OTP Login, Verification and SMS Notifications plugin for WordPress is vulnerable to Authentication Bypass leading to Administrator Account Takeover in all versions up to, and including, 5.5.1. This is due to the `um_reset_password_process_hook()` function performing no server-side verification that the OTP validation step was completed, and relying solely on a public `form_nonce` nonce that the plugin itself emits to unauthenticated visitors via the `moumprvar` JavaScript object o",
-    "severity": "critical",
-    "cve_id": "CVE-2026-14245",
-    "ghsa_id": "GHSA-26hr-8h4j-gxx3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-r8xv-jhv9-6h7f",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:28Z",
-    "title": "The Mail Mint – Email Marketing, Newsletter, Email Automation & WooCommerce Emails plugin for...",
-    "description": "The Mail Mint – Email Marketing, Newsletter, Email Automation & WooCommerce Emails plugin for WordPress is vulnerable to time-based SQL Injection via the 'contact_ids' parameter in all versions up to, and including, 1.24.2 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queri",
-    "severity": "medium",
-    "cve_id": "CVE-2026-14342",
-    "ghsa_id": "GHSA-r8xv-jhv9-6h7f",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-8j9m-p63v-r54h",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:28Z",
-    "title": "The AcyMailing – An Ultimate Newsletter Plugin and Marketing Automation Solution for WordPress...",
-    "description": "The AcyMailing – An Ultimate Newsletter Plugin and Marketing Automation Solution for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'alignment' attribute in all versions up to, and including, 10.10.2 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-12170",
-    "ghsa_id": "GHSA-8j9m-p63v-r54h",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-xjfr-2v67-fwc9",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:28Z",
-    "title": "The WPFunnels – Funnel Builder for WooCommerce with Checkout & One Click Upsell plugin for...",
-    "description": "The WPFunnels – Funnel Builder for WooCommerce with Checkout & One Click Upsell plugin for WordPress is vulnerable to Local File Inclusion in all versions up to, and including, 3.12.7 via the 'logKey' parameter parameter. This makes it possible for authenticated attackers, with administrator-level access and above, to include and execute arbitrary .php files on the server, allowing the execution of any PHP code in those files. This can be used to bypass access controls, obtain sensitive data, or",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13080",
-    "ghsa_id": "GHSA-xjfr-2v67-fwc9",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-pm92-5rp3-r8mg",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-09T09:30:28Z",
-    "title": "The Mang Board WP plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the ...",
-    "description": "The Mang Board WP plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'stag' parameter in all versions up to, and including, 2.3.4 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13334",
-    "ghsa_id": "GHSA-pm92-5rp3-r8mg",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
       null,
       null,
       null,
