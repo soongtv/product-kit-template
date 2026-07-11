@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1783712601633-1",
+    "id": "twitter-1783740293344-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-10T19:43:21.634Z",
+    "timestamp": "2026-07-11T03:24:53.344Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1783712601634-1",
+    "id": "hn-1783740293344-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-10T19:43:21.634Z",
+    "timestamp": "2026-07-11T03:24:53.344Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -37,410 +37,105 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
+      "impact_assessment": "The open-source vulnerability scanner itself poses minimal direct risk, but its widespread adoption could lead to potential misuse by malicious actors to identify exploitable vulnerabilities in unpatched systems.",
       "affected_industries": [
         "Technology",
-        "General"
+        "Software Development",
+        "Cybersecurity"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Evaluate the tool in a controlled environment to ensure it aligns with organizational security policies.",
+        "Monitor for any updates or reports of misuse of the tool in the cybersecurity community.",
+        "Educate development and security teams on secure usage practices for open-source vulnerability scanning tools."
       ],
       "urgency": "low"
     },
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-5xfx-xj4h-5p7r",
+    "id": "gh-GHSA-wcfj-4phh-x3w3",
     "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:34:53Z",
-    "title": "SiYuan: Stored XSS to RCE via attribute-view cell rendering in genAVValueHTML()",
-    "description": "### Summary\n\nThe attribute-view (database) cell renderer `genAVValueHTML` interpolates cell content raw in four of its branches: `text`, `url`, `phone`, and `mAsset`. A cell value like `</textarea><img src=x onerror=\"...\">` or `\"><img src=x onerror=\"...\">` breaks out of its surrounding tag and runs arbitrary JavaScript in the renderer when the victim opens the block-attribute panel. On Electron desktop the renderer runs with `nodeIntegration:true`, so the XSS chains to host RCE via `require('chi",
-    "severity": "critical",
-    "cve_id": "CVE-2026-54158",
-    "ghsa_id": "GHSA-5xfx-xj4h-5p7r",
-    "affected_packages": [
-      "github.com/siyuan-note/siyuan/kernel"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 95,
-      "impact_assessment": "This vulnerability allows attackers to execute arbitrary JavaScript via stored XSS, which can escalate to remote code execution (RCE) on Electron-based desktop applications. This can lead to full system compromise, data theft, or further exploitation of the host environment.",
-      "affected_industries": [
-        "Technology",
-        "Software Development",
-        "Enterprise Applications",
-        "Data Management",
-        "Any industry using Electron-based applications"
-      ],
-      "recommended_actions": [
-        "Immediately update to a patched version of the software if available, or apply any recommended mitigations provided by the vendor.",
-        "Disable or restrict the use of `nodeIntegration` in Electron applications to limit the potential for RCE.",
-        "Conduct a security audit of all applications using the vulnerable component to identify and mitigate potential exploitation vectors."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 95
-  },
-  {
-    "id": "gh-GHSA-g5r6-gv6m-f5jv",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:34:37Z",
-    "title": "mcp-atlassian: Arbitrary file read via missing path validation in confluence_upload_attachment",
-    "description": "### Summary\n`confluence_upload_attachment` passes `file_path` directly to `open(file_path, \"rb\")` with no path validation. Any authenticated MCP client — or an AI agent manipulated via prompt injection — can read any file the server process can access and exfiltrate it to Confluence as an attachment.\n\n### Details\nRoot cause: `src/mcp_atlassian/confluence/attachments.py`, `_upload_attachment_direct()`:\n\n```python\nfiles = {\"file\": (filename, open(file_path, \"rb\"))}  # no validate_safe_path()\n```\n\n",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-g5r6-gv6m-f5jv",
-    "affected_packages": [
-      "mcp-atlassian"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows authenticated users or manipulated AI agents to read arbitrary files on the server, potentially exposing sensitive data such as credentials, configuration files, or intellectual property. This could lead to data breaches, privilege escalation, or further exploitation of the system.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Implement path validation checks in the `confluence_upload_attachment` function to ensure only safe and intended file paths are accessed.",
-        "Restrict file system permissions for the server process to limit access to sensitive files.",
-        "Conduct a security review of other file-handling functions in the codebase to identify and mitigate similar vulnerabilities."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-wm45-qh3g-v83f",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:34:30Z",
-    "title": "mcp-atlassian: Arbitrary server-side file read via attachment upload",
-    "description": "### Summary\n\nA client that can invoke MCP tools can read **arbitrary files from the server host** and exfiltrate them as Atlassian attachments. The attachment-upload tools take a client-supplied `file_path` and `open()` it on the **server's** filesystem.\n\nThe upload tools are meant to attach a file from the **caller's** environment — the client supplies a path expecting it to refer to its own machine. Over a remote transport (HTTP/SSE) that path is instead resolved and read on the server, and th",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-wm45-qh3g-v83f",
-    "affected_packages": [
-      "mcp-atlassian"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-xrmc-c5cg-rv7x",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:34:14Z",
-    "title": "SafeInstall agent guard shell parsing can miss raw package execution",
-    "description": "## Summary\n\nSafeInstall CLI through 0.10.1 can fail to recognize some package-manager and registry-runner commands in its agent guard. Case-variant launcher names, leading file-descriptor redirections, and supported shell wrappers with options can cause a raw install command to receive no guard decision. Remote project scaffolding through package-manager create/init commands can also avoid the approval decision used for other registry runners.\n\n## Impact\n\nWhen the SafeInstall guard is installed ",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-xrmc-c5cg-rv7x",
-    "affected_packages": [
-      "safeinstall-cli"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-qv4m-m73m-8hj7",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:34:03Z",
-    "title": "NotrinosERP: Authenticated arbitrary file upload leads to remote code execution via HRM employee \"Documents\" (doc_file)",
-    "description": "#### Summary\nAn authenticated user with the HR \"Manage Employees\" permission (`SA_EMPLOYEE`) can upload a file with an arbitrary extension through the employee **Documents** tab. The handler writes the raw client-supplied filename — extension intact — into a web served directory with no extension, MIME, or content validation, so a `.php` file is stored under the web root and executes as code, yielding remote code execution on the server.\n\n#### Details\nThe document-upload branch in `hrm/manage/em",
-    "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-qv4m-m73m-8hj7",
-    "affected_packages": [
-      "notrinos/notrinos-erp"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-m8gf-v64p-gfmg",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:32:44Z",
-    "title": "BabelDOC: Arbitrary Code Execution via CMap Pickle Deserialization in babeldoc/pdfminer/cmapdb.py",
-    "description": "## Arbitrary Code Execution via CMap Pickle Deserialization in babeldoc/pdfminer/cmapdb.py\n\n### Summary\n\nBabelDOC's vendored PDF parser (`babeldoc/pdfminer/cmapdb.py`) deserializes untrusted pickle data when loading CMap files. The `_load_data()` method strips only NUL bytes from a PDF-controlled CMap name, then passes it directly to `os.path.join()` and `pickle.loads()`. Because Python's `os.path.join()` discards all preceding path components when it encounters an absolute path segment, an atta",
-    "severity": "high",
-    "cve_id": "CVE-2026-54071",
-    "ghsa_id": "GHSA-m8gf-v64p-gfmg",
-    "affected_packages": [
-      "BabelDOC"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54071.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-m93h-4hw7-5qcm",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:32:32Z",
-    "title": "File Browser: Command Injection via Authentication Hook Shell Substitution (Pre-Authentication RCE)",
-    "description": "## Overview\n\nThe Hook Authentication feature in File Browser allows administrators to delegate login verification to an external shell command. User-supplied credentials (username and password) are interpolated into this command string using `os.Expand` without sanitization. An **unauthenticated remote attacker** can inject shell metacharacters in the username or password field at the login screen, causing the server to execute arbitrary OS commands before any authentication takes place. This is",
-    "severity": "critical",
-    "cve_id": "CVE-2026-54088",
-    "ghsa_id": "GHSA-m93h-4hw7-5qcm",
-    "affected_packages": [
-      "github.com/filebrowser/filebrowser/v2"
-    ],
-    "cwes": [
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 95,
-      "impact_assessment": "This vulnerability allows unauthenticated remote attackers to execute arbitrary OS commands on the server hosting the File Browser application. This could lead to full system compromise, data exfiltration, service disruption, or lateral movement within the network.",
-      "affected_industries": [
-        "Technology",
-        "Healthcare",
-        "Finance",
-        "Education",
-        "Government",
-        "E-commerce"
-      ],
-      "recommended_actions": [
-        "Immediately disable the Hook Authentication feature in File Browser until a patched version is available.",
-        "Update to the latest patched version of File Browser as soon as it is released by the vendor.",
-        "Implement network-level protections, such as restricting access to the File Browser application to trusted IP ranges or using a VPN."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 95
-  },
-  {
-    "id": "gh-GHSA-99j7-fhr2-xfj4",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:32:24Z",
-    "title": "`exploration` was removed from crates.io for malicious code",
-    "description": "A method within the `exploration` crate attempted to download and execute a payload from a remote site.\n\nThe malicious crate had 1 version published on 2026-06-02, approximately 1 hour before removal, and had no evidence of actual usage. This crate had no dependencies on crates.io.\n\nRustsec to Kirill Boychenko from the [Socket Threat Research Team](https://socket.dev/) for reporting this crate.",
-    "severity": "critical",
-    "cve_id": null,
-    "ghsa_id": "GHSA-99j7-fhr2-xfj4",
-    "affected_packages": [
-      "exploration"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The malicious crate 'exploration' attempted to download and execute a remote payload, potentially enabling remote code execution (RCE) or other malicious activities. While the crate was promptly removed and there is no evidence of usage, the incident highlights the risk of supply chain attacks in the Rust ecosystem.",
-      "affected_industries": [
-        "Software Development",
-        "Technology",
-        "DevOps"
-      ],
-      "recommended_actions": [
-        "Audit all dependencies in your Rust projects to ensure no malicious or unverified crates are included, even if they are not directly used.",
-        "Implement automated tools to monitor and alert for suspicious or newly published crates in your dependency chain.",
-        "Educate development teams about supply chain risks and encourage the use of trusted sources and verified libraries."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-2ppx-66jv-wpw5",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:28:06Z",
-    "title": "Windmill: Resource-scoped API tokens can read script contents outside their allowed path via scripts/list_search",
-    "description": "### Summary\n\nA resource-scoped API token can read script contents outside its allowed path scope via `GET /api/w/{workspace}/scripts/list_search`.\n\nThis appears to be a remaining variant of the scoped-token authorization class previously addressed for other endpoints. The route-level scope middleware validates the token domain/action, but does not enforce the resource/path segment of a scope. `scripts/list_search` then returns script `path` and `content` for scripts in the workspace without appl",
+    "timestamp": "2026-07-11T02:32:45Z",
+    "title": "The UnderConstructionPage PRO plugin for WordPress is vulnerable to Arbitrary File Read in all...",
+    "description": "The UnderConstructionPage PRO plugin for WordPress is vulnerable to Arbitrary File Read in all versions up to, and including, 5.76. This is due to the plugin accepting arbitrary local file paths in the template_thumbnail parameter and copying their contents into a publicly accessible uploads file. This makes it possible for authenticated attackers, with Subscriber-level access and above, to read arbitrary files on the server, which can contain sensitive information.",
     "severity": "medium",
-    "cve_id": "CVE-2026-54136",
-    "ghsa_id": "GHSA-2ppx-66jv-wpw5",
-    "affected_packages": [
-      "windmill-api"
-    ],
+    "cve_id": "CVE-2026-11426",
+    "ghsa_id": "GHSA-wcfj-4phh-x3w3",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "This vulnerability allows resource-scoped API tokens to bypass path restrictions and access sensitive script contents outside their intended scope. This could lead to unauthorized data exposure, potential intellectual property theft, or compromise of sensitive business logic.",
+      "impact_assessment": "The vulnerability allows authenticated attackers with minimal privileges (Subscriber-level access) to read arbitrary files on the server, potentially exposing sensitive information such as configuration files, database credentials, or user data. This could lead to further exploitation or data breaches.",
       "affected_industries": [
-        "Software Development",
-        "Cloud Services",
-        "Technology",
-        "Financial Services",
-        "Healthcare"
+        "E-commerce",
+        "Media and Publishing",
+        "Education",
+        "Healthcare",
+        "Small Businesses"
       ],
       "recommended_actions": [
-        "Implement stricter validation in the route-level scope middleware to enforce resource/path restrictions for all API endpoints.",
-        "Conduct a comprehensive security audit of all scoped-token authorization mechanisms to identify similar vulnerabilities.",
-        "Notify affected users and advise them to rotate API tokens and review access permissions as a precaution."
+        "Update the UnderConstructionPage PRO plugin to the latest patched version as soon as it becomes available.",
+        "Restrict access to Subscriber-level accounts and review permissions to minimize exposure to potential attackers.",
+        "Monitor server logs for unusual activity, especially file access patterns, and implement Web Application Firewall (WAF) rules to detect and block exploitation attempts."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
     "risk_score": 65
   },
   {
-    "id": "gh-GHSA-w7cg-whh7-xp28",
+    "id": "gh-GHSA-9qvw-92r9-h632",
     "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:27:24Z",
-    "title": "SiYuan: Stored XSS in Bazaar marketplace via package README event handlers",
-    "description": "## Summary\n\n`renderPackageREADME` in `kernel/bazaar/readme.go` renders a Bazaar package README from Markdown to HTML with the lute engine and `SetSanitize(true)`. The lute sanitizer is an event-handler blocklist: `allowAttr` rejects only attribute names present in a fixed `eventAttrs` map copied from the w3schools legacy handler list.\n\nThat map omits modern event handlers. `onpointerover`, `onpointerdown`, `onauxclick`, `onbeforetoggle`, `onfocusin`, `onanimationstart`, and `ontransitionend` are",
+    "timestamp": "2026-07-11T02:32:45Z",
+    "title": "The WP Grid Builder plugin for WordPress is vulnerable to Privilege Escalation in all versions up...",
+    "description": "The WP Grid Builder plugin for WordPress is vulnerable to Privilege Escalation in all versions up to, and including, 2.3.3. This is due to missing authorization and meta key validation in the `update()` handler for the `/wp-json/wpgb/v2/metadata` REST endpoint. This makes it possible for authenticated attackers, with Subscriber-level access and above, to elevate their privileges to Administrator by updating their own `wp_capabilities` user meta with a crafted nested array payload.",
     "severity": "high",
-    "cve_id": "CVE-2026-54070",
-    "ghsa_id": "GHSA-w7cg-whh7-xp28",
-    "affected_packages": [
-      "github.com/siyuan-note/siyuan/kernel"
-    ],
+    "cve_id": "CVE-2026-13756",
+    "ghsa_id": "GHSA-9qvw-92r9-h632",
+    "affected_packages": [],
     "cwes": [
-      null,
       null
     ],
     "references": [
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to execute arbitrary JavaScript code in the context of a user's browser by exploiting unfiltered modern event handlers in package README files. This could lead to data theft, session hijacking, or further exploitation of users interacting with the Bazaar marketplace.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-13756.",
       "affected_industries": [
-        "E-commerce",
-        "Software Development",
-        "Open Source Platforms",
-        "Technology Services"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Immediately update the `lute` sanitizer to include modern event handlers such as `onpointerover`, `onpointerdown`, `onauxclick`, `onbeforetoggle`, `onfocusin`, `onanimationstart`, and `ontransitionend` in its blocklist.",
-        "Conduct a security audit of all user-generated content rendering processes to ensure proper sanitization and protection against XSS vulnerabilities.",
-        "Notify users and developers of the vulnerability and encourage them to avoid interacting with untrusted README files until a patch is applied."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-xqp3-jq6g-x3qm",
+    "id": "gh-GHSA-v4hh-p8gf-c722",
     "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:27:13Z",
-    "title": "File Browser: Authentication Bypass via Proxy Auth Header Forgery",
-    "description": "## Summary\n\nWhen FileBrowser is configured with proxy authentication (`auth.method=proxy`), any unauthenticated attacker who can reach the server directly can impersonate **any user - including admin** - by sending a single forged HTTP header. No credentials are required. Additionally, specifying a non-existent username causes the server to **automatically create a new user account**, providing an account creation primitive with no authorization.\n\n**This is an already known issue that has been d",
+    "timestamp": "2026-07-11T00:31:50Z",
+    "title": "The charging station websocket endpoint accepts connections without \nproper authentication, which...",
+    "description": "The charging station websocket endpoint accepts connections without \nproper authentication, which could lead to privilege escalation.",
     "severity": "critical",
-    "cve_id": "CVE-2026-54089",
-    "ghsa_id": "GHSA-xqp3-jq6g-x3qm",
-    "affected_packages": [
-      "github.com/filebrowser/filebrowser/v2"
-    ],
+    "cve_id": "CVE-2026-20744",
+    "ghsa_id": "GHSA-v4hh-p8gf-c722",
+    "affected_packages": [],
     "cwes": [
-      null,
       null
     ],
     "references": [
@@ -452,7 +147,7 @@
     ],
     "ai_analysis": {
       "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-54089.",
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-20744.",
       "affected_industries": [
         "Technology",
         "General"
@@ -467,56 +162,16 @@
     "risk_score": 90
   },
   {
-    "id": "gh-GHSA-hvr9-72v2-fff3",
+    "id": "gh-GHSA-m6q8-j665-f2qg",
     "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:26:06Z",
-    "title": "SiYuan: Unauthenticated Admin API Access via Blanket chrome-extension:// Origin Allowlist",
-    "description": "## Summary\n\nSiYuan Note's kernel HTTP server unconditionally trusts all `chrome-extension://` origins, granting `RoleAdministrator` access to every installed browser extension without any authentication. Combined with the default empty `AccessAuthCode` on desktop installs, any Chrome/Chromium extension -- including a compromised legitimate extension via supply chain attack -- can make fully authenticated admin API calls to the SiYuan kernel at `127.0.0.1:6806`, enabling data exfiltration, stored",
-    "severity": "critical",
-    "cve_id": "CVE-2026-54069",
-    "ghsa_id": "GHSA-hvr9-72v2-fff3",
-    "affected_packages": [
-      "github.com/siyuan-note/siyuan/kernel"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-54069.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-gcm7-57gf-953c",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:26:00Z",
-    "title": "SiYuan: Unauthenticated SQLite Data Exfiltration via Template Injection in /api/icon/getDynamicIcon",
-    "description": "### Summary\n\nThe `/api/icon/getDynamicIcon` endpoint is explicitly excluded from authentication in SiYuan's kernel router (`router.go`, \"不需要鉴权\" -- no auth needed). When called with `type=8` and a valid block `id` parameter, this endpoint invokes `RenderDynamicIconContentTemplate`, which executes a Go template that includes the `querySQL` and `queryBlocks` functions. These functions run arbitrary SELECT statements against the SiYuan SQLite database. An unauthenticated network-adjacent attacker wh",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54068",
-    "ghsa_id": "GHSA-gcm7-57gf-953c",
-    "affected_packages": [
-      "github.com/siyuan-note/siyuan/kernel"
-    ],
-    "cwes": [
-      null
-    ],
+    "timestamp": "2026-07-11T00:31:50Z",
+    "title": "vulnerability in Drupal Clean RESTful allows . This issue affects Clean RESTful versions: *.*.",
+    "description": "vulnerability in Drupal Clean RESTful allows . This issue affects Clean RESTful versions: *.*.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-15087",
+    "ghsa_id": "GHSA-m6q8-j665-f2qg",
+    "affected_packages": [],
+    "cwes": [],
     "references": [
       null,
       null,
@@ -524,7 +179,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-54068.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-15087.",
       "affected_industries": [
         "Technology",
         "General"
@@ -539,60 +194,20 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-9mqm-qcwf-5qhg",
+    "id": "gh-GHSA-7wpg-27g9-f8vc",
     "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:25:51Z",
-    "title": "CredSweeper: Recursive archive size-limit bypass in deep scanner allows crafted compressed inputs to exhaust resources",
-    "description": "### Summary\nCredSweeper's deep scanner does not enforce `recursive_limit_size` as a hard limit. Several recursive scanners fully decompress or fully read attacker-controlled content before the remaining budget is validated, and `AbstractScanner.recursive_scan()` continues processing even when the residual budget is already negative.\n\nThis allows a crafted archive to bypass the intended recursive zip-bomb protection and force excessive memory / CPU consumption when deep scanning is enabled (`--de",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-9mqm-qcwf-5qhg",
-    "affected_packages": [
-      "credsweeper"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in CredSweeper's deep scanner allows attackers to craft malicious compressed files that bypass recursive size limits, leading to potential resource exhaustion (memory/CPU). This could result in denial-of-service (DoS) conditions or degraded performance for systems using the tool.",
-      "affected_industries": [
-        "Technology",
-        "Financial Services",
-        "Healthcare",
-        "Government",
-        "E-commerce"
-      ],
-      "recommended_actions": [
-        "Implement stricter validation of recursive size limits in CredSweeper's deep scanner to ensure the budget is enforced before processing content.",
-        "Apply rate-limiting or resource caps to prevent excessive resource consumption during deep scanning.",
-        "Monitor and update to the latest version of CredSweeper once a patch addressing this issue is released."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-h69g-9hx6-f3v4",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:25:20Z",
-    "title": "Excelize: Unbounded Row Index Allocation in Worksheet Parser (checkSheet OOM/Panic DoS)",
-    "description": "## Unbounded Row Index Allocation in Worksheet Parser (checkSheet OOM/Panic DoS)\n\n### Summary\nThe `checkSheet()` function in `github.com/xuri/excelize/v2` uses an attacker-controlled `<row r=\"N\">` XML attribute value directly as the length argument to `make([]xlsxRow, row)` without validating it against the Excel row limit (`TotalRows = 1,048,576`). A specially crafted XLSX file can trigger two denial-of-service variants: (A) an out-of-memory process kill when `r=2147483647` forces a ~16 GB allo",
+    "timestamp": "2026-07-11T00:31:50Z",
+    "title": "Multiple connections to the backend using the same charging station ID \nare allowed, which could...",
+    "description": "Multiple connections to the backend using the same charging station ID \nare allowed, which could allow an attacker to deploy multiple instances \nof malicious OCPP clients to overwhelm the backend.",
     "severity": "high",
-    "cve_id": "CVE-2026-54063",
-    "ghsa_id": "GHSA-h69g-9hx6-f3v4",
-    "affected_packages": [
-      "github.com/xuri/excelize/v2"
-    ],
+    "cve_id": "CVE-2026-44383",
+    "ghsa_id": "GHSA-7wpg-27g9-f8vc",
+    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null,
@@ -600,7 +215,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54063.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-44383.",
       "affected_industries": [
         "Technology",
         "General"
@@ -615,127 +230,254 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-h29v-hj44-q8cv",
+    "id": "gh-GHSA-5688-w7cj-j738",
     "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:25:15Z",
-    "title": "Authorizer: Unvalidated redirect_uri in /authorize leaks OAuth2 tokens to attacker-controlled URL",
-    "description": "## Summary\n\nThe `/authorize` endpoint accepts any `redirect_uri` without validating it against `AllowedOrigins`. When `response_type=token` or `response_type=id_token`, the server appends `access_token`, `id_token`, and `refresh_token` as query parameters and issues a 302 redirect to the attacker-supplied URL. An unauthenticated attacker can obtain the required `client_id` from the public `/graphql?query={meta{client_id}}` endpoint.\n\nPartial fix was applied in v2.0.1 to other handlers (`oauth_lo",
-    "severity": "critical",
-    "cve_id": "CVE-2026-54072",
-    "ghsa_id": "GHSA-h29v-hj44-q8cv",
-    "affected_packages": [
-      "github.com/authorizerdev/authorizer"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-54072.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-mvjr-vv3c-w4qv",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:25:09Z",
-    "title": "SiYuan: Stored XSS to RCE via CSS-snippet <style> breakout in renderSnippet()",
-    "description": "### Summary\n\nA CSS snippet body containing `</style>` breaks out of its surrounding `<style>` tag when `renderSnippet()` interpolates it via `insertAdjacentHTML`. A payload like `</style><img src=x onerror=\"...\">` runs arbitrary JavaScript in the renderer. On Electron desktop builds the renderer runs with `nodeIntegration:true`, so `require('child_process')` is reachable from the injected handler and the XSS chains to host RCE. Snippets sync via the workspace repository, so an attacker with writ",
-    "severity": "critical",
-    "cve_id": "CVE-2026-54067",
-    "ghsa_id": "GHSA-mvjr-vv3c-w4qv",
-    "affected_packages": [
-      "github.com/siyuan-note/siyuan/kernel"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
+    "timestamp": "2026-07-11T00:31:50Z",
+    "title": "vulnerability in Drupal Commerce guest registration allows . This issue affects Commerce guest...",
+    "description": "vulnerability in Drupal Commerce guest registration allows . This issue affects Commerce guest registration versions: *.*.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-15089",
+    "ghsa_id": "GHSA-5688-w7cj-j738",
+    "affected_packages": [],
+    "cwes": [],
     "references": [
       null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-54067.",
+      "risk_score": 75,
+      "impact_assessment": "The vulnerability in Drupal Commerce guest registration could allow unauthorized access, data leakage, or manipulation of sensitive customer information. This poses a significant risk to e-commerce platforms relying on Drupal Commerce.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "E-commerce",
+        "Retail",
+        "Nonprofits",
+        "Education"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update Drupal Commerce to the latest patched version once available.",
+        "Implement additional monitoring and logging for suspicious activity related to guest registration processes.",
+        "Review and restrict permissions for guest registration workflows to minimize potential exploitation."
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
-    "risk_score": 90
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-p4m3-mgmm-c664",
+    "id": "gh-GHSA-88vc-rc72-29f3",
     "source": "GitHub Security",
-    "timestamp": "2026-07-10T19:25:04Z",
-    "title": "SiYuan: Path Traversal via Double URL Encoding in /assets/*path (publish mode arbitrary   file─read), Incomplete fix of CVE-2026-41894 ",
-    "description": "## Summary\n  The patch for CVE-2026-41894 (\"Path Traversal via Double URL Encoding\") sanitized the `/export/` route but the\n  **identical root cause remains in the `/assets/*path` route**. In publish mode (anonymous read-only HTTP endpoint,\n  default port 6808), an unauthenticated remote attacker can read arbitrary files inside `WorkspaceDir` — including\n  `conf/conf.json` (which contains the `AccessAuthCode` SHA256 hash, API token, and sync keys), `temp/siyuan.db`,\n  `temp/blocktree.db`, and `s",
+    "timestamp": "2026-07-11T00:31:50Z",
+    "title": "Previously, there was no throttling on repeated authentication attempts \nto the charging station...",
+    "description": "Previously, there was no throttling on repeated authentication attempts \nto the charging station backend, which could allow an attacker to \nexecute a denial-of-service attack.",
     "severity": "high",
-    "cve_id": "CVE-2026-54066",
-    "ghsa_id": "GHSA-p4m3-mgmm-c664",
-    "affected_packages": [
-      "github.com/siyuan-note/siyuan/kernel"
-    ],
+    "cve_id": "CVE-2026-42952",
+    "ghsa_id": "GHSA-88vc-rc72-29f3",
+    "affected_packages": [],
     "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
       null,
       null,
       null
     ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-42952.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-wfpx-3cw4-cw3g",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-11T00:31:49Z",
+    "title": "Missing Authorization vulnerability in Drupal FlowDrop allows Forceful Browsing. This issue...",
+    "description": "Missing Authorization vulnerability in Drupal FlowDrop allows Forceful Browsing. This issue affects FlowDrop versions: from 0.0.0 to 1.6.0.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-58589",
+    "ghsa_id": "GHSA-wfpx-3cw4-cw3g",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 78,
+      "impact_assessment": "The Missing Authorization vulnerability in Drupal FlowDrop allows unauthorized users to access restricted resources via forceful browsing. This could lead to exposure of sensitive data, unauthorized actions, or system compromise.",
+      "affected_industries": [
+        "Technology",
+        "E-commerce",
+        "Healthcare",
+        "Education",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Upgrade to the latest patched version of FlowDrop (above 1.6.0) immediately.",
+        "Implement access control mechanisms to restrict unauthorized browsing and monitor for suspicious activity.",
+        "Conduct a security audit of your Drupal-based systems to identify and mitigate similar vulnerabilities."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 78
+  },
+  {
+    "id": "gh-GHSA-xvx3-jwjj-m2g9",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-11T00:31:49Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-14286",
+    "ghsa_id": "GHSA-xvx3-jwjj-m2g9",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 0,
+      "impact_assessment": "The CVE ID CVE-2026-14286 has been rejected or withdrawn, indicating that it is not a valid or active security threat. As such, it poses no risk to systems or industries.",
+      "affected_industries": [],
+      "recommended_actions": [
+        "Verify the source of the CVE and ensure it is not being misused or misrepresented.",
+        "Monitor official CVE databases and trusted security sources for updates on valid threats."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 0
+  },
+  {
+    "id": "gh-GHSA-vx3g-w5hr-294x",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-11T00:31:49Z",
+    "title": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\")...",
+    "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Drupal Canvas allows Cross-Site Scripting (XSS). This issue affects Drupal Canvas versions: from 0.0.0 to 1.4.2, from 1.5.0 to 1.5.2, from 1.6.0 to 1.6.1, from 1.7.0 to 1.7.1.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-58587",
+    "ghsa_id": "GHSA-vx3g-w5hr-294x",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-58587.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-4jgx-vqf2-p9g9",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-11T00:31:49Z",
+    "title": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\")...",
+    "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Drupal Canvas allows Cross-Site Scripting (XSS). This issue affects Drupal Canvas versions: from 0.0.0 to 1.4.2, from 1.5.0 to 1.5.2, from 1.6.0 to 1.6.1, from 1.7.0 to 1.7.1.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-58588",
+    "ghsa_id": "GHSA-4jgx-vqf2-p9g9",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-58588.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-gx73-gv82-355v",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-11T00:31:49Z",
+    "title": "OpenPLC Runtime v3 contains an authenticated arbitrary file write \nvulnerability in the legacy...",
+    "description": "OpenPLC Runtime v3 contains an authenticated arbitrary file write \nvulnerability in the legacy web UI program‑upload workflow. The \napplication stores an attacker‑supplied filename (prog_file) directly \ninto the Programs.File database field and later uses this value as the \ndestination path for an uploaded file without validating or restricting \nthe path. Because Python os.path.join() honors attacker‑controlled \nabsolute paths, an authenticated user can write arbitrary files anywhere\n writable b",
+    "severity": "high",
+    "cve_id": "CVE-2026-14480",
+    "ghsa_id": "GHSA-gx73-gv82-355v",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability allows unauthenticated remote attackers to exploit a path traversal flaw via double URL encoding in the '/assets/*path' route. This can lead to the exposure of sensitive files, including configuration files and database files, which may contain API tokens, authentication hashes, and other critical data. If exploited, this could result in unauthorized access, data breaches, and potential compromise of the affected system.",
+      "impact_assessment": "This vulnerability allows an authenticated attacker to write arbitrary files to any writable location on the server, potentially leading to remote code execution, data corruption, or unauthorized access to sensitive files.",
       "affected_industries": [
-        "Technology",
-        "Software Development",
-        "Cloud Services",
-        "Education",
-        "Media and Content Management"
+        "Manufacturing",
+        "Energy",
+        "Utilities",
+        "Automation",
+        "Industrial IoT"
       ],
       "recommended_actions": [
-        "Immediately apply a patch or update to address the incomplete fix for CVE-2026-41894 and sanitize the '/assets/*path' route to prevent path traversal attacks.",
-        "Restrict access to the publish mode endpoint (default port 6808) by implementing network-level access controls, such as IP whitelisting or VPN requirements.",
-        "Monitor logs for unusual access patterns or unauthorized file access attempts, and consider rotating API tokens and authentication keys as a precaution."
+        "Immediately update OpenPLC Runtime to the latest patched version if available.",
+        "Restrict access to the legacy web UI and ensure strong authentication mechanisms are in place.",
+        "Implement file path validation and sanitization to prevent arbitrary file writes."
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
     "risk_score": 85
   },
   {
-    "id": "gh-GHSA-fphv-wg9q-66c2",
+    "id": "gh-GHSA-xj92-p35c-g452",
     "source": "GitHub Security",
-    "timestamp": "2026-07-10T18:32:21Z",
-    "title": "Deloitte AI Assist for Customer disclosed some configuration information through public-facing...",
-    "description": "Deloitte AI Assist for Customer disclosed some configuration information through public-facing API endpoints that accepted unauthenticated requests. This information could reduce an attacker’s reconnaissance effort. On 2026-03-25, AI Assist for Customer restricted network access and enforced authentication for the previously exposed endpoints.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-57474",
-    "ghsa_id": "GHSA-fphv-wg9q-66c2",
+    "timestamp": "2026-07-11T00:31:49Z",
+    "title": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\")...",
+    "description": "Improper Neutralization of Input During Web Page Generation (\"Cross-site Scripting\") vulnerability in Drupal Colorbox allows Cross-Site Scripting (XSS). This issue affects Colorbox versions: from 0.0.0 to 2.1.5, from 0.0.0 to 2.2.0.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-58591",
+    "ghsa_id": "GHSA-xj92-p35c-g452",
     "affected_packages": [],
     "cwes": [
       null
@@ -743,38 +485,68 @@
     "references": [
       null,
       null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The disclosure of configuration information through unauthenticated API endpoints could allow attackers to gain insights into system architecture, potentially aiding in targeted attacks or exploitation. While the issue has been mitigated, the exposed data may still pose a residual risk if attackers have already accessed it.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-58591.",
       "affected_industries": [
         "Technology",
-        "Consulting",
-        "Financial Services",
-        "Healthcare"
+        "General"
       ],
       "recommended_actions": [
-        "Conduct a thorough audit of all public-facing API endpoints to ensure proper authentication and access controls are enforced.",
-        "Analyze logs to identify any unauthorized access attempts during the exposure period and assess potential data leakage.",
-        "Educate development teams on secure API design practices to prevent similar issues in the future."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "medium"
     },
-    "risk_score": 65
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-85qw-gwgm-xj6w",
+    "id": "gh-GHSA-vxww-4cjp-32x4",
     "source": "GitHub Security",
-    "timestamp": "2026-07-10T18:32:21Z",
-    "title": "Deloitte AI Assist for Customer exposed unauthenticated API endpoints that allowed an attacker...",
-    "description": "Deloitte AI Assist for Customer exposed unauthenticated API endpoints that allowed an attacker with knowledge of additional parameters to read from or inject content into the retrieval-augmented generation (RAG) corpus. On 2026-03-25, AI Assist for Customer restricted network access and enforced authentication for the previously exposed endpoints.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-57476",
-    "ghsa_id": "GHSA-85qw-gwgm-xj6w",
+    "timestamp": "2026-07-11T00:31:49Z",
+    "title": "vulnerability in Drupal Raw Formatter [Meta Tag Formatter] allows . This issue affects Raw...",
+    "description": "vulnerability in Drupal Raw Formatter [Meta Tag Formatter] allows . This issue affects Raw Formatter [Meta Tag Formatter] versions: *.*.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-15086",
+    "ghsa_id": "GHSA-vxww-4cjp-32x4",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "The vulnerability in the Drupal Raw Formatter [Meta Tag Formatter] module could allow attackers to manipulate or inject malicious meta tags, potentially leading to data leakage, SEO manipulation, or cross-site scripting (XSS) attacks.",
+      "affected_industries": [
+        "Technology",
+        "E-commerce",
+        "Media and Publishing",
+        "Education",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately identify and update the Raw Formatter [Meta Tag Formatter] module to the latest patched version once available.",
+        "Conduct a thorough security audit of your Drupal installation to identify any signs of exploitation.",
+        "Implement web application firewalls (WAFs) to mitigate potential exploitation attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-7v2j-q5j9-4g8x",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-11T00:31:49Z",
+    "title": "Missing Authorization vulnerability in Drupal FlowDrop allows Forceful Browsing. This issue...",
+    "description": "Missing Authorization vulnerability in Drupal FlowDrop allows Forceful Browsing. This issue affects FlowDrop versions: from 0.0.0 to 1.6.0.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-58590",
+    "ghsa_id": "GHSA-7v2j-q5j9-4g8x",
     "affected_packages": [],
     "cwes": [
       null
@@ -782,117 +554,308 @@
     "references": [
       null,
       null,
-      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-58590.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-q4vw-q8jq-2jg7",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-11T00:31:49Z",
+    "title": "vulnerability in Drupal Brute force attack protection allows . This issue affects Brute force...",
+    "description": "vulnerability in Drupal Brute force attack protection allows . This issue affects Brute force attack protection versions: *.*.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-11915",
+    "ghsa_id": "GHSA-q4vw-q8jq-2jg7",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
       null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The exposed unauthenticated API endpoints could allow attackers to manipulate or extract sensitive data from the retrieval-augmented generation (RAG) corpus, potentially leading to data breaches, misinformation, or unauthorized access to proprietary information.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-11915.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-qfp7-j94c-gx97",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-11T00:31:49Z",
+    "title": "vulnerability in Drupal Composer allows . This issue affects Composer versions: *.*.",
+    "description": "vulnerability in Drupal Composer allows . This issue affects Composer versions: *.*.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-11914",
+    "ghsa_id": "GHSA-qfp7-j94c-gx97",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-11914.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-44mv-pf85-f9px",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-11T00:31:49Z",
+    "title": "vulnerability in Drupal Mother May I allows . This issue affects Mother May I versions: *.*.",
+    "description": "vulnerability in Drupal Mother May I allows . This issue affects Mother May I versions: *.*.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-11913",
+    "ghsa_id": "GHSA-44mv-pf85-f9px",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "The vulnerability in Drupal Mother May I allows potential exploitation, which could lead to unauthorized access, data leakage, or system compromise. The lack of detailed information on severity increases uncertainty and risk.",
+      "affected_industries": [
+        "Technology",
+        "E-commerce",
+        "Healthcare",
+        "Government",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Immediately review and update Drupal Mother May I to the latest patched version if available.",
+        "Monitor systems for unusual activity or signs of exploitation related to this vulnerability.",
+        "Apply additional security controls such as web application firewalls (WAFs) to mitigate potential exploitation."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-66vp-2cwc-4pv3",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-11T00:31:48Z",
+    "title": "Improperly Controlled Modification of Dynamically-Determined Object Attributes vulnerability in...",
+    "description": "Improperly Controlled Modification of Dynamically-Determined Object Attributes vulnerability in Drupal Flag attendance field allows Object Injection. This issue affects Flag attendance field versions: from 0.0.0 to 1.2.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-55809",
+    "ghsa_id": "GHSA-66vp-2cwc-4pv3",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-55809.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-vwxh-w8pq-6q99",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-11T00:31:48Z",
+    "title": "URL Redirection to Untrusted Site ('Open Redirect') vulnerability in Drupal Drupal core allows...",
+    "description": "URL Redirection to Untrusted Site ('Open Redirect') vulnerability in Drupal Drupal core allows Content Spoofing. This issue affects Drupal core versions: from 0.0.0 to 10.5.12, from 10.6.0 to 10.6.11, from 11.2.0 to 11.2.14, from 11.3.0 to 11.3.12, from 0.0.0 to 11.0.*, from 0.0.0 to 11.1.*.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-55806",
+    "ghsa_id": "GHSA-vwxh-w8pq-6q99",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-55806.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "cve-CVE-2025-71372",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-04T02:16:23.097",
+    "title": "CVE-2025-71372 - Picklescan before 0.0.33 fails to detect the numpy.f2py.crackfortran.getlincoef gadget in pickle __r",
+    "description": "Picklescan before 0.0.33 fails to detect the numpy.f2py.crackfortran.getlincoef gadget in pickle __reduce__ methods, allowing arbitrary code execution. Attackers can craft malicious pickle files that execute arbitrary Python code when loaded, bypassing Picklescan's safety checks and enabling supply-chain poisoning of shared model files.",
+    "severity": "high",
+    "cve_id": "CVE-2025-71372",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-rrxm-2pvv-m66x",
+      "https://www.vulncheck.com/advisories/picklescan-arbitrary-code-execution-via-numpy-f2py-crackfortran-getlincoef-gadget",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-rrxm-2pvv-m66x"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows attackers to execute arbitrary Python code by exploiting a flaw in the Picklescan library's detection mechanism, potentially leading to supply-chain attacks, data breaches, and unauthorized access to systems relying on shared pickle files.",
+      "affected_industries": [
+        "Technology",
+        "Artificial Intelligence and Machine Learning",
+        "Software Development",
+        "Data Science",
+        "Cloud Computing"
+      ],
+      "recommended_actions": [
+        "Upgrade Picklescan to version 0.0.33 or later to ensure detection of malicious pickle files.",
+        "Implement additional validation and sanitization mechanisms for pickle files before loading them, such as using alternative serialization methods like JSON or Protobuf.",
+        "Educate developers and users about the risks of loading untrusted pickle files and enforce strict policies around file sharing and supply-chain security."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2025-71369",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-04T02:16:22.963",
+    "title": "CVE-2025-71369 - picklescan before 0.0.28 fails to detect malicious pickle files that use torch.utils.data.datapipes.",
+    "description": "picklescan before 0.0.28 fails to detect malicious pickle files that use torch.utils.data.datapipes.utils.decoder.basichandlers in reduce methods, allowing attackers to bypass safety checks. Remote attackers can embed undetected malicious code in pickle files that executes during deserialization, enabling remote code execution.",
+    "severity": "high",
+    "cve_id": "CVE-2025-71369",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-h3qp-7fh3-f8h4",
+      "https://www.vulncheck.com/advisories/picklescan-unsafe-deserialization-via-torch-utils-data-datapipes-utils-decoder-basichandlers",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-h3qp-7fh3-f8h4"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-71369.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2025-71367",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-04T02:16:22.833",
+    "title": "CVE-2025-71367 - picklescan before 0.0.34 fails to detect _operator.attrgetter function calls in pickle payloads, all",
+    "description": "picklescan before 0.0.34 fails to detect _operator.attrgetter function calls in pickle payloads, allowing attackers to bypass security checks. Remote attackers can craft malicious pickle files using _operator.attrgetter in reduce methods to execute arbitrary code when pickle.load() processes the file.",
+    "severity": "high",
+    "cve_id": "CVE-2025-71367",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-46h3-79wf-xr6c",
+      "https://www.vulncheck.com/advisories/picklescan-remote-code-execution-via-operator-attrgetter-detection-bypass",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-46h3-79wf-xr6c"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in picklescan before version 0.0.34 allows attackers to bypass security checks and execute arbitrary code by exploiting the _operator.attrgetter function in pickle payloads. This could lead to unauthorized access, data breaches, or system compromise if malicious pickle files are processed.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
-        "Retail",
-        "Consulting"
+        "E-commerce",
+        "Government"
       ],
       "recommended_actions": [
-        "Conduct a thorough audit of all API endpoints to ensure proper authentication and access controls are in place.",
-        "Implement monitoring and logging for API usage to detect and respond to any suspicious activity.",
-        "Educate development teams on secure API design practices to prevent similar vulnerabilities in the future."
+        "Immediately update picklescan to version 0.0.34 or later to patch the vulnerability.",
+        "Implement strict input validation and avoid deserializing untrusted pickle files to minimize exposure to malicious payloads.",
+        "Conduct a security audit of systems and applications that rely on pickle deserialization to identify potential risks."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 65
+    "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-13722",
+    "id": "cve-CVE-2025-71366",
     "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:52.010",
-    "title": "CVE-2026-13722 - WatchGuard Fireware OS contains a firmware validation bypass when processing a backup image via the ",
-    "description": "WatchGuard Fireware OS contains a firmware validation bypass when processing a backup image via the backup/restore feature. An authenticated administrator can exploit this vulnerability to install a tampered firmware image.This vulnerability affects Fireware OS 11.0 up to and including 11.12.4_Update1, 12.0 up to and including 12.12 and 2025.1 up to and including 2025.6.2.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13722",
-    "cvss_score": null,
+    "timestamp": "2026-07-04T02:16:22.707",
+    "title": "CVE-2025-71366 - picklescan before 0.0.28 fails to detect malicious torch.utils.bottleneck.__main__.run_cprofile func",
+    "description": "picklescan before 0.0.28 fails to detect malicious torch.utils.bottleneck.__main__.run_cprofile function calls in pickle files, allowing attackers to bypass safety checks. Remote attackers can embed undetected code in pickle files to achieve arbitrary code execution when victims load the files.",
+    "severity": "high",
+    "cve_id": "CVE-2025-71366",
+    "cvss_score": 8.1,
     "affected_products": [],
     "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00022"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13722.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-13384",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:51.893",
-    "title": "CVE-2026-13384 - An Out-of-bounds Write vulnerability in WatchGuard Fireware OS wgagent process could allow an authen",
-    "description": "An Out-of-bounds Write vulnerability in WatchGuard Fireware OS wgagent process could allow an authenticated privileged user to execute arbitrary code via a specially crafted requests to the Management Web UI.This vulnerability affects Fireware OS 12.1 up to and including 12.12 and 2025.1 up to and including 2026.2.",
-    "severity": "high",
-    "cve_id": "CVE-2026-13384",
-    "cvss_score": 7.2,
-    "affected_products": [
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m270:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m290:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m370:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m390:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m440:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m470:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m570:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m590:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m670:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m690:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_nv5:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t20:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t25:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t40:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t45:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t55:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t70:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t80:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t85:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxcloud:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxv:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m295:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m395:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m495:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m595:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m695:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t115-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t185:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t15:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t35:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00021"
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-4r9r-ch6f-vxmx",
+      "https://www.vulncheck.com/advisories/picklescan-arbitrary-code-execution-via-torch-utils-bottleneck-main-run-cprofile",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-4r9r-ch6f-vxmx"
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-13384.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-71366.",
       "affected_industries": [
         "Technology",
         "General"
@@ -907,63 +870,23 @@
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-13383",
+    "id": "cve-CVE-2025-71364",
     "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:51.773",
-    "title": "CVE-2026-13383 - An Out-of-bounds Write vulnerability in WatchGuard Fireware OS ikestubd process could allow an authe",
-    "description": "An Out-of-bounds Write vulnerability in WatchGuard Fireware OS ikestubd process could allow an authenticated privileged user to execute arbitrary code via a specially crafted requests to the Management Web UI.This vulnerability affects Fireware OS 12.1 up to and including 12.12 and 2025.1 up to and including 2026.2.",
+    "timestamp": "2026-07-04T02:16:22.583",
+    "title": "CVE-2025-71364 - picklescan before 0.0.30 fails to detect the asyncio.unix_events._UnixSubprocessTransport._start fun",
+    "description": "picklescan before 0.0.30 fails to detect the asyncio.unix_events._UnixSubprocessTransport._start function in pickle reduce methods, allowing remote code execution. Attackers can craft malicious pickle files embedding this built-in function that evade detection but execute arbitrary commands when loaded.",
     "severity": "high",
-    "cve_id": "CVE-2026-13383",
-    "cvss_score": 7.2,
-    "affected_products": [
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m270:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m290:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m370:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m390:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m440:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m470:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m570:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m590:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m670:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m690:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_nv5:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t20:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t25:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t40:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t45:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t55:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t70:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t80:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t85:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxcloud:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxv:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m295:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m395:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m495:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m595:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m695:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t115-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t185:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t15:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t35:-:*:*:*:*:*:*:*"
-    ],
+    "cve_id": "CVE-2025-71364",
+    "cvss_score": 8.1,
+    "affected_products": [],
     "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00020"
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-q77w-mwjj-7mqx",
+      "https://www.vulncheck.com/advisories/picklescan-arbitrary-code-execution-via-undetected-asyncio-unix-events-unixsubprocesstransport-start",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-q77w-mwjj-7mqx"
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-13383.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-71364.",
       "affected_industries": [
         "Technology",
         "General"
@@ -978,506 +901,23 @@
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-13377",
+    "id": "cve-CVE-2025-71362",
     "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:51.643",
-    "title": "CVE-2026-13377 - Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerab",
-    "description": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in WatchGuard Fireware OS SIP Proxy module allows Stored XSS. This vulnerability is an additional unmitigated attack path for CVE-2025-6947.\n\nThis issue affects Fireware OS 12.0 up to and including 12.12, 12.5 up to and including 12.5.18, and 2025.1 up to and including 2026.2.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13377",
-    "cvss_score": 4.8,
-    "affected_products": [
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m270:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m290:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m370:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m390:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m440:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m470:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m570:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m590:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m670:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m690:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_nv5:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t20:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t25:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t40:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t45:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t55:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t70:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t80:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t85:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxcloud:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxv:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m295:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m395:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m495:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m595:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m695:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t115-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t185:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t15:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t35:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00019"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13377.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-13376",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:51.497",
-    "title": "CVE-2026-13376 - Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerab",
-    "description": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in WatchGuard Fireware OS spamBlocker module allows Stored XSS. This vulnerability is an additional unmitigated attack path for CVE-2025-1071.\n\nThis issue affects Fireware OS 12.0 up to and including 12.12, 12.5 up to and including 12.5.18, and 2025.1 up to and including 2026.2.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13376",
-    "cvss_score": 4.8,
-    "affected_products": [
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m270:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m290:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m370:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m390:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m440:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m470:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m570:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m590:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m670:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m690:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_nv5:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t20:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t25:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t40:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t45:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t55:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t70:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t80:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t85:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxcloud:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxv:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m295:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m395:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m495:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m595:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m695:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t115-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t185:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t15:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t35:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00018"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13376.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-13375",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:51.373",
-    "title": "CVE-2026-13375 - Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerab",
-    "description": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in WatchGuard Fireware OS (Autotask Technology Integration module) allows Stored XSS. This vulnerability is an additional unmitigated attack path for CVE-2025-13938.\n\n\nThis issue affects Fireware OS 12.4 up to and including 12.12, 12.5 up to and including 12.5.18, and 2025.1 up to and including 2026.2.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13375",
-    "cvss_score": 4.8,
-    "affected_products": [
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m270:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m290:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m370:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m390:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m440:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m470:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m570:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m590:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m670:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m690:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_nv5:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t20:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t25:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t40:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t45:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t55:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t70:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t80:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t85:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxcloud:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxv:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m295:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m395:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m495:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m595:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m695:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t115-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t185:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t15:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t35:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00017"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13375.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-13374",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:51.257",
-    "title": "CVE-2026-13374 - Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerab",
-    "description": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in WatchGuard Fireware OS (ConnectWise Technology Integration module) allows Stored XSS. This vulnerability is an additional unmitigated attack path for CVE-2025-13937.\n\n\nThis issue affects Fireware OS 12.4 up to and including 12.12, 12.5 up to and including 12.5.18, and 2025.1 up to and including 2026.2.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13374",
-    "cvss_score": 4.8,
-    "affected_products": [
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m270:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m290:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m370:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m390:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m440:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m470:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m570:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m590:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m670:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m690:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_nv5:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t20:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t25:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t40:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t45:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t55:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t70:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t80:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t85:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxcloud:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxv:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m295:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m395:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m495:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m595:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m695:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t115-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t185:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t15:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t35:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00016"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13374.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-13373",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:51.137",
-    "title": "CVE-2026-13373 - Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerab",
-    "description": "Improper Neutralization of Input During Web Page Generation (XSS or 'Cross-site Scripting') vulnerability in WatchGuard Fireware OS (Tigerpaw Technology Integration module) allows Stored XSS. This vulnerability is an additional unmitigated attack path for CVE-2025-13936.\n\n\nThis issue affects Fireware OS 12.4 up to and including 12.12, 12.5 up to and including 12.5.18, and 2025.1 up to and including 2026.2.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13373",
-    "cvss_score": 4.8,
-    "affected_products": [
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m270:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m290:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m370:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m390:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m440:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m470:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m570:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m590:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m670:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m690:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_nv5:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t20:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t25:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t40:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t45:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t55:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t70:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t80:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t85:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxcloud:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxv:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m295:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m395:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m495:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m595:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m695:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t115-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t185:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t15:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t35:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00015"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13373.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-13371",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:51.013",
-    "title": "CVE-2026-13371 - An authenticated administrator can trigger a denial-of-service condition in the Fireware Management ",
-    "description": "An authenticated administrator can trigger a denial-of-service condition in the Fireware Management Web UI by sending malformed or crafted data to the put_data endpoint, which performs unsafe deserialization of the attacker-supplied input.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13371",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00014"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13371.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-13368",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:50.890",
-    "title": "CVE-2026-13368 - WatchGuard Fireware OS contains a race condition leading to a use-after-free vulnerability in LDAP a",
-    "description": "WatchGuard Fireware OS contains a race condition leading to a use-after-free vulnerability in LDAP authentication for the Mobile User VPN with IKEv2. A remote unauthenticated attacker could exploit this vulnerability to execute arbitrary code in the context of the iked process on Fireboxes that have a Mobile VPN with IKEv2 configured to use an external LDAP authentication server.\n\nThis vulnerability affects Fireware OS 11.0 up to and including 11.12.4_Update1, 12.0 up to and including 12.12 and 2025.1 up to and including 2026.2.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13368",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00023"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13368.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-13084",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:50.767",
-    "title": "CVE-2026-13084 - A null pointer dereference vulnerability in WatchGuard Fireware OS may allow a remote unauthenticate",
-    "description": "A null pointer dereference vulnerability in WatchGuard Fireware OS may allow a remote unauthenticated attacker to create a denial-of-service (DoS) condition by sending specially crafted IKEv2 messages. This vulnerability affects both the Mobile User VPN with IKEv2 and the Branch Office VPN using IKEv2 when configured with a dynamic gateway peer.\n\nThis vulnerability affects Fireware OS 11.10.2 up to and including 11.12.4_Update1, 12.0 up to and including 12.12 and 2025.1 up to and including 2026.2",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13084",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00024"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13084.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-13079",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:50.630",
-    "title": "CVE-2026-13079 - A local privilege escalation vulnerability in the WatchGuard Mobile VPN with SSL client for Windows ",
-    "description": "A local privilege escalation vulnerability in the WatchGuard Mobile VPN with SSL client for Windows allows a local attacker to escalate their privileges to NT AUTHORITY\\SYSTEM on the machine where the client is installed.\n\nThis issue affects the Mobile VPN with SSL client for Windows up to and including 2026.2.",
+    "timestamp": "2026-07-04T02:16:22.457",
+    "title": "CVE-2025-71362 - picklescan before 0.0.33 fails to detect unsafe deserialization when numpy.f2py.crackfortran functio",
+    "description": "picklescan before 0.0.33 fails to detect unsafe deserialization when numpy.f2py.crackfortran functions call eval on arbitrary strings. Attackers can embed malicious code in pickle files that executes when loaded from untrusted sources.",
     "severity": "high",
-    "cve_id": "CVE-2026-13079",
-    "cvss_score": 7.8,
-    "affected_products": [
-      "cpe:2.3:a:watchguard:mobile_vpn_with_ssl:*:*:*:*:*:windows:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m270:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m290:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m370:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m390:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m440:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m470:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m570:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m590:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m670:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m690:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_nv5:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t20:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t25:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t40:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t45:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t55:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t70:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t80:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t85:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxcloud:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxv:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m295:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m395:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m495:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m595:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m695:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t115-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t185:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t15:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t35:-:*:*:*:*:*:*:*"
-    ],
+    "cve_id": "CVE-2025-71362",
+    "cvss_score": 8.1,
+    "affected_products": [],
     "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00027"
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-r8g5-cgf2-4m4m",
+      "https://www.vulncheck.com/advisories/picklescan-arbitrary-code-execution-via-unsafe-deserialization-in-numpy-f2py-crackfortran",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-r8g5-cgf2-4m4m"
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-13079.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-71362.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1492,163 +932,23 @@
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-13054",
+    "id": "cve-CVE-2025-71360",
     "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:50.497",
-    "title": "CVE-2026-13054 - A path traversal vulnerability in the WatchGuard Fireware OS Management Web UI allows a privileged a",
-    "description": "A path traversal vulnerability in the WatchGuard Fireware OS Management Web UI allows a privileged authenticated attacker to write arbitrary files on the Firebox's filesystem.\n\n\n\n\nThis vulnerability affects Fireware OS 11.0 up to and including 11.12.4_Update1, 12.0 up to and including 12.12 and 2025.1 up to and including 2026.2.",
+    "timestamp": "2026-07-04T02:16:22.327",
+    "title": "CVE-2025-71360 - picklescan before 0.0.29 fails to detect malicious pickle files using idlelib.calltip.get_entity fun",
+    "description": "picklescan before 0.0.29 fails to detect malicious pickle files using idlelib.calltip.get_entity function in reduce methods. Attackers can embed undetected code in pickle files that executes remote commands when loaded by victims.",
     "severity": "high",
-    "cve_id": "CVE-2026-13054",
-    "cvss_score": 7.2,
-    "affected_products": [
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m270:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m290:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m370:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m390:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m440:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m470:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m570:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m590:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m670:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m690:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_nv5:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t20:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t25:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t40:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t45:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t55:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t70:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t80:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t85:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxcloud:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxv:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m295:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m395:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m495:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m595:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m695:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t115-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t185:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t15:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t35:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00028"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-13054.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-13053",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:50.320",
-    "title": "CVE-2026-13053 - An Out-of-bounds Write vulnerability in WatchGuard Fireware OS's CLI could allow an authenticated pr",
-    "description": "An Out-of-bounds Write vulnerability in WatchGuard Fireware OS's CLI could allow an authenticated privileged user to execute arbitrary code via a specially crafted CLI command.\n\nThis vulnerability affects Fireware OS 11.0 up to and including 11.12.4_Update1, 12.0 up to and including 12.12 and 2025.1 up to and including 2026.2.",
-    "severity": "high",
-    "cve_id": "CVE-2026-13053",
-    "cvss_score": 7.2,
-    "affected_products": [
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m270:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m290:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m370:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m390:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m440:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m470:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m4800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5600:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m570:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m5800:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m590:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m670:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m690:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_nv5:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t20:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t25:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t40:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t45:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t55:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t70:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t80:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t85:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxcloud:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:fireboxv:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m295:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m395:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m495:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m595:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_m695:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t115-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t125-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t145-w:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t185:-:*:*:*:*:*:*:*",
-      "cpe:2.3:o:watchguard:fireware:*:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t15:-:*:*:*:*:*:*:*",
-      "cpe:2.3:h:watchguard:firebox_t35:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00030"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-13053.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-13050",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-03T00:16:49.333",
-    "title": "CVE-2026-13050 - An Out-of-bounds Write vulnerability in WatchGuard Fireware OS networkd process could allow an authe",
-    "description": "An Out-of-bounds Write vulnerability in WatchGuard Fireware OS networkd process could allow an authenticated privileged user to execute arbitrary code via a specially crafted requests to the Management Web UI.This vulnerability affects Fireware OS 11.8 up to and including 11.12.4_Update1, 12.0 up to and including 12.12 and 2025.1 up to and including 2026.2.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13050",
-    "cvss_score": null,
+    "cve_id": "CVE-2025-71360",
+    "cvss_score": 8.1,
     "affected_products": [],
     "references": [
-      "https://www.watchguard.com/wgrd-psirt/advisory/wgsa-2026-00029"
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-9xph-j2h6-g47v",
+      "https://www.vulncheck.com/advisories/picklescan-remote-code-execution-via-undetected-idlelib-calltip-get-entity",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-9xph-j2h6-g47v"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13050.",
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-71360.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1658,8 +958,257 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 60
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2025-71359",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-04T02:16:22.197",
+    "title": "CVE-2025-71359 - picklescan before 0.0.29 fails to detect malicious pickle payloads that utilize lib2to3.pgen2.gramma",
+    "description": "picklescan before 0.0.29 fails to detect malicious pickle payloads that utilize lib2to3.pgen2.grammar.Grammar.loads in the reduce method, allowing remote code execution. Attackers can craft pickle files embedding dangerous code that evades picklescan detection and executes during pickle.load() deserialization.",
+    "severity": "high",
+    "cve_id": "CVE-2025-71359",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-f54q-57x4-jg88",
+      "https://www.vulncheck.com/advisories/picklescan-unsafe-deserialization-via-lib2to3-pgen2-grammar-grammar-loads",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-f54q-57x4-jg88"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-71359.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2025-71356",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-04T02:16:22.063",
+    "title": "CVE-2025-71356 - picklescan before 0.0.28 fails to detect malicious torch.fx.experimental.symbolic_shapes.ShapeEnv.ev",
+    "description": "picklescan before 0.0.28 fails to detect malicious torch.fx.experimental.symbolic_shapes.ShapeEnv.evaluate_guards_expression function calls in pickle files. Attackers can embed undetected code in pickle files that executes remote code when loaded by victims.",
+    "severity": "high",
+    "cve_id": "CVE-2025-71356",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-f4x7-rfwp-v3xw",
+      "https://www.vulncheck.com/advisories/picklescan-arbitrary-code-execution-via-torch-fx-experimental-symbolic-shapes-shapeenv-evaluate-guards-expression",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-f4x7-rfwp-v3xw"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-71356.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2025-71353",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-04T02:16:21.933",
+    "title": "CVE-2025-71353 - picklescan before 0.0.28 fails to detect malicious pickle files that exploit torch._dynamo.guards.Gu",
+    "description": "picklescan before 0.0.28 fails to detect malicious pickle files that exploit torch._dynamo.guards.GuardBuilder.get function in reduce methods. Attackers can craft pickle files with embedded code that evades picklescan detection and executes arbitrary commands when loaded.",
+    "severity": "high",
+    "cve_id": "CVE-2025-71353",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-86cj-95qr-2p4f",
+      "https://www.vulncheck.com/advisories/picklescan-remote-code-execution-via-torch-dynamo-guards-guardbuilder-get",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-86cj-95qr-2p4f"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-71353.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2025-71347",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-04T02:16:21.803",
+    "title": "CVE-2025-71347 - picklescan before 0.0.33 fails to detect malicious pickle files using numpy.f2py.crackfortran.param_",
+    "description": "picklescan before 0.0.33 fails to detect malicious pickle files using numpy.f2py.crackfortran.param_eval function in reduce methods, allowing attackers to bypass security checks. Remote attackers can embed undetected code in pickle files that executes during deserialization, enabling arbitrary code execution in applications loading untrusted pickle data.",
+    "severity": "high",
+    "cve_id": "CVE-2025-71347",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-cffc-mxrf-mhh4",
+      "https://www.vulncheck.com/advisories/picklescan-undetected-remote-code-execution-via-numpy-f2py-crackfortran-param-eval",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-cffc-mxrf-mhh4"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-71347.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2025-71345",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-04T02:16:21.670",
+    "title": "CVE-2025-71345 - picklescan before 0.0.30 fails to detect malicious pickle files that invoke torch.utils.bottleneck._",
+    "description": "picklescan before 0.0.30 fails to detect malicious pickle files that invoke torch.utils.bottleneck.__main__.run_autograd_prof function. Attackers can embed undetected code in pickle files that executes during deserialization, enabling remote code execution.",
+    "severity": "high",
+    "cve_id": "CVE-2025-71345",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-4whj-rm5r-c2v8",
+      "https://www.vulncheck.com/advisories/picklescan-arbitrary-code-execution-via-torch-utils-bottleneck-main-run-autograd-prof",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-4whj-rm5r-c2v8"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-71345.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2025-71343",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-04T02:16:21.527",
+    "title": "CVE-2025-71343 - picklescan before 0.0.30 fails to detect malicious pickle files that exploit lib2to3.pgen2.pgen.Pars",
+    "description": "picklescan before 0.0.30 fails to detect malicious pickle files that exploit lib2to3.pgen2.pgen.ParserGenerator.make_label function in the reduce method. Attackers can craft malicious pickle files with embedded code that evades detection but executes arbitrary commands when pickle.load() is called.",
+    "severity": "high",
+    "cve_id": "CVE-2025-71343",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-p9w7-82w4-7q8m",
+      "https://www.vulncheck.com/advisories/picklescan-arbitrary-code-execution-via-lib2to3-pgen2-pgen-parsergenerator-make-label-detection-bypass",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-p9w7-82w4-7q8m"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-71343.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2025-71342",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-04T02:16:21.387",
+    "title": "CVE-2025-71342 - picklescan before 0.0.30 fails to detect malicious pickle files using idlelib.run.Executive.runcode ",
+    "description": "picklescan before 0.0.30 fails to detect malicious pickle files using idlelib.run.Executive.runcode in reduce methods. Attackers can embed undetected code in pickle files that executes during pickle.load, enabling remote code execution in PyTorch models and supply chain attacks.",
+    "severity": "high",
+    "cve_id": "CVE-2025-71342",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-m869-42cg-3xwr",
+      "https://www.vulncheck.com/advisories/picklescan-undetected-remote-code-execution-via-idlelib-run-executive-runcode",
+      "https://github.com/mmaitre314/picklescan/security/advisories/GHSA-m869-42cg-3xwr"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-71342.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-54424",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-04T01:16:27.340",
+    "title": "CVE-2026-54424 - An Incorrect Use of Privileged APIs vulnerability in Unity Parsec on Windows hosts leads to a potent",
+    "description": "An Incorrect Use of Privileged APIs vulnerability in Unity Parsec on Windows hosts leads to a potential Elevation of Privilege. This issue affects Parsec through v2026-05-04.0. The patched version is Parsec for Windows version 150-104a. A user can generate a situation where there is an instance of parsecd.exe running as NT AUTHORITY\\SYSTEM with a user-controlled value of the AppData environment variable.",
+    "severity": "high",
+    "cve_id": "CVE-2026-54424",
+    "cvss_score": 8.4,
+    "affected_products": [],
+    "references": [
+      "https://github.com/tomadimitrie/CVE-2026-54424",
+      "https://parsec.app/",
+      "https://support.parsec.app/hc/en-us/articles/50612943726612-CVE-2026-54424",
+      "https://www.tomadimitrie.dev/blog/CVE-2026-54424"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54424.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
   }
 ]
