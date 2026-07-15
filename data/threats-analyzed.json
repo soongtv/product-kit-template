@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1784057815375-1",
+    "id": "twitter-1784085225646-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-14T19:36:55.375Z",
+    "timestamp": "2026-07-15T03:13:45.646Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -11,29 +11,28 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. It can lead to data encryption, service disruption, financial losses, and potential data breaches. The use of compromised CI/CD pipelines increases the risk of widespread impact across development and production environments.",
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant risk by exploiting compromised CI/CD pipelines. This could lead to widespread data encryption, service outages, and potential data exfiltration, severely impacting business operations.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
-        "E-commerce",
-        "Media and Entertainment",
-        "Government",
-        "Education"
+        "Retail",
+        "Manufacturing",
+        "Government"
       ],
       "recommended_actions": [
-        "Immediately review and secure CI/CD pipelines by implementing strict access controls, multi-factor authentication, and regular security audits.",
-        "Conduct a thorough review of cloud infrastructure configurations and apply security patches to all systems and applications.",
-        "Implement robust backup strategies, ensuring critical data is regularly backed up and stored in an isolated, secure environment."
+        "Immediately review and secure CI/CD pipelines by implementing multi-factor authentication (MFA) and ensuring least-privilege access controls.",
+        "Conduct a thorough audit of cloud infrastructure for unauthorized changes or suspicious activity, and patch any known vulnerabilities.",
+        "Deploy endpoint detection and response (EDR) solutions and monitor for indicators of compromise (IoCs) associated with this ransomware campaign."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "hn-1784057815375-1",
+    "id": "hn-1784085225646-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-14T19:36:55.375Z",
+    "timestamp": "2026-07-15T03:13:45.646Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -41,8 +40,49 @@
       "https://news.ycombinator.com/item?id=123"
     ],
     "ai_analysis": {
+      "risk_score": 20,
+      "impact_assessment": "The open-source vulnerability scanner itself poses minimal direct risk, but improper use or over-reliance on the tool could lead to missed vulnerabilities or false positives, potentially exposing organizations to security risks. Additionally, if the tool is not properly secured, it could be exploited by attackers to gain insights into an organization's dependency vulnerabilities.",
+      "affected_industries": [
+        "Technology",
+        "Software Development",
+        "Cybersecurity"
+      ],
+      "recommended_actions": [
+        "Evaluate the tool's credibility and security before integrating it into your workflow.",
+        "Use the tool as a supplementary measure alongside other vulnerability management practices, not as a standalone solution.",
+        "Regularly update the tool to ensure it includes the latest vulnerability databases and patches."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 20
+  },
+  {
+    "id": "gh-GHSA-3rf8-mgfc-9vfp",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:43Z",
+    "title": "A vulnerability was determined in zhinianboke xianyu-auto-reply on Server. Affected by this...",
+    "description": "A vulnerability was determined in zhinianboke xianyu-auto-reply on Server. Affected by this vulnerability is an unknown functionality of the file /api/v1/payment/withdraw/review?action=approve. Executing a manipulation can lead to trusting http permission methods on the server side. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized. This patch is called 19fc3282a1bb78a05c34945c088525d20e081cbd. It is best practice to apply a patch to resolve this is",
+    "severity": "low",
+    "cve_id": "CVE-2026-15753",
+    "ghsa_id": "GHSA-3rf8-mgfc-9vfp",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-15753.",
       "affected_industries": [
         "Technology",
         "General"
@@ -57,61 +97,16 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-2c7f-fxww-6w6c",
+    "id": "gh-GHSA-rqpx-m8w5-7hj9",
     "source": "GitHub Security",
-    "timestamp": "2026-07-14T19:34:47Z",
-    "title": "yutu: Arbitrary File Write via MCP `caption-download` Tool",
-    "description": "## Arbitrary File Write via MCP `caption-download` Tool\n\n### Summary\n\nThe `caption-download` MCP tool in yutu passes the caller-supplied `file` parameter directly to `os.Create()` at `pkg/caption/caption.go:272` without any path validation, canonicalization, or confinement to the `pkg.Root` boundary (`YUTU_ROOT`). A local attacker — or any process able to reach the HTTP MCP server — can write arbitrary content to any path writable by the yutu process, entirely outside the intended working direct",
-    "severity": "high",
-    "cve_id": "CVE-2026-50158",
-    "ghsa_id": "GHSA-2c7f-fxww-6w6c",
-    "affected_packages": [
-      "github.com/eat-pray-ai/yutu"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to write arbitrary files on the system, potentially leading to data corruption, privilege escalation, or execution of malicious code. This could compromise the integrity, confidentiality, and availability of the affected system.",
-      "affected_industries": [
-        "Technology",
-        "Media and Entertainment",
-        "E-commerce",
-        "Healthcare",
-        "Finance"
-      ],
-      "recommended_actions": [
-        "Immediately apply input validation and sanitize the `file` parameter in the `caption-download` tool to ensure paths are confined to the intended directory boundary.",
-        "Restrict access to the HTTP MCP server by implementing network-level controls such as firewalls and access control lists (ACLs).",
-        "Monitor logs for suspicious activity related to the `caption-download` tool and review file system changes for unauthorized modifications."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-ffq7-hh2j-r24p",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T19:31:23Z",
-    "title": "Auth0 Symfony SDK Accepted Bearer Tokens via URL Query Parameter",
-    "description": "### Description\nApplications built with the Auth0 Symphony SDK, using the Authorizer security authenticator to protect HTTP routes may accept OAuth 2.0 bearer access tokens provided through a URL query parameter, in addition to the standard Authorization header, which may increase the risk of access token exposure and replay against protected API endpoints.\n\n### Resolution\nUpgrade auth0/symfony to version 5.9.0 or greater.\n\n### Acknowledgement\nOkta would like to thank Alex Yeara for their discov",
-    "severity": "medium",
-    "cve_id": "CVE-2026-50157",
-    "ghsa_id": "GHSA-ffq7-hh2j-r24p",
-    "affected_packages": [
-      "auth0/symfony"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
+    "timestamp": "2026-07-15T00:31:43Z",
+    "title": "Buffer Overflow vulnerability in OpenHTJ2K v.0.18.4 and before allows an attacker to execute...",
+    "description": "Buffer Overflow vulnerability in OpenHTJ2K v.0.18.4 and before allows an attacker to execute arbitrary code via the openhtj2k_decoder_impl::invoke, invoke_line_based, invoke_line_based_stream, and invoke_line_based_predecoded function in source/core/interface/decoder.cpp",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-51808",
+    "ghsa_id": "GHSA-rqpx-m8w5-7hj9",
+    "affected_packages": [],
+    "cwes": [],
     "references": [
       null,
       null,
@@ -121,7 +116,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-50157.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-51808.",
       "affected_industries": [
         "Technology",
         "General"
@@ -136,134 +131,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-j6r7-6fhx-77wx",
+    "id": "gh-GHSA-qfmv-m5q8-c558",
     "source": "GitHub Security",
-    "timestamp": "2026-07-14T19:07:14Z",
-    "title": "n8n-MCP: Cross-tenant access to workflow version backups in multi-tenant HTTP deployments",
-    "description": "## Impact\n\nIn multi-tenant HTTP deployments — where a single n8n-mcp server serves several tenants — the locally stored workflow version history (the automatic backups taken before workflow updates) was not isolated per tenant. An authenticated tenant could read workflow version snapshots belonging to other tenants, and could delete or destroy other tenants' stored backups.\n\nA stored snapshot includes full node definitions, so the exposed data can contain credential references and authorization ",
-    "severity": "critical",
-    "cve_id": "CVE-2026-54052",
-    "ghsa_id": "GHSA-j6r7-6fhx-77wx",
-    "affected_packages": [
-      "n8n-mcp"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-54052.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-g7mm-9vx7-jm7h",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T19:00:29Z",
-    "title": "Woodpecker gRPC agent_id metadata can be spoofed- cross-tenant agent impersonation",
-    "description": "### Impact\nA vulnerability in Woodpecker CI's gRPC layer allowed any authenticated agent to impersonate any other agent on the same server by injecting a forged `agent_id` value into outgoing gRPC metadata. The server correctly verified the JWT token but then discarded the verified agent identity in favor of the client-supplied value.\n\n### Patches\nDirect patch: https://github.com/woodpecker-ci/woodpecker/pull/6567\nLater proper fix: https://github.com/woodpecker-ci/woodpecker/pull/6569\n\n### Worka",
-    "severity": "high",
-    "cve_id": "CVE-2026-50141",
-    "ghsa_id": "GHSA-g7mm-9vx7-jm7h",
-    "affected_packages": [
-      "go.woodpecker-ci.org/woodpecker/v3"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows authenticated agents to impersonate other agents on the same server by injecting a forged agent_id value into gRPC metadata. This could lead to cross-tenant data breaches, unauthorized access to sensitive CI/CD pipelines, and potential compromise of build artifacts or deployment processes.",
-      "affected_industries": [
-        "Technology",
-        "Software Development",
-        "DevOps",
-        "Cloud Service Providers"
-      ],
-      "recommended_actions": [
-        "Immediately apply the patch provided in https://github.com/woodpecker-ci/woodpecker/pull/6567 to mitigate the vulnerability.",
-        "Upgrade to the latest version of Woodpecker CI that includes the proper fix from https://github.com/woodpecker-ci/woodpecker/pull/6569.",
-        "Review and monitor logs for any suspicious activity or unauthorized agent behavior to identify potential exploitation of this vulnerability."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-xrcf-6jh3-ggvx",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:33:57Z",
-    "title": "Anyquery: Arbitrary File Write (AFW) which could lead to Remote Code Execution (RCE) via Unrestricted ATTACH DATABASE in Server Mode",
-    "description": "## Summary\nAnyquery's `server` mode does not disable or restrict native SQLite disk manipulation commands. Unauthenticated attackers connecting to the MySQL-compatible server port can use the `ATTACH DATABASE` command to write arbitrary SQLite databases to any path on the victim's filesystem where the process has write permissions. This leads to Arbitrary File Write (AFW) which could lead to Remote Code Execution (RCE) depending on the environment (e.g., by dropping a PHP web shell if a web serv",
-    "severity": "critical",
-    "cve_id": "CVE-2026-50006",
-    "ghsa_id": "GHSA-xrcf-6jh3-ggvx",
-    "affected_packages": [
-      "github.com/julien040/anyquery"
-    ],
-    "cwes": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-50006.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-9pqr-xmfw-fwj3",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "A\nsecurity flaw was found in certain NETGEAR Orbi models that\ncould allow an unauthorized user to...",
-    "description": "A\nsecurity flaw was found in certain NETGEAR Orbi models that\ncould allow an unauthorized user to cause the device to stop responding or\nrestart unexpectedly, disrupting network connectivity and making the device\ntemporarily unavailable.",
+    "timestamp": "2026-07-15T00:31:43Z",
+    "title": "A vulnerability was found in zhinianboke xianyu-auto-reply up to...",
+    "description": "A vulnerability was found in zhinianboke xianyu-auto-reply up to dcb445ad97816ad65299a7580ee0c8c8f929da84. Affected is an unknown function of the file /api/v1/users/ of the component Backend User Endpoint. Performing a manipulation results in missing authorization. The attack may be initiated remotely. The exploit has been made public and could be used. This product uses a rolling release model to deliver continuous updates. As a result, specific version information for affected or updated relea",
     "severity": "medium",
-    "cve_id": "CVE-2026-62655",
-    "ghsa_id": "GHSA-9pqr-xmfw-fwj3",
+    "cve_id": "CVE-2026-15752",
+    "ghsa_id": "GHSA-qfmv-m5q8-c558",
     "affected_packages": [],
     "cwes": [
       null
@@ -276,11 +151,12 @@
       null,
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-62655.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-15752.",
       "affected_industries": [
         "Technology",
         "General"
@@ -295,853 +171,102 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-h2wp-qqpw-35j4",
+    "id": "gh-GHSA-2957-9wvx-x9f4",
     "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "Missing cryptographic step in Windows Boot Loader allows an authorized attacker to bypass a...",
-    "description": "Missing cryptographic step in Windows Boot Loader allows an authorized attacker to bypass a security feature locally.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-58638",
-    "ghsa_id": "GHSA-h2wp-qqpw-35j4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-58638.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-4rwg-8m37-cjcc",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "Use after free in Windows DirectX allows an authorized attacker to elevate privileges locally.",
-    "description": "Use after free in Windows DirectX allows an authorized attacker to elevate privileges locally.",
-    "severity": "high",
-    "cve_id": "CVE-2026-58629",
-    "ghsa_id": "GHSA-4rwg-8m37-cjcc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows an authorized attacker to exploit a use-after-free condition in Windows DirectX, potentially leading to local privilege escalation. This could enable attackers to gain higher-level access to systems, execute malicious code, or compromise sensitive data.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Education",
-        "Manufacturing"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patches and updates provided by Microsoft as soon as they become available.",
-        "Implement least privilege principles to minimize the impact of potential privilege escalation.",
-        "Monitor systems for unusual behavior or unauthorized access attempts and review logs for indicators of exploitation."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-fq9x-x87x-q852",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "Use after free in Desktop Window Manager allows an authorized attacker to elevate privileges...",
-    "description": "Use after free in Desktop Window Manager allows an authorized attacker to elevate privileges locally.",
-    "severity": "high",
-    "cve_id": "CVE-2026-58633",
-    "ghsa_id": "GHSA-fq9x-x87x-q852",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows an authorized attacker to exploit a use-after-free condition in the Desktop Window Manager, potentially leading to local privilege escalation. This could enable attackers to gain higher-level access to systems, compromising sensitive data and critical operations.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Education",
-        "Retail"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patches or updates provided by the vendor to address CVE-2026-58633.",
-        "Implement strict access controls to limit local user privileges and reduce the attack surface.",
-        "Monitor systems for unusual behavior or privilege escalation attempts and enable logging to detect exploitation attempts."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-h6xv-84v7-xhr4",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "A security flaw in the router's certificate validation process was\ndiscovered in the NETGEAR...",
-    "description": "A security flaw in the router's certificate validation process was\ndiscovered in the NETGEAR XR1000 Gaming Router and certain Nighthawk models that could allow an unauthorized person to remotely access and take\ncontrol of the device.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-62657",
-    "ghsa_id": "GHSA-h6xv-84v7-xhr4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability in the certificate validation process of NETGEAR XR1000 Gaming Router and certain Nighthawk models could allow unauthorized remote access, enabling attackers to take full control of the device. This may lead to data interception, network compromise, or further attacks on connected devices.",
-      "affected_industries": [
-        "Gaming",
-        "Telecommunications",
-        "Small and Medium Businesses",
-        "Home Office Users"
-      ],
-      "recommended_actions": [
-        "Immediately update the firmware of affected NETGEAR routers to the latest version that addresses CVE-2026-62657.",
-        "Disable remote management features on the router if not required to minimize exposure.",
-        "Regularly monitor network traffic for any unusual activity and implement network segmentation to limit potential damage."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-9248-447r-6p88",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "A\nsecurity flaw was found in certain NETGEAR RAX models that could allow\na logged-in user to send...",
-    "description": "A\nsecurity flaw was found in certain NETGEAR RAX models that could allow\na logged-in user to send specially crafted requests to the router and run\nunauthorized commands. This could enable the user to make unauthorized changes\nto the router and affect its security and operation.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-62656",
-    "ghsa_id": "GHSA-9248-447r-6p88",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-62656.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-v22r-f7j7-wr95",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "Use after free in Desktop Window Manager allows an authorized attacker to elevate privileges...",
-    "description": "Use after free in Desktop Window Manager allows an authorized attacker to elevate privileges locally.",
-    "severity": "high",
-    "cve_id": "CVE-2026-58634",
-    "ghsa_id": "GHSA-v22r-f7j7-wr95",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-58634.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-mjpw-8r5p-rmgp",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "Use after free in Windows Win32K allows an authorized attacker to elevate privileges locally.",
-    "description": "Use after free in Windows Win32K allows an authorized attacker to elevate privileges locally.",
-    "severity": "high",
-    "cve_id": "CVE-2026-58632",
-    "ghsa_id": "GHSA-mjpw-8r5p-rmgp",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-58632.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-v2gx-jj2v-qjcg",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "Uncontrolled resource consumption in Windows DHCP Server allows an unauthorized attacker to deny...",
-    "description": "Uncontrolled resource consumption in Windows DHCP Server allows an unauthorized attacker to deny service over a network.",
-    "severity": "high",
-    "cve_id": "CVE-2026-58627",
-    "ghsa_id": "GHSA-v2gx-jj2v-qjcg",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in Windows DHCP Server allows an unauthorized attacker to exploit uncontrolled resource consumption, potentially leading to a denial-of-service (DoS) attack. This could disrupt network services, impacting business operations and critical infrastructure.",
-      "affected_industries": [
-        "Enterprise IT",
-        "Healthcare",
-        "Finance",
-        "Government",
-        "Telecommunications",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Immediately apply available patches or updates provided by Microsoft to address CVE-2026-58627.",
-        "Implement network monitoring to detect and mitigate unusual DHCP server activity or resource spikes.",
-        "Review and limit access to the DHCP server to trusted and authorized users only, using network segmentation and firewall rules."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-48qr-2xw5-xvf9",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "A\nsecurity flaw was discovered in the NETGEAR WAX333 Access Point that could\nallow someone...",
-    "description": "A\nsecurity flaw was discovered in the NETGEAR WAX333 Access Point that could\nallow someone already logged in and connected to the local network to make\nunauthorized changes to the device's settings",
-    "severity": "medium",
-    "cve_id": "CVE-2026-62659",
-    "ghsa_id": "GHSA-48qr-2xw5-xvf9",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 55,
-      "impact_assessment": "The vulnerability in the NETGEAR WAX333 Access Point allows an attacker with local network access to make unauthorized changes to the device's settings, potentially compromising network security and enabling further attacks.",
-      "affected_industries": [
-        "Small and Medium Businesses",
-        "Retail",
-        "Education",
-        "Healthcare",
-        "Hospitality"
-      ],
-      "recommended_actions": [
-        "Update the NETGEAR WAX333 firmware to the latest version as soon as a patch is released.",
-        "Restrict local network access to trusted users and devices to minimize the risk of exploitation.",
-        "Enable network monitoring to detect and respond to unauthorized configuration changes or suspicious activities."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 55
-  },
-  {
-    "id": "gh-GHSA-fj97-xjm9-5vjr",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "A security flaw was discovered in certain NETGEAR Nighthawk RAX series routers\nthat could allow...",
-    "description": "A security flaw was discovered in certain NETGEAR Nighthawk RAX series routers\nthat could allow someone already logged in to the device to run unauthorized commands\nor code on the router.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-62658",
-    "ghsa_id": "GHSA-fj97-xjm9-5vjr",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-62658.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-qxc6-2c9c-7vxv",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "Concurrent execution using shared resource with improper synchronization ('race condition') in...",
-    "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Wireless Networking allows an authorized attacker to elevate privileges locally.",
-    "severity": "high",
-    "cve_id": "CVE-2026-58628",
-    "ghsa_id": "GHSA-qxc6-2c9c-7vxv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-58628.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-6q58-22x4-6rcv",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "Use after free in Windows Client-Side Caching (CSC) Service allows an authorized attacker to...",
-    "description": "Use after free in Windows Client-Side Caching (CSC) Service allows an authorized attacker to elevate privileges locally.",
-    "severity": "high",
-    "cve_id": "CVE-2026-58637",
-    "ghsa_id": "GHSA-6q58-22x4-6rcv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-58637.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-h9cr-8qw2-fhg7",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "Use after free in Windows Remote Desktop Services allows an authorized attacker to execute code...",
-    "description": "Use after free in Windows Remote Desktop Services allows an authorized attacker to execute code over a network.",
-    "severity": "high",
-    "cve_id": "CVE-2026-58626",
-    "ghsa_id": "GHSA-h9cr-8qw2-fhg7",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows an authorized attacker to execute arbitrary code remotely, potentially leading to full system compromise, data exfiltration, or service disruption.",
-      "affected_industries": [
-        "Healthcare",
-        "Finance",
-        "Government",
-        "Education",
-        "Technology",
-        "Energy"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patches from Microsoft addressing CVE-2026-58626 immediately.",
-        "Restrict access to Remote Desktop Services to only trusted IPs and implement network segmentation.",
-        "Enable monitoring and logging of Remote Desktop Services to detect and respond to suspicious activities."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-9f2j-4qc4-329w",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-14T18:32:42Z",
-    "title": "Use after free in Windows Cloud Files Mini Filter Driver allows an authorized attacker to elevate...",
-    "description": "Use after free in Windows Cloud Files Mini Filter Driver allows an authorized attacker to elevate privileges locally.",
-    "severity": "high",
-    "cve_id": "CVE-2026-58613",
-    "ghsa_id": "GHSA-9f2j-4qc4-329w",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows an authorized attacker to exploit a use-after-free condition in the Windows Cloud Files Mini Filter Driver, potentially leading to local privilege escalation. This could enable attackers to gain higher-level access to systems, execute arbitrary code, or compromise sensitive data.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
-        "Government",
-        "Education",
-        "Retail"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patches and updates from Microsoft as soon as they are available to address CVE-2026-58613.",
-        "Implement monitoring and logging to detect any unusual or unauthorized privilege escalation activities on affected systems.",
-        "Restrict access to systems and ensure the principle of least privilege is enforced to minimize the risk of exploitation."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-34152",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T04:17:50.043",
-    "title": "CVE-2026-34152 - Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. ",
-    "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.471, pre-deployment and post-deployment commands are single-quote escaped but then sent through SSH heredoc transport that preserves newlines, allowing an authenticated user to inject additional shell statements that execute on the remote server during deployment. This issue is fixed in version 4.0.0-beta.471.",
-    "severity": "high",
-    "cve_id": "CVE-2026-34152",
-    "cvss_score": 8.8,
-    "affected_products": [],
-    "references": [
-      "https://github.com/coollabsio/coolify/commit/ad95d65aca064f49b38f73f88d61f842737d5463",
-      "https://github.com/coollabsio/coolify/pull/9173",
-      "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.471",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-5qp8-9gg7-4c86"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-34152.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-34149",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T04:17:49.800",
-    "title": "CVE-2026-34149 - Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. ",
-    "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.471, DatabaseBackupJob interpolates user-controlled database credentials and MongoDB collection exclusion names into backup shell commands without adequate escaping, allowing an authenticated user with database management permissions to execute commands on managed servers. This issue is fixed in version 4.0.0-beta.471.",
+    "timestamp": "2026-07-15T00:31:43Z",
+    "title": "A security vulnerability has been detected in mastergo-design mastergo-magic-mcp up to 0.2.0. The...",
+    "description": "A security vulnerability has been detected in mastergo-design mastergo-magic-mcp up to 0.2.0. The affected element is the function execute of the file mastergo/component-workflow.md of the component mcp__getComponentGenerator. The manipulation of the argument rootPath leads to path traversal. An attack has to be approached locally. The exploit has been disclosed publicly and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
     "severity": "low",
-    "cve_id": "CVE-2026-34149",
-    "cvss_score": 3.3,
-    "affected_products": [],
+    "cve_id": "CVE-2026-15751",
+    "ghsa_id": "GHSA-2957-9wvx-x9f4",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://github.com/coollabsio/coolify/commit/952f3247970d261ff93f85c79066192f58f9557e",
-      "https://github.com/coollabsio/coolify/commit/99043600ee881fd8581185e7590604d9882382cd",
-      "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.471",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-4vff-6j8j-qhcg",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-4vff-6j8j-qhcg"
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
       "risk_score": 35,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-34149.",
+      "impact_assessment": "The vulnerability allows local attackers to exploit path traversal, potentially leading to unauthorized access to sensitive files or directories. However, the attack requires local access, limiting its scope.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Software Development",
+        "Design Tools",
+        "Creative Agencies"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Restrict local access to trusted users and implement strict access controls.",
+        "Monitor for updates or patches from the vendor and apply them promptly once available.",
+        "Conduct a code review to identify and mitigate similar vulnerabilities in related components."
       ],
-      "urgency": "low"
+      "urgency": "medium"
     },
     "risk_score": 35
   },
   {
-    "id": "cve-CVE-2026-34058",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T04:17:49.193",
-    "title": "CVE-2026-34058 - Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. ",
-    "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.471, the Livewire component Server\\Resources exposes public methods (startUnmanaged, stopUnmanaged, restartUnmanaged) that accept a container ID parameter directly from the browser without any sanitization or escaping. This parameter is interpolated directly into shell commands executed via SSH on managed servers, enabling any authenticated team member to execute arbitrary OS commands on remote servers. This issue is fixed in version 4.0.0-beta.471.",
-    "severity": "high",
-    "cve_id": "CVE-2026-34058",
-    "cvss_score": 8.8,
-    "affected_products": [],
+    "id": "gh-GHSA-rp4h-q5qj-wrcr",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:43Z",
+    "title": "An authentication bypass vulnerability exists in certain releases of Ciena Navigator Network...",
+    "description": "An authentication bypass vulnerability exists in certain releases of Ciena Navigator Network Control Suite (NCS), Manage Control Plan (MCP), and Blue Planet products. The issue is caused by improper handling of HTTP request paths and headers, which allows an unauthenticated attacker to manipulate requests in a manner that bypasses authentication and associated audit logging controls.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-5270",
+    "ghsa_id": "GHSA-rp4h-q5qj-wrcr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://github.com/coollabsio/coolify/commit/944a038349216f00b390e905c121355adc8b23c1",
-      "https://github.com/coollabsio/coolify/pull/9172",
-      "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.471",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-rh5x-qx77-fq9v",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-rh5x-qx77-fq9v"
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-34058.",
+      "impact_assessment": "This vulnerability allows unauthenticated attackers to bypass authentication mechanisms and audit logging controls, potentially leading to unauthorized access to sensitive systems, data manipulation, and disruption of network operations.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Telecommunications",
+        "Cloud Service Providers",
+        "Data Centers",
+        "Network Infrastructure Providers"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-34057",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T04:17:48.647",
-    "title": "CVE-2026-34057 - Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. ",
-    "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.471, the database import Livewire component (app/Livewire/Project/Database/Import.php) allows client-controlled container and server properties to reach shell commands without locking or validation, allowing an authenticated user to inject commands through a database import container name. This issue is fixed in version 4.0.0-beta.471.",
-    "severity": "high",
-    "cve_id": "CVE-2026-34057",
-    "cvss_score": 8.8,
-    "affected_products": [],
-    "references": [
-      "https://github.com/coollabsio/coolify/commit/d486bf09ab2da8ad78fa721a079f066c76ce08d2",
-      "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.471",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-6r3g-w7x8-54fj",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-6r3g-w7x8-54fj"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-34057.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-34048",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T04:17:48.417",
-    "title": "CVE-2026-34048 - Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. ",
-    "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.471, terminal websocket bootstrap routes only check authentication and do not enforce terminal authorization, allowing a low-privileged team member to connect to terminal routes and execute commands on team servers. This issue is fixed in version 4.0.0-beta.471.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-34048",
-    "cvss_score": 9.9,
-    "affected_products": [],
-    "references": [
-      "https://github.com/coollabsio/coolify/commit/847166a3f89b7c80972fa0d2e5c754976f95b6ad",
-      "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.471",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-mw6q-2hmg-mhxv",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-mw6q-2hmg-mhxv"
-    ],
-    "ai_analysis": {
-      "risk_score": 100,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-34048.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately apply patches or updates provided by Ciena for affected products to mitigate the vulnerability.",
+        "Implement additional monitoring and logging mechanisms to detect unauthorized access attempts and anomalous HTTP requests.",
+        "Conduct a thorough review of network configurations and access controls to ensure proper security measures are in place."
       ],
       "urgency": "critical"
     },
-    "risk_score": 100
-  },
-  {
-    "id": "cve-CVE-2026-34047",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T04:17:48.287",
-    "title": "CVE-2026-34047 - Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. ",
-    "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.471, terminal WebSocket bootstrap routes did not enforce the expected authorization middleware, allowing an authenticated user to access terminal functionality for resources outside the authorized scope and potentially execute commands. This issue is fixed in version 4.0.0-beta.471.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-34047",
-    "cvss_score": 9.9,
-    "affected_products": [],
-    "references": [
-      "https://github.com/coollabsio/coolify/commit/bc91b41f92f1bbb53886a5d7a60335cbf1621cd5",
-      "https://github.com/coollabsio/coolify/pull/9169",
-      "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.471",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-652w-qv22-2r7c",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-652w-qv22-2r7c"
-    ],
-    "ai_analysis": {
-      "risk_score": 100,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-34047.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 100
-  },
-  {
-    "id": "cve-CVE-2026-34044",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T04:17:48.153",
-    "title": "CVE-2026-34044 - Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. ",
-    "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.466, the Logs::mount() component looks up resources by UUID without scoping the lookup to the current team, allowing an authenticated user to access logs for applications owned by other teams by supplying a victim resource UUID. This issue is fixed in version 4.0.0-beta.466.",
-    "severity": "high",
-    "cve_id": "CVE-2026-34044",
-    "cvss_score": 7.7,
-    "affected_products": [],
-    "references": [
-      "https://github.com/coollabsio/coolify/commit/6fbb5e626a82c576ae7a1a08b4e1d16aee2e82ed",
-      "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.466",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-565g-9j4m-wqmr"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-34044.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-34037",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T04:17:48.020",
-    "title": "CVE-2026-34037 - Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. ",
-    "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.464, the cloneTo() Livewire action in ResourceOperations.php authorizes the source resource but resolves destination resources with unscoped Eloquent lookups, allowing an authenticated user to clone resources into destinations owned by other teams and access cross-tenant resources. This issue is fixed in version 4.0.0-beta.464.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-34037",
-    "cvss_score": 9.9,
-    "affected_products": [],
+    "id": "gh-GHSA-6jrj-gphg-p8mj",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:43Z",
+    "title": "In Ciena's Navigator Network Control Suite (NCS) and Manage Control Plan (MCP), there are hidden...",
+    "description": "In Ciena's Navigator Network Control Suite (NCS) and Manage Control Plan (MCP), there are hidden system accounts used for internal software operations. Some of these accounts have default passwords that may be predictable. While these accounts have very limited permissions on their own, an attacker could combine an attack using one of these accounts with other potential weaknesses to launch a more significant attack, possibly leading to escalation of privilege on the system.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-5269",
+    "ghsa_id": "GHSA-6jrj-gphg-p8mj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://github.com/coollabsio/coolify/commit/1759a1631cd63271ebf6caa250c6d93440eaa333",
-      "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.464",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-ggrr-wrvr-x83v",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-ggrr-wrvr-x83v"
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
-      "risk_score": 100,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-34037.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 100
-  },
-  {
-    "id": "cve-CVE-2026-34035",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T04:17:47.873",
-    "title": "CVE-2026-34035 - Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. ",
-    "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.466, log drain secret and environment values were interpolated into shell commands without sufficient encoding, allowing an authenticated user to inject commands executed on the host. This issue is fixed in version 4.0.0-beta.466.",
-    "severity": "high",
-    "cve_id": "CVE-2026-34035",
-    "cvss_score": 8.8,
-    "affected_products": [],
-    "references": [
-      "https://github.com/coollabsio/coolify/commit/fcd574e1eb1c2f504c48e5be4a5cb6d69f8f1f55",
-      "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.466",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-3xm2-hqg8-4m2p",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-3xm2-hqg8-4m2p"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-34035.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-34034",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T04:17:47.603",
-    "title": "CVE-2026-34034 - Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. ",
-    "description": "Coolify is an open-source and self-hostable tool for managing servers, applications, and databases. Prior to 4.0.0-beta.466, the sentinel_token setting is used in shell commands without sufficient validation, allowing an authenticated user with access to server Sentinel settings to inject shell syntax and execute commands on the host when Sentinel is restarted. This issue is fixed in version 4.0.0-beta.466.",
-    "severity": "high",
-    "cve_id": "CVE-2026-34034",
-    "cvss_score": 8.8,
-    "affected_products": [],
-    "references": [
-      "https://github.com/coollabsio/coolify/commit/096d4369e59b3db7ace2db3ca42588c41b9b6019",
-      "https://github.com/coollabsio/coolify/releases/tag/v4.0.0-beta.466",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-rpr8-p7jc-x844",
-      "https://github.com/coollabsio/coolify/security/advisories/GHSA-rpr8-p7jc-x844"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-34034.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-11328",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T02:16:28.583",
-    "title": "CVE-2026-11328 - The Exclusive Addons for Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting",
-    "description": "The Exclusive Addons for Elementor plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the post title parameter in all versions up to, and including, 2.7.9.8 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-11328",
-    "cvss_score": 6.4,
-    "affected_products": [],
-    "references": [
-      "https://plugins.trac.wordpress.org/browser/exclusive-addons-for-elementor/tags/2.7.9.8/extensions/post-duplicator.php#L19",
-      "https://plugins.trac.wordpress.org/browser/exclusive-addons-for-elementor/tags/2.7.9.8/extensions/post-duplicator.php#L34",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/690fd38c-0e12-45f3-9055-51252e4809b1?source=cve"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11328.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-5269.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1153,24 +278,29 @@
       ],
       "urgency": "medium"
     },
-    "risk_score": 60
+    "risk_score": 50
   },
   {
-    "id": "cve-CVE-2026-53648",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T00:16:34.390",
-    "title": "CVE-2026-53648 - FOSSBilling is a free, open-source billing and client management system. Prior to version 0.8.1, dow",
-    "description": "FOSSBilling is a free, open-source billing and client management system. Prior to version 0.8.1, downloadable product files are stored using a deterministic filename-derived path. When an administrator uploads a file for a downloadable product, FOSSBilling stores the file as `md5(<original filename>)` under the uploads directory. Because the stored path depends only on the client-supplied filename, two different downloadable products, or product/order files, uploaded with the same original filename will resolve to the same stored file path. A later upload can overwrite an earlier upload, causing customers or administrators downloading the earlier product to receive the later file instead. Version 0.8.1 patches the issue. Some workarounds are available. Restrict the `servicedownloadable.manage` permission to fully trusted administrators only. As an operational mitigation, ensure downloadable product files use unique filenames before upload. This reduces accidental collisions but does not fully address the underlying issue.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53648",
-    "cvss_score": null,
-    "affected_products": [],
+    "id": "gh-GHSA-467v-w526-45hg",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:43Z",
+    "title": "Incorrect access control in the /api/License/deactivateOffline endpoint of CAXPerts...",
+    "description": "Incorrect access control in the /api/License/deactivateOffline endpoint of CAXPerts UniversalPlantViewer WebServices Server v2.7.6 allows authenticated attackers with low-level privileges to cause a Denial of Service (DoS) via removing the license from the webserver.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-36035",
+    "ghsa_id": "GHSA-467v-w526-45hg",
+    "affected_packages": [],
+    "cwes": [],
     "references": [
-      "https://github.com/FOSSBilling/FOSSBilling/security/advisories/GHSA-x7p2-xhvc-cfp9"
+      null,
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53648.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-36035.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1182,24 +312,29 @@
       ],
       "urgency": "medium"
     },
-    "risk_score": 60
+    "risk_score": 50
   },
   {
-    "id": "cve-CVE-2026-53647",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T00:16:34.263",
-    "title": "CVE-2026-53647 - FOSSBilling is a free, open-source billing and client management system. In versions 0.5.3 through 0",
-    "description": "FOSSBilling is a free, open-source billing and client management system. In versions 0.5.3 through 0.7.2, the Guest `serviceapikey/get_info` API endpoint is accessible without authentication. Any caller with a valid API key can retrieve all custom configuration parameters (`custom_*` fields) stored in the key's database record. These custom fields are populated by billing administrators and can contain business-sensitive data such as pricing tiers, feature flags, rate limits, expiry overrides, or access scope data. Version 0.8.0 patches the issue. Some workarounds are available. Administrators can avoid storing sensitive data in `custom_*` API key configuration fields, monitor API logs for suspicious calls to `/api/guest/serviceapikey/get_info`, and/or disable the Serviceapikey module if not in active use.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53647",
-    "cvss_score": null,
-    "affected_products": [],
+    "id": "gh-GHSA-3xhc-5w7c-ppw7",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:43Z",
+    "title": "A use of uninitialized value vulnerability exists in the Matter SDK (connectedhomeip) before 1.4...",
+    "description": "A use of uninitialized value vulnerability exists in the Matter SDK (connectedhomeip) before 1.4.0, where the `GetDestinationGroupId().Value()` method is called without first checking whether a value exists. This leads to a crash when an InvokeCommand is sent without initializing the destination group ID. The issue affects all versions before commit 0360cc3 (Dec 5, 2024) and leads to denial of service through SIGABRT. It is fixed by adding a .HasValue() check before access.",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-56364",
+    "ghsa_id": "GHSA-3xhc-5w7c-ppw7",
+    "affected_packages": [],
+    "cwes": [],
     "references": [
-      "https://github.com/FOSSBilling/FOSSBilling/security/advisories/GHSA-737q-9gpr-6mpq"
+      null,
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53647.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-56364.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1211,27 +346,443 @@
       ],
       "urgency": "medium"
     },
-    "risk_score": 60
+    "risk_score": 50
   },
   {
-    "id": "cve-CVE-2026-13356",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-07T00:16:34.063",
-    "title": "CVE-2026-13356 - A malicious webpage could interrupt a pending navigation by enqueuing a synchronous JavaScript dialo",
-    "description": "A malicious webpage could interrupt a pending navigation by enqueuing a synchronous JavaScript dialog, causing the browser UI to display the destination origin in the address bar while continuing to render attacker-controlled content. This vulnerability was fixed in Firefox for iOS 152.3.",
+    "id": "gh-GHSA-qj9w-vfqp-8pcv",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:43Z",
+    "title": "A reachable assertion vulnerability exists in the Matter SDK (connectedhomeip) before 1.4.2,...",
+    "description": "A reachable assertion vulnerability exists in the Matter SDK (connectedhomeip) before 1.4.2, specifically within the Level Control cluster's periodic server tick logic. When a MoveToLevel command is sent and immediately followed by a write of OperationMode=2 (in the Pump Configuration and Control cluster), the server tick function violates the assertion `currentLevel < maxLevel`, resulting in a crash. This can be exploited remotely without authentication to cause denial of service. Affected vers",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-56362",
+    "ghsa_id": "GHSA-qj9w-vfqp-8pcv",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-56362.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-hr36-79f7-75x7",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:43Z",
+    "title": "Buffer Overflow vulnerability in OpenHTJ2K v.0.18.4 and before allows an attacker to execute...",
+    "description": "Buffer Overflow vulnerability in OpenHTJ2K v.0.18.4 and before allows an attacker to execute arbitrary code via the j2k_precinct_subband::parse_packet_header() in source/core/coding/coding_units.cpp",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-51807",
+    "ghsa_id": "GHSA-hr36-79f7-75x7",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-51807.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-mv6q-v23c-9757",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:43Z",
+    "title": "A null pointer dereference vulnerability exists in the Matter SDK (connectedhomeip) before 1.4.0,...",
+    "description": "A null pointer dereference vulnerability exists in the Matter SDK (connectedhomeip) before 1.4.0, affecting the ReadRevisionAttribute function used in multiple clusters (Channel, Account Login, TargetNavigator, etc.). The function lacks proper validation of the delegate pointer before dereferencing. A remote unauthenticated attacker can exploit this issue by sending a crafted read request, causing the device to crash (denial of service). This issue has been confirmed in SDK version v1.4 (commit ",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-56363",
+    "ghsa_id": "GHSA-mv6q-v23c-9757",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-56363.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-wj9x-8hv5-2p36",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:43Z",
+    "title": "A reachable assertion vulnerability exists in the Matter SDK (connectedhomeip) before 1.4.0, in...",
+    "description": "A reachable assertion vulnerability exists in the Matter SDK (connectedhomeip) before 1.4.0, in the interaction model command processing logic. When an InvokeCommandRequest is sent to a nonexistent endpoint and cluster (e.g., 0x34), the code incorrectly treats the endpoint as valid due to missing checks in CodegenDataModelProvider::Invoke. This causes a VerifyOrDie failure in ProcessCommandDataIB and results in a crash (SIGABRT). The issue has been acknowledged and fixed in a later revision (PR ",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-56365",
+    "ghsa_id": "GHSA-wj9x-8hv5-2p36",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 72,
+      "impact_assessment": "The vulnerability could allow an attacker to crash devices using the Matter SDK by sending a malformed InvokeCommandRequest, leading to a denial of service (DoS). This could disrupt IoT ecosystems and smart home devices relying on the Matter protocol.",
+      "affected_industries": [
+        "Smart Home Devices",
+        "IoT Manufacturers",
+        "Consumer Electronics",
+        "Industrial IoT"
+      ],
+      "recommended_actions": [
+        "Upgrade to the latest version of the Matter SDK (1.4.0 or later) where the vulnerability has been patched.",
+        "Implement input validation and error handling mechanisms to prevent malformed requests from causing crashes.",
+        "Monitor devices for unusual behavior or crashes and apply security updates promptly."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 72
+  },
+  {
+    "id": "gh-GHSA-2844-cqr7-733q",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:42Z",
+    "title": "Illustrator is affected by an out-of-bounds write vulnerability that could result in arbitrary...",
+    "description": "Illustrator is affected by an out-of-bounds write vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+    "severity": "high",
+    "cve_id": "CVE-2026-48336",
+    "ghsa_id": "GHSA-2844-cqr7-733q",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The out-of-bounds write vulnerability in Illustrator (CVE-2026-48336) could allow attackers to execute arbitrary code on a victim's system if they open a malicious file. This could lead to data theft, system compromise, or the installation of additional malware.",
+      "affected_industries": [
+        "Creative and Design",
+        "Advertising and Marketing",
+        "Media and Entertainment",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Update Illustrator to the latest patched version as soon as a fix is released by the vendor.",
+        "Educate users to avoid opening files from unknown or untrusted sources.",
+        "Implement endpoint protection solutions to detect and block malicious files."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-5j74-v2xh-7cpv",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:42Z",
+    "title": "CAI Content Credentials is affected by a Server-Side Request Forgery (SSRF) vulnerability that...",
+    "description": "CAI Content Credentials is affected by a Server-Side Request Forgery (SSRF) vulnerability that could result in arbitrary code execution in the context of the current user. An attacker could exploit this vulnerability to inject malicious scripts into a web page, potentially gaining elevated access or control over the victim's account or session. Exploitation of this issue requires user interaction in that a victim must visit a maliciously crafted URL or interact with a compromised web page. Scope",
+    "severity": "high",
+    "cve_id": "CVE-2026-48290",
+    "ghsa_id": "GHSA-5j74-v2xh-7cpv",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48290.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-g44r-x3wp-8593",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:42Z",
+    "title": "Illustrator is affected by an out-of-bounds write vulnerability that could result in arbitrary...",
+    "description": "Illustrator is affected by an out-of-bounds write vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+    "severity": "high",
+    "cve_id": "CVE-2026-48335",
+    "ghsa_id": "GHSA-g44r-x3wp-8593",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48335.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-87gh-gwg6-px6x",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:42Z",
+    "title": "CAI Content Credentials is affected by an Insufficiently Protected Credentials vulnerability that...",
+    "description": "CAI Content Credentials is affected by an Insufficiently Protected Credentials vulnerability that could result in disclosure of sensitive information. An attacker could leverage this vulnerability to gain unauthorized read access. Exploitation of this issue does not require user interaction.",
+    "severity": "high",
+    "cve_id": "CVE-2026-48295",
+    "ghsa_id": "GHSA-87gh-gwg6-px6x",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48295.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-g23w-pc29-375j",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:42Z",
+    "title": "CAI Content Credentials is affected by an Untrusted Search Path vulnerability that could result...",
+    "description": "CAI Content Credentials is affected by an Untrusted Search Path vulnerability that could result in arbitrary code execution in the context of the current user. Exploit depends on conditions beyond the attacker's control. Exploitation of this issue requires user interaction in that a victim must visit a maliciously crafted URL or interact with a compromised web page. Scope is changed.",
+    "severity": "high",
+    "cve_id": "CVE-2026-48287",
+    "ghsa_id": "GHSA-g23w-pc29-375j",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows attackers to execute arbitrary code in the context of the current user, potentially leading to unauthorized access, data breaches, or system compromise. Exploitation requires user interaction, such as visiting a malicious URL or interacting with a compromised webpage, which reduces the likelihood but not the severity of the impact.",
+      "affected_industries": [
+        "Media and Content Creation",
+        "Technology",
+        "E-commerce",
+        "Education",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Apply the latest security patches and updates provided by the vendor to mitigate the vulnerability.",
+        "Educate users on the risks of interacting with untrusted URLs or web pages and encourage safe browsing practices.",
+        "Implement endpoint protection and monitoring tools to detect and respond to suspicious activities."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-3384-2cr5-cq96",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:42Z",
+    "title": "CAI Content Credentials is affected by an Integer Underflow (Wrap or Wraparound) vulnerability...",
+    "description": "CAI Content Credentials is affected by an Integer Underflow (Wrap or Wraparound) vulnerability that could result in an application denial-of-service. An attacker could exploit this vulnerability to crash the application, leading to a denial-of-service condition. Exploitation of this issue does not require user interaction.",
     "severity": "medium",
-    "cve_id": "CVE-2026-13356",
-    "cvss_score": 6.3,
+    "cve_id": "CVE-2026-48298",
+    "ghsa_id": "GHSA-3384-2cr5-cq96",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The Integer Underflow vulnerability in CAI Content Credentials could lead to application crashes, resulting in a denial-of-service condition. This may disrupt operations and affect systems relying on the application for critical functionality.",
+      "affected_industries": [
+        "Media and Content Creation",
+        "Software Development",
+        "Digital Marketing",
+        "Publishing"
+      ],
+      "recommended_actions": [
+        "Apply the latest security patch or update provided by the vendor to address the vulnerability.",
+        "Implement monitoring tools to detect and mitigate abnormal application behavior or crashes caused by exploitation.",
+        "Conduct a thorough code review to identify and remediate similar vulnerabilities in the application."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-c5hm-56x3-6335",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:42Z",
+    "title": "CAI Content Credentials is affected by an Uncontrolled Resource Consumption vulnerability that...",
+    "description": "CAI Content Credentials is affected by an Uncontrolled Resource Consumption vulnerability that could lead to application denial-of-service. An attacker could exploit this vulnerability to exhaust system resources, resulting in an application denial-of-service condition. Exploitation of this issue does not require user interaction.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-48357",
+    "ghsa_id": "GHSA-c5hm-56x3-6335",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-48357.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-pmjq-98wp-vqxv",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-15T00:31:42Z",
+    "title": "Illustrator is affected by an out-of-bounds write vulnerability that could result in arbitrary...",
+    "description": "Illustrator is affected by an out-of-bounds write vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
+    "severity": "high",
+    "cve_id": "CVE-2026-48337",
+    "ghsa_id": "GHSA-pmjq-98wp-vqxv",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48337.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "cve-CVE-2026-59997",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T01:16:28.727",
+    "title": "CVE-2026-59997 - internal-sftp in sshd in OpenSSH before 10.4 recognizes only the first 9 command-line arguments, whi",
+    "description": "internal-sftp in sshd in OpenSSH before 10.4 recognizes only the first 9 command-line arguments, which can be important if a later command-line argument would have helped to ensure the intended security properties of an SFTP connection.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-59997",
+    "cvss_score": 4.2,
     "affected_products": [
-      "cpe:2.3:a:mozilla:firefox:*:*:*:*:*:iphone_os:*:*"
+      "cpe:2.3:a:openbsd:openssh:*:*:*:*:*:*:*:*"
     ],
     "references": [
-      "https://bugzilla.mozilla.org/show_bug.cgi?id=2047768",
-      "https://www.mozilla.org/security/advisories/mfsa2026-65/"
+      "https://marc.info/?l=openssh-unix-dev&m=178333966933090&w=2",
+      "https://www.openssh.org/releasenotes.html#10.4p1",
+      "https://www.openwall.com/lists/oss-security/2026/07/06/5"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13356.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-59997.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1246,22 +797,521 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2024-56141",
+    "id": "cve-CVE-2026-59996",
     "source": "NVD CVE",
-    "timestamp": "2026-07-07T00:16:33.607",
-    "title": "CVE-2024-56141 - Minosoft is an open-source, multi-version Minecraft Java Edition client written in Kotlin. Starting ",
-    "description": "Minosoft is an open-source, multi-version Minecraft Java Edition client written in Kotlin. Starting in commit f1ae30e2b046a490026a8413b075685deb795122, the CryptManager  encryption routine ( CryptManager.kt ) initializes its AES cipher using an initialization vector (IV) that is set equal to the secret key rather than to a sufficiently random value. Because the IV is not random and is derived directly from the key, the encryption is vulnerable to chosen-ciphertext/chosen-plaintext attacks: an attacker who can submit specific messages for encryption can recover the secret key. This affects all versions supporting Minecraft protocol 1.7 and later. No patched version is available, and no known workarounds are available.",
+    "timestamp": "2026-07-08T01:16:28.557",
+    "title": "CVE-2026-59996 - scp in OpenSSH before 10.4 may place a file in the parent directory of an intended directory when th",
+    "description": "scp in OpenSSH before 10.4 may place a file in the parent directory of an intended directory when the copy occurs between two remote destinations.",
     "severity": "medium",
-    "cve_id": "CVE-2024-56141",
-    "cvss_score": 5,
+    "cve_id": "CVE-2026-59996",
+    "cvss_score": 4.2,
+    "affected_products": [
+      "cpe:2.3:a:openbsd:openssh:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://marc.info/?l=openssh-unix-dev&m=178333966933090&w=2",
+      "https://www.openssh.org/releasenotes.html#10.4p1",
+      "https://www.openwall.com/lists/oss-security/2026/07/06/5"
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in scp could allow files to be placed in unintended directories during remote-to-remote file transfers, potentially leading to unauthorized file placement, data overwrites, or exploitation of directory traversal vulnerabilities.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Government",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Upgrade to OpenSSH version 10.4 or later to mitigate the vulnerability.",
+        "Audit and validate file transfer scripts and configurations to ensure they are not susceptible to directory traversal attacks.",
+        "Implement strict access controls and monitoring to detect and prevent unauthorized file placements."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "cve-CVE-2026-59995",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T01:16:28.390",
+    "title": "CVE-2026-59995 - sftp in OpenSSH before 10.4 does not properly constrain the location of downloaded files when \"sftp ",
+    "description": "sftp in OpenSSH before 10.4 does not properly constrain the location of downloaded files when \"sftp server:/path .\" is used with an attacker-controlled server.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-59995",
+    "cvss_score": 4.2,
+    "affected_products": [
+      "cpe:2.3:a:openbsd:openssh:*:*:*:*:*:*:*:*"
+    ],
+    "references": [
+      "https://marc.info/?l=openssh-unix-dev&m=178333966933090&w=2",
+      "https://www.openssh.org/releasenotes.html#10.4p1",
+      "https://www.openwall.com/lists/oss-security/2026/07/06/5"
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows an attacker to manipulate the location of downloaded files when using the 'sftp server:/path .' command with an attacker-controlled server. This could lead to unauthorized file placement, overwriting critical files, or potential execution of malicious code, depending on the context.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Government",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Upgrade to OpenSSH version 10.4 or later to mitigate the vulnerability.",
+        "Restrict access to untrusted or unknown SFTP servers and validate server authenticity before initiating connections.",
+        "Implement monitoring and logging to detect unusual file placement or unauthorized file downloads."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "cve-CVE-2026-56843",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T01:16:28.277",
+    "title": "CVE-2026-56843 - Incorrect authorization in the XML-RPC API of WebPros Plesk before 18.0.78.4 allows a low-privileged",
+    "description": "Incorrect authorization in the XML-RPC API of WebPros Plesk before 18.0.78.4 allows a low-privileged authenticated customer to look up domains they do not own, because ownership is enforced only for certain lookup filters and schema validation is bypassed for legacy protocol versions. This results in cross-tenant disclosure of other tenants' FTP credentials stored in cleartext, which can be leveraged to execute code as another tenant's system user.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-56843",
+    "cvss_score": 9.9,
     "affected_products": [],
     "references": [
-      "https://github.com/Bixilon/Minosoft/blob/3a608abe2d0999e4e702cc1b2d28366884c7f31e/src/main/java/de/bixilon/minosoft/protocol/protocol/encryption/CryptManager.kt#L72",
-      "https://github.com/Bixilon/Minosoft/security/advisories/GHSA-rvr6-48rj-c94j"
+      "https://support.plesk.com/hc/en-us/articles/41178305151255-Vulnerability-in-Plesk-XML-API-Cleartext-FTP-Password-Exposure"
+    ],
+    "ai_analysis": {
+      "risk_score": 100,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-56843.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 100
+  },
+  {
+    "id": "cve-CVE-2026-55438",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T01:16:28.150",
+    "title": "CVE-2026-55438 - Coder allows organizations to provision remote development environments via Terraform. Prior to vers",
+    "description": "Coder allows organizations to provision remote development environments via Terraform. Prior to versions 2.29.17, 2.32.7, 2.33.8, and 2.34.2, Coder's subdomain-based workspace app proxy allowed the same-owner CORS check to be bypassed. When a workspace-name subdomain segment parsed as a UUID, the workspace was resolved by ID without confirming the URL's username matched the real owner, while the CORS middleware trusted the unverified username in the hostname. Practical exploitation requires subdomain app routing (wildcard hostname) enabled and a victim who visits the attacker's crafted app URL while authenticated. The fix in versions 2.29.17, 2.32.7, 2.33.8, and 2.34.2 validates the subdomain username against the resolved workspace's actual owner and bases the same-owner CORS decision on the authoritative owner identity. No known workarounds are available.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55438",
+    "cvss_score": 5.8,
+    "affected_products": [
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*"
+    ],
+    "references": [
+      "https://github.com/coder/coder/pull/26085",
+      "https://github.com/coder/coder/pull/26086",
+      "https://github.com/coder/coder/releases/tag/v2.29.17",
+      "https://github.com/coder/coder/releases/tag/v2.32.7",
+      "https://github.com/coder/coder/releases/tag/v2.33.8",
+      "https://github.com/coder/coder/releases/tag/v2.34.2",
+      "https://github.com/coder/coder/security/advisories/GHSA-5wg6-jmq2-53pw"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2024-56141.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55438.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-55437",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T01:16:28.020",
+    "title": "CVE-2026-55437 - Coder allows organizations to provision remote development environments via Terraform. Prior to vers",
+    "description": "Coder allows organizations to provision remote development environments via Terraform. Prior to versions 2.29.17, 2.32.7, 2.33.8, and 2.34.2, the `AgentLogLine` dashboard component instantiated `ansi-to-html` without `escapeXML: true` and inserted the result via `dangerouslySetInnerHTML` so HTML embedded in workspace agent log lines was rendered as live markup. Server-side sanitization did not neutralize HTML metacharacters. Exploitation requires a victim to view attacker-controlled agent logs in the dashboard. The fix in versions 2.29.17, 2.32.7, 2.33.8, and 2.34.2 enables `escapeXML: true` so HTML metacharacters are escaped before DOM insertion. No known workarounds are available.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55437",
+    "cvss_score": 5.4,
+    "affected_products": [
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*"
+    ],
+    "references": [
+      "https://github.com/coder/coder/pull/25808",
+      "https://github.com/coder/coder/releases/tag/v2.29.17",
+      "https://github.com/coder/coder/releases/tag/v2.32.7",
+      "https://github.com/coder/coder/releases/tag/v2.33.8",
+      "https://github.com/coder/coder/releases/tag/v2.34.2",
+      "https://github.com/coder/coder/security/advisories/GHSA-7qw2-f75v-62f7"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55437.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-55436",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T01:16:27.890",
+    "title": "CVE-2026-55436 - Coder allows organizations to provision remote development environments via Terraform. Starting in v",
+    "description": "Coder allows organizations to provision remote development environments via Terraform. Starting in version 2.30.0 and prior to versions 2.32.7, 2.33.8, and 2.34.2, the AI Bridge Proxy (`aibridgeproxyd`) created a goproxy server whose default transport set `InsecureSkipVerify: true` and only assigned a secure transport when an upstream proxy was configured. In the default configuration (no upstream proxy), outbound HTTPS to the Coder access URL accepted any TLS certificate. Practical exploitation requires an on-path (man-in-the-middle) position between the AI Bridge Proxy and the Coder server. Deployments where they are co-located over loopback are effectively unaffected. The fix in versions 2.32.7, 2.33.8, and 2.34.2 applies the secure transport (TLS 1.2 or higher using system root CAs) unconditionally. As a workaround, ensure the Coder access URL uses a trusted certificate and secure the network path between the AI Bridge Proxy and the Coder server (for example, loopback or mTLS).",
+    "severity": "high",
+    "cve_id": "CVE-2026-55436",
+    "cvss_score": 7.4,
+    "affected_products": [
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*"
+    ],
+    "references": [
+      "https://github.com/coder/coder/pull/26131",
+      "https://github.com/coder/coder/releases/tag/v2.32.7",
+      "https://github.com/coder/coder/releases/tag/v2.33.8",
+      "https://github.com/coder/coder/releases/tag/v2.34.2",
+      "https://github.com/coder/coder/security/advisories/GHSA-84rm-42xw-mx52"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55436.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-55433",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T01:16:27.760",
+    "title": "CVE-2026-55433 - Coder allows organizations to provision remote development environments via Terraform. Prior to vers",
+    "description": "Coder allows organizations to provision remote development environments via Terraform. Prior to versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2, the devcontainer recreate endpoint relied on route middleware that checked only `ActionRead` on the workspace and, unlike the sibling delete endpoint, performed no `ActionUpdate` check before triggering the destructive rebuild. Exploitation requires an existing low-privilege role with access to the target workspace. The fix in versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2 adds an explicit `ActionUpdate` authorization check before the agent is dialed like the delete endpoint. No known workarounds are available.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55433",
+    "cvss_score": 5.4,
+    "affected_products": [
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*"
+    ],
+    "references": [
+      "https://github.com/coder/coder/pull/25812",
+      "https://github.com/coder/coder/releases/tag/v2.29.17",
+      "https://github.com/coder/coder/releases/tag/v2.32.7",
+      "https://github.com/coder/coder/releases/tag/v2.33.8",
+      "https://github.com/coder/coder/releases/tag/v2.34.2",
+      "https://github.com/coder/coder/security/advisories/GHSA-jqj2-x4c5-jfxm"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55433.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-55432",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T01:16:27.620",
+    "title": "CVE-2026-55432 - Coder allows organizations to provision remote development environments via Terraform. Prior to vers",
+    "description": "Coder allows organizations to provision remote development environments via Terraform. Prior to versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2, the `CreateSubAgent` RPC did not validate a requested app sharing level against the template's `MaxPortSharingLevel` before persisting workspace apps, letting a workspace owner exceed the administrator's configured maximum. Exploitation requires the ability to register sub-agent apps in a workspace the attacker controls. The fix in versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2clamps the sub-agent app sharing level to the template's `MaxPortSharingLevel`. As a workaround, disable wildcard app hostnames (`CODER_WILDCARD_ACCESS_URL`) to block subdomain-based app routing.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55432",
+    "cvss_score": 5.4,
+    "affected_products": [
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*"
+    ],
+    "references": [
+      "https://github.com/coder/coder/pull/26061",
+      "https://github.com/coder/coder/releases/tag/v2.29.17",
+      "https://github.com/coder/coder/releases/tag/v2.32.7",
+      "https://github.com/coder/coder/releases/tag/v2.33.8",
+      "https://github.com/coder/coder/releases/tag/v2.34.2",
+      "https://github.com/coder/coder/security/advisories/GHSA-x9qq-2qh5-8rxf"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55432.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-55431",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T01:16:27.480",
+    "title": "CVE-2026-55431 - Coder allows organizations to provision remote development environments via Terraform. Prior to vers",
+    "description": "Coder allows organizations to provision remote development environments via Terraform. Prior to versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2, `coder open app` opens external workspace-app URLs without validating the scheme or host. When an external app URL contains the `$SESSION_TOKEN` placeholder the CLI replaces it with the user's real session token before handing the URL to the OS open handler. Practical exploitation requires the victim to run `coder open app` against a workspace whose external app definition the attacker controls. Only a malicious template author can control external app URLs. The fix in versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2 applies a URL-scheme allowlist in the CLI and limits `$SESSION_TOKEN` substitution to trusted destinations like the web frontend. As a workaround, avoid running `coder open app` for untrusted workspaces.",
+    "severity": "high",
+    "cve_id": "CVE-2026-55431",
+    "cvss_score": 7.7,
+    "affected_products": [
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*"
+    ],
+    "references": [
+      "https://github.com/coder/coder/pull/26146",
+      "https://github.com/coder/coder/releases/tag/v2.29.17",
+      "https://github.com/coder/coder/releases/tag/v2.32.7",
+      "https://github.com/coder/coder/releases/tag/v2.33.8",
+      "https://github.com/coder/coder/releases/tag/v2.34.2",
+      "https://github.com/coder/coder/security/advisories/GHSA-v54h-cp2w-9x4g"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55431.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-55430",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T01:16:27.270",
+    "title": "CVE-2026-55430 - Coder allows organizations to provision remote development environments via Terraform. Prior to vers",
+    "description": "Coder allows organizations to provision remote development environments via Terraform. Prior to versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2, the workspace app proxy resolves the target app from `httpapi.RequestHost()` which prefers the `X-Forwarded-Host` header over the real `Host` header. No middleware strips `X-Forwarded-Host` before routing and the header is not browser-forbidden so client-side JavaScript can set it on `fetch()` calls. Practical exploitation requires subdomain app routing (wildcard hostname) enabled, a victim who visits the attacker's shared app and a deployment whose upstream proxy does not strip `X-Forwarded-Host`. The fix in versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2 trusts `X-Forwarded-Host` only from configured trusted proxies and otherwise resolves the routing host from the verified request host. As a workaround, place an upstream reverse proxy that strips or overwrites `X-Forwarded-Host` on untrusted requests.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55430",
+    "cvss_score": 5.8,
+    "affected_products": [
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*"
+    ],
+    "references": [
+      "https://github.com/coder/coder/pull/26204",
+      "https://github.com/coder/coder/releases/tag/v2.29.17",
+      "https://github.com/coder/coder/releases/tag/v2.32.7",
+      "https://github.com/coder/coder/releases/tag/v2.33.8",
+      "https://github.com/coder/coder/releases/tag/v2.34.2",
+      "https://github.com/coder/coder/security/advisories/GHSA-5g4w-3vw9-478w"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55430.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-55429",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T00:16:33.597",
+    "title": "CVE-2026-55429 - Coder allows organizations to provision remote development environments via Terraform. Prior to vers",
+    "description": "Coder allows organizations to provision remote development environments via Terraform. Prior to versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2, `UpsertWorkspaceApp` overwrites an existing app's `agent_id` on a primary-key conflict and `insertAgentApp` accepts the app ID from the provisioner's `CompleteJob` payload without verifying it belongs to the workspace being built. `CompleteJob` runs under `dbauthz.AsProvisionerd` so the authorization layer does not block the cross-workspace upsert. Exploitation requires elevated access as a template author or external provisioner operator. The fix in versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2 verifies that any existing `workspace_apps` row matching the supplied ID belongs to the workspace being built and rejects cross-workspace agent reassignment. No known workarounds are available.",
+    "severity": "high",
+    "cve_id": "CVE-2026-55429",
+    "cvss_score": 8.7,
+    "affected_products": [
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*"
+    ],
+    "references": [
+      "https://github.com/coder/coder/pull/26103",
+      "https://github.com/coder/coder/releases/tag/v2.29.17",
+      "https://github.com/coder/coder/releases/tag/v2.32.7",
+      "https://github.com/coder/coder/releases/tag/v2.33.8",
+      "https://github.com/coder/coder/releases/tag/v2.34.2",
+      "https://github.com/coder/coder/security/advisories/GHSA-9rjw-3gwp-f59v"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55429.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-55428",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T00:16:33.463",
+    "title": "CVE-2026-55428 - Coder allows organizations to provision remote development environments via Terraform. Prior to vers",
+    "description": "Coder allows organizations to provision remote development environments via Terraform. Prior to versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2, the tailnet coordinator validates that an agent's `Addresses` derive from its authenticated UUID but applies no equivalent check to `AllowedIPs`. The coordinator forwards agent-supplied `AllowedIPs` verbatim to tunnel peers which install them into the WireGuard peer configuration. The fix in versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2 validates each `AllowedIPs` prefix against the authenticating agent's UUID just like `Addresses`. As a workaround, monitor coordinator logs for agents advertising unexpected `AllowedIPs` prefixes.",
+    "severity": "high",
+    "cve_id": "CVE-2026-55428",
+    "cvss_score": 8.2,
+    "affected_products": [
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*"
+    ],
+    "references": [
+      "https://github.com/coder/coder/pull/26144",
+      "https://github.com/coder/coder/releases/tag/v2.29.17",
+      "https://github.com/coder/coder/releases/tag/v2.32.7",
+      "https://github.com/coder/coder/releases/tag/v2.33.8",
+      "https://github.com/coder/coder/releases/tag/v2.34.2",
+      "https://github.com/coder/coder/security/advisories/GHSA-wrq8-fcv5-8hvp"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55428.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-55427",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T00:16:33.323",
+    "title": "CVE-2026-55427 - Coder allows organizations to provision remote development environments via Terraform. Prior to vers",
+    "description": "Coder allows organizations to provision remote development environments via Terraform. Prior to versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2, `coder config-ssh` wrote server-supplied SSH settings (`HostnameSuffix`, `SSHConfigOptions`) into the user's `~/.ssh/config` without sanitizing embedded newlines or restricting directives so a malicious or compromised Coder server could inject arbitrary SSH configuration. Practical exploitation requires control of the server-supplied values through a malicious or compromised deployment, a man-in-the-middle position or admin access to the `HostnameSuffix` and `SSHConfigOptions` settings. The fix in versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2 validates `HostnameSuffix` and `SSHConfigOptions` against a strict character set that rejects newlines and other control characters. As a workaround, inspect `coder config-ssh --dry-run` output before applying changes.",
+    "severity": "high",
+    "cve_id": "CVE-2026-55427",
+    "cvss_score": 8.3,
+    "affected_products": [
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*"
+    ],
+    "references": [
+      "https://github.com/coder/coder/pull/26154",
+      "https://github.com/coder/coder/releases/tag/v2.29.17",
+      "https://github.com/coder/coder/releases/tag/v2.32.7",
+      "https://github.com/coder/coder/releases/tag/v2.33.8",
+      "https://github.com/coder/coder/releases/tag/v2.34.2",
+      "https://github.com/coder/coder/security/advisories/GHSA-mcqq-fqgf-rxwm"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55427.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-55079",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-08T00:16:33.153",
+    "title": "CVE-2026-55079 - Coder allows organizations to provision remote development environments via Terraform. Starting in v",
+    "description": "Coder allows organizations to provision remote development environments via Terraform. Starting in version 2.24.0 and prior to versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2, `NewDataBuilder` in `provisionersdk/proto/dataupload.go` allocated a byte slice using the client-supplied `FileSize` from a `DataUpload` message without an upper-bound check. Although the DRPC wire limit is 4 MiB, the `FileSize` value itself was unconstrained. The fix in versions 2.29.7, 2.32.7, 2.33.8, and 2.34.2 validates `FileSize` against an upper bound (`MaxFileSize = 100 MiB`) before allocation. As a workaround, restrict access to the provisioner daemon serve endpoint to trusted provisioner daemon service accounts.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55079",
+    "cvss_score": 4.9,
+    "affected_products": [
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*",
+      "cpe:2.3:a:coder:coder:*:*:*:*:*:go:*:*"
+    ],
+    "references": [
+      "https://github.com/coder/coder/pull/25710",
+      "https://github.com/coder/coder/releases/tag/v2.29.17",
+      "https://github.com/coder/coder/releases/tag/v2.32.7",
+      "https://github.com/coder/coder/releases/tag/v2.33.8",
+      "https://github.com/coder/coder/releases/tag/v2.34.2",
+      "https://github.com/coder/coder/security/advisories/GHSA-f962-qm93-mj4c"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55079.",
       "affected_industries": [
         "Technology",
         "General"
