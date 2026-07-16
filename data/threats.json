@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1784210996228-1",
+    "id": "twitter-1784229785184-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-16T14:09:56.228Z",
+    "timestamp": "2026-07-16T19:23:05.184Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1784210996228-1",
+    "id": "hn-1784229785184-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-16T14:09:56.228Z",
+    "timestamp": "2026-07-16T19:23:05.184Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,40 +26,142 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-8539-9p7j-q3gf",
+    "id": "gh-GHSA-8fv2-88gg-hm7q",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T12:32:29Z",
-    "title": "HCL DFXServer is affected by an Authentication Bypass vulnerability via server response...",
-    "description": "HCL DFXServer is affected by an Authentication Bypass vulnerability via server response manipulation. An unauthorized user without valid credentials can exploit this flaw by intercepting and altering the server's authentication responses, allowing them to gain unauthorized access to the application without verification.",
-    "severity": "high",
-    "cve_id": "CVE-2026-35149",
-    "ghsa_id": "GHSA-8539-9p7j-q3gf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3rj8-qrpc-rrvr",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T12:32:29Z",
-    "title": "HCL DFXServer is affected by a Missing Access Control vulnerability. This vulnerability states...",
-    "description": "HCL DFXServer is affected by a Missing Access Control vulnerability. This vulnerability states that certain endpoints are accessible without any form of authentication in another browser. This allows any network user to invoke these APIs and interact with the application without verification of their identity or authorization level.",
+    "timestamp": "2026-07-16T19:21:15Z",
+    "title": "Envoy Gateway: Wasm cache ServeHTTP reads mappingPath2Cache without lock",
+    "description": "Vulnerability report without repro case. Repro case may be added later after harness is complete.\n\n**Preconditions (4):**\n- Pod-network reachability to :18002 (no auth)\n- Tenant can create EnvoyExtensionPolicy (baseline)\n- Attacker pod floods GET while churning EnvoyExtensionPolicy with distinct Wasm URLs\n- Read at :153 must overlap a write at :201/:209 (probabilistic, attacker controls both rates)\n\n**Description:**\n\nhttpserver.go:153 reads s.mappingPath2Cache with no lock while httpserver.go:20",
     "severity": "medium",
-    "cve_id": "CVE-2026-35148",
-    "ghsa_id": "GHSA-3rj8-qrpc-rrvr",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-53715",
+    "ghsa_id": "GHSA-8fv2-88gg-hm7q",
+    "affected_packages": [
+      "github.com/envoyproxy/gateway",
+      "github.com/envoyproxy/gateway"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-h7pq-86h8-rp5x",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T19:20:05Z",
+    "title": "Envoy Gateway: OCI layer extraction allocates make([]byte, h.Size) from untrusted tar header",
+    "description": "Vulnerability report without repro case. Repro case may be added later after harness is complete.\n\n**Preconditions (4):**\n- Tenant can create EnvoyExtensionPolicy (baseline)\n- Controller has egress to attacker-controlled OCI registry\n- No registry allowlist (none exists in code)\n- Layer presents Docker/OCI media type\n\n**Description**\n\nAt imagefetcher.go:287, make([]byte, h.Size) uses the attacker-controlled tar-header size; the LimitReader at :278 bounds bytes read from the stream but not the he",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53717",
+    "ghsa_id": "GHSA-h7pq-86h8-rp5x",
+    "affected_packages": [
+      "github.com/envoyproxy/gateway",
+      "github.com/envoyproxy/gateway"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-m2v6-2jmh-4c68",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T19:19:17Z",
+    "title": "Envoy Gateway: Nil-dereference when SecurityPolicy targets TCPRoute without spec.authorization",
+    "description": "Vulnerability report without repro case. Repro case may be added later after harness is complete.\n\n**Preconditions (4):**\n- Tenant has SecurityPolicy + TCPRoute RBAC (baseline)\n- Tenant namespace permitted to attach TCPRoute to a Gateway listener\n- spec.authorization omitted (the trigger)\n- No admission webhook blocks the shape\n\n**Description:**\n\nA namespace-scoped tenant can deterministically panic the gatewayapi runner on every reconcile with a single CRD; the recover() in message/watchutil.go",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53719",
+    "ghsa_id": "GHSA-m2v6-2jmh-4c68",
+    "affected_packages": [
+      "github.com/envoyproxy/gateway",
+      "github.com/envoyproxy/gateway"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-cxpq-8v7q-cg56",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T19:18:08Z",
+    "title": "Envoy Gateway: Wasm HTTP fetch decompresses gzip without output-size limit",
+    "description": "Vulnerability report without repro case. Repro case may be added later after harness is complete.\n\n**Preconditions (4):**\n- Tenant can create EnvoyExtensionPolicy (baseline)\n- Attacker hosts a gzip-bomb at a reachable URL\n- sha256 unset (optional field; check is post-decompression anyway)\n- No operator Wasm-URL allowlist (none exists in code)\n\n**Description**\n\ngetFileFromGZ calls io.ReadAll on a raw gzip.Reader (httpfetcher.go:216) with no output bound, while the compressed input is capped at 25",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53716",
+    "ghsa_id": "GHSA-cxpq-8v7q-cg56",
+    "affected_packages": [
+      "github.com/envoyproxy/gateway",
+      "github.com/envoyproxy/gateway"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-fcrp-7gc2-93g7",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T19:14:50Z",
+    "title": "Envoy Gateway custom backendRef cross-namespace ReferenceGrant bypass",
+    "description": "### Impact\nEnvoy Gateway accepts extension-managed custom backendRefs from an HTTPRoute to a backend resource in another namespace without requiring a matching Gateway API ReferenceGrant in the target namespace. This breaks the Gateway API cross-namespace consent model: the namespace that owns the referenced backend resource does not need to opt in with a ReferenceGrant before another namespace’s HTTPRoute can use that resource.\n\n### Patches\n[1.7.4](https://github.com/envoyproxy/gateway/releases",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53718",
+    "ghsa_id": "GHSA-fcrp-7gc2-93g7",
+    "affected_packages": [
+      "github.com/envoyproxy/gateway",
+      "github.com/envoyproxy/gateway"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-v95x-xhq5-4929",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T19:12:08Z",
+    "title": "kumactl connects to control plane without verifying TLS certificate when no CA is configured",
+    "description": "When an operator adds an HTTPS control plane profile to `kumactl` without providing a CA certificate, `kumactl` disables TLS verification and sends API tokens over the unverified connection\n\n## Impact\n\nAn attacker on the network path between the operator and the control plane can intercept user or admin API tokens and then act against the control plane as that user\n\n## Affected configurations\n\n- `kumactl` profiles manually added against an HTTPS control plane endpoint without `--ca-cert-file`\n\n#",
+    "severity": "medium",
+    "cve_id": "CVE-2026-50166",
+    "ghsa_id": "GHSA-v95x-xhq5-4929",
+    "affected_packages": [
+      "github.com/kumahq/kuma/v2",
+      "github.com/kumahq/kuma/v2",
+      "github.com/kumahq/kuma/v2",
+      "github.com/kumahq/kuma/v2",
+      "github.com/kumahq/kuma/v2",
+      "github.com/kumahq/kuma"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
       null,
       null,
       null
@@ -68,14 +170,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-36pf-7582-rqcr",
+    "id": "gh-GHSA-6j6v-724c-h5fm",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T12:32:29Z",
-    "title": "HCL DFXServer is affected by a Broken Authentication vulnerability via direct API access. The...",
-    "description": "HCL DFXServer is affected by a Broken Authentication vulnerability via direct API access. The application fails to verify the user's authentication status when accessing specific API endpoints, allowing an unauthenticated attacker to interact with the APIs and perform unauthorized actions without valid credentials.",
+    "timestamp": "2026-07-16T18:31:34Z",
+    "title": "A potential insecure permissions vulnerability was reported in Legion Zone and the Lenovo App...",
+    "description": "A potential insecure permissions vulnerability was reported in Legion Zone and the Lenovo App Store Windows applications, distributed exclusively in the Chinese market, that when installed on a non‑system partition, could allow a local user to execute arbitrary code.",
     "severity": "high",
-    "cve_id": "CVE-2026-35147",
-    "ghsa_id": "GHSA-36pf-7582-rqcr",
+    "cve_id": "CVE-2026-9046",
+    "ghsa_id": "GHSA-6j6v-724c-h5fm",
     "affected_packages": [],
     "cwes": [
       null
@@ -89,19 +191,20 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-3g8c-pp6x-x9gw",
+    "id": "gh-GHSA-whw8-2869-jf7j",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T12:32:28Z",
-    "title": "An unauthenticated remote attacker is able to perform remote code execution due to incorrectly...",
-    "description": "An unauthenticated remote attacker is able to perform remote code execution due to incorrectly sanitized user input in the SetParameter command.",
+    "timestamp": "2026-07-16T18:31:34Z",
+    "title": "Grafana OnCall through 1.16.11 contains an unauthenticated access vulnerability that allows...",
+    "description": "Grafana OnCall through 1.16.11 contains an unauthenticated access vulnerability that allows remote attackers to obtain a valid PluginAuthToken by sending a POST request to the internal plugin install endpoint using hardcoded default stack_id and org_id values present in the public source tree. Attackers can leverage the acquired token to authenticate against all internal API endpoints, create arbitrary Admin users via the user-context header bootstrap path, revoke the legitimate plugin token, an",
     "severity": "critical",
-    "cve_id": "CVE-2023-49900",
-    "ghsa_id": "GHSA-3g8c-pp6x-x9gw",
+    "cve_id": "CVE-2026-63087",
+    "ghsa_id": "GHSA-whw8-2869-jf7j",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
@@ -110,14 +213,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-g8m2-fxgf-6pqg",
+    "id": "gh-GHSA-c6cx-mj2w-vjcr",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T12:32:28Z",
-    "title": "HCL DFXServer is affected by an Unencrypted Communication vulnerability. The application permits...",
-    "description": "HCL DFXServer is affected by an Unencrypted Communication vulnerability. The application permits users to establish connections over unencrypted channels via the HTTP protocol, which could allow a remote attacker to intercept network traffic and expose sensitive data transmitted between the user and the application.",
+    "timestamp": "2026-07-16T18:31:34Z",
+    "title": "text-generation-inference through 3.3.7 contains a server-side request forgery (SSRF)...",
+    "description": "text-generation-inference through 3.3.7 contains a server-side request forgery (SSRF) vulnerability in the OpenAI-compatible multimodal chat completions endpoint that allows unauthenticated network attackers to coerce the server into issuing arbitrary HTTP GET requests by supplying a crafted image_url value in chat message content. The fetch_image function in router/src/validation.rs performs no validation of private, loopback, link-local, or cloud metadata target addresses, and the reqwest HTTP",
     "severity": "medium",
-    "cve_id": "CVE-2026-35146",
-    "ghsa_id": "GHSA-g8m2-fxgf-6pqg",
+    "cve_id": "CVE-2026-63086",
+    "ghsa_id": "GHSA-c6cx-mj2w-vjcr",
     "affected_packages": [],
     "cwes": [
       null
@@ -125,26 +228,6 @@
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-587v-8x94-p9vx",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T12:32:28Z",
-    "title": "An unauthenticated remote attacker can execute any command on the affected device due to not...",
-    "description": "An unauthenticated remote attacker can execute any command on the affected device due to not correctly verifying the origin of a communication channel.",
-    "severity": "critical",
-    "cve_id": "CVE-2023-49899",
-    "ghsa_id": "GHSA-587v-8x94-p9vx",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
       null,
       null
     ],
@@ -152,33 +235,39 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-h9v6-4cv4-ghhq",
+    "id": "gh-GHSA-qx3v-2jx6-8m2c",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T12:32:28Z",
-    "title": "Authentication bypass by primary weakness vulnerability in Spring Security Spring Authorization...",
-    "description": "Authentication bypass by primary weakness vulnerability in Spring Security Spring Authorization Server.\n\nThis issue affects Spring Authorization Server: from 7.0.0 through 7.0.4, from 1.5.0 through 1.5.6, from 1.4.0 through 1.4.9, from 1.3.0 through 1.3.10.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-22752",
-    "ghsa_id": "GHSA-h9v6-4cv4-ghhq",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-7xfg-8mc3-f3f7",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T09:32:18Z",
-    "title": "The Breakdance plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'fields'...",
-    "description": "The Breakdance plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'fields' parameter in versions up to, and including, 2.7.1 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+    "timestamp": "2026-07-16T18:31:34Z",
+    "title": "An issue was discovered in router/upnp/src/ssdp.c in DD-WRT before 45724. An unsafe strcpy in the...",
+    "description": "An issue was discovered in router/upnp/src/ssdp.c in DD-WRT before 45724. An unsafe strcpy in the UPnP handling functionality allows an unauthenticated remote attacker to send a request that would overflow an internal fixed buffer. Exploitation requires the DD-WRT user to enable UPnP (which is off by default, and only listens on internal interfaces by default). This occurs in ssdp_msearch (reachable by an M-SEARCH request).",
     "severity": "high",
-    "cve_id": "CVE-2026-7543",
-    "ghsa_id": "GHSA-7xfg-8mc3-f3f7",
+    "cve_id": "CVE-2021-27137",
+    "ghsa_id": "GHSA-qx3v-2jx6-8m2c",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-8g48-f3xj-wjwv",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T18:31:34Z",
+    "title": "During an internal security assessment, a potential improper access control vulnerability was...",
+    "description": "During an internal security assessment, a potential improper access control vulnerability was discovered in Lenovo Smart Connect for Windows that could allow a local authenticated user to access files owned by a different user on the same system.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-6511",
+    "ghsa_id": "GHSA-8g48-f3xj-wjwv",
     "affected_packages": [],
     "cwes": [
       null
@@ -193,14 +282,59 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-4v43-gx32-wcrj",
+    "id": "gh-GHSA-hp9p-wj8m-c339",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T09:32:18Z",
-    "title": "The Joomla extension Quix Page Builder Pro is vulnerable to an unauthenticated SQL injection.",
-    "description": "The Joomla extension Quix Page Builder Pro is vulnerable to an unauthenticated SQL injection.",
+    "timestamp": "2026-07-16T18:31:34Z",
+    "title": "A flaw was found in the group search functionality of the Keycloak server's administrative API....",
+    "description": "A flaw was found in the group search functionality of the Keycloak server's administrative API. When Fine-Grained Admin Permissions (FGAP) v2 is enabled, a delegated administrator can bypass access restrictions to view parent groups they are not authorized to see. By searching for a child group they have permission to view, the system incorrectly returns the full details of the parent group in the response, leading to the disclosure of sensitive group attributes and configuration.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-15945",
+    "ghsa_id": "GHSA-hp9p-wj8m-c339",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-fgwg-8qwr-qvw3",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T18:31:34Z",
+    "title": "Axelor Open Platform versions 8.x prior to 8.2.2 contains an authorization bypass vulnerability...",
+    "description": "Axelor Open Platform versions 8.x prior to 8.2.2 contains an authorization bypass vulnerability that allows authenticated non-admin users to escalate privileges by exploiting unenforced field restrictions on nested relational save operations. Attackers can modify sensitive User record fields such as roles and group by submitting changes through a related entity's save path, bypassing the USER_RESTRICTED_FIELDS control and causing the JPA persistence layer to flush attacker-supplied admin role an",
     "severity": "high",
-    "cve_id": "CVE-2026-58078",
-    "ghsa_id": "GHSA-4v43-gx32-wcrj",
+    "cve_id": "CVE-2026-63085",
+    "ghsa_id": "GHSA-fgwg-8qwr-qvw3",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-xm8x-vw7j-573w",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T18:31:34Z",
+    "title": "XML::Bare versions through 0.53 for Perl have an unbounded character lookahead.\n\nThe...",
+    "description": "XML::Bare versions through 0.53 for Perl have an unbounded character lookahead.\n\nThe parserc_parse function attempts to check for multicharacter strings such as \"<![CDATA\" or element terminators such as \">\" without checking that the offsets are within the buffer.\n\nTruncated strings such as \"<a/\" can trigger an out-of-bounds read.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-57074",
+    "ghsa_id": "GHSA-xm8x-vw7j-573w",
     "affected_packages": [],
     "cwes": [
       null
@@ -215,24 +349,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-h524-vxvw-w455",
+    "id": "gh-GHSA-682p-jxjc-9j4v",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T09:32:18Z",
-    "title": "The WPBot – AI ChatBot for Live Support, Lead Generation, AI Services plugin for WordPress is...",
-    "description": "The WPBot – AI ChatBot for Live Support, Lead Generation, AI Services plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 8.5.6. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to trigger arbitrary re-embedding of stored RAG documents, modifying the rag_documents table and consuming the site owner's paid third-pa",
-    "severity": "medium",
-    "cve_id": "CVE-2026-15610",
-    "ghsa_id": "GHSA-h524-vxvw-w455",
+    "timestamp": "2026-07-16T18:31:34Z",
+    "title": "HTML::Bare versions through 0.04 for Perl have an unbounded character lookahead.\n\nThe...",
+    "description": "HTML::Bare versions through 0.04 for Perl have an unbounded character lookahead.\n\nThe parserc_parse function attempts to check for multicharacter strings such as \"<![CDATA\" or element terminators such as \">\" without checking that the offsets are within the buffer.\n\nTruncated strings such as \"<a/\" can trigger an out-of-bounds read.\n\nNote that the latest version available on CPAN is version 0.02. Newer versions are available on the git repository.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-57073",
+    "ghsa_id": "GHSA-682p-jxjc-9j4v",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -243,14 +372,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-95hw-w6xx-75xp",
+    "id": "gh-GHSA-mh4x-4mfg-2vp2",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T09:32:18Z",
-    "title": "A local privilege escalation vulnerability in ESET Inspect Connector. \nThe vulnerability was...",
-    "description": "A local privilege escalation vulnerability in ESET Inspect Connector. \nThe vulnerability was caused by improper authentication in an IPC channel.",
+    "timestamp": "2026-07-16T18:31:33Z",
+    "title": "The Lenovo XClarity Integrator for Windows Admin Center plugin version 5.1.1 and below running on...",
+    "description": "The Lenovo XClarity Integrator for Windows Admin Center plugin version 5.1.1 and below running on the WAC Gateway is vulnerable to Powershell Command Injection when establishing remote PowerShell commands.",
     "severity": "high",
-    "cve_id": "CVE-2026-6423",
-    "ghsa_id": "GHSA-95hw-w6xx-75xp",
+    "cve_id": "CVE-2026-14371",
+    "ghsa_id": "GHSA-mh4x-4mfg-2vp2",
     "affected_packages": [],
     "cwes": [
       null
@@ -264,14 +393,37 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-g4c4-fjm7-hv64",
+    "id": "gh-GHSA-4gpm-fvvv-c6c5",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T09:32:18Z",
-    "title": "Use-after-free vulnerability in ESET Linux products potentially allowed an attacker to trigger...",
-    "description": "Use-after-free vulnerability in ESET Linux products potentially allowed an attacker to trigger kernel panic on the system",
+    "timestamp": "2026-07-16T18:31:33Z",
+    "title": "Image::EPEG versions through 0.15 for Perl embeds an unsupported version of the Epeg library.\n...",
+    "description": "Image::EPEG versions through 0.15 for Perl embeds an unsupported version of the Epeg library.\n\nImage::EPEG includes Epeg 0.9.0 that was last updated in 2004.\n\nEpeg is a fast JPEG thumbnail library that was once part of the Englightenment Project.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-3031",
+    "ghsa_id": "GHSA-4gpm-fvvv-c6c5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-pwmv-8h46-f444",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T18:31:32Z",
+    "title": "A potential out of bounds write vulnerability could allow a local privileged attacker to execute...",
+    "description": "A potential out of bounds write vulnerability could allow a local privileged attacker to execute code in System Management Mode.",
     "severity": "medium",
-    "cve_id": "CVE-2026-6424",
-    "ghsa_id": "GHSA-g4c4-fjm7-hv64",
+    "cve_id": "CVE-2026-10589",
+    "ghsa_id": "GHSA-pwmv-8h46-f444",
     "affected_packages": [],
     "cwes": [
       null
@@ -285,28 +437,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-g6hr-2vmc-344h",
+    "id": "gh-GHSA-whrx-5ggp-j935",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T09:32:18Z",
-    "title": "The WP Bulk Delete plugin for WordPress is vulnerable to generic SQL Injection via the ...",
-    "description": "The WP Bulk Delete plugin for WordPress is vulnerable to generic SQL Injection via the 'delete_user_roles' parameter in all versions up to, and including, 1.4.2 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-15727",
-    "ghsa_id": "GHSA-g6hr-2vmc-344h",
+    "timestamp": "2026-07-16T18:31:32Z",
+    "title": "A potential vulnerability was reported in Lenovo App Store, distributed exclusively in the...",
+    "description": "A potential vulnerability was reported in Lenovo App Store, distributed exclusively in the Chinese market, that could allow a local authenticated user to execute arbitrary code with elevated privileges.",
+    "severity": "high",
+    "cve_id": "CVE-2026-13104",
+    "ghsa_id": "GHSA-whrx-5ggp-j935",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -315,193 +458,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-3gw6-96rm-6cm8",
+    "id": "gh-GHSA-xfxg-9rjg-hqrw",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T09:32:18Z",
-    "title": "The WP TripAdvisor Review Slider plugin for WordPress is vulnerable to generic SQL Injection via...",
-    "description": "The WP TripAdvisor Review Slider plugin for WordPress is vulnerable to generic SQL Injection via the 'filtersource' parameter in all versions up to, and including, 14.6 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information f",
-    "severity": "medium",
-    "cve_id": "CVE-2026-15651",
-    "ghsa_id": "GHSA-3gw6-96rm-6cm8",
+    "timestamp": "2026-07-16T18:31:32Z",
+    "title": "HTML::Bare versions through 0.04 for Perl will hang in an infinite loop when parsing malformed...",
+    "description": "HTML::Bare versions through 0.04 for Perl will hang in an infinite loop when parsing malformed attributes.\n\nThe parserc_parse function never advances the attribute-parse state cursor on certain malformed attribute forms, looping forever.\n\nNameless attributes such as \"<a ='c'>\" or unbalanced quotes \"<a b='''''''c'>\" can trigger this condition.\n\nNote that the latest version available on CPAN is version 0.02. Newer versions are available on the git repository.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-13397",
+    "ghsa_id": "GHSA-xfxg-9rjg-hqrw",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-w9hj-67x9-qq26",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T09:32:17Z",
-    "title": "The WPBot – AI ChatBot for Live Support, Lead Generation, AI Services plugin for WordPress is...",
-    "description": "The WPBot – AI ChatBot for Live Support, Lead Generation, AI Services plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 8.5.6. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to delete arbitrary chat session records from the wpbot_user and wpbot_conversation tables, including chat history and conversation logs, by supplying a crafted userid value.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-15106",
-    "ghsa_id": "GHSA-w9hj-67x9-qq26",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-fpxv-63pw-m29m",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T09:32:17Z",
-    "title": "The The Cache Purger plugin for WordPress is vulnerable to authorization bypass in all versions...",
-    "description": "The The Cache Purger plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.3.20. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to permanently truncate the plugin's cache-purge audit log (wp-content/purge.log), destroying the entire cache-purge audit history. The tcp_log_purge nonce is rendered in the admin bar ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-15350",
-    "ghsa_id": "GHSA-fpxv-63pw-m29m",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3xrj-6q9q-73hr",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T09:32:17Z",
-    "title": "The SysBasics Customize My Account for WooCommerce – Live My Account Customizer plugin for...",
-    "description": "The SysBasics Customize My Account for WooCommerce – Live My Account Customizer plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'row_type' parameter in all versions up to, and including, 4.4.14 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with shop manager-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-15324",
-    "ghsa_id": "GHSA-3xrj-6q9q-73hr",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-ghjh-hcg5-5c66",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T09:32:17Z",
-    "title": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to...",
-    "description": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to generic SQL Injection via Stored Quiz Answer Array in all versions up to, and including, 4.0.0 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with custom-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive inf",
-    "severity": "medium",
-    "cve_id": "CVE-2026-15022",
-    "ghsa_id": "GHSA-ghjh-hcg5-5c66",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-4895-w473-xhfc",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T09:32:17Z",
-    "title": "The Quiz Master Next plugin for WordPress is vulnerable to SQL Injection via stored quiz page...",
-    "description": "The Quiz Master Next plugin for WordPress is vulnerable to SQL Injection via stored quiz page data in versions up to, and including, 11.2.0. This is due to insufficient escaping on the user-supplied 'pages' parameter persisted by the qsm_ajax_save_pages() AJAX handler (sanitize_text_field only) and lack of sufficient preparation on the existing SQL query built in qsm_options_questions_tab_content() at line 143, where the stored page IDs are interpolated into an IN() clause via implode() with no ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-13767",
-    "ghsa_id": "GHSA-4895-w473-xhfc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-f4cp-4p46-3f73",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T09:32:17Z",
-    "title": "The Themify Builder plugin for WordPress is vulnerable to authorization bypass in all versions up...",
-    "description": "The Themify Builder plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 7.7.7. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to overwrite or delete the generated CSS stylesheet file of arbitrary posts, including private and draft posts owned by other users, and modify plugin-scoped font options. The required CS",
-    "severity": "medium",
-    "cve_id": "CVE-2026-15407",
-    "ghsa_id": "GHSA-f4cp-4p46-3f73",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null,
