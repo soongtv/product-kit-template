@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1784229785184-1",
+    "id": "twitter-1784258602690-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-16T19:23:05.184Z",
+    "timestamp": "2026-07-17T03:23:22.690Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1784229785184-1",
+    "id": "hn-1784258602690-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-16T19:23:05.184Z",
+    "timestamp": "2026-07-17T03:23:22.690Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,164 +26,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-8fv2-88gg-hm7q",
+    "id": "gh-GHSA-5pcp-45f3-82jv",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T19:21:15Z",
-    "title": "Envoy Gateway: Wasm cache ServeHTTP reads mappingPath2Cache without lock",
-    "description": "Vulnerability report without repro case. Repro case may be added later after harness is complete.\n\n**Preconditions (4):**\n- Pod-network reachability to :18002 (no auth)\n- Tenant can create EnvoyExtensionPolicy (baseline)\n- Attacker pod floods GET while churning EnvoyExtensionPolicy with distinct Wasm URLs\n- Read at :153 must overlap a write at :201/:209 (probabilistic, attacker controls both rates)\n\n**Description:**\n\nhttpserver.go:153 reads s.mappingPath2Cache with no lock while httpserver.go:20",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53715",
-    "ghsa_id": "GHSA-8fv2-88gg-hm7q",
-    "affected_packages": [
-      "github.com/envoyproxy/gateway",
-      "github.com/envoyproxy/gateway"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-h7pq-86h8-rp5x",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T19:20:05Z",
-    "title": "Envoy Gateway: OCI layer extraction allocates make([]byte, h.Size) from untrusted tar header",
-    "description": "Vulnerability report without repro case. Repro case may be added later after harness is complete.\n\n**Preconditions (4):**\n- Tenant can create EnvoyExtensionPolicy (baseline)\n- Controller has egress to attacker-controlled OCI registry\n- No registry allowlist (none exists in code)\n- Layer presents Docker/OCI media type\n\n**Description**\n\nAt imagefetcher.go:287, make([]byte, h.Size) uses the attacker-controlled tar-header size; the LimitReader at :278 bounds bytes read from the stream but not the he",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53717",
-    "ghsa_id": "GHSA-h7pq-86h8-rp5x",
-    "affected_packages": [
-      "github.com/envoyproxy/gateway",
-      "github.com/envoyproxy/gateway"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-m2v6-2jmh-4c68",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T19:19:17Z",
-    "title": "Envoy Gateway: Nil-dereference when SecurityPolicy targets TCPRoute without spec.authorization",
-    "description": "Vulnerability report without repro case. Repro case may be added later after harness is complete.\n\n**Preconditions (4):**\n- Tenant has SecurityPolicy + TCPRoute RBAC (baseline)\n- Tenant namespace permitted to attach TCPRoute to a Gateway listener\n- spec.authorization omitted (the trigger)\n- No admission webhook blocks the shape\n\n**Description:**\n\nA namespace-scoped tenant can deterministically panic the gatewayapi runner on every reconcile with a single CRD; the recover() in message/watchutil.go",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53719",
-    "ghsa_id": "GHSA-m2v6-2jmh-4c68",
-    "affected_packages": [
-      "github.com/envoyproxy/gateway",
-      "github.com/envoyproxy/gateway"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-cxpq-8v7q-cg56",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T19:18:08Z",
-    "title": "Envoy Gateway: Wasm HTTP fetch decompresses gzip without output-size limit",
-    "description": "Vulnerability report without repro case. Repro case may be added later after harness is complete.\n\n**Preconditions (4):**\n- Tenant can create EnvoyExtensionPolicy (baseline)\n- Attacker hosts a gzip-bomb at a reachable URL\n- sha256 unset (optional field; check is post-decompression anyway)\n- No operator Wasm-URL allowlist (none exists in code)\n\n**Description**\n\ngetFileFromGZ calls io.ReadAll on a raw gzip.Reader (httpfetcher.go:216) with no output bound, while the compressed input is capped at 25",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53716",
-    "ghsa_id": "GHSA-cxpq-8v7q-cg56",
-    "affected_packages": [
-      "github.com/envoyproxy/gateway",
-      "github.com/envoyproxy/gateway"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-fcrp-7gc2-93g7",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T19:14:50Z",
-    "title": "Envoy Gateway custom backendRef cross-namespace ReferenceGrant bypass",
-    "description": "### Impact\nEnvoy Gateway accepts extension-managed custom backendRefs from an HTTPRoute to a backend resource in another namespace without requiring a matching Gateway API ReferenceGrant in the target namespace. This breaks the Gateway API cross-namespace consent model: the namespace that owns the referenced backend resource does not need to opt in with a ReferenceGrant before another namespace’s HTTPRoute can use that resource.\n\n### Patches\n[1.7.4](https://github.com/envoyproxy/gateway/releases",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53718",
-    "ghsa_id": "GHSA-fcrp-7gc2-93g7",
-    "affected_packages": [
-      "github.com/envoyproxy/gateway",
-      "github.com/envoyproxy/gateway"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-v95x-xhq5-4929",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T19:12:08Z",
-    "title": "kumactl connects to control plane without verifying TLS certificate when no CA is configured",
-    "description": "When an operator adds an HTTPS control plane profile to `kumactl` without providing a CA certificate, `kumactl` disables TLS verification and sends API tokens over the unverified connection\n\n## Impact\n\nAn attacker on the network path between the operator and the control plane can intercept user or admin API tokens and then act against the control plane as that user\n\n## Affected configurations\n\n- `kumactl` profiles manually added against an HTTPS control plane endpoint without `--ca-cert-file`\n\n#",
-    "severity": "medium",
-    "cve_id": "CVE-2026-50166",
-    "ghsa_id": "GHSA-v95x-xhq5-4929",
-    "affected_packages": [
-      "github.com/kumahq/kuma/v2",
-      "github.com/kumahq/kuma/v2",
-      "github.com/kumahq/kuma/v2",
-      "github.com/kumahq/kuma/v2",
-      "github.com/kumahq/kuma/v2",
-      "github.com/kumahq/kuma"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-6j6v-724c-h5fm",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:34Z",
-    "title": "A potential insecure permissions vulnerability was reported in Legion Zone and the Lenovo App...",
-    "description": "A potential insecure permissions vulnerability was reported in Legion Zone and the Lenovo App Store Windows applications, distributed exclusively in the Chinese market, that when installed on a non‑system partition, could allow a local user to execute arbitrary code.",
-    "severity": "high",
-    "cve_id": "CVE-2026-9046",
-    "ghsa_id": "GHSA-6j6v-724c-h5fm",
+    "timestamp": "2026-07-17T00:32:12Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-14253",
+    "ghsa_id": "GHSA-5pcp-45f3-82jv",
     "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "cwes": [],
     "references": [
-      null,
       null,
       null
     ],
@@ -191,20 +44,37 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-whw8-2869-jf7j",
+    "id": "gh-GHSA-8pm6-gq63-ww3m",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:34Z",
-    "title": "Grafana OnCall through 1.16.11 contains an unauthenticated access vulnerability that allows...",
-    "description": "Grafana OnCall through 1.16.11 contains an unauthenticated access vulnerability that allows remote attackers to obtain a valid PluginAuthToken by sending a POST request to the internal plugin install endpoint using hardcoded default stack_id and org_id values present in the public source tree. Attackers can leverage the acquired token to authenticate against all internal API endpoints, create arbitrary Admin users via the user-context header bootstrap path, revoke the legitimate plugin token, an",
+    "timestamp": "2026-07-17T00:32:12Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-11740",
+    "ghsa_id": "GHSA-8pm6-gq63-ww3m",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-xq34-4qgv-ggmc",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-17T00:32:12Z",
+    "title": "Improper Input Validation in Zoom Desktop Client for Windows, Zoom VDI Client for Windows, and...",
+    "description": "Improper Input Validation in Zoom Desktop Client for Windows, Zoom VDI Client for Windows, and Zoom Meeting SDK for Windows may allow an unauthenticated user to conduct an account takeover via network access.",
     "severity": "critical",
-    "cve_id": "CVE-2026-63087",
-    "ghsa_id": "GHSA-whw8-2869-jf7j",
+    "cve_id": "CVE-2026-53412",
+    "ghsa_id": "GHSA-xq34-4qgv-ggmc",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null
@@ -213,20 +83,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-c6cx-mj2w-vjcr",
+    "id": "gh-GHSA-xpgg-r72x-rgc7",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:34Z",
-    "title": "text-generation-inference through 3.3.7 contains a server-side request forgery (SSRF)...",
-    "description": "text-generation-inference through 3.3.7 contains a server-side request forgery (SSRF) vulnerability in the OpenAI-compatible multimodal chat completions endpoint that allows unauthenticated network attackers to coerce the server into issuing arbitrary HTTP GET requests by supplying a crafted image_url value in chat message content. The fetch_image function in router/src/validation.rs performs no validation of private, loopback, link-local, or cloud metadata target addresses, and the reqwest HTTP",
+    "timestamp": "2026-07-17T00:32:12Z",
+    "title": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft...",
+    "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Microsoft Office SharePoint allows an authorized attacker to perform spoofing over a network.",
     "severity": "medium",
-    "cve_id": "CVE-2026-63086",
-    "ghsa_id": "GHSA-c6cx-mj2w-vjcr",
+    "cve_id": "CVE-2026-62826",
+    "ghsa_id": "GHSA-xpgg-r72x-rgc7",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null
@@ -235,106 +104,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-qx3v-2jx6-8m2c",
+    "id": "gh-GHSA-q6x2-vfpr-9j7p",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:34Z",
-    "title": "An issue was discovered in router/upnp/src/ssdp.c in DD-WRT before 45724. An unsafe strcpy in the...",
-    "description": "An issue was discovered in router/upnp/src/ssdp.c in DD-WRT before 45724. An unsafe strcpy in the UPnP handling functionality allows an unauthenticated remote attacker to send a request that would overflow an internal fixed buffer. Exploitation requires the DD-WRT user to enable UPnP (which is off by default, and only listens on internal interfaces by default). This occurs in ssdp_msearch (reachable by an M-SEARCH request).",
-    "severity": "high",
-    "cve_id": "CVE-2021-27137",
-    "ghsa_id": "GHSA-qx3v-2jx6-8m2c",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-8g48-f3xj-wjwv",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:34Z",
-    "title": "During an internal security assessment, a potential improper access control vulnerability was...",
-    "description": "During an internal security assessment, a potential improper access control vulnerability was discovered in Lenovo Smart Connect for Windows that could allow a local authenticated user to access files owned by a different user on the same system.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6511",
-    "ghsa_id": "GHSA-8g48-f3xj-wjwv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-hp9p-wj8m-c339",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:34Z",
-    "title": "A flaw was found in the group search functionality of the Keycloak server's administrative API....",
-    "description": "A flaw was found in the group search functionality of the Keycloak server's administrative API. When Fine-Grained Admin Permissions (FGAP) v2 is enabled, a delegated administrator can bypass access restrictions to view parent groups they are not authorized to see. By searching for a child group they have permission to view, the system incorrectly returns the full details of the parent group in the response, leading to the disclosure of sensitive group attributes and configuration.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-15945",
-    "ghsa_id": "GHSA-hp9p-wj8m-c339",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-fgwg-8qwr-qvw3",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:34Z",
-    "title": "Axelor Open Platform versions 8.x prior to 8.2.2 contains an authorization bypass vulnerability...",
-    "description": "Axelor Open Platform versions 8.x prior to 8.2.2 contains an authorization bypass vulnerability that allows authenticated non-admin users to escalate privileges by exploiting unenforced field restrictions on nested relational save operations. Attackers can modify sensitive User record fields such as roles and group by submitting changes through a related entity's save path, bypassing the USER_RESTRICTED_FIELDS control and causing the JPA persistence layer to flush attacker-supplied admin role an",
-    "severity": "high",
-    "cve_id": "CVE-2026-63085",
-    "ghsa_id": "GHSA-fgwg-8qwr-qvw3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-xm8x-vw7j-573w",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:34Z",
-    "title": "XML::Bare versions through 0.53 for Perl have an unbounded character lookahead.\n\nThe...",
-    "description": "XML::Bare versions through 0.53 for Perl have an unbounded character lookahead.\n\nThe parserc_parse function attempts to check for multicharacter strings such as \"<![CDATA\" or element terminators such as \">\" without checking that the offsets are within the buffer.\n\nTruncated strings such as \"<a/\" can trigger an out-of-bounds read.",
+    "timestamp": "2026-07-17T00:32:12Z",
+    "title": "YAML::Syck versions before 1.47 for Perl allow a heap use-after-free via an anchor name reused as...",
+    "description": "YAML::Syck versions before 1.47 for Perl allow a heap use-after-free via an anchor name reused as an anchors-table key in syck_hdlr_add_anchor.\n\nIn the bundled libsyck an anchor name allocated by syck_strndup is stored both as node->anchor, freed when the node is freed, and as the key in the parser's anchors table. Freeing the node frees the shared key, and a later anchor redefinition makes st_delete compare against the freed key, so st_strcmp reads freed heap memory. Anchors are a standard YAML",
     "severity": "unknown",
-    "cve_id": "CVE-2026-57074",
-    "ghsa_id": "GHSA-xm8x-vw7j-573w",
+    "cve_id": "CVE-2026-57076",
+    "ghsa_id": "GHSA-q6x2-vfpr-9j7p",
     "affected_packages": [],
     "cwes": [
       null
@@ -349,20 +126,40 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-682p-jxjc-9j4v",
+    "id": "gh-GHSA-hcmw-xv23-7hqq",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:34Z",
-    "title": "HTML::Bare versions through 0.04 for Perl have an unbounded character lookahead.\n\nThe...",
-    "description": "HTML::Bare versions through 0.04 for Perl have an unbounded character lookahead.\n\nThe parserc_parse function attempts to check for multicharacter strings such as \"<![CDATA\" or element terminators such as \">\" without checking that the offsets are within the buffer.\n\nTruncated strings such as \"<a/\" can trigger an out-of-bounds read.\n\nNote that the latest version available on CPAN is version 0.02. Newer versions are available on the git repository.",
+    "timestamp": "2026-07-17T00:32:12Z",
+    "title": "Out-of-bounds write vulnerability in Legion of the Bouncy Castle Inc. BC-LTS bcprov-lts8on on ARM...",
+    "description": "Out-of-bounds write vulnerability in Legion of the Bouncy Castle Inc. BC-LTS bcprov-lts8on on ARM allows Overflow Buffers.\n\n This vulnerability is associated with program files https://github.Com/bcgit/bc-lts-java/blob/main/native_c/arm/sha/shake.C, https://github.Com/bcgit/bc-lts-java/blob/main/native_c/arm/sha/sha3.C.\n\n\n\nThis issue affects BC-LTS: from 2.73.0 before 2.73.12.1.\n\n\n\nIssue is only applicable if application involved is accepting memoable SHA3 / SHAKE states from potentially untrust",
+    "severity": "low",
+    "cve_id": "CVE-2026-15997",
+    "ghsa_id": "GHSA-hcmw-xv23-7hqq",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-fwh5-hwhp-qgp4",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-17T00:32:12Z",
+    "title": "YAML::Syck versions before 1.47 for Perl allow an out-of-bounds read via a signed-char lookup...",
+    "description": "YAML::Syck versions before 1.47 for Perl allow an out-of-bounds read via a signed-char lookup-table index in syck_base64dec.\n\nThe base64 decoder in the bundled libsyck indexes the 256-entry static table b64_xtable with a signed char, so any !!binary byte >= 0x80 sign-extends to a negative index and reads before the table. The decoder receives the raw bytes of any !!binary node, a standard YAML type not gated by $LoadBlessed or $LoadCode, so it is reached on the default Load path.\n\nAny caller tha",
     "severity": "unknown",
-    "cve_id": "CVE-2026-57073",
-    "ghsa_id": "GHSA-682p-jxjc-9j4v",
+    "cve_id": "CVE-2026-57075",
+    "ghsa_id": "GHSA-fwh5-hwhp-qgp4",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -372,14 +169,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-mh4x-4mfg-2vp2",
+    "id": "gh-GHSA-v83q-c28h-3q53",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:33Z",
-    "title": "The Lenovo XClarity Integrator for Windows Admin Center plugin version 5.1.1 and below running on...",
-    "description": "The Lenovo XClarity Integrator for Windows Admin Center plugin version 5.1.1 and below running on the WAC Gateway is vulnerable to Powershell Command Injection when establishing remote PowerShell commands.",
+    "timestamp": "2026-07-17T00:32:12Z",
+    "title": "Concurrent execution using shared resource with improper synchronization ('race condition') in...",
+    "description": "Concurrent execution using shared resource with improper synchronization ('race condition') in Windows Backup Engine allows an authorized attacker to elevate privileges locally.",
     "severity": "high",
-    "cve_id": "CVE-2026-14371",
-    "ghsa_id": "GHSA-mh4x-4mfg-2vp2",
+    "cve_id": "CVE-2026-58598",
+    "ghsa_id": "GHSA-v83q-c28h-3q53",
     "affected_packages": [],
     "cwes": [
       null
@@ -393,14 +190,35 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-4gpm-fvvv-c6c5",
+    "id": "gh-GHSA-279f-474x-phh7",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:33Z",
-    "title": "Image::EPEG versions through 0.15 for Perl embeds an unsupported version of the Epeg library.\n...",
-    "description": "Image::EPEG versions through 0.15 for Perl embeds an unsupported version of the Epeg library.\n\nImage::EPEG includes Epeg 0.9.0 that was last updated in 2004.\n\nEpeg is a fast JPEG thumbnail library that was once part of the Englightenment Project.",
+    "timestamp": "2026-07-17T00:32:12Z",
+    "title": "Improper neutralization of input during web page generation ('cross-site scripting') in Windows...",
+    "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Windows Admin Center allows an unauthorized attacker to perform spoofing over a network.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-58643",
+    "ghsa_id": "GHSA-279f-474x-phh7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-5wqv-8x52-77q2",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-17T00:32:12Z",
+    "title": "YAML::Syck versions before 1.47 for Perl allow an out-of-bounds read via an unbounded newline...",
+    "description": "YAML::Syck versions before 1.47 for Perl allow an out-of-bounds read via an unbounded newline scan in newline_len.\n\nIn the bundled libsyck newline_len and is_newline dereference the scan pointer, and the following byte for a \"\\r\\n\" pair, with no NUL-terminator or bounds check. During block-scalar lexing at a document boundary the scan runs one byte past the heap lexer buffer. This is an incomplete fix of CVE-2025-11683, on a lexer path the earlier fix did not cover.\n\nAny caller that runs Load or",
     "severity": "unknown",
-    "cve_id": "CVE-2026-3031",
-    "ghsa_id": "GHSA-4gpm-fvvv-c6c5",
+    "cve_id": "CVE-2026-57077",
+    "ghsa_id": "GHSA-5wqv-8x52-77q2",
     "affected_packages": [],
     "cwes": [
       null
@@ -416,35 +234,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-pwmv-8h46-f444",
+    "id": "gh-GHSA-58pc-566f-r6jx",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:32Z",
-    "title": "A potential out of bounds write vulnerability could allow a local privileged attacker to execute...",
-    "description": "A potential out of bounds write vulnerability could allow a local privileged attacker to execute code in System Management Mode.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-10589",
-    "ghsa_id": "GHSA-pwmv-8h46-f444",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-whrx-5ggp-j935",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:32Z",
-    "title": "A potential vulnerability was reported in Lenovo App Store, distributed exclusively in the...",
-    "description": "A potential vulnerability was reported in Lenovo App Store, distributed exclusively in the Chinese market, that could allow a local authenticated user to execute arbitrary code with elevated privileges.",
+    "timestamp": "2026-07-17T00:32:12Z",
+    "title": "A time-of-check to time-of-use (TOCTOU) race condition in the installation and uninstallation...",
+    "description": "A time-of-check to time-of-use (TOCTOU) race condition in the installation and uninstallation process of certain Zoom Clients for Windows could allow an authenticated local user to escalate privileges.",
     "severity": "high",
-    "cve_id": "CVE-2026-13104",
-    "ghsa_id": "GHSA-whrx-5ggp-j935",
+    "cve_id": "CVE-2026-53411",
+    "ghsa_id": "GHSA-58pc-566f-r6jx",
     "affected_packages": [],
     "cwes": [
       null
@@ -458,14 +255,57 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-xfxg-9rjg-hqrw",
+    "id": "gh-GHSA-g52r-hw2c-c98r",
     "source": "GitHub Security",
-    "timestamp": "2026-07-16T18:31:32Z",
-    "title": "HTML::Bare versions through 0.04 for Perl will hang in an infinite loop when parsing malformed...",
-    "description": "HTML::Bare versions through 0.04 for Perl will hang in an infinite loop when parsing malformed attributes.\n\nThe parserc_parse function never advances the attribute-parse state cursor on certain malformed attribute forms, looping forever.\n\nNameless attributes such as \"<a ='c'>\" or unbalanced quotes \"<a b='''''''c'>\" can trigger this condition.\n\nNote that the latest version available on CPAN is version 0.02. Newer versions are available on the git repository.",
+    "timestamp": "2026-07-17T00:32:12Z",
+    "title": "Integer overflow or wraparound in Windows Terminal allows an unauthorized attacker to execute...",
+    "description": "Integer overflow or wraparound in Windows Terminal allows an unauthorized attacker to execute code over a network.",
+    "severity": "high",
+    "cve_id": "CVE-2026-59117",
+    "ghsa_id": "GHSA-g52r-hw2c-c98r",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-x744-9h4c-fvj9",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-17T00:32:11Z",
+    "title": "The Booking for Appointments and Events Calendar – Amelia plugin for WordPress is vulnerable to...",
+    "description": "The Booking for Appointments and Events Calendar – Amelia plugin for WordPress is vulnerable to SQL Injection via the Customer Import in all versions up to, and including, 2.4.3 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query.  This makes it possible for authenticated attackers, with wpamelia-manager role, to append additional SQL queries into already existing queries that can be used to extract sensitive information from t",
+    "severity": "medium",
+    "cve_id": "CVE-2026-14782",
+    "ghsa_id": "GHSA-x744-9h4c-fvj9",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-p3p9-6pr6-mr9m",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-17T00:32:11Z",
+    "title": "YAML::Syck versions before 1.47 for Perl allow a use-after-free and double-free via an anchor...",
+    "description": "YAML::Syck versions before 1.47 for Perl allow a use-after-free and double-free via an anchor node freed while still on the parser value stack.\n\nIn the bundled libsyck, when an anchor name is redefined or removed, syck_hdlr_add_anchor and syck_hdlr_remove_anchor free the node stored under that name with syck_free_node. That node can still be live on the parser's value stack, so syck_hdlr_add_node reaches it again and frees it a second time. On a normal build the 48-byte node chunk is freed twice",
     "severity": "unknown",
-    "cve_id": "CVE-2026-13397",
-    "ghsa_id": "GHSA-xfxg-9rjg-hqrw",
+    "cve_id": "CVE-2026-13713",
+    "ghsa_id": "GHSA-p3p9-6pr6-mr9m",
     "affected_packages": [],
     "cwes": [
       null
@@ -480,271 +320,407 @@
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-47828",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-09T07:16:23.990",
-    "title": "CVE-2026-47828 - During bosh create-env and bosh delete-env, the CLI uploads compiled CPI packages and rendered job t",
-    "description": "During bosh create-env and bosh delete-env, the CLI uploads compiled CPI packages and rendered job templates to the new VM's DAV blobstore over HTTPS without verifying the server certificate, even though a CA certificate for that endpoint is available in the installation manifest. A network attacker can terminate the TLS connection, harvest the Basic-auth credentials, and read the rendered-templates archive containing every bootstrap secret for the new BOSH Director, then replay the credentials against the real VM's agent for root code execution.\nAffected versions: bosh-cli versions prior to v7.10.4.",
+    "id": "gh-GHSA-22g8-27fc-wwmw",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T21:30:39Z",
+    "title": "A divide-by-zero vulnerability in the Productivity Suite allows a local \nattacker to cause a...",
+    "description": "A divide-by-zero vulnerability in the Productivity Suite allows a local \nattacker to cause a division by zero leading to a system crash.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-61378",
+    "ghsa_id": "GHSA-22g8-27fc-wwmw",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-w238-3hjf-hv37",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T21:30:39Z",
+    "title": "An out-of-bounds read in the Productivity Suite allows a physical \nattacker to control the length...",
+    "description": "An out-of-bounds read in the Productivity Suite allows a physical \nattacker to control the length of data sent to a USB device. This can \nlead to a system crash or disclosure of kernel memory.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-60073",
+    "ghsa_id": "GHSA-w238-3hjf-hv37",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-g349-wjvj-vxpr",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T21:30:39Z",
+    "title": "An out-of-bounds read vulnerability in the Productivity Suite allows a \nlocal attacker to trigger...",
+    "description": "An out-of-bounds read vulnerability in the Productivity Suite allows a \nlocal attacker to trigger kernel memory corruption by sending a crafted \nIOCTL request. This could lead to limited information disclosure or \ndisruption of the affected product.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-57896",
+    "ghsa_id": "GHSA-g349-wjvj-vxpr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-x8wr-6q4x-7843",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T21:30:38Z",
+    "title": "EQ-3 Eqiva CC-RT-BLE Bluetooth Smart Radiator Thermostat Firmware up to the latest version 1.46...",
+    "description": "EQ-3 Eqiva CC-RT-BLE Bluetooth Smart Radiator Thermostat Firmware up to the latest version 1.46 was discovered to allow unsecured bluetooth connections. This vulnerability allows attackers to gain full access to the device without authentication.",
     "severity": "high",
-    "cve_id": "CVE-2026-47828",
-    "cvss_score": 8.8,
-    "affected_products": [
-      "cpe:2.3:a:cloudfoundry:bosh_cli:*:*:*:*:*:*:*:*"
-    ],
+    "cve_id": "CVE-2024-34268",
+    "ghsa_id": "GHSA-x8wr-6q4x-7843",
+    "affected_packages": [],
+    "cwes": [],
     "references": [
-      "https://www.cloudfoundry.org/blog/cve-2026-47828-missing-tls-certificate-verification-in-bosh-cli-allows-root-code-execution-via-man-in-the-middle-credential-replay/"
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-47826",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-09T07:16:23.840",
-    "title": "CVE-2026-47826 - The blobs.yml path key traversal vulnerability in the BOSH CLI tool allows an attacker to write arbi",
-    "description": "The blobs.yml path key traversal vulnerability in the BOSH CLI tool allows an attacker to write arbitrary files and exfiltrate sensitive information.\nAffected versions: BOSH CLI tool versions prior to v7.10.4.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-47826",
-    "cvss_score": 9.1,
-    "affected_products": [
-      "cpe:2.3:a:cloudfoundry:bosh_cli:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.cloudfoundry.org/blog/cve-2026-47826-blobs-yaml-path-traversal-allows-file-writes/"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-12517",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-09T07:16:23.410",
-    "title": "CVE-2026-12517 - The Fediverse Embeds WordPress plugin before 1.5.8 does not validate the destination of the server-s",
-    "description": "The Fediverse Embeds WordPress plugin before 1.5.8 does not validate the destination of the server-side request performed by an unauthenticated site-info endpoint before fetching it, allowing anonymous users (the gating nonce is exposed on public pages carrying an embed) to make the site request internal and private-network URLs and read back the parsed page metadata. This is a Server-Side Request Forgery.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-12517",
-    "cvss_score": 5.3,
-    "affected_products": [],
-    "references": [
-      "https://wpscan.com/vulnerability/460a996f-e27d-47e8-9d68-9e6be93100c0/"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-12516",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-09T07:16:23.303",
-    "title": "CVE-2026-12516 - The Fediverse Embeds WordPress plugin before 1.5.8 does not validate the destination of the server-s",
-    "description": "The Fediverse Embeds WordPress plugin before 1.5.8 does not validate the destination of the server-side request performed by an unauthenticated media-proxying endpoint, allowing anonymous users to make the site fetch arbitrary URLs, including internal and private-network addresses, and read back the response body. This results in a full-read Server-Side Request Forgery and open proxy.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-12516",
-    "cvss_score": 5.3,
-    "affected_products": [],
-    "references": [
-      "https://wpscan.com/vulnerability/2ac80164-03b7-4966-b022-833b4194de80/"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-12270",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-09T07:16:23.210",
-    "title": "CVE-2026-12270 - The Everest Forms  WordPress plugin before 3.5.0 does not correctly restrict access to several REST ",
-    "description": "The Everest Forms  WordPress plugin before 3.5.0 does not correctly restrict access to several REST API endpoints belonging to its onboarding assistant: the capability check is only applied when an attacker-controllable request header holds a specific value, so it can be bypassed by omitting or changing that header. This makes it possible for unauthenticated attackers to read onboarding status information, modify the related Everest Forms  WordPress plugin before 3.5.0 options, and trigger an email from the site to an arbitrary address.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-12270",
-    "cvss_score": 6.5,
-    "affected_products": [],
-    "references": [
-      "https://wpscan.com/vulnerability/30813664-2af7-45da-b37c-3d573bc80bd9/"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11875",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-09T07:16:23.107",
-    "title": "CVE-2026-11875 - The WP Support Plus Responsive Ticket System WordPress plugin through 9.1.2 does not sign or verify ",
-    "description": "The WP Support Plus Responsive Ticket System WordPress plugin through 9.1.2 does not sign or verify its guest-session cookie, allowing unauthenticated attackers to forge it and impersonate any ticket owner (identified by email address) to read, reply to, and close that person's support tickets.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-11875",
-    "cvss_score": 5.3,
-    "affected_products": [],
-    "references": [
-      "https://wpscan.com/vulnerability/1c69692e-5d0c-42cf-9b3d-b722f2ba4231/"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11869",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-09T07:16:22.997",
-    "title": "CVE-2026-11869 - The WP DSGVO Tools (GDPR) WordPress plugin before 3.1.40 does not perform an authorization check on ",
-    "description": "The WP DSGVO Tools (GDPR) WordPress plugin before 3.1.40 does not perform an authorization check on the immediate-processing path of its data subject access request feature, allowing unauthenticated attackers to generate and download the full personal-data export (including name, postal address, phone number, email, and comment content) of any user, customer, or commenter by supplying their email address.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-11869",
-    "cvss_score": 5.3,
-    "affected_products": [],
-    "references": [
-      "https://wpscan.com/vulnerability/49170650-0006-4f3b-90f4-f8bb176beb7b/"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-11571",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-09T07:16:22.847",
-    "title": "CVE-2026-11571 - The Everest Forms  WordPress plugin before 3.5.0 does not reliably delete temporary CSV files genera",
-    "description": "The Everest Forms  WordPress plugin before 3.5.0 does not reliably delete temporary CSV files generated during email-notification processing and leaves them publicly accessible in the uploads directory, allowing unauthenticated attackers to retrieve other users' form submission records via predictable, enumerable filenames.",
+    "id": "gh-GHSA-vgcc-2r5p-6qvc",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T21:30:38Z",
+    "title": "A time-of-check to time-of-use (TOCTOU) race condition in the installation and uninstallation...",
+    "description": "A time-of-check to time-of-use (TOCTOU) race condition in the installation and uninstallation process of certain Zoom Clients for Windows could allow an authenticated local user to escalate privileges.",
     "severity": "high",
-    "cve_id": "CVE-2026-11571",
-    "cvss_score": 7.5,
-    "affected_products": [],
+    "cve_id": "CVE-2026-53410",
+    "ghsa_id": "GHSA-vgcc-2r5p-6qvc",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://wpscan.com/vulnerability/4bd381e9-2f4e-4e61-99af-88f50aed71f5/"
+      null,
+      null,
+      null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-5523",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-09T06:16:21.300",
-    "title": "CVE-2026-5523 - The Divi Form Builder plugin for WordPress is vulnerable to Missing Authorization in versions up to,",
-    "description": "The Divi Form Builder plugin for WordPress is vulnerable to Missing Authorization in versions up to, and including, 5.1.8. This is due to the update_user() function accepting a user ID parameter from form submissions without verifying that the authenticated user has permission to edit that specific user account, and the handle_register_submission() function only checking if any user is logged in rather than validating permissions for the target user. This makes it possible for authenticated attackers, with subscriber-level access and above, to change the email address and password of any user account, including administrators, resulting in complete account takeover.",
+    "id": "gh-GHSA-j5h4-p4x2-xq3g",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-16T21:30:38Z",
+    "title": "Directory traversal vulnerability in Kerlink Kerlink Wirnet iStation 868 KerOS v.4.3...",
+    "description": "Directory traversal vulnerability in Kerlink Kerlink Wirnet iStation 868 KerOS v.4.3.3_20200803132042 allows a remote attacker to obtain sensitive information via the SNMP update mechanism.",
     "severity": "high",
-    "cve_id": "CVE-2026-5523",
-    "cvss_score": 8.8,
-    "affected_products": [],
+    "cve_id": "CVE-2024-32386",
+    "ghsa_id": "GHSA-j5h4-p4x2-xq3g",
+    "affected_packages": [],
+    "cwes": [],
     "references": [
-      "https://diviengine.com/divi-form-builder-changelog/",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/cb158acc-69d7-4a7d-b356-7de1f6b37019?source=cve"
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-41857",
+    "id": "cve-CVE-2026-15320",
     "source": "NVD CVE",
-    "timestamp": "2026-07-09T06:16:20.287",
-    "title": "CVE-2026-41857 - A compromised or malicious BOSH Director can execute arbitrary shell commands on the operator's work",
-    "description": "A compromised or malicious BOSH Director can execute arbitrary shell commands on the operator's workstation when the operator runs bosh ssh (or bosh scp/bosh logs -f) with default flags.\nAffected versions: BOSH CLI versions prior to 7.10.5.",
-    "severity": "high",
-    "cve_id": "CVE-2026-41857",
-    "cvss_score": 7.8,
-    "affected_products": [
-      "cpe:2.3:a:cloudfoundry:bosh_cli:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://www.cloudfoundry.org/blog/cve-2026-41857-bosh-cli-shell-injection/"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-15138",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-09T01:19:06.637",
-    "title": "CVE-2026-15138 - A security vulnerability has been detected in tumf mcp-text-editor up to 1.0.2. This issue affects t",
-    "description": "A security vulnerability has been detected in tumf mcp-text-editor up to 1.0.2. This issue affects the function _validate_file_path of the file mcp_text_editor/text_editor.py. Such manipulation of the argument file_path leads to path traversal. The attack can be launched remotely. The exploit has been disclosed publicly and may be used. The vendor closed the GitHub issue for this vulnerability without any explanation.",
+    "timestamp": "2026-07-10T03:16:20.723",
+    "title": "CVE-2026-15320 - A vulnerability was detected in Sipeed PicoClaw up to 0.2.9. This vulnerability affects the function",
+    "description": "A vulnerability was detected in Sipeed PicoClaw up to 0.2.9. This vulnerability affects the function rt.ReloadConfig of the file pkg/channels/pico/pico.go. Performing a manipulation of the argument message.send results in missing authorization. It is possible to initiate the attack remotely. The exploit is now public and may be used. The reported GitHub issue was closed automatically due to inactivity.",
     "severity": "medium",
-    "cve_id": "CVE-2026-15138",
+    "cve_id": "CVE-2026-15320",
+    "cvss_score": 5.4,
+    "affected_products": [],
+    "references": [
+      "https://github.com/sipeed/picoclaw/",
+      "https://github.com/sipeed/picoclaw/issues/3071",
+      "https://vuldb.com/cve/CVE-2026-15320",
+      "https://vuldb.com/submit/852942",
+      "https://vuldb.com/vuln/377260",
+      "https://vuldb.com/vuln/377260/cti"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-15319",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-10T03:16:20.433",
+    "title": "CVE-2026-15319 - A security vulnerability has been detected in Sipeed PicoClaw up to 0.2.9. This affects the function",
+    "description": "A security vulnerability has been detected in Sipeed PicoClaw up to 0.2.9. This affects the function IPAllowlist of the file web/backend/middleware/access_control.go of the component Launcher. Such manipulation leads to improper access controls. The attack may be performed from remote. The exploit has been disclosed publicly and may be used. The name of the patch is 3126. A patch should be applied to remediate this issue.",
+    "severity": "high",
+    "cve_id": "CVE-2026-15319",
+    "cvss_score": 7.3,
+    "affected_products": [],
+    "references": [
+      "https://github.com/sipeed/picoclaw/",
+      "https://github.com/sipeed/picoclaw/issues/3069",
+      "https://github.com/sipeed/picoclaw/pull/3126",
+      "https://vuldb.com/cve/CVE-2026-15319",
+      "https://vuldb.com/submit/852884",
+      "https://vuldb.com/vuln/377259",
+      "https://vuldb.com/vuln/377259/cti"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-15318",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-10T02:16:25.457",
+    "title": "CVE-2026-15318 - A weakness has been identified in Sipeed PicoClaw up to 0.2.9. Affected by this issue is some unknow",
+    "description": "A weakness has been identified in Sipeed PicoClaw up to 0.2.9. Affected by this issue is some unknown functionality of the file pkg/channels/mqtt/mqtt.go of the component MQTT Channel Handler. This manipulation of the argument client_id causes incorrect authorization. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks. The reported GitHub issue was closed automatically due to inactivity.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-15318",
     "cvss_score": 6.3,
     "affected_products": [],
     "references": [
-      "https://github.com/tumf/mcp-text-editor/",
-      "https://github.com/tumf/mcp-text-editor/issues/22",
-      "https://vuldb.com/cve/CVE-2026-15138",
-      "https://vuldb.com/submit/851188",
-      "https://vuldb.com/vuln/376953",
-      "https://vuldb.com/vuln/376953/cti"
+      "https://github.com/sipeed/picoclaw/",
+      "https://github.com/sipeed/picoclaw/issues/3068",
+      "https://vuldb.com/cve/CVE-2026-15318",
+      "https://vuldb.com/submit/852879",
+      "https://vuldb.com/vuln/377258",
+      "https://vuldb.com/vuln/377258/cti"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-47646",
+    "id": "cve-CVE-2026-55616",
     "source": "NVD CVE",
-    "timestamp": "2026-07-09T00:17:23.160",
-    "title": "CVE-2026-47646 - Improper neutralization of input during web page generation ('cross-site scripting') in Dynamics 365",
-    "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Dynamics 365 Customer Voice allows an unauthorized attacker to perform spoofing over a network.",
+    "timestamp": "2026-07-10T00:16:33.993",
+    "title": "CVE-2026-55616 - Rejected reason: ** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: CVE-2026-49757. Reason: ",
+    "description": "Rejected reason: ** REJECT ** DO NOT USE THIS CANDIDATE NUMBER. ConsultIDs: CVE-2026-49757. Reason: This candidate is a duplicate of CVE-2026-49757. Notes: All CVE users should reference CVE-2026-49757 instead of this candidate.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55616",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-55615",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-10T00:16:33.867",
+    "title": "CVE-2026-55615 - Langroid is a framework for building large-language-model-powered applications. Prior to version 0.6",
+    "description": "Langroid is a framework for building large-language-model-powered applications. Prior to version 0.65.5, Neo4jChatAgent passes LLM-generated Cypher queries straight to the Neo4j driver with no validation, no statement-type allowlist, and no opt-out gate. The query text is influenceable by prompt injection (direct user input or indirect content the agent reads back via RAG), so an attacker who can influence the prompt can read or destroy all graph data and, when APOC or dbms.security procedures are enabled on the server, achieve OS-command and filesystem access. This is the same defect class and threat model as the SQLChatAgent prompt-to-SQL-to-RCE issue fixed in version 0.63.0 (CVE-2026-25879); that fix did not extend to the neo4j module. Version 0.65.5 contains a fix for the neo4j module.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-55615",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://github.com/langroid/langroid/commit/5a3097d9dd6378b08ced5480b0caf76cc58d00fa",
+      "https://github.com/langroid/langroid/security/advisories/GHSA-2pq5-3q89-j7cc",
+      "https://github.com/langroid/langroid/security/advisories/GHSA-2pq5-3q89-j7cc"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-54771",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-10T00:16:33.737",
+    "title": "CVE-2026-54771 - Langroid is a framework for building large-language-model-powered applications. Prior to version 0.6",
+    "description": "Langroid is a framework for building large-language-model-powered applications. Prior to version 0.65.3, a Langroid application exposing a chat interface to untrusted users may allow direct tool invocation via raw JSON payloads, even when tools are registered with `use=False, handle=True`. Version 0.65.3 fixes the issue.",
+    "severity": "high",
+    "cve_id": "CVE-2026-54771",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://github.com/langroid/langroid/security/advisories/GHSA-gjgq-w2m6-wr5q",
+      "https://github.com/langroid/langroid/security/advisories/GHSA-gjgq-w2m6-wr5q"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-54769",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-10T00:16:33.603",
+    "title": "CVE-2026-54769 - Langroid is a framework for building large-language-model-powered applications. Versions prior to 0.",
+    "description": "Langroid is a framework for building large-language-model-powered applications. Versions prior to 0.65.2 are vulnerable to a critical Sandbox Escape leading to Remote Code Execution (RCE) in its `TableChatAgent` and `VectorStore` capabilities. When these agents evaluate LLM-generated tool messages with `full_eval=True`, they attempt to sandbox the execution by explicitly setting `locals` to an empty dictionary `{}` inside Python's `eval()` function. However, this relies on an incomplete understanding of Python's execution model. Because `__builtins__` is not explicitly scrubbed from the `globals` dictionary mapping, Python implicitly injects all built-ins during execution, granting full access to functions like `__import__('os').system()`. Since `TableChatAgent.pandas_eval()` executes external LLM outputs natively, this bypass permits any attacker providing prompt payload to achieve unauthenticated RCE on the host system. Version 0.65.2 patches the issue.",
     "severity": "critical",
-    "cve_id": "CVE-2026-47646",
-    "cvss_score": 9.3,
-    "affected_products": [
-      "cpe:2.3:a:microsoft:dynamics_365_customer_voice:-:*:*:*:*:*:*:*"
-    ],
+    "cve_id": "CVE-2026-54769",
+    "cvss_score": 10,
+    "affected_products": [],
     "references": [
-      "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-47646"
+      "https://github.com/langroid/langroid/security/advisories/GHSA-q9p7-wqxg-mrhc",
+      "https://github.com/langroid/langroid/security/advisories/GHSA-q9p7-wqxg-mrhc"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-15137",
+    "id": "cve-CVE-2026-54760",
     "source": "NVD CVE",
-    "timestamp": "2026-07-09T00:17:04.217",
-    "title": "CVE-2026-15137 - A weakness has been identified in code-projects Interview Management System 1.0. This vulnerability ",
-    "description": "A weakness has been identified in code-projects Interview Management System 1.0. This vulnerability affects unknown code of the file \\inc\\classes\\View.php. This manipulation of the argument ID causes sql injection. The attack can be initiated remotely. The exploit has been made available to the public and could be used for attacks.",
-    "severity": "high",
-    "cve_id": "CVE-2026-15137",
-    "cvss_score": 7.3,
+    "timestamp": "2026-07-10T00:16:33.477",
+    "title": "CVE-2026-54760 - Langroid is a framework for building large-language-model-powered applications. Prior to version 0.6",
+    "description": "Langroid is a framework for building large-language-model-powered applications. Prior to version 0.65.1, the `SQLChatAgent` SQL-injection mitigation, with default `allow_dangerous_operations=False`, combines a raw-text regex blocklist (`_DANGEROUS_SQL_PATTERNS`) with a `sqlglot` SELECT-only statement allowlist. The blocklist entries that target callable functions require the function name to be immediately followed by `\\s*\\(`. PostgreSQL accepts the same call with the name separated from `(` by a quoted identifier, an inline comment, or schema qualification. These forms evade the regex, still parse as `SELECT`, and execute the same PostgreSQL function. This restores the `pg_read_file` server-side file-read primitive that the prior CVE-2026-25879 / GHSA-pmch-g965-grmr fix was meant to block: the parent advisory fixed a missing `pg_read_file` blocklist entry, while this report shows that the added regex is bypassable. Version 0.65.1 fixes the issue.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-54760",
+    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://code-projects.org/",
-      "https://github.com/susususua-AI/CVE/issues/2",
-      "https://vuldb.com/cve/CVE-2026-15137",
-      "https://vuldb.com/submit/851066",
-      "https://vuldb.com/vuln/376952",
-      "https://vuldb.com/vuln/376952/cti"
+      "https://github.com/langroid/langroid/security/advisories/GHSA-6xc5-4r68-67fc",
+      "https://github.com/langroid/langroid/security/advisories/GHSA-6xc5-4r68-67fc"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-15135",
+    "id": "cve-CVE-2026-50181",
     "source": "NVD CVE",
-    "timestamp": "2026-07-09T00:17:04.063",
-    "title": "CVE-2026-15135 - A security flaw has been discovered in code-projects Online Food Order System 1.0. This affects an u",
-    "description": "A security flaw has been discovered in code-projects Online Food Order System 1.0. This affects an unknown part of the file /edit_food_items.php. The manipulation of the argument update results in sql injection. It is possible to launch the attack remotely. The exploit has been released to the public and may be used for attacks.",
+    "timestamp": "2026-07-10T00:16:33.340",
+    "title": "CVE-2026-50181 - Langroid is a framework for building large-language-model-powered applications. Prior to version 0.6",
+    "description": "Langroid is a framework for building large-language-model-powered applications. Prior to version 0.64.0, Langroid's `ReadFileTool` and `WriteFileTool` appear to treat `curr_dir` as the intended working-directory boundary for file operations. However, the tools only change the process working directory to `curr_dir` and then operate on the user-supplied `file_path` without resolving and enforcing that the final path remains inside `curr_dir`. As a result, a tool caller can supply path traversal sequences such as `../secret.txt` to read files outside the configured current directory, or `../written_by_tool.txt` to write files outside that directory. This can impact applications that expose Langroid file tools to an LLM agent, user-controlled tool call, or delegated coding/documentation agent while relying on `curr_dir` to restrict file access to a project/workspace directory. Version 0.64.0 patches the issue.",
     "severity": "high",
-    "cve_id": "CVE-2026-15135",
-    "cvss_score": 7.3,
+    "cve_id": "CVE-2026-50181",
+    "cvss_score": 7.1,
     "affected_products": [],
     "references": [
-      "https://code-projects.org/",
-      "https://github.com/susususua-AI/CVE/issues/1",
-      "https://vuldb.com/cve/CVE-2026-15135",
-      "https://vuldb.com/submit/851065",
-      "https://vuldb.com/vuln/376951",
-      "https://vuldb.com/vuln/376951/cti"
+      "https://github.com/langroid/langroid/commit/56e2756ecab70a70a7e6edbee2f2187b8484683e",
+      "https://github.com/langroid/langroid/security/advisories/GHSA-fg23-3346-88f5",
+      "https://github.com/langroid/langroid/security/advisories/GHSA-fg23-3346-88f5"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-15134",
+    "id": "cve-CVE-2026-50180",
     "source": "NVD CVE",
-    "timestamp": "2026-07-09T00:17:03.900",
-    "title": "CVE-2026-15134 - A vulnerability was determined in CodeAstro Simple Online Leave Management System 1.0. Affected by t",
-    "description": "A vulnerability was determined in CodeAstro Simple Online Leave Management System 1.0. Affected by this vulnerability is an unknown functionality of the file /SimpleOnlineLeave/index.php. Executing a manipulation of the argument email can lead to sql injection. The attack may be performed from remote. The exploit has been publicly disclosed and may be utilized.",
-    "severity": "high",
-    "cve_id": "CVE-2026-15134",
-    "cvss_score": 7.3,
+    "timestamp": "2026-07-10T00:16:33.197",
+    "title": "CVE-2026-50180 - Langroid is a framework for building large-language-model-powered applications. Prior to version 0.6",
+    "description": "Langroid is a framework for building large-language-model-powered applications. Prior to version 0.64.0, `SQLChatAgent` in `langroid` ships a `_validate_query` defense-in-depth layer whose `_DANGEROUS_SQL_PATTERNS` regex blocklist enumerates dangerous SQL primitives by specific function name. The list misses the canonical PostgreSQL filesystem-disclosure family `pg_read_file()`, `pg_stat_file()`, `pg_ls_logdir()`, `pg_ls_waldir()`, `pg_current_logfile()` (and similar `SELECT`-shaped functions in the same family). It also leaves SQL Server `OPENDATASOURCE` and SQLite `ATTACH '<file>' AS x` (DATABASE keyword omitted) unblocked. An attacker able to shape the LLM's generated SQL (directly via prompt input or transitively via prompt-injection in data the LLM ingests) can read arbitrary files from the PostgreSQL host through ordinary `SELECT` queries, even with the agent's strict default configuration (`allow_dangerous_operations=False`, `allowed_statement_types=['SELECT']`). The payloads survive the statement-type allowlist (each is a `SELECT`) and pass through the regex blocklist (none of the function names match), then reach the live SQLAlchemy engine via `SQLChatAgent.run_query`. Version 0.64.0 contains a patch for the issue.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-50180",
+    "cvss_score": null,
     "affected_products": [],
     "references": [
-      "https://codeastro.com/",
-      "https://github.com/yihaofuweng/cve/issues/71",
-      "https://vuldb.com/cve/CVE-2026-15134",
-      "https://vuldb.com/submit/851046",
-      "https://vuldb.com/vuln/376949",
-      "https://vuldb.com/vuln/376949/cti",
-      "https://github.com/yihaofuweng/cve/issues/71"
+      "https://github.com/langroid/langroid/commit/00b7dd7b79c5d03c94be284cf3459d98195ebfba",
+      "https://github.com/langroid/langroid/security/advisories/GHSA-pmch-g965-grmr"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-15317",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-10T00:16:33.027",
+    "title": "CVE-2026-15317 - A security flaw has been discovered in Sipeed PicoClaw up to 0.2.9. Affected by this vulnerability i",
+    "description": "A security flaw has been discovered in Sipeed PicoClaw up to 0.2.9. Affected by this vulnerability is the function WebFetchTool.Execute of the file pkg/tools/integration/web.go of the component Guarded Web Fetch Flow. The manipulation results in server-side request forgery. The attack can be executed remotely. The exploit has been released to the public and may be used for attacks. The reported GitHub issue was closed automatically due to inactivity.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-15317",
+    "cvss_score": 6.3,
+    "affected_products": [],
+    "references": [
+      "https://github.com/sipeed/picoclaw/",
+      "https://github.com/sipeed/picoclaw/issues/3078",
+      "https://vuldb.com/cve/CVE-2026-15317",
+      "https://vuldb.com/submit/852877",
+      "https://vuldb.com/vuln/377257",
+      "https://vuldb.com/vuln/377257/cti"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-15311",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-10T00:16:32.853",
+    "title": "CVE-2026-15311 - A vulnerability was identified in NousResearch hermes-agent up to 2026.5.29.2. Affected by this issu",
+    "description": "A vulnerability was identified in NousResearch hermes-agent up to 2026.5.29.2. Affected by this issue is the function MatrixAdapter._markdown_to_html of the file gateway/platforms/matrix.py of the component Matrix Adapter. Such manipulation leads to cross site scripting. The attack can be executed remotely. The exploit is publicly available and might be used. The pull request to fix this issue awaits acceptance.",
+    "severity": "low",
+    "cve_id": "CVE-2026-15311",
+    "cvss_score": 3.5,
+    "affected_products": [],
+    "references": [
+      "https://github.com/NousResearch/hermes-agent/",
+      "https://github.com/NousResearch/hermes-agent/issues/42667",
+      "https://github.com/NousResearch/hermes-agent/pull/42759",
+      "https://vuldb.com/cve/CVE-2026-15311",
+      "https://vuldb.com/submit/852843",
+      "https://vuldb.com/vuln/377247",
+      "https://vuldb.com/vuln/377247/cti"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-12598",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-10T00:16:32.727",
+    "title": "CVE-2026-12598 - The LoginPress Pro plugin for WordPress is vulnerable to authentication bypass in versions up to and",
+    "description": "The LoginPress Pro plugin for WordPress is vulnerable to authentication bypass in versions up to and including 6.2.3 via the Spotify Social Login addon. This is due to the loginpress_on_spotify_login() function trusting the unverified 'email' field returned by Spotify's /v1/me endpoint and using it directly with get_user_by('email', $profile['email']) to identify and log in an existing WordPress account, without confirming that the Spotify user actually owns the email address (Spotify documents that the profile email is unverified) and without requiring the user to prove ownership of the matching WordPress account. This makes it possible for unauthenticated attackers to log in as any existing WordPress user, including Administrators, by registering a Spotify account using the targeted user's email address and authenticating via the Spotify provider.",
+    "severity": "high",
+    "cve_id": "CVE-2026-12598",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://loginpress.pro/",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/bef61f05-a2dc-4f61-a5da-7161a9912196?source=cve"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-12597",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-10T00:16:32.603",
+    "title": "CVE-2026-12597 - The LoginPress Pro plugin for WordPress is vulnerable to Authentication Bypass via the GitHub OAuth ",
+    "description": "The LoginPress Pro plugin for WordPress is vulnerable to Authentication Bypass via the GitHub OAuth callback in versions up to, and including, 6.2.3. The vulnerability exists in the loginpress_on_github_login() function, which blindly trusts the first element (profile[0]['email']) of the array returned by GitHub's /user/emails endpoint as an account-binding identifier without verifying that the email carries a verified === true status. This makes it possible for unauthenticated attackers to log in as any existing WordPress user, including administrators, by adding an unverified email address matching a local account to their GitHub profile and triggering the OAuth callback via a crafted code parameter — causing the plugin to call get_user_by('email', ...) and establish an authenticated session for the matched account. Practical exploitation is conditional on GitHub returning the attacker-added unverified email at index 0 of the /user/emails response, as GitHub typically prioritizes the primary verified address first; nonetheless, the absence of any email verification check in the plugin constitutes a fundamental authentication bypass flaw.",
+    "severity": "high",
+    "cve_id": "CVE-2026-12597",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://loginpress.pro/",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/4f3ee9f6-6465-4caf-9aef-72dd37c61a2c?source=cve"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-12595",
+    "source": "NVD CVE",
+    "timestamp": "2026-07-10T00:16:32.120",
+    "title": "CVE-2026-12595 - The LoginPress Pro plugin for WordPress is vulnerable to Authentication Bypass via Unverified OAuth ",
+    "description": "The LoginPress Pro plugin for WordPress is vulnerable to Authentication Bypass via Unverified OAuth Email in all versions up to and including 6.2.3. The vulnerability exists in the loginpress_on_discord_login() Discord OAuth callback handler, which accepts the email field returned by Discord's /users/@me endpoint without ever checking that the profile's verified flag is true, then directly maps that email to a local WordPress account via get_user_by('email', $profile['email']) and issues an authenticated session cookie via wp_set_auth_cookie(). This makes it possible for unauthenticated attackers to take over any existing WordPress account — including administrator accounts — by registering a Discord account configured with an unverified email address that matches the target user's registered WordPress email and completing the standard Discord OAuth flow.",
+    "severity": "high",
+    "cve_id": "CVE-2026-12595",
+    "cvss_score": 8.1,
+    "affected_products": [],
+    "references": [
+      "https://loginpress.pro/",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/5949980f-2506-49be-9105-40ec2d2a4f77?source=cve"
     ],
     "ai_analysis": null,
     "risk_score": null
