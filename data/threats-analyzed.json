@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1784539708466-1",
+    "id": "twitter-1784557402360-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-20T09:28:28.466Z",
+    "timestamp": "2026-07-20T14:23:22.360Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -11,28 +11,28 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure can lead to significant disruptions, including data encryption, service outages, and potential data loss. Organizations relying heavily on cloud-based operations are at high risk.",
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat as it exploits compromised CI/CD pipelines to deploy malicious code. This could lead to widespread data encryption, service disruptions, financial losses, and reputational damage for organizations relying on cloud environments.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
-        "Retail",
-        "Manufacturing",
+        "E-commerce",
+        "Media and Entertainment",
         "Government"
       ],
       "recommended_actions": [
-        "Implement strict access controls and monitor CI/CD pipelines for unusual activity.",
-        "Regularly back up critical data and ensure backups are stored offline or in secure environments.",
-        "Deploy advanced endpoint detection and response (EDR) solutions to identify and mitigate ransomware threats early."
+        "Implement strict security controls and monitoring for CI/CD pipelines, including access restrictions, code integrity checks, and regular audits.",
+        "Ensure cloud environments are patched and up-to-date, and deploy endpoint detection and response (EDR) solutions to identify and mitigate ransomware activity.",
+        "Conduct regular backups of critical data and store them in isolated, secure environments to enable recovery in case of an attack."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "hn-1784539708466-1",
+    "id": "hn-1784557402360-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-20T09:28:28.466Z",
+    "timestamp": "2026-07-20T14:23:22.360Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -41,30 +41,29 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "The open-source vulnerability scanner itself poses minimal direct risk; however, its widespread adoption could lead to potential misuse by attackers to identify exploitable vulnerabilities in unpatched systems. Additionally, reliance on automated tools without proper validation could introduce false positives or negatives.",
+      "impact_assessment": "Potential security vulnerability with low severity. ",
       "affected_industries": [
         "Technology",
-        "Software Development",
-        "Cybersecurity"
+        "General"
       ],
       "recommended_actions": [
-        "Evaluate the tool in a controlled environment to ensure its accuracy and reliability before integrating it into workflows.",
-        "Educate teams on the limitations of automated vulnerability scanners and emphasize the importance of manual validation.",
-        "Monitor for any updates or security advisories related to the tool to address potential misuse or vulnerabilities in the scanner itself."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "low"
     },
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-v2w2-w228-c444",
+    "id": "gh-GHSA-37v5-gpcx-w9fc",
     "source": "GitHub Security",
-    "timestamp": "2026-07-19T21:30:20Z",
-    "title": "A vulnerability in keras-team/keras version 3.15.0 allows unsafe deserialization of attacker...",
-    "description": "A vulnerability in keras-team/keras version 3.15.0 allows unsafe deserialization of attacker-controlled PyTorch pickle data through the public `keras.layers.TorchModuleWrapper.from_config` method. This method invokes `torch.load(..., weights_only=False)` without requiring an explicit unsafe opt-in, such as a `safe_mode=False` parameter. When called outside a `SafeModeScope(True)` context, the absence of an ambient safe mode state permits unsafe deserialization by default. This issue can lead to ",
+    "timestamp": "2026-07-20T12:33:11Z",
+    "title": "Network-AI before 5.13.4 contains an improper cryptographic signature verification vulnerability...",
+    "description": "Network-AI before 5.13.4 contains an improper cryptographic signature verification vulnerability in APSAdapter where the default local verifier accepts any non-empty string as valid. Unauthenticated attackers can submit forged APS delegation payloads with arbitrary scopes to bypass signature verification and obtain signed permission-grant tokens for sensitive resources including SHELL_EXEC.",
     "severity": "high",
-    "cve_id": "CVE-2026-12484",
-    "ghsa_id": "GHSA-v2w2-w228-c444",
+    "cve_id": "CVE-2026-64623",
+    "ghsa_id": "GHSA-37v5-gpcx-w9fc",
     "affected_packages": [],
     "cwes": [
       null
@@ -72,11 +71,234 @@
     "references": [
       null,
       null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 92,
+      "impact_assessment": "The vulnerability allows unauthenticated attackers to bypass cryptographic signature verification and obtain signed permission-grant tokens. This could lead to unauthorized access to sensitive resources, including the ability to execute arbitrary shell commands (SHELL_EXEC), resulting in potential data breaches, system compromise, and operational disruptions.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Government",
+        "Telecommunications",
+        "Energy"
+      ],
+      "recommended_actions": [
+        "Immediately update Network-AI to version 5.13.4 or later to patch the vulnerability.",
+        "Audit all systems and logs for signs of unauthorized access or exploitation of the vulnerability.",
+        "Implement additional monitoring and alerting for suspicious activities, particularly around APS delegation payloads and SHELL_EXEC operations."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 92
+  },
+  {
+    "id": "gh-GHSA-7pv2-4c55-cg52",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:11Z",
+    "title": "FreeRDP before 3.28.0 (affected 3.x through 3.27.1) contains a double-free vulnerability in...",
+    "description": "FreeRDP before 3.28.0 (affected 3.x through 3.27.1) contains a double-free vulnerability in freerdp_client_rdp_file_apply_to_settings() (client/common/file.c) when parsing the selectedmonitors field of a .rdp connection file. The MonitorIds array is allocated through the settings object, and a raw non-owning pointer to it is freed on the strtoul error path without clearing settings->MonitorIds, leaving it dangling; at teardown freerdp_settings_free() frees the same buffer again. An attacker who ",
+    "severity": "critical",
+    "cve_id": "CVE-2026-64621",
+    "ghsa_id": "GHSA-7pv2-4c55-cg52",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-64621.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-hxgc-2rvh-7h4r",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:11Z",
+    "title": "SurrealDB before v2.6.1 (and before v3.0.0-beta.3) contains a denial of service vulnerability in...",
+    "description": "SurrealDB before v2.6.1 (and before v3.0.0-beta.3) contains a denial of service vulnerability in its embedded JavaScript scripting engine, which is enabled via the --allow-scripting capability (disabled by default). Any user able to execute arbitrary queries — including unauthenticated guests when --allow-guests is enabled — can use built-in string functions to construct a large string and pass it to the JavaScript runtime for compilation, triggering a null pointer dereference in the underlying ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-63762",
+    "ghsa_id": "GHSA-hxgc-2rvh-7h4r",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-63762.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-xvgx-9rph-3pj6",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:11Z",
+    "title": "Network-AI (npm: network-ai) versions 5.12.2 through 5.13.3 fail to apply the configured...",
+    "description": "Network-AI (npm: network-ai) versions 5.12.2 through 5.13.3 fail to apply the configured authorization check (checkAuth/secret) to the ApprovalInbox GET read routes, so even when an operator configures a secret, unauthenticated actors can access sensitive approval request details. The GET /approvals/?status=all, GET /approvals/:id, GET /approvals/stats, and GET /approvals/sse routes disclose full ApprovalEntry content including action/target shell-command strings, file paths, justifications, and",
+    "severity": "critical",
+    "cve_id": "CVE-2026-64622",
+    "ghsa_id": "GHSA-xvgx-9rph-3pj6",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 92,
+      "impact_assessment": "The vulnerability allows unauthenticated actors to access sensitive approval request details, including shell commands, file paths, and justifications. This can lead to unauthorized data exposure, privilege escalation, and potential exploitation of sensitive operations.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately upgrade to a patched version of Network-AI (npm: network-ai) beyond 5.13.3 to mitigate the vulnerability.",
+        "Implement additional network-layer access controls (e.g., IP whitelisting, VPN) to restrict access to the affected endpoints.",
+        "Conduct a security audit to identify and remediate any unauthorized access or data exposure resulting from this vulnerability."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 92
+  },
+  {
+    "id": "gh-GHSA-xmhx-cqxp-qrgq",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:11Z",
+    "title": "FreeRDP before 3.28.0 (affected <=3.27.1) contains a heap-based buffer overflow in...",
+    "description": "FreeRDP before 3.28.0 (affected <=3.27.1) contains a heap-based buffer overflow in crypto_rsa_common() (libfreerdp/crypto/crypto.c). The function writes the modular-exponentiation result into the caller's output buffer via BN_bn2bin() and only afterward checks output_length > out_length, so out-of-bounds bytes are written before the bounds check. On the server side, when a client selects RDP Standard Security, the encrypted client random is decrypted into a fixed 32-byte buffer. Because the serv",
+    "severity": "critical",
+    "cve_id": "CVE-2026-64620",
+    "ghsa_id": "GHSA-xmhx-cqxp-qrgq",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-64620.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-5w8c-cvwv-f5px",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:11Z",
+    "title": "SurrealDB before 2.5.0 and before 3.0.0-beta.3 contains a confused deputy privilege escalation...",
+    "description": "SurrealDB before 2.5.0 and before 3.0.0-beta.3 contains a confused deputy privilege escalation vulnerability. Unprivileged users (e.g., those with the database editor role) can create or modify fields containing futures, functions, or closures. Because these are executed in the context of the invoking/querying user rather than their creator, an attacker can plant malicious logic that executes with a higher-privileged user's permissions when that user reads or writes the affected record. This can",
+    "severity": "high",
+    "cve_id": "CVE-2026-63763",
+    "ghsa_id": "GHSA-5w8c-cvwv-f5px",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows unprivileged users to escalate their privileges by injecting malicious logic into database fields, which can execute with higher-privileged user permissions. This could lead to unauthorized data access, manipulation, or potential compromise of sensitive information.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Upgrade SurrealDB to version 2.5.0 or 3.0.0-beta.3 or later to patch the vulnerability.",
+        "Audit database roles and permissions to ensure unprivileged users have limited access to sensitive operations.",
+        "Implement monitoring and logging to detect unusual database activity, such as unauthorized field modifications."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-56pq-53x9-mxc4",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:11Z",
+    "title": "SurrealDB before 3.1.0 fails to enforce recursion depth limits in the type/kind parser when...",
+    "description": "SurrealDB before 3.1.0 fails to enforce recursion depth limits in the type/kind parser when processing nested type annotations. Authenticated attackers can send queries with deeply nested type annotations to exhaust server memory and crash the process.",
+    "severity": "high",
+    "cve_id": "CVE-2026-63759",
+    "ghsa_id": "GHSA-56pq-53x9-mxc4",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12484.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-63759.",
       "affected_industries": [
         "Technology",
         "General"
@@ -91,547 +313,18 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-wmr2-4wg6-fwrh",
+    "id": "gh-GHSA-m464-hj36-96vx",
     "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:55Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nefi: Allocate runtime...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nefi: Allocate runtime workqueue before ACPI init\n\nSince commit\n\n  5894cf571e14 (\"acpi/prmt: Use EFI runtime sandbox to invoke PRM handlers\")\n\nACPI PRM calls are delegated to a workqueue which runs in a kernel\nthread, making it easier to detect and mitigate faulting memory accesses\nperformed by the firmware.\n\nRafael reports that such PRM accesses may occur before efisubsys_init()\nexecutes, which is where the workqueue is allocat",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64183",
-    "ghsa_id": "GHSA-wmr2-4wg6-fwrh",
+    "timestamp": "2026-07-20T12:33:11Z",
+    "title": "SurrealDB before 3.1.0 fails to enforce the configured recursion depth limit in the value and...",
+    "description": "SurrealDB before 3.1.0 fails to enforce the configured recursion depth limit in the value and JSON parser when processing nested braces, brackets, or parentheses. Unauthenticated attackers can send deeply nested JSON payloads to the WebSocket /rpc endpoint to exhaust server memory and crash the process.",
+    "severity": "high",
+    "cve_id": "CVE-2026-63760",
+    "ghsa_id": "GHSA-m464-hj36-96vx",
     "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
+    "cwes": [
       null
     ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64183.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-9292-g249-69fp",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ntest_kprobes: clear kprobes...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntest_kprobes: clear kprobes between test runs\n\nRunning the kprobes sanity tests twice makes all tests fail and\neventually crashes the kernel.\n\n[root@martin-riscv-1 ~]# echo 1 > /sys/kernel/debug/kunit/kprobes_test/run\n...\n   # Totals: pass:5 fail:0 skip:0 total:5\n   ok 1 kprobes_test\n[root@martin-riscv-1 ~]# echo 1 > /sys/kernel/debug/kunit/kprobes_test/run\n...\n  # test_kprobe: EXPECTATION FAILED at lib/tests/test_kprobes.c:64\n",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64163",
-    "ghsa_id": "GHSA-9292-g249-69fp",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64163.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-8rwj-765p-2628",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/memory_hotplug: fix...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/memory_hotplug: fix memory block reference leak on remove\n\nPatch series \"mm: Fix memory block leaks and locking\", v2.\n\nThis series fixes two memory block device reference leaks and one locking\nissue around the per-memory_block hwpoison counter.\n\n\nThis patch (of 2):\n\nremove_memory_blocks_and_altmaps() looks up each memory block with\nfind_memory_block(), which acquires a reference to the memory block\ndevice.\n\nThat reference is",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64180",
-    "ghsa_id": "GHSA-8rwj-765p-2628",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in the Linux kernel's memory hotplug subsystem could lead to memory block reference leaks and locking issues, potentially causing resource exhaustion or denial of service (DoS) conditions. This could impact system stability and performance, especially in environments relying on dynamic memory management.",
-      "affected_industries": [
-        "Cloud Computing",
-        "Data Centers",
-        "Telecommunications",
-        "IoT and Embedded Systems",
-        "High-Performance Computing"
-      ],
-      "recommended_actions": [
-        "Apply the latest Linux kernel patch that addresses CVE-2026-64180 to systems as soon as possible.",
-        "Conduct a thorough review of systems running affected Linux kernel versions to identify potential exploitation or performance degradation.",
-        "Implement monitoring and alerting for unusual memory usage patterns or system instability, particularly in environments using memory hotplug features."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-r9g3-vg72-x365",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/damon/sysfs-schemes: call...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/damon/sysfs-schemes: call missing mem_cgroup_iter_break()\n\ndamon_sysfs_memcg_path_to_id() breaks mem_cgroup_iter() loop without\ncalling mem_cgroup_iter_break().  This leaks the cgroup reference.  Fix\nthe issue by calling mem_cgroup_iter_break() before the break.\n\nThe issue was discovered [1] by Sashiko.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64184",
-    "ghsa_id": "GHSA-r9g3-vg72-x365",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in the Linux kernel could lead to resource leaks due to improper handling of cgroup references. This may result in system instability, degraded performance, or potential denial-of-service (DoS) conditions, especially in environments with high resource utilization.",
-      "affected_industries": [
-        "Cloud Service Providers",
-        "Telecommunications",
-        "Data Centers",
-        "IoT and Embedded Systems",
-        "Enterprise IT"
-      ],
-      "recommended_actions": [
-        "Apply the latest Linux kernel patch that resolves CVE-2026-64184 to ensure proper handling of cgroup references.",
-        "Monitor system performance and resource usage for any anomalies that could indicate exploitation of this vulnerability.",
-        "Review and update security policies to ensure timely application of kernel updates in production environments."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-v9gp-g328-r6m8",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nsysfs: don't remove existing...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsysfs: don't remove existing directory on update failure\n\nWhen sysfs_update_group() is called for a named group and create_files()\nfails (e.g. -ENOMEM), internal_create_group() calls kernfs_remove(kn) on\nthe group directory.  In the update path, kn was obtained via\nkernfs_find_and_get() and refers to a directory that already existed\nbefore this call.  Removing it silently destroys a sysfs group that the\ncaller did not create.\n\n",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64185",
-    "ghsa_id": "GHSA-v9gp-g328-r6m8",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64185.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-g3fg-4885-2jhq",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nphonet/pep: disable BH...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nphonet/pep: disable BH around forwarded sk_receive_skb()\n\nThe networking receive path is usually run from softirq context, but\nprotocols that take the socket lock may have packets stored in the\nbacklog and processed later from process context. In that case\nrelease_sock() -> __release_sock() drops the slock with spin_unlock_bh()\nand then calls sk->sk_backlog_rcv() with bottom halves enabled.\n\nTypical sk_backlog_rcv handlers proc",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64177",
-    "ghsa_id": "GHSA-g3fg-4885-2jhq",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64177.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-m682-4gwr-mr4j",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: qup: fix error pointer...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: qup: fix error pointer deref after DMA setup failure\n\nThe driver falls back to PIO mode if DMA setup fails during probe.\n\nMake sure to the clear the DMA channel pointers on setup failure to\navoid dereferencing an error pointer (or attempting to release a channel\na second time) on later probe errors or driver unbind.\n\nThis issue was flagged by Sashiko when reviewing a devres allocation\nconversion patch.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64170",
-    "ghsa_id": "GHSA-m682-4gwr-mr4j",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64170.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-rrg8-qcw5-j3cm",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: cfg80211: advance loop...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: cfg80211: advance loop vars in cfg80211_merge_profile()\n\ncfg80211_merge_profile() reassembles a Multi-BSSID non-transmitted BSS\nprofile that has been split across multiple consecutive MBSSID elements.\nIts while-loop calls\n\n\tcfg80211_get_profile_continuation(ie, ielen, mbssid_elem, sub_elem)\n\nbut never advances mbssid_elem or sub_elem inside the body.  Each\niteration therefore searches for a continuation that follows the s",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64174",
-    "ghsa_id": "GHSA-rrg8-qcw5-j3cm",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64174.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-5w89-7hjx-x8fr",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: sprd: fix error pointer...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: sprd: fix error pointer deref after DMA setup failure\n\nThe driver falls back to PIO mode if DMA setup fails during probe.\n\nMake sure to check the dma.enabled flag before trying to release the DMA\nchannels also on late probe errors to avoid dereferencing an error\npointer (or attempting to release a channel a second time).\n\nThis issue was flagged by Sashiko when reviewing a devres allocation\nconversion patch.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64168",
-    "ghsa_id": "GHSA-5w89-7hjx-x8fr",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64168.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-jx9m-72fr-5v84",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: fix __vm_normal_page()...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm: fix __vm_normal_page() to handle missing support for pmd_special()/pud_special()\n\nOn x86 32-bit with THP enabled, zap_huge_pmd() is seen to generate a\n\"WARNING: mm/memory.c:735 at __vm_normal_page+0x6a/0x7d\", from the\nVM_WARN_ON_ONCE(is_zero_pfn(pfn) || is_huge_zero_pfn(pfn)); followed by\n\"BUG: Bad rss-counter state\"s, then later \"BUG: Bad page state\"s when\nreclaim gets to call shrink_huge_zero_folio_scan().\n\nIt's as if the",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64181",
-    "ghsa_id": "GHSA-jx9m-72fr-5v84",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64181.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-pcrr-27fc-3phm",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: ep93xx: fix error...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nspi: ep93xx: fix error pointer deref after DMA setup failure\n\nThe driver falls back to PIO mode if DMA setup fails during probe.\n\nMake sure to the clear the DMA channel pointers on setup failure to\navoid dereferencing an error pointer on later probe errors or driver\nunbind.\n\nThis issue was flagged by Sashiko when reviewing a devres allocation\nconversion patch.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64169",
-    "ghsa_id": "GHSA-pcrr-27fc-3phm",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 45,
-      "impact_assessment": "The vulnerability in the Linux kernel's SPI driver could lead to system instability or crashes due to improper handling of error pointers during DMA setup failures. This issue may primarily affect systems relying on the ep93xx SPI driver, potentially disrupting operations or causing unexpected behavior.",
-      "affected_industries": [
-        "Embedded Systems",
-        "Industrial Automation",
-        "IoT Devices",
-        "Telecommunications"
-      ],
-      "recommended_actions": [
-        "Apply the latest Linux kernel patch that resolves CVE-2026-64169 to ensure the vulnerability is mitigated.",
-        "Audit systems using the ep93xx SPI driver to identify potential exposure and confirm proper fallback mechanisms are in place.",
-        "Monitor vendor advisories and security bulletins for any updates or additional mitigations related to this vulnerability."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 45
-  },
-  {
-    "id": "gh-GHSA-hfhw-j953-vcq4",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_ffa: Check for...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfirmware: arm_ffa: Check for NULL FF-A ID table while driver registration\n\nThe bus match callback assumes that every FF-A driver provides an\nid_table and dereferences it unconditionally. Enforce that contract at\nregistration time so a buggy client driver cannot crash the bus during\nmatch.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64166",
-    "ghsa_id": "GHSA-hfhw-j953-vcq4",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in the Linux kernel could allow a buggy FF-A client driver to crash the bus during driver registration due to a missing NULL check. This could lead to system instability or denial of service, particularly in environments relying on ARM FF-A firmware interfaces.",
-      "affected_industries": [
-        "Cloud Computing",
-        "Telecommunications",
-        "Embedded Systems",
-        "IoT Devices",
-        "Data Centers"
-      ],
-      "recommended_actions": [
-        "Ensure all Linux systems using ARM FF-A firmware interfaces are updated to a kernel version that includes the patch for CVE-2026-64166.",
-        "Conduct a review of all FF-A client drivers in your environment to ensure they comply with the enforced id_table contract.",
-        "Implement monitoring and logging to detect any unusual behavior or crashes in systems utilizing ARM FF-A firmware."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-6wqh-xprc-m65r",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mld: stop TX...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nwifi: iwlwifi: mld: stop TX during firmware restart\n\nWhen iwlwifi firmware crashes (e.g., NMI_INTERRUPT_UNKNOWN on Intel\nBE201/Wi-Fi 7), iwl_mld_nic_error() sets mld->fw_status.in_hw_restart\nto true. However, iwl_mld_tx_from_txq() does not check this flag before\ndequeuing frames from mac80211 and pushing them to the transport layer.\n\nSince the firmware is dead, iwl_trans_tx() returns -EIO for each frame,\nwhich then gets freed i",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64175",
-    "ghsa_id": "GHSA-6wqh-xprc-m65r",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 72,
-      "impact_assessment": "This vulnerability in the Linux kernel's iwlwifi driver could lead to a denial of service (DoS) condition by halting Wi-Fi communication when the firmware crashes. This may disrupt network connectivity and impact systems relying on Intel Wi-Fi 7 hardware.",
-      "affected_industries": [
-        "Technology",
-        "Telecommunications",
-        "IoT (Internet of Things)",
-        "Enterprise IT"
-      ],
-      "recommended_actions": [
-        "Update to the latest Linux kernel version that includes the patch for CVE-2026-64175 to mitigate the vulnerability.",
-        "Monitor systems using Intel Wi-Fi 7 hardware for unusual behavior or connectivity issues and apply firmware updates as needed.",
-        "Implement network redundancy strategies to minimize the impact of potential Wi-Fi disruptions on critical operations."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 72
-  },
-  {
-    "id": "gh-GHSA-2pv6-rxgj-2695",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Do not call map-...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntracing: Do not call map->ops->elt_free() if elt_alloc() fails\n\nIn paths where tracing_map_elt_alloc() failed to allocate objects,\nthe map->ops->elt_alloc() call was never successful. In this case,\nmap->ops->elt_free() should not be called.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64173",
-    "ghsa_id": "GHSA-2pv6-rxgj-2695",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64173.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-8x2c-32p7-vm7c",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nkho: skip KHO for crash...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nkho: skip KHO for crash kernel\n\nkho_fill_kimage() unconditionally populates the kimage with KHO\nmetadata for every kexec image type. When the image is a crash kernel,\nthis can be problematic as the crash kernel can run in a small reserved\nregion and the KHO scratch areas can sit outside it.\nThe crash kernel then faults during kho_memory_init() when it\ntries phys_to_virt() on the KHO FDT address:\n\n  Unable to handle kernel pagin",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64167",
-    "ghsa_id": "GHSA-8x2c-32p7-vm7c",
-    "affected_packages": [],
-    "cwes": [],
     "references": [
       null,
       null,
@@ -640,36 +333,34 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "The vulnerability in the Linux kernel could lead to system crashes or instability, particularly in environments using crash kernels for recovery or diagnostics. This may result in downtime, data loss, or compromised system reliability.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-63760.",
       "affected_industries": [
-        "Cloud Computing",
-        "Data Centers",
-        "Telecommunications",
-        "Embedded Systems",
-        "IoT Devices"
+        "Technology",
+        "General"
       ],
       "recommended_actions": [
-        "Update Linux kernel to the latest patched version that addresses CVE-2026-64167.",
-        "Review and test crash kernel configurations to ensure stability after applying the patch.",
-        "Monitor system logs for any anomalies related to kexec or crash kernel operations."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "high"
     },
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-4cvr-85r6-xwmj",
+    "id": "gh-GHSA-gw59-x2xr-wwvr",
     "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SVM: Disable AVIC IPI...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: SVM: Disable AVIC IPI virtualization on Hygon Family 18h (erratum #1235)\n\nHygon Family 18h CPUs are derived from AMD Family 17h (Zen1) silicon and\nshare the same erratum #1235: hardware may read a stale IsRunning=1 bit\nduring ICR write emulation and silently fail to generate an\nAVIC_IPI_FAILURE_TARGET_NOT_RUNNING VM-Exit on the sending vCPU.\n\nThe absence of the VM-Exit causes KVM to miss the required wakeup of\nblocking tar",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64172",
-    "ghsa_id": "GHSA-4cvr-85r6-xwmj",
+    "timestamp": "2026-07-20T12:33:11Z",
+    "title": "SurrealDB before 3.1.0 silently substitutes the ES384 algorithm when a JWT access method is...",
+    "description": "SurrealDB before 3.1.0 silently substitutes the ES384 algorithm when a JWT access method is configured with ALGORITHM ES512 (DEFINE ACCESS ... TYPE JWT ALGORITHM ES512), because the underlying jsonwebtoken crate (v10.x) has no ES512 variant and the mapping defaults to ES384 without any error, warning, or log message. Users who supply the correct P-521 key for ES512 experience authentication handshake failures due to the curve mismatch with ES384 (which expects P-384), and tokens are rejected by ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-63761",
+    "ghsa_id": "GHSA-gw59-x2xr-wwvr",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -677,7 +368,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64172.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-63761.",
       "affected_industries": [
         "Technology",
         "General"
@@ -692,18 +383,93 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-398p-2vfw-ch77",
+    "id": "gh-GHSA-32pg-rjqh-fhfp",
     "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/amd: Remove latent out...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niommu/amd: Remove latent out-of-bounds access in IOMMU debugfs\n\nIn iommu_mmio_write() and iommu_capability_write(), the variables\ndbg_mmio_offset and dbg_cap_offset are declared as int. However, they\nare populated using kstrtou32_from_user(). If a user provides a\nsufficiently large value, it can become a negative integer.\n\nPrior to this patch, the AMD IOMMU debugfs implementation was already\nprotected by different mechanisms.\n\n",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64186",
-    "ghsa_id": "GHSA-398p-2vfw-ch77",
+    "timestamp": "2026-07-20T12:33:10Z",
+    "title": "SurrealDB versions before 3.1.0 contain a session hijacking vulnerability where the HTTP /rpc...",
+    "description": "SurrealDB versions before 3.1.0 contain a session hijacking vulnerability where the HTTP /rpc sessions method returns attached session UUIDs without authentication and accepts arbitrary session fields with no ownership verification. Unauthenticated attackers can enumerate session UUIDs and impersonate authenticated sessions to read, write, delete data and escalate privileges.",
+    "severity": "high",
+    "cve_id": "CVE-2026-63757",
+    "ghsa_id": "GHSA-32pg-rjqh-fhfp",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 92,
+      "impact_assessment": "The vulnerability allows unauthenticated attackers to hijack sessions, impersonate users, and perform unauthorized actions such as reading, writing, deleting data, and escalating privileges. This could lead to data breaches, service disruptions, and unauthorized access to sensitive information.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Upgrade to SurrealDB version 3.1.0 or later to patch the vulnerability.",
+        "Review and monitor server logs for suspicious activity, particularly unauthorized session enumeration or access attempts.",
+        "Implement additional security controls such as stricter authentication mechanisms and session validation to mitigate potential exploitation."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 92
+  },
+  {
+    "id": "gh-GHSA-4f9v-jpx9-mjvw",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:10Z",
+    "title": "SurrealDB before 3.1.0 evaluates user-supplied WHERE clauses in SELECT statements (and SET/MERGE...",
+    "description": "SurrealDB before 3.1.0 evaluates user-supplied WHERE clauses in SELECT statements (and SET/MERGE/CONTENT/PATCH clauses in UPDATE, UPSERT, INSERT ON DUPLICATE KEY UPDATE, and RELATE update-variant statements) against full record data before enforcing PERMISSIONS FOR SELECT WHERE restrictions. An authenticated user — including Record and Scope users — can exploit this ordering flaw to read the full contents of any table in the database they are authenticated against, bypassing table-level permissi",
+    "severity": "high",
+    "cve_id": "CVE-2026-63755",
+    "ghsa_id": "GHSA-4f9v-jpx9-mjvw",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-63755.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-9567-jfw6-h5pc",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:10Z",
+    "title": "SurrealDB before 3.1.0 fails to refresh authentication state in LIVE SELECT subscriptions when...",
+    "description": "SurrealDB before 3.1.0 fails to refresh authentication state in LIVE SELECT subscriptions when session state changes. Attackers can continue receiving real-time notifications under revoked or expired session credentials until the connection closes.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-63753",
+    "ghsa_id": "GHSA-9567-jfw6-h5pc",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null,
@@ -711,7 +477,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64186.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-63753.",
       "affected_industries": [
         "Technology",
         "General"
@@ -726,18 +492,57 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-gqgg-8c63-vj6g",
+    "id": "gh-GHSA-grg2-m369-7vhm",
     "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ti: icssm-prueth: fix...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: ti: icssm-prueth: fix eth_ports_node leak in probe\n\nThe error path on of_property_read_u32() failure inside\nicssm_prueth_probe() returns without putting eth_ports_node,\nwhich was acquired before the for_each_child_of_node() loop.\n\nDrop it before returning.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64161",
-    "ghsa_id": "GHSA-gqgg-8c63-vj6g",
+    "timestamp": "2026-07-20T12:33:10Z",
+    "title": "SurrealDB versions before 3.1.0 contain a denial of service vulnerability where malicious LIVE...",
+    "description": "SurrealDB versions before 3.1.0 contain a denial of service vulnerability where malicious LIVE queries with WHERE clauses that evaluate to errors cause all CREATE, UPDATE, and DELETE operations on the watched table to fail. An authenticated user with only select permission can prevent write operations on a table for any user, including root, by registering a LIVE query that triggers evaluation errors until the query is killed or the session ends.",
+    "severity": "high",
+    "cve_id": "CVE-2026-63754",
+    "ghsa_id": "GHSA-grg2-m369-7vhm",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "This vulnerability allows an authenticated user with minimal permissions to disrupt critical database operations, including CREATE, UPDATE, and DELETE actions, by exploiting a flaw in LIVE queries. This can lead to significant downtime, data processing delays, and potential business disruptions.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Upgrade SurrealDB to version 3.1.0 or later to patch the vulnerability.",
+        "Restrict access to LIVE queries and ensure only trusted users have permissions to execute them.",
+        "Monitor database logs for unusual LIVE query activity and terminate malicious sessions promptly."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-mf42-3c8q-x7x8",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:10Z",
+    "title": "SurrealDB versions before 3.1.0 contain an authorization bypass vulnerability in the KILL...",
+    "description": "SurrealDB versions before 3.1.0 contain an authorization bypass vulnerability in the KILL statement that allows authenticated database users to terminate other users' LIVE SELECT subscriptions. Attackers can issue KILL statements with target live query UUIDs to disrupt real-time data subscriptions of other users without ownership verification.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-63758",
+    "ghsa_id": "GHSA-mf42-3c8q-x7x8",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null,
@@ -745,7 +550,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64161.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-63758.",
       "affected_industries": [
         "Technology",
         "General"
@@ -760,23 +565,19 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-8h46-ffj6-v52h",
+    "id": "gh-GHSA-j8qv-6jr5-7pcx",
     "source": "GitHub Security",
-    "timestamp": "2026-07-19T18:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: bnep: Fix UAF...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: bnep: Fix UAF read of dev->name\n\nbnep_add_connection() needs to keep holding the bnep_session_sem while\nreading dev->name (just like bnep_get_connlist() does); otherwise the\nbnep_session() thread can concurrently free the net_device, which can for\nexample be triggered by a concurrent bnep_del_connection().\n\n(This UAF is fairly uninteresting from a security perspective;\ncalling bnep_add_connection() requires passing a",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64178",
-    "ghsa_id": "GHSA-8h46-ffj6-v52h",
+    "timestamp": "2026-07-20T12:33:10Z",
+    "title": "SurrealDB before 3.1.0 contains an authorization bypass vulnerability in the RELATE statement...",
+    "description": "SurrealDB before 3.1.0 contains an authorization bypass vulnerability in the RELATE statement that allows authenticated users with CREATE permission to overwrite existing edge records without UPDATE permission. Attackers can issue a RELATE statement with a SET id clause pointing to an existing edge id, causing the storage layer to silently overwrite the target record instead of rejecting the operation.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-63752",
+    "ghsa_id": "GHSA-j8qv-6jr5-7pcx",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -784,7 +585,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64178.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-63752.",
       "affected_industries": [
         "Technology",
         "General"
@@ -797,6 +598,190 @@
       "urgency": "medium"
     },
     "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-fmh9-9m2w-q5p4",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:10Z",
+    "title": "SurrealDB versions before 3.1.0 contain a time-of-check/time-of-use race condition in the HTTP ...",
+    "description": "SurrealDB versions before 3.1.0 contain a time-of-check/time-of-use race condition in the HTTP /rpc endpoint that allows unauthenticated requests to inherit authenticated session state. Unauthenticated attackers can send concurrent requests to the /rpc endpoint while legitimate authenticated traffic is active to execute operations with hijacked user privileges.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-63756",
+    "ghsa_id": "GHSA-fmh9-9m2w-q5p4",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-63756.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-8pr5-wpg9-2h74",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:09Z",
+    "title": "SurrealDB versions before 3.1.0 contain a field-level permission bypass vulnerability in JSON...",
+    "description": "SurrealDB versions before 3.1.0 contain a field-level permission bypass vulnerability in JSON Patch operations that allows authenticated users to read protected fields. Attackers can use UPDATE PATCH with an empty from pointer in copy or move operations to duplicate all record fields, including those restricted by field-level SELECT permissions, into attacker-chosen destination fields.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-63751",
+    "ghsa_id": "GHSA-8pr5-wpg9-2h74",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows authenticated users to bypass field-level permissions in SurrealDB versions before 3.1.0, potentially exposing sensitive data that should remain protected. This could lead to unauthorized data access, data leaks, or compliance violations.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Upgrade to SurrealDB version 3.1.0 or later to mitigate the vulnerability.",
+        "Review and audit user access permissions to ensure that only authorized users have access to sensitive data.",
+        "Monitor database logs for unusual UPDATE PATCH operations and implement additional logging to detect potential exploitation attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-75qw-w395-xvv7",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:09Z",
+    "title": "SurrealDB versions before 3.1.0 contain an authentication bypass vulnerability in LIVE SELECT...",
+    "description": "SurrealDB versions before 3.1.0 contain an authentication bypass vulnerability in LIVE SELECT subscriptions where permission expressions referencing $value, $before, $after, or $event are evaluated against attacker-controlled bindings instead of actual documents. Authenticated subscribers can bind chosen values to these parameter names and register LIVE SELECT queries to receive notifications for records that SELECT permission expressions should have hidden.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-63749",
+    "ghsa_id": "GHSA-75qw-w395-xvv7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows authenticated attackers to bypass permission checks in LIVE SELECT queries, potentially exposing sensitive data that should be restricted. This could lead to unauthorized access to confidential information and data leakage.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Education"
+      ],
+      "recommended_actions": [
+        "Upgrade SurrealDB to version 3.1.0 or later to patch the authentication bypass vulnerability.",
+        "Review and audit LIVE SELECT queries and permissions to ensure sensitive data is properly restricted.",
+        "Monitor database activity for unusual patterns or unauthorized access attempts, especially from authenticated users."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-p7hp-79jj-q923",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:09Z",
+    "title": "SurrealDB versions before 3.1.0 contain an information disclosure vulnerability where...",
+    "description": "SurrealDB versions before 3.1.0 contain an information disclosure vulnerability where authenticated users with UPDATE access can read field values hidden by field-level SELECT permissions through error messages. Attackers can trigger arithmetic or extend operations on hidden fields to embed raw operand values in error responses, bypassing field-level access controls.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-63748",
+    "ghsa_id": "GHSA-p7hp-79jj-q923",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-63748.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-2jqm-x3hr-jjmq",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-20T12:33:09Z",
+    "title": "SurrealDB before 3.1.5 contains a server-side request forgery vulnerability in the JWKS fetcher...",
+    "description": "SurrealDB before 3.1.5 contains a server-side request forgery vulnerability in the JWKS fetcher that follows HTTP redirects without re-validating redirect targets against network capabilities. Attackers with Owner role can configure a JWKS URL pointing to an allowlisted host that redirects to blocked internal addresses, bypassing network access controls.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-63744",
+    "ghsa_id": "GHSA-2jqm-x3hr-jjmq",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers with Owner role to exploit server-side request forgery (SSRF) by bypassing network access controls, potentially exposing sensitive internal systems or data to unauthorized access.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Upgrade to SurrealDB version 3.1.5 or later to patch the vulnerability.",
+        "Restrict the Owner role to trusted users and regularly audit role assignments.",
+        "Implement strict network access controls and validate redirect targets in JWKS fetcher configurations."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
   },
   {
     "id": "cve-CVE-2026-15525",
@@ -820,17 +805,17 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows remote attackers to exploit server-side request forgery (SSRF) by manipulating the 'final_url' argument, which could lead to unauthorized access to internal systems, data exfiltration, or service disruption.",
+      "impact_assessment": "The vulnerability allows attackers to exploit a server-side request forgery (SSRF) flaw, potentially enabling unauthorized access to internal systems, data exfiltration, or further exploitation of the affected system. The exploit is public, increasing the likelihood of attacks.",
       "affected_industries": [
-        "Advertising Technology",
-        "Media and Entertainment",
+        "Advertising and Marketing",
         "E-commerce",
-        "Web Hosting and SaaS Platforms"
+        "Media and Publishing",
+        "Technology"
       ],
       "recommended_actions": [
-        "Upgrade to kLOsk adloop version 0.10.0 or later, which includes the patch (217399723e3a2fb39389e5355d49ed80aaf9ea7c).",
-        "Implement input validation and sanitization for 'final_url' to prevent malicious manipulation.",
-        "Monitor systems for unusual or unauthorized outbound requests that may indicate exploitation attempts."
+        "Immediately upgrade kLOsk adloop to version 0.10.0 or later to apply the patch (217399723e3a2fb39389e5355d49ed80aaf9ea7c).",
+        "Conduct a security audit to identify any unauthorized access or exploitation attempts related to this vulnerability.",
+        "Implement monitoring and alerting mechanisms to detect unusual traffic patterns or SSRF attempts targeting the affected function."
       ],
       "urgency": "high"
     },
@@ -856,16 +841,15 @@
     ],
     "ai_analysis": {
       "risk_score": 35,
-      "impact_assessment": "The vulnerability allows for path traversal attacks, which could lead to unauthorized access to sensitive files or directories on the local system. However, the requirement for local access reduces the overall risk of exploitation.",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-15524.",
       "affected_industries": [
-        "Software Development",
         "Technology",
-        "IT Services"
+        "General"
       ],
       "recommended_actions": [
-        "Upgrade to a patched version of alioshr memory-bank-mcp if available, or monitor the project's repository for updates.",
-        "Implement strict access controls to limit local access to the affected system.",
-        "Conduct a thorough review of file validation mechanisms to mitigate potential path traversal vulnerabilities."
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
       ],
       "urgency": "low"
     },
