@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1785228384286-1",
+    "id": "twitter-1785248769899-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-28T08:46:24.286Z",
+    "timestamp": "2026-07-28T14:26:09.899Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -11,28 +11,28 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code, potentially leading to data encryption, service disruption, and financial losses.",
+      "impact_assessment": "The ransomware campaign targeting cloud infrastructure can lead to significant disruptions, including data loss, service outages, and financial damages. Compromised CI/CD pipelines may allow attackers to deploy malicious code across multiple environments, amplifying the impact.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
         "Retail",
         "Manufacturing",
-        "Government"
+        "Media"
       ],
       "recommended_actions": [
-        "Implement strict access controls and monitor CI/CD pipelines for unauthorized changes.",
-        "Regularly back up critical data and ensure backups are stored offline or in secure, isolated environments.",
-        "Deploy advanced threat detection tools to identify and mitigate malicious activity in cloud environments."
+        "Implement strict access controls and monitor CI/CD pipelines for unusual activity.",
+        "Regularly back up critical data and ensure backups are stored in isolated environments.",
+        "Deploy endpoint detection and response (EDR) solutions to identify and mitigate ransomware threats early."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "hn-1785228384286-1",
+    "id": "hn-1785248769899-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-28T08:46:24.286Z",
+    "timestamp": "2026-07-28T14:26:09.899Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -41,7 +41,691 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. ",
+      "impact_assessment": "The tool itself does not pose a direct threat but could be misused by malicious actors to identify vulnerabilities in target systems. Additionally, reliance on an open-source tool without proper validation may introduce risks if the tool contains flaws or is compromised.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Retail",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Evaluate the tool's source code and ensure its integrity before use.",
+        "Implement access controls to restrict unauthorized use of the tool within your organization.",
+        "Complement the tool with additional vulnerability management processes to ensure comprehensive coverage."
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-hp74-gm6m-2qm5",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T14:25:30Z",
+    "title": "Pocket ID has a reauthentication bypass via one-time access token login — passkey step-up requirement defeated by JWT freshness check that accepts any login method",
+    "description": "# Reauthentication Bypass via One-Time Access Token Login\n\n## Summary\n\nA weaker authentication method (OTA token or signup token) is accepted as passkey step-up proof, yielding unauthorized renewable 30-day OIDC refresh tokens for clients explicitly configured with `RequiresReauthentication: true`. The `POST /api/webauthn/reauthenticate` endpoint's access-token fallback checks only JWT freshness (`IssuedAt` within 60 seconds), not the authentication method used. The session cookie gate is also n",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-hp74-gm6m-2qm5",
+    "affected_packages": [
+      "github.com/pocket-id/pocket-id/backend"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-w6p7-2fxx-4f44",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T14:12:44Z",
+    "title": "Pocket ID: OIDC refresh token flow bypasses authorization revocation, account disabling, and group restrictions",
+    "description": "# OIDC Refresh Token Flow Bypasses Authorization Revocation, Account Disabling, and Group Restrictions\n\n## Summary\n\nThe `createTokenFromRefreshToken` function (oidc_service.go:451) validates the refresh token's cryptographic integrity but does not re-validate the user's current authorization state before issuing new tokens. This allows three bypasses:\n\n1. **Authorization revocation bypass**: After a user revokes an OIDC client's authorization, the client can continue refreshing tokens indefinite",
+    "severity": "high",
+    "cve_id": "CVE-2026-43983",
+    "ghsa_id": "GHSA-w6p7-2fxx-4f44",
+    "affected_packages": [
+      "github.com/pocket-id/pocket-id/backend"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-43983.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-4mww-42q2-85hq",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:21Z",
+    "title": "The Uncanny Automator – Easy Automation, Integration, Webhooks & Workflow Builder plugin for...",
+    "description": "The Uncanny Automator – Easy Automation, Integration, Webhooks & Workflow Builder plugin for WordPress is vulnerable to Missing Authorization in versions up to, and including, 7.3.2 via the automator_google_contacts_fetch_labels, automator_mautic_segment_fetch, automator_mautic_tags_fetch, and automator_mautic_render_contact_fields AJAX actions due to a missing capability check and missing nonce verification in the corresponding handlers (ajax_fetch_labels, segments_fetch, tags_fetch, and render",
+    "severity": "high",
+    "cve_id": "CVE-2026-15025",
+    "ghsa_id": "GHSA-4mww-42q2-85hq",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-15025.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-72fr-c9f3-m374",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:21Z",
+    "title": "Out-of-bounds write in ImsService prior to SMR Jul-2026 Release 1 allows remote attackers to...",
+    "description": "Out-of-bounds write in ImsService prior to SMR Jul-2026 Release 1 allows remote attackers to potentially execute arbitrary code.",
+    "severity": "high",
+    "cve_id": "CVE-2026-21047",
+    "ghsa_id": "GHSA-72fr-c9f3-m374",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-21047.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-3ww9-9g46-xw9x",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:21Z",
+    "title": "The WPBot – AI ChatBot for Live Support, Lead Generation, AI Services plugin for WordPress is...",
+    "description": "The WPBot – AI ChatBot for Live Support, Lead Generation, AI Services plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 8.5.9 via the wpbot_send_email_transcript_free. This makes it possible for unauthenticated attackers to exfiltrate full chat transcripts and associated user PII — including names, email addresses, and phone numbers — stored in the wpbot_user and wpbot_conversation tables to an attacker-controlled email address.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-16773",
+    "ghsa_id": "GHSA-3ww9-9g46-xw9x",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in the WPBot plugin allows unauthenticated attackers to exfiltrate sensitive user information, including chat transcripts, names, email addresses, and phone numbers. This could lead to data breaches, identity theft, and reputational damage for organizations using the plugin.",
+      "affected_industries": [
+        "E-commerce",
+        "Healthcare",
+        "Education",
+        "Finance",
+        "Technology"
+      ],
+      "recommended_actions": [
+        "Immediately update the WPBot plugin to the latest patched version if available, or disable the plugin temporarily until a fix is released.",
+        "Implement server-side monitoring and logging to detect unauthorized access attempts and exfiltration activities.",
+        "Conduct a security audit of WordPress plugins and restrict access to sensitive data through proper access controls."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-qmvq-mp3j-6pvv",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:21Z",
+    "title": "The StoreGrowth: Smart Sales Booster for WooCommerce | BOGO, Upsells, Direct Checkout, Quick View...",
+    "description": "The StoreGrowth: Smart Sales Booster for WooCommerce | BOGO, Upsells, Direct Checkout, Quick View, Side Cart plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'message_popup' parameter in all versions up to, and including, 2.1.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. The exploit is possible because ",
+    "severity": "high",
+    "cve_id": "CVE-2026-13440",
+    "ghsa_id": "GHSA-qmvq-mp3j-6pvv",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability in the StoreGrowth plugin for WooCommerce allows unauthenticated attackers to execute stored cross-site scripting (XSS) attacks. This can lead to malicious scripts being executed in the browsers of users who visit affected pages, potentially resulting in session hijacking, data theft, or further compromise of the affected website.",
+      "affected_industries": [
+        "e-commerce",
+        "retail",
+        "small and medium businesses (SMBs)",
+        "digital marketing"
+      ],
+      "recommended_actions": [
+        "Immediately update the StoreGrowth plugin to a patched version (if available) or disable it until a fix is released.",
+        "Implement a web application firewall (WAF) to block malicious payloads targeting the 'message_popup' parameter.",
+        "Perform a security audit of your WordPress site to identify and remove any malicious scripts or unauthorized changes."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-82hc-qfgg-3mw6",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:21Z",
+    "title": "Joomla Extension - balbooa.com - Unauthenticated remote code execution in Balbooa Forms < 2.4.3 -...",
+    "description": "Joomla Extension - balbooa.com - Unauthenticated remote code execution in Balbooa Forms < 2.4.3 - An insecure form processing logic allowed code execution for forms that include the signature field type.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-65880",
+    "ghsa_id": "GHSA-82hc-qfgg-3mw6",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-65880.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-q6mc-778f-8mww",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:21Z",
+    "title": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to...",
+    "description": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to generic SQL Injection via the 'coupon_code' parameter in all versions up to, and including, 4.0.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sen",
+    "severity": "medium",
+    "cve_id": "CVE-2026-15444",
+    "ghsa_id": "GHSA-q6mc-778f-8mww",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-15444.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-3368-w437-2p8j",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:21Z",
+    "title": "The Storegrowth Sales Booster plugin for WordPress is vulnerable to Missing Authorization in...",
+    "description": "The Storegrowth Sales Booster plugin for WordPress is vulnerable to Missing Authorization in versions up to and including 2.1.0. This is due to a missing capability check on the bogo_category_msg_create() AJAX handler, which is registered for both authenticated (wp_ajax_) and unauthenticated (wp_ajax_nopriv_) users and only validates a nonce ('ajd_protected') that is emitted publicly via wp_localize_script() on every frontend page through front_scripts() . This makes it possible for unauthentica",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13110",
+    "ghsa_id": "GHSA-3368-w437-2p8j",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13110.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-4x9m-p82w-8mmp",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:21Z",
+    "title": "Use of an insecure cryptographic algorithm in the cashless payment system using NFC wristbands...",
+    "description": "Use of an insecure cryptographic algorithm in the cashless payment system using NFC wristbands from CasfID Servicios Tecnológicos S.L.U. (version used at Resurrection Fest 2025), which employs cards based on MIFARE Classic technology (FM11RF08S). The cryptographic weakness of the authentication algorithm allows an attacker to retrieve access keys using techniques known as Backdoored Nested Attack, read the wristband’s entire contents, and clone its credentials onto a compatible rewritable card. ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-4648",
+    "ghsa_id": "GHSA-4x9m-p82w-8mmp",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The use of an insecure cryptographic algorithm in NFC wristbands could lead to unauthorized access, credential cloning, and financial fraud. Attackers can exploit this vulnerability to compromise the integrity of cashless payment systems, potentially causing reputational damage and financial losses.",
+      "affected_industries": [
+        "Event Management",
+        "Entertainment",
+        "Retail",
+        "Hospitality"
+      ],
+      "recommended_actions": [
+        "Upgrade to a more secure cryptographic algorithm, such as AES-based encryption, and discontinue the use of MIFARE Classic technology.",
+        "Implement additional layers of authentication and encryption to secure NFC communications.",
+        "Conduct a security audit of all systems using NFC wristbands and educate users about potential risks."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-3fg6-68w4-pm87",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:21Z",
+    "title": "The Chatbot plugin for WordPress is vulnerable to Missing Authorization in versions up to, and...",
+    "description": "The Chatbot plugin for WordPress is vulnerable to Missing Authorization in versions up to, and including, 8.5.9 via the wpcs_send_email() AJAX handler. This is due to the wpcs_send_email() function being registered on both wp_ajax_wpcs_send_email and wp_ajax_nopriv_wpcs_send_email with no nonce verification, capability check, or rate limiting, while forwarding attacker-controlled recipient, subject, and body directly to wp_mail(). This makes it possible for unauthenticated attackers to send arbi",
+    "severity": "medium",
+    "cve_id": "CVE-2026-16774",
+    "ghsa_id": "GHSA-3fg6-68w4-pm87",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-16774.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-5wcv-j62r-8fp5",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:21Z",
+    "title": "A Path Traversal vulnerability exists in Quick.CMS through the URI path component of HTTP...",
+    "description": "A Path Traversal vulnerability exists in Quick.CMS through the URI path component of HTTP requests, where the server fails to normalize dot-dot-slash (../) sequences before resolving and serving the requested file. An authenticated attacker with admin privileges can use this vulnerability to read contents of files located in the sibling directory of the webroot via a crafted HTTP request containing ../ sequences in the URI.\n\n\nThe vendor assessed the likelihood of exploitation as very low and det",
+    "severity": "medium",
+    "cve_id": "CVE-2026-63303",
+    "ghsa_id": "GHSA-5wcv-j62r-8fp5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 55,
+      "impact_assessment": "The vulnerability allows an authenticated attacker with admin privileges to access sensitive files outside the webroot directory, potentially exposing configuration files, sensitive data, or credentials stored on the server. However, the likelihood of exploitation is low due to the requirement of admin-level access.",
+      "affected_industries": [
+        "E-commerce",
+        "Small and Medium Businesses (SMBs)",
+        "Content Management Systems (CMS) users"
+      ],
+      "recommended_actions": [
+        "Update Quick.CMS to the latest version if a patch is available or apply vendor-recommended mitigations.",
+        "Restrict admin account access to trusted users and enforce strong authentication mechanisms such as multi-factor authentication (MFA).",
+        "Implement web server configurations to restrict access to sensitive files and directories outside the webroot."
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 55
+  },
+  {
+    "id": "gh-GHSA-87pr-j64q-3qv5",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:21Z",
+    "title": "Quick.CMS is vulnerable to Local File Inclusion (LFI) in the admin.php endpoint via the p...",
+    "description": "Quick.CMS is vulnerable to Local File Inclusion (LFI) in the admin.php endpoint via the p parameter. An authenticated attacker with admin privileges can include arbitrary files located within the application's directory structure via a crafted HTTP request. Successful exploitation allows disclosure of the server's directory structure and absolute file paths (path disclosure).\n\n\n\nThe vendor assessed the likelihood of exploitation as very low and determined that a fix is not necessary.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-63302",
+    "ghsa_id": "GHSA-87pr-j64q-3qv5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-63302.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-xrhw-gwf7-m34v",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:21Z",
+    "title": "The StoreGrowth: Smart Sales Booster for WooCommerce | BOGO, Upsells, Direct Checkout, Quick View...",
+    "description": "The StoreGrowth: Smart Sales Booster for WooCommerce | BOGO, Upsells, Direct Checkout, Quick View, Side Cart plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 2.1.0. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for unauthenticated attackers to overwrite the spsg_popup_products option with arbitrary attacker-controlled data. The 'ajd_protected' nonce used as the sole gate is e",
+    "severity": "medium",
+    "cve_id": "CVE-2026-15411",
+    "ghsa_id": "GHSA-xrhw-gwf7-m34v",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows unauthorized attackers to overwrite critical plugin options, potentially leading to data manipulation, unauthorized access, or disruption of e-commerce operations.",
+      "affected_industries": [
+        "E-commerce",
+        "Retail",
+        "Small Businesses using WooCommerce"
+      ],
+      "recommended_actions": [
+        "Immediately update the StoreGrowth plugin to the latest patched version if available.",
+        "Implement additional authorization checks at the server level to prevent unauthorized access to sensitive plugin options.",
+        "Monitor logs for unusual activity related to the 'spsg_popup_products' option and take corrective actions if anomalies are detected."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-4pmv-mf66-4v3h",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:20Z",
+    "title": "In Quick.CMS, the administrative user interface restricts deletion of the primary language by...",
+    "description": "In Quick.CMS, the administrative user interface restricts deletion of the primary language by omitting the corresponding option from the interface; however, the underlying language-deletion API endpoint does not enforce an equivalent server-side authorization check. As a result, an authenticated administrator can bypass the UI-level restriction and delete the primary language by sending a direct HTTP request to the API endpoint. Successful deletion of the primary language results in a Denial of ",
+    "severity": "high",
+    "cve_id": "CVE-2026-63301",
+    "ghsa_id": "GHSA-4pmv-mf66-4v3h",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Exploitation of this vulnerability allows an attacker to delete the primary language of a Quick.CMS instance, potentially causing a Denial of Service (DoS) for users relying on the system's functionality. This could disrupt operations and lead to significant downtime.",
+      "affected_industries": [
+        "E-commerce",
+        "Media and Publishing",
+        "Education",
+        "Small and Medium Businesses"
+      ],
+      "recommended_actions": [
+        "Implement server-side authorization checks for the language-deletion API endpoint to ensure proper access control.",
+        "Update Quick.CMS to the latest patched version if available, or apply vendor-provided fixes.",
+        "Monitor API activity for unusual or unauthorized requests, and restrict API access to trusted IPs using a firewall."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-v9x8-262p-f2g5",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:20Z",
+    "title": "Allocation of Resources Without Limits or Throttling vulnerability in ninenines cowboy allows an...",
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in ninenines cowboy allows an unauthenticated remote attacker to exhaust connection process memory over HTTP/1.1.\n\nThe HTTP/1.1 handler in cowboy_http enforces the max_headers limit by counting the number of distinct header names in a map (maps:size(Headers)). When a request contains multiple header lines with the same name, the values are concatenated into a single ever-growing binary stored under that one map key (\", \" for regu",
+    "severity": "medium",
+    "cve_id": "CVE-2026-65624",
+    "ghsa_id": "GHSA-v9x8-262p-f2g5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-65624.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-f37p-pc7r-rghm",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:20Z",
+    "title": "Allocation of resources without limits vulnerability in ninenines cowlib allows an...",
+    "description": "Allocation of resources without limits vulnerability in ninenines cowlib allows an unauthenticated remote HTTP/2 or HTTP/3 peer to exhaust memory on the vulnerable server (or client) and cause a denial of service.\n\nThe HPACK and QPACK prefixed-integer decoder cow_hpack_common:dec_big_int/3 in src/cow_hpack_common.hrl (invoked from cow_hpack:decode/2 in src/cow_hpack.erl and from cow_qpack:decode_field_section/3 in src/cow_qpack.erl) reads continuation octets until it sees one whose high bit is c",
+    "severity": "high",
+    "cve_id": "CVE-2026-59248",
+    "ghsa_id": "GHSA-f37p-pc7r-rghm",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-59248.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-vx44-4wrp-9hjf",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T12:31:20Z",
+    "title": "A flaw was found in GStreamer's gst-plugins-good. A heap-based out-of-bounds read of 4 bytes can...",
+    "description": "A flaw was found in GStreamer's gst-plugins-good. A heap-based out-of-bounds read of 4 bytes can occur when parsing FLAC audio stream headers embedded in a Matroska or WebM container file. The vulnerability is triggered by a boundary check that does not account for the full size of the data being copied, allowing a small read past the end of the allocated buffer. An attacker could exploit this by crafting a malicious Matroska or WebM file and tricking a user into opening it, potentially leaking ",
+    "severity": "low",
+    "cve_id": "CVE-2026-17072",
+    "ghsa_id": "GHSA-vx44-4wrp-9hjf",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-17072.",
       "affected_industries": [
         "Technology",
         "General"
@@ -56,123 +740,14 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-v2fq-q39g-3748",
+    "id": "gh-GHSA-f83j-v8r3-vfhv",
     "source": "GitHub Security",
-    "timestamp": "2026-07-28T06:31:16Z",
-    "title": "Versions of the package nice-select2 before 2.4.1 are vulnerable to Cross-site Scripting (XSS)...",
-    "description": "Versions of the package nice-select2 before 2.4.1 are vulnerable to Cross-site Scripting (XSS) via the <select> element. An attacker can supply a malicious payload that is rendered directly into the DOM without proper sanitization, causing arbitrary script execution in a victim’s browser when they view or interact with the affected page.",
+    "timestamp": "2026-07-28T12:31:20Z",
+    "title": "Our payment integration with GiroCheckout did not properly validate \npayment status responses. An...",
+    "description": "Our payment integration with GiroCheckout did not properly validate \npayment status responses. An attacker could use a successful payment \nstatus response from one payment and supply it to the system for a \ndifferent payment, gaining access to multiple valid tickets with only \none payment.",
     "severity": "medium",
-    "cve_id": "CVE-2026-17528",
-    "ghsa_id": "GHSA-v2fq-q39g-3748",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to execute arbitrary scripts in a victim's browser, potentially leading to data theft, session hijacking, or further exploitation. This can compromise user trust and application integrity.",
-      "affected_industries": [
-        "E-commerce",
-        "Healthcare",
-        "Finance",
-        "Education",
-        "Technology"
-      ],
-      "recommended_actions": [
-        "Upgrade the nice-select2 package to version 2.4.1 or later to patch the vulnerability.",
-        "Implement server-side and client-side input sanitization to prevent malicious payloads.",
-        "Conduct a security audit of dependencies to identify and address similar vulnerabilities."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-73hr-7685-xwj3",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T06:31:16Z",
-    "title": "Versions of the package zip-lib before 1.1.0 are vulnerable to Directory Traversal via the...",
-    "description": "Versions of the package zip-lib before 1.1.0 are vulnerable to Directory Traversal via the caching mechanism for path validation during the extraction process. An attacker can bypass security checks designed to prevent directory traversal. The intended security function, isOutsideTargetFolder, only checks and caches the path status when the initial directory symlink is created during the first extraction.",
-    "severity": "high",
-    "cve_id": "CVE-2026-17524",
-    "ghsa_id": "GHSA-73hr-7685-xwj3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-17524.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-c3qw-m7vg-pw3x",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:03Z",
-    "title": "Unauthenticated Broken Access Control in Xendit Payment <= 7.1.0 versions.",
-    "description": "Unauthenticated Broken Access Control in Xendit Payment <= 7.1.0 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-66473",
-    "ghsa_id": "GHSA-c3qw-m7vg-pw3x",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-66473.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-j7f2-xp3w-7hpv",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:03Z",
-    "title": "Unauthenticated Cross Site Scripting (XSS) in Anti Spam and list cleaner &#8211; AcyChecker <= 1...",
-    "description": "Unauthenticated Cross Site Scripting (XSS) in Anti Spam and list cleaner &#8211; AcyChecker <= 1.8.1 versions.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-65448",
-    "ghsa_id": "GHSA-j7f2-xp3w-7hpv",
+    "cve_id": "CVE-2026-18029",
+    "ghsa_id": "GHSA-f83j-v8r3-vfhv",
     "affected_packages": [],
     "cwes": [
       null
@@ -184,7 +759,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-65448.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-18029.",
       "affected_industries": [
         "Technology",
         "General"
@@ -199,14 +774,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-frq5-3q8h-cgc3",
+    "id": "gh-GHSA-2gm5-4hq3-g753",
     "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:03Z",
-    "title": "Unauthenticated Cross Site Scripting (XSS) in Message Filter for Contact Form 7 <= 1.6.3.9 versions.",
-    "description": "Unauthenticated Cross Site Scripting (XSS) in Message Filter for Contact Form 7 <= 1.6.3.9 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-65438",
-    "ghsa_id": "GHSA-frq5-3q8h-cgc3",
+    "timestamp": "2026-07-28T12:31:20Z",
+    "title": "The \"quick setup\" view presented to users after they first create an \nevent allows to set up the...",
+    "description": "The \"quick setup\" view presented to users after they first create an \nevent allows to set up the most critical parts of an event in just a few\n clicks. This view did not properly check that the user has permission \nto change configuration for the given event. An attacker could use a \nwell-timed request to create products, quotas, set bank transfer \nconfiguration, or connect a stripe account to an event they do not have \naccess to.",
+    "severity": "low",
+    "cve_id": "CVE-2026-18028",
+    "ghsa_id": "GHSA-2gm5-4hq3-g753",
     "affected_packages": [],
     "cwes": [
       null
@@ -217,45 +792,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to inject malicious scripts into web pages, potentially leading to data theft, session hijacking, or defacement of websites using the vulnerable plugin.",
-      "affected_industries": [
-        "E-commerce",
-        "Education",
-        "Healthcare",
-        "Media and Publishing",
-        "Small and Medium Businesses"
-      ],
-      "recommended_actions": [
-        "Immediately update the Message Filter for Contact Form 7 plugin to the latest patched version, if available.",
-        "Implement a web application firewall (WAF) to detect and block malicious payloads targeting this vulnerability.",
-        "Perform a security audit of your website to identify and remediate any other potential vulnerabilities."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-7p97-42jp-mx4w",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:03Z",
-    "title": "Unauthenticated Cross Site Scripting (XSS) in GetGenie <= 4.4.3 versions.",
-    "description": "Unauthenticated Cross Site Scripting (XSS) in GetGenie <= 4.4.3 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-65440",
-    "ghsa_id": "GHSA-7p97-42jp-mx4w",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-65440.",
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-18028.",
       "affected_industries": [
         "Technology",
         "General"
@@ -265,501 +803,9 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "low"
     },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-6f25-7c35-mhpp",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:03Z",
-    "title": "Unauthenticated Cross Site Scripting (XSS) in Contest Gallery <= 30.0.6 versions.",
-    "description": "Unauthenticated Cross Site Scripting (XSS) in Contest Gallery <= 30.0.6 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-65447",
-    "ghsa_id": "GHSA-6f25-7c35-mhpp",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to inject malicious scripts into the application, potentially leading to data theft, session hijacking, or unauthorized actions on behalf of legitimate users. This can compromise user trust and application integrity.",
-      "affected_industries": [
-        "Media and Entertainment",
-        "E-commerce",
-        "Education",
-        "Nonprofits",
-        "Small and Medium Businesses using WordPress"
-      ],
-      "recommended_actions": [
-        "Immediately update the Contest Gallery plugin to the latest patched version beyond 30.0.6 to mitigate the vulnerability.",
-        "Implement a Web Application Firewall (WAF) to filter and block malicious scripts targeting this vulnerability.",
-        "Conduct a security review of your WordPress installation and plugins to ensure no residual malicious code has been injected."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-m5m5-596x-7xrf",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:03Z",
-    "title": "Unauthenticated Broken Access Control in Ad Invalid Click Protector (AICP) <= 1.3.0 versions.",
-    "description": "Unauthenticated Broken Access Control in Ad Invalid Click Protector (AICP) <= 1.3.0 versions.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-65445",
-    "ghsa_id": "GHSA-m5m5-596x-7xrf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-65445.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-jf8x-943x-8x29",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:03Z",
-    "title": "Unauthenticated Cross Site Scripting (XSS) in Kali Forms <= 2.4.18 versions.",
-    "description": "Unauthenticated Cross Site Scripting (XSS) in Kali Forms <= 2.4.18 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-65446",
-    "ghsa_id": "GHSA-jf8x-943x-8x29",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-65446.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-xvfc-pj4j-wr9x",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:03Z",
-    "title": "Unauthenticated Server Side Request Forgery (SSRF) in FormCraft <= 3.9.15 versions.",
-    "description": "Unauthenticated Server Side Request Forgery (SSRF) in FormCraft <= 3.9.15 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-65442",
-    "ghsa_id": "GHSA-xvfc-pj4j-wr9x",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to exploit Server Side Request Forgery (SSRF), potentially enabling them to access internal systems, exfiltrate sensitive data, perform unauthorized actions, or pivot to other parts of the network.",
-      "affected_industries": [
-        "Technology",
-        "E-commerce",
-        "Healthcare",
-        "Finance",
-        "Education"
-      ],
-      "recommended_actions": [
-        "Immediately update FormCraft to the latest patched version greater than 3.9.15 to mitigate the vulnerability.",
-        "Implement network-level protections such as web application firewalls (WAFs) to detect and block SSRF attempts.",
-        "Perform a thorough review of server logs to identify any signs of exploitation or unusual activity related to SSRF attacks."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-49fq-v3jv-jqc3",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:03Z",
-    "title": "Unauthenticated Cross Site Scripting (XSS) in Ultimate Addons for Contact Form 7 <=3.5.45 versions.",
-    "description": "Unauthenticated Cross Site Scripting (XSS) in Ultimate Addons for Contact Form 7 <=3.5.45 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-65439",
-    "ghsa_id": "GHSA-49fq-v3jv-jqc3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to inject malicious scripts into web pages, potentially leading to data theft, session hijacking, or defacement of websites using the affected plugin.",
-      "affected_industries": [
-        "E-commerce",
-        "Healthcare",
-        "Education",
-        "Media and Publishing",
-        "Small and Medium Businesses"
-      ],
-      "recommended_actions": [
-        "Immediately update the Ultimate Addons for Contact Form 7 plugin to the latest patched version (if available).",
-        "Implement a web application firewall (WAF) to detect and block malicious payloads targeting this vulnerability.",
-        "Conduct a security audit to identify and remediate any potential exploitation of this vulnerability."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-q5pw-j7r2-39xm",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:03Z",
-    "title": "Unauthenticated Cross Site Scripting (XSS) in BackWPup  <= 5.7.4 versions.",
-    "description": "Unauthenticated Cross Site Scripting (XSS) in BackWPup  <= 5.7.4 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-65443",
-    "ghsa_id": "GHSA-q5pw-j7r2-39xm",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-65443.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-8v92-4x68-8f2h",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:03Z",
-    "title": "Unauthenticated Cross Site Scripting (XSS) in GiveWP <= 4.16.3 versions.",
-    "description": "Unauthenticated Cross Site Scripting (XSS) in GiveWP <= 4.16.3 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-65441",
-    "ghsa_id": "GHSA-8v92-4x68-8f2h",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-65441.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-5vgr-8697-jvj5",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:02Z",
-    "title": "Unauthenticated Cross Site Scripting (XSS) in miniorange otp verification <= 5.5.1 versions.",
-    "description": "Unauthenticated Cross Site Scripting (XSS) in miniorange otp verification <= 5.5.1 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-61957",
-    "ghsa_id": "GHSA-5vgr-8697-jvj5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-61957.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-6cqj-gwmp-9g7h",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:02Z",
-    "title": "An issue in Dede CMS v.5.7.118 allows a remote attacker to obtain sensitive information via the...",
-    "description": "An issue in Dede CMS v.5.7.118 allows a remote attacker to obtain sensitive information via the str parameter of the file_manage_control.php component",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-51078",
-    "ghsa_id": "GHSA-6cqj-gwmp-9g7h",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability in Dede CMS v.5.7.118 allows remote attackers to exploit the 'str' parameter in the file_manage_control.php component to access sensitive information. This could lead to data breaches, exposure of confidential information, or further exploitation of the system.",
-      "affected_industries": [
-        "Media and Publishing",
-        "Education",
-        "Small and Medium Enterprises (SMEs)",
-        "Non-Profit Organizations"
-      ],
-      "recommended_actions": [
-        "Immediately upgrade to the latest patched version of Dede CMS if available, or apply any recommended security patches from the vendor.",
-        "Implement input validation and sanitization for the 'str' parameter to mitigate exploitation of this vulnerability.",
-        "Monitor server logs for unusual activity related to the file_manage_control.php component and consider deploying a Web Application Firewall (WAF) to block malicious requests."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-fcw7-w2vc-fppm",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:02Z",
-    "title": "Unauthenticated Server Side Request Forgery (SSRF) in Simple Link Directory Pro <= 15.0.6 versions.",
-    "description": "Unauthenticated Server Side Request Forgery (SSRF) in Simple Link Directory Pro <= 15.0.6 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-61953",
-    "ghsa_id": "GHSA-fcw7-w2vc-fppm",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to exploit Server Side Request Forgery (SSRF), potentially enabling them to access internal systems, retrieve sensitive data, or perform unauthorized actions on behalf of the server. This could lead to data breaches, system compromise, or further exploitation within the network.",
-      "affected_industries": [
-        "Technology",
-        "E-commerce",
-        "Education",
-        "Healthcare",
-        "Finance"
-      ],
-      "recommended_actions": [
-        "Immediately update Simple Link Directory Pro to a version newer than 15.0.6, if available, to patch the vulnerability.",
-        "Implement strict input validation and sanitization to mitigate SSRF risks in web applications.",
-        "Restrict outbound network access from the server to only necessary endpoints to limit the impact of potential SSRF exploitation."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-m6x4-f6j4-9qq6",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:02Z",
-    "title": "The vulnerability involves an Insecure Direct Object Reference (IDOR) in the ...",
-    "description": "The vulnerability involves an Insecure Direct Object Reference (IDOR) in the `DeleteNotificationController::delete()` method at endpoint `GET /notification/delete/{id}`. The flaw allows any authenticated user, regardless of company or permissions, to delete notifications belonging to any other user in the system. The controller retrieves the target record with `Notification::findOrFail($id)` and deletes it without validating `user_id` or `company_id` ownership, unlike the sibling `SetNotificatio",
-    "severity": "medium",
-    "cve_id": "CVE-2026-59240",
-    "ghsa_id": "GHSA-m6x4-f6j4-9qq6",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-59240.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-wr85-vcm8-q7f4",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:02Z",
-    "title": "An issue was discovered in Quest KACE Systems Deployment Appliance (SMA) 11.0.273. Certain API...",
-    "description": "An issue was discovered in Quest KACE Systems Deployment Appliance (SMA) 11.0.273. Certain API endpoints contain a rate-limiting feature to minimize a brute-force attack. This protection can be bypassed by removing the kboxid cookie.",
-    "severity": "unknown",
-    "cve_id": "CVE-2021-32088",
-    "ghsa_id": "GHSA-wr85-vcm8-q7f4",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2021-32088.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-2rpc-x25h-pv3j",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:02Z",
-    "title": "An issue was discovered in OpenSBI 1.3 allowing attackers to cause a denial of service via...",
-    "description": "An issue was discovered in OpenSBI 1.3 allowing attackers to cause a denial of service via crafted request to the SBI function #2 or the 'Find and configure a matching counter' function of SBI PMU extension.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-63913",
-    "ghsa_id": "GHSA-2rpc-x25h-pv3j",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-63913.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-789q-jcmm-hm4c",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T00:31:02Z",
-    "title": "Unauthenticated Cross Site Scripting (XSS) in Spam protection, AntiSpam, FireWall by CleanTalk <=...",
-    "description": "Unauthenticated Cross Site Scripting (XSS) in Spam protection, AntiSpam, FireWall by CleanTalk <= 6.82 versions.",
-    "severity": "high",
-    "cve_id": "CVE-2026-65437",
-    "ghsa_id": "GHSA-789q-jcmm-hm4c",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows unauthenticated attackers to inject malicious scripts into web pages, potentially leading to data theft, session hijacking, or defacement of websites using the affected plugin.",
-      "affected_industries": [
-        "E-commerce",
-        "Media and Publishing",
-        "Education",
-        "Healthcare",
-        "Financial Services",
-        "Small and Medium Businesses (SMBs)"
-      ],
-      "recommended_actions": [
-        "Immediately update the Spam protection, AntiSpam, FireWall by CleanTalk plugin to the latest patched version (if available).",
-        "Implement a Web Application Firewall (WAF) to block malicious payloads targeting this vulnerability.",
-        "Conduct a thorough security audit of your website to identify and remediate any potential exploitation of this vulnerability."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
+    "risk_score": 25
   },
   {
     "id": "cve-CVE-2026-15156",
@@ -781,20 +827,20 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows authenticated attackers with contributor-level access or higher to inject malicious scripts into pages. These scripts can execute whenever a user accesses the affected pages, potentially leading to data theft, session hijacking, or further exploitation of the website.",
+      "impact_assessment": "The vulnerability allows authenticated attackers with contributor-level access or higher to inject malicious scripts into pages, potentially leading to data theft, session hijacking, or defacement of the website. This could compromise user trust and expose sensitive information.",
       "affected_industries": [
         "E-commerce",
         "Media and Publishing",
         "Education",
         "Small and Medium Businesses",
-        "Nonprofits"
+        "Nonprofit Organizations"
       ],
       "recommended_actions": [
         "Update the Essential Addons for Elementor plugin to the latest patched version as soon as it becomes available.",
         "Restrict contributor-level access to trusted users only and review user roles and permissions.",
-        "Implement a web application firewall (WAF) to detect and block malicious script injections."
+        "Implement a Web Application Firewall (WAF) to detect and block malicious scripts targeting this vulnerability."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
     "risk_score": 65
   },
@@ -842,20 +888,23 @@
       "https://www.sony.co.jp/en/Products/felica/business/information/2025001.html"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-59776.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in certain FeliCa IC chips could allow unauthorized access to sensitive information stored on the chip or enable tampering with the data. This poses a risk to systems relying on these chips for secure authentication, payment processing, or data storage.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Financial Services",
+        "Transportation",
+        "Retail",
+        "Public Sector",
+        "Healthcare"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Identify and inventory all systems and devices using FeliCa IC chips shipped in or before 2017, and assess their exposure to this vulnerability.",
+        "Implement compensating controls, such as additional encryption layers or access restrictions, to mitigate the risk of exploitation.",
+        "Engage with the vendor or manufacturer to determine if firmware updates or hardware replacements are available to address the vulnerability."
       ],
       "urgency": "medium"
     },
-    "risk_score": 60
+    "risk_score": 65
   },
   {
     "id": "cve-CVE-2026-16336",
