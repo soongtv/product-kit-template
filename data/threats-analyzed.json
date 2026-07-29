@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1785267761041-1",
+    "id": "twitter-1785295244569-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-28T19:42:41.041Z",
+    "timestamp": "2026-07-29T03:20:44.569Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -11,28 +11,28 @@
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The ransomware campaign targeting cloud infrastructure poses a significant threat to organizations relying on cloud services. By exploiting compromised CI/CD pipelines, attackers can deploy malicious code, potentially leading to data encryption, service disruptions, financial losses, and reputational damage.",
+      "impact_assessment": "The ransomware campaign poses a significant threat to organizations relying on cloud infrastructure by exploiting CI/CD pipelines to deploy malicious code. This can lead to data encryption, service disruption, and potential data exfiltration.",
       "affected_industries": [
         "Technology",
         "Finance",
         "Healthcare",
-        "Retail",
-        "Manufacturing",
+        "E-commerce",
+        "Media and Entertainment",
         "Government"
       ],
       "recommended_actions": [
-        "Immediately review and secure CI/CD pipelines by implementing strong authentication, access controls, and regular code reviews.",
-        "Deploy endpoint detection and response (EDR) tools and monitor cloud environments for unusual activity or unauthorized access.",
-        "Ensure regular backups of critical data are performed and stored offline to mitigate the impact of ransomware attacks."
+        "Immediately review and secure CI/CD pipelines by implementing multi-factor authentication (MFA) and least privilege access controls.",
+        "Deploy endpoint detection and response (EDR) solutions to monitor and mitigate ransomware activities within cloud environments.",
+        "Conduct a comprehensive review of cloud infrastructure configurations and apply patches or updates to address known vulnerabilities."
       ],
       "urgency": "critical"
     },
     "risk_score": 85
   },
   {
-    "id": "hn-1785267761041-1",
+    "id": "hn-1785295244569-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-28T19:42:41.041Z",
+    "timestamp": "2026-07-29T03:20:44.569Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -56,263 +56,299 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-732p-c5p6-vp34",
+    "id": "gh-GHSA-964w-f6gj-5236",
     "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:04Z",
-    "title": "Adobe Photoshop Installer was affected by an Uncontrolled Search Path Element vulnerability that...",
-    "description": "Adobe Photoshop Installer was affected by an Uncontrolled Search Path Element vulnerability that could have resulted in arbitrary code execution in the context of the current user. An attacker could have exploited this vulnerability by placing a malicious library in a directory searched by the installer. Exploitation of this issue required user interaction in that a victim must have been running the installer. Scope is changed.",
+    "timestamp": "2026-07-28T22:26:28Z",
+    "title": "goshs has ACL Bypass & Path Traversal",
+    "description": "## Summary\n\n`sendFile` derives the served filename from the raw request path while opening the file from the cleaned path, so appending a trailing slash empties the derived name and defeats both the never-serve rule for the ACL file and the block list. \n\n## Finding (Medium): trailing-slash ACL and hidden-file bypass\n\nhttpserver/handler.go, sendFile (lines 789-801) takes the filename from the RAW req.URL.Path while the file itself is opened from the filepath.Clean-ed path. The two disagree, and a",
+    "severity": "medium",
+    "cve_id": "CVE-2026-66064",
+    "ghsa_id": "GHSA-964w-f6gj-5236",
+    "affected_packages": [
+      "github.com/patrickhener/goshs/v2",
+      "goshs.de/goshs/v2",
+      "github.com/patrickhener/goshs",
+      "goshs.de/goshs"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-66064.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-2xmw-f8j8-wfxc",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T22:25:29Z",
+    "title": "Pagy I18n locale option is not validated before being used in a file path",
+    "description": "### Summary\n\n`Pagy::I18n.locale=` did not validate its argument before using it as a\npath component to load the matching dictionary file (`<locale>.yml`). An\napplication that assigns untrusted input to the locale — e.g. the common\npattern `Pagy::I18n.locale = params[:locale]` — let that input influence\nwhich file Pagy attempted to load.\n\n### Details\n\nThe setter stored the value as-is, and the loader joined it into a path\nand read it:\n\n```ruby\n# gem/lib/pagy/modules/i18n/i18n.rb\ndef locale=(value",
+    "severity": "medium",
+    "cve_id": "CVE-2026-54659",
+    "ghsa_id": "GHSA-2xmw-f8j8-wfxc",
+    "affected_packages": [
+      "pagy"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows attackers to manipulate the file path used to load locale files, potentially leading to arbitrary file access or code execution if untrusted input is passed directly to the locale setter. This could compromise sensitive data or the integrity of the application.",
+      "affected_industries": [
+        "E-commerce",
+        "Healthcare",
+        "Finance",
+        "Education",
+        "Technology"
+      ],
+      "recommended_actions": [
+        "Validate and sanitize all user input before assigning it to `Pagy::I18n.locale`. Ensure only trusted and predefined locale values are allowed.",
+        "Update to the latest patched version of the Pagy gem that addresses CVE-2026-54659.",
+        "Conduct a security review of all code handling user input to ensure similar vulnerabilities are not present elsewhere in the application."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-6xx4-9wp6-65p7",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T22:23:48Z",
+    "title": "skilo add follows symbolic links, allowing arbitrary local file disclosure from a malicious skill source",
+    "description": "### Impact\n\n`skilo add` installs a skill by recursively copying the skill directory into the\ntarget skills directory. The copy routine (`copy_dir_all`) classified each entry\nwith `std::fs::DirEntry::file_type()` — which does **not** follow symlinks — and\nthen copied non-directory entries with `std::fs::copy()`, which **does**\ndereference symlinks.\n\nAs a result, a skill containing a symbolic link such as\n`reference.txt -> /home/<user>/.ssh/id_rsa` was copied as a regular file whose\ncontents are t",
+    "severity": "medium",
+    "cve_id": null,
+    "ghsa_id": "GHSA-6xx4-9wp6-65p7",
+    "affected_packages": [
+      "skilo"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-vj5c-m527-mpff",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T22:23:03Z",
+    "title": "Style Dictionary - Prototype Pollution in convertTokenData utility function",
+    "description": "### Impact\nPrototype pollution.\nA malicious user can create a token array `[{ key: '{__proto__.foo}', value: 'malicious' }]`, when processed by `convertTokenData()` utility function, it will pollute the Object.prototype globally where `{}.foo` will equal `{ key: '{__proto__.foo}', value: 'malicious' }`.\n\nThis has been confirmed with a test/reproduction.\n\nYou are impacted when:\n- direct usage of `convertTokenData(tokens, { output: 'object' });`\n- indirect usage, via using Expand API https://style",
     "severity": "high",
-    "cve_id": "CVE-2026-48388",
-    "ghsa_id": "GHSA-732p-c5p6-vp34",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-54639",
+    "ghsa_id": "GHSA-vj5c-m527-mpff",
+    "affected_packages": [
+      "style-dictionary"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54639.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-fh2f-xfxc-q9cc",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T22:20:51Z",
+    "title": "openhole-server vulnerable to path traversal via URL-decoded request path",
+    "description": "## Summary\n\nopenhole-server forwarded the URL-decoded request path (`r.URL.Path`) to tunnel clients instead of the original request-target. Percent-encoded dot-segments (`%2e`) and separators (`%2f`) were decoded to `../` and `/` before reaching the local service.\n\nGo's ServeMux rejects literal `../` paths, but percent-encoded traversal sequences bypassed this and were delivered to backends as working path traversal.\n\n## Impact\n\nAn unauthenticated remote attacker could read files outside the pub",
+    "severity": "high",
+    "cve_id": "CVE-2026-54650",
+    "ghsa_id": "GHSA-fh2f-xfxc-q9cc",
+    "affected_packages": [
+      "github.com/bablilayoub/openhole"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54650.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-6wcc-39rp-hh9p",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T22:19:23Z",
+    "title": "@hypequery/clickhouse has SQL Injection in parameter escaping that allows arbitrary SQL execution",
+    "description": "### Impact\n A SQL injection vulnerability exists in the `escapeValue()` function used for parameter substitution. Attackers who can control parameter values can inject arbitrary SQL by using a trailing backslash to escape the closing quote.\n\nWho is impacted: All users of @hypequery/clickhouse versions prior to 2.0.2 who pass user-controlled input as query parameters.\n\n### Patches\nThe vulnerability has been patched in version 2.0.2. The fix properly escapes backslashes before escaping single quot",
+    "severity": "critical",
+    "cve_id": "CVE-2026-54658",
+    "ghsa_id": "GHSA-6wcc-39rp-hh9p",
+    "affected_packages": [
+      "@hypequery/clickhouse"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-54658.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-whmm-qj9r-wvr2",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T22:15:28Z",
+    "title": "td has pre-auth denial of service via unbounded memory allocation in proto.UnencryptedMessage.Decode",
+    "description": "### Impact\n\nA remote, unauthenticated attacker can cause excessive memory allocation (and resulting CPU / GC pressure, potentially OOM termination) by sending a crafted unencrypted MTProto packet.\n\n`(*proto.UnencryptedMessage).Decode` read an attacker-controlled 32-bit `dataLen` field and immediately allocated a buffer of that size via `make([]byte, dataLen)` **before** validating that the underlying buffer actually contained that many bytes. A 20-byte packet declaring a ~1.75 GB payload (e.g. `",
+    "severity": "high",
+    "cve_id": "CVE-2026-54638",
+    "ghsa_id": "GHSA-whmm-qj9r-wvr2",
+    "affected_packages": [
+      "github.com/gotd/td"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "The vulnerability in the Adobe Photoshop Installer allows for arbitrary code execution in the context of the current user. This could lead to unauthorized actions, data theft, or system compromise if exploited by an attacker. The requirement for user interaction reduces the likelihood of exploitation but does not eliminate the risk.",
+      "impact_assessment": "This vulnerability allows unauthenticated attackers to trigger excessive memory allocation, leading to potential denial-of-service (DoS) conditions such as high CPU usage, garbage collection pressure, or out-of-memory (OOM) termination. Systems processing unencrypted MTProto packets are at risk.",
       "affected_industries": [
-        "Media and Entertainment",
-        "Advertising and Marketing",
-        "Education",
-        "Design and Creative Services"
+        "Telecommunications",
+        "Technology",
+        "Cloud Services",
+        "Messaging Platforms"
       ],
       "recommended_actions": [
-        "Ensure that the Adobe Photoshop Installer is updated to the latest patched version that addresses CVE-2026-48388.",
-        "Educate users on the risks of downloading and running software from untrusted sources, and encourage them to verify the integrity of installers before execution.",
-        "Implement application whitelisting and endpoint protection to detect and block unauthorized or malicious libraries."
+        "Apply the latest patch or update that addresses CVE-2026-54638 to ensure proper validation of the dataLen field before memory allocation.",
+        "Implement rate-limiting and input validation mechanisms to mitigate the risk of crafted packets causing excessive resource consumption.",
+        "Monitor system performance and logs for signs of unusual memory allocation or DoS attempts targeting MTProto packets."
       ],
       "urgency": "high"
     },
     "risk_score": 85
   },
   {
-    "id": "gh-GHSA-5jvm-8c9r-4h98",
+    "id": "gh-GHSA-wg2q-39h6-66x9",
     "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:04Z",
-    "title": "Format Plugins is affected by a Heap-based Buffer Overflow vulnerability that could result in...",
-    "description": "Format Plugins is affected by a Heap-based Buffer Overflow vulnerability that could result in arbitrary code execution in the context of the current user. Exploitation of this issue requires user interaction in that a victim must open a malicious file.",
-    "severity": "high",
-    "cve_id": "CVE-2026-48372",
-    "ghsa_id": "GHSA-5jvm-8c9r-4h98",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-48372.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-2w97-hp83-3ghv",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:04Z",
-    "title": "In schreibfaul1 ESP32-audioI2S 3.4.5, a heap-based buffer overflow in the ID3v2 SYLT synchronized...",
-    "description": "In schreibfaul1 ESP32-audioI2S 3.4.5, a heap-based buffer overflow in the ID3v2 SYLT synchronized lyrics parser in audiolib allows remote attackers to cause a denial of service (application crash), information disclosure, or potential arbitrary code execution via a crafted MP3 file. The vulnerability occurs due to missing bounds validation on attacker-controlled frame size and improper memory access during lyric parsing.",
-    "severity": "high",
-    "cve_id": "CVE-2026-51274",
-    "ghsa_id": "GHSA-2w97-hp83-3ghv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-51274.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-9hxr-3mx5-3v44",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:04Z",
-    "title": "TinyWeb through 0.0.8 contains a memory leak vulnerability that allows unauthenticated attackers...",
-    "description": "TinyWeb through 0.0.8 contains a memory leak vulnerability that allows unauthenticated attackers to exhaust available memory by sending ordinary well-formed HTTP requests. Each request causes HttpParser::execute() to allocate Url objects, HttpHeaders objects, and HttpHeader instances via raw new expressions that are never freed due to missing destructors and unreachable delete calls, causing worker resident memory to grow monotonically by approximately 20 to 28 kB per request until the worker pr",
-    "severity": "high",
-    "cve_id": "CVE-2026-67183",
-    "ghsa_id": "GHSA-9hxr-3mx5-3v44",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-67183.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-qh4x-9gfh-82jc",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:04Z",
-    "title": "TinyWeb through 0.0.8 contains a path traversal vulnerability that allows unauthenticated...",
-    "description": "TinyWeb through 0.0.8 contains a path traversal vulnerability that allows unauthenticated attackers to read arbitrary files by submitting ../ sequences in the URL path, which are concatenated directly to the configured web root in HttpBuilder::buildResponse() without normalization, dot-segment removal, or boundary checks. Attackers can craft a single request with ../ sequences that pass through the URL parser unchanged and reach the filesystem call via HttpFile::setFile(), exposing sensitive fil",
-    "severity": "high",
-    "cve_id": "CVE-2026-67185",
-    "ghsa_id": "GHSA-qh4x-9gfh-82jc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-67185.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-ggph-9w4x-rf98",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:04Z",
-    "title": "In schreibfaul1 ESP32-audioI2S 3.4.5, a heap-based buffer overflow in the ID3v2 APIC frame...",
-    "description": "In schreibfaul1 ESP32-audioI2S 3.4.5, a heap-based buffer overflow in the ID3v2 APIC frame parsing function in audiolib allows remote attackers to execute arbitrary code or cause a denial of service (crash) via a crafted MP3 file. The vulnerability exists due to missing length validation when processing the APIC frame size field, leading to an out-of-bounds memory write.",
-    "severity": "high",
-    "cve_id": "CVE-2026-51275",
-    "ghsa_id": "GHSA-ggph-9w4x-rf98",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-51275.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-r4g2-gw8j-xgxv",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:04Z",
-    "title": "TinyWeb through 0.0.8 contains a null pointer dereference vulnerability that allows...",
-    "description": "TinyWeb through 0.0.8 contains a null pointer dereference vulnerability that allows unauthenticated remote attackers to crash worker processes by sending a malformed HTTP request line with an invalid version string. The HttpParser::execute() function fails to allocate the Url object when version parsing fails, leaving the url pointer NULL, and buildResponse() subsequently dereferences this NULL pointer without checking the valid_requ flag, producing a SIGSEGV that terminates the worker process a",
-    "severity": "high",
-    "cve_id": "CVE-2026-67184",
-    "ghsa_id": "GHSA-r4g2-gw8j-xgxv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "The vulnerability in TinyWeb through version 0.0.8 allows unauthenticated remote attackers to crash worker processes by sending malformed HTTP requests. This could lead to denial-of-service (DoS) conditions, disrupting web services and affecting availability.",
-      "affected_industries": [
-        "Web Hosting",
-        "E-commerce",
-        "Technology",
-        "Media and Entertainment",
-        "Small and Medium Enterprises (SMEs) using TinyWeb"
-      ],
-      "recommended_actions": [
-        "Immediately upgrade TinyWeb to a patched version (if available) or apply any mitigations provided by the vendor.",
-        "Implement input validation and filtering at the network perimeter to block malformed HTTP requests.",
-        "Monitor server logs for unusual activity or malformed HTTP requests and set up alerts for potential exploitation attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-xxhj-c62m-3wgm",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:04Z",
-    "title": "An Improper Input Validation in the BlackBerry UEM Management Console of BlackBerry UEM 12.23.0...",
-    "description": "An Improper Input Validation in the BlackBerry UEM Management Console of BlackBerry UEM 12.23.0 QF8 and earlier allows Arbitrary File Download and Potential Denial of Service.",
+    "timestamp": "2026-07-28T22:08:53Z",
+    "title": "goshs has a Path Traversal issue",
+    "description": "## Summary\n\nThe multipart upload filename fix splits on the path separator but never rejects dot-dot, allowing a write outside the served tree.\n\n## Finding (Medium): upload filename escapes the served tree (residual of CVE-2026-35393)\n\nThe multipart filename fix (updown.go lines 135-136) splits on the path separator but never rejects \"..\". Uploading with filename=\"..\" results in os.Create against the parent of the upload folder with a trailing marker character, outside the served tree, and the s",
     "severity": "medium",
-    "cve_id": "CVE-2026-18085",
-    "ghsa_id": "GHSA-xxhj-c62m-3wgm",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-66063",
+    "ghsa_id": "GHSA-wg2q-39h6-66x9",
+    "affected_packages": [
+      "goshs.de/goshs/v2",
+      "github.com/patrickhener/goshs/v2",
+      "goshs.de/goshs",
+      "github.com/patrickhener/goshs"
+    ],
     "cwes": [
       null
     ],
@@ -323,102 +359,162 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability in BlackBerry UEM Management Console allows attackers to exploit improper input validation, potentially enabling arbitrary file downloads and denial-of-service attacks. This could lead to data exfiltration, service disruption, or further exploitation of affected systems.",
+      "impact_assessment": "The path traversal vulnerability allows attackers to upload files outside the intended directory, potentially overwriting critical files or planting malicious scripts. This could lead to unauthorized access, data corruption, or system compromise.",
       "affected_industries": [
-        "Telecommunications",
+        "Technology",
+        "E-commerce",
         "Healthcare",
         "Finance",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Implement strict input validation to reject filenames containing '..' or other path traversal patterns.",
+        "Apply patches or updates provided by the software vendor to address CVE-2026-66063.",
+        "Conduct a thorough review of file upload mechanisms and implement sandboxing to restrict file access to designated directories."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-hq33-8jgp-8qq3",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T22:03:12Z",
+    "title": "goshs --no-delete WebDAV MOVE bypass allows file deletion/overwrite",
+    "description": "## Summary\n\nThe WebDAV mode-flag guard added to fix GHSA-3whc-qvhv-xqjp still does not enforce `--no-delete` on the WebDAV `MOVE` verb. `MOVE` deletes the source file (rename removes it from its original path), and with `Overwrite: T` it additionally performs an explicit `RemoveAll` on the destination. Under `-w --no-delete`, `DELETE` is correctly blocked (403) but `MOVE` still destroys existing files, defeating the documented \"Disable the delete option\" boundary.\n\nThis is a residual of the pare",
+    "severity": "critical",
+    "cve_id": "CVE-2026-64863",
+    "ghsa_id": "GHSA-hq33-8jgp-8qq3",
+    "affected_packages": [
+      "goshs.de/goshs/v2",
+      "github.com/patrickhener/goshs/v2",
+      "goshs.de/goshs",
+      "github.com/patrickhener/goshs"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 92,
+      "impact_assessment": "The vulnerability allows attackers to bypass the intended 'no-delete' restriction in WebDAV mode, enabling unauthorized file deletion or overwriting. This could lead to data loss, integrity issues, and potential exploitation for further attacks.",
+      "affected_industries": [
+        "Technology",
+        "Cloud Services",
+        "Web Hosting",
+        "Enterprise Software",
+        "E-commerce"
+      ],
+      "recommended_actions": [
+        "Apply the latest patch or update addressing CVE-2026-64863 as soon as it becomes available.",
+        "Implement strict access controls and monitoring for WebDAV endpoints to detect and mitigate unauthorized file operations.",
+        "Conduct a thorough audit of WebDAV configurations and test for potential bypass scenarios to ensure compliance with security policies."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 92
+  },
+  {
+    "id": "gh-GHSA-rmxw-pq4x-3fvh",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T21:59:48Z",
+    "title": "goshs: File-based .goshs ACL authorization bypass via the ?bulk zip-download route (unauthenticated read; residual of GHSA-wvhv-qcqf-f3cx)",
+    "description": "GHSA-wvhv-qcqf-f3cx fixed the per-folder .goshs ACL bypass on the state-changing routes (PUT/POST upload/?mkdir/?delete) and added recursive ACL resolution, and its description states the read/list path correctly enforces .goshs. That premise does not hold for the ?bulk zip-download route. bulkDownload (httpserver/updown.go) takes one or more ?file= parameters, runs each through sanitizePath(fs.Webroot, file), and streams the contents back as a ZIP without ever calling findEffectiveACL/applyCust",
+    "severity": "high",
+    "cve_id": "CVE-2026-54719",
+    "ghsa_id": "GHSA-rmxw-pq4x-3fvh",
+    "affected_packages": [
+      "github.com/patrickhener/goshs",
+      "github.com/patrickhener/goshs/v2",
+      "goshs.de/goshs",
+      "goshs.de/goshs/v2"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54719.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-rjrw-mjq6-hpmm",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T21:56:28Z",
+    "title": "goshs SFTP authentication bypass via empty password (incomplete fix of CVE-2026-40884)",
+    "description": "## Summary\n\nStart goshs v2.1.3 with `-b 'admin:' -sftp`. No `-fkf`. SFTP accepts connections without password. CVE-2026-40884 blocks the empty-username variant (`-b ':pass'`). The empty-password variant bypasses that fix.\n\n## CVE-2026-40884\n\n**CVE-2026-40884** (GHSA-c29w-qq4m-2gcv, Apr 13 2026) reported the empty-username case: `-b ':pass'` with `-sftp`. `sftpserver.go:85` uses `&&`:\n\n```go\nif s.Username != \"\" && s.Password != \"\" {\n    sshServer.PasswordHandler = func(ctx ssh.Context, password s",
+    "severity": "critical",
+    "cve_id": "CVE-2026-62325",
+    "ghsa_id": "GHSA-rjrw-mjq6-hpmm",
+    "affected_packages": [
+      "github.com/patrickhener/goshs/v2",
+      "goshs.de/goshs/v2"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 92,
+      "impact_assessment": "The vulnerability allows attackers to bypass SFTP authentication by exploiting an incomplete fix for CVE-2026-40884. This could lead to unauthorized access to sensitive files and data, potentially resulting in data breaches, service disruptions, and reputational damage.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
         "Government",
-        "Enterprise IT"
+        "E-commerce"
       ],
       "recommended_actions": [
-        "Immediately apply the latest security patches or updates provided by BlackBerry to address the vulnerability in UEM 12.23.0 QF8 and earlier.",
-        "Implement strict input validation and monitoring mechanisms to detect and block malicious activity targeting the UEM Management Console.",
-        "Conduct a thorough review of access logs and system configurations to identify any signs of exploitation or unauthorized access."
+        "Immediately apply a patch or hotfix from the vendor to address the incomplete fix for CVE-2026-40884.",
+        "Implement strict network segmentation and firewall rules to restrict access to the SFTP server until the issue is resolved.",
+        "Enable logging and monitoring on the SFTP server to detect unauthorized access attempts and respond promptly."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 65
+    "risk_score": 92
   },
   {
-    "id": "gh-GHSA-frmw-v2hf-gvj9",
+    "id": "gh-GHSA-wjv6-jcfj-mf9r",
     "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:04Z",
-    "title": "Rouille 0.3.3 through 3.6.2 contains an HTTP request smuggling vulnerability that allows remote...",
-    "description": "Rouille 0.3.3 through 3.6.2 contains an HTTP request smuggling vulnerability that allows remote attackers to bypass access controls by injecting bare line feed characters (0x0A) into client-supplied request header values that are copied verbatim to upstream connections without validation. Attackers can craft a header value containing a complete additional HTTP request that is interpreted as a separate request by backends such as Go net/http and Python http.server, causing the backend to process ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-67182",
-    "ghsa_id": "GHSA-frmw-v2hf-gvj9",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-67182.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-6jfv-gphr-g646",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:04Z",
-    "title": "In schreibfaul1 ESP32-audioI2S 3.4.5, a heap-based buffer overflow vulnerability exists in the...",
-    "description": "In schreibfaul1 ESP32-audioI2S 3.4.5, a heap-based buffer overflow vulnerability exists in the ID3 tag parsing function showID3Tag() of the embedded audio streaming library. The program reads untrusted long ID3 tag value from malicious audio files and uses unbounded appendf() to write formatted strings into ps_ptr heap buffer without length validation. Successful exploitation allows attackers to execute arbitrary code, leak sensitive memory data, cause device crash, or escalate privileges via a ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-51273",
-    "ghsa_id": "GHSA-6jfv-gphr-g646",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-51273.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-mrg5-7f6c-r28q",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:03Z",
-    "title": "Rouille 0.1.6 through 3.6.2 contains a reachable assertion vulnerability in the Request:...",
-    "description": "Rouille 0.1.6 through 3.6.2 contains a reachable assertion vulnerability in the Request::remove_prefix function that allows remote unauthenticated attackers to crash the server by sending a crafted percent-encoded URL. Attackers can send a request whose decoded path matches a configured prefix while the raw percent-encoded path does not, causing the assert! to fail and triggering either a 500 error or full process termination depending on the panic configuration.",
+    "timestamp": "2026-07-28T21:50:09Z",
+    "title": "`datamodel-code-generator` vulnerable to code injection via unescaped carriage return in `--extra-template-data` `comment` field",
+    "description": "### Summary\n\n`datamodel-code-generator` is vulnerable to code injection when a developer passes an `--extra-template-data` file whose `comment` value contains a literal `\\r` (carriage return). The `comment` variable is rendered into a Python `#` comment in six built-in templates with **no** line-terminator escaping. Python's tokenizer treats a bare CR as a physical-line terminator (see [Python language reference — Physical lines](https://docs.python.org/3/reference/lexical_analysis.html#physical",
     "severity": "high",
-    "cve_id": "CVE-2026-66754",
-    "ghsa_id": "GHSA-mrg5-7f6c-r28q",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-54654",
+    "ghsa_id": "GHSA-wjv6-jcfj-mf9r",
+    "affected_packages": [
+      "datamodel-code-generator"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
@@ -429,7 +525,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-66754.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54654.",
       "affected_industries": [
         "Technology",
         "General"
@@ -444,136 +540,31 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-fgf8-ph7p-m275",
+    "id": "gh-GHSA-8359-h9fx-j6v9",
     "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:03Z",
-    "title": "Rouille 0.3.3 through 3.6.2 contains an HTTP request smuggling vulnerability that allows remote...",
-    "description": "Rouille 0.3.3 through 3.6.2 contains an HTTP request smuggling vulnerability that allows remote attackers to desynchronize HTTP message boundaries by exploiting improper header forwarding in the proxy implementation. The proxy in src/proxy.rs forwards the client's Transfer-Encoding header to upstream backends unchanged while transmitting a body already de-chunked by tiny_http, enabling CL.TE desynchronization attacks where attackers control where the backend believes the request body ends.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-67181",
-    "ghsa_id": "GHSA-fgf8-ph7p-m275",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The HTTP request smuggling vulnerability in Rouille versions 0.3.3 through 3.6.2 could allow attackers to manipulate HTTP message boundaries, potentially leading to unauthorized access, data leakage, or the execution of malicious actions on backend systems.",
-      "affected_industries": [
-        "Technology",
-        "E-commerce",
-        "Financial Services",
-        "Healthcare",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Upgrade to the latest patched version of Rouille that addresses CVE-2026-67181.",
-        "Implement strict input validation and sanitization for HTTP headers to mitigate potential exploitation.",
-        "Deploy web application firewalls (WAFs) with rules to detect and block HTTP request smuggling attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-5wm6-g4fr-88x8",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:03Z",
-    "title": "tiny-http through 0.12.0 contains an HTTP header injection vulnerability that allows attackers to...",
-    "description": "tiny-http through 0.12.0 contains an HTTP header injection vulnerability that allows attackers to inject carriage return (0x0D) and line feed (0x0A) bytes into HTTP header values on both request and response sides due to insufficient validation in header parsing and serialization. Attackers can exploit this injection primitive to perform response splitting, cache poisoning, session fixation via Set-Cookie injection, security header override, and request smuggling against line-feed-tolerant backe",
-    "severity": "medium",
-    "cve_id": "CVE-2026-66753",
-    "ghsa_id": "GHSA-5wm6-g4fr-88x8",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in tiny-http through 0.12.0 allows attackers to inject malicious HTTP headers, potentially leading to response splitting, cache poisoning, session fixation, security header overrides, and request smuggling. These exploits can compromise web application security and user data integrity.",
-      "affected_industries": [
-        "Web Hosting",
-        "E-commerce",
-        "SaaS Platforms",
-        "Financial Services",
-        "Healthcare"
-      ],
-      "recommended_actions": [
-        "Upgrade tiny-http to the latest patched version that addresses CVE-2026-66753.",
-        "Implement strict input validation and sanitization for HTTP headers to prevent injection attacks.",
-        "Deploy web application firewalls (WAFs) to detect and block malicious HTTP header manipulation attempts."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-vvh8-j672-wfx9",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:03Z",
-    "title": "IBM OPENBMC FW1110.00 through FW1110.20, and FW1060.00 through FW1060.71 allows ReadOnly users to...",
-    "description": "IBM OPENBMC FW1110.00 through FW1110.20, and FW1060.00 through FW1060.71 allows ReadOnly users to escalate privileges and give themselves administrator privileges.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-7868",
-    "ghsa_id": "GHSA-vvh8-j672-wfx9",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7868.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-324m-xxrv-v73q",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:03Z",
-    "title": "Improper Neutralization of Input During Web Page Generation vulnerability in BlackBerry UEM...",
-    "description": "Improper Neutralization of Input During Web Page Generation vulnerability in BlackBerry UEM Management Console of BlackBerry UEM allows Cross-Site Scripting (XSS).\n\nThis issue affects UEM: 12.23.0 QF8 or earlier.",
+    "timestamp": "2026-07-28T21:49:34Z",
+    "title": "datamodel-code-generator vulnerable to arbitrary local file read via JSON-Schema `$ref` (`file://` and `../` traversal), bypassing `--no-allow-remote-refs`",
+    "description": "### Summary\n\n`datamodel-code-generator` resolves JSON-Schema `$ref` targets that point at the local filesystem without restricting them to the input/base directory and without honoring the remote-reference security control. In the default configuration, an attacker who controls an input schema (a \"paste your OpenAPI/JSON-Schema\" service, a CI job that generates models from a submitted spec, or any multi-tenant codegen platform) can read any file the process user can read and map the host filesys",
     "severity": "high",
-    "cve_id": "CVE-2026-18084",
-    "ghsa_id": "GHSA-324m-xxrv-v73q",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-55389",
+    "ghsa_id": "GHSA-8359-h9fx-j6v9",
+    "affected_packages": [
+      "datamodel-code-generator"
+    ],
     "cwes": [
+      null,
+      null,
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-18084.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55389.",
       "affected_industries": [
         "Technology",
         "General"
@@ -588,50 +579,19 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-mm39-vmv6-rcvf",
+    "id": "gh-GHSA-386q-5hp3-95m9",
     "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:03Z",
-    "title": "IBM OPENBMC FW1110.00 through FW1110.20, and FW1060.00 through FW1060.71 allows a user to supply...",
-    "description": "IBM OPENBMC FW1110.00 through FW1110.20, and FW1060.00 through FW1060.71 allows a user to supply a password with a resource dump request stores that password into the BMC audit log where an admin user can see it.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-8058",
-    "ghsa_id": "GHSA-mm39-vmv6-rcvf",
-    "affected_packages": [],
-    "cwes": [
-      null
+    "timestamp": "2026-07-28T21:48:14Z",
+    "title": "`datamodel-code-generator` vulnerable to code injection in via attacker-controlled `default_factory` schema field",
+    "description": "### Summary\n\n`datamodel-code-generator` is vulnerable to code injection when generating Python models from an attacker-controlled JSON Schema, OpenAPI, YAML, JSON, Avro, Protobuf, or XSD schema. When a property carries a `\"default_factory\"` key, its value is interpolated verbatim — as a raw Python expression — into the generated `Field(default_factory=...)` / `field(default_factory=...)` call. Because this assignment is evaluated at class-definition time (i.e. on `import` of the generated module",
+    "severity": "high",
+    "cve_id": "CVE-2026-54653",
+    "ghsa_id": "GHSA-386q-5hp3-95m9",
+    "affected_packages": [
+      "datamodel-code-generator"
     ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8058.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-r5q3-g4qh-p8mp",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:03Z",
-    "title": "Let's Chat 0.3.0 through 0.4.8 contains an improper authorization vulnerability that allows any...",
-    "description": "Let's Chat 0.3.0 through 0.4.8 contains an improper authorization vulnerability that allows any authenticated user to archive any room on the server by sending a DELETE request to the rooms handler without ownership verification. Attackers can enumerate room IDs via the rooms listing endpoint and permanently archive private or password-protected rooms they cannot access, with no application-level recovery path requiring direct database intervention to restore.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-66751",
-    "ghsa_id": "GHSA-r5q3-g4qh-p8mp",
-    "affected_packages": [],
     "cwes": [
+      null,
       null
     ],
     "references": [
@@ -641,108 +601,76 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows authenticated users to archive any chat room, including private or password-protected ones, without proper authorization. This can lead to denial of service for critical communication channels and potential data loss, as recovery requires manual database intervention.",
+      "risk_score": 85,
+      "impact_assessment": "The vulnerability allows attackers to execute arbitrary Python code by injecting malicious expressions into the 'default_factory' field of schemas processed by 'datamodel-code-generator'. This could lead to unauthorized code execution, data exfiltration, or system compromise, particularly in environments where untrusted schemas are processed.",
       "affected_industries": [
-        "Technology",
+        "Software Development",
         "Healthcare",
         "Finance",
-        "Education",
-        "Government"
-      ],
-      "recommended_actions": [
-        "Update Let's Chat to a patched version or apply any available security patches addressing CVE-2026-66751.",
-        "Implement server-side request validation to ensure only authorized users can perform sensitive actions like archiving rooms.",
-        "Monitor server logs for unusual DELETE requests to the rooms handler and investigate any unauthorized activity."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-hccv-7f3m-ww5h",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:03Z",
-    "title": "IBM Sterling B2B Integrator 6.2.0.0 through 6.2.0.6, 6.2.1.0 through 6.2.1.1_2, and 6.2.2.0...",
-    "description": "IBM Sterling B2B Integrator 6.2.0.0 through 6.2.0.6, 6.2.1.0 through 6.2.1.1_2, and 6.2.2.0 through 6.2.2.0_1 and IBM Sterling File Gateway 6.2.0.0 through 6.2.0.6, 6.2.1.0 through 6.2.1.1_2, and 6.2.2.0 through 6.2.2.0_1 is vulnerable to stored cross-site scripting. This vulnerability allows a privileged user to embed arbitrary JavaScript code in the Web UI thus altering the intended functionality potentially leading to credentials disclosure within a trusted session.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-7775",
-    "ghsa_id": "GHSA-hccv-7f3m-ww5h",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability allows a privileged user to execute stored cross-site scripting (XSS) attacks by embedding arbitrary JavaScript code in the Web UI. This could lead to credential theft, session hijacking, or unauthorized actions within a trusted session, potentially compromising sensitive business data.",
-      "affected_industries": [
-        "Retail",
-        "Manufacturing",
-        "Logistics",
-        "Financial Services",
-        "Healthcare"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patches or updates provided by IBM for the affected versions of Sterling B2B Integrator and Sterling File Gateway.",
-        "Restrict privileged user access to only those who absolutely require it, and enforce strict monitoring of their activities.",
-        "Implement a web application firewall (WAF) to detect and block malicious scripts in the Web UI as an additional layer of protection."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "gh-GHSA-7p27-g9vh-5fqj",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:03Z",
-    "title": "Improper input validation in Microsoft Edge for Android allows an unauthorized attacker to...",
-    "description": "Improper input validation in Microsoft Edge for Android allows an unauthorized attacker to perform tampering over a network.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-62828",
-    "ghsa_id": "GHSA-7p27-g9vh-5fqj",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "Improper input validation in Microsoft Edge for Android could allow an unauthorized attacker to tamper with user data or manipulate network communications, potentially leading to data breaches or compromised application functionality.",
-      "affected_industries": [
-        "Technology",
-        "Finance",
-        "Healthcare",
         "E-commerce",
+        "Government",
         "Education"
       ],
       "recommended_actions": [
-        "Apply the latest security patches and updates for Microsoft Edge for Android as soon as they are released.",
-        "Educate users to avoid connecting to untrusted networks and to use VPNs for secure connections.",
-        "Monitor network traffic for suspicious activities and implement web application firewalls to detect and block potential tampering attempts."
+        "Immediately update to a patched version of 'datamodel-code-generator' if available, or apply any security fixes provided by the maintainers.",
+        "Avoid processing untrusted or unauthenticated schemas with 'datamodel-code-generator' until the vulnerability is resolved.",
+        "Implement strict input validation and sanitization for any schemas being processed to minimize the risk of exploitation."
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 65
+    "risk_score": 85
   },
   {
-    "id": "gh-GHSA-5hc2-r3jq-vc45",
+    "id": "gh-GHSA-vx7x-vcc2-c44g",
     "source": "GitHub Security",
-    "timestamp": "2026-07-28T18:33:03Z",
-    "title": "tiny-http through 0.12.0 contains an HTTP request smuggling vulnerability that allows remote...",
-    "description": "tiny-http through 0.12.0 contains an HTTP request smuggling vulnerability that allows remote attackers to desynchronize request framing by sending a Transfer-Encoding header with any value, including non-chunked codings, which causes the library to unconditionally apply chunk-decoding and discard Content-Length. Attackers can exploit the discrepancy between tiny_http's improper Transfer-Encoding parsing and a correctly-implemented front-end proxy to produce two distinct interpretations of a sing",
-    "severity": "medium",
-    "cve_id": "CVE-2026-66752",
-    "ghsa_id": "GHSA-5hc2-r3jq-vc45",
-    "affected_packages": [],
+    "timestamp": "2026-07-28T21:45:48Z",
+    "title": "datamodel-code-generator vulnerable to SSRF protection bypass via DNS rebinding",
+    "description": "### Summary\n\n`datamodel-code-generator`'s anti-SSRF guard validates the resolved IP of a fetch target once and then lets `httpx` perform its own independent DNS resolution to connect, so the validated address is never pinned. A hostname that resolves to a public IP at validation time and a private IP at connection time (DNS rebinding) bypasses the guard and reaches loopback, link-local cloud-metadata endpoints (`169.254.169.254`), and other internal services — even with the default `allow_privat",
+    "severity": "high",
+    "cve_id": "CVE-2026-55391",
+    "ghsa_id": "GHSA-vx7x-vcc2-c44g",
+    "affected_packages": [
+      "datamodel-code-generator"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55391.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-8m8r-38jm-f355",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T21:44:09Z",
+    "title": "`datamodel-code-generator` vulnerable to code execution on import via unescaped `validators` entries in --extra-template-data",
+    "description": "### Summary\n\nWhen the Pydantic v2 output mode is in use, `datamodel-code-generator` reads a `validators` array from each model entry in the `--extra-template-data` file and synthesises a Pydantic `@field_validator(...)` decorator from each entry. The field names and the validator mode are interpolated into the decorator call wrapped in *unescaped* single quotes. A value containing `'` breaks out of the string literal, letting an attacker emit an arbitrary positional Python expression into the de",
+    "severity": "high",
+    "cve_id": "CVE-2026-54656",
+    "ghsa_id": "GHSA-8m8r-38jm-f355",
+    "affected_packages": [
+      "datamodel-code-generator"
+    ],
     "cwes": [
       null
     ],
@@ -753,167 +681,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-66752.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "cve-CVE-2026-15156",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T05:16:34.110",
-    "title": "CVE-2026-15156 - The Essential Addons for Elementor – Popular Elementor Templates & Widgets plugin for WordPress is v",
-    "description": "The Essential Addons for Elementor – Popular Elementor Templates & Widgets plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Reading Progress Global Color Settings in all versions up to, and including, 6.6.11 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-15156",
-    "cvss_score": 6.4,
-    "affected_products": [],
-    "references": [
-      "https://plugins.trac.wordpress.org/browser/essential-addons-for-elementor-lite/tags/6.6.10/includes/Classes/Bootstrap.php#L145",
-      "https://plugins.trac.wordpress.org/browser/essential-addons-for-elementor-lite/tags/6.6.10/includes/Traits/Core.php#L185",
-      "https://plugins.trac.wordpress.org/browser/essential-addons-for-elementor-lite/tags/6.6.10/includes/Traits/Elements.php#L496",
-      "https://plugins.trac.wordpress.org/changeset/3610135/essential-addons-for-elementor-lite/trunk/includes/Traits/Elements.php",
-      "https://plugins.trac.wordpress.org/changeset?old_path=%2Fessential-addons-for-elementor-lite/tags/6.6.11&new_path=%2Fessential-addons-for-elementor-lite/tags/6.7.0",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/dde0cf3a-778b-4b5f-ac0e-600505d918ae?source=cve"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-15156.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2023-37508",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T05:16:33.263",
-    "title": "CVE-2023-37508 - HCL DevOps Plan is potentially susceptible to Cross-Site Scripting (XSS) which could allow an attack",
-    "description": "HCL DevOps Plan is potentially susceptible to Cross-Site Scripting (XSS) which could allow an attacker to exploit this vulnerability if certain browser weaknesses are present.",
-    "severity": "medium",
-    "cve_id": "CVE-2023-37508",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://support.hcl-software.com/csm?id=kb_article&sysparm_article=KB0132308"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2023-37508.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-59776",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T04:16:51.480",
-    "title": "CVE-2026-59776 - Missing Cryptographic Step (CWE-325) vulnerability exists in certain FeliCa IC chips shipped in or b",
-    "description": "Missing Cryptographic Step (CWE-325) vulnerability exists in certain FeliCa IC chips shipped in or before 2017. If the vulnerability is exploited, information stored in the IC chip may be read or tampered with.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-59776",
-    "cvss_score": 6.8,
-    "affected_products": [],
-    "references": [
-      "https://jvn.jp/en/jp/JVN40509781/",
-      "https://www.sony.co.jp/en/Products/felica/business/information/2025001.html"
-    ],
-    "ai_analysis": {
-      "risk_score": 65,
-      "impact_assessment": "The vulnerability in certain FeliCa IC chips could allow attackers to read or tamper with sensitive information stored on the chip. This poses a risk to systems relying on these chips for secure authentication, payment processing, or data storage.",
-      "affected_industries": [
-        "Financial Services",
-        "Public Transportation",
-        "Retail",
-        "Access Control Systems",
-        "Healthcare"
-      ],
-      "recommended_actions": [
-        "Identify and inventory all systems and devices utilizing affected FeliCa IC chips shipped in or before 2017.",
-        "Implement compensating controls such as additional encryption layers or access restrictions to mitigate potential exploitation.",
-        "Engage with the chip manufacturer or vendor to determine if firmware updates or hardware replacements are available to address the vulnerability."
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 65
-  },
-  {
-    "id": "cve-CVE-2026-16336",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T04:16:50.310",
-    "title": "CVE-2026-16336 - A vulnerability was found in trinodb trino 481. Affected is an unknown function of the file core/tri",
-    "description": "A vulnerability was found in trinodb trino 481. Affected is an unknown function of the file core/trino-main/src/main/java/io/trino/server/ExternalUriInfo.java of the component OAuth2/OIDC. Performing a manipulation of the argument redirect_uri results in open redirect. It is possible to initiate the attack remotely. The project was informed of the problem early through an issue report but has not responded yet.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-16336",
-    "cvss_score": 4.3,
-    "affected_products": [],
-    "references": [
-      "https://github.com/trinodb/trino/",
-      "https://github.com/trinodb/trino/issues/29754",
-      "https://vuldb.com/cve/CVE-2026-16336",
-      "https://vuldb.com/submit/858687",
-      "https://vuldb.com/vuln/380710",
-      "https://vuldb.com/vuln/380710/cti"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-16336.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-6952",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T03:16:42.610",
-    "title": "CVE-2026-6952 - A post-authentication command injection vulnerability in the \"LogServer\" field of the syslog compone",
-    "description": "A post-authentication command injection vulnerability in the \"LogServer\" field of the syslog component in Zyxel AX7501-B1 firmware versions through 5.17(ABPC.7.2)C0 could allow an authenticated attacker with administrator privileges to execute OS commands on an affected device.",
-    "severity": "high",
-    "cve_id": "CVE-2026-6952",
-    "cvss_score": 7.2,
-    "affected_products": [],
-    "references": [
-      "https://www.zyxel.com/global/en/support/security-advisories/zyxel-security-advisory-for-post-authentication-command-injection-vulnerability-in-certain-dsl-ethernet-cpe-fiber-onts-and-wireless-extenders-07-21-2026"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-6952.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54656.",
       "affected_industries": [
         "Technology",
         "General"
@@ -925,95 +694,32 @@
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "cve-CVE-2026-63729",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T03:16:42.470",
-    "title": "CVE-2026-63729 - The SyncTeX parser (synctex_parser.c) shipped with TeX Live and embedded by downstream consumers suc",
-    "description": "The SyncTeX parser (synctex_parser.c) shipped with TeX Live and embedded by downstream consumers such as GNOME Evince contains a heap use-after-free vulnerability that allows attackers to crash applications or potentially execute arbitrary code by supplying a malformed .synctex or .synctex.gz file. A malformed SyncTeX file can construct a ref node with a NULL parent pointer, causing the replacement routine to fail to detach the node from its sibling chain, which triggers recursive freeing of live tree nodes and leaves dangling pointers that are later accessed by the parser during document load.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-63729",
-    "cvss_score": 6.6,
-    "affected_products": [],
-    "references": [
-      "https://fatihhcelik.github.io/posts/evince-synctex-heap-use-after-free/",
-      "https://github.com/TeX-Live/texlive-source/",
-      "https://github.com/TeX-Live/texlive-source/commit/002dcd3eac30db5c352f53d4181737961cc7ee9a",
-      "https://www.vulncheck.com/advisories/tex-live-synctex-parser-heap-use-after-free-via-malformed-synctex-file"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-63729.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-16334",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T03:16:41.007",
-    "title": "CVE-2026-16334 - A vulnerability was identified in itsourcecode Hospital Management System 1.0. This vulnerability af",
-    "description": "A vulnerability was identified in itsourcecode Hospital Management System 1.0. This vulnerability affects unknown code of the file /prescriptionorder.php. Such manipulation of the argument editid leads to sql injection. The attack can be launched remotely. The exploit is publicly available and might be used.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-16334",
-    "cvss_score": 6.3,
-    "affected_products": [],
-    "references": [
-      "https://github.com/LiamJim/cve/issues/1",
-      "https://itsourcecode.com/",
-      "https://vuldb.com/cve/CVE-2026-16334",
-      "https://vuldb.com/submit/858648",
-      "https://vuldb.com/vuln/380703",
-      "https://vuldb.com/vuln/380703/cti"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-16334.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-16332",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T03:16:40.833",
-    "title": "CVE-2026-16332 - A vulnerability was detected in D-Link DNS-320 1.0.2. This impacts an unknown function of the file /",
-    "description": "A vulnerability was detected in D-Link DNS-320 1.0.2. This impacts an unknown function of the file /mydlink/multi_uploadify.php. Performing a manipulation of the argument Filedata[] results in unrestricted upload. The attack is possible to be carried out remotely. The exploit is now public and may be used.",
+    "id": "gh-GHSA-954p-556p-r752",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T21:42:22Z",
+    "title": "datamodel-code-generator vulnerable to SSRF via JSON-Schema `$ref` to HTTP URL (silent by default)",
+    "description": "### Summary\n\nJSON-Schema `$ref` values pointing at HTTP or HTTPS URLs are silently dereferenced by `datamodel-code-generator` with no IP/host validation, no scheme allow-list, and redirects followed unconditionally. The `--allow-remote-refs` gate added in 0.56.0 defaults to `None`, which only emits a deprecation warning and then fetches the URL anyway; only explicit `--allow-remote-refs=false` blocks the request. The fetched body is parsed as a sub-schema and reflected verbatim into the generate",
     "severity": "high",
-    "cve_id": "CVE-2026-16332",
-    "cvss_score": 7.3,
-    "affected_products": [],
+    "cve_id": "CVE-2026-54690",
+    "ghsa_id": "GHSA-954p-556p-r752",
+    "affected_packages": [
+      "datamodel-code-generator"
+    ],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://ucn9h68n9289.feishu.cn/docx/EbAkdl1v8oC3Q3xAEJLcZFcZnMY?from=from_copylink",
-      "https://vuldb.com/cve/CVE-2026-16332",
-      "https://vuldb.com/submit/858465",
-      "https://vuldb.com/vuln/380698",
-      "https://vuldb.com/vuln/380698/cti",
-      "https://www.dlink.com/"
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-16332.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-54690.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1025,245 +731,125 @@
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "cve-CVE-2026-16331",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T01:16:29.450",
-    "title": "CVE-2026-16331 - A security vulnerability has been detected in D-Link DNS-320 1.0.2. This affects an unknown function",
-    "description": "A security vulnerability has been detected in D-Link DNS-320 1.0.2. This affects an unknown function of the file /web/function/save_ajax.php. Such manipulation of the argument Malicious Handler leads to unrestricted upload. The attack can be executed remotely. The exploit has been disclosed publicly and may be used.",
+    "id": "gh-GHSA-5578-w22f-pfx9",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T21:40:20Z",
+    "title": "datamodel-code-generator vulnerable to code injection via `x-python-import` / `customTypePath` in generated import statements",
+    "description": "#### Summary\n\nA malicious input schema (OpenAPI / JSON Schema) can execute arbitrary Python code on the machine that **imports** the generated model. The `x-python-import` and `customTypePath` schema extensions flow, unsanitized, into the `import` statements datamodel-code-generator emits. A newline embedded in the extension value breaks out of the `from … import …` line and injects an attacker-controlled statement at module scope, which runs at import time. This is an unauthenticated, schema-co",
     "severity": "high",
-    "cve_id": "CVE-2026-16331",
-    "cvss_score": 7.3,
-    "affected_products": [],
+    "cve_id": "CVE-2026-55415",
+    "ghsa_id": "GHSA-5578-w22f-pfx9",
+    "affected_packages": [
+      "datamodel-code-generator"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
     "references": [
-      "https://ucn9h68n9289.feishu.cn/docx/UZ6id3F1Joqlpxxn3NFcL8r7nHb?from=from_copylink",
-      "https://vuldb.com/cve/CVE-2026-16331",
-      "https://vuldb.com/submit/858464",
-      "https://vuldb.com/vuln/380697",
-      "https://vuldb.com/vuln/380697/cti",
-      "https://www.dlink.com/"
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-16331.",
+      "impact_assessment": "The vulnerability allows attackers to execute arbitrary Python code on systems that process malicious OpenAPI/JSON schemas using datamodel-code-generator. This can lead to unauthorized access, data breaches, or system compromise, especially in environments where untrusted schemas are processed.",
       "affected_industries": [
+        "Software Development",
+        "Healthcare",
+        "Finance",
+        "E-commerce",
         "Technology",
-        "General"
+        "Government"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update datamodel-code-generator to a patched version, if available, or apply any recommended mitigations from the vendor.",
+        "Avoid processing untrusted or unauthenticated OpenAPI/JSON schemas until the vulnerability is resolved.",
+        "Implement input validation and sanitization to prevent malicious schema extensions from being processed."
       ],
       "urgency": "high"
     },
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-16330",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T01:16:29.280",
-    "title": "CVE-2026-16330 - A weakness has been identified in D-Link DNS-320 1.0.2. The impacted element is an unknown function ",
-    "description": "A weakness has been identified in D-Link DNS-320 1.0.2. The impacted element is an unknown function of the file /web/jquery/uploader/uploadify.php. This manipulation of the argument https:/ucn9h68n9289.feishu.cn/wiki/JJcTwHz7aiKeq6kSItMcoeSUnMc?from=from_copylink causes unrestricted upload. Remote exploitation of the attack is possible. The exploit has been made available to the public and could be used for attacks.",
+    "id": "gh-GHSA-j884-q54q-mmx3",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T21:35:49Z",
+    "title": "`datamodel-code-generator` vulnerable to code injection via unescaped carriage return in GraphQL Union description",
+    "description": "### Summary\n\n`datamodel-code-generator` is vulnerable to code injection when generating Python models from an attacker-controlled GraphQL schema. A description on a Union type, written in the regular-string form (`\"...\"`) with a literal `\\r` escape, is rendered into a Python `#` comment by a Jinja2 filter that handles only `\\n`. Python's tokenizer treats a bare CR as a physical-line terminator, so the comment ends at the `\\r` and the text after it is parsed as module-level Python. The injected c",
     "severity": "high",
-    "cve_id": "CVE-2026-16330",
-    "cvss_score": 7.3,
-    "affected_products": [],
+    "cve_id": "CVE-2026-54621",
+    "ghsa_id": "GHSA-j884-q54q-mmx3",
+    "affected_packages": [
+      "datamodel-code-generator"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
     "references": [
-      "https://ucn9h68n9289.feishu.cn/docx/EkMxdLlavojfsXxzKXec5yUknEg?from=from_copylink",
-      "https://vuldb.com/cve/CVE-2026-16330",
-      "https://vuldb.com/submit/858463",
-      "https://vuldb.com/vuln/380696",
-      "https://vuldb.com/vuln/380696/cti",
-      "https://www.dlink.com/"
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-16330.",
+      "impact_assessment": "The vulnerability allows attackers to inject malicious Python code into generated models by exploiting unescaped carriage returns in GraphQL Union descriptions. This could lead to arbitrary code execution, compromising the integrity and security of applications relying on the `datamodel-code-generator` tool.",
       "affected_industries": [
+        "Software Development",
         "Technology",
-        "General"
+        "Healthcare",
+        "Finance",
+        "E-commerce"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Update to the latest patched version of `datamodel-code-generator` that addresses CVE-2026-54621.",
+        "Implement input validation and sanitization for GraphQL schemas, especially when sourced from untrusted or external parties.",
+        "Conduct a security review of any Python code generated by the tool to identify and mitigate potential injection points."
       ],
       "urgency": "high"
     },
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-16329",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T01:16:29.117",
-    "title": "CVE-2026-16329 - A vulnerability was identified in D-Link DNS-320 1.0.2. Impacted is an unknown function of the file ",
-    "description": "A vulnerability was identified in D-Link DNS-320 1.0.2. Impacted is an unknown function of the file /photo_center/php/uploadify.php. The manipulation of the argument Malicious Handler leads to unrestricted upload. The attack may be initiated remotely. The exploit is publicly available and might be used.",
+    "id": "gh-GHSA-m34r-v34r-rf9q",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-28T21:33:57Z",
+    "title": "`datamodel-code-generator` vulnerable to code execution on import via `x-python-type` JSON-Schema extension in datamodel-code-generator",
+    "description": "### Summary\n`datamodel-code-generator` honours a custom `x-python-type` JSON-Schema extension that lets a schema author override the generated Python type for a field. The value is forwarded verbatim into the generated Python source as the field annotation, with a single sanitisation pass that is trivial to bypass. An attacker who controls a JSON Schema fed to `datamodel-codegen` can therefore embed an arbitrary Python statement in the generated module, which executes at class-definition time th",
     "severity": "high",
-    "cve_id": "CVE-2026-16329",
-    "cvss_score": 7.3,
-    "affected_products": [],
+    "cve_id": "CVE-2026-54655",
+    "ghsa_id": "GHSA-m34r-v34r-rf9q",
+    "affected_packages": [
+      "datamodel-code-generator"
+    ],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://ucn9h68n9289.feishu.cn/docx/MBHDdPBz4oUXa9xCdujchmPZneg?from=from_copylink",
-      "https://vuldb.com/cve/CVE-2026-16329",
-      "https://vuldb.com/submit/858462",
-      "https://vuldb.com/vuln/380694",
-      "https://vuldb.com/vuln/380694/cti",
-      "https://www.dlink.com/"
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-16329.",
+      "impact_assessment": "The vulnerability allows attackers to execute arbitrary Python code during the import of a generated module, potentially leading to unauthorized access, data breaches, or system compromise. This poses a significant risk to systems relying on the affected library for schema generation.",
       "affected_industries": [
-        "Technology",
-        "General"
+        "Software Development",
+        "Data Analytics",
+        "Healthcare",
+        "Finance",
+        "E-commerce"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-63728",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T00:17:48.953",
-    "title": "CVE-2026-63728 - Gitleaks prior to 8.30.1 contains a template injection vulnerability that allows attackers who can s",
-    "description": "Gitleaks prior to 8.30.1 contains a template injection vulnerability that allows attackers who can supply or influence report templates to read arbitrary environment variables and exfiltrate sensitive data by leveraging non-hermetic Sprig template functions. Attackers can craft malicious report templates using the env, expandenv, and getHostByName functions to extract credentials, tokens, and API keys from the host process and exfiltrate them through DNS queries, including secrets discovered during the scan itself.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-63728",
-    "cvss_score": 6.3,
-    "affected_products": [],
-    "references": [
-      "https://fatihhcelik.github.io/posts/gitleaks-abusing-sprig-for-exfiltration/#the-fix",
-      "https://github.com/gitleaks/gitleaks",
-      "https://github.com/gitleaks/gitleaks/commit/83d9cd684c87d95d656c1458ef04895a7f1cbd8e",
-      "https://www.vulncheck.com/advisories/gitleaks-secret-exfiltration-via-non-hermetic-sprig-template-functions-in-report-template-feature",
-      "https://fatihhcelik.github.io/posts/gitleaks-abusing-sprig-for-exfiltration/#the-fix"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-63728.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-55833",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T00:17:35.537",
-    "title": "CVE-2026-55833 - Netty is a network application framework for development of protocol servers and clients. Prior to 4",
-    "description": "Netty is a network application framework for development of protocol servers and clients. Prior to 4.1.136.Final and 4.2.16.Final, Netty SPDY header decoding continues inflating zlib-compressed header blocks after the raw header parser has exceeded `maxHeaderSize` and marked the frame truncated in `SpdyFrameCodec`, allowing a remote peer to send a small compressed `HEADERS` block that expands into much larger raw header data and causes compression-amplified CPU and allocation churn. This issue is fixed in versions 4.1.136.Final and 4.2.16.Final.",
-    "severity": "high",
-    "cve_id": "CVE-2026-55833",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:netty:netty:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:netty:netty:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/netty/netty/commit/5b68c61f37aa4a3045cba624cbea239655c9003b",
-      "https://github.com/netty/netty/commit/bb2ff68a1fb71cb4b0eb9a9e17b66c52aff680c6",
-      "https://github.com/netty/netty/releases/tag/netty-4.1.136.Final",
-      "https://github.com/netty/netty/releases/tag/netty-4.2.16.Final",
-      "https://github.com/netty/netty/security/advisories/GHSA-mvh2-crg5-v77c"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55833.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-55831",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T00:17:35.383",
-    "title": "CVE-2026-55831 - Netty is a network application framework for development of protocol servers and clients. Prior to 4",
-    "description": "Netty is a network application framework for development of protocol servers and clients. Prior to 4.1.136.Final and 4.2.16.Final, Netty's SPDY SETTINGS decoder accepts a peer-declared SETTINGS entry count up to the 24-bit frame-length limit and materializes every unique setting ID in `DefaultSpdySettingsFrame`, allowing a remote SPDY/3.1 peer to send a syntactically valid roughly 2 MiB SETTINGS frame that creates 262144 map entries and amplifies network input into heap growth and ordered-map insertion work. This issue is fixed in versions 4.1.136.Final and 4.2.16.Final.",
-    "severity": "high",
-    "cve_id": "CVE-2026-55831",
-    "cvss_score": 7.5,
-    "affected_products": [
-      "cpe:2.3:a:netty:netty:*:*:*:*:*:*:*:*",
-      "cpe:2.3:a:netty:netty:*:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://github.com/netty/netty/commit/5b68c61f37aa4a3045cba624cbea239655c9003b",
-      "https://github.com/netty/netty/commit/bb2ff68a1fb71cb4b0eb9a9e17b66c52aff680c6",
-      "https://github.com/netty/netty/releases/tag/netty-4.1.136.Final",
-      "https://github.com/netty/netty/releases/tag/netty-4.2.16.Final",
-      "https://github.com/netty/netty/security/advisories/GHSA-6jqx-86gh-f27w",
-      "https://github.com/netty/netty/security/advisories/GHSA-6jqx-86gh-f27w"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-55831.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-16327",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-21T00:16:53.570",
-    "title": "CVE-2026-16327 - A vulnerability was determined in D-Link DNS-320 1.0.2. This issue affects some unknown processing o",
-    "description": "A vulnerability was determined in D-Link DNS-320 1.0.2. This issue affects some unknown processing of the file /web/web_file/upload.php. Executing a manipulation of the argument File can lead to unrestricted upload. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized.",
-    "severity": "high",
-    "cve_id": "CVE-2026-16327",
-    "cvss_score": 7.3,
-    "affected_products": [],
-    "references": [
-      "https://ucn9h68n9289.feishu.cn/wiki/JJcTwHz7aiKeq6kSItMcoeSUnMc?from=from_copylink",
-      "https://vuldb.com/cve/CVE-2026-16327",
-      "https://vuldb.com/submit/858455",
-      "https://vuldb.com/vuln/380693",
-      "https://vuldb.com/vuln/380693/cti",
-      "https://www.dlink.com/"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-16327.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Immediately update to the latest patched version of `datamodel-code-generator` if available, or apply any security fixes provided by the maintainers.",
+        "Audit and sanitize any JSON Schemas used with `datamodel-code-generator` to ensure they are from trusted sources and do not contain malicious `x-python-type` extensions.",
+        "Implement strict input validation and monitoring for any processes involving schema generation to detect and prevent exploitation attempts."
       ],
       "urgency": "high"
     },
