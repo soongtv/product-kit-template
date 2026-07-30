@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1785380006924-1",
+    "id": "twitter-1785400804194-1",
     "source": "Twitter Security",
-    "timestamp": "2026-07-30T02:53:26.924Z",
+    "timestamp": "2026-07-30T08:40:04.194Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1785380006924-1",
+    "id": "hn-1785400804194-1",
     "source": "HackerNews",
-    "timestamp": "2026-07-30T02:53:26.924Z",
+    "timestamp": "2026-07-30T08:40:04.194Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,20 +52,56 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-m2cx-9w9f-2hm7",
+    "id": "gh-GHSA-cw8q-r6mc-84wq",
     "source": "GitHub Security",
-    "timestamp": "2026-07-30T00:31:19Z",
-    "title": "VaahCMS versions 2.0.0 through 2.3.4 contain a malicious obfuscated JavaScript payload embedded...",
-    "description": "VaahCMS versions 2.0.0 through 2.3.4 contain a malicious obfuscated JavaScript payload embedded in the Blade template responsible for rendering security OTP emails, allowing remote attackers to execute unauthorized code in any browser that renders the affected email template with JavaScript enabled. The payload establishes a WebSocket connection to a hardcoded command-and-control endpoint, installs a password-field keylogger using MutationObserver to capture dynamically added inputs, scrapes Wha",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "Improper neutralization in the Plesk XML-RPC API allows a remote authenticated low-privileged...",
+    "description": "Improper neutralization in the Plesk XML-RPC API allows a remote authenticated low-privileged user to perform SQL injection and read arbitrary data from the Plesk database, leading to full compromise of the panel.",
     "severity": "critical",
-    "cve_id": "CVE-2026-67595",
-    "ghsa_id": "GHSA-m2cx-9w9f-2hm7",
+    "cve_id": "CVE-2026-58046",
+    "ghsa_id": "GHSA-cw8q-r6mc-84wq",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 95,
+      "impact_assessment": "The vulnerability in the Plesk XML-RPC API allows a remote authenticated low-privileged user to execute SQL injection attacks, potentially leading to unauthorized access, data exfiltration, and full compromise of the Plesk control panel. This could result in loss of sensitive data, service disruptions, and reputational damage.",
+      "affected_industries": [
+        "Web Hosting",
+        "Cloud Service Providers",
+        "IT Services",
+        "E-commerce",
+        "Small and Medium Enterprises (SMEs)"
+      ],
+      "recommended_actions": [
+        "Immediately apply the latest security patch or update provided by Plesk to address CVE-2026-58046.",
+        "Restrict access to the Plesk panel by implementing IP whitelisting and enforcing strong authentication mechanisms, such as multi-factor authentication (MFA).",
+        "Conduct a thorough review of database logs and system activity to identify any signs of exploitation or unauthorized access."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 95
+  },
+  {
+    "id": "gh-GHSA-f3wj-pr2w-q3fm",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "Rocket.Chat's SAML SSO before versions 8.7.0, 8.6.1, 8.5.2, 8.4.5, 8.3.7, 8.2.7, 8.1.7, 8.0.8,...",
+    "description": "Rocket.Chat's SAML SSO before versions 8.7.0, 8.6.1, 8.5.2, 8.4.5, 8.3.7, 8.2.7, 8.1.7, 8.0.8, and 7.10.14 verified XML signatures but did not bind the validated signature to samlp:Response / saml:Assertion. An attacker could submit a wrapped document carrying forged identity attributes alongside any valid signature made by the trusted IdP certificate, and log in as an arbitrary user.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-58066",
+    "ghsa_id": "GHSA-f3wj-pr2w-q3fm",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null,
@@ -73,423 +109,129 @@
     ],
     "ai_analysis": {
       "risk_score": 95,
-      "impact_assessment": "The vulnerability allows remote attackers to execute unauthorized JavaScript code in browsers rendering OTP email templates, potentially leading to credential theft, unauthorized access, and data breaches. The embedded keylogger and WebSocket connection to a command-and-control server amplify the threat by enabling real-time data exfiltration.",
+      "impact_assessment": "The vulnerability allows attackers to impersonate arbitrary users by exploiting a flaw in the SAML SSO implementation. This could lead to unauthorized access to sensitive data, privilege escalation, and potential compromise of the affected Rocket.Chat instance.",
       "affected_industries": [
-        "E-commerce",
-        "Financial Services",
+        "Technology",
         "Healthcare",
-        "Government",
+        "Finance",
         "Education",
-        "Technology"
+        "Government",
+        "Retail"
       ],
       "recommended_actions": [
-        "Immediately upgrade to a patched version of VaahCMS (if available) or apply vendor-recommended mitigations to disable the malicious payload.",
-        "Audit all email templates for suspicious or unauthorized JavaScript code and disable JavaScript rendering in email clients, if feasible.",
-        "Monitor network traffic for suspicious WebSocket connections to the hardcoded command-and-control endpoint and block such traffic at the firewall level."
+        "Immediately update Rocket.Chat to the latest patched version (8.7.0 or higher).",
+        "Review and monitor SAML SSO configurations and logs for any unauthorized or suspicious login attempts.",
+        "Implement additional access controls, such as multi-factor authentication (MFA), to mitigate potential exploitation."
       ],
       "urgency": "critical"
     },
     "risk_score": 95
   },
   {
-    "id": "gh-GHSA-hcmx-6x6r-f6mp",
+    "id": "gh-GHSA-xg26-wm7c-xr7g",
     "source": "GitHub Security",
-    "timestamp": "2026-07-30T00:31:18Z",
-    "title": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in the view-medhistory...",
-    "description": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in the view-medhistory.php endpoint via the viewid parameter.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-69944",
-    "ghsa_id": "GHSA-hcmx-6x6r-f6mp",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The SQL Injection vulnerability in the view-medhistory.php endpoint of kishan0725 Hospital Management System 4.0 allows attackers to manipulate database queries. This can lead to unauthorized access to sensitive patient data, data corruption, or even full database compromise.",
-      "affected_industries": [
-        "Healthcare",
-        "Hospital Management Systems",
-        "Medical Software Providers"
-      ],
-      "recommended_actions": [
-        "Immediately apply input validation and parameterized queries to sanitize user inputs, especially for the 'viewid' parameter.",
-        "Update the application to the latest patched version if available or contact the vendor for a security fix.",
-        "Conduct a thorough security audit of the application to identify and remediate similar vulnerabilities."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-47xc-xmwq-4cxw",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-30T00:31:18Z",
-    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-16339",
-    "ghsa_id": "GHSA-47xc-xmwq-4cxw",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-16339.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-vv6v-98gx-r829",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-30T00:31:18Z",
-    "title": "Sourcecodester CASAP Automated Enrollment System 1.0 is vulnerable to SQL Injection in save_stud...",
-    "description": "Sourcecodester CASAP Automated Enrollment System 1.0 is vulnerable to SQL Injection in save_stud.php via the parameters fname, lname, and student_class.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-67404",
-    "ghsa_id": "GHSA-vv6v-98gx-r829",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-67404.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-fv9j-hvjm-h9xh",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-30T00:31:18Z",
-    "title": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in check_availability...",
-    "description": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in check_availability.php via the parameters emailid and email.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-69949",
-    "ghsa_id": "GHSA-fv9j-hvjm-h9xh",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-69949.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-4xg3-6338-9rxr",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-30T00:31:18Z",
-    "title": "Sourcecodester CASAP Automated Enrollment System 1.0 is vulnerable to SQL Injection in...",
-    "description": "Sourcecodester CASAP Automated Enrollment System 1.0 is vulnerable to SQL Injection in update_class.php via the parameter class_name.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-67403",
-    "ghsa_id": "GHSA-4xg3-6338-9rxr",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability allows attackers to execute arbitrary SQL commands via the 'class_name' parameter in update_class.php, potentially leading to unauthorized access, data exfiltration, or database manipulation.",
-      "affected_industries": [
-        "Education",
-        "Software Development",
-        "Small and Medium Enterprises (SMEs)"
-      ],
-      "recommended_actions": [
-        "Immediately sanitize and validate all user inputs, particularly the 'class_name' parameter, to prevent SQL injection.",
-        "Apply a patch or update the application to a version where this vulnerability is resolved, if available.",
-        "Implement web application firewalls (WAF) to monitor and block malicious SQL injection attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-9r9x-mp6x-7vh3",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-30T00:31:18Z",
-    "title": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in /doctor/edit-patient...",
-    "description": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in /doctor/edit-patient.php?editid=1.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-69945",
-    "ghsa_id": "GHSA-9r9x-mp6x-7vh3",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-69945.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-ghxv-gf56-x785",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-30T00:31:18Z",
-    "title": "kishan0725 Hospital Management System 4.0 is vulnerale to SQL Injection in get_doctor.php via the...",
-    "description": "kishan0725 Hospital Management System 4.0 is vulnerale to SQL Injection in get_doctor.php via the parameters doctor and specilizationid.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-69943",
-    "ghsa_id": "GHSA-ghxv-gf56-x785",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The SQL Injection vulnerability in kishan0725 Hospital Management System 4.0 could allow attackers to manipulate database queries, potentially leading to unauthorized access to sensitive patient data, database corruption, or complete system compromise.",
-      "affected_industries": [
-        "Healthcare",
-        "Medical Software Providers",
-        "Hospital IT Systems"
-      ],
-      "recommended_actions": [
-        "Immediately apply input validation and parameterized queries in the get_doctor.php script to prevent SQL Injection.",
-        "Update to a patched version of the software if available or contact the vendor for a fix.",
-        "Conduct a thorough security audit of the system to identify and address other potential vulnerabilities."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-fjfr-wjrh-qmv2",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-30T00:31:18Z",
-    "title": "Sourcecodester CASAP Automated Enrollment System 1.0 is vulnerable to SQL Injection in /save_user...",
-    "description": "Sourcecodester CASAP Automated Enrollment System 1.0 is vulnerable to SQL Injection in /save_user.php via the parameter status.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-67408",
-    "ghsa_id": "GHSA-fjfr-wjrh-qmv2",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-67408.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-pwj4-mv8c-c4xg",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-30T00:31:18Z",
-    "title": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in /hms/doctor/view...",
-    "description": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in /hms/doctor/view-patient.php?viewid=1.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-69942",
-    "ghsa_id": "GHSA-pwj4-mv8c-c4xg",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-69942.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-8933-qpw2-wm45",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-30T00:31:18Z",
-    "title": "https://www.sourcecodester.com Advocate office management system 1.0 is affected by: SQL...",
-    "description": "https://www.sourcecodester.com Advocate office management system 1.0 is affected by: SQL Injection. The impact is: execute arbitrary code (remote). The component is: control/activate_case.php,?id=1. The attack vector is: A SQL Injection vulnerability exists in the activate_case.php in parameter id endpoint of Advocate office management system. Unsanitized user input in the specified parameter is interpolated directly into an SQL query, allowing attackers to infer or extract data and, in some cas",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-67406",
-    "ghsa_id": "GHSA-8933-qpw2-wm45",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The SQL Injection vulnerability in the Advocate Office Management System 1.0 allows attackers to execute arbitrary SQL commands, potentially leading to data exfiltration, unauthorized access, or remote code execution. This could compromise sensitive client data, disrupt operations, and lead to reputational damage.",
-      "affected_industries": [
-        "Legal Services",
-        "Small and Medium Enterprises (SMEs)",
-        "Software-as-a-Service (SaaS) Providers"
-      ],
-      "recommended_actions": [
-        "Immediately sanitize and validate all user inputs in the 'activate_case.php' endpoint, particularly the 'id' parameter, to prevent SQL injection attacks.",
-        "Apply the principle of least privilege to the database user account to limit the potential damage from a successful attack.",
-        "Update the Advocate Office Management System to the latest version or apply any available patches addressing this vulnerability."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-4p7v-v4v3-f9cp",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-30T00:31:18Z",
-    "title": "Sourcecodester CASAP Automated Enrollment System 1.0 is vulnerable to SQL Injection in...",
-    "description": "Sourcecodester CASAP Automated Enrollment System 1.0 is vulnerable to SQL Injection in update_password.php via the parameter new_password.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-67405",
-    "ghsa_id": "GHSA-4p7v-v4v3-f9cp",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-67405.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-786x-w3wg-jwf8",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-30T00:31:18Z",
-    "title": "Sourcecodester CASAP Automated Enrollment System 1.0 is vulnerable to SQL Injection in...",
-    "description": "Sourcecodester CASAP Automated Enrollment System 1.0 is vulnerable to SQL Injection in update_student.php via parameters fname and student_class.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-67407",
-    "ghsa_id": "GHSA-786x-w3wg-jwf8",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The SQL Injection vulnerability in Sourcecodester CASAP Automated Enrollment System 1.0 allows attackers to manipulate database queries via user inputs in update_student.php. This could lead to unauthorized data access, data exfiltration, or database compromise, potentially exposing sensitive student and institutional data.",
-      "affected_industries": [
-        "Education",
-        "Software Development",
-        "IT Services"
-      ],
-      "recommended_actions": [
-        "Immediately sanitize and validate all user inputs in the update_student.php file to prevent SQL Injection attacks.",
-        "Apply parameterized queries or prepared statements in the database interaction code to mitigate SQL Injection risks.",
-        "Conduct a comprehensive security audit of the application to identify and remediate similar vulnerabilities."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-mp9m-rq8w-3xm6",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-29T21:31:01Z",
-    "title": "Autel MaxiCharger AC Elite Home Software Update Improper Verification of Cryptographic Signature...",
-    "description": "Autel MaxiCharger AC Elite Home Software Update Improper Verification of Cryptographic Signature Arbitrary Code Execution Vulnerability. This vulnerability allows physically present attackers to execute arbitrary code on affected installations of Autel MaxiCharger AC Elite Home EV chargers. Authentication is not required to exploit this vulnerability.\n\nThe specific flaw exists within the handling of software updates. The issue results from the lack of proper validation of a user-supplied softwar",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "Spring Tools for Eclipse stores the Spring Boot DevTools remote secret (spring.devtools.remote...",
+    "description": "Spring Tools for Eclipse stores the Spring Boot DevTools remote secret (spring.devtools.remote.secret) as a plain string attribute on the \"Spring Boot DevTools Client\" launch configuration. Eclipse persists launch configuration attributes as cleartext XML, either to workspace metadata or, if the user marks the configuration as a shared file, directly into the project tree where it can be committed to version control. This secret is the sole credential protecting the DevTools remote restart/reloa",
     "severity": "medium",
-    "cve_id": "CVE-2026-13305",
-    "ghsa_id": "GHSA-mp9m-rq8w-3xm6",
+    "cve_id": "CVE-2026-59327",
+    "ghsa_id": "GHSA-xg26-wm7c-xr7g",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-59327.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-r5cq-rcm7-54x2",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "An incomplete fix has been identified in Node.js: HTTPS Agent TLS session reuse skips hostname...",
+    "description": "An incomplete fix has been identified in Node.js: HTTPS Agent TLS session reuse skips hostname verification across identity policies (incomplete fix of CVE-2026-48934).\n\nThis vulnerability affects Node.js **22.x**, **24.x**, and **26.x**.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-58040",
+    "ghsa_id": "GHSA-r5cq-rcm7-54x2",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-58040.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-9j65-vr9q-w452",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "The Spring Boot language server logs the raw value of the https_proxy/HTTPS_PROXY/http_proxy...",
+    "description": "The Spring Boot language server logs the raw value of the https_proxy/HTTPS_PROXY/http_proxy/HTTP_PROXY environment variable at INFO level whenever it creates an outbound HTTP client and no explicit http.proxy workspace setting is configured. Corporate proxy URLs frequently embed Basic-auth credentials in the form http://user:pass@proxy:8080, and the language server writes this value to its log file without any redaction. Since language server log files are often attached to bug reports or are r",
+    "severity": "low",
+    "cve_id": "CVE-2026-59326",
+    "ghsa_id": "GHSA-9j65-vr9q-w452",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-59326.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-qrq2-c54w-wgqm",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "A flaw in Node.js Permission Model enforcement can over-grant filesystem access across radix-tree...",
+    "description": "A flaw in Node.js Permission Model enforcement can over-grant filesystem access across radix-tree prefix boundaries.\n\nUnder `--permission`, an attacker who is granted access to one path can abuse boundary handling to read from or write to paths outside the intended filesystem allowlist.\n\nThis vulnerability affects Node.js **main**, **22.x**, **24.x**, and **26.x**.",
+    "severity": "high",
+    "cve_id": "CVE-2026-58043",
+    "ghsa_id": "GHSA-qrq2-c54w-wgqm",
     "affected_packages": [],
     "cwes": [
       null
@@ -500,43 +242,256 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "This vulnerability allows attackers with physical access to execute arbitrary code on Autel MaxiCharger AC Elite Home EV chargers. Exploitation could lead to unauthorized control of the device, potential disruption of EV charging operations, and exposure to further attacks on connected networks.",
+      "risk_score": 85,
+      "impact_assessment": "This vulnerability allows attackers to bypass the Node.js Permission Model, potentially gaining unauthorized access to sensitive filesystem paths. It could lead to data leakage, unauthorized modifications, or system compromise.",
       "affected_industries": [
-        "Automotive",
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "E-commerce",
+        "Government"
+      ],
+      "recommended_actions": [
+        "Immediately update Node.js to a patched version once available, or apply temporary mitigations such as restricting the use of the `--permission` flag.",
+        "Audit filesystem access permissions and logs to identify any unauthorized access attempts.",
+        "Implement additional application-level access controls to mitigate potential exploitation of this vulnerability."
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-2g52-w93h-w9v5",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "An unauthenticated remote attacker can exploit a path traversal vulnerability in the PCP pmproxy...",
+    "description": "An unauthenticated remote attacker can exploit a path traversal vulnerability in the PCP pmproxy logger servlet using a crafted hostname. This allows arbitrary file and directory creation, potentially leading to a denial of service.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-16531",
+    "ghsa_id": "GHSA-2g52-w93h-w9v5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The path traversal vulnerability in the PCP pmproxy logger servlet could allow an unauthenticated attacker to create arbitrary files and directories, potentially leading to denial of service or further exploitation of the system.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Government",
+        "E-commerce"
+      ],
+      "recommended_actions": [
+        "Immediately apply the latest security patch or update provided by the vendor to address CVE-2026-16531.",
+        "Restrict access to the affected service by implementing network-level controls, such as firewalls or VPNs, to limit exposure to trusted sources only.",
+        "Monitor server logs for any unusual activity or unauthorized file creation to detect potential exploitation attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-hm96-wjh8-qqgm",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "A signed integer overflow in the PCP __pmGetPDU() function can be exploited via crafted network...",
+    "description": "A signed integer overflow in the PCP __pmGetPDU() function can be exploited via crafted network packets during PDU processing or SASL negotiation. This permanently blinds the affected daemon, resulting in a total denial of service (DoS) for subsequent packet reads.",
+    "severity": "high",
+    "cve_id": "CVE-2026-16529",
+    "ghsa_id": "GHSA-hm96-wjh8-qqgm",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-16529.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-ph62-g3gp-mmvr",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "The Boot Dashboard Docker integration in Spring Tools publishes container control ports on all of...",
+    "description": "The Boot Dashboard Docker integration in Spring Tools publishes container control ports on all of the host's network interfaces (0.0.0.0) rather than restricting them to loopback.\nAffected Spring Products and Versions:\nSpring Tools for Eclipse: 5.2.0 and earlier",
+    "severity": "high",
+    "cve_id": "CVE-2026-47873",
+    "ghsa_id": "GHSA-ph62-g3gp-mmvr",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-47873.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-hw7r-7v27-7388",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "A flaw in Node.js Permission Model enforcement allows `trace_events.createTracing().enable()`...",
+    "description": "A flaw in Node.js Permission Model enforcement allows `trace_events.createTracing().enable()` Writes Trace Logs Outside `--allow-fs-write`.\n\nThis can lead to confidentiality impact or bypass of the intended security boundary under affected configurations.\n\nThis vulnerability affects Node.js **22.x**, **24.x**, and **26.x**.",
+    "severity": "low",
+    "cve_id": "CVE-2026-56847",
+    "ghsa_id": "GHSA-hw7r-7v27-7388",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-56847.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-cpfc-g4p9-rg24",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "When enabling Spring Boot DevTools support for a remote application target (for example a Docker...",
+    "description": "When enabling Spring Boot DevTools support for a remote application target (for example a Docker container or Cloud Foundry app) from the Spring Tools Boot Dashboard, Spring Tools generates a shared secret that authenticates DevTools remote-restart uploads to the deployed application. This secret was generated using a non-cryptographic pseudo-random number generator rather than a cryptographically secure source of randomness.\nAffected Spring Products and Versions:\nSpring Tools for Eclipse: 5.2.0",
+    "severity": "high",
+    "cve_id": "CVE-2026-47882",
+    "ghsa_id": "GHSA-cpfc-g4p9-rg24",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "The use of a non-cryptographic pseudo-random number generator for generating shared secrets can lead to predictable authentication tokens, potentially allowing attackers to bypass authentication mechanisms and remotely restart or manipulate applications. This vulnerability could lead to unauthorized access, data breaches, or service disruptions.",
+      "affected_industries": [
+        "Technology",
+        "Financial Services",
+        "Healthcare",
+        "E-commerce",
+        "Cloud Service Providers"
+      ],
+      "recommended_actions": [
+        "Upgrade Spring Tools for Eclipse to the latest version that addresses CVE-2026-47882 and uses a cryptographically secure random number generator for shared secret generation.",
+        "Audit all applications using Spring Boot DevTools for remote-restart functionality to ensure proper security configurations are in place.",
+        "Restrict access to DevTools remote-restart endpoints and monitor logs for any suspicious activity indicating unauthorized access attempts."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "gh-GHSA-cf63-g57m-mc5r",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "An unauthenticated remote attacker can bypass access controls by sending crafted requests to the...",
+    "description": "An unauthenticated remote attacker can bypass access controls by sending crafted requests to the PCP pmproxy /store endpoint. This allows the attacker to overwrite any PMDA metric, leading to arbitrary code execution and system takeover.",
+    "severity": "high",
+    "cve_id": "CVE-2026-16527",
+    "ghsa_id": "GHSA-cf63-g57m-mc5r",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 92,
+      "impact_assessment": "The vulnerability allows unauthenticated remote attackers to bypass access controls and overwrite PMDA metrics, potentially leading to arbitrary code execution and full system compromise. This could result in data breaches, service disruption, and unauthorized access to sensitive systems.",
+      "affected_industries": [
+        "Healthcare",
+        "Finance",
+        "Government",
+        "Technology",
         "Energy",
-        "Residential EV Charging",
-        "Smart Home Technology"
+        "Retail"
       ],
       "recommended_actions": [
-        "Implement a firmware update process that enforces proper cryptographic signature verification for all software updates.",
-        "Conduct a security audit of the EV charger firmware and software update mechanisms to identify and patch similar vulnerabilities.",
-        "Educate users about the importance of physical security for their EV chargers and restrict unauthorized physical access to devices."
+        "Immediately apply the latest security patch or update from the vendor addressing CVE-2026-16527.",
+        "Implement network segmentation and restrict access to the affected /store endpoint to trusted IP ranges only.",
+        "Enable logging and monitoring for suspicious activity targeting the PCP pmproxy service to detect potential exploitation attempts."
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 75
+    "risk_score": 92
   },
   {
-    "id": "gh-GHSA-4fp8-54c6-53mc",
+    "id": "gh-GHSA-777r-4cwx-g26v",
     "source": "GitHub Security",
-    "timestamp": "2026-07-29T21:31:01Z",
-    "title": "Sourcecodester Fantastic Blog CMS 1.0 is vulnerable to Cross Site Scripting (XSS) in...",
-    "description": "Sourcecodester Fantastic Blog CMS 1.0 is vulnerable to Cross Site Scripting (XSS) in pageEditMember.php via the address field.",
-    "severity": "unknown",
-    "cve_id": "CVE-2025-65337",
-    "ghsa_id": "GHSA-4fp8-54c6-53mc",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "A flaw in Node.js HTTPS Agent connection reuse can cause PFX object-array key collisions,...",
+    "description": "A flaw in Node.js HTTPS Agent connection reuse can cause PFX object-array key collisions, allowing mutual TLS (mTLS) client identities to be reused across requests configured with different client certificates.\n\nThis vulnerability affects Node.js **26.x**, **24.x**, and **22.x**.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-56850",
+    "ghsa_id": "GHSA-777r-4cwx-g26v",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-65337.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-56850.",
       "affected_industries": [
         "Technology",
         "General"
@@ -551,20 +506,57 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-6fhj-cgmm-xfx6",
+    "id": "gh-GHSA-m276-429x-f63w",
     "source": "GitHub Security",
-    "timestamp": "2026-07-29T21:31:01Z",
-    "title": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 10.1.0 before 19.0.5,...",
-    "description": "GitLab has remediated an issue in GitLab CE/EE affecting all versions from 10.1.0 before 19.0.5, 19.1 before 19.1.3, and 19.2 before 19.2.1 that under certain conditions could have allowed an authenticated user with Developer role to access unauthorized information due to insufficient access controls on internal request handling.",
-    "severity": "high",
-    "cve_id": "CVE-2026-6267",
-    "ghsa_id": "GHSA-6fhj-cgmm-xfx6",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "A flaw was found in the PCP (Performance Co-Pilot) `pmproxy` service. A remote attacker can...",
+    "description": "A flaw was found in the PCP (Performance Co-Pilot) `pmproxy` service. A remote attacker can exploit a vulnerability in the `pmLogLoadInDom()` function by sending a specially crafted request. This bypasses a critical bounds check, which can lead to the `pmproxy` service crashing, causing a Denial of Service (DoS). Additionally, this flaw may enable the leakage of sensitive information from the system's memory.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-16530",
+    "ghsa_id": "GHSA-m276-429x-f63w",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability in the PCP `pmproxy` service could allow a remote attacker to crash the service, resulting in a Denial of Service (DoS). Additionally, the flaw may lead to the leakage of sensitive information from system memory, potentially exposing confidential data.",
+      "affected_industries": [
+        "Technology",
+        "Finance",
+        "Healthcare",
+        "Government",
+        "Telecommunications"
+      ],
+      "recommended_actions": [
+        "Apply the latest security patch or update for the PCP `pmproxy` service as soon as it becomes available.",
+        "Implement network-level protections, such as firewalls or intrusion detection systems, to monitor and block suspicious traffic targeting the `pmproxy` service.",
+        "Conduct a thorough review of system logs to identify any signs of exploitation or unauthorized access."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 65
+  },
+  {
+    "id": "gh-GHSA-f5qw-jg2q-vf56",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "A command injection flaw in PCP's linux_sockets PMDA allows malicious shell metacharacters via...",
+    "description": "A command injection flaw in PCP's linux_sockets PMDA allows malicious shell metacharacters via the network.persocket.filter metric.\nThis failed validation lets attackers execute arbitrary commands as the PMDA user when metrics refresh.",
+    "severity": "high",
+    "cve_id": "CVE-2026-16524",
+    "ghsa_id": "GHSA-f5qw-jg2q-vf56",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null,
@@ -572,7 +564,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-6267.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-16524.",
       "affected_industries": [
         "Technology",
         "General"
@@ -587,14 +579,81 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-hhjf-qv52-vp59",
+    "id": "gh-GHSA-534w-2xfq-h655",
     "source": "GitHub Security",
-    "timestamp": "2026-07-29T21:31:01Z",
-    "title": "Autel MaxiCharger AC Elite Home NFC Stack-based Buffer Overflow Arbitrary Code Execution...",
-    "description": "Autel MaxiCharger AC Elite Home NFC Stack-based Buffer Overflow Arbitrary Code Execution Vulnerability. This vulnerability allows physically present attackers to execute arbitrary code on affected installations of Autel MaxiCharger AC Elite Home EV chargers. Authentication is not required to exploit this vulnerability.\n\nThe specific flaw exists within the handling of card responses via the NFC interface. A crafted card response can trigger an overflow of a fixed-length stack-based buffer. An att",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "A flaw in the PCP linux_sockets module exposes an unsecured internal connection.\nAn attacker with...",
+    "description": "A flaw in the PCP linux_sockets module exposes an unsecured internal connection.\nAn attacker with initial code execution can exploit this to escalate privileges and execute arbitrary commands as root.",
+    "severity": "high",
+    "cve_id": "CVE-2026-16526",
+    "ghsa_id": "GHSA-534w-2xfq-h655",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-16526.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-qhpg-2hp9-2j5r",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "Starting Spring Boot applications in the Spring Tools with the live information mode enabled...",
+    "description": "Starting Spring Boot applications in the Spring Tools with the live information mode enabled makes the running application vulnerable against JMX-based remote code execution.\nAffected Spring Products and Versions:\nSpring Tools for Eclipse: 5.2.0 and earlier\nSpring Tools for VSCode / Cursor / Theia: 2.2.0 and earlier",
+    "severity": "high",
+    "cve_id": "CVE-2026-47858",
+    "ghsa_id": "GHSA-qhpg-2hp9-2j5r",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-47858.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-r6vm-r9vq-cmwh",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "Improper handling of the returnUrl parameter in the Forgot Password function of Veeam Service...",
+    "description": "Improper handling of the returnUrl parameter in the Forgot Password function of Veeam Service Provider Console allows an unauthenticated attacker to control the domain of the generated password reset link. When the targeted user clicks the link delivered by email, the reset code is transmitted to an attacker-controlled host, allowing the attacker to take over the account.",
     "severity": "medium",
-    "cve_id": "CVE-2026-13309",
-    "ghsa_id": "GHSA-hhjf-qv52-vp59",
+    "cve_id": "CVE-2026-64635",
+    "ghsa_id": "GHSA-r6vm-r9vq-cmwh",
     "affected_packages": [],
     "cwes": [
       null
@@ -605,8 +664,42 @@
       null
     ],
     "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "The vulnerability allows an unauthenticated attacker to hijack password reset links by manipulating the returnUrl parameter, potentially leading to account takeovers and unauthorized access to sensitive data or systems.",
+      "affected_industries": [
+        "IT Services",
+        "Cloud Service Providers",
+        "Managed Service Providers",
+        "Data Centers"
+      ],
+      "recommended_actions": [
+        "Apply the latest security patch or update provided by Veeam to address CVE-2026-64635.",
+        "Implement input validation and sanitization for the returnUrl parameter to prevent manipulation.",
+        "Enable multi-factor authentication (MFA) for all accounts to mitigate the risk of account takeover."
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-xf7f-942v-xgqh",
+    "source": "GitHub Security",
+    "timestamp": "2026-07-30T06:32:37Z",
+    "title": "Spring Tools for Eclipse renders Spring Boot starter wizard dependency tooltips in a native...",
+    "description": "Spring Tools for Eclipse renders Spring Boot starter wizard dependency tooltips in a native embedded browser (SWT Browser) with JavaScript enabled. Using untrusted and compromised Initializr endpoints for the Spring Boot starter wizard can result in arbitrary script execution inside the embedded browser when a developer hovers a dependency checkbox in the New Spring Starter Project wizard. Impact is limited to in-IDE UI spoofing and outbound network beaconing rather than full code execution.\nAff",
+    "severity": "medium",
+    "cve_id": "CVE-2026-59328",
+    "ghsa_id": "GHSA-xf7f-942v-xgqh",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13309.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-59328.",
       "affected_industries": [
         "Technology",
         "General"
@@ -621,94 +714,24 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-9g9f-3pvm-h8r6",
+    "id": "gh-GHSA-vgp8-mh5v-wf9p",
     "source": "GitHub Security",
-    "timestamp": "2026-07-29T21:31:01Z",
-    "title": "MSI Center NTIOLib_X64 Origin Validation Error Local Privilege Escalation Vulnerability. This...",
-    "description": "MSI Center NTIOLib_X64 Origin Validation Error Local Privilege Escalation Vulnerability. This vulnerability allows local attackers to escalate privileges on affected installations of MSI Center. An attacker must first obtain the ability to execute low-privileged code on the target system in order to exploit this vulnerability.\n\nThe specific flaw exists within the NTIOLib_X64.sys driver. The issue results from insufficient validation of the origin of commands. An attacker can leverage this vulner",
-    "severity": "high",
-    "cve_id": "CVE-2026-6102",
-    "ghsa_id": "GHSA-9g9f-3pvm-h8r6",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The vulnerability in the NTIOLib_X64.sys driver allows local attackers to escalate privileges, potentially gaining administrative control over the affected system. This could lead to unauthorized access, data exfiltration, or further exploitation of the system.",
-      "affected_industries": [
-        "Gaming",
-        "Technology",
-        "Manufacturing",
-        "Consumer Electronics"
-      ],
-      "recommended_actions": [
-        "Apply the latest security patch or update provided by MSI to address the vulnerability.",
-        "Restrict local access to trusted users and implement strict user permissions to limit the ability to execute low-privileged code.",
-        "Monitor systems for unusual activity and implement endpoint detection and response (EDR) solutions to identify potential exploitation attempts."
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-q4xr-8q49-vvhj",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-29T21:31:01Z",
-    "title": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in /betweendates...",
-    "description": "kishan0725 Hospital Management System 4.0 is vulnerable to SQL Injection in /betweendates-detailsreports.php.",
+    "timestamp": "2026-07-30T06:32:36Z",
+    "title": "The RegistrationMagic  WordPress plugin before 6.0.9.4 does not perform authorization, ownership...",
+    "description": "The RegistrationMagic  WordPress plugin before 6.0.9.4 does not perform authorization, ownership or nonce checks on a front-end submission-editing action, allowing unauthenticated attackers to overwrite other users' form submissions and the profile fields of the associated non-administrator WordPress accounts.",
     "severity": "unknown",
-    "cve_id": "CVE-2025-65340",
-    "ghsa_id": "GHSA-q4xr-8q49-vvhj",
+    "cve_id": "CVE-2026-15257",
+    "ghsa_id": "GHSA-vgp8-mh5v-wf9p",
     "affected_packages": [],
     "cwes": [],
     "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "The SQL Injection vulnerability in kishan0725 Hospital Management System 4.0 allows attackers to manipulate database queries, potentially leading to unauthorized access, data exfiltration, or database corruption. This could compromise sensitive patient data and disrupt hospital operations.",
-      "affected_industries": [
-        "Healthcare",
-        "Hospital Management Systems",
-        "Medical Technology"
-      ],
-      "recommended_actions": [
-        "Immediately apply input validation and parameterized queries to sanitize user inputs in the affected endpoint (/betweendates-detailsreports.php).",
-        "Update the application to the latest patched version or contact the vendor for a security update addressing CVE-2025-65340.",
-        "Conduct a thorough security audit of the system to identify and remediate other potential vulnerabilities."
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "gh-GHSA-h39x-gxcq-jm2v",
-    "source": "GitHub Security",
-    "timestamp": "2026-07-29T21:31:01Z",
-    "title": "Jinher OA C6 contains an XML External Entity (XXE) injection vulnerability in the /c6/JHSoft.Web...",
-    "description": "Jinher OA C6 contains an XML External Entity (XXE) injection vulnerability in the /c6/JHSoft.Web.HrmAttendance/sp_manager_getUserlist.aspx/GetXmlHttp endpoint. An unauthenticated remote attacker can send a crafted XML payload to read arbitrary files from the server via an out-of-band attack.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-50782",
-    "ghsa_id": "GHSA-h39x-gxcq-jm2v",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-50782.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-15257.",
       "affected_industries": [
         "Technology",
         "General"
@@ -737,18 +760,18 @@
     ],
     "ai_analysis": {
       "risk_score": 65,
-      "impact_assessment": "The vulnerability allows attackers to execute arbitrary JavaScript in the context of a visitor's session on a compromised website, potentially leading to session hijacking, data theft, or further exploitation of the user's browser.",
+      "impact_assessment": "The vulnerability allows attackers to execute arbitrary JavaScript in the context of a visitor's session on a target site, potentially leading to session hijacking, data theft, or other malicious activities. This could compromise user trust and site integrity.",
       "affected_industries": [
         "E-commerce",
         "Media and Publishing",
+        "Small and Medium Businesses (SMBs)",
         "Education",
-        "Healthcare",
-        "Small and Medium Businesses using WordPress"
+        "Nonprofits"
       ],
       "recommended_actions": [
         "Update the WP Compress WordPress plugin to version 7.10.04 or later to patch the vulnerability.",
-        "Implement a Web Application Firewall (WAF) to detect and block malicious query parameters.",
-        "Conduct a security review of other plugins and themes to ensure no similar vulnerabilities exist."
+        "Implement web application firewall (WAF) rules to block malicious query parameters targeting this vulnerability.",
+        "Conduct a security audit of your WordPress installation to identify and address any other outdated plugins or vulnerabilities."
       ],
       "urgency": "high"
     },
@@ -769,20 +792,23 @@
       "https://security.opensuse.org/2026/07/15/selinux-seunshare.html"
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-59676.",
+      "risk_score": 65,
+      "impact_assessment": "The vulnerability allows an attacker to exploit a race condition in the seunshare utility of SELinux policycoreutils, potentially enabling the deletion of arbitrary root-owned files. This could lead to system instability, data loss, or compromise of critical system functionality.",
       "affected_industries": [
+        "Government",
+        "Healthcare",
+        "Financial Services",
         "Technology",
-        "General"
+        "Telecommunications"
       ],
       "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
+        "Update SELinux policycoreutils to a version later than 3.10, where the vulnerability is patched.",
+        "Restrict access to the seunshare utility to trusted users only, and ensure proper SELinux policies are in place to limit its use.",
+        "Monitor system logs for unusual file deletion activities and implement file integrity monitoring to detect unauthorized changes."
       ],
       "urgency": "medium"
     },
-    "risk_score": 60
+    "risk_score": 65
   },
   {
     "id": "cve-CVE-2026-14291",
