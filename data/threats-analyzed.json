@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1785768949283-1",
+    "id": "twitter-1785786419236-1",
     "source": "Twitter Security",
-    "timestamp": "2026-08-03T14:55:49.283Z",
+    "timestamp": "2026-08-03T19:46:59.236Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1785768949283-1",
+    "id": "hn-1785786419236-1",
     "source": "HackerNews",
-    "timestamp": "2026-08-03T14:55:49.283Z",
+    "timestamp": "2026-08-03T19:46:59.236Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,26 +52,217 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-wxcw-xvpw-vmwv",
+    "id": "gh-GHSA-m8rv-5g2x-5cg5",
     "source": "GitHub Security",
-    "timestamp": "2026-08-03T12:32:36Z",
-    "title": "CTI-Transmute contained a cross-site request forgery vulnerability in the administrative user...",
-    "description": "CTI-Transmute contained a cross-site request forgery vulnerability in the administrative user deletion functionality. The /account/delete/<id> endpoint accepted HTTP GET requests for an operation that modified application state.\n\nAn unauthenticated remote attacker could construct a malicious link or embed a request targeting this endpoint and induce an authenticated CTI-Transmute administrator to visit the attacker-controlled content. If the administrator had an active session, the browser would",
-    "severity": "high",
-    "cve_id": "CVE-2026-69082",
-    "ghsa_id": "GHSA-wxcw-xvpw-vmwv",
-    "affected_packages": [],
+    "timestamp": "2026-08-03T19:33:53Z",
+    "title": "undici vulnerable to CRLF Injection via blob-like body 'type' property",
+    "description": "### Impact\n\nWhen an application passes a duck-typed blob-like body to undici's HTTP/1.1 dispatcher (via `request()`, `stream()`, `pipeline()`, or `dispatch()`) with a `.type` derived from untrusted input, an attacker can inject CRLF sequences (`\\r\\n`) to append arbitrary HTTP headers and potentially smuggle a second request past the upstream.\n\nThe vulnerable branch in `lib/dispatcher/client-h1.js` pushes `body.type` directly into the outgoing headers with no validation, while every other header ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-15157",
+    "ghsa_id": "GHSA-m8rv-5g2x-5cg5",
+    "affected_packages": [
+      "undici",
+      "undici",
+      "undici"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-15157.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-jr45-8vmc-qm54",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-03T19:32:12Z",
+    "title": "undici vulnerable to cross-user information disclosure via whitespace around equals in Cache-Control directives",
+    "description": "## Impact\n\nUndici's cache interceptor mishandles optional whitespace (OWS) placed around the `=` of a qualified `no-cache` or `private` Cache-Control directive, such as `no-cache =\"authorization\"` (OWS before `=`) or `no-cache= \"authorization\"` (OWS after `=`). The parser either drops the directive entirely or stores a field name with literal quote characters, so the downstream cache decisions do not recognize the qualification and the response is stored.\n\nIn shared-cache mode, this allows a res",
+    "severity": "medium",
+    "cve_id": "CVE-2026-14643",
+    "ghsa_id": "GHSA-jr45-8vmc-qm54",
+    "affected_packages": [
+      "undici",
+      "undici"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-14643.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-v3r7-h72x-cjcm",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-03T19:30:52Z",
+    "title": "undici vulnerable to cookie attribute injection via unsanitized domain and unparsed setCookie fields",
+    "description": "## Impact\n\nThe `setCookie` function has two attribute injection paths. `validateCookieDomain` does not reject semicolons (`validateCookiePath` already does at 0x3B), so a `domain` value like `example.com; SameSite=None` lands verbatim as `Domain=example.com; SameSite=None`. The `unparsed` array's loop only checks each entry contains `=` and does not sanitize values, so an entry like `X-Custom=val; HttpOnly` lands unchanged, injecting `HttpOnly` without the caller setting `cookie.httpOnly = true`",
+    "severity": "medium",
+    "cve_id": "CVE-2026-16729",
+    "ghsa_id": "GHSA-v3r7-h72x-cjcm",
+    "affected_packages": [
+      "undici",
+      "undici",
+      "undici"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-16729.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-8xcm-r25x-g524",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-03T19:24:33Z",
+    "title": "undici vulnerable to downstream response desynchronization via retry interceptor",
+    "description": "### Impact\n\nUndici's `interceptors.retry()` can deliver a response whose body length does not match the `Content-Length` header exposed to the application after a retry or resume of a partial response. Applications that use `interceptors.retry()` and forward upstream response headers and bodies downstream, for example proxy or gateway applications, may emit an invalid HTTP response with a stale `Content-Length` header. This can lead to downstream response desynchronization, connection hangs, or ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-16728",
+    "ghsa_id": "GHSA-8xcm-r25x-g524",
+    "affected_packages": [
+      "undici",
+      "undici",
+      "undici"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-16728.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-4cwx-7wf7-3272",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-03T19:19:47Z",
+    "title": "undici vulnerable to cross-user information disclosure and parse-time crash via degenerate private cache directives",
+    "description": "### Summary\n\nTwo issues in undici's cache interceptor, both fixed by the same patch on `lib/util/cache.js`:\n\n1. **Shared-cache disclosure:** Responses with malformed qualified `Cache-Control: private` directives such as `private=\"\"` or `private=\",\"` can be incorrectly stored in the default shared cache, then served to a later caller with the same cache key.\n2. **Parse-time crash:** Mixed unqualified-and-qualified `private` directives in the same header (such as `public, max-age=60, private, priv",
+    "severity": "high",
+    "cve_id": "CVE-2026-13697",
+    "ghsa_id": "GHSA-4cwx-7wf7-3272",
+    "affected_packages": [
+      "undici",
+      "undici"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-69082.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-13697.",
       "affected_industries": [
         "Technology",
         "General"
@@ -86,26 +277,33 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-f6wp-5996-q84w",
+    "id": "gh-GHSA-7p8r-x3mc-p8w7",
     "source": "GitHub Security",
-    "timestamp": "2026-08-03T12:32:36Z",
-    "title": "CTI-Transmute contains an uncontrolled resource-consumption vulnerability in the unauthenticated ...",
-    "description": "CTI-Transmute contains an uncontrolled resource-consumption vulnerability in the unauthenticated /activity_timeline endpoint. The endpoint accepts a user-controlled days query parameter that was not restricted to a reasonable range.\n\nA remote, unauthenticated attacker could submit an excessively large value for this parameter, causing the application to retrieve and process activity data over an arbitrarily large period. This could consume excessive database, CPU, or memory resources, delay the ",
+    "timestamp": "2026-08-03T19:16:43Z",
+    "title": "fast-uri vulnerable to host confusion via backslash authority introducer",
+    "description": "### Impact\n\n`fast-uri` v4.1.1 and earlier require a literal `//` to recognize a URI authority, so a reference that uses `\\\\`, `/\\`, or `\\/` as the authority introducer (in place of `//`, after an optional scheme) is parsed with no authority: the sequence and everything after it fold into the path. Node's native WHATWG `URL` (used by `fetch()`, `undici`, and Node's `http`/`https` clients) instead treats `\\` as interchangeable with `/` for special schemes (`http`, `https`, `ws`, `wss`, `ftp`, `fil",
     "severity": "high",
-    "cve_id": "CVE-2026-69079",
-    "ghsa_id": "GHSA-f6wp-5996-q84w",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-18446",
+    "ghsa_id": "GHSA-7p8r-x3mc-p8w7",
+    "affected_packages": [
+      "fast-uri",
+      "fast-uri",
+      "fast-uri"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-69079.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-18446.",
       "affected_industries": [
         "Technology",
         "General"
@@ -120,20 +318,281 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-jj6f-hxj9-r997",
+    "id": "gh-GHSA-2m8v-j782-fhvr",
     "source": "GitHub Security",
-    "timestamp": "2026-08-03T12:32:36Z",
-    "title": "A vulnerability in Wapt Server before version 2.6.1.17813 allows a  remote unauthenticated...",
-    "description": "A vulnerability in Wapt Server before version 2.6.1.17813 allows a  remote unauthenticated attacker to bypass\nsecurity restriction using a specially crafted packet and retrieve a valid\nsession token for the targeted account.",
+    "timestamp": "2026-08-03T19:09:44Z",
+    "title": "Socket.IO: Zero-attachment Memory Exhaustion",
+    "description": "### Impact\n\nA specially crafted Socket.IO packet can make the server wait for a large number of binary attachments and buffer them, which can be exploited to make the server run out of memory.\n\n### Patches\n\n| Version range    | Used by                                    | Fixed version |\n|------------------|--------------------------------------------|---------------|\n| `>=4.0.0 <4.2.7` | `socket.io@4.x` and `socket.io-client@4.x` | `4.2.7`       |\n| `>=3.4.0 <3.4.5` | `socket.io@2.x`           ",
+    "severity": "high",
+    "cve_id": "CVE-2026-69185",
+    "ghsa_id": "GHSA-2m8v-j782-fhvr",
+    "affected_packages": [
+      "socket.io-parser",
+      "socket.io-parser",
+      "socket.io-parser"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-69185.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-m28x-gxhp-6x88",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-03T18:30:49Z",
+    "title": "WebsiteBaker CMS before 2.13.10 contains an unrestricted file upload vulnerability in the module...",
+    "description": "WebsiteBaker CMS before 2.13.10 contains an unrestricted file upload vulnerability in the module installation feature that allows authenticated administrators to achieve remote code execution by uploading a crafted ZIP archive containing a PHP webshell alongside a valid info.php metadata file. Attackers can place the malicious archive through the module installation interface, causing the application to extract the webshell into a web-accessible modules/ subdirectory where it becomes immediately",
+    "severity": "high",
+    "cve_id": "CVE-2026-61524",
+    "ghsa_id": "GHSA-m28x-gxhp-6x88",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-61524.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-q4qj-7phf-qc9w",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-03T18:30:49Z",
+    "title": "A vulnerability has been found in GL-iNet GL-MT3000 up to 4.4.5. This issue affects the function...",
+    "description": "A vulnerability has been found in GL-iNet GL-MT3000 up to 4.4.5. This issue affects the function plugins.set_config of the file /cgi-bin/glc of the component plugins.so Native Plugin. Such manipulation leads to injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure and confirmed the existence of the vulnerability.",
+    "severity": "high",
+    "cve_id": "CVE-2026-18613",
+    "ghsa_id": "GHSA-q4qj-7phf-qc9w",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-18613.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-wcwf-72hj-3355",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-03T18:30:49Z",
+    "title": "WebsiteBaker CMS before 2.13.10 contains a code injection vulnerability in the Droplets editor...",
+    "description": "WebsiteBaker CMS before 2.13.10 contains a code injection vulnerability in the Droplets editor that allows authenticated administrators to inject arbitrary PHP code by submitting malicious content through the droplet Code field, which is written verbatim to a publicly accessible PHP file with no content sanitization. Attackers can save a PHP webshell via the save_droplet handler to a predictable path inside the modules directory, enabling unauthenticated users to achieve remote code execution by",
+    "severity": "high",
+    "cve_id": "CVE-2026-61523",
+    "ghsa_id": "GHSA-wcwf-72hj-3355",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-61523.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-jjmc-7j8f-v4hf",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-03T18:30:49Z",
+    "title": "A flaw has been found in GL-iNet GL-MT3000 up to 4.4.5. This vulnerability affects the function...",
+    "description": "A flaw has been found in GL-iNet GL-MT3000 up to 4.4.5. This vulnerability affects the function plugins.remove_package/plugins.install_package of the file /cgi-bin/glc of the component plugins.so Native Plugin. This manipulation causes command injection. The attack can be initiated remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure and confirmed the existence of the vulnerability.",
+    "severity": "high",
+    "cve_id": "CVE-2026-18612",
+    "ghsa_id": "GHSA-jjmc-7j8f-v4hf",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-18612.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-p6hq-r87w-qv7v",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-03T18:30:49Z",
+    "title": "Dell Monitor driver, version 1.0.0.0, contains an Improper Link Resolution Before File Access (...",
+    "description": "Dell Monitor driver, version 1.0.0.0, contains an Improper Link Resolution Before File Access ('Link Following') vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Elevation of Privileges.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-40717",
+    "ghsa_id": "GHSA-p6hq-r87w-qv7v",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-40717.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-7qrm-8hrr-59qj",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-03T18:30:49Z",
+    "title": "A\ncertification validation weakness exists in communication between affected\nOmada devices and...",
+    "description": "A\ncertification validation weakness exists in communication between affected\nOmada devices and cloud controllers. Certificate identity verification does not\nadequately validate that a presented certificate corresponds to the expected\ncloud controller hostname, which may allow certificate validation protections\nto be bypassed under specific conditions.\n\n\n\n\n\nSuccessful\nexploitation may allow interception or modification of communication between\naffected devices and cloud controllers.",
+    "severity": "high",
+    "cve_id": "CVE-2025-9291",
+    "ghsa_id": "GHSA-7qrm-8hrr-59qj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2025-9291.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-9px7-3p6g-6q64",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-03T18:30:48Z",
+    "title": "Krayin CRM 2.2.4 contains a missing authentication vulnerability in the installer middleware that...",
+    "description": "Krayin CRM 2.2.4 contains a missing authentication vulnerability in the installer middleware that allows unauthenticated remote attackers to overwrite the primary administrator account by sending a crafted HTTP POST request with the X-Requested-With: XMLHttpRequest header to bypass the CanInstall middleware redirect check. Attackers can supply arbitrary name, email, and password values to the admin-config-setup endpoint, which performs an unauthenticated updateOrInsert targeting the hardcoded ad",
     "severity": "critical",
-    "cve_id": "CVE-2026-33591",
-    "ghsa_id": "GHSA-jj6f-hxj9-r997",
+    "cve_id": "CVE-2026-41452",
+    "ghsa_id": "GHSA-9px7-3p6g-6q64",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -141,7 +600,7 @@
     ],
     "ai_analysis": {
       "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-33591.",
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-41452.",
       "affected_industries": [
         "Technology",
         "General"
@@ -156,14 +615,14 @@
     "risk_score": 90
   },
   {
-    "id": "gh-GHSA-7gc9-2qrw-frvj",
+    "id": "gh-GHSA-rv29-9mq6-7j5q",
     "source": "GitHub Security",
-    "timestamp": "2026-08-03T12:32:36Z",
-    "title": "CTI-Transmute is affected by a server-side request forgery vulnerability in the evaluation report...",
-    "description": "CTI-Transmute is affected by a server-side request forgery vulnerability in the evaluation report PDF-generation functionality.\n\nUser-controlled CTI content, including conversion names, descriptions, and comments, is converted from Markdown to HTML and rendered as a PDF using WeasyPrint. Before the patch, the renderer used WeasyPrint’s default URL-fetching behavior without restricting the protocols or destinations that could be referenced by the generated HTML.\n\nAn attacker able to supply conten",
-    "severity": "high",
-    "cve_id": "CVE-2026-69078",
-    "ghsa_id": "GHSA-7gc9-2qrw-frvj",
+    "timestamp": "2026-08-03T18:30:48Z",
+    "title": "OpenEMR through 8.2.0 contains a stored cross-site scripting vulnerability in the patient portal...",
+    "description": "OpenEMR through 8.2.0 contains a stored cross-site scripting vulnerability in the patient portal template system that allows authenticated administrators to inject arbitrary HTML and JavaScript by storing malicious payloads through the template save mode, which only filters literal PHP open tags. Attackers can exploit the lack of output encoding at the template retrieval endpoint combined with missing HttpOnly cookie attributes to exfiltrate session tokens via document.cookie access, enabling fu",
+    "severity": "medium",
+    "cve_id": "CVE-2026-67612",
+    "ghsa_id": "GHSA-rv29-9mq6-7j5q",
     "affected_packages": [],
     "cwes": [
       null
@@ -171,11 +630,50 @@
     "references": [
       null,
       null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-67612.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-mfcj-9frg-f2r4",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-03T18:30:48Z",
+    "title": "Ghidra contains an arbitrary code execution vulnerability in the Swift demangler analyzer that...",
+    "description": "Ghidra contains an arbitrary code execution vulnerability in the Swift demangler analyzer that allows an attacker to execute arbitrary binaries by supplying a malicious Ghidra project with a crafted Swift tool directory path. When a victim opens the attacker-supplied project, SwiftDemanglerAnalyzer restores the persisted Swift binary directory from project state and SwiftNativeDemangler executes the resolved binary without integrity or signature verification, causing attacker-controlled executab",
+    "severity": "high",
+    "cve_id": "CVE-2026-18718",
+    "ghsa_id": "GHSA-mfcj-9frg-f2r4",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-69078.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-18718.",
       "affected_industries": [
         "Technology",
         "General"
@@ -190,49 +688,14 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-pwm5-x9cm-2ppf",
+    "id": "gh-GHSA-g6r6-jr7g-hg95",
     "source": "GitHub Security",
-    "timestamp": "2026-08-03T12:32:36Z",
-    "title": "A flaw was found in SSSD. The sss_nss_protocol_parse_addr() function in the NSS responder does...",
-    "description": "A flaw was found in SSSD. The sss_nss_protocol_parse_addr() function in the NSS responder does not validate the addrlen field against the remaining packet body size. A local attacker can exploit this via a crafted GETHOSTBYADDR request to the NSS responder socket, causing an out-of-bounds read and process crash, resulting in a denial of service.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-68742",
-    "ghsa_id": "GHSA-pwm5-x9cm-2ppf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-68742.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-gw22-gf8m-29g5",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-03T12:32:36Z",
-    "title": "eParakstītājs 3.0 for Windows before version\n1.10.0 retrieves and executes its automatic updates...",
-    "description": "eParakstītājs 3.0 for Windows before version\n1.10.0 retrieves and executes its automatic updates over a channel that is not\nauthenticated or integrity-protected. On each launch the application fetches an\nupdate descriptor (XML) over TLS but accepts any TLS certificate (a permissive\nTrustManager and a HostnameVerifier that always returns true), does not verify\nany digital signature on the update descriptor, and does not verify the\nAuthenticode signature or a checksum of the downloaded installer b",
+    "timestamp": "2026-08-03T18:30:48Z",
+    "title": "OpenEMR through 8.2.0 contains an authentication bypass vulnerability that allows attackers with...",
+    "description": "OpenEMR through 8.2.0 contains an authentication bypass vulnerability that allows attackers with valid credentials to circumvent multi-factor authentication by exploiting the exposed OAuth2 password grant flow through an unauthenticated client registration endpoint. Attackers can register an OAuth2 client via the unauthenticated registration endpoint and use the password grant to exchange credentials for an API access token, bypassing the normal web interface authentication and any enforced mult",
     "severity": "high",
-    "cve_id": "CVE-2026-0392",
-    "ghsa_id": "GHSA-gw22-gf8m-29g5",
+    "cve_id": "CVE-2026-67611",
+    "ghsa_id": "GHSA-g6r6-jr7g-hg95",
     "affected_packages": [],
     "cwes": [
       null
@@ -245,7 +708,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-0392.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-67611.",
       "affected_industries": [
         "Technology",
         "General"
@@ -260,342 +723,23 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-wrg8-43fx-27hh",
+    "id": "gh-GHSA-gj4v-4p36-wpfp",
     "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "Sharp and Toshiba Tec MFPs (multifunction printers) fail to properly authorize requests to...",
-    "description": "Sharp and Toshiba Tec MFPs (multifunction printers) fail to properly authorize requests to directly access certain image data stored to the affected product.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-60011",
-    "ghsa_id": "GHSA-wrg8-43fx-27hh",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-60011.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-hc5p-7rj2-94g3",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "FlowIntel is affected by a stored cross-site scripting vulnerability through multiple user...",
-    "description": "FlowIntel is affected by a stored cross-site scripting vulnerability through multiple user-controlled or administrator-controlled fields.\n\nPersisted values—including case titles, ticket identifiers, recurring-case information, user profile attributes, organisation names, and role names—were rendered inside DOM elements subsequently compiled by Vue. Although normal HTML escaping could neutralize direct HTML markup, it did not prevent an attacker from injecting Vue interpolation expressions using ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-69075",
-    "ghsa_id": "GHSA-hc5p-7rj2-94g3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-69075.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-44px-2m24-8wv4",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "Network Scanner Tool and Network Scanner Tool Lite provided by Sharp Corporation, with the...",
-    "description": "Network Scanner Tool and Network Scanner Tool Lite provided by Sharp Corporation, with the initial configuration, require no authentication and accept files unlimitedly. When the affected products are used with the initial configuration, anyone can connect to them without authentication and upload files unlimitedly. This may cause a denial-of-service (DoS) condition on the PC. Furthermore, if a malicious file is uploaded, a PC user may be tricked to execute the file to attack other entities from",
-    "severity": "medium",
-    "cve_id": "CVE-2026-62416",
-    "ghsa_id": "GHSA-44px-2m24-8wv4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-62416.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-hj84-h226-g524",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "Sharp and Toshiba Tec MFPs (multifunction printers) for a certain market have been shipped with...",
-    "description": "Sharp and Toshiba Tec MFPs (multifunction printers) for a certain market have been shipped with the user authentication feature disabled in the initial configuration. When used with the initial configuration, the address book editing and a range of features related to Document Filing can be accessed without user authentication.\nProducts intended for the Japanese market are not affected.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-63563",
-    "ghsa_id": "GHSA-hj84-h226-g524",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-63563.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-845j-gc55-fc8w",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "PaperCut NG/MF does not properly restrict excessive authentication attempts within its login...",
-    "description": "PaperCut NG/MF does not properly restrict excessive authentication attempts within its login component. An unauthenticated remote attacker can exploit this vulnerability to perform unrestricted brute-force or credential-stuffing attacks without triggering account lockout or rate-limiting mechanisms in some configurations.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-8793",
-    "ghsa_id": "GHSA-845j-gc55-fc8w",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8793.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-56w5-2p66-mx39",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "PaperCut NG/MF contains an observable timing discrepancy in its authentication component. An...",
-    "description": "PaperCut NG/MF contains an observable timing discrepancy in its authentication component. An unauthenticated remote attacker can exploit this vulnerability to perform username enumeration by measuring response times during login attempts. The system executes a password hash comparison only when a valid account is supplied, creating a measurable timing oracle that reveals account existence.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-8794",
-    "ghsa_id": "GHSA-56w5-2p66-mx39",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-8794.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-8p37-6xc9-pcg2",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "Sharp and Toshiba Tec MFPs (multifunction printers) caches data internally when printing, and...",
-    "description": "Sharp and Toshiba Tec MFPs (multifunction printers) caches data internally when printing, and leave them uncleared. They may be accessed later by other users.",
-    "severity": "low",
-    "cve_id": "CVE-2026-63545",
-    "ghsa_id": "GHSA-8p37-6xc9-pcg2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-63545.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-r872-7phc-hmjf",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "In modem, there is a possible improper input validation. This could lead to remote denial of...",
-    "description": "In modem, there is a possible improper input validation. This could lead to remote denial of service with no additional execution privileges needed",
-    "severity": "high",
-    "cve_id": "CVE-2026-21550",
-    "ghsa_id": "GHSA-r872-7phc-hmjf",
+    "timestamp": "2026-08-03T18:30:48Z",
+    "title": "Rejected reason: This CVE ID was assigned in error. Upon further review, the reported issue does...",
+    "description": "Rejected reason: This CVE ID was assigned in error. Upon further review, the reported issue does not represent a security vulnerability and does not require a CVE record.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-68869",
+    "ghsa_id": "GHSA-gj4v-4p36-wpfp",
     "affected_packages": [],
     "cwes": [],
     "references": [
       null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-21550.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-8536-j6w6-4932",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "In modem, there is a possible improper input validation. This could lead to remote denial of...",
-    "description": "In modem, there is a possible improper input validation. This could lead to remote denial of service with no additional execution privileges needed",
-    "severity": "high",
-    "cve_id": "CVE-2026-21551",
-    "ghsa_id": "GHSA-8536-j6w6-4932",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-21551.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-crjc-75c2-rpr6",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "Missing Authorization vulnerability in Unlimited Elements Unlimited Elements For Elementor (Free...",
-    "description": "Missing Authorization vulnerability in Unlimited Elements Unlimited Elements For Elementor (Free Widgets, Addons, Templates) allows Exploiting Incorrectly Configured Access Control Security Levels.\n\nThis issue affects Unlimited Elements For Elementor (Free Widgets, Addons, Templates): from n/a through 2.0.15.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-28147",
-    "ghsa_id": "GHSA-crjc-75c2-rpr6",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-28147.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-68869.",
       "affected_industries": [
         "Technology",
         "General"
@@ -610,24 +754,29 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-m8m7-6fxv-m3w9",
+    "id": "gh-GHSA-8879-fh4f-q3qm",
     "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "In modem, there is a possible improper input validation. This could lead to remote denial of...",
-    "description": "In modem, there is a possible improper input validation. This could lead to remote denial of service with no additional execution privileges needed",
+    "timestamp": "2026-08-03T18:30:48Z",
+    "title": "Krayin CRM before 2.2.4 contains a blind SQL injection vulnerability in the leads DataGrid that...",
+    "description": "Krayin CRM before 2.2.4 contains a blind SQL injection vulnerability in the leads DataGrid that allows authenticated users with leads access to inject arbitrary SQL into a HAVING clause by manipulating the rotten_lead[in] query parameter, which is concatenated without parameterized binding directly into a havingRaw() call in LeadDataGrid.php. Attackers can exploit this flaw using time-based and boolean-based blind injection techniques to extract the entire database contents, including user crede",
     "severity": "high",
-    "cve_id": "CVE-2026-21553",
-    "ghsa_id": "GHSA-m8m7-6fxv-m3w9",
+    "cve_id": "CVE-2026-41453",
+    "ghsa_id": "GHSA-8879-fh4f-q3qm",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
+      null,
+      null,
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-21553.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-41453.",
       "affected_industries": [
         "Technology",
         "General"
@@ -642,88 +791,30 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-7wxg-9g2j-2fmv",
+    "id": "gh-GHSA-82rw-j2xw-2766",
     "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "In modem, there is a possible improper input validation. This could lead to remote denial of...",
-    "description": "In modem, there is a possible improper input validation. This could lead to remote denial of service with no additional execution privileges needed",
+    "timestamp": "2026-08-03T18:30:48Z",
+    "title": "A security vulnerability has been detected in Wavlink WN572, WN570H, WN573, WN529, WN530, WN531,...",
+    "description": "A security vulnerability has been detected in Wavlink WN572, WN570H, WN573, WN529, WN530, WN531, WN535, etc. WN529, WN530, WN531, WN535, WN536, WN551, WN557 and NU516 up to 20260609. Affected by this issue is the function strcpy of the file upload.cgi of the component lighttpd. The manipulation of the argument HTTP_COOKIE leads to stack-based buffer overflow. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used.",
     "severity": "high",
-    "cve_id": "CVE-2026-21554",
-    "ghsa_id": "GHSA-7wxg-9g2j-2fmv",
+    "cve_id": "CVE-2026-18607",
+    "ghsa_id": "GHSA-82rw-j2xw-2766",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-21554.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-4c53-w7qg-m85h",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "In modem, there is a possible improper input validation. This could lead to remote denial of...",
-    "description": "In modem, there is a possible improper input validation. This could lead to remote denial of service with no additional execution privileges needed",
-    "severity": "high",
-    "cve_id": "CVE-2026-21552",
-    "ghsa_id": "GHSA-4c53-w7qg-m85h",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-21552.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-39c3-6p4j-vwgv",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-03T09:32:38Z",
-    "title": "In modem, there is a possible improper input validation. This could lead to remote denial of...",
-    "description": "In modem, there is a possible improper input validation. This could lead to remote denial of service with no additional execution privileges needed",
-    "severity": "high",
-    "cve_id": "CVE-2026-21555",
-    "ghsa_id": "GHSA-39c3-6p4j-vwgv",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-21555.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-18607.",
       "affected_industries": [
         "Technology",
         "General"
