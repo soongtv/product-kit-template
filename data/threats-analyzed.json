@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1785853907664-1",
+    "id": "twitter-1785872776020-1",
     "source": "Twitter Security",
-    "timestamp": "2026-08-04T14:31:47.664Z",
+    "timestamp": "2026-08-04T19:46:16.020Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1785853907664-1",
+    "id": "hn-1785872776020-1",
     "source": "HackerNews",
-    "timestamp": "2026-08-04T14:31:47.664Z",
+    "timestamp": "2026-08-04T19:46:16.020Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,28 +52,31 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-g32j-mmxr-gfq5",
+    "id": "gh-GHSA-mj5r-jf49-m3w7",
     "source": "GitHub Security",
-    "timestamp": "2026-08-04T14:28:04Z",
-    "title": "Flowise RCE via TypeORM DataSource",
-    "description": "=============================================================================\n                                                            Security Advisory\n                                                                       elttam\n\nTopic:          Flowise RCE via TypeORM DataSource\n\nModule:         FlowiseAI/Flowise\nDisclosed:      15-Apr-2026\nCredits:        Alex Brown\nAffects:        `FlowiseAI/Flowise 3.1.2`\n\n# I.   Background\n\nFlowise AI is an open-source, low-code platform for building A",
-    "severity": "critical",
-    "cve_id": "CVE-2026-69251",
-    "ghsa_id": "GHSA-g32j-mmxr-gfq5",
+    "timestamp": "2026-08-04T19:45:39Z",
+    "title": "Open WebUI: Any member with write access to a standard channel can edit or delete other members' messages",
+    "description": "## Summary\nOn standard channels, the message update and delete handlers accepted any caller holding write access on the channel, without checking that the caller wrote the message. Write access is the same grant a member needs in order to post, so every ordinary participant in a shared channel could rewrite or permanently delete any other participant's messages. The group and direct message branch of the same handlers enforced authorship; the standard branch did not.\n\n## Preconditions\nChannels a",
+    "severity": "medium",
+    "cve_id": "CVE-2026-70481",
+    "ghsa_id": "GHSA-mj5r-jf49-m3w7",
     "affected_packages": [
-      "flowise",
-      "flowise-components"
+      "open-webui"
     ],
     "cwes": [
+      null,
       null
     ],
     "references": [
       null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-69251.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-70481.",
       "affected_industries": [
         "Technology",
         "General"
@@ -83,21 +86,21 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "medium"
     },
-    "risk_score": 90
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-r745-8hwv-h473",
+    "id": "gh-GHSA-w2rx-84hp-gg95",
     "source": "GitHub Security",
-    "timestamp": "2026-08-04T14:20:49Z",
-    "title": "Flowise: Unauthenticated OAuth2 Refresh Enables Non-Blind SSRF and Secret Exfiltration",
-    "description": "### Summary\n\nThe OAuth2 token refresh endpoint (`POST /api/v1/oauth2-credential/refresh/:credentialId`) is unauthenticated by design (it is in the public whitelist) and performs a server-side HTTP request to a credential-controlled URL (`accessTokenUrl`) without SSRF protections. In runtime validation, this endpoint was reachable without auth, triggered outbound POST requests to an attacker-controlled server, and reflected the full remote response body to the caller (`tokenInfo`), confirming non",
+    "timestamp": "2026-08-04T19:40:48Z",
+    "title": "Open WebUI: SSRF into internal services via unvalidated sub-resource requests in the Playwright web loader",
+    "description": "## Summary\nWith the Playwright web loader enabled, Open WebUI opens user-submitted URLs in a real browser and validates the destination address before allowing the request. That check only ran for the top-level page request. Every other request the page issued was passed through unvalidated, so a page could use its own JavaScript to reach addresses the validation exists to block. Because the loader returns the page's final DOM to the requesting user, anything the page read back from those addres",
     "severity": "high",
-    "cve_id": "CVE-2026-69250",
-    "ghsa_id": "GHSA-r745-8hwv-h473",
+    "cve_id": "CVE-2026-70479",
+    "ghsa_id": "GHSA-w2rx-84hp-gg95",
     "affected_packages": [
-      "flowise"
+      "open-webui"
     ],
     "cwes": [
       null
@@ -106,11 +109,12 @@
       null,
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-69250.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-70479.",
       "affected_industries": [
         "Technology",
         "General"
@@ -125,14 +129,127 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-2364-jh4q-m9vm",
+    "id": "gh-GHSA-qgvm-j2hm-6m38",
     "source": "GitHub Security",
-    "timestamp": "2026-08-04T14:16:46Z",
-    "title": "Flowise: IDOR vulnerability exists at the GET /api/v1/organization/customer-default-source endpoint",
-    "description": "### Summary\nAn Insecure Direct Object Reference (IDOR) vulnerability exists at the **GET /api/v1/organization/customer-default-source** endpoint. This flaw allows an authenticated attacker to bypass authorization checks and retrieve sensitive payment and profile information of other customers by manipulating the customerId parameter. The exposed data includes email addresses, account balances, currency types, and internal billing configurations.\n\n### Details\nThe application fails to implement pr",
+    "timestamp": "2026-08-04T19:37:36Z",
+    "title": "Flowise: Unauthenticated OAuth2 token refresh endpoint returns access tokens — enables token theft for any connected service",
+    "description": "### Summary\n\nThe OAuth2 token refresh endpoint (`POST /api/v1/oauth2-credential/refresh/:credentialId`) is in `WHITELIST_URLS`, meaning it requires **no authentication**. It decrypts the stored credential (containing `clientId`, `clientSecret`, `refresh_token`), sends a refresh request to the configured OAuth provider, and returns the new `access_token` directly in the response body.\n\n### Root Cause\n\n```typescript\n// packages/server/src/routes/oauth2/index.ts:393-402\nres.json({\n    success: true",
+    "severity": "critical",
+    "cve_id": "CVE-2026-70478",
+    "ghsa_id": "GHSA-qgvm-j2hm-6m38",
+    "affected_packages": [
+      "flowise"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-70478.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-5xvg-pmgg-3mxr",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-04T19:29:26Z",
+    "title": "Flowise: CSV Agent Prompt Injection Remote Code Execution Vulnerability",
+    "description": "-- ABSTRACT -------------------------------------\n\nTrend Micro's Zero Day Initiative has identified a vulnerability affecting the following products:\nFlowise - Flowise\n\n-- VULNERABILITY DETAILS ------------------------\n* Version tested: 3.1.1\n* Installer file: https://github.com/FlowiseAI/Flowise (npm install flowise@3.1.1)\n* Platform tested: Ubuntu 25.10\n\n---\n\nA prompt injection sent to a chatflow using a CSV Agent node can cause the LLM to respond with a malicious Python script that bypasses t",
+    "severity": "critical",
+    "cve_id": "CVE-2026-70477",
+    "ghsa_id": "GHSA-5xvg-pmgg-3mxr",
+    "affected_packages": [
+      "flowise",
+      "flowise-components"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-70477.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-gmmw-qg98-6j6p",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-04T19:24:07Z",
+    "title": "Flowise: Broken Access Control in Stripe Subscription Endpoints Allows Cross-Tenant Billing Manipulation",
+    "description": "### Summary\nSeveral organization billing endpoints accept attacker-controlled Stripe identifiers (subscriptionId) without verifying that the identifier belongs to the authenticated user's organization. This allows an authenticated attacker to perform unauthorized Stripe subscription operations on other tenants. As a result, an authenticated user can manipulate the Stripe subscription of another organization by supplying a victim organization's subscriptionId.\n\nThis allows attackers to perform un",
+    "severity": "high",
+    "cve_id": "CVE-2026-70476",
+    "ghsa_id": "GHSA-gmmw-qg98-6j6p",
+    "affected_packages": [
+      "flowise"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-70476.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-8gj2-2cvc-6xx7",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-04T19:19:44Z",
+    "title": "Flowise: Unauthenticated Credential Abuse via Text-to-Speech Endpoint Allows Unauthorized Use of Private Chatflow TTS Credentials",
+    "description": "## Summary\n\nThe `/api/v1/text-to-speech/generate` endpoint is whitelisted (requires no authentication) and accepts any `chatflowId` without checking whether the referenced chatflow is public. An unauthenticated attacker who knows a valid chatflow UUID can abuse that chatflow's TTS credential (OpenAI or ElevenLabs API key) to generate unlimited text-to-speech audio, incurring costs on the chatflow owner's account.\n\n## Details\n\nThe TTS `generateTextToSpeech` controller at `packages/server/src/cont",
     "severity": "medium",
     "cve_id": null,
-    "ghsa_id": "GHSA-2364-jh4q-m9vm",
+    "ghsa_id": "GHSA-8gj2-2cvc-6xx7",
     "affected_packages": [
       "flowise"
     ],
@@ -163,332 +280,30 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-v8cj-x2cf-86x7",
+    "id": "gh-GHSA-fm2f-4339-4p2f",
     "source": "GitHub Security",
-    "timestamp": "2026-08-04T12:34:50Z",
-    "title": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in...",
-    "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows Path Traversal.\n\nThis issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-14194",
-    "ghsa_id": "GHSA-v8cj-x2cf-86x7",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-14194.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-9hrp-c4q8-hf75",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-04T12:34:50Z",
-    "title": "Improper input validation vulnerability in Samsung Open Source rlottie allows Oversized...",
-    "description": "Improper input validation vulnerability in Samsung Open Source rlottie allows Oversized Serialized Data Payloads.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-18772",
-    "ghsa_id": "GHSA-9hrp-c4q8-hf75",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-18772.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-qp3g-4h67-f237",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-04T12:34:50Z",
-    "title": "Use of hard-coded cryptographic key vulnerability in Bilin Software and Informatics Consultancy...",
-    "description": "Use of hard-coded cryptographic key vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows Read Sensitive Constants Within an Executable.\n\nThis issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-14804",
-    "ghsa_id": "GHSA-qp3g-4h67-f237",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-14804.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-wfv2-mrh8-3fx5",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-04T12:34:50Z",
-    "title": "Observable response discrepancy vulnerability in Bilin Software and Informatics Consultancy Inc....",
-    "description": "Observable response discrepancy vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows Account Footprinting.\n\nThis issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-14202",
-    "ghsa_id": "GHSA-wfv2-mrh8-3fx5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-14202.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-75vh-8xgg-597q",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-04T12:34:50Z",
-    "title": "Unrestricted upload of file with dangerous type vulnerability in Bilin Software and Informatics...",
-    "description": "Unrestricted upload of file with dangerous type vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows Upload a Web Shell to a Web Server.\n\nThis issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-14175",
-    "ghsa_id": "GHSA-75vh-8xgg-597q",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-14175.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-qrm8-6428-fgf7",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-04T12:34:50Z",
-    "title": "Improper neutralization of input during web page generation ('cross-site scripting')...",
-    "description": "Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows Stored XSS.\n\nThis issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-14192",
-    "ghsa_id": "GHSA-qrm8-6428-fgf7",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-14192.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-qhjg-59pv-84j4",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-04T12:34:50Z",
-    "title": "Cleartext storage of sensitive information vulnerability in Bilin Software and Informatics...",
-    "description": "Cleartext storage of sensitive information vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows SQL Injection.\n\nThis issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-15721",
-    "ghsa_id": "GHSA-qhjg-59pv-84j4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-15721.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-fhhf-pqcg-p3jc",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-04T12:34:50Z",
-    "title": "Insufficient session expiration vulnerability in Bilin Software and Informatics Consultancy Inc....",
-    "description": "Insufficient session expiration vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows Reusing Session IDs (aka Session Replay).\n\nThis issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-14465",
-    "ghsa_id": "GHSA-fhhf-pqcg-p3jc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-14465.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-82mx-8rw9-8rcf",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-04T12:34:50Z",
-    "title": "URL redirection to untrusted site ('open redirect') vulnerability in Bilin Software and...",
-    "description": "URL redirection to untrusted site ('open redirect') vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows Phishing.\n\nThis issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-14219",
-    "ghsa_id": "GHSA-82mx-8rw9-8rcf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-14219.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-chm9-7crh-67fc",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-04T12:34:50Z",
-    "title": "Use of GET request method with sensitive query strings vulnerability in Bilin Software and...",
-    "description": "Use of GET request method with sensitive query strings vulnerability in Bilin Software and Informatics Consultancy Inc. HUMANIST Digital Human Resources allows Session Hijacking.\n\nThis issue affects HUMANIST Digital Human Resources: from 26.0 before 26.1.",
+    "timestamp": "2026-08-04T19:18:47Z",
+    "title": "Flowise: Missing Authorization on Execution Update Endpoint",
+    "description": "# Flowise Security Audit Report\n**Date**: 2026-03-17\n**Researcher**: Dimpal Jadhav (jadhavdimpy@gmail.com)\n**GitHub**: https://github.com/Dimpyj1604\n**Target**: FlowiseAI/Flowise (latest main branch)\n**Version**: flowise-components@3.1.0\n\n### FINDING 1: Missing Authorization on Execution Update Endpoint\n**Severity**: HIGH (CVSS ~7.5)\n**Type**: CWE-862 (Missing Authorization)\n**File**: `packages/server/src/routes/executions/index.ts:11`\n\n**Description**: The `PUT /api/v1/executions/:id` endpoint ",
     "severity": "high",
-    "cve_id": "CVE-2026-14838",
-    "ghsa_id": "GHSA-chm9-7crh-67fc",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-70475",
+    "ghsa_id": "GHSA-fm2f-4339-4p2f",
+    "affected_packages": [
+      "flowise"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-14838.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-70475.",
       "affected_industries": [
         "Technology",
         "General"
@@ -503,14 +318,14 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-7p93-2qwj-4g34",
+    "id": "gh-GHSA-cw8w-568w-v2v5",
     "source": "GitHub Security",
-    "timestamp": "2026-08-04T09:31:35Z",
-    "title": "The\nproduct firmware contains an embedded, static RSA private key utilized by the\nLighttpd web...",
-    "description": "The\nproduct firmware contains an embedded, static RSA private key utilized by the\nLighttpd web server for TLS termination. Exposure of this private key allows\nmalicious actors to breach the confidentiality and integrity of HTTPS\ncommunications, enabling traffic decryption and server spoofing.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-18753",
-    "ghsa_id": "GHSA-7p93-2qwj-4g34",
+    "timestamp": "2026-08-04T18:31:30Z",
+    "title": "NVIDIA Dynamo for Linux contains a vulnerability where an attacker could cause a race condition...",
+    "description": "NVIDIA Dynamo for Linux contains a vulnerability where an attacker could cause a race condition in the LoRA manager singleton initialization. A successful exploit of this vulnerability might lead to data tampering and denial of service.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-47620",
+    "ghsa_id": "GHSA-cw8w-568w-v2v5",
     "affected_packages": [],
     "cwes": [
       null
@@ -518,11 +333,187 @@
     "references": [
       null,
       null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-47620.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-4qj4-pv32-cxrr",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-04T18:31:30Z",
+    "title": "NVIDIA Dynamo for Linux contains a vulnerability where an attacker could cause the generation of...",
+    "description": "NVIDIA Dynamo for Linux contains a vulnerability where an attacker could cause the generation of error messages that contain sensitive information. A successful exploit of this vulnerability might lead to information disclosure.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-47622",
+    "ghsa_id": "GHSA-4qj4-pv32-cxrr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-47622.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-xc2p-88hh-m8f9",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-04T18:31:30Z",
+    "title": "NVIDIA Dynamo for Linux contains a vulnerability where an attacker could cause deserialization of...",
+    "description": "NVIDIA Dynamo for Linux contains a vulnerability where an attacker could cause deserialization of untrusted data. A successful exploit of this vulnerability might lead to denial of service and data tampering.",
+    "severity": "high",
+    "cve_id": "CVE-2026-47623",
+    "ghsa_id": "GHSA-xc2p-88hh-m8f9",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-47623.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-q548-vjqw-xrpx",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-04T18:31:30Z",
+    "title": "NVIDIA Dynamo for Linux contains a vulnerability where an attacker could cause a race condition...",
+    "description": "NVIDIA Dynamo for Linux contains a vulnerability where an attacker could cause a race condition in the LoRA manager singleton initialization. A successful exploit of this vulnerability might lead to denial of service and data tampering.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-47621",
+    "ghsa_id": "GHSA-q548-vjqw-xrpx",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-47621.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-xm83-6w9c-39px",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-04T18:31:29Z",
+    "title": "NVIDIA Dynamo for Linux contains a vulnerability in the multimodal embedding cache, where an...",
+    "description": "NVIDIA Dynamo for Linux contains a vulnerability in the multimodal embedding cache, where an attacker could cause a hash collision by submitting images that share an identical pixel byte sequence but have different dimensions. A successful exploit of this vulnerability might lead to data tampering.",
+    "severity": "high",
+    "cve_id": "CVE-2026-24255",
+    "ghsa_id": "GHSA-xm83-6w9c-39px",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-24255.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-4gq3-gh66-qq8g",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-04T18:31:29Z",
+    "title": "NVIDIA Dynamo for Linux contains a vulnerability in the multimodal serving topology, where an...",
+    "description": "NVIDIA Dynamo for Linux contains a vulnerability in the multimodal serving topology, where an attacker could cause an out-of-bounds write. A successful exploit of this vulnerability might lead to code execution, escalation of privileges, data tampering, denial of service, and information disclosure.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-24254",
+    "ghsa_id": "GHSA-4gq3-gh66-qq8g",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-18753.",
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-24254.",
       "affected_industries": [
         "Technology",
         "General"
@@ -537,90 +528,19 @@
     "risk_score": 90
   },
   {
-    "id": "gh-GHSA-2p27-7hcf-mpp3",
+    "id": "gh-GHSA-77xh-v3q4-c2c6",
     "source": "GitHub Security",
-    "timestamp": "2026-08-04T09:31:35Z",
-    "title": "The background service of ABP or AES runs as NT AUTHORITY\\SYSTEM and implements a file-based...",
-    "description": "The background service of ABP or AES runs as NT AUTHORITY\\SYSTEM and implements a file-based inter-process communication (IPC) mechanism protected by AES encryption. Because the encryption key file is readable by standard users and protected using DPAPI. Any authenticated local user can recover the key and forge valid IPC requests. Furthermore, the service does not check the identity of the requesting process and validates destination paths using an insufficient substring check. A local attacker",
-    "severity": "high",
-    "cve_id": "CVE-2026-18759",
-    "ghsa_id": "GHSA-2p27-7hcf-mpp3",
-    "affected_packages": [],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-18759.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-3w4q-685g-qf2v",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-04T09:31:35Z",
-    "title": "freo2 provided by refirio contains an unrestricted upload of file with dangerous type...",
-    "description": "freo2 provided by refirio contains an unrestricted upload of file with dangerous type vulnerability. A user with the highest-level administrative privileges for the product may upload an executable file and execute arbitrary OS commands.",
-    "severity": "high",
-    "cve_id": "CVE-2026-67243",
-    "ghsa_id": "GHSA-3w4q-685g-qf2v",
+    "timestamp": "2026-08-04T18:31:29Z",
+    "title": "NVIDIA Dynamo for Linux examples and recipes contain a vulnerability where an attacker could...",
+    "description": "NVIDIA Dynamo for Linux examples and recipes contain a vulnerability where an attacker could cause a system failure. A successful exploit of this vulnerability might lead to code execution, data tampering, denial of service, and information disclosure.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-47619",
+    "ghsa_id": "GHSA-77xh-v3q4-c2c6",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-67243.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-mc77-r35g-cpmm",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-04T09:31:35Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: nVMX: Hide shadow VMCS...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: nVMX: Hide shadow VMCS right after VMCLEAR\n\nfree_nested() frees the shadow VMCS while vmcs01 still points to it. But\nbecause it is asynchronous with respect to loaded_vmcs_clear(), the vCPU\nmight migrate before the pointer is cleared and __loaded_vmcs_clear()\nmay then execute VMCLEAR.\n\nThe VMCS needs to stay attached until its explicit VMCLEAR completes, but\nthen it can be hidden and the page safely freed.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64562",
-    "ghsa_id": "GHSA-mc77-r35g-cpmm",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -628,7 +548,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64562.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-47619.",
       "affected_industries": [
         "Technology",
         "General"
@@ -643,17 +563,20 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-xw85-w2q2-369x",
+    "id": "gh-GHSA-xq9j-r58r-r55p",
     "source": "GitHub Security",
-    "timestamp": "2026-08-04T09:31:35Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: don't free the ASCONF...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsctp: don't free the ASCONF's own transport in DEL-IP processing\n\nsctp_process_asconf() caches the transport the ASCONF chunk is processed\nagainst in asconf->transport (== chunk->transport, set once in sctp_rcv()).\nFor an ASCONF located through its Address Parameter by\n__sctp_rcv_asconf_lookup(), that cached transport corresponds to the\nAddress Parameter, which need not be the packet's source address.\n\nsctp_process_asconf_param",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64564",
-    "ghsa_id": "GHSA-xw85-w2q2-369x",
+    "timestamp": "2026-08-04T18:31:29Z",
+    "title": "A weakness has been identified in Systerel S2OPC up to 1.7.3. This affects the function...",
+    "description": "A weakness has been identified in Systerel S2OPC up to 1.7.3. This affects the function LockedStaMac_ProcessMsg_DeleteMonitoredItemsResponse of the file src/ClientServer/frontend/client_wrapper/internal/state_machine.c of the component DeleteMonitoredItemsRequest Handler. This manipulation causes out-of-bounds read. The attack can only be executed locally. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did",
+    "severity": "low",
+    "cve_id": "CVE-2026-18790",
+    "ghsa_id": "GHSA-xq9j-r58r-r55p",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
+      null,
       null,
       null,
       null,
@@ -663,8 +586,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64564.",
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-18790.",
       "affected_industries": [
         "Technology",
         "General"
@@ -674,19 +597,19 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "low"
     },
-    "risk_score": 50
+    "risk_score": 25
   },
   {
-    "id": "gh-GHSA-f7mr-6525-7qmf",
+    "id": "gh-GHSA-25vv-hwhq-wjg6",
     "source": "GitHub Security",
-    "timestamp": "2026-08-04T09:31:35Z",
-    "title": "A DLL hijacking vulnerability in GeoVision GV-ASManager allows a local attacker with write access...",
-    "description": "A DLL hijacking vulnerability in GeoVision GV-ASManager allows a local attacker with write access to an unsafe search directory to execute arbitrary code. By placing a crafted dynamic-link library (DLL) file into the application search path prior to the legitimate library, the malicious code is loaded and executed under the security privileges of the GV-ASManager process.",
+    "timestamp": "2026-08-04T18:31:29Z",
+    "title": "NVIDIA Dynamo for Linux contains a vulnerability in the Rust multimodal media fetcher where an...",
+    "description": "NVIDIA Dynamo for Linux contains a vulnerability in the Rust multimodal media fetcher where an attacker could cause server-side request forgery. A successful exploit of this vulnerability might lead to information disclosure.",
     "severity": "high",
-    "cve_id": "CVE-2026-18755",
-    "ghsa_id": "GHSA-f7mr-6525-7qmf",
+    "cve_id": "CVE-2026-47618",
+    "ghsa_id": "GHSA-25vv-hwhq-wjg6",
     "affected_packages": [],
     "cwes": [
       null
@@ -694,11 +617,12 @@
     "references": [
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-18755.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-47618.",
       "affected_industries": [
         "Technology",
         "General"
@@ -713,17 +637,126 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-36cq-f2m4-833w",
+    "id": "gh-GHSA-837p-qhrp-qm63",
     "source": "GitHub Security",
-    "timestamp": "2026-08-04T09:31:35Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: ims-pcu - fix heap...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nInput: ims-pcu - fix heap-buffer-overflow in ims_pcu_process_data()\n\nThe `ims_pcu_process_data()` processes incoming URB data byte by byte.\nHowever, it fails to check if the `read_pos` index exceeds\nIMS_PCU_BUF_SIZE.\n\nIf a malicious USB device sends a packet larger than IMS_PCU_BUF_SIZE,\n`read_pos` will increment indefinitely. Moreover, since `read_pos` is\nlocated immediately after `read_buf`, the attacker can overwrite\n`read_p",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-64565",
-    "ghsa_id": "GHSA-36cq-f2m4-833w",
+    "timestamp": "2026-08-04T18:31:29Z",
+    "title": "A vulnerability allowing local privilege escalation to the Reporter service context.",
+    "description": "A vulnerability allowing local privilege escalation to the Reporter service context.",
+    "severity": "high",
+    "cve_id": "CVE-2026-64634",
+    "ghsa_id": "GHSA-837p-qhrp-qm63",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-64634.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-h44j-2vgw-q5f2",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-04T18:31:29Z",
+    "title": "NVIDIA Dynamo for Linux contains a vulnerability in the multimodal media fetcher where an...",
+    "description": "NVIDIA Dynamo for Linux contains a vulnerability in the multimodal media fetcher where an attacker may cause server-side request forgery via DNS rebinding. A successful exploit of this vulnerability might lead to information disclosure.",
+    "severity": "high",
+    "cve_id": "CVE-2026-47617",
+    "ghsa_id": "GHSA-h44j-2vgw-q5f2",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-47617.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-prwc-w88m-jpv7",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-04T18:31:29Z",
+    "title": "NVIDIA Dynamo for Linux contains a vulnerability where an attacker may cause improper limitation...",
+    "description": "NVIDIA Dynamo for Linux contains a vulnerability where an attacker may cause improper limitation of a pathname to a restricted directory by supplying a crafted local path in a multimodal request. A successful exploit of this vulnerability might lead to information disclosure.",
+    "severity": "high",
+    "cve_id": "CVE-2026-47613",
+    "ghsa_id": "GHSA-prwc-w88m-jpv7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-47613.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-fpqv-x64q-rhgj",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-04T18:31:29Z",
+    "title": "A security flaw has been discovered in Trippo ResponsiveFilemanager up to 9.14.0. The impacted...",
+    "description": "A security flaw has been discovered in Trippo ResponsiveFilemanager up to 9.14.0. The impacted element is an unknown function of the file filemanager/dialog.php. The manipulation results in unrestricted upload. The attack may be performed from remote. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way. This vulnerability only affects products that are no longer supported by the maintainer.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-18788",
+    "ghsa_id": "GHSA-fpqv-x64q-rhgj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
       null,
       null,
       null,
@@ -733,7 +766,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64565.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-18788.",
       "affected_industries": [
         "Technology",
         "General"
