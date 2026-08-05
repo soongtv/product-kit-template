@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1785939899733-1",
+    "id": "twitter-1785959127317-1",
     "source": "Twitter Security",
-    "timestamp": "2026-08-05T14:24:59.733Z",
+    "timestamp": "2026-08-05T19:45:27.317Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1785939899733-1",
+    "id": "hn-1785959127317-1",
     "source": "HackerNews",
-    "timestamp": "2026-08-05T14:24:59.733Z",
+    "timestamp": "2026-08-05T19:45:27.317Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,14 +52,14 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-vq4c-5vwv-g86v",
+    "id": "gh-GHSA-fqv5-gx59-2xgv",
     "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:33Z",
-    "title": "nanoMODBUS through v1.23.0 contains an out-of-bounds stack read leading to a wild-pointer write...",
-    "description": "nanoMODBUS through v1.23.0 contains an out-of-bounds stack read leading to a wild-pointer write in nmbs_read_device_identification_basic() / recv_read_device_identification_res() in nanomodbus.c. A fixed 3-element stack array order[3] = {0,1,2} maps object IDs to buffer indices. The server-supplied object_id field (0-255, read directly from the wire) is used without any bounds check as buf_index = order[object_id]. When a malicious Modbus server sends a Read Device Identification response with o",
-    "severity": "critical",
-    "cve_id": "CVE-2026-71256",
-    "ghsa_id": "GHSA-vq4c-5vwv-g86v",
+    "timestamp": "2026-08-05T18:31:43Z",
+    "title": "IBM Langflow OSS 1.0.0 through 1.10.3, and 1.0.0 through 1.10.3 contains a Server-Side Request...",
+    "description": "IBM Langflow OSS 1.0.0 through 1.10.3, and 1.0.0 through 1.10.3 contains a Server-Side Request Forgery (SSRF) vulnerability in the validate_model_provider_key() function for the Ollama provider. The function accepts a user-supplied OLLAMA_BASE_URL parameter and passes it directly to requests.get() without validation, scheme/host allowlisting, or filtering of private IP ranges (loopback, RFC1918, link-local addresses).",
+    "severity": "high",
+    "cve_id": "CVE-2026-9081",
+    "ghsa_id": "GHSA-fqv5-gx59-2xgv",
     "affected_packages": [],
     "cwes": [
       null
@@ -67,12 +67,11 @@
     "references": [
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-71256.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-9081.",
       "affected_industries": [
         "Technology",
         "General"
@@ -82,33 +81,63 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "high"
     },
-    "risk_score": 90
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-9mqw-m8jv-5hmw",
+    "id": "gh-GHSA-94h9-q657-456h",
     "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:33Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/rxe: Fix a use-after...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nRDMA/rxe: Fix a use-after-free problem in rxe_mmap\n\nrxe_mmap() removes a rxe_mmap_info struct from the pending_mmaps list\nand releases pending_lock while the struct's kref is still at 1:\n\n   list_del_init(&ip->pending_mmaps);\n   spin_unlock_bh(&rxe->pending_lock);   /* ref == 1, no lock held */\n   ret = remap_vmalloc_range(vma, ip->obj, 0);  /* walks PTEs */\n   [...]\n   rxe_vma_open(vma);                    /* kref_get, ref → 2",
+    "timestamp": "2026-08-05T18:31:43Z",
+    "title": "IBM Langflow OSS 1.0.0 through 1.10.3 Langflow could allow server-side request forgery (SSRF) due...",
+    "description": "IBM Langflow OSS 1.0.0 through 1.10.3 Langflow could allow server-side request forgery (SSRF) due to incomplete and ineffective SSRF protection enforcement.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-7657",
+    "ghsa_id": "GHSA-94h9-q657-456h",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7657.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-fxm8-qw5f-4mmf",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:42Z",
+    "title": "Missing permission checks in Jenkins CodeSonar Plugin 3.6.0 and earlier allow attackers with...",
+    "description": "Missing permission checks in Jenkins CodeSonar Plugin 3.6.0 and earlier allow attackers with Overall/Read permission to enumerate credentials IDs of credentials stored in Jenkins.",
     "severity": "unknown",
-    "cve_id": "CVE-2026-64582",
-    "ghsa_id": "GHSA-9mqw-m8jv-5hmw",
+    "cve_id": "CVE-2026-70446",
+    "ghsa_id": "GHSA-fxm8-qw5f-4mmf",
     "affected_packages": [],
     "cwes": [],
     "references": [
       null,
       null,
-      null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-64582.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70446.",
       "affected_industries": [
         "Technology",
         "General"
@@ -123,167 +152,24 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-9rfp-q4v5-653h",
+    "id": "gh-GHSA-84xf-jvr9-x4f9",
     "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:33Z",
-    "title": "nanoMODBUS through v1.23.0 contains an out-of-bounds write in the Modbus client-side...",
-    "description": "nanoMODBUS through v1.23.0 contains an out-of-bounds write in the Modbus client-side recv_read_device_identification_res() function (FC 0x2B/MEI 0x0E, Read Device Identification) in nanomodbus.c. The server-supplied object_length field (0-246) is validated only against the remaining PDU size (res_size_left) and is never validated against the caller-supplied buffers_length parameter. After copying data with strncpy(buffers_out[buf_index], str, buffers_length), the code unconditionally writes a NU",
-    "severity": "high",
-    "cve_id": "CVE-2026-71255",
-    "ghsa_id": "GHSA-9rfp-q4v5-653h",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-71255.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-xrrm-6636-87r2",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:33Z",
-    "title": "In Eclipse Theia versions up to and including 1.73.1, the `@theia/filesystem` backend exposes...",
-    "description": "In Eclipse Theia versions up to and including 1.73.1, the `@theia/filesystem` backend exposes HTTP file-download endpoints (`GET /file`, `GET /files/`, `PUT /files/`) that convert a client-supplied URI directly to a filesystem path and stream the file, without confining it to the workspace or any allow-listed root. In browser (non-Electron) deployments the connection token is enforced only on WebSocket upgrades; the HTTP middleware in `@theia/core` re-issues the cookie and calls `next()` without",
-    "severity": "high",
-    "cve_id": "CVE-2026-61891",
-    "ghsa_id": "GHSA-xrrm-6636-87r2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-61891.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-h26w-wq3x-9p76",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:33Z",
-    "title": "Akaunting's shared download route (app/Http/Controllers/Common/Uploads.php::download(), reachable...",
-    "description": "Akaunting's shared download route (app/Http/Controllers/Common/Uploads.php::download(), reachable at uploads/{id}/download behind only generic auth middleware) fetched the requested Media record by ID with no verification that it belonged to the requesting portal customer's own company, allowing any authenticated portal customer to download any other company's uploaded files by guessing or enumerating media IDs. Fixed in commit 80ef6d3 (2026-07-12), which added an explicit ownership check compar",
-    "severity": "medium",
-    "cve_id": "CVE-2026-71251",
-    "ghsa_id": "GHSA-h26w-wq3x-9p76",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-71251.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-c6wq-2527-5fpx",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:33Z",
-    "title": "toner-management's admin state-changing handlers (add.php, edit.php, delete.php under admin...",
-    "description": "toner-management's admin state-changing handlers (add.php, edit.php, delete.php under admin/toners, admin/toner-brands, admin/printers, and related admin subdirectories) executed INSERT/UPDATE/DELETE database operations with no authentication or authorization check, while access control was enforced only in listing views. An unauthenticated remote attacker could invoke these handlers directly to create, modify, or destroy application data. The vendor has since merged a fix requiring an authentic",
-    "severity": "high",
-    "cve_id": "CVE-2026-71252",
-    "ghsa_id": "GHSA-c6wq-2527-5fpx",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-71252.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-wrxx-w58g-3gqp",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:33Z",
-    "title": "In Eclipse Mojarra versions 2.3 and following, URL handing in `DefaultFaceletFactory` does not...",
-    "description": "In Eclipse Mojarra versions 2.3 and following, URL handing in `DefaultFaceletFactory` does not properly sanitize and/or block remote URLs, allowing an attacker to specify a URL to a remote Facelet which will be included and processed as part of the normal request, with the privileges of the target server. This could allow access to restricted files such as `WEB-INF/web.xml` or `/etc/passwd`.",
+    "timestamp": "2026-08-05T18:31:42Z",
+    "title": "Jenkins Horreum Plugin 0.16.162.v33b_4a_a_b_5f828 and earlier does not set the appropriate...",
+    "description": "Jenkins Horreum Plugin 0.16.162.v33b_4a_a_b_5f828 and earlier does not set the appropriate context for credentials lookup, allowing attackers with Item/Configure permission to have Jenkins send credentials they are not entitled to use to the administrator-configured Horreum URL.",
     "severity": "unknown",
-    "cve_id": "CVE-2026-46581",
-    "ghsa_id": "GHSA-wrxx-w58g-3gqp",
+    "cve_id": "CVE-2026-70443",
+    "ghsa_id": "GHSA-84xf-jvr9-x4f9",
     "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "cwes": [],
     "references": [
-      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-46581.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70443.",
       "affected_industries": [
         "Technology",
         "General"
@@ -298,14 +184,462 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-cc9f-29gq-5x7c",
+    "id": "gh-GHSA-vmgc-rm8m-772j",
     "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:33Z",
-    "title": "The wp-downloadmanager WordPress plugin, in version 1.68.11 (also affecting the 6.9.4 release...",
-    "description": "The wp-downloadmanager WordPress plugin, in version 1.68.11 (also affecting the 6.9.4 release line), allows an admin-privileged user (current_user_can('manage_downloads')) to upload arbitrary files via download-add.php with no extension or MIME-type validation of any kind - no wp_check_filetype_and_ext(), no validate_file(), and no extension blocklist exist anywhere in the upload handler. The destination path is additionally built by concatenating the raw, unsanitized $_POST['file_upload_to'] va",
+    "timestamp": "2026-08-05T18:31:42Z",
+    "title": "Missing permission checks in Jenkins AWS CodeBuild Plugin 0.59 and earlier allow attackers with...",
+    "description": "Missing permission checks in Jenkins AWS CodeBuild Plugin 0.59 and earlier allow attackers with Overall/Read permission to enumerate credentials IDs of credentials stored in Jenkins.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70447",
+    "ghsa_id": "GHSA-vmgc-rm8m-772j",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70447.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-3gjc-wq56-9w9h",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:42Z",
+    "title": "Jenkins Summary Display Plugin 1.15 and earlier does not escape the job name in a JavaScript...",
+    "description": "Jenkins Summary Display Plugin 1.15 and earlier does not escape the job name in a JavaScript context in build report pages, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers with Item/Create or Item/Configure permission.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70441",
+    "ghsa_id": "GHSA-3gjc-wq56-9w9h",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70441.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-m8x8-7jhh-fp73",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:42Z",
+    "title": "Missing permission checks in Jenkins Sauce OnDemand Plugin 2.2.0 and earlier allow attackers with...",
+    "description": "Missing permission checks in Jenkins Sauce OnDemand Plugin 2.2.0 and earlier allow attackers with Overall/Read permission to enumerate credentials IDs of credentials stored in Jenkins.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70445",
+    "ghsa_id": "GHSA-m8x8-7jhh-fp73",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70445.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-5rp3-99fp-3g93",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:42Z",
+    "title": "Jenkins XML Job to Job DSL Plugin 0.1.13 and earlier does not perform permission checks, allowing...",
+    "description": "Jenkins XML Job to Job DSL Plugin 0.1.13 and earlier does not perform permission checks, allowing attackers lacking appropriate permissions to invoke the conversion functionality.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70439",
+    "ghsa_id": "GHSA-5rp3-99fp-3g93",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70439.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-67r4-vj46-3qpx",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:42Z",
+    "title": "Jenkins Google Chat Notification Plugin 166.ve6b_de280f2e8 and earlier does not set the...",
+    "description": "Jenkins Google Chat Notification Plugin 166.ve6b_de280f2e8 and earlier does not set the appropriate context for credentials lookup, allowing attackers with Item/Configure permission to access and capture credentials they are not entitled to use.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70442",
+    "ghsa_id": "GHSA-67r4-vj46-3qpx",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70442.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-64jg-65j7-rrm4",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:42Z",
+    "title": "Jenkins Ivy Report Plugin 1.2 and earlier does not configure its XML parser to prevent XML...",
+    "description": "Jenkins Ivy Report Plugin 1.2 and earlier does not configure its XML parser to prevent XML external entity (XXE) attacks when processing Ivy report files.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70448",
+    "ghsa_id": "GHSA-64jg-65j7-rrm4",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70448.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-w5cj-vfc7-9rjq",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:41Z",
+    "title": "A missing permission check in Jenkins Violation Comments to GitLab Plugin 2.62.0 and earlier...",
+    "description": "A missing permission check in Jenkins Violation Comments to GitLab Plugin 2.62.0 and earlier allows attackers with Overall/Read permission to enumerate credentials IDs of credentials stored in Jenkins.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70444",
+    "ghsa_id": "GHSA-w5cj-vfc7-9rjq",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70444.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-w8fh-xx7f-5j67",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:41Z",
+    "title": "Jenkins External Workspace Manager Plugin 1.4.1 and earlier does not perform a permission check ...",
+    "description": "Jenkins External Workspace Manager Plugin 1.4.1 and earlier does not perform a permission check (1.4.0 and earlier) or performs an improper permission check (1.4.1) when providing access to externally-managed workspaces through the workspace browser, allowing attackers with Overall/Read permission to read files in workspaces they are not authorized to access.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70436",
+    "ghsa_id": "GHSA-w8fh-xx7f-5j67",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70436.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-298v-p382-mwvw",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:41Z",
+    "title": "Jenkins Webhook Secret Credentials Provider Plugin 16.v0cfa_f0215cf5 and earlier does not use a...",
+    "description": "Jenkins Webhook Secret Credentials Provider Plugin 16.v0cfa_f0215cf5 and earlier does not use a constant-time comparison function when checking whether the provided and expected webhook bearer token are equal, potentially allowing attackers to use statistical methods to obtain a valid webhook bearer token.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70437",
+    "ghsa_id": "GHSA-298v-p382-mwvw",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70437.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-rmwj-785q-j3gv",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:41Z",
+    "title": "Jenkins Qualys Container Scanning Connector Plugin 1.8.0.5 and earlier does not escape user...",
+    "description": "Jenkins Qualys Container Scanning Connector Plugin 1.8.0.5 and earlier does not escape user-controlled field values in a JavaScript context, resulting in a stored cross-site scripting (XSS) vulnerability exploitable by attackers with Item/Configure permission.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70440",
+    "ghsa_id": "GHSA-rmwj-785q-j3gv",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70440.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-4v7r-5cqf-6h4r",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:41Z",
+    "title": "A missing permission check in Jenkins Parameterized Remote Trigger Plugin 3.2.2 and earlier...",
+    "description": "A missing permission check in Jenkins Parameterized Remote Trigger Plugin 3.2.2 and earlier allows attackers with Overall/Read permission to enumerate credentials IDs of credentials stored in Jenkins.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70438",
+    "ghsa_id": "GHSA-4v7r-5cqf-6h4r",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70438.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-h3r9-p4mg-h9jj",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:41Z",
+    "title": "A cross-site request forgery (CSRF) vulnerability in Jenkins SCM-Manager Plugin 1.11.1 and...",
+    "description": "A cross-site request forgery (CSRF) vulnerability in Jenkins SCM-Manager Plugin 1.11.1 and earlier allows attackers to connect to an attacker-specified URL using attacker-specified credentials IDs obtained through another method, capturing credentials stored in Jenkins.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70434",
+    "ghsa_id": "GHSA-h3r9-p4mg-h9jj",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70434.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-px5p-9c6f-v9v7",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:41Z",
+    "title": "A missing permission check in Jenkins SCM-Manager Plugin 1.11.1 and earlier allows attackers with...",
+    "description": "A missing permission check in Jenkins SCM-Manager Plugin 1.11.1 and earlier allows attackers with Overall/Read permission to connect to an attacker-specified URL using attacker-specified credentials IDs obtained through another method, capturing credentials stored in Jenkins.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70435",
+    "ghsa_id": "GHSA-px5p-9c6f-v9v7",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70435.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-2hx5-662f-6q6f",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:40Z",
+    "title": "A cross-site request forgery (CSRF) vulnerability in Jenkins Multijob Plugin 669.v9d96a_d9c71b_0...",
+    "description": "A cross-site request forgery (CSRF) vulnerability in Jenkins Multijob Plugin 669.v9d96a_d9c71b_0 and earlier allows attackers to execute arbitrary code in the context of the Jenkins controller JVM.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70432",
+    "ghsa_id": "GHSA-2hx5-662f-6q6f",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70432.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-c4h6-c3hj-2qc3",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-05T18:31:40Z",
+    "title": "Directus contains an authenticated SQL injection vulnerability in the collection creation flow...",
+    "description": "Directus contains an authenticated SQL injection vulnerability in the collection creation flow when the instance uses PostgreSQL with PostGIS enabled. An administrator can create a collection with a geometry field whose fields[].type value starts with geometry but contains attacker-controlled SQL syntax after the geometry subtype.This issue affects Directus: before 12.1.0.",
     "severity": "high",
-    "cve_id": "CVE-2026-18933",
-    "ghsa_id": "GHSA-cc9f-29gq-5x7c",
+    "cve_id": "CVE-2026-10716",
+    "ghsa_id": "GHSA-c4h6-c3hj-2qc3",
     "affected_packages": [],
     "cwes": [
       null
@@ -313,11 +647,14 @@
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-18933.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-10716.",
       "affected_industries": [
         "Technology",
         "General"
@@ -332,53 +669,16 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-29rm-wvww-5gjv",
+    "id": "gh-GHSA-rgw8-wchj-9xjv",
     "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:33Z",
-    "title": "nanoMODBUS through v1.23.0 contains an out-of-bounds write in the Modbus server-side...",
-    "description": "nanoMODBUS through v1.23.0 contains an out-of-bounds write in the Modbus server-side handle_read_file_record() function (FC 0x14, Read File Record) in nanomodbus.c. The function validates that the total request size does not exceed 245 bytes and that each sub-request's record_length is at most 124, but it never validates the CUMULATIVE response size across all sub-requests before processing them. The accumulator response_data_size is declared as uint8_t and is incremented by 2 + record_length*2 ",
-    "severity": "critical",
-    "cve_id": "CVE-2026-71254",
-    "ghsa_id": "GHSA-29rm-wvww-5gjv",
+    "timestamp": "2026-08-05T18:31:40Z",
+    "title": "Missing permission checks in Jenkins HCL AppScan Plugin 1.8.3 and earlier allow attackers with...",
+    "description": "Missing permission checks in Jenkins HCL AppScan Plugin 1.8.3 and earlier allow attackers with Overall/Read permission to enumerate credentials IDs of credentials stored in Jenkins.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70433",
+    "ghsa_id": "GHSA-rgw8-wchj-9xjv",
     "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-71254.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-q8pq-98hq-mg7f",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:32Z",
-    "title": "Firefly III's webhook URL validator (IsValidWebhookUrl.php) filters most private/reserved IPv4...",
-    "description": "Firefly III's webhook URL validator (IsValidWebhookUrl.php) filters most private/reserved IPv4 ranges but contains an explicit early-return that allows any resolved address in 127.0.0.0/8, permitting an authenticated user (with webhooks enabled, which is off by default) to configure a webhook targeting loopback services on the server. Additionally, the validator resolves the target hostname once via gethostbyname() at validation time, but the actual outbound request (StandardWebhookSender.php, v",
-    "severity": "medium",
-    "cve_id": "CVE-2026-71250",
-    "ghsa_id": "GHSA-q8pq-98hq-mg7f",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "cwes": [],
     "references": [
       null,
       null,
@@ -386,348 +686,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-71250.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-pf9g-3vw7-vgqf",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:32Z",
-    "title": "299Ko's public contact form (plugin/contact/controllers/ContactController.php, home()) sets raw...",
-    "description": "299Ko's public contact form (plugin/contact/controllers/ContactController.php, home()) sets raw POST field values (name, firstname, email, message) into the page template with no sanitization. The template engine's variable output function (common/Template.php, _show_var()) echoes values with no htmlspecialchars() call, and the sink template (contact.tpl) outputs these values unescaped into an HTML attribute and a textarea. An unauthenticated attacker can submit a payload such as name=\"><script>",
-    "severity": "medium",
-    "cve_id": "CVE-2026-71249",
-    "ghsa_id": "GHSA-pf9g-3vw7-vgqf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-71249.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-w54w-xf28-wf79",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:32Z",
-    "title": "Inventory-Management-System-PHP's login.php constructs its authentication query via direct string...",
-    "description": "Inventory-Management-System-PHP's login.php constructs its authentication query via direct string concatenation of raw POST parameters: $sql = \"select * from user where email = '$email' and password = '$password'\", with no escaping or parameterization, allowing authentication bypass via a payload such as email=' OR 1=1 LIMIT 1-- -. Separately, delete.php executes mysqli_query($db, \"DELETE FROM product WHERE product_id=\" . $_GET['id']) with no authentication check and no validation of the id para",
-    "severity": "critical",
-    "cve_id": "CVE-2026-71248",
-    "ghsa_id": "GHSA-w54w-xf28-wf79",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-71248.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-c6xg-rfqh-85cp",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:32Z",
-    "title": "The backmeup npm package assembles shell command strings by directly concatenating its option...",
-    "description": "The backmeup npm package assembles shell command strings by directly concatenating its option values (name, source, destination, filter) - e.g. cmd = \"mkdir -p \" + path.join(info.destination, info.name) + \"; \" - and executes the resulting string through a shell via ssh2-exec (locally via child_process, or remotely via SSH when an ssh handle is supplied), rather than using execFile/spawn with an argument array. The only processing applied is path.normalize()/path.join(), which do not neutralize s",
-    "severity": "high",
-    "cve_id": "CVE-2026-71243",
-    "ghsa_id": "GHSA-c6xg-rfqh-85cp",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-71243.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-666w-8983-6664",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:32Z",
-    "title": "Paperless-ngx's MailAccountViewSet.test() action, when called with an existing account's ID and a...",
-    "description": "Paperless-ngx's MailAccountViewSet.test() action, when called with an existing account's ID and a masked password field, reuses the stored password, account_type, refresh_token, and expiration from that existing account while allowing the caller to supply a different imap_server, imap_port, and imap_security in the same request. The test connection then authenticates to the caller-specified server using the real stored credentials. A user holding only object-level change_mailaccount permission o",
-    "severity": "medium",
-    "cve_id": "CVE-2026-71244",
-    "ghsa_id": "GHSA-666w-8983-6664",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-71244.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-9q89-f4h2-5wx7",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:32Z",
-    "title": "Book-Management-System's Flask API endpoints /student, /record, /books, /find_stu_book, and ...",
-    "description": "Book-Management-System's Flask API endpoints /student, /record, /books, /find_stu_book, and /find_not_return_book are missing the @login_required decorator that protects sibling routes (/search_student, /storage) in the same file. This allows any unauthenticated remote user to retrieve student PII (name, gender, card validity, debt status) and full book-borrowing history by supplying a card_id. Because card_id values are sequential integers, the entire student database can be enumerated without ",
-    "severity": "high",
-    "cve_id": "CVE-2026-71241",
-    "ghsa_id": "GHSA-9q89-f4h2-5wx7",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-71241.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-rq57-g9hr-4f9r",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:32Z",
-    "title": "Mautic's getLeadIdsByFieldValueAction (LeadBundle/Controller/AjaxController.php) reads a field...",
-    "description": "Mautic's getLeadIdsByFieldValueAction (LeadBundle/Controller/AjaxController.php) reads a field parameter from the request, sanitizes it only with InputHelper::clean() (which HTML-entity-encodes quotes and angle brackets but does not restrict other characters), and passes it into LeadRepository::buildQueryForGetLeadsByFieldValue() where it is concatenated directly as a raw SQL column identifier ($col = 'l.'.$field) rather than being validated against a whitelist of real column names or passed as ",
-    "severity": "high",
-    "cve_id": "CVE-2026-71245",
-    "ghsa_id": "GHSA-rq57-g9hr-4f9r",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-71245.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-2467-45mc-2xp5",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:32Z",
-    "title": "Crater's NotePolicy checks only a blanket Bouncer ability (manage-all-notes / view-all-notes)...",
-    "description": "Crater's NotePolicy checks only a blanket Bouncer ability (manage-all-notes / view-all-notes) with no company-ownership comparison, unlike InvoicePolicy and other sibling policies which additionally verify $user->hasCompany($model->company_id). NotesController's show(), update(), and destroy() actions authorize via $this->authorize('view notes'/'manage notes') without passing the target Note model, and Note's company-scoping (scopeWhereCompany) is applied only in the list endpoint, not in show/u",
-    "severity": "high",
-    "cve_id": "CVE-2026-71242",
-    "ghsa_id": "GHSA-2467-45mc-2xp5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-71242.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-v65x-57rf-cpg3",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:32Z",
-    "title": "Documenso's sign-field-with-token.ts, used by the live document-signing UI, allows a recipient...",
-    "description": "Documenso's sign-field-with-token.ts, used by the live document-signing UI, allows a recipient with the ASSISTANT role to fetch and complete fields belonging to any later-or-equal-order, not-yet-signed recipient in the same envelope, with no restriction on field type. The handler upserts a Signature record tied to the target field's recipientId with no check that field.type is SIGNATURE and the acting recipient owns it. A newer V2 signing path (sign-envelope-field.ts) explicitly blocks assistant",
-    "severity": "medium",
-    "cve_id": "CVE-2026-71247",
-    "ghsa_id": "GHSA-v65x-57rf-cpg3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-71247.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-5cfc-gvxj-5r55",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:32Z",
-    "title": "Pixelfed's SearchController (behind the auth middleware) accepts a URL via its remote-search...",
-    "description": "Pixelfed's SearchController (behind the auth middleware) accepts a URL via its remote-search parameters and fetches it server-side through ActivityPubFetchService, whose validateUrl() only blocks the literal hosts 127.0.0.1, localhost, and ::1 and requires https, without checking the resolved IP against private, internal, or link-local ranges (e.g. 169.254.169.254). Optional DNS validation is disabled by default and, when enabled, only confirms a DNS record exists without filtering by IP range. ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-71246",
-    "ghsa_id": "GHSA-5cfc-gvxj-5r55",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-71246.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-q389-cg45-h4hc",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-05T12:31:32Z",
-    "title": "DjangoCRM's toggle_default_sorting view is the only route in common/urls.py that is not wrapped...",
-    "description": "DjangoCRM's toggle_default_sorting view is the only route in common/urls.py that is not wrapped in login_required or staff_member_required, and it redirects to a caller-supplied next_url GET parameter after only checking secure_url(next_url), which merely verifies the target host matches the current site's domain (blocking only cross-domain redirects) while allowing any same-site path with no authentication required to reach the view. This enables unauthenticated phishing redirects and referrer-",
-    "severity": "medium",
-    "cve_id": "CVE-2026-71240",
-    "ghsa_id": "GHSA-q389-cg45-h4hc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-71240.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70433.",
       "affected_industries": [
         "Technology",
         "General"
