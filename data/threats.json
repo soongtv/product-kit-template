@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1786108730421-1",
+    "id": "twitter-1786129589248-1",
     "source": "Twitter Security",
-    "timestamp": "2026-08-07T13:18:50.421Z",
+    "timestamp": "2026-08-07T19:06:29.248Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1786108730421-1",
+    "id": "hn-1786129589248-1",
     "source": "HackerNews",
-    "timestamp": "2026-08-07T13:18:50.421Z",
+    "timestamp": "2026-08-07T19:06:29.248Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,21 +26,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-8pxm-cr92-crx8",
+    "id": "gh-GHSA-fwg2-594c-jp42",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:01Z",
-    "title": "A flaw was found in dracut. The die() error-handling function writes its message into a shell...",
-    "description": "A flaw was found in dracut. The die() error-handling function writes its message into a shell script under the initramfs emergency-hook directory without properly shell-quoting it. When the message contains data derived from the DHCP ROOT_PATH option, an attacker on the adjacent network who controls a rogue DHCP server can inject a command-substitution sequence that executes as root the next time dracut sources its emergency hook scripts during standard boot-failure handling.",
-    "severity": "high",
-    "cve_id": "CVE-2026-15816",
-    "ghsa_id": "GHSA-8pxm-cr92-crx8",
-    "affected_packages": [],
+    "timestamp": "2026-08-07T18:54:00Z",
+    "title": "pypdf: Possible long runtimes/large memory usage for large CID font width ranges",
+    "description": "### Impact\n\nAn attacker who uses this vulnerability can craft a PDF which leads to long runtimes and large memory consumption. This requires parsing the font width entries of a font with unusually large values, for example during text extraction.\n\n### Patches\n\nThis has been fixed in [pypdf==6.15.0](https://github.com/py-pdf/pypdf/releases/tag/6.15.0).\n\n### Workarounds\n\nIf you cannot upgrade yet, consider applying the changes from PR [#3946](https://github.com/py-pdf/pypdf/pull/3946).",
+    "severity": "medium",
+    "cve_id": "CVE-2026-71852",
+    "ghsa_id": "GHSA-fwg2-594c-jp42",
+    "affected_packages": [
+      "pypdf"
+    ],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
       null,
       null,
       null,
@@ -51,40 +51,180 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-r6vj-r3jc-f9gp",
+    "id": "gh-GHSA-rg76-677x-56q9",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:01Z",
-    "title": "Out-of-bounds Read vulnerability in Apache Fory C++ deserialization.\n\nThis issue affects Apache...",
-    "description": "Out-of-bounds Read vulnerability in Apache Fory C++ deserialization.\n\nThis issue affects Apache Fory C++ versions from 0.14.0 before 1.5.0 when deserializing structs containing tagged integer fields. A crafted input payload may trigger an out-of-bounds heap read in the tagged integer fast-path deserializer, potentially causing information disclosure or denial of service.\n\n\nUsers are recommended to upgrade to Apache Fory 1.5.0, which fixes this issue. Applications that do not use Apache Fory C++ ",
+    "timestamp": "2026-08-07T18:48:59Z",
+    "title": "crypto-js: Insufficient Entropy in Cryptographic Secret Generation via Vulnerable CryptoJS Dependency Chain",
+    "description": "### Summary\n\n`CryptoJS.lib.WordArray.random()` in affected versions is not a cryptographically secure random number generator. Nominal requests for 128 or 256 bits of entropy produce effective search spaces of approximately 2^39 and 2^47 possibilities — small enough to enumerate on commodity hardware.\n\nCoinspect's [Ill Bloom](https://www.coinspect.com/blog/ill-bloom-investigation/) investigation confirmed that downstream wallet applications used this function as the entropy source for BIP39 reco",
+    "severity": "critical",
+    "cve_id": "CVE-2026-71851",
+    "ghsa_id": "GHSA-rg76-677x-56q9",
+    "affected_packages": [
+      "crypto-js"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-f23p-vx2j-j53r",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T18:42:01Z",
+    "title": "Hono: `memo()` retains SSR output across requests, leading to cross-user data disclosure",
+    "description": "### Summary\n\n`memo()` from `hono/jsx` retains the result of a server-side render and reuses it for later renders with comparator-equal props. Request-scoped values read inside the component take no part in that comparison, so a response can contain HTML rendered for another user's request.\n\n### Details\n\nComponents wrapped with `memo()` are compared by props alone. Values read implicitly during rendering do not participate: JSX Context through `createContext()` and `useContext()`, `useRequestCont",
+    "severity": "medium",
+    "cve_id": "CVE-2026-71850",
+    "ghsa_id": "GHSA-f23p-vx2j-j53r",
+    "affected_packages": [
+      "hono"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-79qm-7rj5-m7r9",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T18:38:48Z",
+    "title": "Hono: Proxy Helper does not remove response headers listed in the `Connection` header",
+    "description": "### Summary\n\nThe Proxy Helper (`hono/proxy`) does not remove response headers named by the origin's `Connection` header. Headers that the origin marked as connection-scoped are therefore forwarded to clients.\n\n### Details\n\nPer RFC 9110 Section 7.6.1, an intermediary must remove the header fields listed in a message's `Connection` header field before forwarding the message, in addition to the well-known hop-by-hop headers. The `proxy()` function removed the well-known hop-by-hop headers (includin",
+    "severity": "low",
+    "cve_id": "CVE-2026-71849",
+    "ghsa_id": "GHSA-79qm-7rj5-m7r9",
+    "affected_packages": [
+      "hono"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-54fx-42gc-7vw4",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T18:36:31Z",
+    "title": "Hono: Algorithmic Complexity DoS in Language Middleware",
+    "description": "### Summary\n\nThe `languageDetector` middleware is vulnerable to algorithmic complexity denial of service when processing a crafted language tag containing a large number of hyphen-separated subtags.\n\n### Details\n\nTo implement progressive language-tag truncation, `normalizeLanguage()` repeatedly calls `parts.slice(0, i).join('-')` for every possible prefix. The total amount of string processing grows quadratically with the number of subtags.\n\nLanguage values may come from a query parameter, cooki",
+    "severity": "medium",
+    "cve_id": "CVE-2026-71848",
+    "ghsa_id": "GHSA-54fx-42gc-7vw4",
+    "affected_packages": [
+      "hono"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-9hj4-r449-hfvc",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T18:33:12Z",
+    "title": "Ruby JSON: JSON::ResumableParser#partial_value dereferences a freed input buffer and crashes on truncated duplicate-key streams",
+    "description": "### Summary\n\nRuby's JSON native C extension clears the consumed `JSON::ResumableParser` input buffer but leaves `state.start`, `state.cursor`, and `state.end` pointing into released storage.\n\nWhen `partial_value` reconstructs an incomplete object containing duplicate keys, the duplicate-key warning path calls `cursor_position`, which dereferences those stale pointers. This results in a heap-use-after-free and can terminate the Ruby process.\n\nAn attacker who can supply JSON stream data to an appl",
+    "severity": "low",
+    "cve_id": "CVE-2026-71847",
+    "ghsa_id": "GHSA-9hj4-r449-hfvc",
+    "affected_packages": [
+      "json"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-27h3-c9gv-83jx",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T18:31:46Z",
+    "title": "Improper privilege management in the XML-RPC API of Plesk before 18.0.80, allows an authenticated...",
+    "description": "Improper privilege management in the XML-RPC API of Plesk before 18.0.80, allows an authenticated reseller to obtain an administrative session for the root user account.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-64637",
+    "ghsa_id": "GHSA-27h3-c9gv-83jx",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-j4xg-65wf-c7hr",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T18:31:46Z",
+    "title": "An SQL injection vulnerability in Plesk Obsidian up to 18.0.80 for Linux and Windows allows an...",
+    "description": "An SQL injection vulnerability in Plesk Obsidian up to 18.0.80 for Linux and Windows allows an authenticated user to read arbitrary data from the panel database.",
+    "severity": "high",
+    "cve_id": "CVE-2026-64636",
+    "ghsa_id": "GHSA-j4xg-65wf-c7hr",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-9pjj-6mjx-mcc6",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T18:31:46Z",
+    "title": "On every successful login, the Datadog Android application calls FirebaseCrashlytics.setUserId...",
+    "description": "On every successful login, the Datadog Android application calls FirebaseCrashlytics.setUserId with the signed-in user's Datadog UUID — a stable per-user identifier that is meaningful inside Datadog. This associates the Datadog user UUID with the device's Firebase installation ID on Google's backend. Separately, uncaught exceptions are forwarded to Firebase Crashlytics via recordException, attaching stack traces (which may include internal class names, package names, in-flight data referenced by",
     "severity": "unknown",
-    "cve_id": "CVE-2026-71560",
-    "ghsa_id": "GHSA-r6vj-r3jc-f9gp",
+    "cve_id": "CVE-2026-47364",
+    "ghsa_id": "GHSA-9pjj-6mjx-mcc6",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3pfv-fvh9-ffrp",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:00Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox application implements an API endpoint that is...",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox application implements an API endpoint that is vulnerable to a \nbuffer overflow condition. By submitting a specially crafted JSON body, \nsuch as one that is at least 8 characters long and begins with a number,\n an unauthenticated attacker can cause the server to crash, resulting in\n denial of service. Depending on the stack state or if a stack canary \ncan be disclosed through another vulnerability, this buffer overflow \ncould potentially lead to remote co",
-    "severity": "critical",
-    "cve_id": "CVE-2026-54212",
-    "ghsa_id": "GHSA-3pfv-fvh9-ffrp",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
       null,
       null,
       null,
@@ -94,63 +234,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-wrxj-2wgm-px6x",
+    "id": "gh-GHSA-98h7-6m49-37qg",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:00Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox application exposes a functionality that allows the...",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox application exposes a functionality that allows the server to be \nshut down when a specific endpoint (/internalRestart) is accessed. This \nendpoint is accessible to unauthenticated users over the public \nInternet. Instead of “restarting”, the server shuts completely down. As a\n result, a remote attacker can trigger a persistent denial of service by\n shutting down the web server without requiring authentication. Recovery\n requires manual administrator inte",
-    "severity": "critical",
-    "cve_id": "CVE-2026-54213",
-    "ghsa_id": "GHSA-wrxj-2wgm-px6x",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-xjch-93pr-7c7c",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:00Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox application is vulnerable to HTTP header injection...",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox application is vulnerable to HTTP header injection through the \n“cType” URL parameter, which allows arbitrary modification of the \nContent-Type header in HTTP responses. Because the parameter does not \nproperly restrict control characters such as URL-encoded newlines \n(“%0a”) or colons, attackers can inject additional headers including \nextra Location headers into the server’s response. This results e.g. in \nan open redirect vulnerability. This issue affe",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54214",
-    "ghsa_id": "GHSA-xjch-93pr-7c7c",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-63m9-m4r7-4qjg",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:00Z",
-    "title": "Deserialization of Untrusted Data vulnerability in the Go implementation of Apache Fory allows an...",
-    "description": "Deserialization of Untrusted Data vulnerability in the Go implementation of Apache Fory allows an attacker to cause a denial of service by supplying crafted data containing malformed type metadata, which triggers an uncaught panic.\n\nThis issue affects Apache Fory: from 0.16.0 before 1.5.0.  Users of other language implementations are not affected.\n\nUsers are recommended to upgrade to version 1.5.0, which fixes the issue.",
+    "timestamp": "2026-08-07T18:31:46Z",
+    "title": "The Datadog Android application stores operationally sensitive content in plaintext SQLite...",
+    "description": "The Datadog Android application stores operationally sensitive content in plaintext SQLite databases via Room. Two databases were reviewed: LocalNotificationDatabase (table local_notifications, columns including title, message, recipient, service, tags, and on-call/incident deeplinks) and SearchRecentDatabase (table search_recents, storing every in-app search query the user typed).\nA repository-wide search for SQLCipher, SupportFactory, openHelperFactory, or any Room encryption configuration ret",
     "severity": "unknown",
-    "cve_id": "CVE-2026-71559",
-    "ghsa_id": "GHSA-63m9-m4r7-4qjg",
+    "cve_id": "CVE-2026-47362",
+    "ghsa_id": "GHSA-98h7-6m49-37qg",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null
@@ -159,40 +257,20 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-rwv5-p9fv-c8fp",
+    "id": "gh-GHSA-p6pw-xx6v-j4hh",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:00Z",
-    "title": "Heap type confusion vulnerability in Apache Fory C++ deserialization.\n\nThis issue affects Apache...",
-    "description": "Heap type confusion vulnerability in Apache Fory C++ deserialization.\n\nThis issue affects Apache Fory C++ versions from 0.14.0 before 1.5.0. A crafted input payload can bypass type compatibility checks during polymorphic smart-pointer deserialization, causing an object of an incompatible type to be treated as the declared base type. This may result in undefined behavior and potentially lead to denial of service or arbitrary code execution.\n\n\nUsers are recommended to upgrade to Apache Fory 1.5.0,",
+    "timestamp": "2026-08-07T18:31:46Z",
+    "title": "Six Android App Widget configuration activities in the Datadog Android application are declared...",
+    "description": "Six Android App Widget configuration activities in the Datadog Android application are declared android:exported=\"true\" with no permission guard: IncidentWidgetActivity, MonitorSavedViewWidgetActivity, OnCallShiftsWidgetActivity, OnCallPagesWidgetActivity, SloWidgetActivity, and DashboardWidgetActivity. All six extend a shared base WidgetActivity that reads AppWidgetManager.EXTRA_APPWIDGET_ID from Intent extras and, when no resolved deep-link destination is supplied, uses that caller-controlled ",
     "severity": "unknown",
-    "cve_id": "CVE-2026-71558",
-    "ghsa_id": "GHSA-rwv5-p9fv-c8fp",
+    "cve_id": "CVE-2026-44965",
+    "ghsa_id": "GHSA-p6pw-xx6v-j4hh",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-96qv-r2x5-ffch",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:00Z",
-    "title": "Use of hard-coded cryptographic key vulnerability in Tobit Laboratories AG TeamDavid's Webbox....",
-    "description": "Use of hard-coded cryptographic key vulnerability in Tobit Laboratories AG TeamDavid's Webbox. For users created locally in David, passwords are stored in various \nfiles using only obfuscation. Any user with access to the server’s file \nsystem, or who can otherwise extract files from the server (see \nvulnerability “Random File Read”), can potentially obtain affected \nusers’ passwords. This issue affects TeamDavid through Rollout 524.",
-    "severity": "high",
-    "cve_id": "CVE-2026-54218",
-    "ghsa_id": "GHSA-96qv-r2x5-ffch",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
       null,
       null,
       null,
@@ -202,14 +280,63 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-j27m-9gf8-vm7r",
+    "id": "gh-GHSA-22gg-289x-58qq",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:00Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox application is vulnerable to a stored XSS vulnerability....",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox application is vulnerable to a stored XSS vulnerability. An \nattacker can send an email containing malicious JavaScript code. When a \nuser accesses the email, the stored cross-site scripting is triggered. This issue affects TeamDavid through Rollout 524.",
+    "timestamp": "2026-08-07T18:31:46Z",
+    "title": "A vulnerability was identified in WonderTrader up to 0.9.9. Affected is the function _undone_qty...",
+    "description": "A vulnerability was identified in WonderTrader up to 0.9.9. Affected is the function _undone_qty in the library src/WtCore/TraderAdapter.h of the component Pending Order Handler. The manipulation of the argument getUndoneQty leads to enforcement of behavioral workflow. The attack is possible to be carried out remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "low",
+    "cve_id": "CVE-2026-19213",
+    "ghsa_id": "GHSA-22gg-289x-58qq",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-pqv7-r97g-wvjj",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T18:31:46Z",
+    "title": "A vulnerability was determined in SourceCodester Online Clothing Store. Affected by this issue is...",
+    "description": "A vulnerability was determined in SourceCodester Online Clothing Store. Affected by this issue is some unknown functionality of the file /_notes/ of the component Dreamweaver Metadata Files. Executing a manipulation can lead to file and directory information exposure. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized.",
     "severity": "medium",
-    "cve_id": "CVE-2026-54217",
-    "ghsa_id": "GHSA-j27m-9gf8-vm7r",
+    "cve_id": "CVE-2026-19229",
+    "ghsa_id": "GHSA-pqv7-r97g-wvjj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-3fqc-mc38-j2cm",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T18:31:46Z",
+    "title": "BubbleChatActivity in the Datadog Android application is declared android:exported=\"true\" with no...",
+    "description": "BubbleChatActivity in the Datadog Android application is declared android:exported=\"true\" with no permission guard and accepts a SEND intent with mimeType text/plain. The activity reads a conversation_id from Intent extras and, on onDestroy, calls BubbleChatNotification.dismiss whenever no active in-process session matches the caller-supplied conversation_id.\nBubbleChatNotification.dismiss unconditionally cancels notification ID 9201 — the hard-coded Bits AI chat notification — using Notificatio",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-47361",
+    "ghsa_id": "GHSA-3fqc-mc38-j2cm",
     "affected_packages": [],
     "cwes": [
       null
@@ -224,14 +351,37 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-wcq4-5c3j-fpmj",
+    "id": "gh-GHSA-jcqx-89jm-9vxr",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:00Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox  contains an open redirect vulnerability via the \n...",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox  contains an open redirect vulnerability via the \n“replyUrl” parameter. An attacker can exploit this vulnerability to \ncraft a URL within the application that, when visited, redirects the \nuser’s browser to an arbitrary third-party site. This can be abused for \nphishing attacks, where users receive a trusted domain link but are \nredirected to a phishing website. This issue affects TeamDavid through Rollout 524.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54215",
-    "ghsa_id": "GHSA-wcq4-5c3j-fpmj",
+    "timestamp": "2026-08-07T18:31:46Z",
+    "title": "The OnCallNotificationActivity in the Datadog Android application is declared android:exported=...",
+    "description": "The OnCallNotificationActivity in the Datadog Android application is declared android:exported=\"true\" in AndroidManifest.xml with no permission guard. Any co-installed application on the same device can launch it with attacker-controlled Intent extras: on_call_page_content (rendered as full-screen lock-screen text), page_id (used to enqueue an on-call Acknowledge worker), and on_call_page_intent, a Parcelable Intent that is passed through to startActivity from inside the Datadog process after a ",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-44964",
+    "ghsa_id": "GHSA-jcqx-89jm-9vxr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-j76g-qwmq-5grc",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T18:31:46Z",
+    "title": "The launcher activity AppActivity in the Datadog Android application is declared android:exported...",
+    "description": "The launcher activity AppActivity in the Datadog Android application is declared android:exported=\"true\" with launchMode=\"singleTask\" and no permission guard. On every onCreate and onNewIntent, it invokes Intent.getUserSession(), an extension that deserializes a full UserSession — user identity, OAuth access and refresh tokens, host, organization, datacenter, and permissions — from Bundle extras keyed under the com.datadog.app.* namespace. This extension lives in the main sourceset, not a test-o",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-47363",
+    "ghsa_id": "GHSA-j76g-qwmq-5grc",
     "affected_packages": [],
     "cwes": [
       null
@@ -246,86 +396,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-7rcg-qcqc-wfpx",
+    "id": "gh-GHSA-r446-3hx7-79p2",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:00Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox application contains a reflected cross-site scripting ...",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox application contains a reflected cross-site scripting (XSS) \nvulnerability. By sending a specially crafted link including an \narbitrary path, an XSS payload or the parameter “EntryInfo”, and the \nparameter “!templateName=entryMail”, an attacker can cause the payload \nto execute in the victim’s browser when they click the link. This issue affects TeamDavid through Rollout 524.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54216",
-    "ghsa_id": "GHSA-7rcg-qcqc-wfpx",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-m98g-956p-4hxc",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:00Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox application’s endpoint “//serverClient_close.html” is...",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox application’s endpoint “//serverClient_close.html” is vulnerable to a\n buffer overflow vulnerability in multiple form data parameters. By \nsubmitting excessively long values in these parameters, an authenticated\n attacker can trigger a server crash, resulting in denial of service. \nDepending on the stack state or if a stack canary can be disclosed \nthrough another vulnerability, this buffer overflow could potentially be\n exploited for remote code executio",
-    "severity": "critical",
-    "cve_id": "CVE-2026-54211",
-    "ghsa_id": "GHSA-m98g-956p-4hxc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-rghw-4g53-4wwv",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:00Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox application implements various file upload...",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox application implements various file upload functionalities that are \nvulnerable to a buffer overflow condition. By specifying an excessively \nlong filename in a file upload request, an unauthenticated attacker can \ntrigger a crash of the server, resulting in a denial of service. \nDepending on the stack state or if a stack canary can be disclosed \nthrough another vulnerability, this buffer overflow could potentially be\n exploited for remote code execution,",
-    "severity": "critical",
-    "cve_id": "CVE-2026-54210",
-    "ghsa_id": "GHSA-rghw-4g53-4wwv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-4x8q-mprg-xpmc",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:32:00Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox application handles password changes using a function...",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox application handles password changes using a function triggered by \nincluding the string \"(editini)\" in the file path, writing the new \npassword to the specified \"Archive.ini\" file. However, the application \ndoes not verify that the provided path actually refers to an \n\"Archive.ini\" file. If an attacker specifies a different file with \nexcessive size, a buffer overflow occurs. This vulnerability allows an \nunauthenticated attacker to crash the server, res",
+    "timestamp": "2026-08-07T18:31:45Z",
+    "title": "A vulnerability in the XAR file format parser of ClamAV could allow an unauthenticated, remote...",
+    "description": "A vulnerability in the XAR file format parser of ClamAV could allow an unauthenticated, remote attacker to cause a DoS condition or possibly other expanded impacts as a result of&nbsp;memory corruption on an affected device.\n\nThis vulnerability is due to improper boundary checks for content in XAR files during scanning. An attacker could exploit this vulnerability by submitting a crafted file that contains XAR content to be scanned by ClamAV on an affected device. A successful exploit could allo",
     "severity": "high",
-    "cve_id": "CVE-2026-54209",
-    "ghsa_id": "GHSA-4x8q-mprg-xpmc",
+    "cve_id": "CVE-2026-20348",
+    "ghsa_id": "GHSA-r446-3hx7-79p2",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null
@@ -334,41 +417,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-ppvf-phq2-5chq",
+    "id": "gh-GHSA-cvf2-gh5f-v69p",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:31:59Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox 's move archive functionality (“!ArcEntryMove”) accepts ...",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox 's move archive functionality (“!ArcEntryMove”) accepts \nan arbitrary path, which can be set to network locations using UNC paths\n (e.g., “\\\\Server\\Share”). The server processes these paths without \nvalidation, resulting in outbound connection attempts to \nattacker-controlled SMB servers. This enables au-thenticated attackers \nto trigger the server to authenticate to arbitrary SMB endpoints, \npotentially exposing NTLM authentication information (such as N",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54207",
-    "ghsa_id": "GHSA-ppvf-phq2-5chq",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-9qx3-7v72-8555",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:31:59Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox application is vulnerable to arbitrary file write,...",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox application is vulnerable to arbitrary file write, allowing an \nunauthenticated attacker to create or write into existing files on the \nserver with attacker-controlled content. This is possible because user \ninput is written directly to files without proper validation or \nrestriction on file types. As a result, an attacker can create files \n(e.g., .htm), containing malicious JavaScript code. When a user accesses\n a file created in this way, stored cross-s",
+    "timestamp": "2026-08-07T18:31:45Z",
+    "title": "Allocation of Resources Without Limits or Throttling vulnerability in DivvyPayHQ...",
+    "description": "Allocation of Resources Without Limits or Throttling vulnerability in DivvyPayHQ absinthe_federation allows an unauthenticated remote attacker to abort the Erlang VM via crafted _entities representation keys.\n\nEvery key of every object in the representations argument of the federation-mandated _entities field is converted with String.to_atom/1 by convert_key/2 in lib/absinthe/federation/schema/entities_field.ex. representations is typed as the open-ended _Any scalar, so its keys bypass schema co",
     "severity": "high",
-    "cve_id": "CVE-2026-54208",
-    "ghsa_id": "GHSA-9qx3-7v72-8555",
+    "cve_id": "CVE-2026-67585",
+    "ghsa_id": "GHSA-cvf2-gh5f-v69p",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null,
@@ -378,20 +441,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-9r62-vc7q-pm8j",
+    "id": "gh-GHSA-f8f4-wm7g-gp3c",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:31:58Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox  is vulnerable to a path traversal vulnerability in the ...",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox  is vulnerable to a path traversal vulnerability in the \narchive creation functionality. Because the archive path is \nuser-controlled and insufficiently validated, an attacker can manipulate\n the input to traverse directories. This allows the creation of folders \nin arbitrary locations, including sensitive directories such as \nC:\\Windows or for different users. This issue affects TeamDavid through Rollout 524.",
+    "timestamp": "2026-08-07T18:31:45Z",
+    "title": "A vulnerability in the PDF file format parser of ClamAV could allow an unauthenticated, remote...",
+    "description": "A vulnerability in the PDF file format parser of ClamAV could allow an unauthenticated, remote attacker to cause a DoS condition or possibly other expanded impacts as a result of&nbsp;memory corruption on an affected device.\n\nThis vulnerability is due to improper boundary checks for content in PDF files during scanning, which may result in an out-of-bounds buffer read. An attacker could exploit this vulnerability by submitting a crafted PDF file to be scanned by ClamAV on an affected device. A s",
     "severity": "high",
-    "cve_id": "CVE-2026-54202",
-    "ghsa_id": "GHSA-9r62-vc7q-pm8j",
+    "cve_id": "CVE-2026-20346",
+    "ghsa_id": "GHSA-f8f4-wm7g-gp3c",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null
@@ -400,64 +462,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-8rw4-wgvv-9v82",
+    "id": "gh-GHSA-g59m-qx73-q3c6",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:31:58Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox 's link storing functionality (//ServerClient_celink.htm...",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox 's link storing functionality (//ServerClient_celink.htm)\n accepts a “pathname” parameter, which can be set to network locations \nusing UNC paths (e.g., “\\\\Server\\Share”). The server processes these \npaths without validation, resulting in outbound connection attempts to \nattacker-controlled SMB servers. This enables authenticated attackers to\n trigger the server to authenticate to arbitrary SMB endpoints, \npotentially exposing NTLM authentication informat",
-    "severity": "medium",
-    "cve_id": "CVE-2026-54205",
-    "ghsa_id": "GHSA-8rw4-wgvv-9v82",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-v8q6-f954-39gq",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:31:58Z",
-    "title": "Memory Leak to an Unauthorized Actor vulnerability in Tobit Laboratories AG TeamDavid's Webbox...",
-    "description": "Memory Leak to an Unauthorized Actor vulnerability in Tobit Laboratories AG TeamDavid's Webbox allows reading of sensitive information. When accessing the URL “/.well-known/mta-sts.”, the application responds\n with memory. By repeatedly \nrequesting this endpoint, an attacker can access sensitive \ninformation, including user passwords. Exploitation does not require \nauthentication. This issue affects TeamDavid through Rollout 524.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-54203",
-    "ghsa_id": "GHSA-v8q6-f954-39gq",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-92px-7r7f-w562",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T12:31:58Z",
-    "title": "Tobit Laboratories AG TeamDavid's Webbox  is vulnerable to a local file inclusion vulnerability...",
-    "description": "Tobit Laboratories AG TeamDavid's Webbox  is vulnerable to a local file inclusion vulnerability in\n the send email, fax, SMS, etc. functionality. By specifying an '@@attach' command in the form field 'scjob', files can be attached to a message, \nwhich can then be downloaded by an authenticated user. A filter is in \nplace that restricts access to the David con-fig folder and the user \nfolder. However, this filter can be bypassed by specifying an alternate \ndata stream, allowing the download of se",
+    "timestamp": "2026-08-07T18:31:45Z",
+    "title": "A vulnerability in the PESpin file format parser of ClamAV could allow an unauthenticated, remote...",
+    "description": "A vulnerability in the PESpin file format parser of ClamAV could allow an unauthenticated, remote attacker to cause a DoS condition or possibly other expanded impacts as a result of&nbsp;memory corruption on an affected device.\n\nThis vulnerability is due to improper boundary checks for content in PESpin files during scanning, which may result in an integer overflow. An attacker could exploit this vulnerability by submitting a crafted file that contains PESpin content to be scanned by ClamAV on a",
     "severity": "high",
-    "cve_id": "CVE-2026-54200",
-    "ghsa_id": "GHSA-92px-7r7f-w562",
+    "cve_id": "CVE-2026-20339",
+    "ghsa_id": "GHSA-g59m-qx73-q3c6",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null
