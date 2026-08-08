@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1786129589248-1",
+    "id": "twitter-1786154651733-1",
     "source": "Twitter Security",
-    "timestamp": "2026-08-07T19:06:29.248Z",
+    "timestamp": "2026-08-08T02:04:11.733Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1786129589248-1",
+    "id": "hn-1786154651733-1",
     "source": "HackerNews",
-    "timestamp": "2026-08-07T19:06:29.248Z",
+    "timestamp": "2026-08-08T02:04:11.733Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,317 +52,23 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-fwg2-594c-jp42",
+    "id": "gh-GHSA-249c-prcg-5r96",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:54:00Z",
-    "title": "pypdf: Possible long runtimes/large memory usage for large CID font width ranges",
-    "description": "### Impact\n\nAn attacker who uses this vulnerability can craft a PDF which leads to long runtimes and large memory consumption. This requires parsing the font width entries of a font with unusually large values, for example during text extraction.\n\n### Patches\n\nThis has been fixed in [pypdf==6.15.0](https://github.com/py-pdf/pypdf/releases/tag/6.15.0).\n\n### Workarounds\n\nIf you cannot upgrade yet, consider applying the changes from PR [#3946](https://github.com/py-pdf/pypdf/pull/3946).",
-    "severity": "medium",
-    "cve_id": "CVE-2026-71852",
-    "ghsa_id": "GHSA-fwg2-594c-jp42",
-    "affected_packages": [
-      "pypdf"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-71852.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-rg76-677x-56q9",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:48:59Z",
-    "title": "crypto-js: Insufficient Entropy in Cryptographic Secret Generation via Vulnerable CryptoJS Dependency Chain",
-    "description": "### Summary\n\n`CryptoJS.lib.WordArray.random()` in affected versions is not a cryptographically secure random number generator. Nominal requests for 128 or 256 bits of entropy produce effective search spaces of approximately 2^39 and 2^47 possibilities — small enough to enumerate on commodity hardware.\n\nCoinspect's [Ill Bloom](https://www.coinspect.com/blog/ill-bloom-investigation/) investigation confirmed that downstream wallet applications used this function as the entropy source for BIP39 reco",
-    "severity": "critical",
-    "cve_id": "CVE-2026-71851",
-    "ghsa_id": "GHSA-rg76-677x-56q9",
-    "affected_packages": [
-      "crypto-js"
-    ],
-    "cwes": [
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-71851.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-f23p-vx2j-j53r",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:42:01Z",
-    "title": "Hono: `memo()` retains SSR output across requests, leading to cross-user data disclosure",
-    "description": "### Summary\n\n`memo()` from `hono/jsx` retains the result of a server-side render and reuses it for later renders with comparator-equal props. Request-scoped values read inside the component take no part in that comparison, so a response can contain HTML rendered for another user's request.\n\n### Details\n\nComponents wrapped with `memo()` are compared by props alone. Values read implicitly during rendering do not participate: JSX Context through `createContext()` and `useContext()`, `useRequestCont",
-    "severity": "medium",
-    "cve_id": "CVE-2026-71850",
-    "ghsa_id": "GHSA-f23p-vx2j-j53r",
-    "affected_packages": [
-      "hono"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-71850.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-79qm-7rj5-m7r9",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:38:48Z",
-    "title": "Hono: Proxy Helper does not remove response headers listed in the `Connection` header",
-    "description": "### Summary\n\nThe Proxy Helper (`hono/proxy`) does not remove response headers named by the origin's `Connection` header. Headers that the origin marked as connection-scoped are therefore forwarded to clients.\n\n### Details\n\nPer RFC 9110 Section 7.6.1, an intermediary must remove the header fields listed in a message's `Connection` header field before forwarding the message, in addition to the well-known hop-by-hop headers. The `proxy()` function removed the well-known hop-by-hop headers (includin",
-    "severity": "low",
-    "cve_id": "CVE-2026-71849",
-    "ghsa_id": "GHSA-79qm-7rj5-m7r9",
-    "affected_packages": [
-      "hono"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-71849.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-54fx-42gc-7vw4",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:36:31Z",
-    "title": "Hono: Algorithmic Complexity DoS in Language Middleware",
-    "description": "### Summary\n\nThe `languageDetector` middleware is vulnerable to algorithmic complexity denial of service when processing a crafted language tag containing a large number of hyphen-separated subtags.\n\n### Details\n\nTo implement progressive language-tag truncation, `normalizeLanguage()` repeatedly calls `parts.slice(0, i).join('-')` for every possible prefix. The total amount of string processing grows quadratically with the number of subtags.\n\nLanguage values may come from a query parameter, cooki",
-    "severity": "medium",
-    "cve_id": "CVE-2026-71848",
-    "ghsa_id": "GHSA-54fx-42gc-7vw4",
-    "affected_packages": [
-      "hono"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-71848.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-9hj4-r449-hfvc",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:33:12Z",
-    "title": "Ruby JSON: JSON::ResumableParser#partial_value dereferences a freed input buffer and crashes on truncated duplicate-key streams",
-    "description": "### Summary\n\nRuby's JSON native C extension clears the consumed `JSON::ResumableParser` input buffer but leaves `state.start`, `state.cursor`, and `state.end` pointing into released storage.\n\nWhen `partial_value` reconstructs an incomplete object containing duplicate keys, the duplicate-key warning path calls `cursor_position`, which dereferences those stale pointers. This results in a heap-use-after-free and can terminate the Ruby process.\n\nAn attacker who can supply JSON stream data to an appl",
-    "severity": "low",
-    "cve_id": "CVE-2026-71847",
-    "ghsa_id": "GHSA-9hj4-r449-hfvc",
-    "affected_packages": [
-      "json"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-71847.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-27h3-c9gv-83jx",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:46Z",
-    "title": "Improper privilege management in the XML-RPC API of Plesk before 18.0.80, allows an authenticated...",
-    "description": "Improper privilege management in the XML-RPC API of Plesk before 18.0.80, allows an authenticated reseller to obtain an administrative session for the root user account.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-64637",
-    "ghsa_id": "GHSA-27h3-c9gv-83jx",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-64637.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-j4xg-65wf-c7hr",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:46Z",
-    "title": "An SQL injection vulnerability in Plesk Obsidian up to 18.0.80 for Linux and Windows allows an...",
-    "description": "An SQL injection vulnerability in Plesk Obsidian up to 18.0.80 for Linux and Windows allows an authenticated user to read arbitrary data from the panel database.",
-    "severity": "high",
-    "cve_id": "CVE-2026-64636",
-    "ghsa_id": "GHSA-j4xg-65wf-c7hr",
+    "timestamp": "2026-08-08T00:31:09Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2025-4438",
+    "ghsa_id": "GHSA-249c-prcg-5r96",
     "affected_packages": [],
     "cwes": [],
     "references": [
       null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-64636.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-9pjj-6mjx-mcc6",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:46Z",
-    "title": "On every successful login, the Datadog Android application calls FirebaseCrashlytics.setUserId...",
-    "description": "On every successful login, the Datadog Android application calls FirebaseCrashlytics.setUserId with the signed-in user's Datadog UUID — a stable per-user identifier that is meaningful inside Datadog. This associates the Datadog user UUID with the device's Firebase installation ID on Google's backend. Separately, uncaught exceptions are forwarded to Firebase Crashlytics via recordException, attaching stack traces (which may include internal class names, package names, in-flight data referenced by",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-47364",
-    "ghsa_id": "GHSA-9pjj-6mjx-mcc6",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-47364.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2025-4438.",
       "affected_industries": [
         "Technology",
         "General"
@@ -377,14 +83,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-98h7-6m49-37qg",
+    "id": "gh-GHSA-7f4x-hjwm-h5px",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:46Z",
-    "title": "The Datadog Android application stores operationally sensitive content in plaintext SQLite...",
-    "description": "The Datadog Android application stores operationally sensitive content in plaintext SQLite databases via Room. Two databases were reviewed: LocalNotificationDatabase (table local_notifications, columns including title, message, recipient, service, tags, and on-call/incident deeplinks) and SearchRecentDatabase (table search_recents, storing every in-app search query the user typed).\nA repository-wide search for SQLCipher, SupportFactory, openHelperFactory, or any Room encryption configuration ret",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-47362",
-    "ghsa_id": "GHSA-98h7-6m49-37qg",
+    "timestamp": "2026-08-07T21:30:41Z",
+    "title": "An input validation\nvulnerability exists in the HTTP-WRITEOEM handler due to insufficient...",
+    "description": "An input validation\nvulnerability exists in the HTTP-WRITEOEM handler due to insufficient validation\nof user-supplied data before it is processed by internal flash-write handling\nlogic.\n\n\n\n\n\n\n\n\n\nSuccessful\nexploitation may cause httpd process or device to crash, resulting in loss of access\nto the web interface and a denial-of-service condition.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9031",
+    "ghsa_id": "GHSA-7f4x-hjwm-h5px",
     "affected_packages": [],
     "cwes": [
       null
@@ -398,7 +104,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-47362.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9031.",
       "affected_industries": [
         "Technology",
         "General"
@@ -413,14 +119,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-p6pw-xx6v-j4hh",
+    "id": "gh-GHSA-r6p4-crm5-rwvh",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:46Z",
-    "title": "Six Android App Widget configuration activities in the Datadog Android application are declared...",
-    "description": "Six Android App Widget configuration activities in the Datadog Android application are declared android:exported=\"true\" with no permission guard: IncidentWidgetActivity, MonitorSavedViewWidgetActivity, OnCallShiftsWidgetActivity, OnCallPagesWidgetActivity, SloWidgetActivity, and DashboardWidgetActivity. All six extend a shared base WidgetActivity that reads AppWidgetManager.EXTRA_APPWIDGET_ID from Intent extras and, when no resolved deep-link destination is supplied, uses that caller-controlled ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-44965",
-    "ghsa_id": "GHSA-p6pw-xx6v-j4hh",
+    "timestamp": "2026-08-07T21:30:40Z",
+    "title": "A denial-of-service\nvulnerability exists in httpd service on Archer A6 v4 where the asynchronous...",
+    "description": "A denial-of-service\nvulnerability exists in httpd service on Archer A6 v4 where the asynchronous systool\ninstruction handlng path in httpd does not properly synchronize or safely manage\nconcurrent systool operations.  \n\n\n\n\n\nBy sending\ncrafted systool instructions through the asynchronous request path, successful\nexploitation may cause the httpd process or device management service to crash\nand may result in temporary loss of access to the web management interface or\ndevice reboot.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9030",
+    "ghsa_id": "GHSA-r6p4-crm5-rwvh",
     "affected_packages": [],
     "cwes": [
       null
@@ -434,7 +140,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-44965.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9030.",
       "affected_industries": [
         "Technology",
         "General"
@@ -449,19 +155,115 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-22gg-289x-58qq",
+    "id": "gh-GHSA-p7gg-5q8m-4jgm",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:46Z",
-    "title": "A vulnerability was identified in WonderTrader up to 0.9.9. Affected is the function _undone_qty...",
-    "description": "A vulnerability was identified in WonderTrader up to 0.9.9. Affected is the function _undone_qty in the library src/WtCore/TraderAdapter.h of the component Pending Order Handler. The manipulation of the argument getUndoneQty leads to enforcement of behavioral workflow. The attack is possible to be carried out remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "low",
-    "cve_id": "CVE-2026-19213",
-    "ghsa_id": "GHSA-22gg-289x-58qq",
+    "timestamp": "2026-08-07T21:30:40Z",
+    "title": "Adobe Genuine Software Integrity Service was affected by an Incorrect Authorization vulnerability...",
+    "description": "Adobe Genuine Software Integrity Service was affected by an Incorrect Authorization vulnerability that could result in a Security feature bypass. An attacker could have leveraged this vulnerability to bypass security measures and gain unauthorized limited write access. Exploitation of this issue did not require user interaction, but required the attacker to have access to the local environment the application is installed on.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-71381",
+    "ghsa_id": "GHSA-p7gg-5q8m-4jgm",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-71381.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-96hp-j633-3qr3",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T21:30:40Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70623",
+    "ghsa_id": "GHSA-96hp-j633-3qr3",
     "affected_packages": [],
     "cwes": [],
     "references": [
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70623.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-mqmw-wv6f-6jvh",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T21:30:40Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-70624",
+    "ghsa_id": "GHSA-mqmw-wv6f-6jvh",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-70624.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-3f8p-349v-j5h8",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T21:30:39Z",
+    "title": "Domoticz versions prior to 2026.3 contains a stored cross-site scripting vulnerability in the...",
+    "description": "Domoticz versions prior to 2026.3 contains a stored cross-site scripting vulnerability in the mobile dashboard that allows authenticated attackers to inject arbitrary HTML and JavaScript by updating Text or Alert subtype device values through the API. The mobile dashboard renders device data via ng-bind-html with only an nl2br() transform that performs no HTML escaping, allowing attackers to store malicious payloads that execute in any administrator's browser upon viewing the mobile dashboard, e",
+    "severity": "low",
+    "cve_id": "CVE-2026-11425",
+    "ghsa_id": "GHSA-3f8p-349v-j5h8",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null,
@@ -470,7 +272,7 @@
     ],
     "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-19213.",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-11425.",
       "affected_industries": [
         "Technology",
         "General"
@@ -485,14 +287,14 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-pqv7-r97g-wvjj",
+    "id": "gh-GHSA-hfxr-wggc-4cr6",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:46Z",
-    "title": "A vulnerability was determined in SourceCodester Online Clothing Store. Affected by this issue is...",
-    "description": "A vulnerability was determined in SourceCodester Online Clothing Store. Affected by this issue is some unknown functionality of the file /_notes/ of the component Dreamweaver Metadata Files. Executing a manipulation can lead to file and directory information exposure. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-19229",
-    "ghsa_id": "GHSA-pqv7-r97g-wvjj",
+    "timestamp": "2026-08-07T21:30:39Z",
+    "title": "A flaw has been found in HKUDS nanobot up to 0.2.1. The impacted element is the function ExecTool...",
+    "description": "A flaw has been found in HKUDS nanobot up to 0.2.1. The impacted element is the function ExecTool._prepare_command of the file nanobot/agent/tools/shell.py of the component Login-shell Environment Handler. Executing a manipulation can lead to information disclosure. The attack requires local access. The exploit has been published and may be used. Upgrading to version 0.3.0 is sufficient to resolve this issue. This patch is called 4525. The affected component should be upgraded. Multiple issues w",
+    "severity": "low",
+    "cve_id": "CVE-2026-19245",
+    "ghsa_id": "GHSA-hfxr-wggc-4cr6",
     "affected_packages": [],
     "cwes": [
       null
@@ -505,11 +307,14 @@
       null,
       null,
       null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-19229.",
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-19245.",
       "affected_industries": [
         "Technology",
         "General"
@@ -519,19 +324,19 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "low"
     },
-    "risk_score": 50
+    "risk_score": 25
   },
   {
-    "id": "gh-GHSA-3fqc-mc38-j2cm",
+    "id": "gh-GHSA-q437-rgxw-hhjh",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:46Z",
-    "title": "BubbleChatActivity in the Datadog Android application is declared android:exported=\"true\" with no...",
-    "description": "BubbleChatActivity in the Datadog Android application is declared android:exported=\"true\" with no permission guard and accepts a SEND intent with mimeType text/plain. The activity reads a conversation_id from Intent extras and, on onDestroy, calls BubbleChatNotification.dismiss whenever no active in-process session matches the caller-supplied conversation_id.\nBubbleChatNotification.dismiss unconditionally cancels notification ID 9201 — the hard-coded Bits AI chat notification — using Notificatio",
+    "timestamp": "2026-08-07T21:30:39Z",
+    "title": "SonicWall Global VPN Client version 4.10.8.1108 and earlier is vulnerable to an out-of-bounds...",
+    "description": "SonicWall Global VPN Client version 4.10.8.1108 and earlier is vulnerable to an out-of-bounds kernel memory read in the SWIPsec.sys driver, which could allow a local attacker to cause a system crash.",
     "severity": "unknown",
-    "cve_id": "CVE-2026-47361",
-    "ghsa_id": "GHSA-3fqc-mc38-j2cm",
+    "cve_id": "CVE-2026-66151",
+    "ghsa_id": "GHSA-q437-rgxw-hhjh",
     "affected_packages": [],
     "cwes": [
       null
@@ -539,12 +344,11 @@
     "references": [
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-47361.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-66151.",
       "affected_industries": [
         "Technology",
         "General"
@@ -559,119 +363,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-jcqx-89jm-9vxr",
+    "id": "gh-GHSA-g4fw-p4hw-gq39",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:46Z",
-    "title": "The OnCallNotificationActivity in the Datadog Android application is declared android:exported=...",
-    "description": "The OnCallNotificationActivity in the Datadog Android application is declared android:exported=\"true\" in AndroidManifest.xml with no permission guard. Any co-installed application on the same device can launch it with attacker-controlled Intent extras: on_call_page_content (rendered as full-screen lock-screen text), page_id (used to enqueue an on-call Acknowledge worker), and on_call_page_intent, a Parcelable Intent that is passed through to startActivity from inside the Datadog process after a ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-44964",
-    "ghsa_id": "GHSA-jcqx-89jm-9vxr",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-44964.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-j76g-qwmq-5grc",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:46Z",
-    "title": "The launcher activity AppActivity in the Datadog Android application is declared android:exported...",
-    "description": "The launcher activity AppActivity in the Datadog Android application is declared android:exported=\"true\" with launchMode=\"singleTask\" and no permission guard. On every onCreate and onNewIntent, it invokes Intent.getUserSession(), an extension that deserializes a full UserSession — user identity, OAuth access and refresh tokens, host, organization, datacenter, and permissions — from Bundle extras keyed under the com.datadog.app.* namespace. This extension lives in the main sourceset, not a test-o",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-47363",
-    "ghsa_id": "GHSA-j76g-qwmq-5grc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-47363.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-r446-3hx7-79p2",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:45Z",
-    "title": "A vulnerability in the XAR file format parser of ClamAV could allow an unauthenticated, remote...",
-    "description": "A vulnerability in the XAR file format parser of ClamAV could allow an unauthenticated, remote attacker to cause a DoS condition or possibly other expanded impacts as a result of&nbsp;memory corruption on an affected device.\n\nThis vulnerability is due to improper boundary checks for content in XAR files during scanning. An attacker could exploit this vulnerability by submitting a crafted file that contains XAR content to be scanned by ClamAV on an affected device. A successful exploit could allo",
-    "severity": "high",
-    "cve_id": "CVE-2026-20348",
-    "ghsa_id": "GHSA-r446-3hx7-79p2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-20348.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-cvf2-gh5f-v69p",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:45Z",
-    "title": "Allocation of Resources Without Limits or Throttling vulnerability in DivvyPayHQ...",
-    "description": "Allocation of Resources Without Limits or Throttling vulnerability in DivvyPayHQ absinthe_federation allows an unauthenticated remote attacker to abort the Erlang VM via crafted _entities representation keys.\n\nEvery key of every object in the representations argument of the federation-mandated _entities field is converted with String.to_atom/1 by convert_key/2 in lib/absinthe/federation/schema/entities_field.ex. representations is typed as the open-ended _Any scalar, so its keys bypass schema co",
-    "severity": "high",
-    "cve_id": "CVE-2026-67585",
-    "ghsa_id": "GHSA-cvf2-gh5f-v69p",
+    "timestamp": "2026-08-07T21:30:39Z",
+    "title": "A vulnerability has been found in HKUDS nanobot up to 0.2.1. This affects the function...",
+    "description": "A vulnerability has been found in HKUDS nanobot up to 0.2.1. This affects the function _download_image_data_url of the file nanobot/providers/image_generation.py of the component Provider-returned Image URL Handler. The manipulation leads to server-side request forgery. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used. The identifier of the patch is 5095. It is recommended to apply a patch to fix this issue. The vendor explains: \"We con",
+    "severity": "low",
+    "cve_id": "CVE-2026-19246",
+    "ghsa_id": "GHSA-g4fw-p4hw-gq39",
     "affected_packages": [],
     "cwes": [
       null
@@ -682,11 +381,14 @@
       null,
       null,
       null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-67585.",
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-19246.",
       "affected_industries": [
         "Technology",
         "General"
@@ -696,19 +398,19 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "low"
     },
-    "risk_score": 75
+    "risk_score": 25
   },
   {
-    "id": "gh-GHSA-f8f4-wm7g-gp3c",
+    "id": "gh-GHSA-qwp6-wxvx-2jc8",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:45Z",
-    "title": "A vulnerability in the PDF file format parser of ClamAV could allow an unauthenticated, remote...",
-    "description": "A vulnerability in the PDF file format parser of ClamAV could allow an unauthenticated, remote attacker to cause a DoS condition or possibly other expanded impacts as a result of&nbsp;memory corruption on an affected device.\n\nThis vulnerability is due to improper boundary checks for content in PDF files during scanning, which may result in an out-of-bounds buffer read. An attacker could exploit this vulnerability by submitting a crafted PDF file to be scanned by ClamAV on an affected device. A s",
-    "severity": "high",
-    "cve_id": "CVE-2026-20346",
-    "ghsa_id": "GHSA-f8f4-wm7g-gp3c",
+    "timestamp": "2026-08-07T21:30:39Z",
+    "title": "A vulnerability was detected in HKUDS nanobot up to 0.2.1. The affected element is the function...",
+    "description": "A vulnerability was detected in HKUDS nanobot up to 0.2.1. The affected element is the function connect_mcp_servers of the file nanobot/agent/tools/mcp.py of the component MCP enabledTools Scope Handler. Performing a manipulation results in improper access controls. The attack is possible to be carried out remotely. The exploit is now public and may be used. Upgrading to version 0.3.0 is sufficient to fix this issue. The patch is named 4436. You should upgrade the affected component. Multiple is",
+    "severity": "low",
+    "cve_id": "CVE-2026-19244",
+    "ghsa_id": "GHSA-qwp6-wxvx-2jc8",
     "affected_packages": [],
     "cwes": [
       null
@@ -716,11 +418,20 @@
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-20346.",
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-19244.",
       "affected_industries": [
         "Technology",
         "General"
@@ -730,19 +441,19 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "low"
     },
-    "risk_score": 75
+    "risk_score": 25
   },
   {
-    "id": "gh-GHSA-g59m-qx73-q3c6",
+    "id": "gh-GHSA-m259-67hc-p7v5",
     "source": "GitHub Security",
-    "timestamp": "2026-08-07T18:31:45Z",
-    "title": "A vulnerability in the PESpin file format parser of ClamAV could allow an unauthenticated, remote...",
-    "description": "A vulnerability in the PESpin file format parser of ClamAV could allow an unauthenticated, remote attacker to cause a DoS condition or possibly other expanded impacts as a result of&nbsp;memory corruption on an affected device.\n\nThis vulnerability is due to improper boundary checks for content in PESpin files during scanning, which may result in an integer overflow. An attacker could exploit this vulnerability by submitting a crafted file that contains PESpin content to be scanned by ClamAV on a",
-    "severity": "high",
-    "cve_id": "CVE-2026-20339",
-    "ghsa_id": "GHSA-g59m-qx73-q3c6",
+    "timestamp": "2026-08-07T21:30:38Z",
+    "title": "A security vulnerability has been detected in HKUDS nanobot up to 0.2.1. Impacted is the function...",
+    "description": "A security vulnerability has been detected in HKUDS nanobot up to 0.2.1. Impacted is the function ExecTool._guard_command/ExecTool._spawn of the file nanobot/agent/tools/shell.py of the component Shell Allowlist Handler. Such manipulation leads to os command injection. The attack can be executed remotely. The exploit has been disclosed publicly and may be used. Upgrading to version 0.3.0 is recommended to address this issue. The name of the patch is 4562. It is advisable to upgrade the affected ",
+    "severity": "low",
+    "cve_id": "CVE-2026-19243",
+    "ghsa_id": "GHSA-m259-67hc-p7v5",
     "affected_packages": [],
     "cwes": [
       null
@@ -750,11 +461,23 @@
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-20339.",
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-19243.",
       "affected_industries": [
         "Technology",
         "General"
@@ -764,29 +487,31 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "low"
     },
-    "risk_score": 75
+    "risk_score": 25
   },
   {
-    "id": "cve-CVE-2026-55495",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-31T04:17:22.597",
-    "title": "CVE-2026-55495 - Cloudreve is a self-hosted file management and sharing system. Prior to 4.17.0, the WOPI PUT_RELATIV",
-    "description": "Cloudreve is a self-hosted file management and sharing system. Prior to 4.17.0, the WOPI PUT_RELATIVE handler passes X-WOPI-SuggestedTarget to URI.JoinRaw as a path rather than a filename, allowing slash and dot-dot segments to escape the source file directory and create or conditionally overwrite files elsewhere in the same owner account. This issue is fixed in version 4.17.0.",
+    "id": "gh-GHSA-jgv4-5fjv-3xp7",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T21:30:37Z",
+    "title": "Consul Community Edition and Consul Enterprise 1.18.21 through 2.0.2 are vulnerable to a partial...",
+    "description": "Consul Community Edition and Consul Enterprise 1.18.21 through 2.0.2 are vulnerable to a partial arbitrary file read when configured to use the Vault Connect CA provider with JWT or AppRole authentication. A privileged attacker with `operator:write` permission may direct Consul to read and forward credential files outside the intended scope, potentially leading to the exfiltration of sensitive secrets from the Consul server host. This vulnerability, CVE-2026-19017, is fixed in Consul 2.0.3 and C",
     "severity": "medium",
-    "cve_id": "CVE-2026-55495",
-    "cvss_score": 4.3,
-    "affected_products": [],
+    "cve_id": "CVE-2026-19017",
+    "ghsa_id": "GHSA-jgv4-5fjv-3xp7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://github.com/cloudreve/cloudreve/commit/7968e50429efab40ffa8f57fecdfbd5a73d23630",
-      "https://github.com/cloudreve/cloudreve/releases/tag/4.17.0",
-      "https://github.com/cloudreve/cloudreve/security/advisories/GHSA-49h3-cwhj-4737",
-      "https://github.com/cloudreve/cloudreve/security/advisories/GHSA-49h3-cwhj-4737"
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-55495.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-19017.",
       "affected_industries": [
         "Technology",
         "General"
@@ -798,24 +523,29 @@
       ],
       "urgency": "medium"
     },
-    "risk_score": 60
+    "risk_score": 50
   },
   {
-    "id": "cve-CVE-2026-43833",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-31T04:17:22.380",
-    "title": "CVE-2026-43833 - Full details and mitigation steps are currently restricted and will be published at a later date.",
-    "description": "Full details and mitigation steps are currently restricted and will be published at a later date.",
+    "id": "gh-GHSA-hh64-grcp-prv8",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T21:30:37Z",
+    "title": "Consul Community Edition and Consul Enterprise 1.18.0 through 2.0.2 are vulnerable to an...",
+    "description": "Consul Community Edition and Consul Enterprise 1.18.0 through 2.0.2 are vulnerable to an authenticated denial of service in the Enterprise-to-Community Edition downgrade path that may allow an authorized caller to crash the Consul server. A caller with config-entry write permission can submit a service-router configuration entry that causes the agent to exit unexpectedly. This vulnerability, CVE-2026-19012, is fixed in Consul 2.0.3 and Consul Enterprise 1.21.17, 1.22.11, and 2.0.3.",
     "severity": "medium",
-    "cve_id": "CVE-2026-43833",
-    "cvss_score": 5.3,
-    "affected_products": [],
+    "cve_id": "CVE-2026-19012",
+    "ghsa_id": "GHSA-hh64-grcp-prv8",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-xxx"
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-43833.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-19012.",
       "affected_industries": [
         "Technology",
         "General"
@@ -827,24 +557,209 @@
       ],
       "urgency": "medium"
     },
-    "risk_score": 60
+    "risk_score": 50
   },
   {
-    "id": "cve-CVE-2026-43832",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-31T04:17:22.187",
-    "title": "CVE-2026-43832 - Full details and mitigation steps are currently restricted and will be published at a later date.",
-    "description": "Full details and mitigation steps are currently restricted and will be published at a later date.",
-    "severity": "high",
-    "cve_id": "CVE-2026-43832",
-    "cvss_score": 7.5,
-    "affected_products": [],
+    "id": "gh-GHSA-7qhj-3fg3-mh5r",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T21:30:37Z",
+    "title": "Consul Community Edition and Consul Enterprise 1.19.1 through 2.0.2 did not enforce the {{session...",
+    "description": "Consul Community Edition and Consul Enterprise 1.19.1 through 2.0.2 did not enforce the {{session:write}} ACL permission for session deletion operations submitted through the transaction API. An authenticated caller with network access to the Consul server RPC port could delete arbitrary sessions without holding the required permission. This vulnerability, CVE-2026-19016, is fixed in Consul 2.0.3 and Consul Enterprise 1.21.17, 1.22.11, and 2.0.3.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-19016",
+    "ghsa_id": "GHSA-7qhj-3fg3-mh5r",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-xxx"
+      null,
+      null,
+      null
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-43832.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-19016.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-rwp8-hj7g-qrh8",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T21:30:37Z",
+    "title": "Consul Community Edition and Consul Enterprise 1.17.0 through 2.0.2 are vulnerable to an...",
+    "description": "Consul Community Edition and Consul Enterprise 1.17.0 through 2.0.2 are vulnerable to an uncontrolled resource consumption issue in the Connect authorization endpoint that may allow a caller to grow the agent's intention-match cache without bound, defeating the operator's cache-disable configuration. This vulnerability, CVE-2026-190124, is fixed in Consul 2.0.3 and Consul Enterprise 1.21.17, 1.22.11, and 2.0.3.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-19014",
+    "ghsa_id": "GHSA-rwp8-hj7g-qrh8",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-19014.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-h928-jqxm-5f3x",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T21:30:37Z",
+    "title": "Consul Community Edition and Consul Enterprise 1.20.1 through 2.0.2 are vulnerable to an L7...",
+    "description": "Consul Community Edition and Consul Enterprise 1.20.1 through 2.0.2 are vulnerable to an L7 intention authorization bypass when a service proxy is configured with a custom public listener. An authenticated mesh workload may reach HTTP paths that are blocked by a path-based deny intention. This vulnerability, CVE-2026-15970, is fixed in Consul 2.0.3 and Consul Enterprise 1.21.17, 1.22.11, and 2.0.3.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-15970",
+    "ghsa_id": "GHSA-h928-jqxm-5f3x",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-15970.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-6xff-q3mm-r426",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T21:30:37Z",
+    "title": "A security flaw has been discovered in SourceCodester Simple Doctors Appointment System 1.0. This...",
+    "description": "A security flaw has been discovered in SourceCodester Simple Doctors Appointment System 1.0. This vulnerability affects unknown code of the file /admin/ajax.php?action=delete_appointment. The manipulation of the argument ID results in sql injection. The attack may be launched remotely. The exploit has been released to the public and may be used for attacks.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-19231",
+    "ghsa_id": "GHSA-6xff-q3mm-r426",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-19231.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-395c-4p59-c3px",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T21:30:37Z",
+    "title": "A vulnerability was identified in SourceCodester Photo Share Website 1.0. This affects an unknown...",
+    "description": "A vulnerability was identified in SourceCodester Photo Share Website 1.0. This affects an unknown part of the file /social/ajax.php?action=save_upload of the component Comment Input Box. The manipulation of the argument content leads to cross site scripting. The attack may be initiated remotely. The exploit is publicly available and might be used.",
+    "severity": "low",
+    "cve_id": "CVE-2026-19230",
+    "ghsa_id": "GHSA-395c-4p59-c3px",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-19230.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-699f-92f5-m297",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-07T21:30:37Z",
+    "title": "Consul Community Edition and Consul Enterprise 1.13.0 through 2.0.2 are vulnerable to an...",
+    "description": "Consul Community Edition and Consul Enterprise 1.13.0 through 2.0.2 are vulnerable to an unauthenticated denial of service through unbounded connection acceptance on the external gRPC listeners. A remote attacker may exhaust agent file descriptors, goroutines, and memory by opening many incomplete connections, potentially preventing legitimate clients from connecting. This vulnerability, CVE-2026-15972, is fixed in Consul 2.0.3 and Consul Enterprise 1.21.17, 1.22.11, and 2.0.3.",
+    "severity": "high",
+    "cve_id": "CVE-2026-15972",
+    "ghsa_id": "GHSA-699f-92f5-m297",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-15972.",
       "affected_industries": [
         "Technology",
         "General"
@@ -856,53 +771,24 @@
       ],
       "urgency": "high"
     },
-    "risk_score": 85
+    "risk_score": 75
   },
   {
-    "id": "cve-CVE-2026-43831",
+    "id": "cve-CVE-2026-13596",
     "source": "NVD CVE",
-    "timestamp": "2026-07-31T04:17:21.963",
-    "title": "CVE-2026-43831 - Full details and mitigation steps are currently restricted and will be published at a later date.",
-    "description": "Full details and mitigation steps are currently restricted and will be published at a later date.",
-    "severity": "high",
-    "cve_id": "CVE-2026-43831",
-    "cvss_score": 7.5,
-    "affected_products": [],
-    "references": [
-      "https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-xxx"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-43831.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-43830",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-31T04:17:21.760",
-    "title": "CVE-2026-43830 - Full details and mitigation steps are currently restricted and will be published at a later date.",
-    "description": "Full details and mitigation steps are currently restricted and will be published at a later date.",
+    "timestamp": "2026-08-01T07:16:29.347",
+    "title": "CVE-2026-13596 - The Participants Database WordPress plugin before 2.7.8.4 does not properly sanitize and escape a us",
+    "description": "The Participants Database WordPress plugin before 2.7.8.4 does not properly sanitize and escape a user-supplied parameter before using it in a SQL query, allowing unauthenticated attackers to perform SQL injection attacks.",
     "severity": "critical",
-    "cve_id": "CVE-2026-43830",
-    "cvss_score": 9.8,
+    "cve_id": "CVE-2026-13596",
+    "cvss_score": 9.1,
     "affected_products": [],
     "references": [
-      "https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-xxx"
+      "https://wpscan.com/vulnerability/e22227c8-506e-4188-a7a1-1952b41c47f5/"
     ],
     "ai_analysis": {
       "risk_score": 100,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-43830.",
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-13596.",
       "affected_industries": [
         "Technology",
         "General"
@@ -917,21 +803,50 @@
     "risk_score": 100
   },
   {
-    "id": "cve-CVE-2026-43829",
+    "id": "cve-CVE-2026-13329",
     "source": "NVD CVE",
-    "timestamp": "2026-07-31T04:17:20.193",
-    "title": "CVE-2026-43829 - Full details and mitigation steps are currently restricted and will be published at a later date.",
-    "description": "Full details and mitigation steps are currently restricted and will be published at a later date.",
-    "severity": "high",
-    "cve_id": "CVE-2026-43829",
-    "cvss_score": 7.5,
+    "timestamp": "2026-08-01T07:16:29.243",
+    "title": "CVE-2026-13329 - The Buckaroo Woocommerce Payments Plugin WordPress plugin before 4.9.0 does not perform any capabili",
+    "description": "The Buckaroo Woocommerce Payments Plugin WordPress plugin before 4.9.0 does not perform any capability check or nonce validation on an AJAX action that processes payment capture refunds, allowing any authenticated user, including Subscribers, to trigger refunds against captured orders.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13329",
+    "cvss_score": 6.5,
     "affected_products": [],
     "references": [
-      "https://www.csa.gov.sg/alerts-and-advisories/alerts/al-2026-xxx"
+      "https://wpscan.com/vulnerability/6e60d271-574d-4259-ab51-32a014e480d4/"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13329.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-13158",
+    "source": "NVD CVE",
+    "timestamp": "2026-08-01T07:16:29.133",
+    "title": "CVE-2026-13158 - The Everest Toolkit WordPress plugin through 1.2.3 does not validate the type of files uploaded duri",
+    "description": "The Everest Toolkit WordPress plugin through 1.2.3 does not validate the type of files uploaded during demo-content import (the WordPress file-type test is disabled), allowing high-privilege users (Administrator by default, including non-super-admin site administrators on multisite) to upload executable PHP files to the uploads directory.",
+    "severity": "high",
+    "cve_id": "CVE-2026-13158",
+    "cvss_score": 7.2,
+    "affected_products": [],
+    "references": [
+      "https://wpscan.com/vulnerability/f101071f-402a-40a2-bbdb-666512cd4049/"
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-43829.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-13158.",
       "affected_industries": [
         "Technology",
         "General"
@@ -946,79 +861,21 @@
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-6890",
+    "id": "cve-CVE-2026-13157",
     "source": "NVD CVE",
-    "timestamp": "2026-07-31T03:16:25.530",
-    "title": "CVE-2026-6890 - Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6890",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6890.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-6889",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-31T03:16:25.387",
-    "title": "CVE-2026-6889 - Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-6889",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-6889.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-18157",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-31T03:16:25.223",
-    "title": "CVE-2026-18157 - A flaw was found in yggdrasil-worker-package-manager. A local attacker with existing access to the s",
-    "description": "A flaw was found in yggdrasil-worker-package-manager. A local attacker with existing access to the system could exploit an argument injection vulnerability in the APT backend. This allows specially crafted package names, which begin with a hyphen, to be misinterpreted as command options by apt-get. Successful exploitation could lead to remote code execution (RCE) with root privileges, enabling the attacker to fully compromise the system's integrity, confidentiality, and availability.",
+    "timestamp": "2026-08-01T07:16:29.030",
+    "title": "CVE-2026-13157 - The  Demo Import WordPress plugin through 1.1.3 does not validate the type of files uploaded during ",
+    "description": "The  Demo Import WordPress plugin through 1.1.3 does not validate the type of files uploaded during demo-content import (the WordPress file-type test is disabled), allowing high-privilege users (Administrator by default, including non-super-admin site administrators on multisite) to upload executable PHP files to the uploads directory.",
     "severity": "high",
-    "cve_id": "CVE-2026-18157",
-    "cvss_score": 7.8,
+    "cve_id": "CVE-2026-13157",
+    "cvss_score": 7.2,
     "affected_products": [],
     "references": [
-      "https://access.redhat.com/security/cve/CVE-2026-18157",
-      "https://bugzilla.redhat.com/show_bug.cgi?id=2465250",
-      "https://github.com/RedHatInsights/yggdrasil-worker-package-manager/commit/959745bb5917c17f0316af199aace6c71baa5ad7",
-      "https://github.com/RedHatInsights/yggdrasil-worker-package-manager/releases/tag/0.1.4",
-      "https://github.com/RedHatInsights/yggdrasil-worker-package-manager/releases/tag/0.2.4"
+      "https://wpscan.com/vulnerability/5d6a6a8e-c224-4034-8ed5-2d63f37f9479/"
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-18157.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-13157.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1033,21 +890,21 @@
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-14541",
+    "id": "cve-CVE-2026-12966",
     "source": "NVD CVE",
-    "timestamp": "2026-07-31T03:16:24.170",
-    "title": "CVE-2026-14541 - An authentication bypass and audience confusion vulnerability exists in the Google OAuth provider co",
-    "description": "An authentication bypass and audience confusion vulnerability exists in the Google OAuth provider component of Google mcp-toolbox version 1.4.0. When a Google authService is initialized with mcpEnabled: true but lacks an explicitly defined audience or clientId, the ValidateMCPAuth pipeline for opaque tokens skips audience validation entirely. As a result, the toolbox will accept any valid Google OAuth access token—even those minted for unrelated ecosystem applications—granting unauthorized clients access to protected tools and data backends.",
+    "timestamp": "2026-08-01T07:16:28.913",
+    "title": "CVE-2026-12966 - The Direct Payments for WooCommerce  WordPress plugin before 2.5.3 does not verify that the requeste",
+    "description": "The Direct Payments for WooCommerce  WordPress plugin before 2.5.3 does not verify that the requester owns the targeted WooCommerce order in several unauthenticated AJAX handlers before changing its status and overwriting its payment metadata, allowing unauthenticated attackers to tamper with other customers' orders, including forging a \"payment sent\" state, overwriting the payment-method label, and attaching forged payment-proof files.",
     "severity": "medium",
-    "cve_id": "CVE-2026-14541",
-    "cvss_score": null,
+    "cve_id": "CVE-2026-12966",
+    "cvss_score": 5.3,
     "affected_products": [],
     "references": [
-      "https://github.com/googleapis/mcp-toolbox/pull/3450"
+      "https://wpscan.com/vulnerability/b2b7f90e-359f-4fb4-9b48-c87ecb229f76/"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-14541.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-12966.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1062,21 +919,21 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-14540",
+    "id": "cve-CVE-2026-12696",
     "source": "NVD CVE",
-    "timestamp": "2026-07-31T02:16:29.060",
-    "title": "CVE-2026-14540 - A Server-Side Request Forgery (SSRF) vulnerability exists in the generic HTTP source and tool compon",
-    "description": "A Server-Side Request Forgery (SSRF) vulnerability exists in the generic HTTP source and tool components of Google mcp-toolbox versions 0.3.0 through 1.4.0. While the toolbox implements baseline input sanitization for user-controlled parameters, the underlying HTTP client (internal/sources/http/http.go) fails to safely regulate request redirection boundaries. Specifically, the client is initialized without a restrictive CheckRedirect policy hook and lacks target IP validation. An attacker or a malicious data-driven prompt can supply a crafted path parameter that triggers an open redirect or a direct destination swap on the target backend, coercing the mcp-toolbox into blindly following the redirection and making unauthorized requests to internal or arbitrary external endpoints.",
+    "timestamp": "2026-08-01T07:16:28.797",
+    "title": "CVE-2026-12696 - The wpForo Forum WordPress plugin before 3.1.2 does not sanitize and escape a user profile field bef",
+    "description": "The wpForo Forum WordPress plugin before 3.1.2 does not sanitize and escape a user profile field before outputting it inside an HTML attribute on the public participant profile page, allowing users with a subscriber-level account to inject JavaScript that executes in the browser of any visitor who views the profile, including a logged-in administrator.",
     "severity": "medium",
-    "cve_id": "CVE-2026-14540",
-    "cvss_score": null,
+    "cve_id": "CVE-2026-12696",
+    "cvss_score": 5.4,
     "affected_products": [],
     "references": [
-      "https://github.com/googleapis/mcp-toolbox/pull/3448"
+      "https://wpscan.com/vulnerability/0dde2d89-267f-4aca-b2f0-d086b15adff0/"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-14540.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-12696.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1091,108 +948,21 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-14539",
+    "id": "cve-CVE-2026-11882",
     "source": "NVD CVE",
-    "timestamp": "2026-07-31T02:16:28.920",
-    "title": "CVE-2026-14539 - An allocation of resources without limits vulnerability in the HTTP handler component of Google mcp-",
-    "description": "An allocation of resources without limits vulnerability in the HTTP handler component of Google mcp-toolbox versions up to and including 1.4.0 allows an unauthenticated attacker to cause a denial of service (DoS). The /mcp endpoint handler reads incoming payloads directly into system memory using an unrestricted buffer loop (io.ReadAll) without applying defensive constraints such as http.MaxBytesReader or pre-read Content-Length enforcement. By submitting a single, massive HTTP request body, an attacker can linearly consume available host memory until the runtime process is terminated by an Out-Of-Memory (OOM) error.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-14539",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://github.com/googleapis/mcp-toolbox/pull/3216"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-14539.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-14538",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-31T02:16:28.757",
-    "title": "CVE-2026-14538 - An improper authorization and security-boundary bypass vulnerability in the bigquery-execute-sql too",
-    "description": "An improper authorization and security-boundary bypass vulnerability in the bigquery-execute-sql tool component of Google mcp-toolbox versions 0.16.1 through 1.4.0 allows an authenticated attacker to bypass allowedDatasets validation checks. The toolbox relies on the BigQuery dry-run API to enforce dataset restrictions, but due to a fail-open logic flaw, it bypasses validation when the API returns an empty array for specialized constructs. This allows the attacker to extract structural DDL schemas for explicitly excluded datasets via INFORMATION_SCHEMA, and access downstream federated row data via EXTERNAL_QUERY connections.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-14538",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://github.com/googleapis/mcp-toolbox/pull/3452"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-14538.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-14537",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-31T02:16:27.687",
-    "title": "CVE-2026-14537 - Incorrect Authorization in the direct HTTP API tool invocation endpoint in Google mcp-toolbox versio",
-    "description": "Incorrect Authorization in the direct HTTP API tool invocation endpoint in Google mcp-toolbox versions v1.3.0 and v1.4.0 allows an unauthenticated attacker to invoke tools protected by the scopeRequired feature via sending tool invocation requests through legacy HTTP endpoints when the --enable-api flag is active.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-14537",
-    "cvss_score": null,
-    "affected_products": [],
-    "references": [
-      "https://github.com/googleapis/mcp-toolbox/pull/3435"
-    ],
-    "ai_analysis": {
-      "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-14537.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 60
-  },
-  {
-    "id": "cve-CVE-2026-58039",
-    "source": "NVD CVE",
-    "timestamp": "2026-07-31T01:16:31.530",
-    "title": "CVE-2026-58039 - A flaw in Node.js Permission Model enforcement allows process.report writes (and overwrites) files o",
-    "description": "A flaw in Node.js Permission Model enforcement allows process.report writes (and overwrites) files outside --allow-fs-write paths.\n\nThis can lead to confidentiality impact or bypass of the intended security boundary under affected configurations.\n\nThis vulnerability affects Node.js **22.x**, **24.x**, and **26.x**.",
+    "timestamp": "2026-08-01T07:16:28.687",
+    "title": "CVE-2026-11882 - The Builderall for WordPress plugin before 3.0.2 does not bind the state value of its public OAuth a",
+    "description": "The Builderall for WordPress plugin before 3.0.2 does not bind the state value of its public OAuth authentication routes to the initiating user session, allowing unauthenticated attackers to complete the connection flow and overwrite the stored third-party integration access token. A durable overwrite requires the site to already be connected to a paid account.",
     "severity": "low",
-    "cve_id": "CVE-2026-58039",
-    "cvss_score": 3.3,
+    "cve_id": "CVE-2026-11882",
+    "cvss_score": 3.7,
     "affected_products": [],
     "references": [
-      "https://nodejs.org/en/blog/vulnerability"
+      "https://wpscan.com/vulnerability/23e0eb03-ec19-4cec-8127-cb6c2c2f4d7b/"
     ],
     "ai_analysis": {
       "risk_score": 35,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-58039.",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-11882.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1205,5 +975,269 @@
       "urgency": "low"
     },
     "risk_score": 35
+  },
+  {
+    "id": "cve-CVE-2026-10827",
+    "source": "NVD CVE",
+    "timestamp": "2026-08-01T07:16:28.573",
+    "title": "CVE-2026-10827 - The Spectra Legacy  WordPress plugin before 2.20.0 does not validate or escape several block style a",
+    "description": "The Spectra Legacy  WordPress plugin before 2.20.0 does not validate or escape several block style attributes before using them to build the CSS it outputs on the front end, allowing users with the Contributor role and above to inject arbitrary CSS into the pages that render the affected block. The injected styles are served to anonymous visitors of those pages and can force external resource loads, deface/redress the page, or exfiltrate data via CSS attribute selectors. JavaScript execution is not possible at this role (the script-tag breakout is removed by KSES), so the impact is limited to CSS injection.",
+    "severity": "low",
+    "cve_id": "CVE-2026-10827",
+    "cvss_score": 3.5,
+    "affected_products": [],
+    "references": [
+      "https://wpscan.com/vulnerability/068ac525-423b-42f8-9ef4-f102f948dc78/"
+    ],
+    "ai_analysis": {
+      "risk_score": 35,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-10827.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 35
+  },
+  {
+    "id": "cve-CVE-2025-15669",
+    "source": "NVD CVE",
+    "timestamp": "2026-08-01T07:16:27.603",
+    "title": "CVE-2025-15669 - The Bit Form  WordPress plugin before 3.1.4 does not sanitise one of its conversational-form display",
+    "description": "The Bit Form  WordPress plugin before 3.1.4 does not sanitise one of its conversational-form display settings before rendering it on the public-facing form, allowing high-privilege users (such as administrators, who do not hold the unfiltered_html capability on multisite) to store JavaScript that executes in the browser of any visitor who views the form.",
+    "severity": "medium",
+    "cve_id": "CVE-2025-15669",
+    "cvss_score": 4.8,
+    "affected_products": [],
+    "references": [
+      "https://wpscan.com/vulnerability/69800fa9-4fbd-489c-8759-96df745d77d6/"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2025-15669.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-3141",
+    "source": "NVD CVE",
+    "timestamp": "2026-08-01T06:16:26.030",
+    "title": "CVE-2026-3141 - The FormGent plugin for WordPress is vulnerable to unauthorized arbitrary file deletion due to a mis",
+    "description": "The FormGent plugin for WordPress is vulnerable to unauthorized arbitrary file deletion due to a missing capability check on the /wp-json/formgent/responses/attachments REST API endpoint in all versions up to, and including, 1.9.2 This is due to the REST API route being registered without any authentication middleware in routes/rest/api.php. This makes it possible for unauthenticated attackers to delete arbitrary files within the formgent uploads directory. Additionally, on Linux servers where the wp-content/uploads/formgent directory does not yet exist (the default state after plugin installation), the path traversal protection can be bypassed, enabling deletion of arbitrary files including wp-config.php which can lead to complete site takeover via a fresh WordPress installation.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-3141",
+    "cvss_score": 9.1,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/formgent/tags/1.3.1/app/Http/Controllers/AttachmentController.php#L59",
+      "https://plugins.trac.wordpress.org/browser/formgent/tags/1.3.1/routes/rest/api.php#L27",
+      "https://plugins.trac.wordpress.org/browser/formgent/trunk/app/Http/Controllers/AttachmentController.php#L59",
+      "https://plugins.trac.wordpress.org/browser/formgent/trunk/routes/rest/api.php#L27",
+      "https://plugins.trac.wordpress.org/changeset/3604540/formgent/trunk/app/Http/Controllers/AttachmentController.php",
+      "https://plugins.trac.wordpress.org/changeset?old_path=%2Fformgent/tags/1.9.2&new_path=%2Fformgent/tags/1.10.0",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/097a9d0f-fa38-4fdc-9048-43dd65e7652c?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 100,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-3141.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 100
+  },
+  {
+    "id": "cve-CVE-2026-7623",
+    "source": "NVD CVE",
+    "timestamp": "2026-08-01T03:16:26.070",
+    "title": "CVE-2026-7623 - The SureForms – Contact Form, Payment Form & Other Custom Form Builder plugin for WordPress is vulne",
+    "description": "The SureForms – Contact Form, Payment Form & Other Custom Form Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'headingWrapper' parameter in all versions up to, and including, 2.8.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-7623",
+    "cvss_score": 6.4,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/sureforms/tags/2.5.1/modules/gutenberg/dist/blocks/advanced-heading/class-advanced-heading.php#L663",
+      "https://plugins.trac.wordpress.org/browser/sureforms/tags/2.5.1/modules/gutenberg/dist/blocks/advanced-heading/class-advanced-heading.php#L729",
+      "https://plugins.trac.wordpress.org/browser/sureforms/tags/2.8.1/modules/gutenberg/dist/blocks/advanced-heading/class-advanced-heading.php#L663",
+      "https://plugins.trac.wordpress.org/browser/sureforms/tags/2.8.1/modules/gutenberg/dist/blocks/advanced-heading/class-advanced-heading.php#L729",
+      "https://plugins.trac.wordpress.org/browser/sureforms/trunk/modules/gutenberg/dist/blocks/advanced-heading/class-advanced-heading.php#L663",
+      "https://plugins.trac.wordpress.org/browser/sureforms/trunk/modules/gutenberg/dist/blocks/advanced-heading/class-advanced-heading.php#L729",
+      "https://plugins.trac.wordpress.org/changeset/3523295/sureforms/tags/2.8.2/modules/gutenberg/dist/blocks/advanced-heading/class-advanced-heading.php",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/056884d2-d737-4ae5-b800-cb2ff31347ab?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7623.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-15414",
+    "source": "NVD CVE",
+    "timestamp": "2026-08-01T03:16:25.757",
+    "title": "CVE-2026-15414 - The Subscriptions for WooCommerce plugin for WordPress is vulnerable to Privilege Escalation in vers",
+    "description": "The Subscriptions for WooCommerce plugin for WordPress is vulnerable to Privilege Escalation in versions up to, and including, 2.0.0. This is due to the `save_meta_boxes()` function persisting the `_wps_plan_user_role` membership plan meta from `$_POST` without an allowlist that excludes privileged roles — the only validations applied, `sanitize_key()` and `wp_roles()->is_role()`, both accept `'administrator'` as a valid value, and the UI's `disabled` attribute on the role dropdown is a client-side-only control trivially bypassed via DevTools or a direct POST request; additionally, because the `wps_membership_plan` custom post type is registered with `capability_type => 'post'`, any user who can edit posts satisfies the `current_user_can('edit_post', $post_id)` guard in `save_meta_boxes()`. This makes it possible for authenticated attackers, with Contributor-level access and above, to escalate their privileges to Administrator by storing `'administrator'` as the role granted on membership acquisition, which the Pro companion plugin then applies via `add_role()` during membership lifecycle events. Successful exploitation requires the Subscriptions for WooCommerce Pro companion plugin to be active, as it is the component that reads the stored `_wps_plan_user_role` meta via `get_post_meta()` and calls `add_role()` to apply the role during membership lifecycle events.",
+    "severity": "high",
+    "cve_id": "CVE-2026-15414",
+    "cvss_score": 8.8,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/subscriptions-for-woocommerce/tags/2.0.0/admin/partials/membership/meta-box-plan-details.php#L102",
+      "https://plugins.trac.wordpress.org/browser/subscriptions-for-woocommerce/tags/2.0.0/includes/membership/class-wps-membership-plan-cpt.php#L275",
+      "https://plugins.trac.wordpress.org/browser/subscriptions-for-woocommerce/tags/2.0.0/includes/membership/class-wps-membership-plan-cpt.php#L477",
+      "https://plugins.trac.wordpress.org/browser/subscriptions-for-woocommerce/tags/2.0.0/includes/membership/class-wps-membership-plan-cpt.php#L483",
+      "https://plugins.trac.wordpress.org/changeset?reponame=&old=3624543%40subscriptions-for-woocommerce&new=3624543%40subscriptions-for-woocommerce",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/195f86a5-e3dc-4414-bbe3-dea312bf30a9?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-15414.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-15403",
+    "source": "NVD CVE",
+    "timestamp": "2026-08-01T03:16:25.620",
+    "title": "CVE-2026-15403 - The Pinpoint Booking System – Version 2 plugin for WordPress is vulnerable to blind SQL Injection vi",
+    "description": "The Pinpoint Booking System – Version 2 plugin for WordPress is vulnerable to blind SQL Injection via the 'field' parameter in all versions up to, and including, 2.9.9.6.9 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for authenticated attackers, with administrator-level access and above, to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. The nonce required to reach the vulnerable endpoint is emitted on all plugin admin pages loaded under manage_options, making it trivially obtainable by any authenticated administrator.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-15403",
+    "cvss_score": 4.9,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/booking-system/tags/2.9.9.6.9/dopbs.php#L2300",
+      "https://plugins.trac.wordpress.org/browser/booking-system/tags/2.9.9.6.9/includes/calendars/class-backend-calendar.php#L155",
+      "https://plugins.trac.wordpress.org/browser/booking-system/tags/2.9.9.6.9/includes/calendars/class-backend-calendar.php#L164",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/bb23bc2e-4484-46d5-b46e-5e43e5a1bf12?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-15403.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-15006",
+    "source": "NVD CVE",
+    "timestamp": "2026-08-01T03:16:25.460",
+    "title": "CVE-2026-15006 - The Bit integrations – Form Integration, Webhook, Spreadsheets, CRM, LMS & Email Automation plugin f",
+    "description": "The Bit integrations – Form Integration, Webhook, Spreadsheets, CRM, LMS & Email Automation plugin for WordPress is vulnerable to Directory Traversal in all versions up to, and including, 2.9.0 via the processAttachment function. This makes it possible for unauthenticated attackers to read the contents of arbitrary files on the server, which can contain sensitive information.",
+    "severity": "high",
+    "cve_id": "CVE-2026-15006",
+    "cvss_score": 7.5,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/bit-integrations/tags/2.8.11/backend/Actions/Mail/MailController.php#L123",
+      "https://plugins.trac.wordpress.org/browser/bit-integrations/tags/2.8.11/backend/Actions/Mail/MailController.php#L59",
+      "https://plugins.trac.wordpress.org/browser/bit-integrations/tags/2.8.11/backend/Triggers/CF7/CF7Controller.php#L127",
+      "https://plugins.trac.wordpress.org/browser/bit-integrations/tags/2.8.11/backend/Triggers/CF7/Hooks.php#L11",
+      "https://plugins.trac.wordpress.org/browser/bit-integrations/tags/2.9.0/backend/Actions/Mail/MailController.php#L123",
+      "https://plugins.trac.wordpress.org/browser/bit-integrations/tags/2.9.0/backend/Actions/Mail/MailController.php#L59",
+      "https://plugins.trac.wordpress.org/browser/bit-integrations/tags/2.9.0/backend/Triggers/CF7/CF7Controller.php#L127",
+      "https://plugins.trac.wordpress.org/browser/bit-integrations/tags/2.9.0/backend/Triggers/CF7/Hooks.php#L11",
+      "https://plugins.trac.wordpress.org/changeset?reponame=&old=3605525%40bit-integrations&new=3605525%40bit-integrations",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/9b00da60-7d2d-467e-ab58-0bb4af0cbda5?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-15006.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-13362",
+    "source": "NVD CVE",
+    "timestamp": "2026-08-01T03:16:25.307",
+    "title": "CVE-2026-13362 - The SendPulse Email Marketing Newsletter plugin for WordPress is vulnerable to Stored Cross-Site Scr",
+    "description": "The SendPulse Email Marketing Newsletter plugin for WordPress is vulnerable to Stored Cross-Site Scripting via _sp_form_code Post Meta in all versions up to, and including, 2.2.5 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. Exploitation requires the attacker to create a sendpulse_form post containing a benign SendPulse loader script tag alongside arbitrary HTML (e.g., an img onerror payload), which bypasses the allow-list check and executes in the browser of any user — including administrators — who previews or views a page rendering the [sendpulse-form] shortcode.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-13362",
+    "cvss_score": 6.4,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/sendpulse-email-marketing-newsletter/tags/2.2.5/inc/class-senpulse-newsletter-forms.php#L103",
+      "https://plugins.trac.wordpress.org/browser/sendpulse-email-marketing-newsletter/tags/2.2.5/inc/class-senpulse-newsletter-shortcodes.php#L101",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/4bae687b-5b54-4151-871e-7a9b6e56986e?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-13362.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
   }
 ]
