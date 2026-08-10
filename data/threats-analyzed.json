@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1786368233205-1",
+    "id": "twitter-1786388748963-1",
     "source": "Twitter Security",
-    "timestamp": "2026-08-10T13:23:53.205Z",
+    "timestamp": "2026-08-10T19:05:48.963Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1786368233205-1",
+    "id": "hn-1786388748963-1",
     "source": "HackerNews",
-    "timestamp": "2026-08-10T13:23:53.205Z",
+    "timestamp": "2026-08-10T19:05:48.963Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,420 +52,27 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-56w3-ch4f-hr74",
+    "id": "gh-GHSA-c2qp-v5vm-7vxf",
     "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:55Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: function: rndis...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nusb: gadget: function: rndis: add length check to response query\n\nAdd variable representations for BufLength and BufOffset in\nrndis_query_response(), and perform a length check on them.\n\nThis is identical to how rndis_set_response() handles these parameters.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-68088",
-    "ghsa_id": "GHSA-56w3-ch4f-hr74",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-68088.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-jmfj-p2w9-43g4",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:55Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: wacom: stop hardware...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: wacom: stop hardware after post-start probe failures\n\nwacom_parse_and_register() starts HID hardware before registering inputs\nand initializing pad LEDs/remotes. Those later steps can fail, but their\nerror paths currently release Wacom resources without stopping the HID\nhardware.\n\nRoute post-hid_hw_start() failures through hid_hw_stop() before\nreleasing driver resources.\n\nThis issue was identified during our ongoing static",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-68091",
-    "ghsa_id": "GHSA-jmfj-p2w9-43g4",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-68091.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-93xr-82qr-68rh",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:55Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: core: fix uninitialized...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\niio: core: fix uninitialized data in debugfs\n\nIf *ppos is non-zero then simple_write_to_buffer() will not initialize\nthe start of buf[].  Non zero values for *ppos aren't going to work\nanyway.  Test for them at the start of the function and return -EINVAL.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-68089",
-    "ghsa_id": "GHSA-93xr-82qr-68rh",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-68089.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-x4mh-q3jq-rwpp",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:55Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ntime/jiffies: Register...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ntime/jiffies: Register jiffies clocksource before usage\n\nTeddy reported that a XEN HVM has a long boot delay, which was bisected to\nthe recent enhancements to the negative motion detection. It turned out\nthat the jiffies clocksource is used in early boot before it is registered,\nwhich leaves the max_delta_raw field at zero. That causes the read out to\nbe clamped to the max delta of 0, which means time is not making progress.\n\nC",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-68092",
-    "ghsa_id": "GHSA-x4mh-q3jq-rwpp",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-68092.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-f6v6-h22p-v3m3",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:55Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/khugepaged: write all...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nmm/khugepaged: write all dirty file folios when collapsing\n\n[There is no upstream commit, as this code was removed by upstream\n commit 044925f9b565 (\"mm: fs: remove filemap_nr_thps*() functions and their users\")]\n\nAs-is, khugepaged and writable-file opening exclude each other. A file\ncannot be open writeable and have THPs (because the filesystem is not aware\nof them). khugepaged will never collapse file pages for files that are",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-68086",
-    "ghsa_id": "GHSA-f6v6-h22p-v3m3",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-68086.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-m5p4-pw2f-ch5c",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:55Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: wacom: use GFP_ATOMIC...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nHID: wacom: use GFP_ATOMIC in wacom_wac_queue_flush()\n\nwacom_wac_queue_flush() is called via the .raw_event callback\n(wacom_raw_event → wacom_wac_pen_serial_enforce → wacom_wac_queue_flush).\nFor USB HID devices, this callback is invoked from hid_irq_in(), which\nis a URB completion handler running in atomic context. Using GFP_KERNEL\nin this path can sleep, leading to a \"scheduling while atomic\" bug.\n\nUse GFP_ATOMIC instead. The ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-68087",
-    "ghsa_id": "GHSA-m5p4-pw2f-ch5c",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-68087.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-qrrw-365j-cfxh",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:55Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ndebugobjects: Plug race...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ndebugobjects: Plug race against a concurrent OOM disable\n\nsyzbot reported a puzzling splat:\n\n   WARNING: kernel/time/hrtimer.c:443 at stub_timer+0xa/0x20\n\nstub_timer() is installed as timer callback function in\nhrtimer_fixup_assert_init(), which is invoked when\ndebug_object_assert_init() can't find a shadow object. In that case debug\nobjects emits a warning about it before invoking the fixup.\n\nThough the provided console log la",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-68090",
-    "ghsa_id": "GHSA-qrrw-365j-cfxh",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-68090.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-mhcf-ghw6-c6wv",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:55Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_uart: clear...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: hci_uart: clear HCI_UART_SENDING when write_work is canceled\n\nHCI_UART_SENDING bit in tx_state means write_work is pending and blocks\nqueueing it again.  Currently this bit is not cleared when canceling the\nwork in hci_uart_close(), which blocks future writes when device is\nreopened later if write_work was pending.\n\nFix by clearing HCI_UART_SENDING when canceling the work.\n\nAlso make clearing of tx_skb safe by using ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-68085",
-    "ghsa_id": "GHSA-mhcf-ghw6-c6wv",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-68085.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-fxqh-hm36-rrq9",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix path resolution...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix path resolution in ksmbd_vfs_kern_path_create\n\nThe SMB2 open lookup is rooted at the share with LOOKUP_BENEATH, but the\ncreate/mkdir/hardlink sink is not: ksmbd_vfs_kern_path_create() builds an\nabsolute path with convert_to_unix_name() and resolves it from AT_FDCWD\nvia start_creating_path(), so a \"..\" component is walked from the real\nfilesystem root and escapes the export.\n\nAn authenticated client races a missing pa",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-68083",
-    "ghsa_id": "GHSA-fxqh-hm36-rrq9",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-68083.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-wq22-gq55-wmwf",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:54Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: vme_user: fix...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: vme_user: fix location monitor leak in tsi148 bridge\n\ntsi148_probe() allocates a location monitor resource and links it into\ntsi148_bridge->lm_resources. The probe error path frees this list, but\ntsi148_remove() only frees the dma, slave and master resource lists, so\nthe location monitor resource is leaked on device unbind or module\nunload.\n\nFree the lm_resources list in tsi148_remove() as well, before\ntsi148_bridge is",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-68084",
-    "ghsa_id": "GHSA-wq22-gq55-wmwf",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-68084.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-pp5f-3rgg-523r",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:54Z",
-    "title": "A missing authentication vulnerability in dulldusk/phpfm through 1.8.0 allows an unauthenticated...",
-    "description": "A missing authentication vulnerability in dulldusk/phpfm through 1.8.0 allows an unauthenticated remote attacker to access the full file manager functionality including reading, writing, deleting, and uploading files anywhere on the server filesystem.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-72593",
-    "ghsa_id": "GHSA-pp5f-3rgg-523r",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-72593.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-cjxw-hmxq-h489",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:54Z",
-    "title": "A stored cross-site scripting (XSS) vulnerability in lobehub/lobe-chat through v2.2.13 allows a...",
-    "description": "A stored cross-site scripting (XSS) vulnerability in lobehub/lobe-chat through v2.2.13 allows a low-privileged authenticated user to inject arbitrary JavaScript into the application by uploading a crafted SVG file as a user avatar.",
+    "timestamp": "2026-08-10T18:32:17Z",
+    "title": "tar-rs versions 0.4.11 through 0.4.46 contain a symlink escape vulnerability in the Builder:...",
+    "description": "tar-rs versions 0.4.11 through 0.4.46 contain a symlink escape vulnerability in the Builder::append_dir_all() function that allows attackers to read files outside the intended source root directory by planting symlinks in an attacker-controlled directory. When a privileged process archives an untrusted directory, the function follows symlinks without verifying that resolved targets remain within the source root, causing out-of-bounds files to be included in the archive as regular files and discl",
     "severity": "high",
-    "cve_id": "CVE-2026-72594",
-    "ghsa_id": "GHSA-cjxw-hmxq-h489",
+    "cve_id": "CVE-2026-70622",
+    "ghsa_id": "GHSA-c2qp-v5vm-7vxf",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-72594.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-70622.",
       "affected_industries": [
         "Technology",
         "General"
@@ -480,14 +87,179 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-rm5p-w89v-vxg2",
+    "id": "gh-GHSA-p2q7-r6vq-359j",
     "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:54Z",
-    "title": "A flaw was found in GIMP. A signed integer overflow vulnerability exists in the `file-fli` plugin...",
-    "description": "A flaw was found in GIMP. A signed integer overflow vulnerability exists in the `file-fli` plugin when processing FLI image files. This occurs due to an incorrect calculation during memory allocation for image buffers, where the multiplication of image width and height can exceed the maximum integer value. A remote attacker could exploit this by tricking a user into opening a specially crafted FLI file, leading to the application crashing and resulting in a denial of service.",
+    "timestamp": "2026-08-10T18:32:17Z",
+    "title": "Improper restriction of XML external entity reference vulnerability (unauthenticated) in...",
+    "description": "Improper restriction of XML external entity reference vulnerability (unauthenticated) in Jaspersoft JasperReports Server.\n\nThis issue affects JasperReports Server: from 9.0.0 before HF-9 and from 10.0.0 before HF-10.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-16626",
+    "ghsa_id": "GHSA-p2q7-r6vq-359j",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-16626.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-g9g7-h67p-37m6",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:17Z",
+    "title": "Pega Platform versions 8.5.0 through 25.1.2 are affected by an improper validation of...",
+    "description": "Pega Platform versions 8.5.0 through 25.1.2 are affected by an improper validation of cryptographic signatures that may allow an attacker to bypass security controls.",
+    "severity": "high",
+    "cve_id": "CVE-2026-10754",
+    "ghsa_id": "GHSA-g9g7-h67p-37m6",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-10754.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-hc8w-rjh3-hv58",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:16Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-35006",
+    "ghsa_id": "GHSA-hc8w-rjh3-hv58",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-35006.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-q5c4-r3vh-f379",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:16Z",
+    "title": "A flaw was found in multicluster-global-hub. The manager component improperly validates the...",
+    "description": "A flaw was found in multicluster-global-hub. The manager component improperly validates the source identity of incoming CloudEvents on Kafka status topics. A remote attacker, after compromising a managed hub and obtaining its Kafka client certificate, can manipulate the self-asserted source identity. This allows the attacker to falsify or delete critical data, such as compliance, inventory, and cluster health information, belonging to other hubs in the database.",
+    "severity": "high",
+    "cve_id": "CVE-2026-71576",
+    "ghsa_id": "GHSA-q5c4-r3vh-f379",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-71576.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-c75f-87cf-68gx",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:16Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-35028",
+    "ghsa_id": "GHSA-c75f-87cf-68gx",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-35028.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-r4mg-mh8r-f4jx",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:16Z",
+    "title": "HCL BigFix Mobile is vulnerable to Reflected Cross-Site Scripting (Reflected XSS) due to...",
+    "description": "HCL BigFix Mobile is vulnerable to Reflected Cross-Site Scripting (Reflected XSS) due to insufficient validation and output encoding of user-controlled input.",
     "severity": "medium",
-    "cve_id": "CVE-2026-59088",
-    "ghsa_id": "GHSA-rm5p-w89v-vxg2",
+    "cve_id": "CVE-2026-56619",
+    "ghsa_id": "GHSA-r4mg-mh8r-f4jx",
     "affected_packages": [],
     "cwes": [
       null
@@ -495,13 +267,11 @@
     "references": [
       null,
       null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-59088.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-56619.",
       "affected_industries": [
         "Technology",
         "General"
@@ -516,27 +286,23 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-gxgp-6wm7-xrhr",
+    "id": "gh-GHSA-2wjx-gmq7-mq92",
     "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:54Z",
-    "title": "An unrestricted file upload vulnerability in dulldusk/phpfm through 1.8.0 allows an...",
-    "description": "An unrestricted file upload vulnerability in dulldusk/phpfm through 1.8.0 allows an unauthenticated remote attacker to execute arbitrary PHP code on the server. The application ships with an empty upload extension filter ( = array) and no authentication enabled by default (auth_pass is empty string), allowing an unauthenticated attacker to upload a PHP webshell and execute it by browsing to the uploaded path.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-72592",
-    "ghsa_id": "GHSA-gxgp-6wm7-xrhr",
+    "timestamp": "2026-08-10T18:32:16Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-35027",
+    "ghsa_id": "GHSA-2wjx-gmq7-mq92",
     "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "cwes": [],
     "references": [
-      null,
-      null,
       null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-72592.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-35027.",
       "affected_industries": [
         "Technology",
         "General"
@@ -546,205 +312,377 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "critical"
+      "urgency": "medium"
     },
-    "risk_score": 90
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-hwrh-8qfp-c4p6",
+    "id": "gh-GHSA-v7q5-q7p3-9vjm",
     "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:54Z",
-    "title": "A server-side request forgery (SSRF) vulnerability in gabehf/Koito through v0.3.2 allows an...",
-    "description": "A server-side request forgery (SSRF) vulnerability in gabehf/Koito through v0.3.2 allows an authenticated user to make the server perform HTTP requests to arbitrary internal or external hosts by supplying a crafted image_url value in the PATCH /apis/web/v1/album/{id}/image endpoint.",
-    "severity": "high",
-    "cve_id": "CVE-2026-72591",
-    "ghsa_id": "GHSA-hwrh-8qfp-c4p6",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-72591.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-r5pv-g2v7-cgpc",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:53Z",
-    "title": "An OS command injection vulnerability in duhow/xiaoai-patch through commit fb07049 allows a...",
-    "description": "An OS command injection vulnerability in duhow/xiaoai-patch through commit fb07049 allows a remote attacker to execute arbitrary system commands on Xiaomi smart speakers running the patch. The /mute and /unmute endpoint handlers in api/main.py pass the user-supplied silent query parameter directly to os.system() without sanitization, enabling command injection via shell metacharacters.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-72580",
-    "ghsa_id": "GHSA-r5pv-g2v7-cgpc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-72580.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-fcm7-v7r7-pvhr",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:53Z",
-    "title": "A missing authentication vulnerability in frangoteam/FUXA through 1.3.3 allows an unauthenticated...",
-    "description": "A missing authentication vulnerability in frangoteam/FUXA through 1.3.3 allows an unauthenticated remote attacker to query all historical sensor data via the DAQ_QUERY Socket.IO event. When secureEnabled=true, all other sensitive Socket.IO events (DEVICE_BROWSE, HOST_INTERFACES, DEVICE_TAGS_REQUEST, etc.) call isSocketAdminAuthorized to verify the connection token, but the DAQ_QUERY handler in server/runtime/index.js lacks this check entirely.",
-    "severity": "high",
-    "cve_id": "CVE-2026-72586",
-    "ghsa_id": "GHSA-fcm7-v7r7-pvhr",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-72586.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-qm6j-5qpg-x2x4",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:53Z",
-    "title": "A time-of-check/time-of-use (TOCTOU) race condition in fastschema through v0.15.1 allows an...",
-    "description": "A time-of-check/time-of-use (TOCTOU) race condition in fastschema through v0.15.1 allows an unauthenticated remote attacker to bypass the OTP attempt limit on the account recovery flow, enabling brute-force attacks on 6-digit OTP codes.",
-    "severity": "high",
-    "cve_id": "CVE-2026-72584",
-    "ghsa_id": "GHSA-qm6j-5qpg-x2x4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-72584.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-r4j6-x8h7-4f8w",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:53Z",
-    "title": "An OS command injection vulnerability in alseambusher/crontab-ui through 0.4.2 allows an...",
-    "description": "An OS command injection vulnerability in alseambusher/crontab-ui through 0.4.2 allows an unauthenticated remote attacker to execute arbitrary system commands by importing a crafted crontab database file. The POST /import endpoint accepts arbitrary .db files and overwrites the application database without validation.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-72589",
-    "ghsa_id": "GHSA-r4j6-x8h7-4f8w",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-72589.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-9p8f-ppfj-8gc5",
-    "source": "GitHub Security",
-    "timestamp": "2026-08-10T12:31:53Z",
-    "title": "A cache poisoning vulnerability in CoreBunch/Instatic through 0.0.14 allows an unauthenticated...",
-    "description": "A cache poisoning vulnerability in CoreBunch/Instatic through 0.0.14 allows an unauthenticated remote attacker to poison the shared process-wide render cache by manipulating the u query parameter of the GET /_instatic/hole/<nodeId> server island endpoint.",
+    "timestamp": "2026-08-10T18:32:16Z",
+    "title": "A flaw was found in multicluster-global-hub. During a ManagedClusterMigration, the system...",
+    "description": "A flaw was found in multicluster-global-hub. During a ManagedClusterMigration, the system incorrectly grants all managed hubs read access to a shared communication topic. This allows a compromised managed hub to intercept and collect sensitive bootstrap kubeconfigs, which contain API server tokens intended for other hubs. These tokens have an extended validity of approximately 9.86 years, significantly increasing the risk of unauthorized access and information disclosure to other managed cluster",
     "severity": "medium",
-    "cve_id": "CVE-2026-72587",
-    "ghsa_id": "GHSA-9p8f-ppfj-8gc5",
+    "cve_id": "CVE-2026-71577",
+    "ghsa_id": "GHSA-v7q5-q7p3-9vjm",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-72587.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-71577.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-mq6g-3g2f-q7gm",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:16Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-35026",
+    "ghsa_id": "GHSA-mq6g-3g2f-q7gm",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-35026.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-w39r-pv27-jqjg",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:16Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-35005",
+    "ghsa_id": "GHSA-w39r-pv27-jqjg",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-35005.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-8jqm-qxqh-82gf",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:16Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-34423",
+    "ghsa_id": "GHSA-8jqm-qxqh-82gf",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-34423.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-m7jx-933m-5cqr",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:16Z",
+    "title": "A flaw was found in libvirt. During storage volume clone or convert operations, newly created...",
+    "description": "A flaw was found in libvirt. During storage volume clone or convert operations, newly created volume images were temporarily world-readable. This was caused by the `qemu-img` utility running with overly permissive file creation settings, allowing any local user to read the full guest disk contents. This vulnerability could lead to sensitive information disclosure from guest virtual machines.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-63623",
+    "ghsa_id": "GHSA-m7jx-933m-5cqr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-63623.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-jjfp-rjr3-5frp",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:16Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-40512",
+    "ghsa_id": "GHSA-jjfp-rjr3-5frp",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-40512.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-cw82-wpx6-gxvm",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:15Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-29032",
+    "ghsa_id": "GHSA-cw82-wpx6-gxvm",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-29032.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-32vm-4r49-p8fq",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:15Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-29031",
+    "ghsa_id": "GHSA-32vm-4r49-p8fq",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-29031.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-x563-gg44-f8fx",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:15Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-29025",
+    "ghsa_id": "GHSA-x563-gg44-f8fx",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-29025.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-87qw-qvjr-wj4h",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:15Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-29033",
+    "ghsa_id": "GHSA-87qw-qvjr-wj4h",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-29033.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-wcj5-vwf2-8x9g",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:15Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-29029",
+    "ghsa_id": "GHSA-wcj5-vwf2-8x9g",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-29029.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-hm2j-7pq6-x5m9",
+    "source": "GitHub Security",
+    "timestamp": "2026-08-10T18:32:15Z",
+    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-29012",
+    "ghsa_id": "GHSA-hm2j-7pq6-x5m9",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-29012.",
       "affected_industries": [
         "Technology",
         "General"
