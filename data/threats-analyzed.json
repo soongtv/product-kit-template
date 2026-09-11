@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1789143489639-1",
+    "id": "twitter-1789159843715-1",
     "source": "Twitter Security",
-    "timestamp": "2026-09-11T16:18:09.639Z",
+    "timestamp": "2026-09-11T20:50:43.715Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1789143489639-1",
+    "id": "hn-1789159843715-1",
     "source": "HackerNews",
-    "timestamp": "2026-09-11T16:18:09.639Z",
+    "timestamp": "2026-09-11T20:50:43.715Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,28 +52,99 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-22gq-jjvp-2jc9",
+    "id": "gh-GHSA-243p-f3cv-c5wh",
     "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:43Z",
-    "title": "WAVLINK WN535M1 and WN535M3 routers running firmware prior to M35M1_V250922 contain an...",
-    "description": "WAVLINK WN535M1 and WN535M3 routers running firmware prior to M35M1_V250922 contain an unauthenticated OS command injection vulnerability that allows remote attackers to execute arbitrary commands as root by sending crafted filenames to the sync_server daemon on TCP port 13136. The daemon interpolates attacker-controlled filename input containing shell metacharacters into a shell command string via sprintf() and passes it to system() without sanitization, enabling root-level command execution on",
-    "severity": "critical",
-    "cve_id": "CVE-2026-89010",
-    "ghsa_id": "GHSA-22gq-jjvp-2jc9",
-    "affected_packages": [],
+    "timestamp": "2026-09-11T20:47:17Z",
+    "title": "Shopper: Authorization bypass in Filament bulk actions allows browse-only staff to mass-delete attributes/tags and mass-toggle visibility of brands/categories/suppliers",
+    "description": "## Summary\n\nFive Filament `groupedBulkActions` blocks across the Shopper admin Livewire pages omit the `->authorize(...)` permission gate, while their per-record sibling actions (and other Shopper Index pages such as `Pages/Settings/Currencies.php`, `Pages/Reviews/Index.php`, `Pages/Collection/Index.php`, and `Pages/Discount/Index.php`) correctly chain `->authorize(...)`. Each affected page's `mount()` only requires the read-only `browse_*` permission, so a low-privilege staff user holding only ",
+    "severity": "high",
+    "cve_id": "CVE-2026-56827",
+    "ghsa_id": "GHSA-243p-f3cv-c5wh",
+    "affected_packages": [
+      "shopper/framework"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-56827.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-vjfw-cpmh-xwv3",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T20:45:50Z",
+    "title": "Central Dogma: SSH host-key verification permanently disabled in Git mirror (SshGitMirror)",
+    "description": "# Vulnerability\n\nCentral Dogma's Git mirror SSH client installs an Apache MINA SSHD `ServerKeyVerifier` lambda that returns `true` unconditionally for every outbound SSH connection used by `git+ssh://` mirrors. The accompanying lines disable the `known_hosts` and `~/.ssh/config` fallbacks, and a repo-wide search confirms that no host-key pinning mechanism (no `acceptedHostKeys`, `knownHosts`, `KnownHostsServerKeyVerifier`, `StaticServerKeyVerifier`, or `RequiredServerKeyVerifier`) exists anywher",
+    "severity": "high",
+    "cve_id": "CVE-2026-11745",
+    "ghsa_id": "GHSA-vjfw-cpmh-xwv3",
+    "affected_packages": [
+      "com.linecorp.centraldogma:centraldogma-server-mirror-git"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-11745.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-2j95-gqxf-v3vg",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T20:44:23Z",
+    "title": "Central Dogma: Hard-coded ZooKeeper replication secret 'ch4n63m3' with silent fallback enables cluster takeover",
+    "description": "## Vulnerability\n\n`ZooKeeperReplicationConfig.secret()` silently substitutes the hard-coded constant `\"ch4n63m3\"` (leetspeak for \"change me\") whenever the operator omits `replication.secret`. The same secret is wired into both the **client-facing SASL context** and the **quorum/learner SASL contexts** of the embedded ZooKeeper. The constant is in OSS source on GitHub and is discoverable via code search in seconds.\n\n### Three Reinforcing Defects\n\n1. **OSS-public credential** — `DEFAULT_SECRET` is",
+    "severity": "critical",
+    "cve_id": "CVE-2026-11746",
+    "ghsa_id": "GHSA-2j95-gqxf-v3vg",
+    "affected_packages": [
+      "com.linecorp.centraldogma:centraldogma-server"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-89010.",
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-11746.",
       "affected_industries": [
         "Technology",
         "General"
@@ -88,15 +159,17 @@
     "risk_score": 90
   },
   {
-    "id": "gh-GHSA-6h27-fj47-54hm",
+    "id": "gh-GHSA-98q5-5qh2-7w75",
     "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:43Z",
-    "title": "Incorrect privilege assignment vulnerability in TUBITAK BILGEM Software Technologies Research...",
-    "description": "Incorrect privilege assignment vulnerability in TUBITAK BILGEM Software Technologies Research Institute Pardus-software allows Privilege Escalation.\n\nThis issue affects Pardus-software: before 1.0.5.",
-    "severity": "high",
-    "cve_id": "CVE-2026-8303",
-    "ghsa_id": "GHSA-6h27-fj47-54hm",
-    "affected_packages": [],
+    "timestamp": "2026-09-11T20:43:48Z",
+    "title": "Central Dogma: LDAP injection in SearchFirstActiveDirectoryRealm enables authentication confusion and audit log evasion",
+    "description": "# Vulnerability\n\n`SearchFirstActiveDirectoryRealm.findUserDn()` substitutes the user-supplied username from the login form into an LDAP search filter template (default `cn={0}`) **without escaping RFC 4515 filter metacharacters** (`*`, `(`, `)`, `\\`, NUL). Combined with `SearchControls.setCountLimit(1)` on the same call site, this allows three distinct attack primitives:\n\n1. **Authentication confusion** — typing username `*` causes the realm to construct filter `cn=*`, return the first directory",
+    "severity": "medium",
+    "cve_id": "CVE-2026-11748",
+    "ghsa_id": "GHSA-98q5-5qh2-7w75",
+    "affected_packages": [
+      "com.linecorp.centraldogma:centraldogma-server-auth-shiro"
+    ],
     "cwes": [
       null
     ],
@@ -106,8 +179,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-8303.",
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-11748.",
       "affected_industries": [
         "Technology",
         "General"
@@ -117,65 +190,35 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 75
+    "risk_score": 50
   },
   {
-    "id": "gh-GHSA-5v68-pwx6-vvhc",
+    "id": "gh-GHSA-rqfv-2mw9-78g2",
     "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:43Z",
-    "title": "Improper neutralization of special elements used in an OS command ('OS command injection')...",
-    "description": "Improper neutralization of special elements used in an OS command ('OS command injection') vulnerability in TUBITAK BILGEM Software Technologies Research Institute Pardus Boot Repair allows OS Command Injection.\n\nThis issue affects Pardus Boot Repair: before 1.0.8.",
-    "severity": "high",
-    "cve_id": "CVE-2026-8301",
-    "ghsa_id": "GHSA-5v68-pwx6-vvhc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-8301.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-2pcm-jhmp-6w2f",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:42Z",
-    "title": "An arbitrary file access vulnerability in Mistral Vibe allows an attacker to bypass workspace...",
-    "description": "An arbitrary file access vulnerability in Mistral Vibe allows an attacker to bypass workspace restrictions through commands classified as unconditionally allowed. Missing path validation for these commands enables access to files outside the active workspace without user approval.",
+    "timestamp": "2026-09-11T20:35:42Z",
+    "title": "MySQL MCP Server: Missing Origin/Host Validation in SSE Transport Enables Unauthenticated SQL Execution (DNS Rebinding / Direct Exposure)",
+    "description": "## Summary\n\nIn SSE/HTTP transport mode, `mysql_mcp_server` constructs `SseServerTransport` without passing `security_settings`. As a result, the MCP Python SDK's DNS-rebinding protection (Origin/Host header validation) is disabled; the Starlette application has no CORS or TrustedHost middleware; and the service binds to `0.0.0.0` by default with no authentication on any route.\n\n**Trigger condition:** `MCP_TRANSPORT=sse`. The default stdio mode is not affected.\n\n## Attack Scenarios\n\n**Scenario A ",
     "severity": "critical",
-    "cve_id": "CVE-2026-87988",
-    "ghsa_id": "GHSA-2pcm-jhmp-6w2f",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-59971",
+    "ghsa_id": "GHSA-rqfv-2mw9-78g2",
+    "affected_packages": [
+      "mysql-mcp-server"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-87988.",
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-59971.",
       "affected_industries": [
         "Technology",
         "General"
@@ -190,14 +233,14 @@
     "risk_score": 90
   },
   {
-    "id": "gh-GHSA-pg3c-cqw3-4pgg",
+    "id": "gh-GHSA-fjcj-f5cf-235q",
     "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:42Z",
-    "title": "WAVLINK WN535M1 and WN535M3 routers running firmware prior to M35M1_V250922 contain an...",
-    "description": "WAVLINK WN535M1 and WN535M3 routers running firmware prior to M35M1_V250922 contain an unauthenticated arbitrary file write vulnerability that allows remote attackers to overwrite any file on the device by sending a crafted payload to the sync_server daemon on TCP port 13136. The daemon, which runs as root and requires no authentication, accepts a 100-byte filename field in its protocol header without path canonicalization, allowing attackers to supply an absolute path and write arbitrary conten",
+    "timestamp": "2026-09-11T18:31:27Z",
+    "title": "A race condition in the document value layer of MongoDB Server can allow concurrent server...",
+    "description": "A race condition in the document value layer of MongoDB Server can allow concurrent server threads to operate on the same internal memory without synchronization, leading to memory corruption. An authenticated user holding ordinary read-write privileges on a database may be able to trigger this condition over the normal client protocol, resulting in server termination and potential corruption of process memory with user-influenced content. Successful use of this issue may impact the confidential",
     "severity": "high",
-    "cve_id": "CVE-2026-89009",
-    "ghsa_id": "GHSA-pg3c-cqw3-4pgg",
+    "cve_id": "CVE-2026-89099",
+    "ghsa_id": "GHSA-fjcj-f5cf-235q",
     "affected_packages": [],
     "cwes": [
       null
@@ -205,13 +248,11 @@
     "references": [
       null,
       null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-89009.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-89099.",
       "affected_industries": [
         "Technology",
         "General"
@@ -226,502 +267,18 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-6886-6vr9-xwhr",
+    "id": "gh-GHSA-rj44-3777-mh5x",
     "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:42Z",
-    "title": "NextGen Connect (Mirth Connect) versions 4.7.1 and earlier allow an authenticated user to execute...",
-    "description": "NextGen Connect (Mirth Connect) versions 4.7.1 and earlier allow an authenticated user to execute arbitrary SQL through a Database Connector API, which could result in disclosure of stored credentials for connected systems, arbitrary file write, and a denial-of-service condition.",
-    "severity": "high",
-    "cve_id": "CVE-2026-82583",
-    "ghsa_id": "GHSA-6886-6vr9-xwhr",
+    "timestamp": "2026-09-11T18:31:27Z",
+    "title": "When tarfile extracts a link on a system that doesn't support links, it falls back to extracting...",
+    "description": "When tarfile extracts a link on a system that doesn't support links, it falls back to extracting a member from the archive. In this case, the filter function is run twice: once for the extracted member, and once with name set to the location of the link. For one of the calls, the return value was ignored. Instead, the member should be skipped if either call returns None.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-87910",
+    "ghsa_id": "GHSA-rj44-3777-mh5x",
     "affected_packages": [],
     "cwes": [
       null
     ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-82583.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-x3f6-h73j-r3cw",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:42Z",
-    "title": "An integer overflow in a specified pitch and buffer-size computation leads to a heap out-of...",
-    "description": "An integer overflow in a specified pitch and buffer-size computation leads to a heap out-of-bounds write when Orthanc DICOM Server decodes an attacker-supplied PNG.",
-    "severity": "high",
-    "cve_id": "CVE-2026-87020",
-    "ghsa_id": "GHSA-x3f6-h73j-r3cw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-87020.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-4vx3-rfqx-v945",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:42Z",
-    "title": "An arbitrary file write vulnerability in Mistral Vibe, introduced in version 1.3.4, allows an...",
-    "description": "An arbitrary file write vulnerability in Mistral Vibe, introduced in version 1.3.4, allows an attacker to create or overwrite files outside the active workspace without user approval. Shell redirection destinations are omitted from permission checks, enabling otherwise allowlisted commands to write to arbitrary paths accessible to the Vibe process.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-87984",
-    "ghsa_id": "GHSA-4vx3-rfqx-v945",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-87984.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-wcxh-p9m4-jq8r",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:42Z",
-    "title": "An arbitrary file read vulnerability in Mistral Vibe, introduced in version 2.6.0, allows an...",
-    "description": "An arbitrary file read vulnerability in Mistral Vibe, introduced in version 2.6.0, allows an attacker to bypass workspace restrictions using quoted absolute paths in allowlisted shell commands. Improper handling of quotation marks during path validation enables files outside the active workspace to be read without user approval.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-87983",
-    "ghsa_id": "GHSA-wcxh-p9m4-jq8r",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-87983.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-j9jp-p256-9294",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:42Z",
-    "title": "Affected versions of Puppet Enterprise contain a command injection vulnerability in the handling...",
-    "description": "Affected versions of Puppet Enterprise contain a command injection vulnerability in the handling of the java_keystore_passwd parameter. An authenticated user with Puppet administrative privileges can inject arbitrary shell commands by providing a specially crafted value for this parameter, which is passed to a shell execution context without sufficient sanitization. Because the resulting commands are executed with root privileges, successful exploitation can lead to full compromise of the affect",
-    "severity": "high",
-    "cve_id": "CVE-2026-85979",
-    "ghsa_id": "GHSA-j9jp-p256-9294",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-85979.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-988q-pfqj-3hc5",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:42Z",
-    "title": "The ANJIA AJL33PC0801 IP camera uses a hard-coded credential for bootloader authentication. An...",
-    "description": "The ANJIA AJL33PC0801 IP camera uses a hard-coded credential for bootloader authentication. An attacker with physical access to the device may leverage this weakness to gain privileged bootloader access, allowing unauthorized modification of firmware and system configuration and potentially resulting in complete device compromise.",
-    "severity": "high",
-    "cve_id": "CVE-2026-85083",
-    "ghsa_id": "GHSA-988q-pfqj-3hc5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-85083.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-r6r3-x5p3-g7m8",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:42Z",
-    "title": "An arbitrary code execution vulnerability in Mistral Vibe allows an attacker to bypass command...",
-    "description": "An arbitrary code execution vulnerability in Mistral Vibe allows an attacker to bypass command permission checks using environment variable assignments preceding allowlisted commands. These assignments are excluded from inspection, enabling attacker-controlled environment variables to cause arbitrary code execution without user approval.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-87987",
-    "ghsa_id": "GHSA-r6r3-x5p3-g7m8",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-87987.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-m93j-546h-jwjv",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:42Z",
-    "title": "An arbitrary code execution vulnerability in Mistral Vibe allows an attacker to bypass command...",
-    "description": "An arbitrary code execution vulnerability in Mistral Vibe allows an attacker to bypass command permission checks using shell constructs it's parser cannot interpret. Unparsed portions are omitted from inspection, enabling embedded commands to execute on the user's system without approval.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-87986",
-    "ghsa_id": "GHSA-m93j-546h-jwjv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-87986.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-8555-f52w-mpcf",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:42Z",
-    "title": "An arbitrary code execution vulnerability in Mistral Vibe allows an attacker to bypass command...",
-    "description": "An arbitrary code execution vulnerability in Mistral Vibe allows an attacker to bypass command permission checks using ANSI-C quoted arguments. These arguments are not properly inspected, enabling a crafted allowlisted command to execute arbitrary code on the user's system without approval.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-87985",
-    "ghsa_id": "GHSA-8555-f52w-mpcf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-87985.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-58hf-8fhw-r5mw",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:41Z",
-    "title": "A flaw resulting in XML external entity (XXE) was found in Akana API Platform in which references...",
-    "description": "A flaw resulting in XML external entity (XXE) was found in Akana API Platform in which references were improperly restricted during XML-to-JSON processing. The issue affects Akana versions 2026.1, 2025.1.1, and all versions before 2024.1.6 (including older unsupported versions of Akana) and has been fixed as a security patch in the latest release of supported versions.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-89212",
-    "ghsa_id": "GHSA-58hf-8fhw-r5mw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-89212.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-57hc-mr64-vrxx",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:41Z",
-    "title": "When XML batch processing is turned on and the XPath option is selected, the raw batch input goes...",
-    "description": "When XML batch processing is turned on and the XPath option is selected, the raw batch input goes through a default XPath/JAXP setup with no entity restrictions, so XXE injection can allow data exfiltration and denial-of-service attacks.",
-    "severity": "high",
-    "cve_id": "CVE-2026-82578",
-    "ghsa_id": "GHSA-57hc-mr64-vrxx",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-82578.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-q5c6-wf9x-9mqx",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:41Z",
-    "title": "The endpoint on the iDirect iQ200 VSAT terminal returns the complete device configuration as JSON...",
-    "description": "The endpoint on the iDirect iQ200 VSAT terminal returns the complete device configuration as JSON, including the SECURITY section which contains MD5-crypt password hashes for the root SSH and web administration accounts. Any user with valid web credentials can extract these hashes and crack them offline using commodity hardware.",
-    "severity": "high",
-    "cve_id": "CVE-2026-38058",
-    "ghsa_id": "GHSA-q5c6-wf9x-9mqx",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-38058.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-mrcj-hfx4-rpr6",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:41Z",
-    "title": "A local privilege escalation vulnerability exists in the iDirect iQ200 VSAT terminal running...",
-    "description": "A local privilege escalation vulnerability exists in the iDirect iQ200 VSAT terminal running firmware 23.0.1.0. The iQ200 is a rackmount satellite modem deployed across oil and gas, maritime, defense, and remote infrastructure as the primary, and often sole communications link for offshore rigs, vessels, and remote sites. Important context: the device ships from the factory with a pre-configured low-privilege local user account. This account is intended for field technicians who need shell acces",
-    "severity": "critical",
-    "cve_id": "CVE-2026-38056",
-    "ghsa_id": "GHSA-mrcj-hfx4-rpr6",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-38056.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-p85c-j652-88pj",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:41Z",
-    "title": "The XSLT Transformer Step builds a bare TransformerFactory without the proper security options...",
-    "description": "The XSLT Transformer Step builds a bare TransformerFactory without the proper security options set, so XXE injection can allow data exfiltration and denial-of-service attacks.",
-    "severity": "high",
-    "cve_id": "CVE-2026-78224",
-    "ghsa_id": "GHSA-p85c-j652-88pj",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-78224.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-qpcv-7q48-ccxp",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-11T15:32:41Z",
-    "title": "An issue in ZJU-FAST-Lab EGO-Planner-v2 All versions up to commit...",
-    "description": "An issue in ZJU-FAST-Lab EGO-Planner-v2 All versions up to commit 5c99a95880401e2599638d567abc0e240396cb42 allows an attacker to cause a denial of service via thenteraction between traj_server, poscmd_2_odom, and the EGOReplanFSM emergency recovery logic",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-71641",
-    "ghsa_id": "GHSA-qpcv-7q48-ccxp",
-    "affected_packages": [],
-    "cwes": [],
     "references": [
       null,
       null,
@@ -731,7 +288,462 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-71641.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-87910.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-9xmc-5q7j-x4fm",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T18:31:27Z",
+    "title": "Concrete CMS 9 through 9.5.2 is vulnerable to Missing Authorization in the block alias route ...",
+    "description": "Concrete CMS 9 through 9.5.2 is vulnerable to Missing Authorization in the block alias route (Process::alias() in concrete/controllers/backend/block/process.php).It does not verify that the referenced block is genuinely orphaned on the target page, nor that the caller holds any permission over the source block. A user granted only an area-scoped add_block_to_area delegation on their own page can therefore pass any block ID on the site: the source block's content is duplicated into an area the ro",
+    "severity": "medium",
+    "cve_id": "CVE-2026-81909",
+    "ghsa_id": "GHSA-9xmc-5q7j-x4fm",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-81909.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-g7px-3pmw-f42v",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T18:31:27Z",
+    "title": "Improper neutralization of special elements used in a template engine vulnerability in Arma...",
+    "description": "Improper neutralization of special elements used in a template engine vulnerability in Arma Digital Media Inc. Website Template allows Code Injection.\n\nThis issue affects Website Template: through 11092026. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-9160",
+    "ghsa_id": "GHSA-g7px-3pmw-f42v",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-9160.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-xf2f-2vj2-6hfr",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T18:31:27Z",
+    "title": "Chamilo LMS before 1.11.42 and 3.0.0 contains a stored cross-site scripting vulnerability that...",
+    "description": "Chamilo LMS before 1.11.42 and 3.0.0 contains a stored cross-site scripting vulnerability that allows unauthenticated attackers to inject malicious script payloads into survey answers by computing deterministic invitation codes and bypassing authorization checks in the survey submission endpoint. Attackers can submit crafted answers containing unescaped HTML rendered in reporting views to execute arbitrary scripts in the browser sessions of teachers or administrators, enabling persistent backdoo",
+    "severity": "medium",
+    "cve_id": "CVE-2026-82535",
+    "ghsa_id": "GHSA-xf2f-2vj2-6hfr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-82535.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-f3wj-w3qw-rw57",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T18:31:27Z",
+    "title": "The two built-in name-finder patterns exposed by\nopennlp.tools.namefind.RegexNameFinderFactory -...",
+    "description": "The two built-in name-finder patterns exposed by\nopennlp.tools.namefind.RegexNameFinderFactory - DEFAULT_REGEX_NAME_FINDER.EMAIL\nand DEFAULT_REGEX_NAME_FINDER.URL - contain ambiguous nested quantifiers. An\napplication that obtains these finders through\nRegexNameFinderFactory.getDefaultRegexNameFinders(...) and then applies them to\nuntrusted text through RegexNameFinder.find(String[]) or RegexNameFinder.find(String)\ncan be driven into super-linear backtracking or into unbounded matcher recursion ",
+    "severity": "critical",
+    "cve_id": "CVE-2026-82617",
+    "ghsa_id": "GHSA-f3wj-w3qw-rw57",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-82617.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-g7qf-5m6v-m9vh",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T18:31:26Z",
+    "title": "SPIP before 4.4.18 contains a remote code execution vulnerability in the editer_objet action...",
+    "description": "SPIP before 4.4.18 contains a remote code execution vulnerability in the editer_objet action where the arg parameter resolves SQL table names without enforcing an editable columns allowlist, allowing attackers with a valid nonce to inject attacker-controlled rows into the spip_jobs table. Attackers can supply arg=job/0 with crafted fonction and args values, which are later unserialized and executed when the cron job queue is drained, resulting in arbitrary PHP function execution on the underlyin",
+    "severity": "critical",
+    "cve_id": "CVE-2026-72710",
+    "ghsa_id": "GHSA-g7qf-5m6v-m9vh",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-72710.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-36gg-9rj4-8rgf",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T18:31:26Z",
+    "title": "Improper neutralization of input during web page generation ('cross-site scripting')...",
+    "description": "Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in IdeaSoft Software Industry and Trade Inc. Smart E-Commerce allows Reflected XSS.\n\nThis issue affects Smart E-Commerce: through 11092026. NOTE: The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-7298",
+    "ghsa_id": "GHSA-36gg-9rj4-8rgf",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7298.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-rq97-c8jm-449q",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T18:31:26Z",
+    "title": "Concrete CMS RSS Displayer block below version 9.5.3  rendered remote feed item titles without...",
+    "description": "Concrete CMS RSS Displayer block below version 9.5.3  rendered remote feed item titles without HTML escaping, resulting in stored cross-site scripting. An attacker able to control a title in a syndicated feed could execute script in the site origin for any visitor to the affected page, including administrators, without holding an account on that site. The Concrete CMS security team gave this vulnerability a CVSS v4.0 score of 6.0 with vector CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:P/VC:H/VI:L/VA:N/SC:N/",
+    "severity": "medium",
+    "cve_id": "CVE-2026-68528",
+    "ghsa_id": "GHSA-rq97-c8jm-449q",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-68528.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-865j-87f7-7r6w",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T18:31:26Z",
+    "title": "Concrete CMS 9.2.0 to 9.5.2 contain a missing authorization vulnerability in the REST API Groups...",
+    "description": "Concrete CMS 9.2.0 to 9.5.2 contain a missing authorization vulnerability in the REST API Groups list endpoint. The listGroups() method in concrete/src/Api/Controller/Groups.php registers a permissions checker callback that unconditionally returns true, so no per-object (tree node) authorization is enforced when the group collection is returned. An authenticated user whose API token carries the groups:read scope can call GET /ccm/api/1.0/groups and receive every group on the site regardless of t",
+    "severity": "medium",
+    "cve_id": "CVE-2026-81908",
+    "ghsa_id": "GHSA-865j-87f7-7r6w",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-81908.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-6x88-8xw5-p2gw",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T18:31:26Z",
+    "title": "A flaw was found in libtiff. A heap-buffer overflow vulnerability exists in the `tiff2pdf`...",
+    "description": "A flaw was found in libtiff. A heap-buffer overflow vulnerability exists in the `tiff2pdf` utility due to an integer truncation error when processing crafted BigTIFF files. An attacker can provide a specially crafted BigTIFF file, causing a 64-bit `StripByteCounts` value to be truncated to a 32-bit integer. This leads to an undersized memory allocation and a subsequent out-of-bounds memory copy, resulting in a crash and severe memory corruption.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-18495",
+    "ghsa_id": "GHSA-6x88-8xw5-p2gw",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-18495.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-px65-33x4-mwqq",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T18:31:26Z",
+    "title": "SPIP before 4.4.18 contains a missing authorization vulnerability in the administrative action...",
+    "description": "SPIP before 4.4.18 contains a missing authorization vulnerability in the administrative action endpoints under ecrire/action/ that allows unauthenticated attackers to perform privileged actions by supplying a valid HMAC-SHA256 nonce without any server-side permission check via autoriser(). Attackers can obtain a valid nonce, compute it for any action as the anonymous user, and invoke the editer_auteur action directly over HTTP to reset the password of any user account, including the administrato",
+    "severity": "critical",
+    "cve_id": "CVE-2026-72709",
+    "ghsa_id": "GHSA-px65-33x4-mwqq",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-72709.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-gr8h-7qg5-vh27",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T18:31:26Z",
+    "title": "OOM Denial of Service via Unbounded Map Pre-Sizing in Apache OpenNLP SymSpellModelSerializer\n...",
+    "description": "OOM Denial of Service via Unbounded Map Pre-Sizing in Apache OpenNLP SymSpellModelSerializer\n\nVersions Affected: \n\n- 3.0.0-M4\n- 3.0.0-M5\n\n(The opennlp-spellcheck extension was introduced in 3.0.0-M4. Releases 1.x and 2.x do not contain the affected code.)\n\nDescription:\n\nThe SymSpellModelSerializer.create() method reads two 32-bit signed integer count fields (unigramCount and bigramCount) from a binary SymSpell model stream and passes each value directly to LinkedHashMap.newLinkedHashMap() after ",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-67211",
+    "ghsa_id": "GHSA-gr8h-7qg5-vh27",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-67211.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-8c85-4pqf-wfwj",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T18:31:26Z",
+    "title": "SPIP before 4.4.18 contains an unauthenticated blind SQL injection vulnerability in the public...",
+    "description": "SPIP before 4.4.18 contains an unauthenticated blind SQL injection vulnerability in the public sitemap endpoint where the MySQL escaper spip_mysql_cite() in ecrire/req/mysql.php returns values unescaped when the target column is a date type and the supplied value matches the pattern of a word character followed by an open parenthesis. Attackers can supply a crafted value such as a time-based payload through the annee parameter in squelettes-dist/sitemap.xml.html to embed arbitrary SQL directly i",
+    "severity": "high",
+    "cve_id": "CVE-2026-72708",
+    "ghsa_id": "GHSA-8c85-4pqf-wfwj",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-72708.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-3gc7-g84m-84jc",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-11T18:31:26Z",
+    "title": "An issue in wpa_supplicant all versions before v.2.12 allows a local attacker to bypass proper...",
+    "description": "An issue in wpa_supplicant all versions before v.2.12 allows a local attacker to bypass proper network context and AKMP matching for PMKSA caching via missing validation in the driver based PMKSA selection path in wpa.c",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-78807",
+    "ghsa_id": "GHSA-3gc7-g84m-84jc",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-78807.",
       "affected_industries": [
         "Technology",
         "General"
