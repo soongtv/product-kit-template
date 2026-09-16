@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1789576720582-1",
+    "id": "twitter-1789593036240-1",
     "source": "Twitter Security",
-    "timestamp": "2026-09-16T16:38:40.582Z",
+    "timestamp": "2026-09-16T21:10:36.240Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1789576720582-1",
+    "id": "hn-1789593036240-1",
     "source": "HackerNews",
-    "timestamp": "2026-09-16T16:38:40.582Z",
+    "timestamp": "2026-09-16T21:10:36.240Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,114 +26,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-r2pf-9cw4-5j65",
+    "id": "gh-GHSA-m69f-42c6-7334",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T16:19:21Z",
-    "title": "node-opcua: TCP Socket Leak (FIN-WAIT-2) via keepalive reconnection cycle - Resource Exhaustion",
-    "description": "SUMMARY\n-------\nA combination of bugs in node-opcua causes unlimited TCP socket accumulation (FIN-WAIT-2 state) during automatic reconnection, leading to memory exhaustion and eventual container/process crash (OOM kill). The issue is triggered by the default configuration (keepSessionAlive: true) when the OPC UA server has clock skew relative to the client.\n\nAffected version: Tested on 2.169.0 (latest as of April 2026).\n\nENVIRONMENT\n-----------\n- Node.js: v24.11.0\n- node-opcua: 2.169.0\n- OS: Lin",
-    "severity": "high",
-    "cve_id": "CVE-2026-68904",
-    "ghsa_id": "GHSA-r2pf-9cw4-5j65",
-    "affected_packages": [
-      "node-opcua-transport",
-      "node-opcua-client",
-      "node-opcua"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-pg97-jvmf-qfvc",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:45:03Z",
-    "title": "djust has Cross-Site Request Forgery on the Server-Sent-Events transport: a cross-origin page can drive a victim-authenticated SSE session",
-    "description": "### Impact\nThe SSE client→server POST endpoints are `@csrf_exempt` and the SSE GET stream endpoint had no Origin check, so a cross-origin page could drive a victim-cookie-authenticated SSE session: force the victim's browser to GET the stream URL (which **creates and mounts** a LiveView as the victim) and POST to the message endpoint with `credentials: include` to **fire state-changing event handlers as the victim**. The URL `session_id` is client-chosen (validated only for UUID *format*), so it",
-    "severity": "high",
-    "cve_id": "CVE-2026-61593",
-    "ghsa_id": "GHSA-pg97-jvmf-qfvc",
-    "affected_packages": [
-      "djust"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-5h8j-6crg-7rmw",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:34:27Z",
-    "title": "LMdeploy has Remote Code Execution by Pickle Deserialization via zmq_rpc.call_and_response() in InterLM/lmdeploy",
-    "description": "### Description\n\nThe LMdeploy implements an rpc server (AsyncRPCServer in zmq_rpc.py) for supporting the RPC communications. In its core functionality call_and_response(), I found it will directly use the pickles.loads() to deserialize the received messages without any sanitization, hence resulting in a remote code execution vulnerability by this RPC server.\n\n### Proof of Concept\n\n* Step1:\nThe victim user starts a RPC server that connects to its network interface. We give our example code (serve",
+    "timestamp": "2026-09-16T18:32:07Z",
+    "title": "Kubero through 3.1.1 fails to apply authentication guards to the notifications API endpoints,...",
+    "description": "Kubero through 3.1.1 fails to apply authentication guards to the notifications API endpoints, allowing unauthenticated attackers to read webhook secrets and service URLs. Attackers can retrieve stored credentials and register malicious webhooks to intercept pipeline events or suppress alerting by deleting existing configurations.",
     "severity": "critical",
-    "cve_id": "CVE-2025-59953",
-    "ghsa_id": "GHSA-5h8j-6crg-7rmw",
-    "affected_packages": [
-      "lmdeploy"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3492-cvg7-9mr2",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:32:10Z",
-    "title": "djust: Multi-tenant isolation fails open on the WebSocket/SSE path, disclosing other tenants' data",
-    "description": "### Impact\n`djust.tenants` isolation was enforced only on the HTTP path. The current tenant was stored in `threading.local()` and set exclusively by the HTTP-only `TenantMiddleware`, so on the live (WebSocket/SSE) path `get_current_tenant()` was always `None` during mount and every event handler — and the tenant-aware `QuerySet` manager failed **OPEN** (returned the unfiltered queryset, ignoring `STRICT_MODE`), disclosing **every** tenant's rows to whoever held the socket. `threading.local` was ",
-    "severity": "high",
-    "cve_id": "CVE-2026-61595",
-    "ghsa_id": "GHSA-3492-cvg7-9mr2",
-    "affected_packages": [
-      "djust"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-29ch-4262-w3fr",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:14Z",
-    "title": "reNgine through 2.2.0 contains an authorization bypass vulnerability in the GetFileContents API...",
-    "description": "reNgine through 2.2.0 contains an authorization bypass vulnerability in the GetFileContents API endpoint that allows any authenticated user to read bundled recon tool configuration files. Attackers with low-privilege Auditor roles can access files containing third-party API keys for services like SecurityTrails, Shodan, Censys, VirusTotal, BinaryEdge and Hunter by querying the endpoint without role-based permission checks.",
-    "severity": "high",
-    "cve_id": "CVE-2026-92570",
-    "ghsa_id": "GHSA-29ch-4262-w3fr",
+    "cve_id": "CVE-2026-92720",
+    "ghsa_id": "GHSA-m69f-42c6-7334",
     "affected_packages": [],
     "cwes": [
       null
@@ -151,20 +51,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-9vwf-fv6w-mmfr",
+    "id": "gh-GHSA-h754-2546-79g9",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:14Z",
-    "title": "Hippo4j through 1.5.0 contains a server-side request forgery vulnerability in four...",
-    "description": "Hippo4j through 1.5.0 contains a server-side request forgery vulnerability in four ThreadPoolController endpoints that fail to validate the clientAddress parameter. Authenticated attackers can supply arbitrary hostnames and ports to trigger outbound GET requests to internal networks and cloud metadata services.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-92569",
-    "ghsa_id": "GHSA-9vwf-fv6w-mmfr",
+    "timestamp": "2026-09-16T18:32:07Z",
+    "title": "Scirius through 3.8.0 contains an arbitrary file write vulnerability in the PCAP filestore upload...",
+    "description": "Scirius through 3.8.0 contains an arbitrary file write vulnerability in the PCAP filestore upload endpoint that allows default User role users to write attacker-controlled JSON content to filesystem paths. Attackers can supply path traversal sequences in the uploaded document's _id field to escape the intended directory and write files with .json extension to arbitrary locations as root.",
+    "severity": "high",
+    "cve_id": "CVE-2026-92604",
+    "ghsa_id": "GHSA-h754-2546-79g9",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -176,36 +75,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-57x9-hhc6-cx9h",
+    "id": "gh-GHSA-77rj-h8wx-6cgq",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:14Z",
-    "title": "FileRise before version 3.28.0 contains a privilege escalation vulnerability that allows...",
-    "description": "FileRise before version 3.28.0 contains a privilege escalation vulnerability that allows authenticated low-privilege attackers to gain unauthorized read and write access by exploiting improper session isolation between the WebDAV interface and the web application session context. Attackers can combine valid Basic-Auth credentials with an active admin PHPSESSID cookie to bypass authorization boundaries, as the WebDAV layer incorrectly inherits elevated privileges from an ambient web session rathe",
+    "timestamp": "2026-09-16T18:32:07Z",
+    "title": "Nuclei versions before 3.11.1 cache template signature verification based only on file...",
+    "description": "Nuclei versions before 3.11.1 cache template signature verification based only on file modification time without content checksums. Attackers can replace verified templates with unsigned malicious content and restore the original modification time to bypass signature checks and execute arbitrary operating system commands.",
     "severity": "high",
-    "cve_id": "CVE-2026-92616",
-    "ghsa_id": "GHSA-57x9-hhc6-cx9h",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-fjfv-cm2f-px7c",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:14Z",
-    "title": "DataGear through 6.0.0 contains a server-side request forgery vulnerability in the /dataSet...",
-    "description": "DataGear through 6.0.0 contains a server-side request forgery vulnerability in the /dataSet/preview/Http endpoint that allows unauthenticated attackers to execute arbitrary HTTP requests by supplying a caller-controlled URI. Attackers can issue GET, POST, PUT, PATCH, or DELETE requests to internal endpoints and cloud metadata services, receiving full response bodies without authentication or validation.",
-    "severity": "high",
-    "cve_id": "CVE-2026-92566",
-    "ghsa_id": "GHSA-fjfv-cm2f-px7c",
+    "cve_id": "CVE-2026-92718",
+    "ghsa_id": "GHSA-77rj-h8wx-6cgq",
     "affected_packages": [],
     "cwes": [
       null
@@ -224,19 +101,120 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-g65h-8grw-v433",
+    "id": "gh-GHSA-rx45-hj8g-x4vm",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:14Z",
-    "title": "A security vulnerability has been detected in PbootCMS up to 3.2.24. This vulnerability affects...",
-    "description": "A security vulnerability has been detected in PbootCMS up to 3.2.24. This vulnerability affects the function UserController::del/UserController::mod of the file apps/admin/controller/system/UserController.php of the component User Management. Such manipulation leads to cross-site request forgery. The attack may be performed from remote. The exploit has been disclosed publicly and may be used. Upgrading to version 3.2.25 is able to resolve this issue. The name of the patch is c25241a0964742cefb7f",
+    "timestamp": "2026-09-16T18:32:07Z",
+    "title": "Quickwit through 0.9.0 fails to validate the host and scheme of the queue_url parameter in SQS...",
+    "description": "Quickwit through 0.9.0 fails to validate the host and scheme of the queue_url parameter in SQS file sources, allowing attackers to make the node issue requests to arbitrary internal addresses. Attackers can supply a malicious queue_url to the create-source API to scan internal networks and fingerprint services based on connection response differences.",
+    "severity": "high",
+    "cve_id": "CVE-2026-92719",
+    "ghsa_id": "GHSA-rx45-hj8g-x4vm",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-gxxx-83g3-wgp9",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T18:32:07Z",
+    "title": "Shuffle through 2.2.1 contains a cross-tenant privilege escalation vulnerability in the...",
+    "description": "Shuffle through 2.2.1 contains a cross-tenant privilege escalation vulnerability in the HandleApiGeneration endpoint that allows administrators to reset and read API keys of non-administrator users in other organizations. Attackers with admin privileges in one organization can supply arbitrary user IDs to generate valid API keys for users in different organizations, enabling account takeover across tenant boundaries.",
+    "severity": "high",
+    "cve_id": "CVE-2026-92716",
+    "ghsa_id": "GHSA-gxxx-83g3-wgp9",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-2hv7-mq65-pgrr",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T18:32:07Z",
+    "title": "IRIS through 2.4.29 fails to properly validate case authorization in comment listing endpoints...",
+    "description": "IRIS through 2.4.29 fails to properly validate case authorization in comment listing endpoints for notes, tasks, IOCs, assets, and evidence items. Attackers with access to any single case can enumerate sequential object identifiers and read comment threads from cases they have no authorization to access.",
+    "severity": "high",
+    "cve_id": "CVE-2026-92605",
+    "ghsa_id": "GHSA-2hv7-mq65-pgrr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-h9hg-x52x-c465",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T18:32:07Z",
+    "title": "Covenant through 0.6 registers the CovenantHub SignalR hub without an Authorize attribute,...",
+    "description": "Covenant through 0.6 registers the CovenantHub SignalR hub without an Authorize attribute, allowing unauthenticated callers to invoke CreateHttpListener and receive a signed JWT token. Attackers can use the obtained token to authenticate against the entire operator API and access grunts, credentials, binaries, events, and the operator roster.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-92717",
+    "ghsa_id": "GHSA-h9hg-x52x-c465",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-pxvr-c538-2crq",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T18:32:06Z",
+    "title": "A flaw has been found in Artifex MuPDF up to b6d17493700c621c0e70036980a6ebd06d2202c9. Affected...",
+    "description": "A flaw has been found in Artifex MuPDF up to b6d17493700c621c0e70036980a6ebd06d2202c9. Affected by this vulnerability is the function pdf_open_filter of the file pdf-stream.c of the component PDF Xref Loading. Executing a manipulation can lead to null pointer dereference. The attack can be launched remotely. The exploit has been published and may be used. This patch is called 3df1e30f9d7b77260e13bd0dbe1928ddeba8386e. Applying a patch is advised to resolve this issue.",
     "severity": "low",
-    "cve_id": "CVE-2026-92383",
-    "ghsa_id": "GHSA-g65h-8grw-v433",
+    "cve_id": "CVE-2026-92413",
+    "ghsa_id": "GHSA-pxvr-c538-2crq",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null,
@@ -251,26 +229,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-8jx2-x54x-9q63",
+    "id": "gh-GHSA-h3cw-r349-w992",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:14Z",
-    "title": "A vulnerability was determined in code-projects Matrimonial System 1.0. This affects an unknown...",
-    "description": "A vulnerability was determined in code-projects Matrimonial System 1.0. This affects an unknown part of the file /search.php of the component Regular Search. This manipulation of the argument sex/mothertongue/maritialstatus/country/state/religion/agemin/agemax causes sql injection. The attack can be initiated remotely. The exploit has been publicly disclosed and may be utilized.",
+    "timestamp": "2026-09-16T18:32:06Z",
+    "title": "A vulnerability has been found in Open5GS up to 2.8.0. Affected by this issue is the function...",
+    "description": "A vulnerability has been found in Open5GS up to 2.8.0. Affected by this issue is the function smf_n4_handle_session_report_request of the file src/smf/n4-handler.c of the component PFCP Session Report Request Handler. The manipulation leads to reachable assertion. The attack may be initiated remotely. The identifier of the patch is e5f0c06d0f2d9613b003daa1cfa3ba8a4bd157e9. It is suggested to install a patch to address this issue.",
     "severity": "medium",
-    "cve_id": "CVE-2026-92366",
-    "ghsa_id": "GHSA-8jx2-x54x-9q63",
+    "cve_id": "CVE-2026-92416",
+    "ghsa_id": "GHSA-h3cw-r349-w992",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -285,43 +256,20 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-7w64-c3jh-vh86",
+    "id": "gh-GHSA-pfw2-2c9f-9qfq",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:14Z",
-    "title": "MLRun through 1.11.0 contains a server-side request forgery vulnerability in the...",
-    "description": "MLRun through 1.11.0 contains a server-side request forgery vulnerability in the WebhookNotification handler that allows authenticated users to make the API server send arbitrary HTTP requests to internal addresses. Attackers can update a run with a malicious webhook notification that executes when the run reaches a terminal state, enabling requests to internal services, Kubernetes APIs, or cloud metadata endpoints from within the cluster.",
+    "timestamp": "2026-09-16T18:32:06Z",
+    "title": "A vulnerability was detected in SourceCodester Inventory and Monitoring System 1.0. The impacted...",
+    "description": "A vulnerability was detected in SourceCodester Inventory and Monitoring System 1.0. The impacted element is an unknown function of the file /admins/assessments/databank/btn_functions.php?action=add. Performing a manipulation of the argument difficulty_id results in sql injection. Remote exploitation of the attack is possible. The exploit is now public and may be used.",
     "severity": "medium",
-    "cve_id": "CVE-2026-92568",
-    "ghsa_id": "GHSA-7w64-c3jh-vh86",
+    "cve_id": "CVE-2026-92406",
+    "ghsa_id": "GHSA-pfw2-2c9f-9qfq",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-cxpf-jm7w-39v7",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:14Z",
-    "title": "TDuck survey form through version 5.0 contains an authorization bypass vulnerability in the POST ...",
-    "description": "TDuck survey form through version 5.0 contains an authorization bypass vulnerability in the POST /user/form/data/update endpoint that allows authenticated users to overwrite other users' form submission data. Attackers can discover submission identifiers allocated in narrow ranges and modify arbitrary form responses containing personal data by sending update requests without ownership validation.",
-    "severity": "high",
-    "cve_id": "CVE-2026-92567",
-    "ghsa_id": "GHSA-cxpf-jm7w-39v7",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
       null,
       null,
       null,
@@ -334,32 +282,116 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-43j6-88p2-5hxm",
+    "id": "gh-GHSA-pmgv-hgv2-w69h",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:14Z",
-    "title": "Rejected reason: CVE ID reserved in error and not assigned to a vulnerability. The correct CVE ID...",
-    "description": "Rejected reason: CVE ID reserved in error and not assigned to a vulnerability. The correct CVE ID is CVE-2026-92574.",
+    "timestamp": "2026-09-16T18:32:06Z",
+    "title": "Concrete CMS before 9.5.4 re-authorized OAuth REST API requests from the bearer token alone and...",
+    "description": "Concrete CMS before 9.5.4 re-authorized OAuth REST API requests from the bearer token alone and did not re-check the state of the account the token had been issued to. The resource server's authorization validator confirmed only that a token existed, had not expired, and had not been explicitly revoked, and deactivating a user did not revoke that user's outstanding tokens. As a result, a deactivated user retained full access to /ccm/api/1.0/* for the remaining lifetime of any token already issue",
+    "severity": "low",
+    "cve_id": "CVE-2026-85387",
+    "ghsa_id": "GHSA-pmgv-hgv2-w69h",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-rwr7-cc7w-2wrw",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T18:32:06Z",
+    "title": "An issue in Sogou Sogou Input Method < 16.3.0.3498 (fixed in 16.3.0.3498) allows a remote...",
+    "description": "An issue in Sogou Sogou Input Method < 16.3.0.3498 (fixed in 16.3.0.3498) allows a remote attacker to execute arbitrary code via the biz_helper.exe component",
     "severity": "unknown",
-    "cve_id": "CVE-2026-92571",
-    "ghsa_id": "GHSA-43j6-88p2-5hxm",
+    "cve_id": "CVE-2026-51990",
+    "ghsa_id": "GHSA-rwr7-cc7w-2wrw",
     "affected_packages": [],
     "cwes": [],
     "references": [
       null,
+      null,
+      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-f53j-3ghj-6c45",
+    "id": "gh-GHSA-rwqw-vmpp-qf38",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:14Z",
-    "title": "Adenion Blog2Social plugin for WordPress before 9.1.0 allows low-privileged users to modify the...",
-    "description": "Adenion Blog2Social plugin for WordPress before 9.1.0 allows low-privileged users to modify the scheduled post records of other users. The b2s_calendar_move_post AJAX handler in includes/Ajax/Post.php issues an UPDATE against the b2s_posts table using only the attacker-supplied b2s_id primary key with no blog_user_id ownership constraint, allowing any user with the edit_posts capability to reschedule, suppress, or alter the publication state of any other user's scheduled social media post.",
+    "timestamp": "2026-09-16T18:32:06Z",
+    "title": "Adobe Experience Manager is affected by a stored Cross-Site Scripting (XSS) vulnerability that...",
+    "description": "Adobe Experience Manager is affected by a stored Cross-Site Scripting (XSS) vulnerability that could be abused by a low-privileged attacker to inject malicious scripts into vulnerable form fields. Malicious JavaScript may be executed in a victim's browser when they browse to the page containing the vulnerable field. Scope is changed.",
     "severity": "medium",
-    "cve_id": "CVE-2026-89031",
-    "ghsa_id": "GHSA-f53j-3ghj-6c45",
+    "cve_id": "CVE-2026-84397",
+    "ghsa_id": "GHSA-rwqw-vmpp-qf38",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-7g5g-h785-2px7",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T18:32:06Z",
+    "title": "kkFileView 5.0.0 through 5.0.2 allows reflected XSS via the /onlinePreview endpoint. The...",
+    "description": "kkFileView 5.0.0 through 5.0.2 allows reflected XSS via the /onlinePreview endpoint. The OnlinePreviewController passes the user-controlled page and kkagent request parameters to FreeMarker templates without sanitization, and the templates insert these values into raw JavaScript contexts.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-88593",
+    "ghsa_id": "GHSA-7g5g-h785-2px7",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-3w9f-9wfp-x8gr",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T18:32:05Z",
+    "title": "Concrete CMS before 9.5.3 exposed a legacy Express entry search endpoint that returned entry...",
+    "description": "Concrete CMS before 9.5.3 exposed a legacy Express entry search endpoint that returned entry result JSON without invoking the canViewExpressEntries() permission check applied by the normal dashboard and CSV Export flow. An unauthenticated visitor who knew or discovered an Express entity identifier could enumerate that entity's entry search results, disclosing attribute values intended to be restricted to privileged users. For Express entities that do not support entry-specific permissions (i.e.,",
+    "severity": "medium",
+    "cve_id": "CVE-2026-18120",
+    "ghsa_id": "GHSA-3w9f-9wfp-x8gr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-7x6f-hv5j-6c4j",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T18:32:05Z",
+    "title": "SIMAC MyPHR 1.1 contains an insecure direct object reference (IDOR) vulnerability that allows...",
+    "description": "SIMAC MyPHR 1.1 contains an insecure direct object reference (IDOR) vulnerability that allows authenticated attackers to access and modify arbitrary employee records due to missing server-side ownership validation. Attackers can send a PUT request to the employee update endpoint with an arbitrary employee identifier and a controlled password value to take over target accounts, enumerate employee records, and retrieve sensitive personally identifiable information including private pay bulletins.",
+    "severity": "high",
+    "cve_id": "CVE-2026-47094",
+    "ghsa_id": "GHSA-7x6f-hv5j-6c4j",
     "affected_packages": [],
     "cwes": [
       null
@@ -368,20 +400,71 @@
       null,
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-m2j8-j5hh-qc3w",
+    "id": "gh-GHSA-3jcw-728q-x66v",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:14Z",
-    "title": "A flaw has been found in WuzhiCMS up to 4.1.0. The impacted element is the function ckditor:...",
-    "description": "A flaw has been found in WuzhiCMS up to 4.1.0. The impacted element is the function ckditor::saveRemote of the file coreframe/app/attachment/index.php of the component Remote Image Fetch. This manipulation of the argument source[] causes server-side request forgery. The attack can be initiated remotely. The exploit has been published and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-92380",
-    "ghsa_id": "GHSA-m2j8-j5hh-qc3w",
+    "timestamp": "2026-09-16T18:32:05Z",
+    "title": "Guns through 8.3.5 contains an improper access control vulnerability in SysNoticeController where...",
+    "description": "Guns through 8.3.5 contains an improper access control vulnerability in SysNoticeController where requiredPermission defaults to false and is not overridden by any action methods. Authenticated users without assigned roles can exploit this to create, edit, delete, publish and retract system-wide notices affecting arbitrary users and departments.",
+    "severity": "high",
+    "cve_id": "CVE-2026-92601",
+    "ghsa_id": "GHSA-3jcw-728q-x66v",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-j7wg-fgxp-4h6h",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T18:32:05Z",
+    "title": "TDuck survey form through version 5.3 fails to validate webhook URLs or verify form ownership in...",
+    "description": "TDuck survey form through version 5.3 fails to validate webhook URLs or verify form ownership in the WebhookConfigController. Authenticated attackers can attach webhooks to other users' forms and exfiltrate submissions to arbitrary external or internal addresses.",
+    "severity": "high",
+    "cve_id": "CVE-2026-92602",
+    "ghsa_id": "GHSA-j7wg-fgxp-4h6h",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-8qc6-4wmj-p8f9",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T18:32:05Z",
+    "title": "ContiNew Admin through 4.1.0 contains an authorization bypass vulnerability in the personal...",
+    "description": "ContiNew Admin through 4.1.0 contains an authorization bypass vulnerability in the personal message delete endpoint that allows authenticated users to delete other users' messages and announcements. Attackers can supply arbitrary message identifiers in the IdsReq parameter to remove any message row and purge all recipients' read receipts without ownership validation.",
+    "severity": "high",
+    "cve_id": "CVE-2026-92603",
+    "ghsa_id": "GHSA-8qc6-4wmj-p8f9",
     "affected_packages": [],
     "cwes": [
       null
@@ -400,113 +483,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-36pr-h5jw-r82m",
+    "id": "gh-GHSA-82fx-23wg-996j",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:14Z",
-    "title": "Rallly before 4.15.0 contains an information disclosure vulnerability in the polls.get tRPC...",
-    "description": "Rallly before 4.15.0 contains an information disclosure vulnerability in the polls.get tRPC procedure that returns scheduled-event invitee names and email addresses to unauthenticated callers. Attackers can access a poll's urlId from public invite links to retrieve sensitive invitee information regardless of privacy settings.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-92565",
-    "ghsa_id": "GHSA-36pr-h5jw-r82m",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-4c2q-5fw3-3mm8",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:14Z",
-    "title": "A weakness has been identified in PbootCMS up to 3.2.22. This affects the function decode_string...",
-    "description": "A weakness has been identified in PbootCMS up to 3.2.22. This affects the function decode_string of the file apps/admin/controller/content/ContentController.php of the component Template Rendering. This manipulation of the argument Title causes cross site scripting. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks. The reported GitHub issue was closed with the reason \"completed\".",
+    "timestamp": "2026-09-16T18:32:05Z",
+    "title": "n Concrete CMS 9.2.0 through 9.5.3, the REST API user creation endpoint (POST /ccm/api/1.0/users,...",
+    "description": "n Concrete CMS 9.2.0 through 9.5.3, the REST API user creation endpoint (POST /ccm/api/1.0/users, the add() method of concrete/src/Api/Controller/Users.php) did not perform a permission check before creating an account. As a result, any valid OAuth token carrying the users:add scope, including a client_credentials token with no associated user context, could create active, validated user accounts, bypassing email verification and administrator approval. Under default registration settings the cr",
     "severity": "low",
-    "cve_id": "CVE-2026-92381",
-    "ghsa_id": "GHSA-4c2q-5fw3-3mm8",
+    "cve_id": "CVE-2026-87031",
+    "ghsa_id": "GHSA-82fx-23wg-996j",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-gqpm-g63c-92xv",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:13Z",
-    "title": "ScadaLTS 2.8.1-release-candidate build 0 is affected by an Authenticated Blind SQL Injection\n\n\n...",
-    "description": "ScadaLTS 2.8.1-release-candidate build 0 is affected by an Authenticated Blind SQL Injection\n\n\n\nThe /api/events/search endpoint accepts a JSON body containing a sortBy array. The values in this array are concatenated directly into the SQL ORDER BY clause without any sanitization or parameterization. This allows authenticated users with the ROLE_USER role to perform time-based and boolean-based blind SQL injection to extract arbitrary data from the database, including password hashes of all users",
-    "severity": "medium",
-    "cve_id": "CVE-2026-84859",
-    "ghsa_id": "GHSA-gqpm-g63c-92xv",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-4vrr-rhf8-cpc9",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:13Z",
-    "title": "ScadaLTS 2.8.1-release-candidate build 0 is affected by an Authorization Bypass\n\n\n\nSpring...",
-    "description": "ScadaLTS 2.8.1-release-candidate build 0 is affected by an Authorization Bypass\n\n\n\nSpring Security gates DWR endpoints by URL path pattern, but DWR itself dispatches method calls based on the POST body parameters c0-scriptName and c0-methodName. The crossDomainSessionSecurity setting in web.xml is set to false, which disables DWR's built-in origin validation. This means any authenticated user can invoke any DWR method (regardless of the URL-based access control) by sending their request to a URL",
-    "severity": "high",
-    "cve_id": "CVE-2026-84860",
-    "ghsa_id": "GHSA-4vrr-rhf8-cpc9",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-r5c7-vpw8-xf4v",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T15:31:13Z",
-    "title": "Improper preservation of permissions in the Avast sandbox minifilter driver (aswSnx.sys) on...",
-    "description": "Improper preservation of permissions in the Avast sandbox minifilter driver (aswSnx.sys) on Windows allows a local, low-privileged attacker executing inside the sandbox to escape file isolation and escalate to SYSTEM.\n\n\n\nWhen the sandbox virtualizes a file it copies the original security descriptor, but the driver opened the virtualization target object with GENERIC_WRITE and FILE_WRITE_ATTRIBUTES only, omitting WRITE_DAC. Every attempt to apply the original DACL therefore failed, and the failur",
-    "severity": "high",
-    "cve_id": "CVE-2026-82964",
-    "ghsa_id": "GHSA-r5c7-vpw8-xf4v",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null
