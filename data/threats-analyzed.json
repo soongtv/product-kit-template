@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1789557512192-1",
+    "id": "twitter-1789576720582-1",
     "source": "Twitter Security",
-    "timestamp": "2026-09-16T11:18:32.192Z",
+    "timestamp": "2026-09-16T16:38:40.582Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1789557512192-1",
+    "id": "hn-1789576720582-1",
     "source": "HackerNews",
-    "timestamp": "2026-09-16T11:18:32.192Z",
+    "timestamp": "2026-09-16T16:38:40.582Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,572 +52,22 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-3xg9-4g5f-3mp3",
+    "id": "gh-GHSA-r2pf-9cw4-5j65",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: Fix use-after-free...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nperf: Fix use-after-free when perf mmap() revival races with the last munmap()\n\nperf_mmap_close() drops rb->mmap_count *without* holding\nevent->mmap_mutex (the refcount_dec_and_test() right before the\nrefcount_dec_and_mutex_lock() of event->mmap_count). A concurrent\nperf_mmap_rb() can slot its entire \"revival\" path into that window\n(perf_mmap holds event->mmap_mutex for its whole duration, including\nrb_alloc):\n\n  munmap side (p",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89791",
-    "ghsa_id": "GHSA-3xg9-4g5f-3mp3",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
+    "timestamp": "2026-09-16T16:19:21Z",
+    "title": "node-opcua: TCP Socket Leak (FIN-WAIT-2) via keepalive reconnection cycle - Resource Exhaustion",
+    "description": "SUMMARY\n-------\nA combination of bugs in node-opcua causes unlimited TCP socket accumulation (FIN-WAIT-2 state) during automatic reconnection, leading to memory exhaustion and eventual container/process crash (OOM kill). The issue is triggered by the default configuration (keepSessionAlive: true) when the OPC UA server has clock skew relative to the client.\n\nAffected version: Tested on 2.169.0 (latest as of April 2026).\n\nENVIRONMENT\n-----------\n- Node.js: v24.11.0\n- node-opcua: 2.169.0\n- OS: Lin",
+    "severity": "high",
+    "cve_id": "CVE-2026-68904",
+    "ghsa_id": "GHSA-r2pf-9cw4-5j65",
+    "affected_packages": [
+      "node-opcua-transport",
+      "node-opcua-client",
+      "node-opcua"
+    ],
+    "cwes": [
       null
     ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89791.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-5h65-jm98-j8f7",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: prevent out-of-bounds...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: prevent out-of-bounds reads in share config responses\n\nValidate IPC share configuration payload sizes before consuming\nvariable-length fields. Bound veto list parsing and account for\nthe separator byte when deriving the path length.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89792",
-    "ghsa_id": "GHSA-5h65-jm98-j8f7",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89792.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-7xr2-rx94-5f89",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: fix out-of-bounds read...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: fix out-of-bounds read in ext4_read_inline_dir()\n\next4_read_inline_dir() can read a dirent header past the end of its inline\nbuffer, triggering a slab-out-of-bounds read during getdents64():\n\n  BUG: KASAN: slab-out-of-bounds in __ext4_check_dir_entry\n  Read of size 2 at addr ffff88800f3dd23c by task exploit/148\n   ...\n   __ext4_check_dir_entry\n   ext4_read_inline_dir\n   iterate_dir\n\nThe dirent payload lives in a buffer of",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89786",
-    "ghsa_id": "GHSA-7xr2-rx94-5f89",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89786.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-h6q8-7j67-4q68",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\ngtp: add synchronize_net()...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\ngtp: add synchronize_net() in gtp_newlink() error path to prevent use-after-free\n\ngtp_newlink()'s error path frees tid_hash and addr_hash without\nwaiting for an RCU grace period after clearing sk_user_data. A\nconcurrent gtp_encap_recv() in softirq may still hold the gtp_dev\npointer obtained via rcu_dereference_sk_user_data() and access the\nfreed memory.\n\n  BUG: KASAN: slab-use-after-free in gtp0_pdp_find+0x1f6/0x200 (gtp.c:152)",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89789",
-    "ghsa_id": "GHSA-h6q8-7j67-4q68",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89789.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-w5hj-mmmx-p42j",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm6: fix out-of-bounds...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nxfrm6: fix out-of-bounds write in xfrm6_input_addr() when secpath is full\n\nThe depth check in xfrm6_input_addr() is off by one:\n\n  if (1 + sp->len == XFRM_MAX_DEPTH)\n          goto drop;\n  ...\n  sp->xvec[sp->len++] = x;\n\nxfrm_input() can leave sp->len == XFRM_MAX_DEPTH, and the transport-mode\nreceive path re-enters IPv6 input via xfrm_trans_reinject() with that\nsecpath preserved. If the inner packet carries a destination-option",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89783",
-    "ghsa_id": "GHSA-w5hj-mmmx-p42j",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89783.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-cxfp-66mh-jhvv",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: check dir entry fits...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\next4: check dir entry fits before reading the hash trailer in ext4_search_dir()\n\nFor casefolded encrypted directories ext4 stores an 8-byte hash trailer\nafter the name (EXT4_DIRENT_HASHES()), at an offset derived from\nde->name_len.  On the sb_no_casefold_compat_fallback() path ext4_match()\nreads that trailer, but ext4_search_dir()'s by-hand pre-check only tests\nde->name + de->name_len <= dlimit, which proves the name fits, not ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89787",
-    "ghsa_id": "GHSA-cxfp-66mh-jhvv",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89787.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-683x-gqv7-78pp",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: fix out-of-bounds...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: fix out-of-bounds read of INDEX_ROOT in reparse/objid init\n\nntfs_reparse_init() and ntfs_objid_init() parse the index root of the\n$Extend/$Reparse and $Extend/$ObjId metafiles (the INDEX_ROOT attributes\nnamed $R and $O). They read its type and rule fields through\nresident_data(), which does not check that the resident attribute is\nlarge enough to hold them.\n\nmi_enum_attr() accepts a resident attribute with data_off ==",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89785",
-    "ghsa_id": "GHSA-683x-gqv7-78pp",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89785.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-8jpc-3w39-9jvg",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nSUNRPC: check...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nSUNRPC: check rpc_sockaddr2uaddr() return value in rpcb_register_inet4/6\n\nrpcb_register_inet4() and rpcb_register_inet6() store the result of\nrpc_sockaddr2uaddr() into map->r_addr without checking it for NULL.\nrpc_sockaddr2uaddr() returns NULL when its final kstrdup() fails, and\nthe unchecked NULL is then carried into the synchronous RPCBPROC_SET\nencode path: rpcb_register_call() -> rpc_call_sync() ->\nrpcb_enc_getaddr() -> enco",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89784",
-    "ghsa_id": "GHSA-8jpc-3w39-9jvg",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89784.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-8437-c9wr-2522",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: avoid divide by zero...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nipv6: avoid divide by zero in rt6_multipath_rebalance\n\nrt6_multipath_rebalance() calculates the total eligible nexthop weight\nin one pass and programs upper bounds in a second pass. Since\nRTM_NEWROUTE is RTNL-free, a concurrent\nignore_routes_with_linkdown update can make the first pass return zero\nwhile the second sees an eligible nexthop, causing\nrt6_upper_bound_set() to divide by zero.\n\nUBSAN: division-overflow in net/ipv6/ro",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89790",
-    "ghsa_id": "GHSA-8437-c9wr-2522",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89790.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-xf98-5fqf-rh4f",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: fix out-of-bounds...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: fix out-of-bounds read in read_log_rec_buf()\n\nread_log_rec_buf() copies a log record into a caller buffer starting at\n\n\tu32 off = lsn_to_page_off(log, lsn) + log->record_header_len;\n\nlog->record_header_len (and log->data_off, used for the following pages)\ncomes verbatim from the on-disk restart area and is only checked for\n8-byte alignment in is_rst_area_valid(), so off can exceed\nlog->page_size. \"tail = log->page_siz",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89781",
-    "ghsa_id": "GHSA-xf98-5fqf-rh4f",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89781.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-2f6m-7f8f-p7hp",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: qualcomm: rmnet:...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnet: qualcomm: rmnet: restore skb->dev on deaggregated frames\n\nrmnet_map_deaggregate() allocates each sub-frame with alloc_skb() and\nleaves skb->dev NULL. __rmnet_map_ingress_handler() assigns\nskb->dev = ep->egress_dev only on the data path, but a MAP command frame\nis dispatched to rmnet_map_command() before that, so rmnet_map_send_ack()\nruns netif_tx_lock(skb->dev) on a NULL device. An unprivileged user\nreaches this by unshari",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89780",
-    "ghsa_id": "GHSA-2f6m-7f8f-p7hp",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89780.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-q8vr-48qg-6qfp",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: reject restart...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: reject restart table growth beyond U16_MAX entries\n\nDuring $LogFile replay, log_replay() indexes the transaction table by the\ntransact_id taken from the log record header.  check_log_rec() only\nverifies that transact_id is non-zero and properly aligned, not its\nmagnitude, so a crafted image can request an arbitrarily large index.\n\nalloc_rsttbl_from_idx() grows the table to cover that index via\nextend_rsttbl(), which p",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89782",
-    "ghsa_id": "GHSA-q8vr-48qg-6qfp",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89782.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-gg5m-j9gf-rmhm",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: validate ef->size...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nfs/ntfs3: validate ef->size covers the record's name and value\n\nWhen an EA record has a non-zero ef->size, ntfs_read_ea() only checks\nthat the record fits in the remaining buffer (ea_size > bytes), not that\nef->size is large enough to hold the record's own name_len + 1 + elength.\n\nA crafted image can pass validation with, e.g., ef->size = 24 but\nelength = 0xffff. ntfs_get_ea() then trusts elength and copies it out of\nthe unders",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89779",
-    "ghsa_id": "GHSA-gg5m-j9gf-rmhm",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89779.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-29wc-2986-775f",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:30Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix tree connection...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nksmbd: fix tree connection use-after-free in smb2_tree_connect()\n\nksmbd_tree_conn_connect() publishes a new tree connection in\nsess->tree_conns with a single reference and returns its pointer to\nsmb2_tree_connect(). The handler continues to initialize the object and\nbuild the response after publication. A concurrent session logoff can\nerase the connection and drop that reference, freeing the object while\nthe handler still uses ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89788",
-    "ghsa_id": "GHSA-29wc-2986-775f",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89788.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-vfmj-8pgc-h88m",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:29Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nisofs: fix out-of-bounds...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nisofs: fix out-of-bounds page array access on empty zisofs block\n\nzisofs_uncompress_block()'s empty-block fast path returns\npcount << PAGE_SHIFT, ignoring the incoming poffset, unlike the\ndecompression path which returns bytes produced relative to poffset.\nzisofs_fill_pages() uses that return to advance its page cursor, so when\nthe zisofs block size is below PAGE_SIZE and a sub-page block leaves\npoffset partway into a page, a f",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89778",
-    "ghsa_id": "GHSA-vfmj-8pgc-h88m",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89778.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-vf8c-65h3-589v",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:29Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: vnifilter: enforce...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvxlan: vnifilter: enforce exact length of GROUP/GROUP6 attributes\n\nThe VXLAN VNI filter entry policy declares the GROUP/GROUP6 address\nattributes as NLA_BINARY with only a maximum length, so validate_nla()\naccepts a payload shorter than the address. The GROUP consumer reads it\nwith nla_get_in_addr(), an unconditional 4-byte load, so a short\nattribute over-reads up to 3 bytes of uninitialised slab data, which are\nstored into rem",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89776",
-    "ghsa_id": "GHSA-vf8c-65h3-589v",
-    "affected_packages": [],
-    "cwes": [],
     "references": [
       null,
       null,
@@ -629,8 +79,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89776.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-68904.",
       "affected_industries": [
         "Technology",
         "General"
@@ -640,22 +90,135 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-4h2c-gw77-f478",
+    "id": "gh-GHSA-pg97-jvmf-qfvc",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:29Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Handle negative...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nKVM: arm64: Handle negative S1 walk levels in VNCR TLB size evaluation\n\nComputing the effects of a TLB invalidation involves looking at\nthe size of the mapping cached by the TLB. For S1 mappings such as\nVNCR, this is deducted from the combination of the base granule size\nand the mapping level.\n\nHowever, this implies that the S1 MMU is *on*. When the MMU is off,\nwe indicate this with the level being set to a \"creative\" value of\n",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89775",
-    "ghsa_id": "GHSA-4h2c-gw77-f478",
-    "affected_packages": [],
-    "cwes": [],
+    "timestamp": "2026-09-16T15:45:03Z",
+    "title": "djust has Cross-Site Request Forgery on the Server-Sent-Events transport: a cross-origin page can drive a victim-authenticated SSE session",
+    "description": "### Impact\nThe SSE client→server POST endpoints are `@csrf_exempt` and the SSE GET stream endpoint had no Origin check, so a cross-origin page could drive a victim-cookie-authenticated SSE session: force the victim's browser to GET the stream URL (which **creates and mounts** a LiveView as the victim) and POST to the message endpoint with `credentials: include` to **fire state-changing event handlers as the victim**. The URL `session_id` is client-chosen (validated only for UUID *format*), so it",
+    "severity": "high",
+    "cve_id": "CVE-2026-61593",
+    "ghsa_id": "GHSA-pg97-jvmf-qfvc",
+    "affected_packages": [
+      "djust"
+    ],
+    "cwes": [
+      null
+    ],
     "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-61593.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-5h8j-6crg-7rmw",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:34:27Z",
+    "title": "LMdeploy has Remote Code Execution by Pickle Deserialization via zmq_rpc.call_and_response() in InterLM/lmdeploy",
+    "description": "### Description\n\nThe LMdeploy implements an rpc server (AsyncRPCServer in zmq_rpc.py) for supporting the RPC communications. In its core functionality call_and_response(), I found it will directly use the pickles.loads() to deserialize the received messages without any sanitization, hence resulting in a remote code execution vulnerability by this RPC server.\n\n### Proof of Concept\n\n* Step1:\nThe victim user starts a RPC server that connects to its network interface. We give our example code (serve",
+    "severity": "critical",
+    "cve_id": "CVE-2025-59953",
+    "ghsa_id": "GHSA-5h8j-6crg-7rmw",
+    "affected_packages": [
+      "lmdeploy"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2025-59953.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-3492-cvg7-9mr2",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:32:10Z",
+    "title": "djust: Multi-tenant isolation fails open on the WebSocket/SSE path, disclosing other tenants' data",
+    "description": "### Impact\n`djust.tenants` isolation was enforced only on the HTTP path. The current tenant was stored in `threading.local()` and set exclusively by the HTTP-only `TenantMiddleware`, so on the live (WebSocket/SSE) path `get_current_tenant()` was always `None` during mount and every event handler — and the tenant-aware `QuerySet` manager failed **OPEN** (returned the unfiltered queryset, ignoring `STRICT_MODE`), disclosing **every** tenant's rows to whoever held the socket. `threading.local` was ",
+    "severity": "high",
+    "cve_id": "CVE-2026-61595",
+    "ghsa_id": "GHSA-3492-cvg7-9mr2",
+    "affected_packages": [
+      "djust"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-61595.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-29ch-4262-w3fr",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:14Z",
+    "title": "reNgine through 2.2.0 contains an authorization bypass vulnerability in the GetFileContents API...",
+    "description": "reNgine through 2.2.0 contains an authorization bypass vulnerability in the GetFileContents API endpoint that allows any authenticated user to read bundled recon tool configuration files. Attackers with low-privilege Auditor roles can access files containing third-party API keys for services like SecurityTrails, Shodan, Censys, VirusTotal, BinaryEdge and Hunter by querying the endpoint without role-based permission checks.",
+    "severity": "high",
+    "cve_id": "CVE-2026-92570",
+    "ghsa_id": "GHSA-29ch-4262-w3fr",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
       null,
       null,
       null,
@@ -663,8 +226,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89775.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-92570.",
       "affected_industries": [
         "Technology",
         "General"
@@ -674,58 +237,19 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "high"
     },
-    "risk_score": 50
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-552v-qphj-5fjg",
+    "id": "gh-GHSA-9vwf-fv6w-mmfr",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:29Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nvfio/pci: clear vdev-...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nvfio/pci: clear vdev->msi_perm after freeing it on init failure\n\nvfio_msi_cap_len() lazily allocates the per-device MSI permission table:\n\n\tvdev->msi_perm = kmalloc_obj(struct perm_bits, GFP_KERNEL_ACCOUNT);\n\tif (!vdev->msi_perm)\n\t\treturn -ENOMEM;\n\n\tret = init_pci_cap_msi_perm(vdev->msi_perm, len, flags);\n\tif (ret) {\n\t\tkfree(vdev->msi_perm);\n\t\treturn ret;\t\t/* vdev->msi_perm left dangling */\n\t}\n\nWhen init_pci_cap_msi_perm() -> a",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89777",
-    "ghsa_id": "GHSA-552v-qphj-5fjg",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89777.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-p7v4-jpp9-2m3q",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:29Z",
-    "title": "Improper Validation of Unsafe Equivalence in Input in ZenHive mpp allows an unauthenticated...",
-    "description": "Improper Validation of Unsafe Equivalence in Input in ZenHive mpp allows an unauthenticated remote client to pass the Tempo duplicate-submission gate twice with one signed transaction.\n\nMPP.Methods.Tempo reserves the pre-broadcast dedup slot on the caller-supplied hex in reserve_hash_atomic/2, keyed through store_key/1 on tx.raw rather than on a canonical form of the transaction. The deserializer stores the caller's hex verbatim and accepts both recovery-id encodings, so one signed transaction s",
+    "timestamp": "2026-09-16T15:31:14Z",
+    "title": "Hippo4j through 1.5.0 contains a server-side request forgery vulnerability in four...",
+    "description": "Hippo4j through 1.5.0 contains a server-side request forgery vulnerability in four ThreadPoolController endpoints that fail to validate the clientAddress parameter. Authenticated attackers can supply arbitrary hostnames and ports to trigger outbound GET requests to internal networks and cloud metadata services.",
     "severity": "medium",
-    "cve_id": "CVE-2026-88255",
-    "ghsa_id": "GHSA-p7v4-jpp9-2m3q",
+    "cve_id": "CVE-2026-92569",
+    "ghsa_id": "GHSA-9vwf-fv6w-mmfr",
     "affected_packages": [],
     "cwes": [
       null
@@ -741,7 +265,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-88255.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-92569.",
       "affected_industries": [
         "Technology",
         "General"
@@ -756,16 +280,53 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-g3p6-8r9x-w9g7",
+    "id": "gh-GHSA-57x9-hhc6-cx9h",
     "source": "GitHub Security",
-    "timestamp": "2026-09-16T09:30:29Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: SCO: hold sk...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nBluetooth: SCO: hold sk properly in sco_conn_ready\n\nsk deref in sco_conn_ready must be done either under conn->lock, or\nholding a refcount, to avoid concurrent close. conn->sk and parent sk is\ncurrently accessed without either, and without checking parent->sk_state:\n\n    [Task 1]            [Task 2]\n                        sco_sock_release\n    sco_conn_ready\n      sk = conn->sk\n                          lock_sock(sk)\n          ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89774",
-    "ghsa_id": "GHSA-g3p6-8r9x-w9g7",
+    "timestamp": "2026-09-16T15:31:14Z",
+    "title": "FileRise before version 3.28.0 contains a privilege escalation vulnerability that allows...",
+    "description": "FileRise before version 3.28.0 contains a privilege escalation vulnerability that allows authenticated low-privilege attackers to gain unauthorized read and write access by exploiting improper session isolation between the WebDAV interface and the web application session context. Attackers can combine valid Basic-Auth credentials with an active admin PHPSESSID cookie to bypass authorization boundaries, as the WebDAV layer incorrectly inherits elevated privileges from an ambient web session rathe",
+    "severity": "high",
+    "cve_id": "CVE-2026-92616",
+    "ghsa_id": "GHSA-57x9-hhc6-cx9h",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-92616.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-fjfv-cm2f-px7c",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:14Z",
+    "title": "DataGear through 6.0.0 contains a server-side request forgery vulnerability in the /dataSet...",
+    "description": "DataGear through 6.0.0 contains a server-side request forgery vulnerability in the /dataSet/preview/Http endpoint that allows unauthenticated attackers to execute arbitrary HTTP requests by supplying a caller-controlled URI. Attackers can issue GET, POST, PUT, PATCH, or DELETE requests to internal endpoints and cloud metadata services, receiving full response bodies without authentication or validation.",
+    "severity": "high",
+    "cve_id": "CVE-2026-92566",
+    "ghsa_id": "GHSA-fjfv-cm2f-px7c",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
       null,
@@ -777,8 +338,95 @@
       null
     ],
     "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-92566.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-g65h-8grw-v433",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:14Z",
+    "title": "A security vulnerability has been detected in PbootCMS up to 3.2.24. This vulnerability affects...",
+    "description": "A security vulnerability has been detected in PbootCMS up to 3.2.24. This vulnerability affects the function UserController::del/UserController::mod of the file apps/admin/controller/system/UserController.php of the component User Management. Such manipulation leads to cross-site request forgery. The attack may be performed from remote. The exploit has been disclosed publicly and may be used. Upgrading to version 3.2.25 is able to resolve this issue. The name of the patch is c25241a0964742cefb7f",
+    "severity": "low",
+    "cve_id": "CVE-2026-92383",
+    "ghsa_id": "GHSA-g65h-8grw-v433",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-92383.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-8jx2-x54x-9q63",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:14Z",
+    "title": "A vulnerability was determined in code-projects Matrimonial System 1.0. This affects an unknown...",
+    "description": "A vulnerability was determined in code-projects Matrimonial System 1.0. This affects an unknown part of the file /search.php of the component Regular Search. This manipulation of the argument sex/mothertongue/maritialstatus/country/state/religion/agemin/agemax causes sql injection. The attack can be initiated remotely. The exploit has been publicly disclosed and may be utilized.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-92366",
+    "ghsa_id": "GHSA-8jx2-x54x-9q63",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-89774.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-92366.",
       "affected_industries": [
         "Technology",
         "General"
@@ -791,6 +439,366 @@
       "urgency": "medium"
     },
     "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-7w64-c3jh-vh86",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:14Z",
+    "title": "MLRun through 1.11.0 contains a server-side request forgery vulnerability in the...",
+    "description": "MLRun through 1.11.0 contains a server-side request forgery vulnerability in the WebhookNotification handler that allows authenticated users to make the API server send arbitrary HTTP requests to internal addresses. Attackers can update a run with a malicious webhook notification that executes when the run reaches a terminal state, enabling requests to internal services, Kubernetes APIs, or cloud metadata endpoints from within the cluster.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-92568",
+    "ghsa_id": "GHSA-7w64-c3jh-vh86",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-92568.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-cxpf-jm7w-39v7",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:14Z",
+    "title": "TDuck survey form through version 5.0 contains an authorization bypass vulnerability in the POST ...",
+    "description": "TDuck survey form through version 5.0 contains an authorization bypass vulnerability in the POST /user/form/data/update endpoint that allows authenticated users to overwrite other users' form submission data. Attackers can discover submission identifiers allocated in narrow ranges and modify arbitrary form responses containing personal data by sending update requests without ownership validation.",
+    "severity": "high",
+    "cve_id": "CVE-2026-92567",
+    "ghsa_id": "GHSA-cxpf-jm7w-39v7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-92567.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-43j6-88p2-5hxm",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:14Z",
+    "title": "Rejected reason: CVE ID reserved in error and not assigned to a vulnerability. The correct CVE ID...",
+    "description": "Rejected reason: CVE ID reserved in error and not assigned to a vulnerability. The correct CVE ID is CVE-2026-92574.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-92571",
+    "ghsa_id": "GHSA-43j6-88p2-5hxm",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-92571.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-f53j-3ghj-6c45",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:14Z",
+    "title": "Adenion Blog2Social plugin for WordPress before 9.1.0 allows low-privileged users to modify the...",
+    "description": "Adenion Blog2Social plugin for WordPress before 9.1.0 allows low-privileged users to modify the scheduled post records of other users. The b2s_calendar_move_post AJAX handler in includes/Ajax/Post.php issues an UPDATE against the b2s_posts table using only the attacker-supplied b2s_id primary key with no blog_user_id ownership constraint, allowing any user with the edit_posts capability to reschedule, suppress, or alter the publication state of any other user's scheduled social media post.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-89031",
+    "ghsa_id": "GHSA-f53j-3ghj-6c45",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-89031.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-m2j8-j5hh-qc3w",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:14Z",
+    "title": "A flaw has been found in WuzhiCMS up to 4.1.0. The impacted element is the function ckditor:...",
+    "description": "A flaw has been found in WuzhiCMS up to 4.1.0. The impacted element is the function ckditor::saveRemote of the file coreframe/app/attachment/index.php of the component Remote Image Fetch. This manipulation of the argument source[] causes server-side request forgery. The attack can be initiated remotely. The exploit has been published and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-92380",
+    "ghsa_id": "GHSA-m2j8-j5hh-qc3w",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-92380.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-36pr-h5jw-r82m",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:14Z",
+    "title": "Rallly before 4.15.0 contains an information disclosure vulnerability in the polls.get tRPC...",
+    "description": "Rallly before 4.15.0 contains an information disclosure vulnerability in the polls.get tRPC procedure that returns scheduled-event invitee names and email addresses to unauthenticated callers. Attackers can access a poll's urlId from public invite links to retrieve sensitive invitee information regardless of privacy settings.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-92565",
+    "ghsa_id": "GHSA-36pr-h5jw-r82m",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-92565.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-4c2q-5fw3-3mm8",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:14Z",
+    "title": "A weakness has been identified in PbootCMS up to 3.2.22. This affects the function decode_string...",
+    "description": "A weakness has been identified in PbootCMS up to 3.2.22. This affects the function decode_string of the file apps/admin/controller/content/ContentController.php of the component Template Rendering. This manipulation of the argument Title causes cross site scripting. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks. The reported GitHub issue was closed with the reason \"completed\".",
+    "severity": "low",
+    "cve_id": "CVE-2026-92381",
+    "ghsa_id": "GHSA-4c2q-5fw3-3mm8",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-92381.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-gqpm-g63c-92xv",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:13Z",
+    "title": "ScadaLTS 2.8.1-release-candidate build 0 is affected by an Authenticated Blind SQL Injection\n\n\n...",
+    "description": "ScadaLTS 2.8.1-release-candidate build 0 is affected by an Authenticated Blind SQL Injection\n\n\n\nThe /api/events/search endpoint accepts a JSON body containing a sortBy array. The values in this array are concatenated directly into the SQL ORDER BY clause without any sanitization or parameterization. This allows authenticated users with the ROLE_USER role to perform time-based and boolean-based blind SQL injection to extract arbitrary data from the database, including password hashes of all users",
+    "severity": "medium",
+    "cve_id": "CVE-2026-84859",
+    "ghsa_id": "GHSA-gqpm-g63c-92xv",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-84859.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-4vrr-rhf8-cpc9",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:13Z",
+    "title": "ScadaLTS 2.8.1-release-candidate build 0 is affected by an Authorization Bypass\n\n\n\nSpring...",
+    "description": "ScadaLTS 2.8.1-release-candidate build 0 is affected by an Authorization Bypass\n\n\n\nSpring Security gates DWR endpoints by URL path pattern, but DWR itself dispatches method calls based on the POST body parameters c0-scriptName and c0-methodName. The crossDomainSessionSecurity setting in web.xml is set to false, which disables DWR's built-in origin validation. This means any authenticated user can invoke any DWR method (regardless of the URL-based access control) by sending their request to a URL",
+    "severity": "high",
+    "cve_id": "CVE-2026-84860",
+    "ghsa_id": "GHSA-4vrr-rhf8-cpc9",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-84860.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-r5c7-vpw8-xf4v",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-16T15:31:13Z",
+    "title": "Improper preservation of permissions in the Avast sandbox minifilter driver (aswSnx.sys) on...",
+    "description": "Improper preservation of permissions in the Avast sandbox minifilter driver (aswSnx.sys) on Windows allows a local, low-privileged attacker executing inside the sandbox to escape file isolation and escalate to SYSTEM.\n\n\n\nWhen the sandbox virtualizes a file it copies the original security descriptor, but the driver opened the virtualization target object with GENERIC_WRITE and FILE_WRITE_ATTRIBUTES only, omitting WRITE_DAC. Every attempt to apply the original DACL therefore failed, and the failur",
+    "severity": "high",
+    "cve_id": "CVE-2026-82964",
+    "ghsa_id": "GHSA-r5c7-vpw8-xf4v",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-82964.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
   },
   {
     "id": "cve-CVE-2026-87439",
