@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1789663533067-1",
+    "id": "twitter-1789679571012-1",
     "source": "Twitter Security",
-    "timestamp": "2026-09-17T16:45:33.067Z",
+    "timestamp": "2026-09-17T21:12:51.012Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1789663533067-1",
+    "id": "hn-1789679571012-1",
     "source": "HackerNews",
-    "timestamp": "2026-09-17T16:45:33.067Z",
+    "timestamp": "2026-09-17T21:12:51.012Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,16 +52,16 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-89m4-43j5-vhhx",
+    "id": "gh-GHSA-r94f-hx44-8jqf",
     "source": "GitHub Security",
-    "timestamp": "2026-09-17T16:30:46Z",
-    "title": "Junrar: LocalFolderExtractor mkdir escape allows directory creation outside extraction root",
-    "description": "## Summary\n\n`LocalFolderExtractor` validates only the final canonical file path before extraction. However, `makeFile()` creates intermediate directories one path segment at a time without checking whether each created directory remains inside the destination folder.\n\nA malicious RAR entry can make the final file path resolve inside the extraction destination, while causing intermediate `mkdir()` calls to create attacker-chosen directories outside the extraction root.\n\nThis is an extraction root",
-    "severity": "low",
-    "cve_id": "CVE-2026-86071",
-    "ghsa_id": "GHSA-89m4-43j5-vhhx",
+    "timestamp": "2026-09-17T20:45:57Z",
+    "title": "Grav CMS vulnerable to remote code execution via .zip file upload",
+    "description": "### Summary\n\nA logged-in user can run any command on the server. A settings field can fill itself by calling one of Grav's built-in routines, and a safety check is supposed to allow only harmless ones. The check only recognises a routine when its name is written as one piece of text; named as a pair of values instead, it is not examined at all and is passed as safe. Pointing such a field at the routine that unpacks ZIP archives writes a PHP file from an uploaded archive into the site's public fo",
+    "severity": "high",
+    "cve_id": "CVE-2026-72819",
+    "ghsa_id": "GHSA-r94f-hx44-8jqf",
     "affected_packages": [
-      "com.github.junrar:junrar"
+      "getgrav/grav"
     ],
     "cwes": [
       null
@@ -70,12 +70,11 @@
       null,
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-86071.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-72819.",
       "affected_industries": [
         "Technology",
         "General"
@@ -85,21 +84,59 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "low"
+      "urgency": "high"
     },
-    "risk_score": 25
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-pq59-9fq7-m886",
+    "id": "gh-GHSA-xhfv-7758-r9hx",
     "source": "GitHub Security",
-    "timestamp": "2026-09-17T16:30:37Z",
-    "title": "Zope AccessControl vulnerable to information disclosure through Python string `format` and `format_map` functions",
-    "description": "### Impact\nPython's string `format` functionality allows someone controlling the format string to \"read\" objects accessible (recursively) via attribute access and subscription from accessible objects. Those attribute accesses and subscriptions use Python's full blown `getattr` and `getitem`, not the policy restricted `AccessControl` variants `_getattr_` and `_getitem_`. This can lead to critical information disclosure.\n\nThe `AccessControl` package already guards against direct access to the form",
-    "severity": "medium",
-    "cve_id": "CVE-2026-77401",
-    "ghsa_id": "GHSA-pq59-9fq7-m886",
+    "timestamp": "2026-09-17T20:45:15Z",
+    "title": "Grav: Missing admin.super guard on core group blueprint access field allows admin.users operator to escalate to super-admin",
+    "description": "## Summary\nThe core Flex group blueprint `system/blueprints/user/group.yaml` (access field, lines 48-55) omits the `security@: admin.super` field guard that its sibling account blueprint carries (`account.yaml:131/138/150`, added by the CVE-2026-42613 fix). A delegated non-super operator holding `admin.users.update` can therefore save a group whose `access` map contains `admin.super: true`, which `UserGroupObject::authorize` then grants to every member of that group, a full privilege escalation ",
+    "severity": "high",
+    "cve_id": "CVE-2026-75837",
+    "ghsa_id": "GHSA-xhfv-7758-r9hx",
     "affected_packages": [
-      "AccessControl"
+      "getgrav/grav"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-75837.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-q2j8-x8hf-63ch",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-17T20:44:39Z",
+    "title": "Grav: Single invalid UTF-8 byte disables every rule in Security::detectXss(), bypassing the page-content XSS safety gate",
+    "description": "## Vulnerability Details\n\n**Component**: getgrav/grav core\n**File**: `system/src/Grav/Common/Security.php`\n**Function**: `detectXss()` (all six entries in the `$patterns` array use the PCRE `u` modifier), invoked from `Grav\\Common\\Data\\Validation::checkSafety()` (the save-time XSS gate for any non-`security.xss_whitelist` account's blueprint field, including the page `content` field) and `detectXssInEditorContent()` (the render-time backstop for GHSA-2c4f-86xc-cr74)\n**CWE**: CWE-79 (Stored XSS),",
+    "severity": "medium",
+    "cve_id": "CVE-2026-75834",
+    "ghsa_id": "GHSA-q2j8-x8hf-63ch",
+    "affected_packages": [
+      "getgrav/grav"
     ],
     "cwes": [
       null
@@ -108,12 +145,11 @@
       null,
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-77401.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-75834.",
       "affected_industries": [
         "Technology",
         "General"
@@ -128,33 +164,29 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-hp3v-5vw7-fx9w",
+    "id": "gh-GHSA-f8wv-xp27-6gq7",
     "source": "GitHub Security",
-    "timestamp": "2026-09-17T16:30:22Z",
-    "title": "RestrictedPython vulnerable to sandbox escape via string.Formatter field resolution",
-    "description": "### Impact\nRestrictedPython could allow a sandbox escape when a policy exposes the standard library `string` module, or otherwise exposes `string.Formatter`, to restricted code.\n\n`string.Formatter` field resolution methods such as `get_field` can perform attribute and item traversal internally and return live object references. This can bypass RestrictedPython's normal attribute guards and may allow access to sensitive objects such as function globals, builtins, file access, or code execution pr",
-    "severity": "high",
-    "cve_id": "CVE-2026-76825",
-    "ghsa_id": "GHSA-hp3v-5vw7-fx9w",
+    "timestamp": "2026-09-17T20:44:16Z",
+    "title": "Grav: Blueprint dynamic-data bare-function branch is denylist-gated and omits error_log, giving arbitrary file write",
+    "description": "## Affected versions and vulnerable location\n\n- Confirmed on grav core at `78ebfc1` (tag 2.0.13).\n- Sinks:\n  - `system/src/Grav/Common/Data/Blueprint.php:455-458` `call_user_func_array($o, $params)` (bare-function dynamic-data provider).\n  - Twin: `system/src/Grav/Framework/Flex/FlexDirectory.php:936-938` `call_user_func_array($function, $params)`.\n- Validation gate: `Blueprint::isSafeDynamicCall()` at `Blueprint.php:514-536`.\n  - `Class::method` branch (`:514-527`) uses a strict positive allowl",
+    "severity": "critical",
+    "cve_id": "CVE-2026-75827",
+    "ghsa_id": "GHSA-f8wv-xp27-6gq7",
     "affected_packages": [
-      "RestrictedPython"
+      "getgrav/grav"
     ],
     "cwes": [
-      null,
-      null,
-      null,
       null
     ],
     "references": [
       null,
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-76825.",
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-75827.",
       "affected_industries": [
         "Technology",
         "General"
@@ -164,24 +196,23 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 75
+    "risk_score": 90
   },
   {
-    "id": "gh-GHSA-pj96-35fp-cfcc",
+    "id": "gh-GHSA-vfmf-q6x9-cw96",
     "source": "GitHub Security",
-    "timestamp": "2026-09-17T16:30:00Z",
-    "title": "ExifReader: DoS via Crafted HEIC/AVIF iloc Box - Memory Exhaustion",
-    "description": "## Summary\nExifReader 4.41.0 is vulnerable to denial of service through a crafted HEIC or AVIF file with a malicious `iloc` box. When `offsetSize`, `lengthSize`, and `baseOffsetSize` are set to zero in the iloc header, the extent-parsing loop allocates an unbounded number of JavaScript objects - up to `itemCount × extentCount` (65535 × 65535 = 4.3 billion) - without advancing the buffer offset. A 652-byte file causes 400MB of heap growth; a 6KB file exhausts all system memory and crashes the Nod",
-    "severity": "high",
-    "cve_id": "CVE-2026-85715",
-    "ghsa_id": "GHSA-pj96-35fp-cfcc",
+    "timestamp": "2026-09-17T20:43:43Z",
+    "title": "Grav: detectXss() misses an event-handler attribute after an unpaired quote in an unquoted attribute value, giving stored XSS",
+    "description": "## Affected versions and vulnerable location\n\n- Confirmed on grav core at `78ebfc1` (tag 2.0.13).\n- Detector: `system/src/Grav/Common/Security.php:290`, the `on_events` regex, run via `patternMatches()` (`:315-330`).\n- The `on_events` pattern at HEAD:\n  `#<(?:\"[^\"]*\"|'[^']*'|[^>\"'])*?(?:[\\s\\x00-\\x20\"'/]|\"[^\"]*\"|'[^']*')on\\s*[a-z]+\\s*=#iu`\n- Sole save-time guard for non-super content: `Validation::checkSafety()` (`system/src/Grav/Common/Data/Validation.php:160` scalars, `:165` arrays), invoked pe",
+    "severity": "critical",
+    "cve_id": "CVE-2026-75828",
+    "ghsa_id": "GHSA-vfmf-q6x9-cw96",
     "affected_packages": [
-      "exifreader"
+      "getgrav/grav"
     ],
     "cwes": [
-      null,
       null
     ],
     "references": [
@@ -191,8 +222,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-85715.",
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-75828.",
       "affected_industries": [
         "Technology",
         "General"
@@ -202,24 +233,21 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "critical"
     },
-    "risk_score": 75
+    "risk_score": 90
   },
   {
-    "id": "gh-GHSA-wxmm-q36w-r9xj",
+    "id": "gh-GHSA-4v9q-p283-qc2m",
     "source": "GitHub Security",
-    "timestamp": "2026-09-17T16:29:53Z",
-    "title": "MariaDB Connector/J does not enforce allowLocalInfile=false  on server-initiated LOCAL INFILE requests",
-    "description": "## Summary\n\nMariaDB Connector/J does not enforce `allowLocalInfile=false` when \nprocessing server-initiated LOCAL INFILE requests (protocol packet \ntype `0xfb`). However, exploitation is constrained: the server can \nonly request the exact filename the client already included in its \n`LOAD DATA LOCAL INFILE` query, it cannot redirect to arbitrary paths.\n\n## Details\n\nWhen a client executes `LOAD DATA LOCAL INFILE '/path/to/file'`, the \nconnector sends the filename to the server as part of the COM_",
-    "severity": "low",
-    "cve_id": "CVE-2026-61700",
-    "ghsa_id": "GHSA-wxmm-q36w-r9xj",
+    "timestamp": "2026-09-17T20:43:16Z",
+    "title": "Grav: Unauthenticated Path Traversal via Missing Directory-Boundary Check in `plugin-asset-map.php` Static Asset Server (`index.php`)",
+    "description": "**Verified against:** `getgrav/grav` devel branch, `GRAV_VERSION = \"2.0.15\"`, file `index.php\n\n## Title\nUnauthenticated Path Traversal via Missing Directory-Boundary Check in `plugin-asset-map.php` Static Asset Server (`index.php`)\n\n## Product / Affected Versions\n- Product: `getgrav/grav`\n- File: `index.php` (top-level front controller, runs before Grav itself boots)\n- Confirmed present in: devel branch, 2.0.15\n- **Precondition:** requires `user/config/plugin-asset-map.php` to exist and contain ",
+    "severity": "high",
+    "cve_id": "CVE-2026-74907",
+    "ghsa_id": "GHSA-4v9q-p283-qc2m",
     "affected_packages": [
-      "org.mariadb.jdbc:mariadb-java-client",
-      "org.mariadb.jdbc:mariadb-java-client",
-      "org.mariadb.jdbc:mariadb-java-client",
-      "org.mariadb.jdbc:mariadb-java-client"
+      "getgrav/grav"
     ],
     "cwes": [
       null
@@ -231,8 +259,8 @@
       null
     ],
     "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-61700.",
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-74907.",
       "affected_industries": [
         "Technology",
         "General"
@@ -242,33 +270,26 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "low"
+      "urgency": "high"
     },
-    "risk_score": 25
+    "risk_score": 75
   },
   {
-    "id": "gh-GHSA-wr57-hqmp-fgvh",
+    "id": "gh-GHSA-jq29-c7v8-rg55",
     "source": "GitHub Security",
-    "timestamp": "2026-09-17T16:29:46Z",
-    "title": "Umbraco: Delivery API leaks protected (Public Access) content through Content Picker / Multi-Node Tree Picker expansion",
-    "description": "The Content Delivery API enforces member / Public Access protection only at the controller layer, against the node that is directly requested. When a public (unprotected) node references a protected node through a Content Picker or Multi-Node Tree Picker (including those nested inside Block List, Block Grid, or Rich Text Editor blocks), the Delivery API expands and serializes the protected node with no access check applied.\n\nSimilarly, configuration based restrictions based on aliases of allowed",
+    "timestamp": "2026-09-17T20:34:05Z",
+    "title": "Grav: Path Traversal in MediaUploadTrait::deleteFile() Allows Arbitrary File Deletion",
+    "description": "# Path Traversal in MediaUploadTrait::deleteFile() Allows Arbitrary File Deletion\n\n## Summary\n\nA path traversal vulnerability in `MediaUploadTrait::deleteFile()` allows an authenticated user with media management permissions to delete arbitrary files on the server. The method validates only the basename portion of the filename using `Utils::checkFilename()`, while the directory path (which may contain `../` sequences) is preserved and passed unvalidated to `unlink()`. This enables directory esca",
     "severity": "high",
-    "cve_id": "CVE-2026-69197",
-    "ghsa_id": "GHSA-wr57-hqmp-fgvh",
+    "cve_id": "CVE-2026-72695",
+    "ghsa_id": "GHSA-jq29-c7v8-rg55",
     "affected_packages": [
-      "Umbraco.Cms",
-      "Umbraco.Cms",
-      "Umbraco.Cms"
+      "getgrav/grav"
     ],
     "cwes": [
-      null,
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -276,7 +297,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-69197.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-72695.",
       "affected_industries": [
         "Technology",
         "General"
@@ -291,15 +312,17 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-p3qj-xm37-gqqf",
+    "id": "gh-GHSA-9gm5-9rfh-m6vx",
     "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:19Z",
-    "title": "InternLM LMDeploy through 0.17.0 in DistServe prefill/decode disaggregation mode fails to release...",
-    "description": "InternLM LMDeploy through 0.17.0 in DistServe prefill/decode disaggregation mode fails to release scheduler sessions because the proxy uses user-facing session IDs instead of internal scheduler keys. Unauthenticated attackers can send completion requests to the proxy endpoint that accumulate unreleased scheduler metadata and memory until the prefill worker is out-of-memory killed.",
+    "timestamp": "2026-09-17T20:33:05Z",
+    "title": "CoreDNS DoH/DoQ/gRPC bypass UPDATE rejection enforced on UDP/TCP",
+    "description": "### Summary\n\nCoreDNS accepted [RFC 2136](https://datatracker.ietf.org/doc/html/rfc2136) UPDATE messages over DoH, DoH3, DoQ, and DNS-over-gRPC, then allowed the `proxy`/`forward` plugin to send them unchanged to an upstream DNS server. UDP, TCP, and DoT rejected the same opcode before plugin dispatch.\n\nIf an update-capable upstream trusts CoreDNS's source address or authenticated connection instead of requiring end-to-end TSIG, an unauthenticated client can use CoreDNS to add, replace, or delete",
     "severity": "high",
-    "cve_id": "CVE-2026-92983",
-    "ghsa_id": "GHSA-p3qj-xm37-gqqf",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-86003",
+    "ghsa_id": "GHSA-9gm5-9rfh-m6vx",
+    "affected_packages": [
+      "github.com/coredns/coredns"
+    ],
     "cwes": [
       null
     ],
@@ -308,12 +331,11 @@
       null,
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-92983.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-86003.",
       "affected_industries": [
         "Technology",
         "General"
@@ -328,175 +350,22 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-29wc-8rjr-p9x2",
+    "id": "gh-GHSA-gjv8-xp57-g29c",
     "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:19Z",
-    "title": "SiYuan versions before 3.8.4 fail to escape bookmark labels imported from notebook files when...",
-    "description": "SiYuan versions before 3.8.4 fail to escape bookmark labels imported from notebook files when rendering them in the dock tree. Attackers can craft malicious .sy notebook files with unescaped HTML in bookmark attributes that execute scripts in the Electron renderer with access to child_process for command execution.",
-    "severity": "high",
-    "cve_id": "CVE-2026-92985",
-    "ghsa_id": "GHSA-29wc-8rjr-p9x2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-92985.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-hqj9-5q65-f4g9",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:19Z",
-    "title": "SiYuan before 3.8.4 renders document titles as HTML in the backlink dock tree without escaping...",
-    "description": "SiYuan before 3.8.4 renders document titles as HTML in the backlink dock tree without escaping markup characters. Attackers can set malicious titles through the rename API or crafted notebooks to execute scripts in the Electron renderer with access to child_process for command execution.",
-    "severity": "high",
-    "cve_id": "CVE-2026-92986",
-    "ghsa_id": "GHSA-hqj9-5q65-f4g9",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-92986.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-5fxw-8768-v85x",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:19Z",
-    "title": "roxmltree through 0.21.1 performs quadratic-time attribute and namespace validation during XML...",
-    "description": "roxmltree through 0.21.1 performs quadratic-time attribute and namespace validation during XML parsing without limits on attribute count. Attackers can craft XML documents with tens of thousands of attributes on a single element to consume excessive CPU time and cause denial of service.",
-    "severity": "high",
-    "cve_id": "CVE-2026-92987",
-    "ghsa_id": "GHSA-5fxw-8768-v85x",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-92987.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-jq63-mx4g-ww7g",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:19Z",
-    "title": "HUBzero CMS through 2.2.32 accepts session identifiers from query strings and request variables...",
-    "description": "HUBzero CMS through 2.2.32 accepts session identifiers from query strings and request variables instead of cookies alone, allowing unauthenticated attackers to fixate victim sessions. Attackers can obtain a valid session identifier, send victims a crafted link containing it, and replay the identifier after the victim authenticates to hijack their account and access.",
-    "severity": "high",
-    "cve_id": "CVE-2026-92984",
-    "ghsa_id": "GHSA-jq63-mx4g-ww7g",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-92984.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-4fcx-9cr4-72mc",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:19Z",
-    "title": "A weakness has been identified in vgmstream up to r2117. Impacted is the function...",
-    "description": "A weakness has been identified in vgmstream up to r2117. Impacted is the function vadpcm_read_coefs_be of the file src/coding/vadpcm_decoder.c of the component EA SCHl parser. This manipulation of the argument entry/entries causes out-of-bounds write. Remote exploitation of the attack is possible. Patch name: ae37662ad626254ddd96ad69ac263792d7a92024. It is suggested to install a patch to address this issue.",
+    "timestamp": "2026-09-17T20:32:58Z",
+    "title": "Soup Sieve: Polynomial-time ReDoS (O(n²)) in the `IDENTIFIER` / `VALUE` selector sub-patterns",
+    "description": "## Summary\n\nsoupsieve compiles CSS selector strings with a set of hand-written regular expressions. The shared `IDENTIFIER` sub-pattern (also embedded in `VALUE`, and therefore in attribute selectors) places two adjacent quantified groups over overlapping character classes: `(?:[classA]|ESC)+(?:[classB]|ESC)*`, where both classes match ordinary identifier characters such as `a`. When a selector contains a long identifier/value run that must ultimately fail to match (e.g. an attribute value with ",
     "severity": "medium",
-    "cve_id": "CVE-2026-92880",
-    "ghsa_id": "GHSA-4fcx-9cr4-72mc",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-86000",
+    "ghsa_id": "GHSA-gjv8-xp57-g29c",
+    "affected_packages": [
+      "soupsieve"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -505,7 +374,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-92880.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-86000.",
       "affected_industries": [
         "Technology",
         "General"
@@ -520,55 +389,22 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-g4x4-8j33-p4h3",
+    "id": "gh-GHSA-j934-xhv5-fg8f",
     "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:19Z",
-    "title": "A flaw was found in quarkus-websockets-next. This vulnerability allows a remote attacker to cause...",
-    "description": "A flaw was found in quarkus-websockets-next. This vulnerability allows a remote attacker to cause a Denial of Service (DoS) by streaming messages over a single connection faster than the application can process them. Due to unbounded message buffering and a lack of read backpressure, this rapidly exhausts heap space, leading to a java.lang.OutOfMemoryError that crashes the Java Virtual Machine (JVM).",
-    "severity": "high",
-    "cve_id": "CVE-2026-87742",
-    "ghsa_id": "GHSA-g4x4-8j33-p4h3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-87742.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-98hw-5x94-6hwv",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:18Z",
-    "title": "ansi2html versions 1.7.0a0 through 1.9.3 contain a cross-site scripting vulnerability in OSC 8...",
-    "description": "ansi2html versions 1.7.0a0 through 1.9.3 contain a cross-site scripting vulnerability in OSC 8 hyperlink handling that fails to validate or escape URL targets. Attackers controlling ANSI text input can inject javascript: schemes or terminate href attributes to execute arbitrary scripts in the context of pages displaying converted output.",
+    "timestamp": "2026-09-17T20:32:53Z",
+    "title": "Soup Sieve: Polynomial-time ReDoS (O(n²)) in the whitespace/comment trimming regex `RE_WS_END` (triggers on VALID selectors)",
+    "description": "## Summary\n\nBefore tokenizing, `selector_iter` trims leading/trailing whitespace and comments by running two regexes over the whole raw selector with `.search()`. The trailing one, `RE_WS_END = re.compile(r'{WSC}*$')`, is anchored only at the end (`$`), not the start. Because `.search()` retries the pattern at every offset, a long run of whitespace or CSS comments that is not sitting exactly at the end of the string makes each retry greedily consume the run and then fail `$`, producing O(n²) tim",
     "severity": "medium",
-    "cve_id": "CVE-2026-92973",
-    "ghsa_id": "GHSA-98hw-5x94-6hwv",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-85999",
+    "ghsa_id": "GHSA-j934-xhv5-fg8f",
+    "affected_packages": [
+      "soupsieve"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -577,7 +413,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-92973.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-85999.",
       "affected_industries": [
         "Technology",
         "General"
@@ -592,16 +428,223 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-rpp7-fj89-9h8w",
+    "id": "gh-GHSA-qrfj-mgw8-j9c6",
     "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:18Z",
-    "title": "Dell SmartFabric Manager, versions prior to 2.2.1, contains an Improper Handling of Insufficient...",
-    "description": "Dell SmartFabric Manager, versions prior to 2.2.1, contains an Improper Handling of Insufficient Permissions or Privileges vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Information disclosure.",
-    "severity": "low",
-    "cve_id": "CVE-2026-54471",
-    "ghsa_id": "GHSA-rpp7-fj89-9h8w",
-    "affected_packages": [],
+    "timestamp": "2026-09-17T20:32:47Z",
+    "title": "@platejs/core HTML deserialization can trigger browser behavior during parsing",
+    "description": "### Summary\n\nHTML strings passed to Plate's core deserialization APIs were parsed in the active document. Certain HTML attributes could therefore trigger browser behavior during parsing, before the content was converted into editor nodes.\n\nApplications that deserialize HTML from untrusted or cross-user sources may be affected.\n\n### Impact\n\nAn attacker who can control HTML later deserialized in another user's browser may be able to execute script in that application's origin.\n\n### Remediation\n\nUp",
+    "severity": "medium",
+    "cve_id": "CVE-2026-88976",
+    "ghsa_id": "GHSA-qrfj-mgw8-j9c6",
+    "affected_packages": [
+      "@platejs/core",
+      "@platejs/core"
+    ],
     "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-88976.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-x424-64qh-5j54",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-17T20:32:39Z",
+    "title": "react/http: A malformed HTTP chunked body can lead to a denial-of-service and peg the CPU",
+    "description": "### Summary\n\nA malformed HTTP message using `Transfer-Encoding: chunked` can drive `React\\Http\\Io\\ChunkedDecoder` into an infinite loop, pegging a CPU core and freezing the event loop. Because ReactPHP is single-threaded, one such message stalls the entire process for every client until it is killed.\n\nBoth directions are affected. `ChunkedDecoder` decodes chunked **request** bodies for `React\\Http\\HttpServer` and chunked **response** bodies for `React\\Http\\Browser`, so a server can be attacked b",
+    "severity": "high",
+    "cve_id": "CVE-2026-84997",
+    "ghsa_id": "GHSA-x424-64qh-5j54",
+    "affected_packages": [
+      "react/http"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-84997.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-mrg3-qvqr-jw29",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-17T20:32:27Z",
+    "title": "CoreDNS: Unauthenticated memory exhaustion in custom transports",
+    "description": "### Summary\n\nCoreDNS parses attacker-controlled DNS section counts before validating them on DNS-over-HTTPS (DoH and DoH3), DNS-over-QUIC (DoQ), and DNS-over-gRPC listeners. An unauthenticated client can use DNS name compression to make one\n65,533-byte request allocate more than 10 MiB while it is unpacked. Concurrent requests can exhaust memory and terminate CoreDNS.\n\n### Details\n\nThe affected request paths call `dns.Msg.Unpack` directly:\n\n- [DoH POST and GET decoding](https://github.com/coredn",
+    "severity": "high",
+    "cve_id": "CVE-2026-82399",
+    "ghsa_id": "GHSA-mrg3-qvqr-jw29",
+    "affected_packages": [
+      "github.com/coredns/coredns"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-82399.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-gq9c-wmrm-5hvr",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-17T20:32:21Z",
+    "title": "HAPI FHIR: SHCParser DEFLATE infinite loop causes denial of service",
+    "description": "### Summary\nA malformed Smart Health Card (SHC) JWT with `zip: \"DEF\"` and an empty or truncated DEFLATE payload causes `SHCParser.inflate()` to loop forever. This allows an attacker who can submit SHC content for validation to pin a JVM worker thread indefinitely, causing denial of service.\n\n### Details\nThe vulnerable code is in `org.hl7.fhir.r5/src/main/java/org/hl7/fhir/r5/elementmodel/SHCParser.java`.\n\n`decodeJWT()` inflates the JWT payload when the header contains `\"zip\":\"DEF\"`:\n\n```java\n// ",
+    "severity": "high",
+    "cve_id": "CVE-2026-81876",
+    "ghsa_id": "GHSA-gq9c-wmrm-5hvr",
+    "affected_packages": [
+      "ca.uhn.hapi.fhir:org.hl7.fhir.r5",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.validation",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.validation.cli"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-81876.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-3w98-rrpr-fprr",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-17T20:32:16Z",
+    "title": "HAPI FHIR: SHCParser unbounded DEFLATE decompression causes denial of service",
+    "description": "### Summary\n`SHCParser` inflates compressed Smart Health Card JWT payloads into memory without a decompressed-size limit. An attacker who can submit SHC content for validation can craft a small compressed JWT payload that expands to a very large byte array, causing memory exhaustion or severe garbage collection pressure.\n\n### Details\nThe vulnerable code is in `org.hl7.fhir.r5/src/main/java/org/hl7/fhir/r5/elementmodel/SHCParser.java`.\n\n`decodeJWT()` checks `MAX_ALLOWED_SHC_LENGTH`, but this only",
+    "severity": "high",
+    "cve_id": "CVE-2026-81875",
+    "ghsa_id": "GHSA-3w98-rrpr-fprr",
+    "affected_packages": [
+      "ca.uhn.hapi.fhir:org.hl7.fhir.r5",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.validation",
+      "ca.uhn.hapi.fhir:org.hl7.fhir.validation.cli"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-81875.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-xjw9-38cr-6372",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-17T20:31:48Z",
+    "title": "djust: A template binding inherits a context safety grant it never earned (XSS)",
+    "description": "A context safety grant was inherited by a template **binding** that never earned it, so rebinding a name the view had marked safe left the mark attached to the new, attacker-controlled value.\n\ndjust's context safety channel is keyed by **name**, not by value. Every bind copied the value and left the grant in place:\n\n```\nview marks   p = mark_safe('<b>trusted</b>')\ntemplate     {% with p=user_input %}{{ p }}{% endwith %}\n\n  djust   '<img src=x onerror=alert(1)>'          <- executes\n  django  '&l",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-xjw9-38cr-6372",
+    "affected_packages": [
+      "djust"
+    ],
+    "cwes": [
+      null,
       null
     ],
     "references": [
@@ -610,8 +653,129 @@
       null
     ],
     "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-9395-2g46-rj3f",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-17T20:31:43Z",
+    "title": "djust: Six template-layer defects emit attacker-controlled markup unescaped (XSS)",
+    "description": "Five independent defects in djust's template auto-escaping cause attacker-controlled input to be rendered as live markup where Django escapes it. All four are present in shipped 1.1.0 and are fixed in 1.1.1.\n\nThey share one shape: **a filter or grant that escapes nothing itself and relies on the render-time auto-escape, which something downstream then removes.** They are grouped into a single advisory because the mitigation is identical — upgrade to 1.1.1 — and because no single one of them is m",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-9395-2g46-rj3f",
+    "affected_packages": [
+      "djust"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-w34q-cm8f-9c5x",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-17T20:31:09Z",
+    "title": "OpenTelemetry-Go: Log gRPC exporter ignores env TLS certs, bypassing mTLS/pinning",
+    "description": "### Summary\n\nThe OTLP log gRPC exporter loads TLS settings from environment variables but does not apply them when creating gRPC transport credentials. Operators who rely on `OTEL_EXPORTER_OTLP_LOGS_CERTIFICATE`, `OTEL_EXPORTER_OTLP_CERTIFICATE`, or related client certificate variables for CA pinning or mTLS get a connection that falls back to system roots and omits the env-supplied client certificate. A network attacker who can intercept or spoof the collector connection with a system-trusted c",
+    "severity": "medium",
+    "cve_id": "CVE-2026-81871",
+    "ghsa_id": "GHSA-w34q-cm8f-9c5x",
+    "affected_packages": [
+      "go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-81871.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-8wmf-6v46-5gfg",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-17T20:31:06Z",
+    "title": "OpenTelemetry-Go: Exporter config logging may leak endpoint URLs in info logs",
+    "description": "### Summary\n\nOpenTelemetry Go versions 1.5.0 through 1.44.0 can include trace exporter endpoint configuration in an internal diagnostic log emitted when an SDK `TracerProvider` is created. The default OpenTelemetry logger does not emit this event. Exposure requires an application to install a logger that enables OpenTelemetry's internal Info-level diagnostics and for someone other than the intended audience to have access to those logs.\n\nThe logged configuration can disclose the address of the t",
+    "severity": "low",
+    "cve_id": "CVE-2026-81870",
+    "ghsa_id": "GHSA-8wmf-6v46-5gfg",
+    "affected_packages": [
+      "go.opentelemetry.io/otel/sdk",
+      "go.opentelemetry.io/otel/exporters/otlp/otlptrace",
+      "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc",
+      "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp",
+      "go.opentelemetry.io/otel/exporters/zipkin"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
       "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-54471.",
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-81870.",
       "affected_industries": [
         "Technology",
         "General"
@@ -626,166 +790,31 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-54wc-fj6m-fj8j",
+    "id": "gh-GHSA-5mq7-rwhj-4fh9",
     "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:18Z",
-    "title": "Dell OpenManage Server Administrator, versions prior to 11.1.0.3, contains an Improper Privilege...",
-    "description": "Dell OpenManage Server Administrator, versions prior to 11.1.0.3, contains an Improper Privilege Management vulnerability. A high privileged attacker with remote access could potentially exploit this vulnerability, leading to Elevation of privileges.",
-    "severity": "high",
-    "cve_id": "CVE-2026-81445",
-    "ghsa_id": "GHSA-54wc-fj6m-fj8j",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-81445.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-5fvw-jppq-qcr4",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:18Z",
-    "title": "Dell OpenManage Server Administrator, versions prior to 11.1.0.3, contains an Exposure of...",
-    "description": "Dell OpenManage Server Administrator, versions prior to 11.1.0.3, contains an Exposure of Sensitive Information to an Unauthorized Actor vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Information exposure.",
-    "severity": "high",
-    "cve_id": "CVE-2026-80356",
-    "ghsa_id": "GHSA-5fvw-jppq-qcr4",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-80356.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-9hr3-qqwc-fxxh",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:18Z",
-    "title": "SGLang through 0.5.19 in prefill/decode disaggregation mode contains an unauthenticated PUT ...",
-    "description": "SGLang through 0.5.19 in prefill/decode disaggregation mode contains an unauthenticated PUT /route endpoint on the prefill bootstrap service that allows attackers to poison the KV transfer routing table. Attackers can supply arbitrary rank_ip and rank_port values to redirect decode workers to attacker-controlled endpoints, causing denial of service or disclosure of KV transfer metadata including session identifiers and tensor-parallel topology parameters.",
-    "severity": "high",
-    "cve_id": "CVE-2026-92972",
-    "ghsa_id": "GHSA-9hr3-qqwc-fxxh",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-92972.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-r6j7-8999-3x43",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:18Z",
-    "title": "Dell SmartFabric Manager, versions prior to 2.2.1, contains an Insufficient Verification of Data...",
-    "description": "Dell SmartFabric Manager, versions prior to 2.2.1, contains an Insufficient Verification of Data Authenticity vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Elevation of privileges.",
-    "severity": "high",
-    "cve_id": "CVE-2026-26950",
-    "ghsa_id": "GHSA-r6j7-8999-3x43",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-26950.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-x5hm-677g-wc5r",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-17T15:32:18Z",
-    "title": "Dell OpenManage Server Administrator, versions prior to 11.1.0.3, contains an Improper...",
-    "description": "Dell OpenManage Server Administrator, versions prior to 11.1.0.3, contains an Improper Certificate Validation vulnerability. An unauthenticated attacker with adjacent network access could potentially exploit this vulnerability, leading to Information disclosure and Information tampering.",
+    "timestamp": "2026-09-17T20:30:58Z",
+    "title": "Steeltoe: Header-forwarded client cert lacks proof of private-key possession",
+    "description": "### Summary\n\nWhen Steeltoe's certificate-based authorization (`UseCertificateAuthorization`) is configured, the default configuration of the middleware relies on the `X-Client-Cert` HTTP header to identify the client certificate, without verifying private-key possession. This header is not stripped by common Cloud Foundry routers (like Gorouter or Envoy) on inbound requests.\n\n### Impact\n\nAn attacker who obtains the public certificate of an application instance in the target organization or space",
     "severity": "medium",
-    "cve_id": "CVE-2026-81447",
-    "ghsa_id": "GHSA-x5hm-677g-wc5r",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-81868",
+    "ghsa_id": "GHSA-5mq7-rwhj-4fh9",
+    "affected_packages": [
+      "Steeltoe.Security.Authorization.Certificate"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-81447.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-81868.",
       "affected_industries": [
         "Technology",
         "General"
