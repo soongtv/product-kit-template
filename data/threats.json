@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1790095473740-1",
+    "id": "twitter-1790111382872-1",
     "source": "Twitter Security",
-    "timestamp": "2026-09-22T16:44:33.740Z",
+    "timestamp": "2026-09-22T21:09:42.872Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1790095473740-1",
+    "id": "hn-1790111382872-1",
     "source": "HackerNews",
-    "timestamp": "2026-09-22T16:44:33.740Z",
+    "timestamp": "2026-09-22T21:09:42.872Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,22 +26,22 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-32gc-64m7-hj7v",
+    "id": "gh-GHSA-wx4m-69m9-gx3m",
     "source": "GitHub Security",
-    "timestamp": "2026-09-22T16:34:18Z",
-    "title": "9Router has a Login Brute-Force Lockout Bypass via Spoofable X-9r-Real-Ip Header",
-    "description": "# Summary\n\n9router enforces a progressive login lockout (5 failed attempts → temporary 30s+ lock) keyed on the client IP. The client IP used for this limiter is taken from the X-9r-Real-Ip request header, which is intended to be set only by the bundled custom-server.js layer from the unspoofable TCP socket address. In deployment modes where requests reach Next.js directly, a remote attacker controls this header and can assign a unique value to every request. Because each distinct header value ma",
-    "severity": "medium",
-    "cve_id": "CVE-2026-56682",
-    "ghsa_id": "GHSA-32gc-64m7-hj7v",
+    "timestamp": "2026-09-22T20:40:55Z",
+    "title": "Home Assistant: XSS in Statistics Graph Card",
+    "description": "### Summary\nAn authenticated party can add a malicious name to any statistics-capable entity, allowing for\nCross-Site Scripting attacks against anyone who views a Statistics Graph card containing that\nentity, when they hover over any data point on the chart.\n\n**Payload**\n<img width=\"1529\" height=\"441\" alt=\"image\" src=\"https://github.com/user-attachments/assets/6926ce53-75fb-455a-bd4e-0c5281e8bed8\" />\n\n**Payload triggering**\n<img width=\"835\" height=\"469\" alt=\"image\" src=\"https://github.com/user-a",
+    "severity": "critical",
+    "cve_id": "CVE-2026-91130",
+    "ghsa_id": "GHSA-wx4m-69m9-gx3m",
     "affected_packages": [
-      "9router"
+      "homeassistant"
     ],
     "cwes": [
-      null,
       null
     ],
     "references": [
+      null,
       null,
       null,
       null,
@@ -51,21 +51,23 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-5mj8-gf6m-fhw8",
+    "id": "gh-GHSA-4ghv-53cq-7wp3",
     "source": "GitHub Security",
-    "timestamp": "2026-09-22T16:34:06Z",
-    "title": "9Router has an Authentication Bypass in Public LLM API via Spoofable X-9r-Real-Ip Header",
-    "description": "## Summary\n\n9router determines whether an incoming request originates from localhost by trusting the X-9r-Real-Ip HTTP request header. This header is intended to be produced and sanitized exclusively by the bundled custom-server.js layer from the TCP socket address. In deployment modes where requests reach Next.js directly (the header is never stripped/regenerated), a remote, unauthenticated attacker can simply send X-9r-Real-Ip: 127.0.0.1 and be treated as a local client. This bypasses the API-",
-    "severity": "high",
-    "cve_id": "CVE-2026-56681",
-    "ghsa_id": "GHSA-5mj8-gf6m-fhw8",
+    "timestamp": "2026-09-22T20:40:51Z",
+    "title": "Home Assistant: mDNS Server-Side Request Forgery",
+    "description": "## Summary\n\nHome Assistant Green is vulnerable to a Server-Side Request Forgery (SSRF) via the mDNS/Zeroconf IPP integration. An unauthenticated attacker on the local network can send a crafted mDNS response to trick Home Assistant into making HTTP requests to arbitrary hosts, including internal services bound to localhost. The IPP integration automatically processes `_ipp._tcp.local` service announcements without any user interaction or authentication, and follows HTTP redirects from the attack",
+    "severity": "medium",
+    "cve_id": "CVE-2026-91129",
+    "ghsa_id": "GHSA-4ghv-53cq-7wp3",
     "affected_packages": [
-      "9router"
+      "homeassistant"
     ],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null,
@@ -75,19 +77,24 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-w52q-73m7-hm7j",
+    "id": "gh-GHSA-8fcf-v89g-xpg6",
     "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:47Z",
-    "title": "In MISP's UsersController login() method, the pre-authentication database query used for the TOTP...",
-    "description": "In MISP's UsersController login() method, the pre-authentication database query used for the TOTP (two-factor authentication) verification branch did not include the User.disabled column in its SELECT fields list. The query selected only User.password, User.totp, and User.hotp_counter. When the TOTP branch subsequently accessed $unauth_user['User']['disabled'], the key was absent from the result set, producing a PHP 'Undefined array key' warning and causing the expression to evaluate as null (fa",
+    "timestamp": "2026-09-22T20:40:49Z",
+    "title": "Traefik: BasicAuth singleflight coalescing reintroduces an unauthenticated username-enumeration timing oracle",
+    "description": "## Summary\n\nTraefik's BasicAuth middleware coalesces concurrent credential checks through a `singleflight.Group` to avoid hashing the same password many times at once. Since v3.6.11 the deduplication key was built from the submitted password plus the stored secret, so it depended on server state: a non-existent username collapsed onto one shared key while each configured username produced its own. Under attacker-controlled concurrency, a probe request arriving inside a leader request's in-flight",
     "severity": "medium",
-    "cve_id": "CVE-2026-95754",
-    "ghsa_id": "GHSA-w52q-73m7-hm7j",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-88010",
+    "ghsa_id": "GHSA-8fcf-v89g-xpg6",
+    "affected_packages": [
+      "Traefik"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
       null,
       null,
       null
@@ -96,19 +103,23 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-f4j8-7jmm-g7jj",
+    "id": "gh-GHSA-992g-9cr3-vm5x",
     "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:46Z",
-    "title": "In MISP, the OrganisationsController::__uploadLogo method processed a caller-supplied tmp_name...",
-    "description": "In MISP, the OrganisationsController::__uploadLogo method processed a caller-supplied tmp_name value with filesystem probes (file_exists, MIME type detection, EXIF reading) before verifying that the value corresponded to a genuine PHP file upload via is_uploaded_file. An authenticated site-admin user could supply an arbitrary server file path as the tmp_name parameter. The application would then probe that path and return distinct validation error messages depending on whether the file existed a",
+    "timestamp": "2026-09-22T20:40:46Z",
+    "title": "Hatchet DurableTask WorkerStatus gRPC resolves caller-supplied durable-task UUIDs via ListSatisfiedEntries with no tenant_id filter",
+    "description": "# Cross-tenant disclosure risk on `DurableTask` bidi RPC\n\nThis is a low-severity, low-risk cross-tenant data exposure vuln caused by blindly accepting a durable task id, in addition to a list of node and branch ids that identify records in that task's event log, and returning them to the caller via the `handleWorkerStatus` polling path.\n\n# Impact\n\nThis advisory requires an attacker to successfully guess a durable task's external uuid belonging to another tenant. External ids are generated uuid v",
     "severity": "medium",
-    "cve_id": "CVE-2026-95703",
-    "ghsa_id": "GHSA-f4j8-7jmm-g7jj",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-88978",
+    "ghsa_id": "GHSA-992g-9cr3-vm5x",
+    "affected_packages": [
+      "github.com/hatchet-dev/hatchet"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
+      null,
       null,
       null,
       null
@@ -117,141 +128,70 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-c7hm-qgxh-6vgg",
+    "id": "gh-GHSA-9q4h-f4x5-ffq8",
     "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:45Z",
-    "title": "In MISP, the __statisticsOrgs method in UsersController.php used the organization name directly...",
-    "description": "In MISP, the __statisticsOrgs method in UsersController.php used the organization name directly as a file-system path component when checking for the existence of an organization logo image. The original code called file_exists() with a path constructed as APP . 'webroot' . DS . 'img' . DS . 'orgs' . DS . $k . '.png', where $k is the organization name. Because the referenced directory (app/webroot/img/orgs) no longer exists in current MISP deployments (org logos were relocated to files/img/orgs)",
-    "severity": "medium",
-    "cve_id": "CVE-2026-95701",
-    "ghsa_id": "GHSA-c7hm-qgxh-6vgg",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-24qr-3pqh-xghm",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:44Z",
-    "title": "The findOrgImage method in MISP's OrgImgHelper constructs a filesystem path by concatenating a...",
-    "description": "The findOrgImage method in MISP's OrgImgHelper constructs a filesystem path by concatenating a user-supplied organization identifier with a fixed image directory and a file extension, then calls file_exists() on the resulting path. The organization name field is attacker-controllable through event import, which sets Org.name. Because no validation was performed on the field value before path construction, an organization name containing directory traversal sequences (e.g., ../../etc/passwd) woul",
-    "severity": "medium",
-    "cve_id": "CVE-2026-95698",
-    "ghsa_id": "GHSA-24qr-3pqh-xghm",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-prf9-8cgh-75pc",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:44Z",
-    "title": "MISP contains an authorization flaw in the Organisation model's captureOrg method. When the ...",
-    "description": "MISP contains an authorization flaw in the Organisation model's captureOrg method. When the $force parameter is set to true, the method unconditionally overwrites organization metadata fields without verifying that the invoking user holds sufficient privileges. A user with a sharing group (SG) editor role can trigger this code path, allowing them to modify organization metadata that should be restricted to site administrators or users with sync permissions.\n\nAccording to the commit message, this",
-    "severity": "medium",
-    "cve_id": "CVE-2026-95697",
-    "ghsa_id": "GHSA-prf9-8cgh-75pc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-f496-75v4-rv5q",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:43Z",
-    "title": "In MISP, the EventReport::uploadPicture method in processed a caller-supplied tmp_name field by...",
-    "description": "In MISP, the EventReport::uploadPicture method in processed a caller-supplied tmp_name field by invoking file_exists(), mime_content_type(), and exif_imagetype() on the supplied path before verifying that the value was a genuine PHP upload via is_uploaded_file(). An authenticated user holding the perm_add permission could supply an arbitrary filesystem path as the tmp_name value. The application would then probe that path and return distinct validation error messages depending on whether the fil",
-    "severity": "medium",
-    "cve_id": "CVE-2026-95693",
-    "ghsa_id": "GHSA-f496-75v4-rv5q",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-83cf-9w8x-h48q",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:42Z",
-    "title": "In MISP, the Overmind event view enriches an event with its most recent attached report for...",
-    "description": "In MISP, the Overmind event view enriches an event with its most recent attached report for preview purposes. The enrichment logic fetched the report using only the event ID as the lookup condition, without applying the report's own distribution/ACL constraints. Because MISP reports carry an independent distribution setting that can be more restrictive than the parent event's distribution, an authenticated user who had read access to the event could retrieve and view a report whose distribution ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-95683",
-    "ghsa_id": "GHSA-83cf-9w8x-h48q",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-385h-fw9f-cf6x",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:42Z",
-    "title": "MISP contains an access control flaw in the EventReports functionality. The...",
-    "description": "MISP contains an access control flaw in the EventReports functionality. The replaceSuggestionInReport action, which allows modification of suggestion content within an event report, was incorrectly mapped to the wildcard permission ('*') in the ACLComponent, making it accessible to any authenticated user regardless of their assigned permissions. All analogous report-modification actions correctly required the perm_add permission, while read-only actions such as downloadAsPDF appropriately used t",
-    "severity": "medium",
-    "cve_id": "CVE-2026-95685",
-    "ghsa_id": "GHSA-385h-fw9f-cf6x",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-37fp-74rg-cfpq",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:42Z",
-    "title": "A vulnerability was found in mtrano APENCMS up to 6546096d354153309693efabb9a0d824628ed4f5. The...",
-    "description": "A vulnerability was found in mtrano APENCMS up to 6546096d354153309693efabb9a0d824628ed4f5. The affected element is the function eval of the file cms/weasel.php of the component Template Engine. The manipulation of the argument $_CMS['site'] results in code injection. The attack may be performed from remote. The exploit has been made public and could be used. This product utilizes a rolling release system for continuous delivery, and as such, version information for affected or updated releases ",
+    "timestamp": "2026-09-22T20:40:43Z",
+    "title": "Hatchet: Cross-tenant durable callback payload disclosure in Hatchet V1 Dispatcher",
+    "description": "## Summary\n\nThe V1 `DurableTask` stream handler registers worker-supplied durable task external IDs in an in-memory callback routing map before verifying that the authenticated tenant owns the task. If the tenant-scoped ownership check fails, the handler logs the error and continues, but the map entry persists until the stream closes.\n\nDurable callback delivery resolves the destination stream by `task_external_id` only, without checking tenant identity. As a result, a tenant A worker that knows ",
     "severity": "low",
-    "cve_id": "CVE-2026-95501",
-    "ghsa_id": "GHSA-37fp-74rg-cfpq",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-84298",
+    "ghsa_id": "GHSA-9q4h-f4x5-ffq8",
+    "affected_packages": [
+      "github.com/hatchet-dev/hatchet"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-jvh5-97xg-v99f",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-22T20:40:41Z",
+    "title": "Cloudreve: SSRF guard bypass: checkIP does not decode IPv6-transition wrappers (NAT64, IPv4-compatible, 6to4) reaching internal and cloud-metadata addresses",
+    "description": "**Summary**\n\nCloudreve's server-side request forgery guard `ValidateExternalURL` (`pkg/request/ssrf.go`) resolves a user-supplied URL host and rejects it when any resolved IP is a loopback, private, link-local, multicast, unspecified, CGNAT, or the cloud-metadata address. The classification is performed by `checkIP`, which uses Go's `net.IP` builtins (`IsLoopback`, `IsPrivate`, `IsLinkLocalUnicast`, ...) directly on the resolved address. These builtins inspect only the outer IPv6 address and do ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-79913",
+    "ghsa_id": "GHSA-jvh5-97xg-v99f",
+    "affected_packages": [
+      "github.com/cloudreve/Cloudreve/v4"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-gfjv-gqf2-c888",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-22T20:40:38Z",
+    "title": "Gardener: Authorization Bypass via Group Subject Injection",
+    "description": "## Overview\nThe `manage-members` custom verb authorization check in the Gardener API server's `customverbauthorizer` admission plugin can be bypassed by adding `Group` or `ServiceAccount` subjects to a Project's member list. The check is documented as controlling \"human users or groups\", but the implementation only gates changes to `User`-kind subjects. A project admin (without `manage-members` permission) can add arbitrary Group subjects - including `system:authenticated` - granting all authent",
+    "severity": "medium",
+    "cve_id": "CVE-2026-79767",
+    "ghsa_id": "GHSA-gfjv-gqf2-c888",
+    "affected_packages": [
+      "github.com/gardener/gardener",
+      "gardener/gardener",
+      "gardener/gardener"
+    ],
     "cwes": [
       null
     ],
@@ -260,43 +200,51 @@
       null,
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-xv76-mrpv-26pg",
+    "id": "gh-GHSA-w89x-c962-c44g",
     "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:41Z",
-    "title": "SGLang's multimodal generation runtime is vulnerable to unauthenticated arbitrary code execution...",
-    "description": "SGLang's multimodal generation runtime is vulnerable to unauthenticated arbitrary code execution because the disaggregated-diffusion orchestrator's DiffusionServer binds an unauthenticated ZeroMQ ROUTER socket to a network interface and passes the final frame of received multipart messages directly to pickle.loads() before any validation occurs.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-93088",
-    "ghsa_id": "GHSA-xv76-mrpv-26pg",
-    "affected_packages": [],
-    "cwes": [],
+    "timestamp": "2026-09-22T20:40:35Z",
+    "title": "Cloudreve: Privilege Scope Bypass: State-Mutating Admin Operations Accessible via Read-Only OAuth Scope",
+    "description": "### Summary\nThere is a privilege scope bypass in Cloudreve's admin API where two endpoints that mutate server state are missing the write-scope enforcement that their neighboring endpoints correctly apply. Specifically, the WOPI configuration fetch endpoint and the SMTP test/mail endpoint can both be triggered by an OAuth token that only has Admin.Read authorization — no Admin.Write needed. This breaks the intended OAuth scope boundary in a way that's subtle enough to have slipped through but me",
+    "severity": "low",
+    "cve_id": "CVE-2026-77637",
+    "ghsa_id": "GHSA-w89x-c962-c44g",
+    "affected_packages": [
+      "github.com/cloudreve/Cloudreve/v4"
+    ],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-mr7p-65vm-9479",
+    "id": "gh-GHSA-xj3h-wwxq-gfcj",
     "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:41Z",
-    "title": "MarketKing plugin for WordPress before 2.1.72 contains a missing authorization vulnerability in...",
-    "description": "MarketKing plugin for WordPress before 2.1.72 contains a missing authorization vulnerability in the marketking_get_page_content AJAX action that allows authenticated attackers with subscriber-level access or higher to access arbitrary vendor administrator panel pages by supplying an arbitrary vendor user ID. Attackers can bypass authorization controls by submitting a target vendor ID in the request to access payout pages, financial reports, and vendor dashboard content belonging to any vendor in",
+    "timestamp": "2026-09-22T20:40:33Z",
+    "title": "Cloudreve: Storage-quota TOCTOU race allows quota bypass and storage-based denial of service",
+    "description": "## Summary\n\nCloudreve v4 splits the storage-quota **check** (reading the user's `used` bytes and comparing them to `MaxStorage`) and the **charge** (incrementing `users.storage`) into two non-atomic steps in the `PrepareUpload` code path. This creates a Time-of-Check to Time-of-Use (TOCTOU) race condition. Any authenticated user — including an unprivileged account in the default `User` group — can concurrently issue several upload-session requests that all read the same stale `used` snapshot, ea",
     "severity": "high",
-    "cve_id": "CVE-2026-93344",
-    "ghsa_id": "GHSA-mr7p-65vm-9479",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-77633",
+    "ghsa_id": "GHSA-xj3h-wwxq-gfcj",
+    "affected_packages": [
+      "github.com/cloudreve/Cloudreve/v4"
+    ],
     "cwes": [
+      null,
+      null,
       null
     ],
     "references": [
@@ -310,19 +258,106 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-qppv-6jrg-hxq4",
+    "id": "gh-GHSA-4825-p4xm-pcf2",
     "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:41Z",
-    "title": "When a BIG-IP APM access policy and an OAuth profile is configured on a virtual server, specific...",
-    "description": "When a BIG-IP APM access policy and an OAuth profile is configured on a virtual server, specific malicious traffic can lead to Remote Code Execution (RCE).\n\nImpact:\nThis vulnerability allows an unauthenticated attacker to perform remote code execution. The BIG-IP system in Appliance mode is also vulnerable. This is a data plane issue; there is no control plane exposure.\n\n \n\n\nNote: Software versions which have reached End of Technical Support (EoTS) are not evaluated.",
+    "timestamp": "2026-09-22T20:40:30Z",
+    "title": "Spree: Broken Access Control in `PATCH /api/v3/store/carts/:id/associate` (IDOR)",
+    "description": "## Summary\n\nThe Store API v3 endpoint `PATCH /api/v3/store/carts/:id/associate` binds a guest cart to the authenticated caller without verifying possession of that cart. It locates the cart by prefixed ID only — `current_store.carts.where(user: [nil, current_user]).find_by_prefix_id!(params[:id])` — and omits the `authorize!(:update, @cart, cart_token)` check that every other action in the controller performs via `CartResolvable`. Because prefixed IDs are a reversible Sqids encoding of the auto-",
+    "severity": "high",
+    "cve_id": "CVE-2026-94462",
+    "ghsa_id": "GHSA-4825-p4xm-pcf2",
+    "affected_packages": [
+      "spree_api",
+      "spree_api"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-xpjq-3w4w-w5wr",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-22T20:40:27Z",
+    "title": "lightrag-hku: Stored Cross-Site Scripting (XSS) in the LightRAG WebUI chat/answer renderer via ingested content",
+    "description": "### Summary\nThe LightRAG WebUI renders assistant/answer chat content as **raw HTML** — `react-markdown` is\nconfigured with `rehypePlugins={[rehypeRaw]}` and `skipHtml={false}` and **no** HTML sanitizer\n(`rehype-sanitize`), element allow-list, or custom `urlTransform`. Because answer content is derived\nfrom user-ingested documents, an attacker who can add a single document can store an HTML/JavaScript\npayload that executes in the browser of any user who later retrieves it (typically an administra",
+    "severity": "medium",
+    "cve_id": "CVE-2026-86062",
+    "ghsa_id": "GHSA-xpjq-3w4w-w5wr",
+    "affected_packages": [
+      "lightrag-hku"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-vv3m-f8x4-7377",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-22T20:40:25Z",
+    "title": "lightrag-hku: SSRF via IPv6-transition address bypass (NAT64, IPv4-compatible, 6to4) of the native-markdown image-download guard",
+    "description": "## Summary\n\nLightRAG's native markdown parser downloads external images referenced by an uploaded markdown or textpack document. The only SSRF guard, `_validated_addresses()` in `lightrag/parser/markdown/parser.py`, resolves the image host and rejects it when the resolved IP is not `is_global`. That check is evaluated on the raw resolved address and never decodes IPv6 transition wrappers that embed an internal IPv4. Python's `ipaddress` classifies a NAT64 (`64:ff9b::/96` and the RFC 8215 `64:ff9",
+    "severity": "high",
+    "cve_id": "CVE-2026-85740",
+    "ghsa_id": "GHSA-vv3m-f8x4-7377",
+    "affected_packages": [
+      "lightrag-hku"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-frch-4w6v-q5xx",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-22T20:40:22Z",
+    "title": "lightrag-hku: No Rate Limiting on /login Endpoint Allows Brute-Force Attacks",
+    "description": "### Summary\nThe POST /login endpoint has no rate limiting, account lockout, or delay on failed attempts. An attacker can submit unlimited password guesses at full network speed.\n\n### Details\n\n```python\n# lightrag/api/lightrag_server.py:2161\n@app.post(\"/login\")\nasync def login(form_data: OAuth2PasswordRequestForm = Depends()):\n    if not auth_handler.verify_password(username, form_data.password):\n        raise HTTPException(status_code=401, detail=\"Incorrect credentials\")\n    # No: rate limit / l",
     "severity": "critical",
-    "cve_id": "CVE-2026-94127",
-    "ghsa_id": "GHSA-qppv-6jrg-hxq4",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-85734",
+    "ghsa_id": "GHSA-frch-4w6v-q5xx",
+    "affected_packages": [
+      "lightrag-hku"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
       null,
       null,
       null
@@ -331,15 +366,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-2m8x-r879-p5g3",
+    "id": "gh-GHSA-c759-cx9p-mrwq",
     "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:41Z",
-    "title": "A vulnerability has been found in JosephChuks php-file-manager-with-code-editor up to 3.0....",
-    "description": "A vulnerability has been found in JosephChuks php-file-manager-with-code-editor up to 3.0. Impacted is the function file_put_contents of the file codeEditor.php of the component Save Handler. The manipulation of the argument filename/content leads to unrestricted upload. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-09-22T20:40:19Z",
+    "title": "lightrag-hku: Plaintext Passwords Compared Without Constant-Time Function",
+    "description": "### Summary\nWhen plaintext passwords are stored in AUTH_ACCOUNTS, the comparison uses Python's == operator which is not constant-time. An attacker with low-latency access can exploit timing differences to recover the password character by character.\n\n### Details\n\n```python\n# lightrag/api/passwords.py:13-26\ndef verify_password(plain_password: str, stored_password: str) -> bool:\n    if stored_password.startswith(\"{bcrypt}\"):\n        ...\n        return bcrypt.checkpw(...)    # constant-time  OK\n\n  ",
     "severity": "medium",
-    "cve_id": "CVE-2026-95500",
-    "ghsa_id": "GHSA-2m8x-r879-p5g3",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-85725",
+    "ghsa_id": "GHSA-c759-cx9p-mrwq",
+    "affected_packages": [
+      "lightrag-hku"
+    ],
     "cwes": [
       null
     ],
@@ -355,38 +392,24 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-gr7x-rp46-7mvw",
+    "id": "gh-GHSA-hrmj-7rvj-4hg8",
     "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:41Z",
-    "title": "SGLang contains a DoS vulnerability caused by missing input validation for AUX_DATA ZeroMQ...",
-    "description": "SGLang contains a DoS vulnerability caused by missing input validation for AUX_DATA ZeroMQ control messages in the Decode worker, which enables an unauthenticated remote attacker with network reachability to the Decode control PULL socket to terminate the Decode control thread and cause a denial of service against the target server.",
+    "timestamp": "2026-09-22T20:37:36Z",
+    "title": "lightrag-hku: Sensitive Information Exposure Through Raw Exception Messages in API Error Responses",
+    "description": "### Summary\n\nThe LightRAG API server passes raw Python exception messages directly into HTTP\nerror responses across 30+ error handlers in every router. When combined with\nthe default unauthenticated configuration (see companion report on CWE-306), any\nnetwork-reachable client can trigger exceptions whose raw text discloses\ninternal infrastructure — server filesystem paths, database host/port/user, LLM\nprovider error details, and Python library internals. No global exception\nhandler sanitizes err",
     "severity": "medium",
-    "cve_id": "CVE-2026-94570",
-    "ghsa_id": "GHSA-gr7x-rp46-7mvw",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-85709",
+    "ghsa_id": "GHSA-hrmj-7rvj-4hg8",
+    "affected_packages": [
+      "lightrag-hku"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-xr6g-3g96-fmgq",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:41Z",
-    "title": "A horizontal privilege escalation vulnerability exists in x-ui 0.3.2. An authenticated user can...",
-    "description": "A horizontal privilege escalation vulnerability exists in x-ui 0.3.2. An authenticated user can modify the inbound proxy configurations of other users, including remark, port, protocol, settings, enabled state, expiry time and traffic quota, by submitting a request referencing the target resource identifier. The update path fails to verify that the target resource belongs to the requesting session user, allowing unauthorized cross-user modification of data.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-79314",
-    "ghsa_id": "GHSA-xr6g-3g96-fmgq",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
+      null,
       null,
       null,
       null,
@@ -396,16 +419,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-fxjc-7693-737g",
+    "id": "gh-GHSA-q4c5-2j6f-r476",
     "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:41Z",
-    "title": "A reflected cross-site scripting vulnerability exists in x-ui 0.3.2. The management interface...",
-    "description": "A reflected cross-site scripting vulnerability exists in x-ui 0.3.2. The management interface reflects the raw request URI into a client-side template binding expression used for sidebar menu highlighting. Server-side HTML entity escaping is ineffective in this context: the browser decodes the entities before the client-side framework evaluates the content as a JavaScript expression. A logged-in panel user who visits a crafted URL allows arbitrary script execution in the same-origin context of t",
+    "timestamp": "2026-09-22T20:37:33Z",
+    "title": "Nautobot: Authorization bypass in approval workflow REST API allows self-approval and unauthorized activation of scheduled jobs",
+    "description": "### Impact\nThis is an authorization bypass that escalates into unauthorized server-side job execution.\n\n1. Primary impact - self-approval: The approver checks (approver-group membership, `change` permission on the object under review, one-response-per-user) are enforced only in the `approve`/`deny` actions on `ApprovalWorkflowStage`. The generic `ApprovalWorkflowStageResponse` create endpoint enforces none of them, so a user holding only `extras.add_approvalworkflowstageresponse` can `POST` appr",
     "severity": "medium",
-    "cve_id": "CVE-2026-79315",
-    "ghsa_id": "GHSA-fxjc-7693-737g",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-83805",
+    "ghsa_id": "GHSA-q4c5-2j6f-r476",
+    "affected_packages": [
+      "nautobot"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
@@ -418,40 +444,104 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-x82f-3vjg-p954",
+    "id": "gh-GHSA-56v6-2fhr-wxgq",
     "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:41Z",
-    "title": "A improper restriction of rendered ui layers or frames vulnerability in Fortinet FortiPAM Chrome...",
-    "description": "A improper restriction of rendered ui layers or frames vulnerability in Fortinet FortiPAM Chrome Extension 8.0 all versions, FortiPAM Chrome Extension 7.4 all versions may allow attacker to information disclosure via remote unauthenticated attack",
-    "severity": "critical",
-    "cve_id": "CVE-2026-84388",
-    "ghsa_id": "GHSA-x82f-3vjg-p954",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-m58f-7v99-qrxg",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-22T15:32:40Z",
-    "title": "NVIDIA Infrastructure Controller for Linux contains a vulnerability where an attacker could cause...",
-    "description": "NVIDIA Infrastructure Controller for Linux contains a vulnerability where an attacker could cause improper certificate validation. A successful exploit of this vulnerability might lead to information disclosure, data tampering, and denial of service.",
+    "timestamp": "2026-09-22T20:37:30Z",
+    "title": "Nautobot: Stored cross-site scripting (XSS) in object create/edit form help text",
+    "description": "### Impact\n_What kind of vulnerability is it? Who is impacted?_\n\nIt has two related instances that share the same root cause: a user-controlled model field is assigned verbatim to a form field's `help_text`, which is rendered with Django's `|safe` filter (`render_field.html`), bypassing auto-escaping.\n\nIn both cases the script executes in the browser of any user who opens an affected create or edit form, **including administrators and superusers**. Because the payload runs in the victim's authen",
     "severity": "medium",
-    "cve_id": "CVE-2026-65129",
-    "ghsa_id": "GHSA-m58f-7v99-qrxg",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-83801",
+    "ghsa_id": "GHSA-56v6-2fhr-wxgq",
+    "affected_packages": [
+      "nautobot",
+      "nautobot"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-hxp9-w8x3-p566",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-22T20:37:28Z",
+    "title": "Autobahn Python permessage-deflate bypasses maxMessagePayloadSize after inflation",
+    "description": "### Summary\nAutobahn Python enforces `maxMessagePayloadSize` against the compressed WebSocket frame length before permessage-deflate inflation, then delivers the inflated message to application callbacks without a second size check. A client frame that is only 22 compressed bytes can inflate to 4096 bytes and reach `onMessage` even when the application configured a 128-byte message limit, defeating the resource boundary the option is meant to provide.\n\n### Details\nThe permessage-deflate path ins",
+    "severity": "medium",
+    "cve_id": "CVE-2026-77528",
+    "ghsa_id": "GHSA-hxp9-w8x3-p566",
+    "affected_packages": [
+      "autobahn",
+      "crossbar"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-jpvm-9frm-hjcq",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-22T20:37:24Z",
+    "title": "Nuclei: Environment Variable Disclosure via Response-Derived Data in DAST/Fuzz Mode",
+    "description": "A vulnerability in Nuclei's DAST/fuzz expression evaluation path allows a malicious target server to trigger disclosure of scanner-host environment variables when the `-env-vars` / `-ev` option is explicitly enabled.\n\nThis is an incomplete fix for [CVE-2026-41645](https://github.com/projectdiscovery/nuclei/security/advisories/GHSA-jm34-66cf-qpvr) / GHSA-jm34-66cf-qpvr. The original fix hardened `expressions.Evaluate()` to be single-pass within one call, but did not address callers that invoked e",
+    "severity": "medium",
+    "cve_id": "CVE-2026-76805",
+    "ghsa_id": "GHSA-jpvm-9frm-hjcq",
+    "affected_packages": [
+      "github.com/projectdiscovery/nuclei/v3"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-qgw5-7j4f-fg97",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-22T20:37:21Z",
+    "title": "Nuclei: Local File Read via Workflow File-Protocol Gate Bypass",
+    "description": "A vulnerability in Nuclei's workflow template loader allows `file:` protocol templates to execute without the `-file` flag, bypassing a security gate that is meant to prevent local file reads on the scanner host.\n\n**Affected Component**\n\nThe issue is in the workflow template loading path. The main template loader enforces the `-file` gate for file-protocol templates, but the workflow loader did not apply the same check when resolving templates referenced by a workflow.\n\n**Description**\n\nNuclei d",
+    "severity": "medium",
+    "cve_id": "CVE-2026-76804",
+    "ghsa_id": "GHSA-qgw5-7j4f-fg97",
+    "affected_packages": [
+      "github.com/projectdiscovery/nuclei/v3"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
       null,
       null,
       null,
