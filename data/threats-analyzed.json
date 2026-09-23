@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1790162267931-1",
+    "id": "twitter-1790181600742-1",
     "source": "Twitter Security",
-    "timestamp": "2026-09-23T11:17:47.931Z",
+    "timestamp": "2026-09-23T16:40:00.742Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1790162267931-1",
+    "id": "hn-1790181600742-1",
     "source": "HackerNews",
-    "timestamp": "2026-09-23T11:17:47.931Z",
+    "timestamp": "2026-09-23T16:40:00.742Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,14 +52,61 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-4rj9-f57h-53hg",
+    "id": "gh-GHSA-5f42-97gr-vfhq",
     "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:31Z",
-    "title": "The Rename wp-login.php to anything you want plugin for WordPress is vulnerable to time-based SQL...",
-    "description": "The Rename wp-login.php to anything you want plugin for WordPress is vulnerable to time-based SQL Injection via 'log' (Username) Parameter in all versions up to, and including, 2.0.1 due to insufficient escaping on the user supplied parameter and lack of sufficient preparation on the existing SQL query. This makes it possible for unauthenticated attackers to append additional SQL queries into already existing queries that can be used to extract sensitive information from the database. WordPress ",
+    "timestamp": "2026-09-23T16:11:18Z",
+    "title": "Moquette: Pattern-ACL wildcard injection (cross-tenant authorization bypass) plus a remote-unauthenticated DoS cluster, a Will-message authorization bypass, and a cross-session durable-corruption bug",
+    "description": "moquette is reachable by untrusted MQTT clients (anonymous by default), so every byte from any client, including pre-authentication, is untrusted. This is a memory-safe JVM: the ceiling is authorization/ACL bypass + denial of service + cross-session integrity, **not RCE** (I did not find one and do not claim one). Audited at commit `da7f719a6bab9829d520b5838e13ea7b1f9be3ef`, module `broker/`.\n\n## What a connecting client can do\n\n1. (Critical) Bypass `pattern`-based ACLs across tenants. In `Autho",
+    "severity": "critical",
+    "cve_id": "CVE-2026-85724",
+    "ghsa_id": "GHSA-5f42-97gr-vfhq",
+    "affected_packages": [
+      "io.moquette:moquette-broker"
+    ],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-85724.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-fvwm-j9pj-rw38",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-23T15:30:50Z",
+    "title": "Isotope eCommerce through 2.9.10 derives order identifiers from uniqid() instead of a...",
+    "description": "Isotope eCommerce through 2.9.10 derives order identifiers from uniqid() instead of a cryptographically secure source, allowing unauthenticated attackers to guess identifiers. Guest orders lack ownership verification, enabling attackers to access order details including billing address, customer information, and purchased files by supplying a guessed uid parameter.",
     "severity": "high",
-    "cve_id": "CVE-2026-93368",
-    "ghsa_id": "GHSA-4rj9-f57h-53hg",
+    "cve_id": "CVE-2026-96599",
+    "ghsa_id": "GHSA-fvwm-j9pj-rw38",
     "affected_packages": [],
     "cwes": [
       null
@@ -75,7 +122,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-93368.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-96599.",
       "affected_industries": [
         "Technology",
         "General"
@@ -90,14 +137,49 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-p8c6-29q6-cqw7",
+    "id": "gh-GHSA-p97r-9rrc-gr9r",
     "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:31Z",
-    "title": "The Tauri updater plugin verifies update binaries using minisign signatures, but the signature...",
-    "description": "The Tauri updater plugin verifies update binaries using minisign signatures, but the signature covers only the raw binary bytes. The update manifest -- which contains the version number, download URL, and signature -- is fetched over TLS but is never itself signed or authenticated. Because the only anti-rollback check compares the manifest's version field against the current version, and that field is unsigned, an attacker who can serve a crafted manifest can force installation of any older sign",
-    "severity": "medium",
-    "cve_id": "CVE-2026-95625",
-    "ghsa_id": "GHSA-p8c6-29q6-cqw7",
+    "timestamp": "2026-09-23T15:30:50Z",
+    "title": "Robur Albatross 1.0.0 through 2.x before 2.7.2 does not limit use of the ring buffer, leading to...",
+    "description": "Robur Albatross 1.0.0 through 2.x before 2.7.2 does not limit use of the ring buffer, leading to an albatross-console loop with no recognized termination condition. This is only exploitable by users who can send console subscription commands to unikernels that produce sufficient log output to fill the ring buffer (1024 lines). It is not exploitable by unauthorized clients.",
+    "severity": "high",
+    "cve_id": "CVE-2026-96609",
+    "ghsa_id": "GHSA-p97r-9rrc-gr9r",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-96609.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-7pjx-8r2g-hwpp",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-23T15:30:50Z",
+    "title": "Isotope eCommerce through 2.9.10 contains a blind SQL injection vulnerability in backend...",
+    "description": "Isotope eCommerce through 2.9.10 contains a blind SQL injection vulnerability in backend callbacks that interpolate request-controlled identifiers and administrator-supplied values directly into SQL statements. Authenticated Contao backend users with Isotope module permissions can exploit conditional and time-based injection payloads to extract arbitrary database contents including user password hashes from the tl_user table.",
+    "severity": "high",
+    "cve_id": "CVE-2026-96600",
+    "ghsa_id": "GHSA-7pjx-8r2g-hwpp",
     "affected_packages": [],
     "cwes": [
       null
@@ -108,11 +190,49 @@
       null,
       null,
       null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-96600.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-g222-rpm9-83x6",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-23T15:30:50Z",
+    "title": "FFmpeg before 9.0 has a signed integer overflow in libavformat/mov.c. In mov_read_ispe(),...",
+    "description": "FFmpeg before 9.0 has a signed integer overflow in libavformat/mov.c. In mov_read_ispe(), uint32_t width/height values from a crafted HEIF ispe box are stored into signed int fields without bounds checking, allowing values exceeding INT_MAX to become negative. In read_image_grid(), accumulating these values causes signed integer overflow (undefined behavior per C17 section 6.5), which on x86 wraps to a small positive value, bypassing downstream validity checks.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-96611",
+    "ghsa_id": "GHSA-g222-rpm9-83x6",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-95625.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-96611.",
       "affected_industries": [
         "Technology",
         "General"
@@ -127,117 +247,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-6cx7-4x8x-cqpx",
+    "id": "gh-GHSA-q2c4-mww2-9fhw",
     "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:31Z",
-    "title": "An Improper Authentication vulnerability in the Apache Doris Frontend (FE) meta service allows an...",
-    "description": "An Improper Authentication vulnerability in the Apache Doris Frontend (FE) meta service allows an unauthenticated remote attacker to access internal metadata service endpoints.\n\n\n\nThe affected endpoints relied on client-supplied node information for authentication without providing sufficient authentication of the requesting party. Under certain network configurations, a remote attacker may be able to bypass the intended access control and access internal FE metadata interfaces, potentially expo",
-    "severity": "high",
-    "cve_id": "CVE-2026-31377",
-    "ghsa_id": "GHSA-6cx7-4x8x-cqpx",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-31377.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-h9m5-vm2j-qx22",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:31Z",
-    "title": "NULL pointer dereference vulnerability in ASR Crane，Falcon on Linux (as_rrc module) allows...",
-    "description": "NULL pointer dereference vulnerability in ASR Crane，Falcon on Linux (as_rrc module) allows Pointer Manipulation.\n\nThis vulnerability is associated with program file 3g.mod/lib/src/urrsir.c.",
-    "severity": "high",
-    "cve_id": "CVE-2026-42801",
-    "ghsa_id": "GHSA-h9m5-vm2j-qx22",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-42801.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-q25p-jh2x-hv2j",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:31Z",
-    "title": "CGServiSign developed by Changing has a OS Command Injection vulnerability. Unauthenticated...",
-    "description": "CGServiSign developed by Changing has a OS Command Injection vulnerability. Unauthenticated remote attackers can induce victims to visit a malicious web page and inject arbitrary OS commands through the local service interface, resulting in command execution on the victim's local computer.",
-    "severity": "high",
-    "cve_id": "CVE-2026-15027",
-    "ghsa_id": "GHSA-q25p-jh2x-hv2j",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-15027.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-pg53-55p8-5cr6",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:30Z",
-    "title": "A heap-based out-of-bounds read vulnerability exists in Foxit PDF Editor/Reader’s handling of...",
-    "description": "A heap-based out-of-bounds read vulnerability exists in Foxit PDF Editor/Reader’s handling of wide strings in embedded PDF JavaScript. Insufficient validation of string-deletion ranges can cause an integer underflow, resulting in an out-of-bounds read and application crash.",
+    "timestamp": "2026-09-23T15:30:50Z",
+    "title": "WEBCON BPS is vulnerable to Insecure Direct Object Reference (IDOR) in the /api/vacations/{path}...",
+    "description": "WEBCON BPS is vulnerable to Insecure Direct Object Reference (IDOR) in the /api/vacations/{path} endpoint. The selectedPeople parameter in the Gantt vacation chart API does not validate whether the requesting user is authorized to access the requested users' data. An authenticated attacker can supply arbitrary user logins in the selectedPeople parameter to view vacation schedules of other employees, including managers and staff from other offices, regardless of business logic access restrictions",
     "severity": "medium",
-    "cve_id": "CVE-2026-91817",
-    "ghsa_id": "GHSA-pg53-55p8-5cr6",
+    "cve_id": "CVE-2026-92419",
+    "ghsa_id": "GHSA-q2c4-mww2-9fhw",
     "affected_packages": [],
     "cwes": [
       null
@@ -249,7 +266,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-91817.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-92419.",
       "affected_industries": [
         "Technology",
         "General"
@@ -264,61 +281,26 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-7v6h-45pg-ghrp",
+    "id": "gh-GHSA-hv8m-jhrw-p9ph",
     "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:30Z",
-    "title": "A heap-based out-of-bounds write vulnerability exists in Foxit PDF Editor/Reader’s PRC parser due...",
-    "description": "A heap-based out-of-bounds write vulnerability exists in Foxit PDF Editor/Reader’s PRC parser due to insufficient validation of vertex indices in triangular fan texture meshes. Successful exploitation could result in memory corruption and an application crash.",
-    "severity": "high",
-    "cve_id": "CVE-2026-91811",
-    "ghsa_id": "GHSA-7v6h-45pg-ghrp",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-91811.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-hgj5-8xcv-g949",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:30Z",
-    "title": "A session management\nvulnerability exists in the Legacy UI Reduced Function Login feature of NT...",
-    "description": "A session management\nvulnerability exists in the Legacy UI Reduced Function Login feature of NT-ware\nuniFLOW Online. Under specific timing conditions during Service Offline\nEmergency Mode, a previously authenticated session may be retained after\nlogout, which could allow a subsequent user to be authenticated as the previous\nuser and gain unauthorised limited access to device functionality.",
+    "timestamp": "2026-09-23T15:30:49Z",
+    "title": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an...",
+    "description": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an Improper Certificate Validation vulnerability. An unauthenticated attacker with adjacent network access could potentially exploit this vulnerability, leading to Information disclosure, Information tampering, and Protection mechanism bypass.",
     "severity": "medium",
-    "cve_id": "CVE-2026-92378",
-    "ghsa_id": "GHSA-hgj5-8xcv-g949",
+    "cve_id": "CVE-2026-73587",
+    "ghsa_id": "GHSA-hv8m-jhrw-p9ph",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-92378.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-73587.",
       "affected_industries": [
         "Technology",
         "General"
@@ -333,14 +315,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-37h4-4ww6-hgx5",
+    "id": "gh-GHSA-r4xp-whfq-c88r",
     "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:30Z",
-    "title": "Foxit PDF Editor/Reader does not perform sufficient verification of the JPEG2000 image metadata...",
-    "description": "Foxit PDF Editor/Reader does not perform sufficient verification of the JPEG2000 image metadata in the PDF file, which leads to out-of-bounds write in the heap buffer during decoding, potentially causing the program to crash and introducing the risk of arbitrary code execution.",
+    "timestamp": "2026-09-23T15:30:49Z",
+    "title": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an...",
+    "description": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an Inclusion of Sensitive Information in Source Code vulnerability. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to Information exposure.",
     "severity": "high",
-    "cve_id": "CVE-2026-91815",
-    "ghsa_id": "GHSA-37h4-4ww6-hgx5",
+    "cve_id": "CVE-2026-73591",
+    "ghsa_id": "GHSA-r4xp-whfq-c88r",
     "affected_packages": [],
     "cwes": [
       null
@@ -352,7 +334,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-91815.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-73591.",
       "affected_industries": [
         "Technology",
         "General"
@@ -367,82 +349,14 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-jwhq-jhrg-mx43",
+    "id": "gh-GHSA-wmpf-wh48-4x49",
     "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:30Z",
-    "title": "A use-after-free vulnerability exists in Foxit PDF Editor/Reader’s JavaScript handling of PDF...",
-    "description": "A use-after-free vulnerability exists in Foxit PDF Editor/Reader’s JavaScript handling of PDF annotations. Reentrant page-event processing during annotation enumeration may release the associated page object, which is subsequently accessed, resulting in an application crash.",
-    "severity": "high",
-    "cve_id": "CVE-2026-91818",
-    "ghsa_id": "GHSA-jwhq-jhrg-mx43",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-91818.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-m242-r26h-qcvh",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:30Z",
-    "title": "A use-after-free vulnerability exists in Foxit PDF Editor/Reader’s handling of PDF annotations....",
-    "description": "A use-after-free vulnerability exists in Foxit PDF Editor/Reader’s handling of PDF annotations. Reentrant annotation deletion triggered by embedded JavaScript can cause the application to access an annotation object after it has been released, resulting in a use-after-free condition and application crash.",
-    "severity": "high",
-    "cve_id": "CVE-2026-91816",
-    "ghsa_id": "GHSA-m242-r26h-qcvh",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-91816.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-c9r7-69j9-jq5j",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:30Z",
-    "title": "A signature validation vulnerability exists in Foxit PDF Editor/Reader’s handling of...",
-    "description": "A signature validation vulnerability exists in Foxit PDF Editor/Reader’s handling of incrementally updated PDF documents. Changes to visible document content may not invalidate the existing signature, allowing attackers to alter signed content and potentially carry out content spoofing while the document continues to appear validly signed.",
+    "timestamp": "2026-09-23T15:30:49Z",
+    "title": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, Versions prior to...",
+    "description": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, Versions prior to 5.36, contains a Weak Encoding for Password vulnerability. A low privileged attacker with local access could potentially exploit this vulnerability, leading to Information disclosure, Information tampering, Protection mechanism bypass, and Unauthorized access.",
     "severity": "medium",
-    "cve_id": "CVE-2026-91814",
-    "ghsa_id": "GHSA-c9r7-69j9-jq5j",
+    "cve_id": "CVE-2026-73589",
+    "ghsa_id": "GHSA-wmpf-wh48-4x49",
     "affected_packages": [],
     "cwes": [
       null
@@ -454,7 +368,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-91814.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-73589.",
       "affected_industries": [
         "Technology",
         "General"
@@ -469,82 +383,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-597r-vgr7-9622",
+    "id": "gh-GHSA-42rq-qj3r-p2vp",
     "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:30Z",
-    "title": "A vulnerability in Foxit PDF Editor/Reader’s update mechanism allows an update package to be...",
-    "description": "A vulnerability in Foxit PDF Editor/Reader’s update mechanism allows an update package to be replaced between download and high-privilege extraction due to insufficient file locking and integrity validation. This could enable local attackers to execute arbitrary code with elevated privileges.",
-    "severity": "high",
-    "cve_id": "CVE-2026-91813",
-    "ghsa_id": "GHSA-597r-vgr7-9622",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-91813.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-748f-jhmv-j7jm",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:30Z",
-    "title": "A vulnerability in Foxit PDF Editor/Reader’s update mechanism allows man-in-the-middle attackers...",
-    "description": "A vulnerability in Foxit PDF Editor/Reader’s update mechanism allows man-in-the-middle attackers to bypass certificate validation and package integrity checks, potentially enabling arbitrary code execution with system privileges.",
-    "severity": "high",
-    "cve_id": "CVE-2026-91812",
-    "ghsa_id": "GHSA-748f-jhmv-j7jm",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-91812.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-wjh9-8m64-vcfh",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:30Z",
-    "title": "A heap-based out-of-bounds read vulnerability exists in Foxit PDF Editor/Reader’s handling of...",
-    "description": "A heap-based out-of-bounds read vulnerability exists in Foxit PDF Editor/Reader’s handling of malformed image soft-mask data. Insufficient validation of the soft-mask data attribute during image parsing may cause an arithmetic underflow, resulting in an out-of-bounds read and application crash.",
+    "timestamp": "2026-09-23T15:30:49Z",
+    "title": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an...",
+    "description": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an Insufficient Session Expiration vulnerability. A low privileged attacker with adjacent network access could potentially exploit this vulnerability, leading to Elevation of privileges, Protection mechanism bypass, and Unauthorized access.",
     "severity": "medium",
-    "cve_id": "CVE-2026-91807",
-    "ghsa_id": "GHSA-wjh9-8m64-vcfh",
+    "cve_id": "CVE-2026-73586",
+    "ghsa_id": "GHSA-42rq-qj3r-p2vp",
     "affected_packages": [],
     "cwes": [
       null
@@ -556,7 +402,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-91807.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-73586.",
       "affected_industries": [
         "Technology",
         "General"
@@ -571,48 +417,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-p8qq-w67f-qxj9",
+    "id": "gh-GHSA-995x-6xmg-8xwr",
     "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:30Z",
-    "title": "A heap-based out-of-bounds read vulnerability exists in Foxit PDF Editor/Reader’s handling of...",
-    "description": "A heap-based out-of-bounds read vulnerability exists in Foxit PDF Editor/Reader’s handling of malformed PDF image masks. Inconsistent image metadata may cause incorrect alpha-channel processing during rendering, resulting in an out-of-bounds read and application crash.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-91810",
-    "ghsa_id": "GHSA-p8qq-w67f-qxj9",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-91810.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-j3h3-v4jq-6qgp",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:30Z",
-    "title": "A use-after-free vulnerability exists in Foxit PDF Editor/Reader’s handling of malformed PDF form...",
-    "description": "A use-after-free vulnerability exists in Foxit PDF Editor/Reader’s handling of malformed PDF form fields. Improper validation during field-name traversal may cause the application to access a released object, resulting in an application crash.",
+    "timestamp": "2026-09-23T15:30:49Z",
+    "title": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains a...",
+    "description": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains a Missing Authentication for Critical Function vulnerability. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to Unauthorized access.",
     "severity": "high",
-    "cve_id": "CVE-2026-91809",
-    "ghsa_id": "GHSA-j3h3-v4jq-6qgp",
+    "cve_id": "CVE-2026-73588",
+    "ghsa_id": "GHSA-995x-6xmg-8xwr",
     "affected_packages": [],
     "cwes": [
       null
@@ -624,7 +436,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-91809.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-73588.",
       "affected_industries": [
         "Technology",
         "General"
@@ -639,14 +451,48 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-gqv8-m8qw-cgrc",
+    "id": "gh-GHSA-fg6m-pjhc-g6f8",
     "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:30Z",
-    "title": "A heap-based out-of-bounds read vulnerability exists in Foxit PDF Editor Reader’s handling of PDF...",
-    "description": "A heap-based out-of-bounds read vulnerability exists in Foxit PDF Editor Reader’s handling of PDF image objects with inconsistent compression metadata. Insufficient validation during image decoding may result in an undersized buffer and an out-of-bounds read during rendering, causing an application crash.",
+    "timestamp": "2026-09-23T15:30:49Z",
+    "title": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an Use...",
+    "description": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an Use of Non-Canonical URL Paths for Authorization Decisions vulnerability. An unauthenticated attacker with remote access could potentially exploit this vulnerability, leading to Unauthorized access.",
+    "severity": "low",
+    "cve_id": "CVE-2026-71178",
+    "ghsa_id": "GHSA-fg6m-pjhc-g6f8",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-71178.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-fh3p-hc6v-5v65",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-23T15:30:49Z",
+    "title": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an...",
+    "description": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an Improper Restriction of Rendered UI Layers or Frames vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Elevation of privileges and Session theft.",
     "severity": "medium",
-    "cve_id": "CVE-2026-91808",
-    "ghsa_id": "GHSA-gqv8-m8qw-cgrc",
+    "cve_id": "CVE-2026-71177",
+    "ghsa_id": "GHSA-fh3p-hc6v-5v65",
     "affected_packages": [],
     "cwes": [
       null
@@ -658,7 +504,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-91808.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-71177.",
       "affected_industries": [
         "Technology",
         "General"
@@ -673,14 +519,54 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-w77c-2xq3-h9h8",
+    "id": "gh-GHSA-849v-g89f-q67r",
     "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:29Z",
-    "title": "A use-after-free vulnerability exists in Foxit PDF Editor/Reader’s PDF page-tree handling. A...",
-    "description": "A use-after-free vulnerability exists in Foxit PDF Editor/Reader’s PDF page-tree handling. A specially crafted PDF can trigger page-structure changes during rendering, causing the application to access released page objects and resulting in memory corruption and an application crash.",
-    "severity": "high",
-    "cve_id": "CVE-2026-91805",
-    "ghsa_id": "GHSA-w77c-2xq3-h9h8",
+    "timestamp": "2026-09-23T15:30:49Z",
+    "title": "LightLLM through 1.2.0 contains a remote code execution vulnerability in the KV-transfer worker...",
+    "description": "LightLLM through 1.2.0 contains a remote code execution vulnerability in the KV-transfer worker when started with --pd_trans_mode nccl, which exposes an unauthenticated RPyC control channel that deserializes attacker-supplied data. Attackers can send malicious pickled objects to the exposed RPyC ThreadedServer to execute arbitrary code with the privileges of the LightLLM service account.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-96560",
+    "ghsa_id": "GHSA-849v-g89f-q67r",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-96560.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-4hx6-76mg-cfgf",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-23T15:30:49Z",
+    "title": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an...",
+    "description": "Dell Secure Connect Gateway (SCG) Policy Manager, versions prior to 5.34.00.16, contains an Improper Privilege Management vulnerability. A low privileged attacker with remote access could potentially exploit this vulnerability, leading to Unauthorized access.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-61413",
+    "ghsa_id": "GHSA-4hx6-76mg-cfgf",
     "affected_packages": [],
     "cwes": [
       null
@@ -691,8 +577,78 @@
       null
     ],
     "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-61413.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-pwgq-mrvp-r2v7",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-23T15:30:49Z",
+    "title": "ZohoCorp ManageEngine Applications Manager versions 182200 and below were vulnerable to exposure...",
+    "description": "ZohoCorp ManageEngine Applications Manager versions 182200 and below were vulnerable to exposure of a Google Cloud service-account private key in the Applications Manager installer, which could allow an unauthenticated attacker to impersonate the service account and access or modify associated cloud resources.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-86708",
+    "ghsa_id": "GHSA-pwgq-mrvp-r2v7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 90,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-86708.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 90
+  },
+  {
+    "id": "gh-GHSA-jj2h-hcrf-9gfx",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-23T15:30:49Z",
+    "title": "A flaw was found in sudo. When sudoers rules use NOTBEFORE or NOTAFTER time-based access...",
+    "description": "A flaw was found in sudo. When sudoers rules use NOTBEFORE or NOTAFTER time-based access restrictions with timestamps that omit the trailing 'Z' timezone indicator, the time evaluation relies on the TZ environment variable inherited from the calling user. Because sudo is a setuid-root program, an unprivileged local user can set TZ to an extreme timezone offset to shift the authorization window by up to approximately 25 hours, causing expired rules to be treated as valid. This allows the user to ",
+    "severity": "high",
+    "cve_id": "CVE-2026-96512",
+    "ghsa_id": "GHSA-jj2h-hcrf-9gfx",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-91805.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-96512.",
       "affected_industries": [
         "Technology",
         "General"
@@ -707,14 +663,45 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-4h83-4r8f-37h5",
+    "id": "gh-GHSA-64gh-3j93-84gf",
     "source": "GitHub Security",
-    "timestamp": "2026-09-23T09:30:29Z",
-    "title": "A use-after-free vulnerability exists in Foxit PDF Editor/Reader’s handling of PDF form fields....",
-    "description": "A use-after-free vulnerability exists in Foxit PDF Editor/Reader’s handling of PDF form fields. Embedded JavaScript may access form-field references after the corresponding fields have been released, resulting in an application crash.",
+    "timestamp": "2026-09-23T15:30:49Z",
+    "title": "Rejected reason: This ID was for testing",
+    "description": "Rejected reason: This ID was for testing",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-96559",
+    "ghsa_id": "GHSA-64gh-3j93-84gf",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-96559.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-4jp8-mg92-96wf",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-23T15:30:48Z",
+    "title": "ZohoCorp ManageEngine Applications Manager versions 182000 and below allowed a low-privileged...",
+    "description": "ZohoCorp ManageEngine Applications Manager versions 182000 and below allowed a low-privileged user to change the proxy settings.",
     "severity": "high",
-    "cve_id": "CVE-2026-91806",
-    "ghsa_id": "GHSA-4h83-4r8f-37h5",
+    "cve_id": "CVE-2026-86683",
+    "ghsa_id": "GHSA-4jp8-mg92-96wf",
     "affected_packages": [],
     "cwes": [
       null
@@ -726,7 +713,41 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-91806.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-86683.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-j25x-qmfq-r547",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-23T15:30:48Z",
+    "title": "ZohoCorp ManageEngine Applications Manager versions 182000 and below were vulnerable to a...",
+    "description": "ZohoCorp ManageEngine Applications Manager versions 182000 and below were vulnerable to a permissions validation issue that allowed a low-privileged user to delete service monitors outside their assigned scope.",
+    "severity": "high",
+    "cve_id": "CVE-2026-86679",
+    "ghsa_id": "GHSA-j25x-qmfq-r547",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-86679.",
       "affected_industries": [
         "Technology",
         "General"
