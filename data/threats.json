@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1790249511291-1",
+    "id": "twitter-1790269104068-1",
     "source": "Twitter Security",
-    "timestamp": "2026-09-24T11:31:51.291Z",
+    "timestamp": "2026-09-24T16:58:24.068Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1790249511291-1",
+    "id": "hn-1790269104068-1",
     "source": "HackerNews",
-    "timestamp": "2026-09-24T11:31:51.291Z",
+    "timestamp": "2026-09-24T16:58:24.068Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,19 +26,22 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-wp8m-4297-94hv",
+    "id": "gh-GHSA-hxcx-9h4f-42xx",
     "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:51Z",
-    "title": "A flaw was found in GIMP. When processing a specially crafted GIMPressionist preset file, the...",
-    "description": "A flaw was found in GIMP. When processing a specially crafted GIMPressionist preset file, the plug-in does not properly validate vector indices before writing into fixed-size arrays. This can lead to an out-of-bounds write, corrupting memory. An attacker could exploit this by convincing a user to load a malicious preset file, potentially causing a crash or enabling arbitrary code execution.",
+    "timestamp": "2026-09-24T16:38:27Z",
+    "title": "Snipe-IT: 2FA bypass via the API token flow",
+    "description": "### Impact\n\nAn attacker who knows a victim's password fully bypasses that account's 2FA and obtains a persistent token with full API access as the user (read and write across the user's permissions, including admin if the victim is an admin).\n\nThe token is an API credential, not a web/UI session (using it on web routes redirects to `/login`), but the REST API covers essentially the whole application. If the victim is an admin, the token can also call the admin `users/two_factor_reset` endpoint, ",
     "severity": "high",
-    "cve_id": "CVE-2026-97185",
-    "ghsa_id": "GHSA-wp8m-4297-94hv",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-63493",
+    "ghsa_id": "GHSA-hxcx-9h4f-42xx",
+    "affected_packages": [
+      "snipe/snipe-it"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
       null,
       null,
       null,
@@ -49,14 +52,94 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-ghm8-98p5-pfjq",
+    "id": "gh-GHSA-fx76-2j3w-2mx6",
     "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:51Z",
-    "title": "Path Traversal in DIAEnergie.\n\nThis issue affects DIAEnergie: before 1.11.00.022.",
-    "description": "Path Traversal in DIAEnergie.\n\nThis issue affects DIAEnergie: before 1.11.00.022.",
+    "timestamp": "2026-09-24T16:28:26Z",
+    "title": "podman quadlet install --replace does not fully replace the old file",
+    "description": "### Impact\n\nWhen running `podman quadlet install --replace` to replace a Quadlet file, if the original Quadlet is larger than the new Quadlet, the file would not be truncated and content from the original would be preserved. There is no risk of information leakage as the user already had access to the Quadlet in order to replace it, and in most cases, this would only lead to invalid Quadlet files (see https://github.com/podman-container-tools/podman/issues/29013). However, security-related optio",
+    "severity": "medium",
+    "cve_id": "CVE-2026-19730",
+    "ghsa_id": "GHSA-fx76-2j3w-2mx6",
+    "affected_packages": [
+      "github.com/containers/podman/v5"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-99rf-x5r6-q76q",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-24T15:31:36Z",
+    "title": "HFS2 version 2.4.0 and earlier contains a denial of service vulnerability that allows...",
+    "description": "HFS2 version 2.4.0 and earlier contains a denial of service vulnerability that allows unauthenticated attackers to cause a complete and persistent loss of availability by sending a single crafted request. Attackers can trigger a hung serving thread that enters a busy loop, rendering the entire file server unresponsive to all clients without self-recovery until an operator manually restarts the service.",
+    "severity": "high",
+    "cve_id": "CVE-2026-97362",
+    "ghsa_id": "GHSA-99rf-x5r6-q76q",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-mfxv-9hc5-3jv3",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-24T15:31:36Z",
+    "title": "A path traversal vulnerability was found in pulpcore. The content upload API accepts a 'file_url'...",
+    "description": "A path traversal vulnerability was found in pulpcore. The content upload API accepts a 'file_url' parameter that allows users with file repository privileges to specify a local file URL for Pulp to download and store. A URL scheme validation check uses a string prefix comparison that only rejects URLs beginning with 'file://', but Python's URL parser recognizes the 'file:' scheme without double slashes, creating a mismatch between what is validated and what is dispatched to the file downloader. ",
+    "severity": "high",
+    "cve_id": "CVE-2026-90959",
+    "ghsa_id": "GHSA-mfxv-9hc5-3jv3",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-hmv3-x9c8-w9rm",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-24T15:31:36Z",
+    "title": "In PortSwigger Burp Suite DAST (formerly Burp Suite Enterprise Edition) before 2026.8, an...",
+    "description": "In PortSwigger Burp Suite DAST (formerly Burp Suite Enterprise Edition) before 2026.8, an authentication bypass can occur via an alternate path or channel.",
     "severity": "critical",
-    "cve_id": "CVE-2026-78312",
-    "ghsa_id": "GHSA-ghm8-98p5-pfjq",
+    "cve_id": "CVE-2026-90481",
+    "ghsa_id": "GHSA-hmv3-x9c8-w9rm",
     "affected_packages": [],
     "cwes": [
       null
@@ -70,166 +153,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-g97f-h4gm-v8mf",
+    "id": "gh-GHSA-j2hp-rfqr-h9c7",
     "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:51Z",
-    "title": "Improper Access Control in DIAEnergie.\n\nThis issue affects DIAEnergie: before 1.11.00.022.",
-    "description": "Improper Access Control in DIAEnergie.\n\nThis issue affects DIAEnergie: before 1.11.00.022.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-78313",
-    "ghsa_id": "GHSA-g97f-h4gm-v8mf",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-px6q-rh8c-fgq2",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:51Z",
-    "title": "The eesy_ID2WP – Publish InDesign HTML5 plugin for WordPress is vulnerable to Path Traversal in...",
-    "description": "The eesy_ID2WP – Publish InDesign HTML5 plugin for WordPress is vulnerable to Path Traversal in all versions up to, and including, 1.0.3 via the `id2wp_path` parameter. This makes it possible for unauthenticated attackers to read the contents of arbitrary files on the server, which can contain sensitive information.",
-    "severity": "high",
-    "cve_id": "CVE-2026-77193",
-    "ghsa_id": "GHSA-px6q-rh8c-fgq2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-ccmx-8vcq-6rh5",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:51Z",
-    "title": "SQL Injection vulnerability in DIAEnergie.\n\nThis issue affects DIAEnergie: before 1.11.00.022.",
-    "description": "SQL Injection vulnerability in DIAEnergie.\n\nThis issue affects DIAEnergie: before 1.11.00.022.",
-    "severity": "high",
-    "cve_id": "CVE-2026-78311",
-    "ghsa_id": "GHSA-ccmx-8vcq-6rh5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-mm9j-887x-mwhq",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:51Z",
-    "title": "The YOP Poll plugin for WordPress is vulnerable to Origin Validation Error in all versions up to,...",
-    "description": "The YOP Poll plugin for WordPress is vulnerable to Origin Validation Error in all versions up to, and including, 7.0.10. This is due to the plugin transmitting a wp_rest nonce to window.opener via postMessage() with a wildcard targetOrigin. This makes it possible for unauthenticated attackers to steal a REST nonce scoped to a logged-in Administrator and use it to change the Administrator's email address and password, resulting in full account takeover. The Administrator must open an attacker-con",
-    "severity": "high",
-    "cve_id": "CVE-2026-85682",
-    "ghsa_id": "GHSA-mm9j-887x-mwhq",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-qwfc-j2f5-c4mr",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:51Z",
-    "title": "SQL Injection vulnerability in DIAEnergie.\n\nThis issue affects DIAEnergie: before 1.11.00.022.",
-    "description": "SQL Injection vulnerability in DIAEnergie.\n\nThis issue affects DIAEnergie: before 1.11.00.022.",
-    "severity": "high",
-    "cve_id": "CVE-2026-78309",
-    "ghsa_id": "GHSA-qwfc-j2f5-c4mr",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-854f-fmg9-6cvm",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:51Z",
-    "title": "Authorization Bypass Through User-Controlled Key in DIAEnergie.\n\nThis issue affects DIAEnergie:...",
-    "description": "Authorization Bypass Through User-Controlled Key in DIAEnergie.\n\nThis issue affects DIAEnergie: before 1.11.00.022.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-78310",
-    "ghsa_id": "GHSA-854f-fmg9-6cvm",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-pj37-53vg-9phx",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:51Z",
-    "title": "Out-of-bounds read vulnerability in the graphics module. Successful exploitation of this...",
-    "description": "Out-of-bounds read vulnerability in the graphics module. Successful exploitation of this vulnerability may affect availability.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-81645",
-    "ghsa_id": "GHSA-pj37-53vg-9phx",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-5v72-qcrh-8w8r",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:51Z",
-    "title": "Improper Authentication vulnerability in DIAEnergie allows Authentication Bypass.\n\nThis issue...",
-    "description": "Improper Authentication vulnerability in DIAEnergie allows Authentication Bypass.\n\nThis issue affects DIAEnergie: before 1.11.00.022.",
+    "timestamp": "2026-09-24T15:31:36Z",
+    "title": "In OpenStack Zaqar before 22.0.2, WSGI transport mishandles the URL-Signature header. By sending...",
+    "description": "In OpenStack Zaqar before 22.0.2, WSGI transport mishandles the URL-Signature header. By sending a request with an empty URL-Signature header, an unauthenticated remote attacker who knows a target project's UUID may bypass both Keystone authentication and pre-signed URL verification, resulting in the ability to read, enumerate, create, and delete that project's queues, messages, claims, and subscriptions. By additionally claiming an administrative role, the attacker may also perform administrati",
     "severity": "critical",
-    "cve_id": "CVE-2026-78308",
-    "ghsa_id": "GHSA-5v72-qcrh-8w8r",
+    "cve_id": "CVE-2026-97404",
+    "ghsa_id": "GHSA-j2hp-rfqr-h9c7",
     "affected_packages": [],
     "cwes": [
       null
@@ -243,78 +174,58 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-hcgg-7hh4-grvw",
+    "id": "gh-GHSA-v2vq-3h6w-9r3c",
     "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:51Z",
-    "title": "An improper authentication vulnerability in PaperCut MF/NG allows an unauthenticated, remote...",
-    "description": "An improper authentication vulnerability in PaperCut MF/NG allows an unauthenticated, remote attacker to trigger report generation. By submitting report generation requests without valid credentials, an attacker can generate reports and gain unauthorized access to sensitive information.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-87739",
-    "ghsa_id": "GHSA-hcgg-7hh4-grvw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-4266-g8jg-m68m",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:51Z",
-    "title": "GPM LIGHT developed by ezGlobal has a Sensitive Data Exposure vulnerability. Unauthenticated...",
-    "description": "GPM LIGHT developed by ezGlobal has a Sensitive Data Exposure vulnerability. Unauthenticated remote attackers can directly access system logs.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-97181",
-    "ghsa_id": "GHSA-4266-g8jg-m68m",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-6392-7mrr-8qfw",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:51Z",
-    "title": "An improper limitation of a pathname to a restricted directory (path traversal) vulnerability in...",
-    "description": "An improper limitation of a pathname to a restricted directory (path traversal) vulnerability in the Scan-to-Fax component of PaperCut NG and PaperCut MF allows an authenticated administrator to execute arbitrary commands on the underlying host via crafted fax provider settings.",
-    "severity": "high",
-    "cve_id": "CVE-2026-82077",
-    "ghsa_id": "GHSA-6392-7mrr-8qfw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-wqwx-h8c4-gmvr",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-24T09:31:50Z",
-    "title": "An input validation vulnerability exists in the PaperCut Hive embedded application for Ricoh...",
-    "description": "An input validation vulnerability exists in the PaperCut Hive embedded application for Ricoh devices. The application fails to properly sanitize input received during the NFC card reading process before passing it to the application's web view interface. A local attacker with physical access to the device and a specially crafted NFC card or emulator could exploit this flaw to execute arbitrary code within the context of the application's user interface. This could result in unauthorized actions ",
+    "timestamp": "2026-09-24T15:31:36Z",
+    "title": "A vulnerability was detected in Excalidraw up to 0.18.1. The impacted element is an unknown...",
+    "description": "A vulnerability was detected in Excalidraw up to 0.18.1. The impacted element is an unknown function of the file packages/excalidraw/data/restore.ts of the component Imported File Handler. Performing a manipulation of the argument customData.generationData.html results in cross site scripting. The attack is possible to be carried out remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
     "severity": "low",
-    "cve_id": "CVE-2026-11744",
-    "ghsa_id": "GHSA-wqwx-h8c4-gmvr",
+    "cve_id": "CVE-2026-97224",
+    "ghsa_id": "GHSA-v2vq-3h6w-9r3c",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-cmcq-v328-82vj",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-24T15:31:36Z",
+    "title": "An integer overflow vulnerability exists in the MPack Node API in MPack 1.1.1 on 32-bit platforms...",
+    "description": "An integer overflow vulnerability exists in the MPack Node API in MPack 1.1.1 on 32-bit platforms. When parsing a specially crafted MessagePack array32 or map32 object with an excessively large element count, the page allocation size calculation in mpack_tree_parse_children() can overflow size_t and produce an undersized allocation. Subsequent parsing writes mpack_node_data_t records beyond the allocated heap buffer, resulting in heap-buffer-overflow, memory corruption, and denial of service.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-88351",
+    "ghsa_id": "GHSA-cmcq-v328-82vj",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-w7pw-jcf2-35g3",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-24T15:31:35Z",
+    "title": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to...",
+    "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to execute arbitrary code due to unsafe deserialization of untrusted data.",
+    "severity": "high",
+    "cve_id": "CVE-2026-82093",
+    "ghsa_id": "GHSA-w7pw-jcf2-35g3",
     "affected_packages": [],
     "cwes": [
       null
@@ -328,16 +239,18 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-vg6c-rr97-8gp5",
+    "id": "gh-GHSA-8pmw-54p2-wgc9",
     "source": "GitHub Security",
-    "timestamp": "2026-09-24T06:31:16Z",
-    "title": "The WPeMatico RSS Feed Fetcher WordPress plugin before 2.8.26 does not verify ownership or...",
-    "description": "The WPeMatico RSS Feed Fetcher WordPress plugin before 2.8.26 does not verify ownership or authorization before returning a campaign's stored configuration and run log, allowing users with contributor-level access and above to read the configuration and execution logs of campaigns created by other users, including administrators.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89004",
-    "ghsa_id": "GHSA-vg6c-rr97-8gp5",
+    "timestamp": "2026-09-24T15:31:35Z",
+    "title": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to...",
+    "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to execute arbitrary commands due to improper neutralization of special elements used in an OS command.",
+    "severity": "high",
+    "cve_id": "CVE-2026-81548",
+    "ghsa_id": "GHSA-8pmw-54p2-wgc9",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
       null,
@@ -347,16 +260,18 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-wvr6-m4wg-qf6q",
+    "id": "gh-GHSA-v6fv-wv8f-6w3h",
     "source": "GitHub Security",
-    "timestamp": "2026-09-24T06:31:16Z",
-    "title": "The Events Manager  WordPress plugin before 7.4.5 does not force the scope of its logged-in event...",
-    "description": "The Events Manager  WordPress plugin before 7.4.5 does not force the scope of its logged-in event and location search when a caller supplies their own owner value, letting a low-privileged user read other accounts' unpublished, pending or trashed event and venue content, including full street addresses.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-93662",
-    "ghsa_id": "GHSA-wvr6-m4wg-qf6q",
+    "timestamp": "2026-09-24T15:31:35Z",
+    "title": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to...",
+    "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to execute arbitrary commands due to path traversal.",
+    "severity": "high",
+    "cve_id": "CVE-2026-81547",
+    "ghsa_id": "GHSA-v6fv-wv8f-6w3h",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
       null,
@@ -366,14 +281,35 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-5jw9-cc9v-8h8r",
+    "id": "gh-GHSA-9h8f-gv54-2945",
     "source": "GitHub Security",
-    "timestamp": "2026-09-24T06:31:16Z",
-    "title": "A flaw was found in the Level of Authentication enforcement mechanism of Keycloak, an identity...",
-    "description": "A flaw was found in the Level of Authentication enforcement mechanism of Keycloak, an identity and access management solution. The issue occurs when a client specifically requires a higher security level for a user who already has an active session at a lower level. Due to a logic error in how session re-evaluations are handled, Keycloak may incorrectly issue a token at the lower security level instead of enforcing the required higher level, potentially allowing unauthorized access to sensitive ",
+    "timestamp": "2026-09-24T15:31:35Z",
+    "title": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to...",
+    "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to execute arbitrary code due to improper neutralization of special elements used in an OS command.",
+    "severity": "high",
+    "cve_id": "CVE-2026-81539",
+    "ghsa_id": "GHSA-9h8f-gv54-2945",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-6xjp-r2qh-2fj7",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-24T15:31:35Z",
+    "title": "IBM ContextForge MCP Gateway 1.0.0 through 1.0.8 was vulnerable to path traversal in its Admin...",
+    "description": "IBM ContextForge MCP Gateway 1.0.0 through 1.0.8 was vulnerable to path traversal in its Admin API log-download endpoint (`GET /v1/admin/logs/file`). The path confinement check uses `str.startswith()` rather than proper boundary validation, allowing an authenticated admin to read `.log`, `.jsonl`, and `.json` files outside the configured `LOG_FOLDER` by supplying a filename that resolves into a sibling directory whose absolute path shares the log directory's string prefix.",
     "severity": "medium",
-    "cve_id": "CVE-2026-97176",
-    "ghsa_id": "GHSA-5jw9-cc9v-8h8r",
+    "cve_id": "CVE-2026-77825",
+    "ghsa_id": "GHSA-6xjp-r2qh-2fj7",
     "affected_packages": [],
     "cwes": [
       null
@@ -381,23 +317,24 @@
     "references": [
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-gw77-m839-mhwc",
+    "id": "gh-GHSA-3p88-7fjw-jxmp",
     "source": "GitHub Security",
-    "timestamp": "2026-09-24T06:31:16Z",
-    "title": "The WPeMatico RSS Feed Fetcher WordPress plugin before 2.8.26 does not sanitise and escape one of...",
-    "description": "The WPeMatico RSS Feed Fetcher WordPress plugin before 2.8.26 does not sanitise and escape one of its campaign configuration fields when a certain feature is enabled, which allows users with the Contributor role and above to perform Stored Cross-Site Scripting attacks that execute in the session of any higher-privileged user who later views the campaign.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-89005",
-    "ghsa_id": "GHSA-gw77-m839-mhwc",
+    "timestamp": "2026-09-24T15:31:35Z",
+    "title": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to...",
+    "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to traverse directories on the system due to improper limitation of a pathname to a restricted directory.",
+    "severity": "high",
+    "cve_id": "CVE-2026-82094",
+    "ghsa_id": "GHSA-3p88-7fjw-jxmp",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
       null,
       null,
@@ -407,20 +344,103 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-pgx8-hgcr-q6rq",
+    "id": "gh-GHSA-wrcf-9q3r-v954",
     "source": "GitHub Security",
-    "timestamp": "2026-09-24T06:31:16Z",
-    "title": "A flaw was found in the user update mechanism of the Keycloak Admin REST API. When Fine-Grained...",
-    "description": "A flaw was found in the user update mechanism of the Keycloak Admin REST API. When Fine-Grained Admin Permissions are enabled, the system fails to check for specific password reset authorizations during a general user profile update. This allows a delegated administrator, who should be restricted from resetting passwords, to change a user's credentials and take over their account.",
+    "timestamp": "2026-09-24T15:31:35Z",
+    "title": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to obtain...",
+    "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to obtain sensitive information due to improper validation of the X-Forwarded-Proto header.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-81549",
+    "ghsa_id": "GHSA-wrcf-9q3r-v954",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-hcr5-gpj4-pqhc",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-24T15:31:35Z",
+    "title": "IBM Enterprise Build of Quarkus 3.27.1 through 3.27.5.SP1, and 3.33.1 through 3.33.3.SP1 is...",
+    "description": "IBM Enterprise Build of Quarkus 3.27.1 through 3.27.5.SP1, and 3.33.1 through 3.33.3.SP1 is vulnerable to SQL injection. A remote unauthenticated attacker could send specially crafted SQL statements, which could allow the attacker to view, add, modify, or delete information in the back-end database.",
+    "severity": "high",
+    "cve_id": "CVE-2026-77874",
+    "ghsa_id": "GHSA-hcr5-gpj4-pqhc",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-xjvf-rqcv-w435",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-24T15:31:35Z",
+    "title": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to...",
+    "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to execute arbitrary commands due to improper neutralization of special elements used in an OS command.",
+    "severity": "high",
+    "cve_id": "CVE-2026-81545",
+    "ghsa_id": "GHSA-xjvf-rqcv-w435",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-gjvp-7xj2-v6w2",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-24T15:31:35Z",
+    "title": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to...",
+    "description": "IBM DataStage on Cloud Pak for Data 5.4.0.0 could allow a remote authenticated attacker to execute arbitrary commands due to improper neutralization of environment variables.",
+    "severity": "high",
+    "cve_id": "CVE-2026-81552",
+    "ghsa_id": "GHSA-gjvp-7xj2-v6w2",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-5r56-296v-6jj6",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-24T15:31:34Z",
+    "title": "Improper certificate validation vulnerability in HAVELSAN Inc. Liman Render Engine allows...",
+    "description": "Improper certificate validation vulnerability in HAVELSAN Inc. Liman Render Engine allows Adversary in the Middle (AiTM).\n\nThis issue affects Liman Render Engine: from 1.0 before 1.2-75.",
     "severity": "medium",
-    "cve_id": "CVE-2026-97177",
-    "ghsa_id": "GHSA-pgx8-hgcr-q6rq",
+    "cve_id": "CVE-2026-77707",
+    "ghsa_id": "GHSA-5r56-296v-6jj6",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null
@@ -429,17 +449,21 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-q54w-8x23-rg8h",
+    "id": "gh-GHSA-crc8-r3c8-83vw",
     "source": "GitHub Security",
-    "timestamp": "2026-09-24T06:31:16Z",
-    "title": "Rejected reason: suggestion",
-    "description": "Rejected reason: suggestion",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-97168",
-    "ghsa_id": "GHSA-q54w-8x23-rg8h",
+    "timestamp": "2026-09-24T15:31:34Z",
+    "title": "In Mbed TLS 3.2.0 though 3.6.6 and 4.0.0 through 4.1.0, an attacker who can cause an entropy...",
+    "description": "In Mbed TLS 3.2.0 though 3.6.6 and 4.0.0 through 4.1.0, an attacker who can cause an entropy source to fail can remove or inject bytes into the start of the TLS stream. This only affects TLS 1.3 servers.",
+    "severity": "low",
+    "cve_id": "CVE-2026-73064",
+    "ghsa_id": "GHSA-crc8-r3c8-83vw",
     "affected_packages": [],
-    "cwes": [],
+    "cwes": [
+      null
+    ],
     "references": [
+      null,
+      null,
       null,
       null
     ],
