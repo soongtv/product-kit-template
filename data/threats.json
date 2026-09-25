@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1790355638994-1",
+    "id": "twitter-1790371520624-1",
     "source": "Twitter Security",
-    "timestamp": "2026-09-25T17:00:38.994Z",
+    "timestamp": "2026-09-25T21:25:20.624Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1790355638994-1",
+    "id": "hn-1790371520624-1",
     "source": "HackerNews",
-    "timestamp": "2026-09-25T17:00:38.994Z",
+    "timestamp": "2026-09-25T21:25:20.624Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,22 +26,25 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-g7vj-c29h-3h5m",
+    "id": "gh-GHSA-9gfj-28hw-jchp",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:55:07Z",
-    "title": "FriendsOfFlarum OAuth: Unauthenticated account takeover via unverified email trust in Discord OAuth provider",
-    "description": "### Impact\n\nAn unauthenticated account takeover vulnerability exists in `fof/oauth` when the Discord OAuth provider is enabled.\n\nDiscord allows an account to use an unverified email address when its phone number has been verified. During OAuth authentication, Discord may return that email address with `\"verified\": false`.\n\nAffected versions of `fof/oauth` did not validate this flag and passed the email address to Flarum core as trusted via `provideTrustedEmail()`. Flarum core could then match th",
-    "severity": "critical",
-    "cve_id": "CVE-2026-92161",
-    "ghsa_id": "GHSA-g7vj-c29h-3h5m",
+    "timestamp": "2026-09-25T19:32:05Z",
+    "title": "Knowns Unrestricted Path Traversal leading to out-of-bounds arbitrary .md file read, write, and deletion in MCP Docs + Memory Tools",
+    "description": "## Overview\n\nVerified. Multiple **Unrestricted Path Traversal** vulnerabilities exist in the Knowns MCP `docs` and `memory` tools, allowing arbitrary file read, write, and deletion operations outside the project sandbox. The storage layer functions (`Get`, `Create`, `Update`, `Rename`, `Delete`) in both `doc_store.go` and `memory_store.go` concatenate user-controlled paths with `filepath.Join()` without any containment validation. \n\nAdditionally, the `docs.update` action with a `newPath` paramet",
+    "severity": "high",
+    "cve_id": "CVE-2026-86439",
+    "ghsa_id": "GHSA-9gfj-28hw-jchp",
     "affected_packages": [
-      "fof/oauth",
-      "fof/oauth"
+      "knowns"
     ],
     "cwes": [
+      null,
+      null,
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null,
@@ -53,20 +56,113 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-pfcj-6jpm-f37g",
+    "id": "gh-GHSA-29h2-jr22-frmh",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:50Z",
-    "title": "A weakness has been identified in Zhonglun CloudPOS 3.0. Affected by this vulnerability is an...",
-    "description": "A weakness has been identified in Zhonglun CloudPOS 3.0. Affected by this vulnerability is an unknown functionality of the file Program.cs of the component Automatic Update. Executing a manipulation of the argument version/url/packagekey/package name can lead to channel accessible by non-endpoint. The attack can be launched remotely. Attacks of this nature are highly complex. The exploitation appears to be difficult. The exploit has been made available to the public and could be used for attacks",
+    "timestamp": "2026-09-25T19:31:08Z",
+    "title": "OpenZeppelin Confidential Contracts `VestingWalletConfidential`: a malicious ERC-7984 token is able to extract private data from the vesting wallet",
+    "description": "### Impact\n\nTwo locations consume an encrypted handle returned by an untrusted external party and use it without verifying that the party is ACL-authorized on it.\n\n#### `VestingWalletConfidential`\n\nMalicious users can call `release` with a malicious token. This token could return an alternative handle on `confidentialBalanceOf`, which represents the balance of the vesting wallet on an alternative ERC-7984 token (or any other handle that the vesting wallet has access to). The vesting wallet does ",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-29h2-jr22-frmh",
+    "affected_packages": [
+      "@openzeppelin/confidential-contracts",
+      "@openzeppelin/confidential-contracts",
+      "@openzeppelin/confidential-contracts"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-pg57-6jwg-q645",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-25T19:27:59Z",
+    "title": "Containerd has image-pull DoS via crafted OCI index graph amplification",
+    "description": "### Impact\n\nA vulnerability exists in containerd's image pull handlers where a crafted OCI image index containing deeply nested or heavily fanned-out descriptor graphs can cause unbounded CPU and memory consumption. During the `PullImage` operation, the recursive traversal and processing of child descriptors lack sufficient depth and breadth limits, and fail to adequately deduplicate identical descriptors. This unbounded traversal leads to excessive resource allocation.\n\nConsequently, pulling a ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-53493",
+    "ghsa_id": "GHSA-pg57-6jwg-q645",
+    "affected_packages": [
+      "github.com/containerd/containerd/v2",
+      "github.com/containerd/containerd",
+      "github.com/containerd/containerd/v2",
+      "github.com/containerd/containerd/v2",
+      "github.com/containerd/containerd/v2"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-x5x6-3q7h-hx5r",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-25T18:31:29Z",
+    "title": "A flaw has been found in mathurvishal CloudClassroom-PHP-Project up to...",
+    "description": "A flaw has been found in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. Affected is an unknown function of the file updatefaculty.php. This manipulation of the argument fid causes sql injection. The attack may be initiated remotely. The exploit has been published and may be used. This product uses a rolling release model to deliver continuous updates. As a result, specific version information for affected or updated releases is not available. The vendor w",
+    "severity": "medium",
+    "cve_id": "CVE-2026-97885",
+    "ghsa_id": "GHSA-x5x6-3q7h-hx5r",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-rm3g-xqgg-rww9",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-25T18:31:29Z",
+    "title": "A vulnerability was detected in mathurvishal CloudClassroom-PHP-Project up to...",
+    "description": "A vulnerability was detected in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. This impacts an unknown function of the file updatestudent.php of the component Student Update Functionality. The manipulation of the argument eno results in sql injection. The attack can be launched remotely. The exploit is now public and may be used. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The vendo",
     "severity": "low",
-    "cve_id": "CVE-2026-97866",
-    "ghsa_id": "GHSA-pfcj-6jpm-f37g",
+    "cve_id": "CVE-2026-97884",
+    "ghsa_id": "GHSA-rm3g-xqgg-rww9",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -79,14 +175,62 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-mcgp-qcg2-5g3q",
+    "id": "gh-GHSA-87ww-qgg4-mg73",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:50Z",
-    "title": "FTM 4.x ALL could allow a remote authenticated attacker to obtain sensitive information due to an...",
-    "description": "FTM 4.x ALL could allow a remote authenticated attacker to obtain sensitive information due to an XML external entity injection flaw.",
+    "timestamp": "2026-09-25T18:31:29Z",
+    "title": "A vulnerability has been found in mathurvishal CloudClassroom-PHP-Project up to...",
+    "description": "A vulnerability has been found in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. Affected by this vulnerability is an unknown functionality of the file managevideos2.php. Such manipulation of the argument editassid leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version detail",
+    "severity": "low",
+    "cve_id": "CVE-2026-97886",
+    "ghsa_id": "GHSA-87ww-qgg4-mg73",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-w3p6-vc7r-vcv4",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-25T18:31:29Z",
+    "title": "A flaw was found in NetworkManager-vpnc, a VPN plugin for NetworkManager. A local unprivileged...",
+    "description": "A flaw was found in NetworkManager-vpnc, a VPN plugin for NetworkManager. A local unprivileged user can exploit this vulnerability by injecting a newline character into the CA-File path. This manipulation allows the user to execute arbitrary commands as the root user, leading to local privilege escalation.",
+    "severity": "high",
+    "cve_id": "CVE-2026-91841",
+    "ghsa_id": "GHSA-w3p6-vc7r-vcv4",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-c69c-cv63-hvch",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-25T18:31:29Z",
+    "title": "A security vulnerability has been detected in mathurvishal CloudClassroom-PHP-Project up to...",
+    "description": "A security vulnerability has been detected in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. This affects an unknown function of the file updatequery.php. The manipulation of the argument gid leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed publicly and may be used. Continious delivery with rolling releases is used by this product. Therefore, no version details of affected nor updated releases are available. The",
     "severity": "medium",
-    "cve_id": "CVE-2026-93030",
-    "ghsa_id": "GHSA-mcgp-qcg2-5g3q",
+    "cve_id": "CVE-2026-97883",
+    "ghsa_id": "GHSA-c69c-cv63-hvch",
     "affected_packages": [],
     "cwes": [
       null
@@ -94,23 +238,7 @@
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-pp3g-9mvp-c3vm",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:50Z",
-    "title": "Espruino 2v29 (commit bffc6d0) contains a NULL pointer dereference vulnerability in...",
-    "description": "Espruino 2v29 (commit bffc6d0) contains a NULL pointer dereference vulnerability in jslGetRawString() in src/jslex.c. Crafted raw/binary string input can cause the lexer to pass a NULL iterator target to jsvLockAgain(). In RELEASE/NO_ASSERT builds, the missing assertion guard allows a write through the NULL pointer, resulting in memory corruption and application termination or denial of service.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-88389",
-    "ghsa_id": "GHSA-pp3g-9mvp-c3vm",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
+      null,
       null,
       null,
       null,
@@ -120,14 +248,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-3chr-j932-q9pc",
+    "id": "gh-GHSA-p2g6-ffcc-pqqv",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:50Z",
-    "title": "Improper Exposure of Resource to Wrong Sphere in the host file helper (gofer) in Google gVisor...",
-    "description": "Improper Exposure of Resource to Wrong Sphere in the host file helper (gofer) in Google gVisor prior to commit 573a9e73cf844f on Linux platforms with CUSE enabled allows a local attacker with container image deployment privileges to achieve root code execution on the host system. By including a /dev/cuse character device node in a container image, opening the device passes through to the host, allowing the sandboxed attacker to register a host device and exploit CUSE unrestricted ioctl handling ",
+    "timestamp": "2026-09-25T18:31:29Z",
+    "title": "A flaw was found in NetworkManager-vpnc. This vulnerability allows a local unprivileged user to...",
+    "description": "A flaw was found in NetworkManager-vpnc. This vulnerability allows a local unprivileged user to escalate privileges to root. By injecting a newline character into the VPN username field, an attacker can manipulate the vpnc configuration to execute an arbitrary program with root privileges when the malicious VPN connection is activated.",
     "severity": "high",
-    "cve_id": "CVE-2026-96812",
-    "ghsa_id": "GHSA-3chr-j932-q9pc",
+    "cve_id": "CVE-2026-91840",
+    "ghsa_id": "GHSA-p2g6-ffcc-pqqv",
     "affected_packages": [],
     "cwes": [
       null
@@ -135,25 +263,6 @@
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3947-32c5-3w7r",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:50Z",
-    "title": "IBM Server Firmware FW1120.00 through FW1120.01, FW1110.00 through FW1110.31, FW1060.00 through...",
-    "description": "IBM Server Firmware FW1120.00 through FW1120.01, FW1110.00 through FW1110.31, FW1060.00 through FW1060.81, and FW950.00 through FW950.H3 is affected by a vulnerability in the ASMI web interface. An unauthenticated attacker on the management network can send a malformed HTTPS request to ASMI, causing the web server to crash with possible memory corruption and generate an error log. The ASMI web interface will restart automatically; however, repeated exploitation could result in a sustained loss o",
-    "severity": "high",
-    "cve_id": "CVE-2026-93306",
-    "ghsa_id": "GHSA-3947-32c5-3w7r",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
       null,
       null,
       null
@@ -162,226 +271,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-v24f-23ff-r822",
+    "id": "gh-GHSA-jw9m-mm2m-4rj8",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:49Z",
-    "title": "IBM Guardium Data Protection 12.2 is vulnerable to path traversal in the Universal Connector...",
-    "description": "IBM Guardium Data Protection 12.2 is vulnerable to path traversal in the Universal Connector Oracle Wallet upload component. An authenticated remote attacker could exploit this vulnerability to write arbitrary files to the system.",
-    "severity": "high",
-    "cve_id": "CVE-2026-84882",
-    "ghsa_id": "GHSA-v24f-23ff-r822",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-6h4r-wj36-r973",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:49Z",
-    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-60097",
-    "ghsa_id": "GHSA-6h4r-wj36-r973",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-rj67-jfhc-gr45",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:49Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvdimm: pmem: keep PREFLUSH...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nnvdimm: pmem: keep PREFLUSH before data writes\n\npmem_submit_bio() records a REQ_PREFLUSH error, but continues to copy the\nbio data and can later overwrite the error with a successful REQ_FUA flush.\nThat lets data writes run after a failed preflush and can complete the bio\nsuccessfully despite the failed ordering barrier.\n\nRun the REQ_PREFLUSH flush synchronously before touching the bio data and\ncomplete the bio with the flush e",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-98161",
-    "ghsa_id": "GHSA-rj67-jfhc-gr45",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-fgrf-jwr4-8xr2",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:49Z",
-    "title": "IBM Guardium Data Protection 12.2 is vulnerable to insecure deserialization in the Quartz JDBC...",
-    "description": "IBM Guardium Data Protection 12.2 is vulnerable to insecure deserialization in the Quartz JDBC job store. An authenticated attacker could exploit this vulnerability to execute arbitrary code on the affected system.",
-    "severity": "high",
-    "cve_id": "CVE-2026-84862",
-    "ghsa_id": "GHSA-fgrf-jwr4-8xr2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-x6qh-h8p9-5c4q",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:49Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/server: fix tree...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nsmb/server: fix tree connection leak in smb2_tree_connect()\n\nSee the procedure below:\n\n  smb2_tree_connect\n    ksmbd_tree_conn_connect\n      xa_store(&sess->tree_conns, tree_conn->id, tree_conn)\n      ksmbd_counter_inc(KSMBD_COUNTER_TREE_CONNS)\n      ksmbd_share_tree_conn_inc(sc)\n    ksmbd_iov_pin_rsp // fail\n    status.ret = KSMBD_TREE_CONN_STATUS_NOMEM\n    // do not disconnect tree_conn\n\nDisconnect the new tree connection if ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-98162",
-    "ghsa_id": "GHSA-x6qh-h8p9-5c4q",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-4mxv-p86m-w3x2",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:49Z",
-    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-60101",
-    "ghsa_id": "GHSA-4mxv-p86m-w3x2",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-jfjv-h6rg-v423",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:49Z",
-    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-60099",
-    "ghsa_id": "GHSA-jfjv-h6rg-v423",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-5j5j-mcff-wcm8",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:49Z",
-    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-60100",
-    "ghsa_id": "GHSA-5j5j-mcff-wcm8",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-f398-4fq8-87q5",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:49Z",
-    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-60098",
-    "ghsa_id": "GHSA-f398-4fq8-87q5",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-337v-6pmg-xg93",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:49Z",
-    "title": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "description": "Rejected reason: This CVE ID has been rejected or withdrawn by its CVE Numbering Authority.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-60096",
-    "ghsa_id": "GHSA-337v-6pmg-xg93",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-9wq9-f67j-phh7",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:48Z",
-    "title": "IBM Guardium Data Protection 12.2 could allow a remote attacker to obtain sensitive information,...",
-    "description": "IBM Guardium Data Protection 12.2 could allow a remote attacker to obtain sensitive information, delete arbitrary files, or execute arbitrary code due to improper limitation of a pathname to a restricted directory.",
-    "severity": "high",
-    "cve_id": "CVE-2026-85029",
-    "ghsa_id": "GHSA-9wq9-f67j-phh7",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-whgc-w9f2-pcrv",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:48Z",
-    "title": "A vulnerability has been found in GibbonEdu Gibbon up to 30.0.01. The affected element is the...",
-    "description": "A vulnerability has been found in GibbonEdu Gibbon up to 30.0.01. The affected element is the function makeBlock of the file modules/Planner/units_add_blockAjax.php of the component Unit Planner. The manipulation of the argument gibbonUnitBlockID/mode leads to missing authentication. The attack is possible to be carried out remotely. The exploit has been disclosed to the public and may be used. Upgrading to version 31.0.00 is sufficient to fix this issue. The identifier of the patch is 07e719368",
+    "timestamp": "2026-09-25T18:31:29Z",
+    "title": "A weakness has been identified in mathurvishal CloudClassroom-PHP-Project up to...",
+    "description": "A weakness has been identified in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. The impacted element is an unknown function of the file loginlinkfaculty.php of the component Faculty Authentication. Executing a manipulation of the argument fid/pass can lead to sql injection. It is possible to launch the attack remotely. The exploit has been made available to the public and could be used for attacks. This product takes the approach of rolling releases to p",
     "severity": "medium",
-    "cve_id": "CVE-2026-97864",
-    "ghsa_id": "GHSA-whgc-w9f2-pcrv",
+    "cve_id": "CVE-2026-97882",
+    "ghsa_id": "GHSA-jw9m-mm2m-4rj8",
     "affected_packages": [],
     "cwes": [
       null
@@ -389,6 +286,122 @@
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-vr82-qjvf-9rrq",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-25T18:31:29Z",
+    "title": "A flaw was found in NetworkManager-fortisslvpn, the FortiSSLVPN plugin for NetworkManager. The nm...",
+    "description": "A flaw was found in NetworkManager-fortisslvpn, the FortiSSLVPN plugin for NetworkManager. The nm-fortisslvpn-service improperly handles carriage-return/line-feed (CR/LF) characters in VPN connection profile credentials. A local unprivileged user can exploit this by crafting a malicious VPN profile to inject additional configuration directives. This can lead to arbitrary code execution with root privileges when the crafted VPN connection is activated.",
+    "severity": "high",
+    "cve_id": "CVE-2026-91839",
+    "ghsa_id": "GHSA-vr82-qjvf-9rrq",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-mx48-544j-vv99",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-25T18:31:29Z",
+    "title": "Bludit CMS through 3.22.0 contains an authorization bypass vulnerability that allows...",
+    "description": "Bludit CMS through 3.22.0 contains an authorization bypass vulnerability that allows authenticated users with the Author role to enumerate and delete media files belonging to pages owned by other users, including administrators, by supplying arbitrary uuid parameters to unprotected AJAX endpoints. Attackers can retrieve page UUIDs for all users via the content-get-list endpoint and then submit crafted POST requests to the list-images and delete-image endpoints in bl-kernel/ajax/ to access and de",
+    "severity": "medium",
+    "cve_id": "CVE-2026-93366",
+    "ghsa_id": "GHSA-mx48-544j-vv99",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-94qh-3pf4-8c4r",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-25T18:31:29Z",
+    "title": "A flaw was found in NetworkManager-sstp, the SSTP VPN plugin for NetworkManager. A local...",
+    "description": "A flaw was found in NetworkManager-sstp, the SSTP VPN plugin for NetworkManager. A local unprivileged user can exploit this vulnerability by embedding special characters, known as shell metacharacters, into VPN connection profile fields such as CA certificate or proxy settings. These unescaped characters are then processed by the `pppd` daemon, which runs with root privileges, allowing the attacker to execute arbitrary commands with elevated permissions when a malicious VPN connection is activat",
+    "severity": "high",
+    "cve_id": "CVE-2026-91838",
+    "ghsa_id": "GHSA-94qh-3pf4-8c4r",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-fx9p-h435-5gfw",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-25T18:31:28Z",
+    "title": "A vulnerability was identified in zhistaredu StarTraining up to 3.8.1. Impacted is the function...",
+    "description": "A vulnerability was identified in zhistaredu StarTraining up to 3.8.1. Impacted is the function anonymous of the file /druid/index.html of the component Druid Console. Such manipulation leads to missing authentication. The attack may be performed from remote. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-97878",
+    "ghsa_id": "GHSA-fx9p-h435-5gfw",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-x838-phcw-3pqw",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-25T18:31:28Z",
+    "title": "A vulnerability has been found in Zhonglun CloudPos up to 3.0.1.76. This issue affects the...",
+    "description": "A vulnerability has been found in Zhonglun CloudPos up to 3.0.1.76. This issue affects the function OpenLocalBrowser of the file ZlPos/ZlPos/Bizlogic/JSBridge.cs of the component JSBridge. Such manipulation of the argument url leads to code injection. The attack can be executed remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-97871",
+    "ghsa_id": "GHSA-x838-phcw-3pqw",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null,
@@ -402,14 +415,39 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-4hh4-86px-498m",
+    "id": "gh-GHSA-6ffj-pvxh-v3c2",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:48Z",
-    "title": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8723bs: fix...",
-    "description": "In the Linux kernel, the following vulnerability has been resolved:\n\nstaging: rtl8723bs: fix mismatched free of HalData in rtw_sdio_if1_init()\n\npadapter->HalData is allocated via vzalloc(), but incorrectly freed\nusing kfree() in the rtw_sdio_if1_init() error path. Using kfree() to\nrelease this vmalloc-backed buffer can lead to memory corruption.\n\nUse rtw_hal_data_deinit() to pair the free correctly and free\nHalData with vfree().\n\nThe bug was first flagged by an experimental static analysis tool ",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-98160",
-    "ghsa_id": "GHSA-4hh4-86px-498m",
+    "timestamp": "2026-09-25T18:31:28Z",
+    "title": "A security flaw has been discovered in zhistaredu StarTraining up to 3.8.1. The affected element...",
+    "description": "A security flaw has been discovered in zhistaredu StarTraining up to 3.8.1. The affected element is an unknown function of the file SecurityConfig.java of the component api-docs Endpoint. Performing a manipulation results in missing authentication. It is possible to initiate the attack remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-97879",
+    "ghsa_id": "GHSA-6ffj-pvxh-v3c2",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-6m2v-j56x-7jj6",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-25T18:31:28Z",
+    "title": "A vulnerability was determined in zhistaredu StarTraining up to 3.8.1. This issue affects the...",
+    "description": "A vulnerability was determined in zhistaredu StarTraining up to 3.8.1. This issue affects the function UserLoginService.createToken of the file application.yml of the component JWT Token Handler. This manipulation of the argument user_id/company_id causes use of hard-coded password. The attack is possible to be carried out remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-97877",
+    "ghsa_id": "GHSA-6m2v-j56x-7jj6",
     "affected_packages": [],
     "cwes": [],
     "references": [
@@ -419,6 +457,26 @@
       null,
       null,
       null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-ghc4-9m25-367h",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-25T18:31:27Z",
+    "title": "Missing Authorization in the drop handling path of the drag and drop protocol in kitty from 0.47...",
+    "description": "Missing Authorization in the drop handling path of the drag and drop protocol in kitty from 0.47.0 before 0.49.0 allows a program writing to the terminal to obtain the contents of files dragged over the window even when the user never completes the drop, because drop_enqueue_request() in kitty/dnd.c serves a drag data request without first checking the drop state of the window, so a client that issues the request while a drag is merely hovering receives the data offered for the drag. In the same",
+    "severity": "medium",
+    "cve_id": "CVE-2026-80432",
+    "ghsa_id": "GHSA-ghc4-9m25-367h",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
       null,
       null,
       null,
@@ -428,20 +486,42 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-86c2-8qp8-q2vh",
+    "id": "gh-GHSA-3v4f-mq3r-g3gv",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T15:31:48Z",
-    "title": "A use-after-free vulnerability was found in QEMU's 9pfs subsystem. A race condition between the...",
-    "description": "A use-after-free vulnerability was found in QEMU's 9pfs subsystem. A race condition between the main thread and a worker thread when processing concurrent Tlcreate and Twalk requests allows a malicious guest user to craft a fid path containing stale heap data, bypassing directory traversal restrictions and escaping the shared directory boundary. This can lead to arbitrary host file read/write and code execution (VM escape) as the QEMU process user.",
-    "severity": "high",
-    "cve_id": "CVE-2026-93834",
-    "ghsa_id": "GHSA-86c2-8qp8-q2vh",
+    "timestamp": "2026-09-25T18:31:27Z",
+    "title": "Use After Free in the drag source path of the drag and drop protocol in kitty from 0.47.0 before...",
+    "description": "Use After Free in the drag source path of the drag and drop protocol in kitty from 0.47.0 before 0.49.0 allows a program writing to the terminal to cause the terminal to read from and write to freed heap memory, because drag_remote_file_data() in kitty/dnd.c holds a DragRemoteItem pointer into an array it does not own, calls toplevel_data_for_drag() or subdir_data_for_drag(), and then continues to use that pointer. Those helpers, and add_payload() and populate_dir_entries() which they call, repo",
+    "severity": "medium",
+    "cve_id": "CVE-2026-95834",
+    "ghsa_id": "GHSA-3v4f-mq3r-g3gv",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-8x88-jcjc-h56c",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-25T18:31:27Z",
+    "title": "Bludit CMS through 3.22.0 contains a missing authorization vulnerability that allows...",
+    "description": "Bludit CMS through 3.22.0 contains a missing authorization vulnerability that allows authenticated users holding the Author or Editor role to read the full content of private drafts and scheduled posts belonging to any other user, including administrators, by exploiting the content-get-list AJAX endpoint in bl-kernel/ajax/content-get-list.php. Attackers can send an authenticated GET request to the admin AJAX endpoint with the draft parameter set to true, triggering getList() without ownership co",
+    "severity": "high",
+    "cve_id": "CVE-2026-93365",
+    "ghsa_id": "GHSA-8x88-jcjc-h56c",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null,
@@ -654,7 +734,9 @@
     "severity": "high",
     "cve_id": "CVE-2026-83946",
     "cvss_score": 8.2,
-    "affected_products": [],
+    "affected_products": [
+      "cpe:2.3:a:microsoft:azure_portal:-:*:*:*:*:*:*:*"
+    ],
     "references": [
       "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83946"
     ],
@@ -670,7 +752,9 @@
     "severity": "critical",
     "cve_id": "CVE-2026-69843",
     "cvss_score": 10,
-    "affected_products": [],
+    "affected_products": [
+      "cpe:2.3:a:microsoft:fabric:-:*:*:*:*:*:*:*"
+    ],
     "references": [
       "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69843"
     ],
