@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1790371520624-1",
+    "id": "twitter-1790397418327-1",
     "source": "Twitter Security",
-    "timestamp": "2026-09-25T21:25:20.624Z",
+    "timestamp": "2026-09-26T04:36:58.327Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1790371520624-1",
+    "id": "hn-1790397418327-1",
     "source": "HackerNews",
-    "timestamp": "2026-09-25T21:25:20.624Z",
+    "timestamp": "2026-09-26T04:36:58.327Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,27 +52,19 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-9gfj-28hw-jchp",
+    "id": "gh-GHSA-mwm7-gr2g-859h",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T19:32:05Z",
-    "title": "Knowns Unrestricted Path Traversal leading to out-of-bounds arbitrary .md file read, write, and deletion in MCP Docs + Memory Tools",
-    "description": "## Overview\n\nVerified. Multiple **Unrestricted Path Traversal** vulnerabilities exist in the Knowns MCP `docs` and `memory` tools, allowing arbitrary file read, write, and deletion operations outside the project sandbox. The storage layer functions (`Get`, `Create`, `Update`, `Rename`, `Delete`) in both `doc_store.go` and `memory_store.go` concatenate user-controlled paths with `filepath.Join()` without any containment validation. \n\nAdditionally, the `docs.update` action with a `newPath` paramet",
+    "timestamp": "2026-09-26T03:30:28Z",
+    "title": "OpenClaw versions before 2026.7.1 contain an authorization bypass vulnerability in the /export...",
+    "description": "OpenClaw versions before 2026.7.1 contain an authorization bypass vulnerability in the /export-trajectory endpoint that allows non-owner senders to request and receive owner-only trajectory bundles. Attackers can access prompts, model messages, tool schemas, runtime events, and local path metadata from affected sessions by exploiting insufficient authorization checks.",
     "severity": "high",
-    "cve_id": "CVE-2026-86439",
-    "ghsa_id": "GHSA-9gfj-28hw-jchp",
-    "affected_packages": [
-      "knowns"
-    ],
+    "cve_id": "CVE-2026-100594",
+    "ghsa_id": "GHSA-mwm7-gr2g-859h",
+    "affected_packages": [],
     "cwes": [
-      null,
-      null,
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null,
@@ -80,7 +72,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-86439.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-100594.",
       "affected_industries": [
         "Technology",
         "General"
@@ -95,19 +87,15 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-29h2-jr22-frmh",
+    "id": "gh-GHSA-2gwv-q898-554m",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T19:31:08Z",
-    "title": "OpenZeppelin Confidential Contracts `VestingWalletConfidential`: a malicious ERC-7984 token is able to extract private data from the vesting wallet",
-    "description": "### Impact\n\nTwo locations consume an encrypted handle returned by an untrusted external party and use it without verifying that the party is ACL-authorized on it.\n\n#### `VestingWalletConfidential`\n\nMalicious users can call `release` with a malicious token. This token could return an alternative handle on `confidentialBalanceOf`, which represents the balance of the vesting wallet on an alternative ERC-7984 token (or any other handle that the vesting wallet has access to). The vesting wallet does ",
+    "timestamp": "2026-09-26T03:30:28Z",
+    "title": "OpenClaw versions before 2026.7.1 fail to properly authorize non-owner users executing MCP...",
+    "description": "OpenClaw versions before 2026.7.1 fail to properly authorize non-owner users executing MCP configuration changes through /mcp set and /mcp unset commands. Attackers can persist arbitrary stdio MCP commands that execute with OpenClaw process privileges when configuration loads, compromising host confidentiality, integrity, and availability.",
     "severity": "high",
-    "cve_id": null,
-    "ghsa_id": "GHSA-29h2-jr22-frmh",
-    "affected_packages": [
-      "@openzeppelin/confidential-contracts",
-      "@openzeppelin/confidential-contracts",
-      "@openzeppelin/confidential-contracts"
-    ],
+    "cve_id": "CVE-2026-100596",
+    "ghsa_id": "GHSA-2gwv-q898-554m",
+    "affected_packages": [],
     "cwes": [
       null
     ],
@@ -115,18 +103,11 @@
       null,
       null,
       null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. ",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-100596.",
       "affected_industries": [
         "Technology",
         "General"
@@ -141,183 +122,19 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-pg57-6jwg-q645",
+    "id": "gh-GHSA-cq6m-mhgc-vqrg",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T19:27:59Z",
-    "title": "Containerd has image-pull DoS via crafted OCI index graph amplification",
-    "description": "### Impact\n\nA vulnerability exists in containerd's image pull handlers where a crafted OCI image index containing deeply nested or heavily fanned-out descriptor graphs can cause unbounded CPU and memory consumption. During the `PullImage` operation, the recursive traversal and processing of child descriptors lack sufficient depth and breadth limits, and fail to adequately deduplicate identical descriptors. This unbounded traversal leads to excessive resource allocation.\n\nConsequently, pulling a ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-53493",
-    "ghsa_id": "GHSA-pg57-6jwg-q645",
-    "affected_packages": [
-      "github.com/containerd/containerd/v2",
-      "github.com/containerd/containerd",
-      "github.com/containerd/containerd/v2",
-      "github.com/containerd/containerd/v2",
-      "github.com/containerd/containerd/v2"
-    ],
-    "cwes": [
-      null,
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-53493.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-x5x6-3q7h-hx5r",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:29Z",
-    "title": "A flaw has been found in mathurvishal CloudClassroom-PHP-Project up to...",
-    "description": "A flaw has been found in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. Affected is an unknown function of the file updatefaculty.php. This manipulation of the argument fid causes sql injection. The attack may be initiated remotely. The exploit has been published and may be used. This product uses a rolling release model to deliver continuous updates. As a result, specific version information for affected or updated releases is not available. The vendor w",
-    "severity": "medium",
-    "cve_id": "CVE-2026-97885",
-    "ghsa_id": "GHSA-x5x6-3q7h-hx5r",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-97885.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-rm3g-xqgg-rww9",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:29Z",
-    "title": "A vulnerability was detected in mathurvishal CloudClassroom-PHP-Project up to...",
-    "description": "A vulnerability was detected in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. This impacts an unknown function of the file updatestudent.php of the component Student Update Functionality. The manipulation of the argument eno results in sql injection. The attack can be launched remotely. The exploit is now public and may be used. This product does not use versioning. This is why information about affected and unaffected releases are unavailable. The vendo",
-    "severity": "low",
-    "cve_id": "CVE-2026-97884",
-    "ghsa_id": "GHSA-rm3g-xqgg-rww9",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-97884.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-87ww-qgg4-mg73",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:29Z",
-    "title": "A vulnerability has been found in mathurvishal CloudClassroom-PHP-Project up to...",
-    "description": "A vulnerability has been found in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. Affected by this vulnerability is an unknown functionality of the file managevideos2.php. Such manipulation of the argument editassid leads to sql injection. The attack may be launched remotely. The exploit has been disclosed to the public and may be used. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version detail",
-    "severity": "low",
-    "cve_id": "CVE-2026-97886",
-    "ghsa_id": "GHSA-87ww-qgg4-mg73",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 25,
-      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-97886.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "low"
-    },
-    "risk_score": 25
-  },
-  {
-    "id": "gh-GHSA-w3p6-vc7r-vcv4",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:29Z",
-    "title": "A flaw was found in NetworkManager-vpnc, a VPN plugin for NetworkManager. A local unprivileged...",
-    "description": "A flaw was found in NetworkManager-vpnc, a VPN plugin for NetworkManager. A local unprivileged user can exploit this vulnerability by injecting a newline character into the CA-File path. This manipulation allows the user to execute arbitrary commands as the root user, leading to local privilege escalation.",
+    "timestamp": "2026-09-26T03:30:28Z",
+    "title": "OpenClaw versions before 2026.7.1 contain an authorization bypass vulnerability in the...",
+    "description": "OpenClaw versions before 2026.7.1 contain an authorization bypass vulnerability in the diagnostics export command that allows non-owner channel senders to access owner-only host diagnostic bundles. Attackers can request and receive diagnostic details about the host, configuration, runtime, and connected services intended only for owners.",
     "severity": "high",
-    "cve_id": "CVE-2026-91841",
-    "ghsa_id": "GHSA-w3p6-vc7r-vcv4",
+    "cve_id": "CVE-2026-100595",
+    "ghsa_id": "GHSA-cq6m-mhgc-vqrg",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -325,7 +142,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-91841.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-100595.",
       "affected_industries": [
         "Technology",
         "General"
@@ -340,14 +157,14 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-c69c-cv63-hvch",
+    "id": "gh-GHSA-xhhf-8p83-jrh4",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:29Z",
-    "title": "A security vulnerability has been detected in mathurvishal CloudClassroom-PHP-Project up to...",
-    "description": "A security vulnerability has been detected in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. This affects an unknown function of the file updatequery.php. The manipulation of the argument gid leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed publicly and may be used. Continious delivery with rolling releases is used by this product. Therefore, no version details of affected nor updated releases are available. The",
+    "timestamp": "2026-09-26T03:30:28Z",
+    "title": "The Automatic.css plugin for WordPress is vulnerable to Stored Cross-Site Scripting via...",
+    "description": "The Automatic.css plugin for WordPress is vulnerable to Stored Cross-Site Scripting via REQUEST_URI in all version 4.0.0 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts that will execute whenever an administrator accesses the Activity Log settings page.",
     "severity": "medium",
-    "cve_id": "CVE-2026-97883",
-    "ghsa_id": "GHSA-c69c-cv63-hvch",
+    "cve_id": "CVE-2026-15273",
+    "ghsa_id": "GHSA-xhhf-8p83-jrh4",
     "affected_packages": [],
     "cwes": [
       null
@@ -359,11 +176,12 @@
       null,
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-97883.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-15273.",
       "affected_industries": [
         "Technology",
         "General"
@@ -378,14 +196,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-p2g6-ffcc-pqqv",
+    "id": "gh-GHSA-6c5g-hrqv-57wr",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:29Z",
-    "title": "A flaw was found in NetworkManager-vpnc. This vulnerability allows a local unprivileged user to...",
-    "description": "A flaw was found in NetworkManager-vpnc. This vulnerability allows a local unprivileged user to escalate privileges to root. By injecting a newline character into the VPN username field, an attacker can manipulate the vpnc configuration to execute an arbitrary program with root privileges when the malicious VPN connection is activated.",
+    "timestamp": "2026-09-26T03:30:28Z",
+    "title": "OpenClaw (npm package 'openclaw') before 2026.7.1 is vulnerable to a time-of-check time-of-use...",
+    "description": "OpenClaw (npm package 'openclaw') before 2026.7.1 is vulnerable to a time-of-check time-of-use race condition in OpenShell local mirror filesystem mutation operations. The remove, mkdir, and rename operations could act on a different filesystem target after OpenClaw completed its sandbox path-safety check, if the path is changed concurrently. An attacker able to win the race can cause a sandboxed operation to delete, create, or rename a host path outside the intended mirror root with the permiss",
     "severity": "high",
-    "cve_id": "CVE-2026-91840",
-    "ghsa_id": "GHSA-p2g6-ffcc-pqqv",
+    "cve_id": "CVE-2026-100597",
+    "ghsa_id": "GHSA-6c5g-hrqv-57wr",
     "affected_packages": [],
     "cwes": [
       null
@@ -394,12 +212,11 @@
       null,
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-91840.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-100597.",
       "affected_industries": [
         "Technology",
         "General"
@@ -414,14 +231,14 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-jw9m-mm2m-4rj8",
+    "id": "gh-GHSA-whch-3w2v-cfr2",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:29Z",
-    "title": "A weakness has been identified in mathurvishal CloudClassroom-PHP-Project up to...",
-    "description": "A weakness has been identified in mathurvishal CloudClassroom-PHP-Project up to 5dadec098bfbbf3300d60c3494db3fb95b66e7be. The impacted element is an unknown function of the file loginlinkfaculty.php of the component Faculty Authentication. Executing a manipulation of the argument fid/pass can lead to sql injection. It is possible to launch the attack remotely. The exploit has been made available to the public and could be used for attacks. This product takes the approach of rolling releases to p",
+    "timestamp": "2026-09-26T03:30:28Z",
+    "title": "OpenClaw is an agent gateway distributed via npm. In versions >= 2026.4.10 and < 2026.7.1,...",
+    "description": "OpenClaw is an agent gateway distributed via npm. In versions >= 2026.4.10 and < 2026.7.1, persistent memory dreaming mutations omit owner permission checks. An authorized but non-owner external-channel sender can issue the persistent '/dreaming on' and '/dreaming off' commands to enable or disable the Gateway's Memory Core dreaming behavior, disabling background memory processing or re-enabling durable memory promotion where the owner expected it to remain disabled; the practical confidentialit",
     "severity": "medium",
-    "cve_id": "CVE-2026-97882",
-    "ghsa_id": "GHSA-jw9m-mm2m-4rj8",
+    "cve_id": "CVE-2026-100592",
+    "ghsa_id": "GHSA-whch-3w2v-cfr2",
     "affected_packages": [],
     "cwes": [
       null
@@ -430,14 +247,11 @@
       null,
       null,
       null,
-      null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-97882.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-100592.",
       "affected_industries": [
         "Technology",
         "General"
@@ -452,14 +266,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-vr82-qjvf-9rrq",
+    "id": "gh-GHSA-p9cw-vr9c-p446",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:29Z",
-    "title": "A flaw was found in NetworkManager-fortisslvpn, the FortiSSLVPN plugin for NetworkManager. The nm...",
-    "description": "A flaw was found in NetworkManager-fortisslvpn, the FortiSSLVPN plugin for NetworkManager. The nm-fortisslvpn-service improperly handles carriage-return/line-feed (CR/LF) characters in VPN connection profile credentials. A local unprivileged user can exploit this by crafting a malicious VPN profile to inject additional configuration directives. This can lead to arbitrary code execution with root privileges when the crafted VPN connection is activated.",
+    "timestamp": "2026-09-26T03:30:28Z",
+    "title": "OpenClaw (npm package openclaw) before 2026.7.1 incorrectly binds Signal approval reactions. In...",
+    "description": "OpenClaw (npm package openclaw) before 2026.7.1 incorrectly binds Signal approval reactions. In affected versions, a reaction intended to resolve a structured approval request could instead attach to ordinary outbound text when unrelated outbound messages and a pending approval are present in the same conversation. As a result, an approver's reaction to unrelated text could be interpreted as approving or denying a pending host action; the practical impact depends on the pending request, conversa",
     "severity": "high",
-    "cve_id": "CVE-2026-91839",
-    "ghsa_id": "GHSA-vr82-qjvf-9rrq",
+    "cve_id": "CVE-2026-100598",
+    "ghsa_id": "GHSA-p9cw-vr9c-p446",
     "affected_packages": [],
     "cwes": [
       null
@@ -468,12 +282,11 @@
       null,
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-91839.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-100598.",
       "affected_industries": [
         "Technology",
         "General"
@@ -488,14 +301,14 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-mx48-544j-vv99",
+    "id": "gh-GHSA-hh5c-9248-jvc5",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:29Z",
-    "title": "Bludit CMS through 3.22.0 contains an authorization bypass vulnerability that allows...",
-    "description": "Bludit CMS through 3.22.0 contains an authorization bypass vulnerability that allows authenticated users with the Author role to enumerate and delete media files belonging to pages owned by other users, including administrators, by supplying arbitrary uuid parameters to unprotected AJAX endpoints. Attackers can retrieve page UUIDs for all users via the content-get-list endpoint and then submit crafted POST requests to the list-images and delete-image endpoints in bl-kernel/ajax/ to access and de",
+    "timestamp": "2026-09-26T03:30:28Z",
+    "title": "OpenClaw (npm package `openclaw`) before 2026.7.1 does not enforce the documented owner-only...",
+    "description": "OpenClaw (npm package `openclaw`) before 2026.7.1 does not enforce the documented owner-only requirement for persistent `/activation` policy changes in group channels. An authorized non-owner channel sender can change whether the agent requires mention-based activation, causing the agent to respond more broadly in the group (exposing its responses to additional group traffic) or suppressing expected activation behavior until an owner restores the intended setting. The issue is fixed in version 2",
     "severity": "medium",
-    "cve_id": "CVE-2026-93366",
-    "ghsa_id": "GHSA-mx48-544j-vv99",
+    "cve_id": "CVE-2026-100593",
+    "ghsa_id": "GHSA-hh5c-9248-jvc5",
     "affected_packages": [],
     "cwes": [
       null
@@ -508,7 +321,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-93366.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-100593.",
       "affected_industries": [
         "Technology",
         "General"
@@ -523,14 +336,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-94qh-3pf4-8c4r",
+    "id": "gh-GHSA-2vm8-mpc3-ch96",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:29Z",
-    "title": "A flaw was found in NetworkManager-sstp, the SSTP VPN plugin for NetworkManager. A local...",
-    "description": "A flaw was found in NetworkManager-sstp, the SSTP VPN plugin for NetworkManager. A local unprivileged user can exploit this vulnerability by embedding special characters, known as shell metacharacters, into VPN connection profile fields such as CA certificate or proxy settings. These unescaped characters are then processed by the `pppd` daemon, which runs with root privileges, allowing the attacker to execute arbitrary commands with elevated permissions when a malicious VPN connection is activat",
+    "timestamp": "2026-09-26T03:30:28Z",
+    "title": "OpenClaw versions 2026.5.1 through 2026.7.0 fail to apply the configured exec approval path to...",
+    "description": "OpenClaw versions 2026.5.1 through 2026.7.0 fail to apply the configured exec approval path to Google Meet node commands. The googlemeet.chrome command accepts caller-supplied audio command arrays and executes them on a paired node without going through the normal system.run approval flow. In deployments with the Google Meet plugin enabled, a paired Chrome node, and the googlemeet.chrome node command allowed, a tool-enabled agent able to invoke that command can execute attacker-selected processe",
     "severity": "high",
-    "cve_id": "CVE-2026-91838",
-    "ghsa_id": "GHSA-94qh-3pf4-8c4r",
+    "cve_id": "CVE-2026-100599",
+    "ghsa_id": "GHSA-2vm8-mpc3-ch96",
     "affected_packages": [],
     "cwes": [
       null
@@ -539,12 +352,11 @@
       null,
       null,
       null,
-      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-91838.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-100599.",
       "affected_industries": [
         "Technology",
         "General"
@@ -559,237 +371,14 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-fx9p-h435-5gfw",
+    "id": "gh-GHSA-87g7-76gr-73g8",
     "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:28Z",
-    "title": "A vulnerability was identified in zhistaredu StarTraining up to 3.8.1. Impacted is the function...",
-    "description": "A vulnerability was identified in zhistaredu StarTraining up to 3.8.1. Impacted is the function anonymous of the file /druid/index.html of the component Druid Console. Such manipulation leads to missing authentication. The attack may be performed from remote. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-97878",
-    "ghsa_id": "GHSA-fx9p-h435-5gfw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-97878.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-x838-phcw-3pqw",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:28Z",
-    "title": "A vulnerability has been found in Zhonglun CloudPos up to 3.0.1.76. This issue affects the...",
-    "description": "A vulnerability has been found in Zhonglun CloudPos up to 3.0.1.76. This issue affects the function OpenLocalBrowser of the file ZlPos/ZlPos/Bizlogic/JSBridge.cs of the component JSBridge. Such manipulation of the argument url leads to code injection. The attack can be executed remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-97871",
-    "ghsa_id": "GHSA-x838-phcw-3pqw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-97871.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-6ffj-pvxh-v3c2",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:28Z",
-    "title": "A security flaw has been discovered in zhistaredu StarTraining up to 3.8.1. The affected element...",
-    "description": "A security flaw has been discovered in zhistaredu StarTraining up to 3.8.1. The affected element is an unknown function of the file SecurityConfig.java of the component api-docs Endpoint. Performing a manipulation results in missing authentication. It is possible to initiate the attack remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-97879",
-    "ghsa_id": "GHSA-6ffj-pvxh-v3c2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-97879.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-6m2v-j56x-7jj6",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:28Z",
-    "title": "A vulnerability was determined in zhistaredu StarTraining up to 3.8.1. This issue affects the...",
-    "description": "A vulnerability was determined in zhistaredu StarTraining up to 3.8.1. This issue affects the function UserLoginService.createToken of the file application.yml of the component JWT Token Handler. This manipulation of the argument user_id/company_id causes use of hard-coded password. The attack is possible to be carried out remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-97877",
-    "ghsa_id": "GHSA-6m2v-j56x-7jj6",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-97877.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-ghc4-9m25-367h",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:27Z",
-    "title": "Missing Authorization in the drop handling path of the drag and drop protocol in kitty from 0.47...",
-    "description": "Missing Authorization in the drop handling path of the drag and drop protocol in kitty from 0.47.0 before 0.49.0 allows a program writing to the terminal to obtain the contents of files dragged over the window even when the user never completes the drop, because drop_enqueue_request() in kitty/dnd.c serves a drag data request without first checking the drop state of the window, so a client that issues the request while a drag is merely hovering receives the data offered for the drag. In the same",
-    "severity": "medium",
-    "cve_id": "CVE-2026-80432",
-    "ghsa_id": "GHSA-ghc4-9m25-367h",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-80432.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-3v4f-mq3r-g3gv",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:27Z",
-    "title": "Use After Free in the drag source path of the drag and drop protocol in kitty from 0.47.0 before...",
-    "description": "Use After Free in the drag source path of the drag and drop protocol in kitty from 0.47.0 before 0.49.0 allows a program writing to the terminal to cause the terminal to read from and write to freed heap memory, because drag_remote_file_data() in kitty/dnd.c holds a DragRemoteItem pointer into an array it does not own, calls toplevel_data_for_drag() or subdir_data_for_drag(), and then continues to use that pointer. Those helpers, and add_payload() and populate_dir_entries() which they call, repo",
-    "severity": "medium",
-    "cve_id": "CVE-2026-95834",
-    "ghsa_id": "GHSA-3v4f-mq3r-g3gv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-95834.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-8x88-jcjc-h56c",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-25T18:31:27Z",
-    "title": "Bludit CMS through 3.22.0 contains a missing authorization vulnerability that allows...",
-    "description": "Bludit CMS through 3.22.0 contains a missing authorization vulnerability that allows authenticated users holding the Author or Editor role to read the full content of private drafts and scheduled posts belonging to any other user, including administrators, by exploiting the content-get-list AJAX endpoint in bl-kernel/ajax/content-get-list.php. Attackers can send an authenticated GET request to the admin AJAX endpoint with the draft parameter set to true, triggering getList() without ownership co",
+    "timestamp": "2026-09-26T03:30:27Z",
+    "title": "OpenClaw (npm package `openclaw`) before 2026.7.1 fails to enforce the owner-only authorization...",
+    "description": "OpenClaw (npm package `openclaw`) before 2026.7.1 fails to enforce the owner-only authorization requirement for Claude Code permission prompts delivered through the MCP channel bridge. An authorized non-owner channel sender with channel command access can approve or deny a pending permission request intended for the owner, causing the requested action to proceed without owner consent. The practical impact depends on the pending action and the host capabilities requested by the Claude Code run. T",
     "severity": "high",
-    "cve_id": "CVE-2026-93365",
-    "ghsa_id": "GHSA-8x88-jcjc-h56c",
+    "cve_id": "CVE-2026-100585",
+    "ghsa_id": "GHSA-87g7-76gr-73g8",
     "affected_packages": [],
     "cwes": [
       null
@@ -802,7 +391,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-93365.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-100585.",
       "affected_industries": [
         "Technology",
         "General"
@@ -817,22 +406,412 @@
     "risk_score": 75
   },
   {
-    "id": "cve-CVE-2026-79954",
+    "id": "gh-GHSA-mq3g-mch3-5cqc",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-26T03:30:27Z",
+    "title": "OpenClaw (npm package 'openclaw') before 2026.7.1 improperly handles case sensitivity in the...",
+    "description": "OpenClaw (npm package 'openclaw') before 2026.7.1 improperly handles case sensitivity in the model-facing cron tool: a mixed-case payload kind can pass the agent-facing shell-execution guard and later normalize into a command job. An actor able to steer a tool-enabled agent can therefore create a persistent cron job that executes attacker-selected commands with the privileges of the OpenClaw process user, resulting in access to host files and credentials and impact to scheduled service availabil",
+    "severity": "high",
+    "cve_id": "CVE-2026-100580",
+    "ghsa_id": "GHSA-mq3g-mch3-5cqc",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-100580.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-x2gp-w9p4-cpwg",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-26T03:30:27Z",
+    "title": "OpenClaw channel plugins (@openclaw/msteams, @openclaw/feishu, @openclaw/matrix, and @openclaw...",
+    "description": "OpenClaw channel plugins (@openclaw/msteams, @openclaw/feishu, @openclaw/matrix, and @openclaw/googlechat) before 2026.8.1 do not enforce the configured channel read allowlist for caller-supplied explicit read targets in message, reaction, pin, member, and related metadata read actions. A lower-trust sender or a steered agent with access to a channel read action can therefore retrieve content or metadata from channels or rooms excluded by the operator's read policy; the practical impact depends ",
+    "severity": "high",
+    "cve_id": "CVE-2026-100582",
+    "ghsa_id": "GHSA-x2gp-w9p4-cpwg",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-100582.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-6462-h5cx-j55p",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-26T03:30:27Z",
+    "title": "OpenClaw (npm package 'openclaw') before 2026.7.1 incorrectly trusts requester provenance in...",
+    "description": "OpenClaw (npm package 'openclaw') before 2026.7.1 incorrectly trusts requester provenance in message.action. In identity-bearing Gateway deployments (authentication modes that honor caller identity and narrower operator scopes), a write-scoped caller can supply another sender's identifier to the channel authorization checks and invoke a channel action under that spoofed requester identity, reaching operations the channel adapter would have denied to the real caller. Practical impact depends on t",
+    "severity": "high",
+    "cve_id": "CVE-2026-100579",
+    "ghsa_id": "GHSA-6462-h5cx-j55p",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-100579.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-9cj9-w25j-5478",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-26T03:30:27Z",
+    "title": "OpenClaw (npm package `openclaw`) before 2026.7.1 fails to restrict owner-only infrastructure...",
+    "description": "OpenClaw (npm package `openclaw`) before 2026.7.1 fails to restrict owner-only infrastructure tools exposed through the chat.send endpoint. In Gateway deployments using authentication modes that honor caller identity and narrower operator scopes, a write-scoped non-owner caller can start a chat turn whose tool inventory includes the `gateway` and `cron` tools, causing the agent to invoke owner-only configuration or scheduling operations, including persistent state changes. Practical impact depen",
+    "severity": "high",
+    "cve_id": "CVE-2026-100578",
+    "ghsa_id": "GHSA-9cj9-w25j-5478",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-100578.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-66j6-mjx3-gj6j",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-26T03:30:27Z",
+    "title": "OpenClaw Discord versions before 2026.7.1 contain an authorization bypass vulnerability in guild...",
+    "description": "OpenClaw Discord versions before 2026.7.1 contain an authorization bypass vulnerability in guild metadata read actions that allows lower-trust senders to retrieve information excluded by channel allowlists. Attackers can bypass the configured Discord read-target policy to access guild metadata from servers or channels outside the operator's allowlist.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-100583",
+    "ghsa_id": "GHSA-66j6-mjx3-gj6j",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-100583.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-qvvq-pvmc-pc5p",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-26T03:30:27Z",
+    "title": "OpenClaw is an npm-distributed agent runtime. In versions >= 2026.2.26 and < 2026.7.1, PowerShell...",
+    "description": "OpenClaw is an npm-distributed agent runtime. In versions >= 2026.2.26 and < 2026.7.1, PowerShell command analysis on Windows hosts running in exec allowlist mode could approve an exact executable resolved from PATH but subsequently execute a same-named executable located in the workspace directory. If lower-trust content can place an executable with an approved basename into an agent-writable workspace and steer an approved PowerShell command that uses a bare executable name, OpenClaw may run t",
+    "severity": "medium",
+    "cve_id": "CVE-2026-100584",
+    "ghsa_id": "GHSA-qvvq-pvmc-pc5p",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-100584.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-xjhq-663j-6f87",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-26T03:30:27Z",
+    "title": "OpenClaw Codex before 2026.7.1 fails to properly enforce owner authorization when creating native...",
+    "description": "OpenClaw Codex before 2026.7.1 fails to properly enforce owner authorization when creating native conversation bindings. Non-owner channel senders with command access can create bindings to the native Codex runtime and execute host-capable turns with access to files, tools, and processes.",
+    "severity": "high",
+    "cve_id": "CVE-2026-100586",
+    "ghsa_id": "GHSA-xjhq-663j-6f87",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-100586.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-rf6v-wq4h-m8xh",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-26T03:30:27Z",
+    "title": "OpenClaw for iOS before 2026.8.11 stores Gateway credentials as cleartext JSON in App Group...",
+    "description": "OpenClaw for iOS before 2026.8.11 stores Gateway credentials as cleartext JSON in App Group UserDefaults instead of the device Keychain. Attackers with access to unencrypted device backups or extracted App Group containers can recover valid Gateway tokens and passwords to authenticate with operator authority.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-100581",
+    "ghsa_id": "GHSA-rf6v-wq4h-m8xh",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-100581.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-8rc9-6r79-j4mw",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-26T03:30:27Z",
+    "title": "OpenClaw is an npm-distributed agent gateway. In versions before 2026.7.1, the global Active...",
+    "description": "OpenClaw is an npm-distributed agent gateway. In versions before 2026.7.1, the global Active Memory toggle mutations could omit owner checks. An authorized non-owner external-channel sender could therefore persistently enable or disable Active Memory for the Gateway, disabling memory recall for future sessions or re-enabling global recall where the owner expected it to remain disabled. The issue is limited to persistent global on/off mutations; session-level controls and read-only status remain ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-100591",
+    "ghsa_id": "GHSA-8rc9-6r79-j4mw",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-100591.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-2pcx-9jr9-59mg",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-26T03:30:27Z",
+    "title": "OpenClaw versions before 2026.7.1 contain a sandbox bypass vulnerability in the browser tool that...",
+    "description": "OpenClaw versions before 2026.7.1 contain a sandbox bypass vulnerability in the browser tool that allows sandboxed sessions to access paired node browser actions despite allowHostControl=false configuration. Attackers with control over sandboxed agent input can select a paired node and perform host browser operations, inspecting or manipulating the connected browser profile and its authenticated state.",
+    "severity": "high",
+    "cve_id": "CVE-2026-100589",
+    "ghsa_id": "GHSA-2pcx-9jr9-59mg",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-100589.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "cve-CVE-2026-89274",
     "source": "NVD CVE",
-    "timestamp": "2026-09-18T01:16:56.120",
-    "title": "CVE-2026-79954 - NASA CryptoLib 1.5.0 contains an authentication downgrade vulnerability in the Telecommand (TC) rece",
-    "description": "NASA CryptoLib 1.5.0 contains an authentication downgrade vulnerability in the Telecommand (TC) receive path. The receiver selects the Security Association used for SDLS processing solely from the SPI field inside the incoming frame, but it does not verify that the selected SA is authorized for the frame's GVCID.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-79954",
-    "cvss_score": null,
+    "timestamp": "2026-09-19T03:17:16.587",
+    "title": "CVE-2026-89274 - The WP Recipe Maker plugin for WordPress is vulnerable to Arbitrary Shortcode Execution in all versi",
+    "description": "The WP Recipe Maker plugin for WordPress is vulnerable to Arbitrary Shortcode Execution in all versions up to, and including, 10.8.1. The vulnerability exists because `WPRM_Metadata::sanitize_metadata()` recursively calls `do_shortcode()` on every scalar field of the recipe's structured metadata array — including the `reviewBody` field, which is populated verbatim from the `comment_content` of approved `wprm-comment-rating` comments — without sanitizing or stripping shortcode tokens before execution; the subsequent `wp_strip_all_tags()` and `strip_shortcodes()` calls operate only on the output string after execution has already fully occurred, providing no protection against server-side shortcode invocation. This makes it possible for unauthenticated attackers to execute arbitrary registered WordPress shortcodes server-side on every recipe page render, causing shortcode output — such as attachment captions, private post fields, or other data exposed by installed shortcodes — to be embedded in the page's JSON-LD `reviewBody` metadata and disclosed to all visitors who load the recipe page. Successful exploitation requires the attacker's rated comment to pass the site's comment approval threshold, either via auto-approval or moderator action, before the injected shortcode begins executing on page loads.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-89274",
+    "cvss_score": 9.1,
     "affected_products": [],
     "references": [
-      "https://fluidattacks.com/advisories/linkin",
-      "https://github.com/nasa/CryptoLib"
+      "https://plugins.trac.wordpress.org/browser/wp-recipe-maker/tags/10.8.1/includes/public/class-wprm-metadata.php#L1028",
+      "https://plugins.trac.wordpress.org/browser/wp-recipe-maker/tags/10.8.1/includes/public/class-wprm-metadata.php#L181",
+      "https://plugins.trac.wordpress.org/browser/wp-recipe-maker/tags/10.8.1/includes/public/class-wprm-metadata.php#L553",
+      "https://plugins.trac.wordpress.org/changeset?reponame=&old=3699793%40wp-recipe-maker&new=3699793%40wp-recipe-maker",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/d6ad49ff-85eb-4d05-ba23-51d89695add3?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 100,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-89274.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 100
+  },
+  {
+    "id": "cve-CVE-2026-89093",
+    "source": "NVD CVE",
+    "timestamp": "2026-09-19T03:17:16.443",
+    "title": "CVE-2026-89093 - The Better Messages – Chat Rooms, Group Chat, Private Messages & AI Chat Bots plugin for WordPress i",
+    "description": "The Better Messages – Chat Rooms, Group Chat, Private Messages & AI Chat Bots plugin for WordPress is vulnerable to Information Exposure by Spoofing in all versions up to, and including, 2.15.33. This is due to the `is_ai_bot_user()` function identifying privileged internal AI bot accounts by performing a prefix check for `'ai-chat-bot-'` against a guest record's stored IP address, which is populated verbatim from the client-controlled `X-Real-IP` request header during unauthenticated guest registration. This makes it possible for unauthenticated attackers to register a guest identity that the plugin treats as its own internal AI bot, bypassing the per-room role allowlist, draft-status check, and join filters — which are all short-circuited by the bot check in `user_can_join()` and `user_can_read()` — to join administrator-restricted chat rooms, post messages into them, and read the private message history of other users.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-89093",
+    "cvss_score": 5.3,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/bp-better-messages/tags/2.15.33/inc/chats.php#L2145",
+      "https://plugins.trac.wordpress.org/browser/bp-better-messages/tags/2.15.33/inc/chats.php#L2168",
+      "https://plugins.trac.wordpress.org/browser/bp-better-messages/tags/2.15.33/inc/chats.php#L2196",
+      "https://plugins.trac.wordpress.org/browser/bp-better-messages/tags/2.15.33/inc/functions.php#L4155",
+      "https://plugins.trac.wordpress.org/browser/bp-better-messages/tags/2.15.33/inc/guests.php#L311",
+      "https://plugins.trac.wordpress.org/browser/bp-better-messages/tags/2.15.33/inc/guests.php#L467",
+      "https://plugins.trac.wordpress.org/browser/bp-better-messages/tags/2.15.33/inc/guests.php#L577",
+      "https://plugins.trac.wordpress.org/changeset?old_path=bp-better-messages%2Ftags%2F2.15.33%2Finc%2Ffunctions.php&new_path=bp-better-messages%2Ftags%2F3.0.0%2Finc%2Ffunctions.php",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/df28ecd7-d463-48b7-95e6-8adc9f34d6bd?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-79954.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-89093.",
       "affected_industries": [
         "Technology",
         "General"
@@ -847,25 +826,26 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-93454",
+    "id": "cve-CVE-2026-89081",
     "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:17:49.853",
-    "title": "CVE-2026-93454 - Aureus ERP through 1.6.0 stores the Payment Term note field unsanitized and renders it as raw HTML i",
-    "description": "Aureus ERP through 1.6.0 stores the Payment Term note field unsanitized and renders it as raw HTML in the Accounting plugin. Authenticated users with payment-term create permission can submit arbitrary JavaScript to the payment-terms endpoint, which persists to the database and executes in browsers of all users viewing that Payment Term record.",
+    "timestamp": "2026-09-19T03:17:16.303",
+    "title": "CVE-2026-89081 - The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to Reflected",
+    "description": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to Reflected Cross-Site Scripting via the 'search' parameter in all versions up to, and including, 4.0.8 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that execute if they can successfully trick a user into performing an action such as clicking on a link.",
     "severity": "medium",
-    "cve_id": "CVE-2026-93454",
-    "cvss_score": 5.4,
+    "cve_id": "CVE-2026-89081",
+    "cvss_score": 6.1,
     "affected_products": [],
     "references": [
-      "https://github.com/aureuserp/aureuserp",
-      "https://github.com/aureuserp/aureuserp/blob/v1.6.0/plugins/webkul/accounts/src/Filament/Resources/PaymentTermResource/Schemas/PaymentTermInfolist.php#L59",
-      "https://github.com/aureuserp/aureuserp/pull/1562",
-      "https://hackmd.io/@leediay/stored-xss-aureus-via-payment-term",
-      "https://www.vulncheck.com/advisories/aureus-erp-through-1.6.0-stored-xss-via-payment-term-note"
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/Dashboard.php#L282",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/components/SearchFilter.php#L283",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/templates/account.php#L25",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/templates/dashboard/account/settings.php#L95",
+      "https://plugins.trac.wordpress.org/changeset?reponame=&old=3700174%40tutor&new=3700174%40tutor",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/dcffa961-f670-494d-874c-50538038b915?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-93454.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-89081.",
       "affected_industries": [
         "Technology",
         "General"
@@ -880,26 +860,29 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-93453",
+    "id": "cve-CVE-2026-88944",
     "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:17:49.693",
-    "title": "CVE-2026-93453 - SOGo before 5.12.11 constructs password-reset links using the client-supplied Origin header as the a",
-    "description": "SOGo before 5.12.11 constructs password-reset links using the client-supplied Origin header as the authority, allowing unauthenticated attackers to redirect recovery tokens to attacker-controlled domains. Attackers can submit password recovery requests with a malicious Origin header to have valid password-reset tokens mailed to victim recovery addresses within links pointing to attacker infrastructure, enabling account takeover.",
-    "severity": "high",
-    "cve_id": "CVE-2026-93453",
-    "cvss_score": 8.3,
+    "timestamp": "2026-09-19T03:17:16.000",
+    "title": "CVE-2026-88944 - The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to authoriza",
+    "description": "The Tutor LMS – eLearning and online course solution plugin for WordPress is vulnerable to authorization bypass in all versions up to, and including, 4.0.8. This is due to the plugin not properly verifying that a user is authorized to perform an action. This makes it possible for authenticated attackers, with subscriber-level access and above, to permanently delete arbitrary WordPress posts — including pages, courses, quizzes, and WooCommerce products — via wp_delete_post( $id, true ). The exploit chain requires the attacker to first trigger the profile-photo upload flow to obtain an authored wp_posts attachment row, then create a Tutor topic reparented to that attachment, before invoking the lesson deletion handler against any target post ID.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-88944",
+    "cvss_score": 4.3,
     "affected_products": [],
     "references": [
-      "https://github.com/Alinto/sogo",
-      "https://github.com/Alinto/sogo/blob/SOGo-5.12.10/UI/MainUI/SOGoRootPage.m#L1375",
-      "https://github.com/Alinto/sogo/commit/04a3e9823889acaf6c247b224f5f7a0108f8f829",
-      "https://github.com/Alinto/sogo/commit/382118a93b6925de2ce7f774abc1865ebea2dbba",
-      "https://www.sogo.nu/news/2026/sogo-v51211-released.html",
-      "https://www.vulncheck.com/advisories/sogo-before-5.12.11-password-reset-token-interception-via-origin-header"
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/Course.php#L1758",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/Course.php#L2055",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/Lesson.php#L541",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/User.php#L395",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/Utils.php#L3277",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/Utils.php#L7481",
+      "https://plugins.trac.wordpress.org/browser/tutor/tags/4.0.7/classes/Utils.php#L7666",
+      "https://plugins.trac.wordpress.org/changeset?reponame=&old=3700174%40tutor&new=3700174%40tutor",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/7e23fcd0-62b4-460d-9b64-8adbf14bf820?source=cve"
     ],
     "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-93453.",
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-88944.",
       "affected_industries": [
         "Technology",
         "General"
@@ -909,30 +892,31 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "high"
+      "urgency": "medium"
     },
-    "risk_score": 85
+    "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-93452",
+    "id": "cve-CVE-2026-87909",
     "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:17:49.540",
-    "title": "CVE-2026-93452 - snappy-java through 1.1.10.8 contains a buffer overflow vulnerability in Snappy.compress(ByteBuffer,",
-    "description": "snappy-java through 1.1.10.8 contains a buffer overflow vulnerability in Snappy.compress(ByteBuffer, ByteBuffer) that writes past the end of the destination buffer. Attackers can supply incompressible data that exceeds the destination buffer's remaining capacity, corrupting off-heap memory and causing JVM termination.",
+    "timestamp": "2026-09-19T03:17:15.853",
+    "title": "CVE-2026-87909 - The WP Photo Album Plus plugin for WordPress is vulnerable to Remote Code Execution in all versions ",
+    "description": "The WP Photo Album Plus plugin for WordPress is vulnerable to Remote Code Execution in all versions via the wppa_image_magick function. This is due to insufficient sanitization of the multipart upload filename before concatenation into an ImageMagick command string executed via exec(), with only escapeshellcmd() applied to the whole command rather than quoting individual arguments. This makes it possible for authenticated attackers, with subscriber-level access and above, to execute code on the server. escapeshellcmd() escapes shell metacharacters but does not prevent argument injection because spaces remain as argument separators, and the filename sanitization applied at the database layer is never applied to the physical temporary file path used for ImageMagick processing.",
     "severity": "high",
-    "cve_id": "CVE-2026-93452",
+    "cve_id": "CVE-2026-87909",
     "cvss_score": 7.5,
     "affected_products": [],
     "references": [
-      "https://github.com/xerial/snappy-java",
-      "https://github.com/xerial/snappy-java/blob/v1.1.10.8/src/main/java/org/xerial/snappy/Snappy.java#L137",
-      "https://github.com/xerial/snappy-java/issues/732",
-      "https://www.vulncheck.com/advisories/snappy-java-through-1.1.10.8-buffer-overflow-in-snappy-compress",
-      "https://github.com/xerial/snappy-java/issues/732"
+      "https://plugins.trac.wordpress.org/browser/wp-photo-album-plus/trunk/wppa-functions.php#L4837",
+      "https://plugins.trac.wordpress.org/browser/wp-photo-album-plus/trunk/wppa-functions.php#L5286",
+      "https://plugins.trac.wordpress.org/browser/wp-photo-album-plus/trunk/wppa-photo-files.php#L281",
+      "https://plugins.trac.wordpress.org/browser/wp-photo-album-plus/trunk/wppa-photo-files.php#L860",
+      "https://plugins.trac.wordpress.org/changeset?reponame=&old=3701613%40wp-photo-album-plus&new=3701613%40wp-photo-album-plus",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/693c7554-5122-4527-8a9c-aa31ea9623b7?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-93452.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-87909.",
       "affected_industries": [
         "Technology",
         "General"
@@ -947,24 +931,52 @@
     "risk_score": 85
   },
   {
-    "id": "cve-CVE-2026-93451",
+    "id": "cve-CVE-2026-84434",
     "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:17:49.380",
-    "title": "CVE-2026-93451 - snappy-java through 1.1.10.8 contains a buffer overflow vulnerability in typed Snappy.uncompress*Arr",
-    "description": "snappy-java through 1.1.10.8 contains a buffer overflow vulnerability in typed Snappy.uncompress*Array methods that allocate output arrays by dividing uncompressed length by element size but pass the undivided length to native code. Attackers controlling compressed input can cause misaligned length values to write past array bounds with attacker-controlled bytes, corrupting heap memory.",
+    "timestamp": "2026-09-19T03:17:15.573",
+    "title": "CVE-2026-84434 - The Gravity Forms plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to,",
+    "description": "The Gravity Forms plugin for WordPress is vulnerable to Arbitrary File Upload in all versions up to, and including, 3.1.0.4 via the upload_file function. This is due to a mismatch between the field validation pipeline and the file persistence pipeline, where hidden file upload fields bypass extension validation and a rejected file's intact upload state is later passed to upload_file() without re-validation. This makes it possible for unauthenticated attackers to upload files that may be executable, which makes remote code execution possible. Exploitation requires the targeted form to contain a File Upload field with its Visibility set to 'Hidden'; the vulnerability is reachable by unauthenticated attackers on any publicly accessible form meeting this condition.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-84434",
+    "cvss_score": 9.8,
+    "affected_products": [],
+    "references": [
+      "https://docs.gravityforms.com/gravityforms-change-log/",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/787e22a9-329b-4e71-bc2a-4f5524fc9356?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 100,
+      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-84434.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "critical"
+    },
+    "risk_score": 100
+  },
+  {
+    "id": "cve-CVE-2026-15760",
+    "source": "NVD CVE",
+    "timestamp": "2026-09-19T03:17:13.867",
+    "title": "CVE-2026-15760 - The Divi Essential plugin for WordPress is vulnerable to sensitive information exposure in versions ",
+    "description": "The Divi Essential plugin for WordPress is vulnerable to sensitive information exposure in versions up to, and including, 5.8.1 via the dnxte_get_database_tables and dnxte_get_database_data AJAX actions. The handlers  only conditionally verify a nonce (the check runs solely when the 'nonce' POST parameter is present and can be trivially bypassed by omitting the parameter) and never call current_user_can() or otherwise enforce a capability. This makes it possible for authenticated attackers, with Subscriber-level access and above, to enumerate every table in the WordPress database and read up to a caller-controlled number of rows from any table — including wp_users (usernames, emails, hashed passwords), wp_usermeta (session tokens, secret keys), and wp_options (privileged settings, API keys, credentials stored by other plugins).",
     "severity": "medium",
-    "cve_id": "CVE-2026-93451",
+    "cve_id": "CVE-2026-15760",
     "cvss_score": 6.5,
     "affected_products": [],
     "references": [
-      "https://github.com/xerial/snappy-java",
-      "https://github.com/xerial/snappy-java/blob/v1.1.10.8/src/main/java/org/xerial/snappy/Snappy.java#L802",
-      "https://github.com/xerial/snappy-java/issues/729",
-      "https://www.vulncheck.com/advisories/snappy-java-through-1.1.10.8-buffer-overflow-via-typed-uncompress-methods"
+      "https://www.divinext.com/divi-essential-changelog/",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/61831b3e-4b2a-4fce-8fa2-818aa9991bb2?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-93451.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-15760.",
       "affected_industries": [
         "Technology",
         "General"
@@ -979,61 +991,25 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-93450",
+    "id": "cve-CVE-2026-15660",
     "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:17:49.230",
-    "title": "CVE-2026-93450 - go-openapi/swag jsonutils before 0.27.1 contains a stack overflow vulnerability in ordered JSON pars",
-    "description": "go-openapi/swag jsonutils before 0.27.1 contains a stack overflow vulnerability in ordered JSON parsing and serialization due to unbounded recursion with no depth limit. Remote unauthenticated attackers can submit deeply nested JSON documents to services accepting OpenAPI specifications, causing fatal stack overflow that terminates the process and all in-flight requests.",
-    "severity": "high",
-    "cve_id": "CVE-2026-93450",
-    "cvss_score": 7.5,
-    "affected_products": [],
-    "references": [
-      "https://github.com/go-openapi/swag",
-      "https://github.com/go-openapi/swag/blob/v0.27.0/jsonutils/adapters/stdlib/json/adapter.go#L68",
-      "https://github.com/go-openapi/swag/blob/v0.27.0/jsonutils/adapters/stdlib/json/ordered_map.go#L214",
-      "https://github.com/go-openapi/swag/commit/0c24346ced59a25811e8694a915e7131d25ccb0e",
-      "https://github.com/go-openapi/swag/security/advisories/GHSA-xh24-9qpg-8w28",
-      "https://www.vulncheck.com/advisories/go-openapi-swag-jsonutils-before-0.27.1-uncontrolled-recursion-in-ordered-json-marshal-and-unmarshal",
-      "https://github.com/go-openapi/swag/security/advisories/GHSA-xh24-9qpg-8w28"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-93450.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-93309",
-    "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:17:49.010",
-    "title": "CVE-2026-93309 - A vulnerability was determined in O-RAN-SC SMO OAM 2025-06-10. Affected by this issue is some unknow",
-    "description": "A vulnerability was determined in O-RAN-SC SMO OAM 2025-06-10. Affected by this issue is some unknown functionality of the component VES Collector. Executing a manipulation can lead to allocation of resources. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized. The project was informed of the problem early through a bug report but has not responded yet.",
+    "timestamp": "2026-09-19T03:17:13.717",
+    "title": "CVE-2026-15660 - The SEO Booster plugin for WordPress is vulnerable to Missing Authorization in versions up to, and i",
+    "description": "The SEO Booster plugin for WordPress is vulnerable to Missing Authorization in versions up to, and including, 7.4.7. This is due to a missing capability check on the handle_oauth_callback() function which is hooked to admin_init and processes $_GET['access_token'] and $_GET['google_email'] without verifying the caller's role. This makes it possible for authenticated attackers, with Subscriber-level access and above, to overwrite the seobooster_access_token, seobooster_google_email, and seobooster_gsc_sites options and delete the seobooster_needs_reauth flag by visiting a crafted /wp-admin/ URL, disrupting the Google Search Console integration and injecting attacker-chosen data into site options via the attacker-supplied token that drives an outbound Google API request whose response is stored.",
     "severity": "medium",
-    "cve_id": "CVE-2026-93309",
+    "cve_id": "CVE-2026-15660",
     "cvss_score": 4.3,
     "affected_products": [],
     "references": [
-      "https://gist.github.com/fklement/639eb04a12cc5c015f9b960b0de96d80",
-      "https://lf-o-ran-sc.atlassian.net/browse/SMO-203",
-      "https://vuldb.com/cve/CVE-2026-93309",
-      "https://vuldb.com/submit/942312",
-      "https://vuldb.com/vuln/406595",
-      "https://vuldb.com/vuln/406595/cti"
+      "https://plugins.trac.wordpress.org/browser/seo-booster/tags/7.3.2/seo-booster.php#L243",
+      "https://plugins.trac.wordpress.org/browser/seo-booster/tags/7.3.2/seo-booster.php#L546",
+      "https://plugins.trac.wordpress.org/browser/seo-booster/tags/7.3.2/seo-booster.php#L547",
+      "https://plugins.trac.wordpress.org/changeset?reponame=&old=3665611%40seo-booster&new=3665611%40seo-booster",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/3fd58af7-e8ef-4518-bed8-4e20c8e61db7?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-93309.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-15660.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1048,26 +1024,63 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-93308",
+    "id": "cve-CVE-2026-13354",
     "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:17:48.830",
-    "title": "CVE-2026-93308 - A vulnerability was found in O-RAN-SC SMO OAM 2025-06-10. Affected by this vulnerability is an unkno",
-    "description": "A vulnerability was found in O-RAN-SC SMO OAM 2025-06-10. Affected by this vulnerability is an unknown functionality of the component VES Collector. Performing a manipulation results in allocation of resources. The attack may be initiated remotely. The exploit has been made public and could be used. The project was informed of the problem early through a bug report but has not responded yet.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-93308",
-    "cvss_score": 4.3,
+    "timestamp": "2026-09-19T03:17:13.553",
+    "title": "CVE-2026-13354 - The Asset CleanUp: Page Speed Booster plugin for WordPress is vulnerable to Stored Cross-Site Script",
+    "description": "The Asset CleanUp: Page Speed Booster plugin for WordPress is vulnerable to Stored Cross-Site Scripting via Comment Content in all versions up to, and including, 1.4.0.5 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This is only exploitable on instances where combine_loaded_css has been enabled.",
+    "severity": "high",
+    "cve_id": "CVE-2026-13354",
+    "cvss_score": 7.2,
     "affected_products": [],
     "references": [
-      "https://gist.github.com/fklement/9f217219b95f7ced94527a2d18b5f059",
-      "https://lf-o-ran-sc.atlassian.net/browse/SMO-202",
-      "https://vuldb.com/cve/CVE-2026-93308",
-      "https://vuldb.com/submit/942311",
-      "https://vuldb.com/vuln/406594",
-      "https://vuldb.com/vuln/406594/cti"
+      "https://plugins.trac.wordpress.org/browser/wp-asset-clean-up/tags/1.4.0.3/classes/OptimiseAssets/OptimizeCss.php#L579",
+      "https://plugins.trac.wordpress.org/browser/wp-asset-clean-up/tags/1.4.0.3/classes/OptimiseAssets/OptimizeJs.php#L824",
+      "https://plugins.trac.wordpress.org/browser/wp-asset-clean-up/tags/1.4.0.4/classes/OptimiseAssets/OptimizeCss.php#L579",
+      "https://plugins.trac.wordpress.org/browser/wp-asset-clean-up/tags/1.4.0.4/classes/OptimiseAssets/OptimizeJs.php#L824",
+      "https://plugins.trac.wordpress.org/changeset?reponame=&old=3699024%40wp-asset-clean-up&new=3699024%40wp-asset-clean-up",
+      "https://research.cleantalk.org/cve-2026-13354",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/4cc8ec2b-f203-4c7c-8720-043f8634a447?source=cve"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-13354.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-12042",
+    "source": "NVD CVE",
+    "timestamp": "2026-09-19T03:17:12.997",
+    "title": "CVE-2026-12042 - The WP2Social Auto Publish plugin for WordPress is vulnerable to Stored Cross-Site Scripting via adm",
+    "description": "The WP2Social Auto Publish plugin for WordPress is vulnerable to Stored Cross-Site Scripting via admin settings in all versions up to, and including, 2.4.12 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with administrator-level permissions and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This only affects multi-site installations and installations where unfiltered_html has been disabled.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-12042",
+    "cvss_score": 4.4,
+    "affected_products": [],
+    "references": [
+      "https://plugins.trac.wordpress.org/browser/facebook-auto-publish/tags/2.4.11/admin/ajax-actions.php#L39",
+      "https://plugins.trac.wordpress.org/browser/facebook-auto-publish/tags/2.4.11/admin/ajax-actions.php#L46",
+      "https://plugins.trac.wordpress.org/browser/facebook-auto-publish/tags/2.4.11/admin/settings.php#L534",
+      "https://plugins.trac.wordpress.org/browser/facebook-auto-publish/tags/2.4.12/admin/ajax-actions.php#L39",
+      "https://plugins.trac.wordpress.org/browser/facebook-auto-publish/tags/2.4.12/admin/ajax-actions.php#L46",
+      "https://plugins.trac.wordpress.org/browser/facebook-auto-publish/tags/2.4.12/admin/settings.php#L534",
+      "https://plugins.trac.wordpress.org/changeset?reponame=&old=3650775%40facebook-auto-publish&new=3650775%40facebook-auto-publish",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/f0886893-9cfd-44cb-8940-03dd99d4c574?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-93308.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-12042.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1082,173 +1095,25 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-85887",
+    "id": "cve-CVE-2026-77820",
     "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:17:47.920",
-    "title": "CVE-2026-85887 - Incorrect permission assignment for critical resource in M365 Copilot allows an authorized attacker ",
-    "description": "Incorrect permission assignment for critical resource in M365 Copilot allows an authorized attacker to disclose information over a network.",
-    "severity": "high",
-    "cve_id": "CVE-2026-85887",
-    "cvss_score": 7.7,
-    "affected_products": [],
-    "references": [
-      "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85887"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-85887.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-85878",
-    "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:17:47.777",
-    "title": "CVE-2026-85878 - Improper authorization in Azure Database for PostgreSQL allows an authorized attacker to elevate pri",
-    "description": "Improper authorization in Azure Database for PostgreSQL allows an authorized attacker to elevate privileges over a network.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-85878",
-    "cvss_score": 9.9,
-    "affected_products": [
-      "cpe:2.3:a:microsoft:azure_horizondb:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-85878"
-    ],
-    "ai_analysis": {
-      "risk_score": 100,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-85878.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 100
-  },
-  {
-    "id": "cve-CVE-2026-83946",
-    "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:17:44.960",
-    "title": "CVE-2026-83946 - Improper neutralization of input during web page generation ('cross-site scripting') in Azure Portal",
-    "description": "Improper neutralization of input during web page generation ('cross-site scripting') in Azure Portal allows an unauthorized attacker to perform spoofing over a network.",
-    "severity": "high",
-    "cve_id": "CVE-2026-83946",
-    "cvss_score": 8.2,
-    "affected_products": [
-      "cpe:2.3:a:microsoft:azure_portal:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-83946"
-    ],
-    "ai_analysis": {
-      "risk_score": 85,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-83946.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 85
-  },
-  {
-    "id": "cve-CVE-2026-69843",
-    "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:17:24.923",
-    "title": "CVE-2026-69843 - Authentication bypass by spoofing in Microsoft Fabric allows an unauthorized attacker to elevate pri",
-    "description": "Authentication bypass by spoofing in Microsoft Fabric allows an unauthorized attacker to elevate privileges over a network.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-69843",
-    "cvss_score": 10,
-    "affected_products": [
-      "cpe:2.3:a:microsoft:fabric:-:*:*:*:*:*:*:*"
-    ],
-    "references": [
-      "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69843"
-    ],
-    "ai_analysis": {
-      "risk_score": 100,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-69843.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 100
-  },
-  {
-    "id": "cve-CVE-2026-62874",
-    "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:16:57.930",
-    "title": "CVE-2026-62874 - Insufficient verification of data authenticity in Azure Billing allows an unauthorized attacker to e",
-    "description": "Insufficient verification of data authenticity in Azure Billing allows an unauthorized attacker to elevate privileges over a network.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-62874",
-    "cvss_score": 10,
-    "affected_products": [],
-    "references": [
-      "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62874"
-    ],
-    "ai_analysis": {
-      "risk_score": 100,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-62874.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 100
-  },
-  {
-    "id": "cve-CVE-2026-2585",
-    "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:16:57.450",
-    "title": "CVE-2026-2585 - The Brizy – Page Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘",
-    "description": "The Brizy – Page Builder plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ‘rootAttributes’ parameter in all versions up to, and including, 2.8.14 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with Contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+    "timestamp": "2026-09-19T02:16:54.257",
+    "title": "CVE-2026-77820 - The WPComplete plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'empty' Shortco",
+    "description": "The WPComplete plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'empty' Shortcode Attribute in all versions up to, and including, 2.9.9.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page. This requires the premium version of the software in order to exploit. Please note this only affects the pro version.",
     "severity": "medium",
-    "cve_id": "CVE-2026-2585",
+    "cve_id": "CVE-2026-77820",
     "cvss_score": 6.4,
     "affected_products": [],
     "references": [
-      "https://plugins.trac.wordpress.org/changeset/3565838/",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/89e0babf-780c-467b-b1df-62b5b9403c8f?source=cve"
+      "https://plugins.trac.wordpress.org/browser/wpcomplete/tags/2.9.5.7/includes/class-wpcomplete.php#L305",
+      "https://plugins.trac.wordpress.org/browser/wpcomplete/tags/2.9.5.7/public/class-wpcomplete-public.php#L1692",
+      "https://plugins.trac.wordpress.org/browser/wpcomplete/tags/2.9.5.7/public/class-wpcomplete-public.php#L1802",
+      "https://plugins.trac.wordpress.org/browser/wpcomplete/tags/2.9.5.7/public/class-wpcomplete-public.php#L1859",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/5b91bb81-b5e4-4a50-833b-e2e98ccc09ff?source=cve"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-2585.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-77820.",
       "affected_industries": [
         "Technology",
         "General"
@@ -1263,25 +1128,126 @@
     "risk_score": 60
   },
   {
-    "id": "cve-CVE-2026-18441",
+    "id": "cve-CVE-2026-93923",
     "source": "NVD CVE",
-    "timestamp": "2026-09-18T00:16:57.297",
-    "title": "CVE-2026-18441 - The Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress plugin for WordPres",
-    "description": "The Appointment Booking Plugin – LatePoint | Calendar & Scheduling for WordPress plugin for WordPress is vulnerable to Insecure Direct Object Reference in all versions up to, and including, 5.6.9  via the set_customer_object due to missing validation on a user controlled key. This makes it possible for unauthenticated attackers to enumerate arbitrary customer records and disclose personally identifiable information -  including first name, last name, email address, and phone number - by iterating the customer[id] parameter. This issue is exploitable only when the site is configured with customer authentication disabled (guest checkout enabled).",
+    "timestamp": "2026-09-19T00:16:57.963",
+    "title": "CVE-2026-93923 - SiYuan through 3.8.4 fails to escape heading style attributes when rendering outline and bookmark do",
+    "description": "SiYuan through 3.8.4 fails to escape heading style attributes when rendering outline and bookmark dock HTML, allowing stored cross-site scripting. Attackers can supply crafted notebooks or call administrative endpoints to inject malicious style values that execute in the Electron renderer with full system access.",
+    "severity": "high",
+    "cve_id": "CVE-2026-93923",
+    "cvss_score": 8.8,
+    "affected_products": [],
+    "references": [
+      "https://github.com/siyuan-note/siyuan",
+      "https://github.com/siyuan-note/siyuan/blob/v3.8.4/app/src/util/Tree.ts#L133",
+      "https://github.com/siyuan-note/siyuan/blob/v3.8.4/app/src/util/Tree.ts#L194",
+      "https://github.com/siyuan-note/siyuan/blob/v3.8.4/kernel/model/render.go#L71-L76",
+      "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-928g-4hfq-qwvx",
+      "https://www.vulncheck.com/advisories/siyuan-through-3.8.4-stored-xss-via-heading-style-attribute",
+      "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-928g-4hfq-qwvx"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-93923.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-93922",
+    "source": "NVD CVE",
+    "timestamp": "2026-09-19T00:16:57.783",
+    "title": "CVE-2026-93922 - SiYuan through 3.8.4 renders notebook names as raw HTML in the Daily Note picker dialog without esca",
+    "description": "SiYuan through 3.8.4 renders notebook names as raw HTML in the Daily Note picker dialog without escaping, allowing stored cross-site scripting in the Electron renderer. Attackers can create notebooks with HTML payloads in names that execute JavaScript with Node.js access when the picker opens, enabling operating system command execution.",
+    "severity": "high",
+    "cve_id": "CVE-2026-93922",
+    "cvss_score": 8.8,
+    "affected_products": [],
+    "references": [
+      "https://github.com/siyuan-note/siyuan",
+      "https://github.com/siyuan-note/siyuan/blob/v3.8.4/app/src/util/mount.ts#L72",
+      "https://github.com/siyuan-note/siyuan/blob/v3.8.4/kernel/model/file.go#L2446-L2454",
+      "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-8c2m-33v9-vvqm",
+      "https://www.vulncheck.com/advisories/siyuan-through-3.8.4-stored-xss-via-notebook-names",
+      "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-8c2m-33v9-vvqm"
+    ],
+    "ai_analysis": {
+      "risk_score": 85,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-93922.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 85
+  },
+  {
+    "id": "cve-CVE-2026-93921",
+    "source": "NVD CVE",
+    "timestamp": "2026-09-19T00:16:57.553",
+    "title": "CVE-2026-93921 - SiYuan versions through 3.8.4 fail to enforce publish access control in the getDynamicIcon endpoint,",
+    "description": "SiYuan versions through 3.8.4 fail to enforce publish access control in the getDynamicIcon endpoint, allowing read-only token holders to access document metadata. Attackers can call the endpoint with type=8 and crafted content to read block titles, names, aliases, and hierarchical paths of restricted documents via template injection.",
     "severity": "medium",
-    "cve_id": "CVE-2026-18441",
+    "cve_id": "CVE-2026-93921",
     "cvss_score": 4.3,
     "affected_products": [],
     "references": [
-      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.9/latepoint.php#L1006",
-      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.9/lib/controllers/steps_controller.php#L341",
-      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.9/lib/helpers/steps_helper.php#L1184",
-      "https://plugins.trac.wordpress.org/browser/latepoint/tags/5.6.9/lib/models/model.php#L574",
-      "https://www.wordfence.com/threat-intel/vulnerabilities/id/d80ed885-43f8-43a4-bc61-e9ef92e3207e?source=cve"
+      "https://github.com/siyuan-note/siyuan",
+      "https://github.com/siyuan-note/siyuan/blob/v3.8.4/kernel/api/icon.go#L546-L549",
+      "https://github.com/siyuan-note/siyuan/blob/v3.8.4/kernel/api/router.go#L51",
+      "https://github.com/siyuan-note/siyuan/blob/v3.8.4/kernel/model/template.go#L485-L526",
+      "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-whcx-xxqh-c838",
+      "https://www.vulncheck.com/advisories/siyuan-through-3.8.4-access-control-bypass-via-dynamic-icon-endpoint",
+      "https://github.com/siyuan-note/siyuan/security/advisories/GHSA-whcx-xxqh-c838"
     ],
     "ai_analysis": {
       "risk_score": 60,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-18441.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-93921.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 60
+  },
+  {
+    "id": "cve-CVE-2026-77875",
+    "source": "NVD CVE",
+    "timestamp": "2026-09-19T00:16:57.193",
+    "title": "CVE-2026-77875 - The application protects access through its calculator-style vault passcode, but the stored data is ",
+    "description": "The application protects access through its calculator-style vault passcode, but the stored data is not bound to that authentication boundary. A local actor who can access shared external storage, such as through an authorized non-root ADB shell or another local file-reading context with suitable storage access, can copy the SQLite database and media files directly without entering the vault passcode.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-77875",
+    "cvss_score": null,
+    "affected_products": [],
+    "references": [
+      "https://fluidattacks.com/advisories/grin",
+      "https://play.google.com/store/apps/details?id=com.macymind.calculatorlock"
+    ],
+    "ai_analysis": {
+      "risk_score": 60,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-77875.",
       "affected_industries": [
         "Technology",
         "General"
