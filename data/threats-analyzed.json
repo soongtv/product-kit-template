@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1790602447590-1",
+    "id": "twitter-1790636940401-1",
     "source": "Twitter Security",
-    "timestamp": "2026-09-28T13:34:07.590Z",
+    "timestamp": "2026-09-28T23:09:00.401Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -26,9 +26,9 @@
     "risk_score": 75
   },
   {
-    "id": "hn-1790602447590-1",
+    "id": "hn-1790636940401-1",
     "source": "HackerNews",
-    "timestamp": "2026-09-28T13:34:07.590Z",
+    "timestamp": "2026-09-28T23:09:00.401Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -52,26 +52,29 @@
     "risk_score": 25
   },
   {
-    "id": "gh-GHSA-hhm4-wvmf-2x62",
+    "id": "gh-GHSA-6vj9-mwq6-2f5v",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:07Z",
-    "title": "Improper neutralization of input during web page generation ('cross-site scripting')...",
-    "description": "Improper neutralization of input during web page generation ('cross-site scripting') vulnerability in Rolantis Information Technologies Tourism Industry and Trade Co. Ltd. Agentis allows XSS Targeting HTML Attributes.\n\nThis issue affects Agentis: from 4.44 before 4.6.",
+    "timestamp": "2026-09-28T21:56:05Z",
+    "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+    "description": "### Summary\n\nNodemailer's process-global DNS cache is keyed only by `host`, but each cache entry also stores the caller-specific TLS `servername`. When two direct SMTPS transports use the same DNS host with different `tls.servername` values, the first transport's server name is returned to the second transport and overwrites its explicitly configured value.\n\nAs a result, Nodemailer sends the wrong SNI value and verifies the peer certificate against the wrong identity. In a multi-tenant service o",
     "severity": "medium",
-    "cve_id": "CVE-2026-87752",
-    "ghsa_id": "GHSA-hhm4-wvmf-2x62",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-6vj9-mwq6-2f5v",
+    "affected_packages": [
+      "nodemailer"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-87752.",
+      "impact_assessment": "Potential security vulnerability with medium severity. ",
       "affected_industries": [
         "Technology",
         "General"
@@ -86,15 +89,19 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-pw89-p422-jr5j",
+    "id": "gh-GHSA-3wwx-pv8p-q78v",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:07Z",
-    "title": "A path traversal vulnerability was discovered in the Kubernetes kubectl client's kubectl cp...",
-    "description": "A path traversal vulnerability was discovered in the Kubernetes kubectl client's kubectl cp command on Windows. When copying files from a container, kubectl runs tar inside the container to build a tar archive, transfers it over the network, and unpacks it on the local machine. If the tar binary in the container is malicious, it can execute arbitrary code and emit unexpected output, allowing an attacker who controls container contents to write files to arbitrary paths on the user's local machine",
+    "timestamp": "2026-09-28T21:42:37Z",
+    "title": "undici vulnerable to Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+    "description": "## Impact\n\nundici's WebSocket client (including Node.js's bundled `globalThis.WebSocket`) crashes the entire Node.js process when a remote WebSocket peer sends a permessage-deflate compressed message that crosses the decompressed-payload size limit and then contains a malformed DEFLATE block. In `lib/web/websocket/permessage-deflate.js`, the size-limit cleanup calls `removeAllListeners()` on the internal zlib `InflateRaw`, removing its `error` listener, but leaves the stream running. The inflate",
     "severity": "medium",
-    "cve_id": "CVE-2026-19444",
-    "ghsa_id": "GHSA-pw89-p422-jr5j",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-85024",
+    "ghsa_id": "GHSA-3wwx-pv8p-q78v",
+    "affected_packages": [
+      "undici",
+      "undici",
+      "undici"
+    ],
     "cwes": [
       null
     ],
@@ -103,11 +110,16 @@
       null,
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-19444.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-85024.",
       "affected_industries": [
         "Technology",
         "General"
@@ -122,20 +134,22 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-mrrg-524v-2rf2",
+    "id": "gh-GHSA-3pph-fpjx-jg34",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:06Z",
-    "title": "A vulnerability was identified in Thinkware U3000 up to 1.02.04. Affected is the function...",
-    "description": "A vulnerability was identified in Thinkware U3000 up to 1.02.04. Affected is the function get_file of the file /tmp/wpa_supplicant.conf of the component TCP Service. The manipulation leads to improper access controls. Remote exploitation of the attack is possible. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-09-28T21:34:58Z",
+    "title": "multer vulnerable to Denial of Service via orphaned disk writes on aborted uploads",
+    "description": "### Impact\n\nMulter's `diskStorage` can leave complete, orphaned files on disk when a multipart upload is aborted in the brief window before the storage engine assigns the file path. This is an incomplete fix of CVE-2026-5038: the earlier cleanup removes only in-flight uploads that already have a path, so an upload aborted inside that window is written to disk with nothing left to remove it, and the application is not given a handle to clean it up. An unauthenticated attacker sending aborted requ",
     "severity": "medium",
-    "cve_id": "CVE-2026-101054",
-    "ghsa_id": "GHSA-mrrg-524v-2rf2",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-88932",
+    "ghsa_id": "GHSA-3pph-fpjx-jg34",
+    "affected_packages": [
+      "multer"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
-      null,
       null,
       null,
       null,
@@ -145,7 +159,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-101054.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-88932.",
       "affected_industries": [
         "Technology",
         "General"
@@ -160,63 +174,64 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-jf5j-gcwm-85w2",
+    "id": "gh-GHSA-9f6g-j8ch-79g4",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:06Z",
-    "title": "Zohocorp ManageEngine DDI Central versions before 6201 are vulnerable to Arbitrary file write via...",
-    "description": "Zohocorp ManageEngine DDI Central versions before 6201 are vulnerable to Arbitrary file write via HA Failover Config sync upload leading to remote code execution.",
-    "severity": "high",
-    "cve_id": "CVE-2026-12264",
-    "ghsa_id": "GHSA-jf5j-gcwm-85w2",
+    "timestamp": "2026-09-28T21:33:08Z",
+    "title": "morgan vulnerable to Log Injection via unescaped double quote in quoted log fields",
+    "description": "### Impact\n\nMorgan writes attacker-controlled request data to the access log. Its escaping (added in 1.11.0 and 1.12.0) neutralizes control characters, the Unicode line separators, and backslash, but not the double quote (`0x22`), which is the field delimiter of the Apache combined log format morgan emits. An attacker who controls a quoted field (`:user-agent`, `:referrer`, the request URL, or the Basic auth `:remote-user`) can inject a double quote to close the field early and forge additional ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-87859",
+    "ghsa_id": "GHSA-9f6g-j8ch-79g4",
+    "affected_packages": [
+      "morgan"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-87859.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-8mv4-xrj3-xg7m",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-28T21:31:22Z",
+    "title": "In proxygen from v2024.10.28.00 until v2026.09.28.00, WebTransportImpl::terminateSessionStreams ...",
+    "description": "In proxygen from v2024.10.28.00 until v2026.09.28.00, WebTransportImpl::terminateSessionStreams (WebTransportImpl::destroy in releases before v2025.08.18.00) failed to unregister read callbacks for streams that were no longer open before destroying them. The transport could then invoke a read callback that had been freed.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-91096",
+    "ghsa_id": "GHSA-8mv4-xrj3-xg7m",
     "affected_packages": [],
     "cwes": [],
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12264.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-88f2-4rrr-jgmw",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:06Z",
-    "title": "A vulnerability was determined in Thinkware U3000 up to 1.02.04. This impacts the function...",
-    "description": "A vulnerability was determined in Thinkware U3000 up to 1.02.04. This impacts the function PUT_FILE of the file /tmp/wpa_supplicant.conf of the component TCP Service. Executing a manipulation of the argument path can lead to improper access controls. The attack may be launched remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-101053",
-    "ghsa_id": "GHSA-88f2-4rrr-jgmw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-101053.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-91096.",
       "affected_industries": [
         "Technology",
         "General"
@@ -231,351 +246,25 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-rjf7-j2f2-fmhv",
+    "id": "gh-GHSA-c3mh-7h6x-xh3f",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:06Z",
-    "title": "A security vulnerability has been detected in refly-ai refly up to 1.1.0. This issue affects some...",
-    "description": "A security vulnerability has been detected in refly-ai refly up to 1.1.0. This issue affects some unknown processing of the file apps/api/src/modules/config/app.config.ts of the component JWT Token Handler. The manipulation with the input test leads to hard-coded credentials. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-101052",
-    "ghsa_id": "GHSA-rjf7-j2f2-fmhv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-101052.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-hwqr-vwwq-mq54",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:05Z",
-    "title": "An Incorrect Authorization vulnerability in the task configuration in Google Cloud Application...",
-    "description": "An Incorrect Authorization vulnerability in the task configuration in Google Cloud Application Integration versions prior to 2026-06-17 on Google Cloud Platform allows an authenticated Google Cloud user to execute arbitrary internal RPCs from inside Google's production network under a privileged identity using an internal-only task type.\n\n\nThis vulnerability was patched on 17 June 2026, and no customer action is needed.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-19759",
-    "ghsa_id": "GHSA-hwqr-vwwq-mq54",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-19759.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-33v3-56q5-h52m",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:05Z",
-    "title": "A Deserialization of Untrusted Data vulnerability in the JavaScript Task in Google Cloud...",
-    "description": "A Deserialization of Untrusted Data vulnerability in the JavaScript Task in Google Cloud Application Integration versions prior to 2026-06-28 on Google Cloud Platform allows an authenticated user with standard permissions to run arbitrary code on the shared production servers using a specially crafted script bypassing param guards.\n\n\nThis vulnerability was patched on 28 June 2026, and no customer action is needed.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-81867",
-    "ghsa_id": "GHSA-33v3-56q5-h52m",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-81867.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-7hj2-7h7h-f38x",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:05Z",
-    "title": "A security flaw has been discovered in Ricoh SP 330DN, SP 221, SP C252SF and Aficio SP 3500SF up...",
-    "description": "A security flaw has been discovered in Ricoh SP 330DN, SP 221, SP C252SF and Aficio SP 3500SF up to 20260813. This affects an unknown part of the component HTTP Multipart Form-Data Parser. Performing a manipulation results in denial of service. The attack is possible to be carried out remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-101040",
-    "ghsa_id": "GHSA-7hj2-7h7h-f38x",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-101040.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "medium"
-    },
-    "risk_score": 50
-  },
-  {
-    "id": "gh-GHSA-hw8r-9jmq-c37g",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:05Z",
-    "title": "ManageEngine DDI Central versions below 6201 are vulnerable to PowerShell command injection in...",
-    "description": "ManageEngine DDI Central versions below 6201 are vulnerable to PowerShell command injection in Windows DNS SPF/TXT record push leading to remote code execution.",
-    "severity": "high",
-    "cve_id": "CVE-2026-12268",
-    "ghsa_id": "GHSA-hw8r-9jmq-c37g",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12268.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-6xvw-37x7-c8hw",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:05Z",
-    "title": "Zohocorp ManageEngine DDI Central 6.2.0 build below 6201 had a Keepalived configuration injection...",
-    "description": "Zohocorp ManageEngine DDI Central 6.2.0 build below 6201 had a Keepalived configuration injection vulnerability in the HA configuration workflow. This issue could allow an authenticated operator-level user to modify the Keepalived configuration and potentially execute commands as root on the DDI Central host.",
-    "severity": "high",
-    "cve_id": "CVE-2026-12269",
-    "ghsa_id": "GHSA-6xvw-37x7-c8hw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12269.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-6x6g-w7q4-663p",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:05Z",
-    "title": "A vulnerability was identified in FAST FAC1900R 20190827_2.0.2. Affected by this issue is the...",
-    "description": "A vulnerability was identified in FAST FAC1900R 20190827_2.0.2. Affected by this issue is the function copy_msg_element of the component devdiscover Service. Such manipulation leads to stack-based buffer overflow. The attack can be executed remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-101039",
-    "ghsa_id": "GHSA-6x6g-w7q4-663p",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 90,
-      "impact_assessment": "Potential security vulnerability with critical severity. CVE: CVE-2026-101039.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "critical"
-    },
-    "risk_score": 90
-  },
-  {
-    "id": "gh-GHSA-4mg5-mmrj-mrfc",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:05Z",
-    "title": "ManageEngine DDI Central versions below 6201 are vulnerable to Command injection in Windows DNS...",
-    "description": "ManageEngine DDI Central versions below 6201 are vulnerable to Command injection in Windows DNS Query Resolution Policy name field leading to remote code execution.",
-    "severity": "high",
-    "cve_id": "CVE-2026-12267",
-    "ghsa_id": "GHSA-4mg5-mmrj-mrfc",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-12267.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-h3ww-47qh-gvv3",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:05Z",
-    "title": "A Confused Deputy vulnerability in the EmailTask component in Google Cloud Application...",
-    "description": "A Confused Deputy vulnerability in the EmailTask component in Google Cloud Application Integration versions prior to 2026-06-30 on Google Cloud Platform allows an authenticated attacker to read and exfiltrate arbitrary Google-internal files via a crafted attachment file path.\n\n\nThis vulnerability was patched on 30 June 2026, and no customer action is needed.",
-    "severity": "high",
-    "cve_id": "CVE-2026-81375",
-    "ghsa_id": "GHSA-h3ww-47qh-gvv3",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": {
-      "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-81375.",
-      "affected_industries": [
-        "Technology",
-        "General"
-      ],
-      "recommended_actions": [
-        "Review affected systems",
-        "Apply security patches if available",
-        "Monitor for suspicious activity"
-      ],
-      "urgency": "high"
-    },
-    "risk_score": 75
-  },
-  {
-    "id": "gh-GHSA-2wpj-35wr-vch7",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:05Z",
-    "title": "Apache Karaf's instance-management service (InstanceServiceImpl) builds the command line used to...",
-    "description": "Apache Karaf's instance-management service (InstanceServiceImpl) builds the command line used to launch a child Karaf JVM by string concatenation, then executes it through /bin/sh (Unix) or cscript (Windows). The caller-supplied javaOpts value is spliced into that string unquoted. A javaOpts value containing shell metacharacters (;, |, `, $(...)) is interpreted by the shell instead of being passed to the JVM as an option, giving arbitrary OS command execution as the Karaf process user.\n\n\nReachab",
+    "timestamp": "2026-09-28T21:31:22Z",
+    "title": "In proxygen from v2024.10.28.00 until v2026.09.28.00, the HTTPTransaction:...",
+    "description": "In proxygen from v2024.10.28.00 until v2026.09.28.00, the HTTPTransaction::onWebTransportUniStream and HTTPTransaction::onWebTransportBidiStream APIs could return stream handles that the stream handler had already freed. HQSession then installed those handles as transport read callbacks, which could lead to use of freed memory.",
     "severity": "unknown",
-    "cve_id": "CVE-2026-91006",
-    "ghsa_id": "GHSA-2wpj-35wr-vch7",
+    "cve_id": "CVE-2026-91095",
+    "ghsa_id": "GHSA-c3mh-7h6x-xh3f",
     "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "cwes": [],
     "references": [
+      null,
       null,
       null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-91006.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-91095.",
       "affected_industries": [
         "Technology",
         "General"
@@ -590,14 +279,192 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-49h3-g5vf-r66w",
+    "id": "gh-GHSA-ppxw-566f-wjp6",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:04Z",
-    "title": "A vulnerability was determined in FAST FAC1200R 5.0_20201119_1.0.2. Affected by this...",
-    "description": "A vulnerability was determined in FAST FAC1200R 5.0_20201119_1.0.2. Affected by this vulnerability is the function MmtAtePrase of the component MmtAtePrase Parser. This manipulation causes stack-based buffer overflow. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-09-28T21:31:21Z",
+    "title": "In proxygen from v2026.04.06.00 until v2026.09.28.00, QuicWtSession::closeSession accesses its...",
+    "description": "In proxygen from v2026.04.06.00 until v2026.09.28.00, QuicWtSession::closeSession accesses its member fields after calling the base QuicWtSessionBase::closeSession method. The base method notifies the session handler, which may release the last reference to the session and destroy it.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-84895",
+    "ghsa_id": "GHSA-ppxw-566f-wjp6",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-84895.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-f67j-2jqw-jpq7",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-28T21:31:21Z",
+    "title": "Angular SSR: Denial of Service (DoS) via Infinite Loop on Malformed DOCTYPE",
+    "description": "A Denial of Service (DoS) vulnerability exists in `@angular/platform-server`'s DOM emulation parser (`domino`). When processing untrusted user input containing an incomplete DOCTYPE declaration ending with whitespace before EOF (such as `<!DOCTYPE html `), the HTML parser enters an infinite synchronous loop, pegging CPU utilization at 100% and completely freezing the Node.js server process.\n\n### Technical Description\nIn Angular Server-Side Rendering (SSR), `@angular/platform-server` uses `domino",
     "severity": "high",
-    "cve_id": "CVE-2026-101038",
-    "ghsa_id": "GHSA-49h3-g5vf-r66w",
+    "cve_id": "CVE-2026-101895",
+    "ghsa_id": "GHSA-f67j-2jqw-jpq7",
+    "affected_packages": [
+      "@angular/platform-server",
+      "@angular/platform-server",
+      "@angular/platform-server",
+      "@angular/platform-server"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-101895.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-jq98-m8gp-6cjv",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-28T21:31:19Z",
+    "title": "In Wind River VxWorks 7 prior to 26.09, specific system call arguments can result in the process...",
+    "description": "In Wind River VxWorks 7 prior to 26.09, specific system call arguments can result in the process management subsystem failing to properly release allocated kernel memory before terminating the calling application. Fixed in Version 26.09",
+    "severity": "medium",
+    "cve_id": "CVE-2026-102006",
+    "ghsa_id": "GHSA-jq98-m8gp-6cjv",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-102006.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-rgq7-v7jf-59g9",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-28T21:31:19Z",
+    "title": "Wind River VxWorks 7 24.03 through 26.03, a memory leak occurs under specific, non-default...",
+    "description": "Wind River VxWorks 7 24.03 through 26.03, a memory leak occurs under specific, non-default configuration states when processing specific service routines, causing the system to terminate operations before releasing allocated memory pools. Fixed in VxWorks 7 26.09",
+    "severity": "medium",
+    "cve_id": "CVE-2026-102005",
+    "ghsa_id": "GHSA-rgq7-v7jf-59g9",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 50,
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-102005.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "medium"
+    },
+    "risk_score": 50
+  },
+  {
+    "id": "gh-GHSA-4grx-3wf3-3547",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-28T21:31:18Z",
+    "title": "A security flaw has been discovered in Eleveo Quality Management 9.7.0. This issue affects the...",
+    "description": "A security flaw has been discovered in Eleveo Quality Management 9.7.0. This issue affects the function UtilsService.createAndSaveAudit of the file /qm/cz.zoom.scorecard.webui.Scorecard/QMUtilsService of the component GWT RPC Handler. Performing a manipulation results in information disclosure. The attack is possible to be carried out remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any ",
+    "severity": "low",
+    "cve_id": "CVE-2026-101146",
+    "ghsa_id": "GHSA-4grx-3wf3-3547",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-101146.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-j25w-p3j6-6ww5",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-28T21:31:18Z",
+    "title": "A weakness has been identified in Ziroom ZHOME A0101 1.0.1.0. This vulnerability affects the...",
+    "description": "A weakness has been identified in Ziroom ZHOME A0101 1.0.1.0. This vulnerability affects the function pop_usb_device of the file usr/lib/lua/luci/controller/api/zrUsb.lua of the component USB Device Management API. This manipulation of the argument path causes command injection. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "high",
+    "cve_id": "CVE-2026-101187",
+    "ghsa_id": "GHSA-j25w-p3j6-6ww5",
     "affected_packages": [],
     "cwes": [
       null
@@ -613,7 +480,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-101038.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-101187.",
       "affected_industries": [
         "Technology",
         "General"
@@ -628,14 +495,14 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-95q6-8fg4-hpvm",
+    "id": "gh-GHSA-43pm-6h6p-qxr3",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:04Z",
-    "title": "A vulnerability was found in FAST FAC1200R 5.0_20201119_1.0.2. Affected is the function...",
-    "description": "A vulnerability was found in FAST FAC1200R 5.0_20201119_1.0.2. Affected is the function parse_advertisement_frame of the component devdiscover Service. The manipulation results in stack-based buffer overflow. The attack may be launched remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "high",
-    "cve_id": "CVE-2026-101037",
-    "ghsa_id": "GHSA-95q6-8fg4-hpvm",
+    "timestamp": "2026-09-28T21:31:18Z",
+    "title": "A vulnerability was identified in Eleveo Call Recording Software 9.7.0. This vulnerability...",
+    "description": "A vulnerability was identified in Eleveo Call Recording Software 9.7.0. This vulnerability affects unknown code of the file /callrec/userAddAction.do of the component User Management. Such manipulation of the argument Username leads to ldap injection. The attack can be executed remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "low",
+    "cve_id": "CVE-2026-101145",
+    "ghsa_id": "GHSA-43pm-6h6p-qxr3",
     "affected_packages": [],
     "cwes": [
       null
@@ -643,6 +510,42 @@
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-101145.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-3cf3-h799-fjvq",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-28T21:31:18Z",
+    "title": "An out-of-bounds write issue was addressed with improved bounds checking. This issue is fixed in...",
+    "description": "An out-of-bounds write issue was addressed with improved bounds checking. This issue is fixed in iOS 26.7.1 and iPadOS 26.7.1, macOS Sequoia 15.8.1, macOS Tahoe 26.7.1. Processing a maliciously crafted file may lead to arbitrary code execution. Apple is aware of a report that this issue may have been exploited in an extremely sophisticated attack against specific targeted individuals on versions of iOS before iOS 27.",
+    "severity": "high",
+    "cve_id": "CVE-2026-86950",
+    "ghsa_id": "GHSA-3cf3-h799-fjvq",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
       null,
       null,
       null,
@@ -651,7 +554,7 @@
     ],
     "ai_analysis": {
       "risk_score": 75,
-      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-101037.",
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-86950.",
       "affected_industries": [
         "Technology",
         "General"
@@ -666,14 +569,14 @@
     "risk_score": 75
   },
   {
-    "id": "gh-GHSA-h7w4-9999-mvp8",
+    "id": "gh-GHSA-wwfr-44pg-7wr5",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:04Z",
-    "title": "Stored Cross-Site Scripting (XSS) in TPVEnlanube affecting the following endpoint and parameter:\n...",
-    "description": "Stored Cross-Site Scripting (XSS) in TPVEnlanube affecting the following endpoint and parameter:\n\n  *  CVE-2026-7170: parameter 'vendor_store_name' in the endpoint  '/administrator/index.php?pshop_mode=admin&page=store.store_add&option=com_virtuemart&vendor_id=[ID]'.\n\n\n\n\nSuccessful exploitation of this vulnerability could allow an authenticated attacker to inject malicious code and execute it in users' browsers without their consent.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-7170",
-    "ghsa_id": "GHSA-h7w4-9999-mvp8",
+    "timestamp": "2026-09-28T21:31:18Z",
+    "title": "A vulnerability was determined in Eleveo Call Recording Software 9.7.0. This affects an unknown...",
+    "description": "A vulnerability was determined in Eleveo Call Recording Software 9.7.0. This affects an unknown part of the file /callrec/searchAction.do of the component Query Builder. This manipulation causes improper access controls. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "low",
+    "cve_id": "CVE-2026-101144",
+    "ghsa_id": "GHSA-wwfr-44pg-7wr5",
     "affected_packages": [],
     "cwes": [
       null
@@ -681,11 +584,119 @@
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-101144.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "low"
+    },
+    "risk_score": 25
+  },
+  {
+    "id": "gh-GHSA-g83g-3c4g-cfm5",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-28T21:31:18Z",
+    "title": "LiteLLM contains a weak authentication vulnerability that allows an attacker holding a valid JWT...",
+    "description": "LiteLLM contains a weak authentication vulnerability that allows an attacker holding a valid JWT from the configured identity provider to authenticate as any existing user by exploiting an email-based fallback lookup in the JWT authentication flow without verifying the email_verified claim. Attackers can present a token with an unverified email address matching a victim's account to inherit the victim's role, including proxy_admin privileges, and permanently overwrite the victim's stored identit",
+    "severity": "high",
+    "cve_id": "CVE-2026-93355",
+    "ghsa_id": "GHSA-g83g-3c4g-cfm5",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-93355.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-3h53-mhw6-2896",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-28T21:31:18Z",
+    "title": "The ConvertPlus plugin for WordPress is vulnerable to Deserialization of Untrusted Data in all...",
+    "description": "The ConvertPlus plugin for WordPress is vulnerable to Deserialization of Untrusted Data in all versions up to, and including, 3.6.3 via the style parameter of the cp_display_preview_modal AJAX action. The vulnerability exists because the action's nonce guard is gated behind an isset() check and fails open when the cp_admin_page_nonce parameter is omitted entirely, no capability check is performed on the callback, and sanitize_text_field() — applied to the $style value before it is concatenated d",
+    "severity": "high",
+    "cve_id": "CVE-2026-87741",
+    "ghsa_id": "GHSA-3h53-mhw6-2896",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": {
+      "risk_score": 75,
+      "impact_assessment": "Potential security vulnerability with high severity. CVE: CVE-2026-87741.",
+      "affected_industries": [
+        "Technology",
+        "General"
+      ],
+      "recommended_actions": [
+        "Review affected systems",
+        "Apply security patches if available",
+        "Monitor for suspicious activity"
+      ],
+      "urgency": "high"
+    },
+    "risk_score": 75
+  },
+  {
+    "id": "gh-GHSA-6m87-8wg6-hh8w",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-28T21:31:18Z",
+    "title": "Authlib (v1.7.2 and below) contains a signature verification bypass vulnerability. The...",
+    "description": "Authlib (v1.7.2 and below) contains a signature verification bypass vulnerability. The JsonWebSignature.deserialize_json() method accepts a JSON Serialization JWS object and returns the payload as successfully verified without checking for a signature and without requiring a cryptographic key.",
+    "severity": "unknown",
+    "cve_id": "CVE-2026-96760",
+    "ghsa_id": "GHSA-6m87-8wg6-hh8w",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7170.",
+      "impact_assessment": "Potential security vulnerability with unknown severity. CVE: CVE-2026-96760.",
       "affected_industries": [
         "Technology",
         "General"
@@ -700,14 +711,14 @@
     "risk_score": 50
   },
   {
-    "id": "gh-GHSA-mc56-m68v-2mjr",
+    "id": "gh-GHSA-wg44-852p-pwjv",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:04Z",
-    "title": "A flaw has been found in aligungr UERANSIM up to 3.3.0. This affects the function...",
-    "description": "A flaw has been found in aligungr UERANSIM up to 3.3.0. This affects the function DecodePlainMmMessage in the library src/lib/nas/encode.cpp of the component nr-gnb. Executing a manipulation can lead to uncaught exception. The attack can be launched remotely. The exploit has been published and may be used. This patch is called 1ae9bf2062b57595dbcbc4bc1d0a0ccf06815bac. It is best practice to apply a patch to resolve this issue.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-101035",
-    "ghsa_id": "GHSA-mc56-m68v-2mjr",
+    "timestamp": "2026-09-28T21:31:17Z",
+    "title": "A vulnerability was found in Eleveo Quality Management 9.7.0. Affected by this issue is some...",
+    "description": "A vulnerability was found in Eleveo Quality Management 9.7.0. Affected by this issue is some unknown functionality of the file /qm/cz.zoom.scorecard.webui.Scorecard/cz.zoom.scorecard.webui.Scorecard/QMBODownload. The manipulation results in information disclosure. The attack may be launched remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "low",
+    "cve_id": "CVE-2026-101143",
+    "ghsa_id": "GHSA-wg44-852p-pwjv",
     "affected_packages": [],
     "cwes": [
       null
@@ -719,13 +730,11 @@
       null,
       null,
       null,
-      null,
-      null,
       null
     ],
     "ai_analysis": {
-      "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-101035.",
+      "risk_score": 25,
+      "impact_assessment": "Potential security vulnerability with low severity. CVE: CVE-2026-101143.",
       "affected_industries": [
         "Technology",
         "General"
@@ -735,19 +744,19 @@
         "Apply security patches if available",
         "Monitor for suspicious activity"
       ],
-      "urgency": "medium"
+      "urgency": "low"
     },
-    "risk_score": 50
+    "risk_score": 25
   },
   {
-    "id": "gh-GHSA-428v-q45m-cv5c",
+    "id": "gh-GHSA-j8ph-g6vq-c5h6",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T12:31:04Z",
-    "title": "Stored Cross-Site Scripting (XSS) in TPVEnlanube affecting the following endpoint and parameter:\n...",
-    "description": "Stored Cross-Site Scripting (XSS) in TPVEnlanube affecting the following endpoint and parameter:\n\n  *  CVE-2026-7172: parameter 'Nombre Completo' in the endpoint  '/administrator/index.php?option=com_virtuemart&page=admin.user_list'.\n\n\n\n\nSuccessful exploitation of this vulnerability could allow an authenticated attacker to inject malicious code and execute it in users' browsers without their consent.",
+    "timestamp": "2026-09-28T21:31:17Z",
+    "title": "Wind River VxWorks 7 prior to 26.09, specific system call arguments can result in the IPNET...",
+    "description": "Wind River VxWorks 7 prior to 26.09, specific system call arguments can result in the IPNET subsystem failing to properly release allocated kernel memory and system file descriptors before terminating the calling application. Fixed in Version 26.09. \n\n\nSecurity Researcher: Zhi Yang Bingren Wu Finding",
     "severity": "medium",
-    "cve_id": "CVE-2026-7172",
-    "ghsa_id": "GHSA-428v-q45m-cv5c",
+    "cve_id": "CVE-2026-97686",
+    "ghsa_id": "GHSA-j8ph-g6vq-c5h6",
     "affected_packages": [],
     "cwes": [
       null
@@ -759,7 +768,7 @@
     ],
     "ai_analysis": {
       "risk_score": 50,
-      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-7172.",
+      "impact_assessment": "Potential security vulnerability with medium severity. CVE: CVE-2026-97686.",
       "affected_industries": [
         "Technology",
         "General"
