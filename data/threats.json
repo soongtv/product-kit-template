@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1790636940401-1",
+    "id": "twitter-1790659387987-1",
     "source": "Twitter Security",
-    "timestamp": "2026-09-28T23:09:00.401Z",
+    "timestamp": "2026-09-29T05:23:07.987Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1790636940401-1",
+    "id": "hn-1790659387987-1",
     "source": "HackerNews",
-    "timestamp": "2026-09-28T23:09:00.401Z",
+    "timestamp": "2026-09-29T05:23:07.987Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,256 +26,22 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-6vj9-mwq6-2f5v",
+    "id": "gh-GHSA-m6qw-8q66-9vp2",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:56:05Z",
-    "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
-    "description": "### Summary\n\nNodemailer's process-global DNS cache is keyed only by `host`, but each cache entry also stores the caller-specific TLS `servername`. When two direct SMTPS transports use the same DNS host with different `tls.servername` values, the first transport's server name is returned to the second transport and overwrites its explicitly configured value.\n\nAs a result, Nodemailer sends the wrong SNI value and verifies the peer certificate against the wrong identity. In a multi-tenant service o",
-    "severity": "medium",
-    "cve_id": null,
-    "ghsa_id": "GHSA-6vj9-mwq6-2f5v",
-    "affected_packages": [
-      "nodemailer"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3wwx-pv8p-q78v",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:42:37Z",
-    "title": "undici vulnerable to Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
-    "description": "## Impact\n\nundici's WebSocket client (including Node.js's bundled `globalThis.WebSocket`) crashes the entire Node.js process when a remote WebSocket peer sends a permessage-deflate compressed message that crosses the decompressed-payload size limit and then contains a malformed DEFLATE block. In `lib/web/websocket/permessage-deflate.js`, the size-limit cleanup calls `removeAllListeners()` on the internal zlib `InflateRaw`, removing its `error` listener, but leaves the stream running. The inflate",
-    "severity": "medium",
-    "cve_id": "CVE-2026-85024",
-    "ghsa_id": "GHSA-3wwx-pv8p-q78v",
-    "affected_packages": [
-      "undici",
-      "undici",
-      "undici"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3pph-fpjx-jg34",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:34:58Z",
-    "title": "multer vulnerable to Denial of Service via orphaned disk writes on aborted uploads",
-    "description": "### Impact\n\nMulter's `diskStorage` can leave complete, orphaned files on disk when a multipart upload is aborted in the brief window before the storage engine assigns the file path. This is an incomplete fix of CVE-2026-5038: the earlier cleanup removes only in-flight uploads that already have a path, so an upload aborted inside that window is written to disk with nothing left to remove it, and the application is not given a handle to clean it up. An unauthenticated attacker sending aborted requ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-88932",
-    "ghsa_id": "GHSA-3pph-fpjx-jg34",
-    "affected_packages": [
-      "multer"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-9f6g-j8ch-79g4",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:33:08Z",
-    "title": "morgan vulnerable to Log Injection via unescaped double quote in quoted log fields",
-    "description": "### Impact\n\nMorgan writes attacker-controlled request data to the access log. Its escaping (added in 1.11.0 and 1.12.0) neutralizes control characters, the Unicode line separators, and backslash, but not the double quote (`0x22`), which is the field delimiter of the Apache combined log format morgan emits. An attacker who controls a quoted field (`:user-agent`, `:referrer`, the request URL, or the Basic auth `:remote-user`) can inject a double quote to close the field early and forge additional ",
-    "severity": "medium",
-    "cve_id": "CVE-2026-87859",
-    "ghsa_id": "GHSA-9f6g-j8ch-79g4",
-    "affected_packages": [
-      "morgan"
-    ],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-8mv4-xrj3-xg7m",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:22Z",
-    "title": "In proxygen from v2024.10.28.00 until v2026.09.28.00, WebTransportImpl::terminateSessionStreams ...",
-    "description": "In proxygen from v2024.10.28.00 until v2026.09.28.00, WebTransportImpl::terminateSessionStreams (WebTransportImpl::destroy in releases before v2025.08.18.00) failed to unregister read callbacks for streams that were no longer open before destroying them. The transport could then invoke a read callback that had been freed.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-91096",
-    "ghsa_id": "GHSA-8mv4-xrj3-xg7m",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-c3mh-7h6x-xh3f",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:22Z",
-    "title": "In proxygen from v2024.10.28.00 until v2026.09.28.00, the HTTPTransaction:...",
-    "description": "In proxygen from v2024.10.28.00 until v2026.09.28.00, the HTTPTransaction::onWebTransportUniStream and HTTPTransaction::onWebTransportBidiStream APIs could return stream handles that the stream handler had already freed. HQSession then installed those handles as transport read callbacks, which could lead to use of freed memory.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-91095",
-    "ghsa_id": "GHSA-c3mh-7h6x-xh3f",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-ppxw-566f-wjp6",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:21Z",
-    "title": "In proxygen from v2026.04.06.00 until v2026.09.28.00, QuicWtSession::closeSession accesses its...",
-    "description": "In proxygen from v2026.04.06.00 until v2026.09.28.00, QuicWtSession::closeSession accesses its member fields after calling the base QuicWtSessionBase::closeSession method. The base method notifies the session handler, which may release the last reference to the session and destroy it.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-84895",
-    "ghsa_id": "GHSA-ppxw-566f-wjp6",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-f67j-2jqw-jpq7",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:21Z",
-    "title": "Angular SSR: Denial of Service (DoS) via Infinite Loop on Malformed DOCTYPE",
-    "description": "A Denial of Service (DoS) vulnerability exists in `@angular/platform-server`'s DOM emulation parser (`domino`). When processing untrusted user input containing an incomplete DOCTYPE declaration ending with whitespace before EOF (such as `<!DOCTYPE html `), the HTML parser enters an infinite synchronous loop, pegging CPU utilization at 100% and completely freezing the Node.js server process.\n\n### Technical Description\nIn Angular Server-Side Rendering (SSR), `@angular/platform-server` uses `domino",
-    "severity": "high",
-    "cve_id": "CVE-2026-101895",
-    "ghsa_id": "GHSA-f67j-2jqw-jpq7",
-    "affected_packages": [
-      "@angular/platform-server",
-      "@angular/platform-server",
-      "@angular/platform-server",
-      "@angular/platform-server"
-    ],
-    "cwes": [
-      null,
-      null
-    ],
-    "references": [
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-jq98-m8gp-6cjv",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:19Z",
-    "title": "In Wind River VxWorks 7 prior to 26.09, specific system call arguments can result in the process...",
-    "description": "In Wind River VxWorks 7 prior to 26.09, specific system call arguments can result in the process management subsystem failing to properly release allocated kernel memory before terminating the calling application. Fixed in Version 26.09",
-    "severity": "medium",
-    "cve_id": "CVE-2026-102006",
-    "ghsa_id": "GHSA-jq98-m8gp-6cjv",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-rgq7-v7jf-59g9",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:19Z",
-    "title": "Wind River VxWorks 7 24.03 through 26.03, a memory leak occurs under specific, non-default...",
-    "description": "Wind River VxWorks 7 24.03 through 26.03, a memory leak occurs under specific, non-default configuration states when processing specific service routines, causing the system to terminate operations before releasing allocated memory pools. Fixed in VxWorks 7 26.09",
-    "severity": "medium",
-    "cve_id": "CVE-2026-102005",
-    "ghsa_id": "GHSA-rgq7-v7jf-59g9",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-4grx-3wf3-3547",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:18Z",
-    "title": "A security flaw has been discovered in Eleveo Quality Management 9.7.0. This issue affects the...",
-    "description": "A security flaw has been discovered in Eleveo Quality Management 9.7.0. This issue affects the function UtilsService.createAndSaveAudit of the file /qm/cz.zoom.scorecard.webui.Scorecard/QMUtilsService of the component GWT RPC Handler. Performing a manipulation results in information disclosure. The attack is possible to be carried out remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any ",
+    "timestamp": "2026-09-29T03:30:42Z",
+    "title": "A security flaw has been discovered in MODSetter SurfSense up to 0.0.36. Impacted is an unknown...",
+    "description": "A security flaw has been discovered in MODSetter SurfSense up to 0.0.36. Impacted is an unknown function of the file surfsense_backend/app/routes/editor_routes.py of the component Document Export Feature. Performing a manipulation results in server-side request forgery. The attack can be initiated remotely. The exploit has been released to the public and may be used for attacks. Upgrading to version 0.0.36.3 is recommended to address this issue. The patch is named 2faff7b3823322a9cb6797973e6caf0",
     "severity": "low",
-    "cve_id": "CVE-2026-101146",
-    "ghsa_id": "GHSA-4grx-3wf3-3547",
+    "cve_id": "CVE-2026-102244",
+    "ghsa_id": "GHSA-m6qw-8q66-9vp2",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
       null,
       null,
       null,
@@ -288,39 +54,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-j25w-p3j6-6ww5",
+    "id": "gh-GHSA-cm89-cv3h-2jcf",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:18Z",
-    "title": "A weakness has been identified in Ziroom ZHOME A0101 1.0.1.0. This vulnerability affects the...",
-    "description": "A weakness has been identified in Ziroom ZHOME A0101 1.0.1.0. This vulnerability affects the function pop_usb_device of the file usr/lib/lua/luci/controller/api/zrUsb.lua of the component USB Device Management API. This manipulation of the argument path causes command injection. The attack is possible to be carried out remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "high",
-    "cve_id": "CVE-2026-101187",
-    "ghsa_id": "GHSA-j25w-p3j6-6ww5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-43pm-6h6p-qxr3",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:18Z",
-    "title": "A vulnerability was identified in Eleveo Call Recording Software 9.7.0. This vulnerability...",
-    "description": "A vulnerability was identified in Eleveo Call Recording Software 9.7.0. This vulnerability affects unknown code of the file /callrec/userAddAction.do of the component User Management. Such manipulation of the argument Username leads to ldap injection. The attack can be executed remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-09-29T03:30:42Z",
+    "title": "A vulnerability was identified in MODSetter SurfSense up to 2.0.3. This issue affects some...",
+    "description": "A vulnerability was identified in MODSetter SurfSense up to 2.0.3. This issue affects some unknown processing of the file /api/search-source/connectors/mcp/test of the component MCP Connector Integration. Such manipulation leads to command injection. It is possible to launch the attack remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
     "severity": "low",
-    "cve_id": "CVE-2026-101145",
-    "ghsa_id": "GHSA-43pm-6h6p-qxr3",
+    "cve_id": "CVE-2026-102243",
+    "ghsa_id": "GHSA-cm89-cv3h-2jcf",
     "affected_packages": [],
     "cwes": [
       null
@@ -338,106 +79,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-3cf3-h799-fjvq",
+    "id": "gh-GHSA-jxpp-wwfc-2fm6",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:18Z",
-    "title": "An out-of-bounds write issue was addressed with improved bounds checking. This issue is fixed in...",
-    "description": "An out-of-bounds write issue was addressed with improved bounds checking. This issue is fixed in iOS 26.7.1 and iPadOS 26.7.1, macOS Sequoia 15.8.1, macOS Tahoe 26.7.1. Processing a maliciously crafted file may lead to arbitrary code execution. Apple is aware of a report that this issue may have been exploited in an extremely sophisticated attack against specific targeted individuals on versions of iOS before iOS 27.",
-    "severity": "high",
-    "cve_id": "CVE-2026-86950",
-    "ghsa_id": "GHSA-3cf3-h799-fjvq",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-wwfr-44pg-7wr5",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:18Z",
-    "title": "A vulnerability was determined in Eleveo Call Recording Software 9.7.0. This affects an unknown...",
-    "description": "A vulnerability was determined in Eleveo Call Recording Software 9.7.0. This affects an unknown part of the file /callrec/searchAction.do of the component Query Builder. This manipulation causes improper access controls. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-09-29T03:30:42Z",
+    "title": "A vulnerability was determined in Netcore NAP930 0.1.241010.141410. This vulnerability affects...",
+    "description": "A vulnerability was determined in Netcore NAP930 0.1.241010.141410. This vulnerability affects unknown code of the file /lib/functions/backup_common.sh of the component Backup/Restore. This manipulation of the argument aes_pass causes use of hard-coded cryptographic key\n . It is possible to initiate the attack remotely. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
     "severity": "low",
-    "cve_id": "CVE-2026-101144",
-    "ghsa_id": "GHSA-wwfr-44pg-7wr5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-g83g-3c4g-cfm5",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:18Z",
-    "title": "LiteLLM contains a weak authentication vulnerability that allows an attacker holding a valid JWT...",
-    "description": "LiteLLM contains a weak authentication vulnerability that allows an attacker holding a valid JWT from the configured identity provider to authenticate as any existing user by exploiting an email-based fallback lookup in the JWT authentication flow without verifying the email_verified claim. Attackers can present a token with an unverified email address matching a victim's account to inherit the victim's role, including proxy_admin privileges, and permanently overwrite the victim's stored identit",
-    "severity": "high",
-    "cve_id": "CVE-2026-93355",
-    "ghsa_id": "GHSA-g83g-3c4g-cfm5",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3h53-mhw6-2896",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:18Z",
-    "title": "The ConvertPlus plugin for WordPress is vulnerable to Deserialization of Untrusted Data in all...",
-    "description": "The ConvertPlus plugin for WordPress is vulnerable to Deserialization of Untrusted Data in all versions up to, and including, 3.6.3 via the style parameter of the cp_display_preview_modal AJAX action. The vulnerability exists because the action's nonce guard is gated behind an isset() check and fails open when the cp_admin_page_nonce parameter is omitted entirely, no capability check is performed on the callback, and sanitize_text_field() — applied to the $style value before it is concatenated d",
-    "severity": "high",
-    "cve_id": "CVE-2026-87741",
-    "ghsa_id": "GHSA-3h53-mhw6-2896",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-6m87-8wg6-hh8w",
-    "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:18Z",
-    "title": "Authlib (v1.7.2 and below) contains a signature verification bypass vulnerability. The...",
-    "description": "Authlib (v1.7.2 and below) contains a signature verification bypass vulnerability. The JsonWebSignature.deserialize_json() method accepts a JSON Serialization JWS object and returns the payload as successfully verified without checking for a signature and without requiring a cryptographic key.",
-    "severity": "unknown",
-    "cve_id": "CVE-2026-96760",
-    "ghsa_id": "GHSA-6m87-8wg6-hh8w",
+    "cve_id": "CVE-2026-102241",
+    "ghsa_id": "GHSA-jxpp-wwfc-2fm6",
     "affected_packages": [],
     "cwes": [],
     "references": [
@@ -445,20 +94,45 @@
       null,
       null,
       null,
+      null,
+      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-wg44-852p-pwjv",
+    "id": "gh-GHSA-c7fj-2fxp-jqpf",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:17Z",
-    "title": "A vulnerability was found in Eleveo Quality Management 9.7.0. Affected by this issue is some...",
-    "description": "A vulnerability was found in Eleveo Quality Management 9.7.0. Affected by this issue is some unknown functionality of the file /qm/cz.zoom.scorecard.webui.Scorecard/cz.zoom.scorecard.webui.Scorecard/QMBODownload. The manipulation results in information disclosure. The attack may be launched remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-09-29T03:30:42Z",
+    "title": "An authenticated LimeSurvey Community Edition 7.3.0 user allowed to create surveys can use their...",
+    "description": "An authenticated LimeSurvey Community Edition 7.3.0 user allowed to create surveys can use their own survey as an authorized context while supplying question or answer identifiers belonging to another user's survey. The REST survey-patching endpoint checks the attacker's permission against the survey ID in the request URL, but the vulnerable persistence operations resolve the target object independently by its global qid or aid and never verify that it belongs to that authorized survey.",
+    "severity": "high",
+    "cve_id": "CVE-2026-97685",
+    "ghsa_id": "GHSA-c7fj-2fxp-jqpf",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-w675-v8gw-j298",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T03:30:41Z",
+    "title": "A vulnerability has been found in RaspAP raspap-webgui up to 3.5.5. Affected by this...",
+    "description": "A vulnerability has been found in RaspAP raspap-webgui up to 3.5.5. Affected by this vulnerability is the function escapeshellcmd of the file ajax/openvpn/del_ovpncfg.php of the component OpenVPN Configuration Handler. Such manipulation of the argument cfg_id leads to os command injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
     "severity": "low",
-    "cve_id": "CVE-2026-101143",
-    "ghsa_id": "GHSA-wg44-852p-pwjv",
+    "cve_id": "CVE-2026-101859",
+    "ghsa_id": "GHSA-w675-v8gw-j298",
     "affected_packages": [],
     "cwes": [
       null
@@ -476,14 +150,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-j8ph-g6vq-c5h6",
+    "id": "gh-GHSA-2wc9-fj5c-fjg2",
     "source": "GitHub Security",
-    "timestamp": "2026-09-28T21:31:17Z",
-    "title": "Wind River VxWorks 7 prior to 26.09, specific system call arguments can result in the IPNET...",
-    "description": "Wind River VxWorks 7 prior to 26.09, specific system call arguments can result in the IPNET subsystem failing to properly release allocated kernel memory and system file descriptors before terminating the calling application. Fixed in Version 26.09. \n\n\nSecurity Researcher: Zhi Yang Bingren Wu Finding",
-    "severity": "medium",
-    "cve_id": "CVE-2026-97686",
-    "ghsa_id": "GHSA-j8ph-g6vq-c5h6",
+    "timestamp": "2026-09-29T03:30:41Z",
+    "title": "A flaw has been found in RaspAP raspap-webgui up to 3.5.5. Affected is the function WiFiManager:...",
+    "description": "A flaw has been found in RaspAP raspap-webgui up to 3.5.5. Affected is the function WiFiManager::writeWpaSupplicant of the file src/RaspAP/Networking/Hotspot/WiFiManager.php of the component SSID Processing. This manipulation of the argument ssid causes os command injection. The attack can be initiated remotely. The exploit has been published and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "low",
+    "cve_id": "CVE-2026-101858",
+    "ghsa_id": "GHSA-2wc9-fj5c-fjg2",
     "affected_packages": [],
     "cwes": [
       null
@@ -491,302 +165,644 @@
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-94138",
-    "source": "NVD CVE",
-    "timestamp": "2026-09-21T04:17:37.083",
-    "title": "CVE-2026-94138 - A security flaw has been discovered in Chengdu Feiyuxing Technology Feiyu Star Router B-MB5E202-2103",
-    "description": "A security flaw has been discovered in Chengdu Feiyuxing Technology Feiyu Star Router B-MB5E202-210322-r11656. This impacts an unknown function of the file /send_order.cgi?parameter=del_expmac. The manipulation of the argument mac results in command injection. The attack may be launched remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-94138",
-    "cvss_score": 6.6,
-    "affected_products": [],
+    "id": "gh-GHSA-qxrf-6734-p6v9",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T03:30:41Z",
+    "title": "The HT Contact Form – Drag & Drop Form Builder for WordPress plugin for WordPress is vulnerable...",
+    "description": "The HT Contact Form – Drag & Drop Form Builder for WordPress plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the Rich Text Editor Field in all versions up to, and including, 2.10.2 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
+    "severity": "high",
+    "cve_id": "CVE-2026-96326",
+    "ghsa_id": "GHSA-qxrf-6734-p6v9",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://uvxbywu62qm.feishu.cn/wiki/UJfEwIEjJijyHskIuxccnHkTnmh?from=from_copylink",
-      "https://vuldb.com/cve/CVE-2026-94138",
-      "https://vuldb.com/submit/893913",
-      "https://vuldb.com/vuln/408055",
-      "https://vuldb.com/vuln/408055/cti"
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-94137",
-    "source": "NVD CVE",
-    "timestamp": "2026-09-21T04:17:36.393",
-    "title": "CVE-2026-94137 - A vulnerability was identified in Hangzhou Shunwang Technology shzh 10.7.2.693. This affects the fun",
-    "description": "A vulnerability was identified in Hangzhou Shunwang Technology shzh 10.7.2.693. This affects the function sub_180004AC0 of the file shdrv_x64.sys of the component IRP_MJ_DEVICE_CONTROL Handler. The manipulation of the argument PID leads to denial of service. The attack must be carried out locally.",
+    "id": "gh-GHSA-2fcc-4gv4-mvr7",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T03:30:41Z",
+    "title": "Bitwarden Server 2025.6.0 before 2026.5.0 declares the @ExternalId parameter of the...",
+    "description": "Bitwarden Server 2025.6.0 before 2026.5.0 declares the @ExternalId parameter of the User_ReadBySsoUserOrganizationIdExternalId stored procedure as NVARCHAR(50) while the column it queries stores NVARCHAR(300), silently truncating the SSO login identifier on SQL Server deployments and allowing a user whose identity-provider identifier begins with another organization member's full 50-character identifier to authenticate as that member and obtain a victim-scoped access token.",
+    "severity": "high",
+    "cve_id": "CVE-2026-101878",
+    "ghsa_id": "GHSA-2fcc-4gv4-mvr7",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-ccwh-mr5w-5j9f",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T03:30:41Z",
+    "title": "A security flaw has been discovered in FAST FAC1203R 20200116_2.0.4. The affected element is the...",
+    "description": "A security flaw has been discovered in FAST FAC1203R 20200116_2.0.4. The affected element is the function _tWlanTask of the component MmtAtePrase Parser. Performing a manipulation results in stack-based buffer overflow. The attacker must have access to the local network to execute the attack. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "high",
+    "cve_id": "CVE-2026-101354",
+    "ghsa_id": "GHSA-ccwh-mr5w-5j9f",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-675c-v9h6-j3g3",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T03:30:41Z",
+    "title": "A vulnerability was found in RaspAP raspap-webgui up to 3.5.5. Affected by this issue is the...",
+    "description": "A vulnerability was found in RaspAP raspap-webgui up to 3.5.5. Affected by this issue is the function PluginInstaller::addSudoers of the file src/RaspAP/Plugins/PluginInstaller.php of the component sudo Configuration. Performing a manipulation results in improper privilege management. The attack may be initiated remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "high",
+    "cve_id": "CVE-2026-101860",
+    "ghsa_id": "GHSA-675c-v9h6-j3g3",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-538r-x966-m3m2",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T03:30:41Z",
+    "title": "A vulnerability was found in Netcore NAP930 0.1.241010.141410. This affects the function eval of...",
+    "description": "A vulnerability was found in Netcore NAP930 0.1.241010.141410. This affects the function eval of the file /www/cgi-bin/network_tools of the component Network Tools CGI. The manipulation of the argument sid results in os command injection. The attack may be performed from remote. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "critical",
+    "cve_id": "CVE-2026-102240",
+    "ghsa_id": "GHSA-538r-x966-m3m2",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-fwhq-23fv-8x97",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T03:30:40Z",
+    "title": "A vulnerability was detected in Trusted Domain Project OpenDMARC up to 1.4.2. Affected is the...",
+    "description": "A vulnerability was detected in Trusted Domain Project OpenDMARC up to 1.4.2. Affected is the function opendmarc_policy_query_dmarc of the component Multi-Record Set Handler. The manipulation results in authentication bypass by spoofing. The attack can be executed remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-101280",
+    "ghsa_id": "GHSA-fwhq-23fv-8x97",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-rhv9-26qc-872f",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T03:30:40Z",
+    "title": "GestSup versions before 3.2.62 contain a stored cross-site scripting vulnerability in the IMAP...",
+    "description": "GestSup versions before 3.2.62 contain a stored cross-site scripting vulnerability in the IMAP OAuth connector that double-decodes MIME-encoded email subjects after HTML escaping. Unauthenticated attackers can send crafted emails to monitored mailboxes with nested MIME encoded-words to inject JavaScript that executes in technician sessions when viewing tickets.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-102374",
+    "ghsa_id": "GHSA-rhv9-26qc-872f",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-wcm4-67q4-6r6m",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T03:30:40Z",
+    "title": "GestSup versions before 3.2.62 fail to validate ticket ownership when loading comments via the...",
+    "description": "GestSup versions before 3.2.62 fail to validate ticket ownership when loading comments via the threadedit parameter in thread.php. Authenticated attackers can enumerate sequential comment IDs to read private comments from other users' tickets without proper authorization checks.",
+    "severity": "high",
+    "cve_id": "CVE-2026-102373",
+    "ghsa_id": "GHSA-wcm4-67q4-6r6m",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-ghhh-8g6j-jh47",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T03:30:40Z",
+    "title": "GestSup versions before 3.2.62 fail to properly sanitize HTML email bodies in the IMAP LOGIN...",
+    "description": "GestSup versions before 3.2.62 fail to properly sanitize HTML email bodies in the IMAP LOGIN connector, allowing unauthenticated attackers to store arbitrary JavaScript in ticket descriptions and replies. Attackers can send emails to the monitored mailbox containing script tags and event handlers that execute in technician browsers, enabling ticket data theft and unauthorized actions.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-102372",
+    "ghsa_id": "GHSA-ghhh-8g6j-jh47",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-3h24-2ph8-4r6f",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T03:30:40Z",
+    "title": "A security vulnerability has been detected in Trusted Domain Project OpenDMARC up to 1.4.2. This...",
+    "description": "A security vulnerability has been detected in Trusted Domain Project OpenDMARC up to 1.4.2. This impacts an unknown function of the file libopendmarc/opendmarc_policy.c of the component DMARC Parser. The manipulation of the argument pct leads to integer overflow. Remote exploitation of the attack is possible. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-101279",
+    "ghsa_id": "GHSA-3h24-2ph8-4r6f",
+    "affected_packages": [],
+    "cwes": [],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-fvpv-g9f4-87fc",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T03:30:40Z",
+    "title": "A flaw has been found in Trusted Domain Project OpenDMARC up to 1.4.2. Affected by this...",
+    "description": "A flaw has been found in Trusted Domain Project OpenDMARC up to 1.4.2. Affected by this vulnerability is the function opendmarc_sp2_find_mailfrom_domain of the file libopendmarc/opendmarc_spf.c of the component SPF Macro Handler. This manipulation causes improper authentication. The attack is possible to be carried out remotely. The exploit has been published and may be used. Patch name: c48a74c758677fc5272a73eff15ffdbf8afda1a6. Applying a patch is the recommended action to fix this issue.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-101281",
+    "ghsa_id": "GHSA-fvpv-g9f4-87fc",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-f9p6-hxqg-x7r4",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T03:30:40Z",
+    "title": "A weakness has been identified in Trusted Domain Project OpenDMARC up to 1.4.2. This affects the...",
+    "description": "A weakness has been identified in Trusted Domain Project OpenDMARC up to 1.4.2. This affects the function opendmarc_get_tld of the file libopendmarc/opendmarc_tld.c : of the component PSL Wildcard Handler. Executing a manipulation can lead to origin validation error. The attack may be launched remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
     "severity": "low",
-    "cve_id": "CVE-2026-94137",
-    "cvss_score": 3.3,
-    "affected_products": [],
+    "cve_id": "CVE-2026-101278",
+    "ghsa_id": "GHSA-f9p6-hxqg-x7r4",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://vuldb.com/cve/CVE-2026-94137",
-      "https://vuldb.com/submit/893882",
-      "https://vuldb.com/vuln/408054",
-      "https://vuldb.com/vuln/408054/cti",
-      "https://www.virustotal.com/gui/file/e3b99f727e59aab08862a161df7e3d7790842a76c42184fb4ba267db14eae4fa"
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-94185",
-    "source": "NVD CVE",
-    "timestamp": "2026-09-21T03:16:34.243",
-    "title": "CVE-2026-94185 - nvm resolves a requested version or alias by treating it as a filename under $NVM_DIR/alias. Before ",
-    "description": "nvm resolves a requested version or alias by treating it as a filename under $NVM_DIR/alias. Before 0.40.8, nvm_alias() concatenated the requested name onto that directory and read the result with no containment check, so a name containing a `..` component escaped the alias directory; under the default layout an alias such as `../../.npmrc` resolves to a file in the user's home directory. nvm_print_alias_file() then emits every non-comment, non-empty line of whatever was opened. A version string taken from an untrusted .nvmrc reaches this path, so a developer who runs `nvm use`, `nvm install`, or `nvm which` inside an attacker-supplied repository discloses the first non-comment line of an arbitrary file readable by that user, in the resulting \"is not yet installed\" error message. A user-supplied `nvm alias <traversing-name>` discloses every non-comment line of the target file. There is no integrity or availability impact, and no command execution on this path.",
+    "id": "gh-GHSA-ffmx-jjx9-c9cx",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T00:31:40Z",
+    "title": "mall4j through 4.0 contains an unrestricted file upload vulnerability in FileController endpoints...",
+    "description": "mall4j through 4.0 contains an unrestricted file upload vulnerability in FileController endpoints that lack authorization checks and accept arbitrary file types without validation. Attackers with any authenticated token can upload HTML or SVG files that execute scripts in administrator browsers when accessed from the local storage path, resulting in stored cross-site scripting.",
+    "severity": "low",
+    "cve_id": "CVE-2026-102366",
+    "ghsa_id": "GHSA-ffmx-jjx9-c9cx",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-4jg6-vww8-2xf3",
+    "source": "GitHub Security",
+    "timestamp": "2026-09-29T00:31:40Z",
+    "title": "mall4j through 4.0 contains an insufficient session expiration vulnerability in the token refresh...",
+    "description": "mall4j through 4.0 contains an insufficient session expiration vulnerability in the token refresh endpoint that fails to validate the enabled flag when issuing new sessions. Disabled user accounts can indefinitely renew their sessions through the POST /token/refresh endpoint, retaining access that account disabling was intended to remove.",
     "severity": "medium",
-    "cve_id": "CVE-2026-94185",
-    "cvss_score": 5.5,
-    "affected_products": [],
+    "cve_id": "CVE-2026-102367",
+    "ghsa_id": "GHSA-4jg6-vww8-2xf3",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
     "references": [
-      "https://github.com/nvm-sh/nvm/security/advisories/GHSA-8grh-q73j-ffrc"
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-94129",
+    "id": "cve-CVE-2026-88788",
     "source": "NVD CVE",
-    "timestamp": "2026-09-21T02:16:54.213",
-    "title": "CVE-2026-94129 - A vulnerability was detected in BioStar VALKYRIE AURORA 2.10.2411.0800. This vulnerability affects t",
-    "description": "A vulnerability was detected in BioStar VALKYRIE AURORA 2.10.2411.0800. This vulnerability affects the function sub_1105C of the file BS_RVSIO64.sys of the component IOCTL Handler. The manipulation of the argument PhysicalAddress results in write-what-where condition. The attack needs to be approached locally. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "high",
-    "cve_id": "CVE-2026-94129",
-    "cvss_score": 8.8,
-    "affected_products": [],
-    "references": [
-      "https://vuldb.com/cve/CVE-2026-94129",
-      "https://vuldb.com/submit/893721",
-      "https://vuldb.com/vuln/408049",
-      "https://vuldb.com/vuln/408049/cti"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-94128",
-    "source": "NVD CVE",
-    "timestamp": "2026-09-21T02:16:54.037",
-    "title": "CVE-2026-94128 - A security vulnerability has been detected in BioStar VIVID LED DJ 4.0.2411.1500. This affects the f",
-    "description": "A security vulnerability has been detected in BioStar VIVID LED DJ 4.0.2411.1500. This affects the function sub_1105C of the file BS_LED64.sys of the component IOCTL Handler. The manipulation of the argument AssociatedIrp leads to write-what-where condition. Local access is required to approach this attack. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "high",
-    "cve_id": "CVE-2026-94128",
-    "cvss_score": 8.8,
-    "affected_products": [],
-    "references": [
-      "https://vuldb.com/cve/CVE-2026-94128",
-      "https://vuldb.com/submit/893651",
-      "https://vuldb.com/vuln/408048",
-      "https://vuldb.com/vuln/408048/cti",
-      "https://vuldb.com/submit/893651"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-94110",
-    "source": "NVD CVE",
-    "timestamp": "2026-09-21T02:16:53.853",
-    "title": "CVE-2026-94110 - A security vulnerability has been detected in QCMS up to 6.0.6. This issue affects the function self",
-    "description": "A security vulnerability has been detected in QCMS up to 6.0.6. This issue affects the function self_Tmp in the library Lib/Config/Controllers.php of the component Content Detail Page. Such manipulation of the argument ID leads to sql injection. The attack may be performed from remote. The exploit has been disclosed publicly and may be used. Router uses raw REQUEST_URI without URL decoding, so payloads must contain literal spaces - %20 never decodes before route parsing. The support team of the vendor was contacted early about this disclosure. Unfortunately, they responded just with profanity.",
-    "severity": "high",
-    "cve_id": "CVE-2026-94110",
-    "cvss_score": 7.3,
-    "affected_products": [],
-    "references": [
-      "https://github.com/yukino06/CVE/issues/1",
-      "https://vuldb.com/cve/CVE-2026-94110",
-      "https://vuldb.com/submit/944567",
-      "https://vuldb.com/vuln/408039",
-      "https://vuldb.com/vuln/408039/cti"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-94103",
-    "source": "NVD CVE",
-    "timestamp": "2026-09-21T02:16:53.673",
-    "title": "CVE-2026-94103 - A vulnerability has been found in RooCMS up to 1.2.2/1.3.4/1.4RC2. This impacts the function eval of",
-    "description": "A vulnerability has been found in RooCMS up to 1.2.2/1.3.4/1.4RC2. This impacts the function eval of the file roocms/site_pagePHP.php of the component Frontend Rendering. Such manipulation of the argument content leads to code injection. The attack can be launched remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-09-22T06:16:49.777",
+    "title": "CVE-2026-88788 - The Text Styler WordPress plugin through 1.1.1 does not sanitise and escape user-supplied styling va",
+    "description": "The Text Styler WordPress plugin through 1.1.1 does not sanitise and escape user-supplied styling values before outputting them within a front-end style block, and does not verify that a user may edit the target post, allowing users with contributor-level access or above to store JavaScript that executes in the browser of anyone viewing the affected post, including administrators.",
     "severity": "medium",
-    "cve_id": "CVE-2026-94103",
-    "cvss_score": 4.7,
+    "cve_id": "CVE-2026-88788",
+    "cvss_score": 6.8,
     "affected_products": [],
     "references": [
-      "https://github.com/boyslikesports/202607_vul_dir/blob/main/RooCMS-C1-EN.md",
-      "https://vuldb.com/cve/CVE-2026-94103",
-      "https://vuldb.com/submit/893004",
-      "https://vuldb.com/vuln/408033",
-      "https://vuldb.com/vuln/408033/cti"
+      "https://wpscan.com/vulnerability/6175fc16-960b-4dbe-bda2-21b4ce7de54b/"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-94102",
+    "id": "cve-CVE-2026-85653",
     "source": "NVD CVE",
-    "timestamp": "2026-09-21T02:16:53.490",
-    "title": "CVE-2026-94102 - A flaw has been found in WuzhiCMS up to 4.1.0. This affects an unknown function of the file /index.p",
-    "description": "A flaw has been found in WuzhiCMS up to 4.1.0. This affects an unknown function of the file /index.php?m=member&v=Login of the component Login. This manipulation of the argument forward causes open redirect. The attack can be initiated remotely. The exploit has been published and may be used. The only sanitization is remove_xss(), an XSS keyword/entity scrubber. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-09-22T06:16:49.597",
+    "title": "CVE-2026-85653 - The Contextual Related Posts plugin for WordPress is vulnerable to Stored Cross-Site Scripting via '",
+    "description": "The Contextual Related Posts plugin for WordPress is vulnerable to Stored Cross-Site Scripting via 'other_attributes' Block Parameter in all versions up to, and including, 4.4.1 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with author-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
     "severity": "medium",
-    "cve_id": "CVE-2026-94102",
-    "cvss_score": 4.3,
+    "cve_id": "CVE-2026-85653",
+    "cvss_score": 6.4,
     "affected_products": [],
     "references": [
-      "https://github.com/ArrestX/wuzhicms-advisories/blob/main/advisories/VULN-021-member-open-redirect.md",
-      "https://vuldb.com/cve/CVE-2026-94102",
-      "https://vuldb.com/submit/892905",
-      "https://vuldb.com/vuln/408032",
-      "https://vuldb.com/vuln/408032/cti"
+      "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.2.4/includes/frontend/blocks/class-blocks.php#L95",
+      "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.2.4/includes/frontend/class-media-handler.php#L133",
+      "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.2.4/includes/frontend/class-media-handler.php#L854",
+      "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.2.4/includes/frontend/class-media-handler.php#L972",
+      "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.4.0/includes/frontend/blocks/class-blocks.php#L95",
+      "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.4.0/includes/frontend/class-media-handler.php#L133",
+      "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.4.0/includes/frontend/class-media-handler.php#L854",
+      "https://plugins.trac.wordpress.org/browser/contextual-related-posts/tags/4.4.0/includes/frontend/class-media-handler.php#L972",
+      "https://plugins.trac.wordpress.org/changeset?reponame=&old=3703115%40contextual-related-posts&new=3703115%40contextual-related-posts",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/1ee59a73-c449-462d-9ff0-b652be56b73b?source=cve"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-94101",
+    "id": "cve-CVE-2026-12470",
     "source": "NVD CVE",
-    "timestamp": "2026-09-21T02:16:53.317",
-    "title": "CVE-2026-94101 - A security vulnerability has been detected in Netcore NBR200V2 1.3.241127.071246. The affected eleme",
-    "description": "A security vulnerability has been detected in Netcore NBR200V2 1.3.241127.071246. The affected element is the function vlan_load_form_uci of the file /usr/bin/routerd. The manipulation of the argument wan_num leads to buffer overflow. It is possible to initiate the attack remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-94101",
-    "cvss_score": 9.9,
+    "timestamp": "2026-09-22T06:16:48.700",
+    "title": "CVE-2026-12470 - The CMP – Coming Soon & Maintenance Plugin by NiteoThemes plugin for WordPress is vulnerable to unau",
+    "description": "The CMP – Coming Soon & Maintenance Plugin by NiteoThemes plugin for WordPress is vulnerable to unauthorized modification of data that can lead to privilege escalation due to a missing capability check on the 'cmp_ajax_import_settings' AJAX action in all versions up to, and including, 4.1.17. This makes it possible for authenticated attackers, with Editor-level access and above, to update arbitrary options on the WordPress site. This can be leveraged to update the default role for registration to administrator and enable user registration for attackers to gain administrative user access to a vulnerable site.",
+    "severity": "high",
+    "cve_id": "CVE-2026-12470",
+    "cvss_score": 7.2,
     "affected_products": [],
     "references": [
-      "https://app.notion.com/p/Netcore-NBR200V2-Vul-9-39f797159f1580668db9e8df031dbdd5",
-      "https://vuldb.com/cve/CVE-2026-94101",
-      "https://vuldb.com/submit/892995",
-      "https://vuldb.com/vuln/408030",
-      "https://vuldb.com/vuln/408030/cti"
+      "https://plugins.trac.wordpress.org/browser/cmp-coming-soon-maintenance/tags/4.1.17/niteo-cmp.php#L3104",
+      "https://plugins.trac.wordpress.org/browser/cmp-coming-soon-maintenance/tags/4.1.17/niteo-cmp.php#L3143",
+      "https://plugins.trac.wordpress.org/changeset?reponame=&old=3661069%40cmp-coming-soon-maintenance&new=3661069%40cmp-coming-soon-maintenance",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/20e2f410-72a9-4d94-b80d-1cb625c08962?source=cve"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-94100",
+    "id": "cve-CVE-2026-19658",
     "source": "NVD CVE",
-    "timestamp": "2026-09-21T01:16:30.170",
-    "title": "CVE-2026-94100 - A weakness has been identified in Netcore NBR200V2 1.3.241127.071246. Impacted is the function wan_c",
-    "description": "A weakness has been identified in Netcore NBR200V2 1.3.241127.071246. Impacted is the function wan_config_set_vlan of the file /usr/bin/routerd of the component WAN VLAN Reconfiguration. Executing a manipulation of the argument vlan_wanX.ports can lead to buffer overflow. The attack may be performed from remote. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-09-22T05:16:55.167",
+    "title": "CVE-2026-19658 - The Give Tributes plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, ",
+    "description": "The Give Tributes plugin for WordPress is vulnerable to PHP Object Injection in all versions up to, and including, 2.3.1 via deserialization of untrusted input . This makes it possible for unauthenticated attackers to inject a PHP Object. No known POP chain is present in the vulnerable software, which means this vulnerability has no impact unless another plugin or theme containing a POP chain is installed on the site. If a POP chain is present via an additional plugin or theme installed on the target system, it may allow the attacker to perform actions like delete arbitrary files, retrieve sensitive data, or execute code depending on the POP chain present. This vulnerability is only reachable when the \"Allow Multiple Recipients\" option is enabled for the donation form, as the single-recipient code path applies sanitize_textarea_field() which would neutralize the payload. Exploitation additionally requires the eCard \"Custom Message\" option to be disabled, which is the plugin default: when it is enabled the personalized message becomes a required field and GiveWP's give_clean() blanks serialized input during validation, causing the donation to be rejected before it is stored.",
     "severity": "critical",
-    "cve_id": "CVE-2026-94100",
-    "cvss_score": 9.9,
+    "cve_id": "CVE-2026-19658",
+    "cvss_score": 9.8,
     "affected_products": [],
     "references": [
-      "https://app.notion.com/p/Netcore-NBR200V2-Vul-8-39f797159f158003ad3eff2fd36342b6",
-      "https://vuldb.com/cve/CVE-2026-94100",
-      "https://vuldb.com/submit/892994",
-      "https://vuldb.com/vuln/408029",
-      "https://vuldb.com/vuln/408029/cti"
+      "https://www.liquidweb.com/software/give/",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/0cdd5562-8755-4ca3-9c16-a5b364f8408b?source=cve"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-94099",
+    "id": "cve-CVE-2026-13355",
     "source": "NVD CVE",
-    "timestamp": "2026-09-21T01:16:29.983",
-    "title": "CVE-2026-94099 - A security flaw has been discovered in Netcore NBR200V2 1.3.241127.071246. This issue affects some u",
-    "description": "A security flaw has been discovered in Netcore NBR200V2 1.3.241127.071246. This issue affects some unknown processing of the file restore.cgi of the component Backup Restore. Performing a manipulation of the argument QUERY_STRING results in command injection. The attack is possible to be carried out remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-09-22T05:16:54.960",
+    "title": "CVE-2026-13355 - The Meta Box AIO plugin for WordPress is vulnerable to Privilege Escalation to Administrator in vers",
+    "description": "The Meta Box AIO plugin for WordPress is vulnerable to Privilege Escalation to Administrator in versions up to, and including, 3.11.0. This is due to a chained flaw: the populate_via_query_string() function in the mb-frontend-submission component unconditionally overrides the form's target object_id from the GET parameter 'rwmb_frontend_field_object_id' without any authorization check, and Form::process() lacks the user_can_edit() check present in render(), allowing unauthenticated attackers to overwrite the post_content of any page with an arbitrary shortcode via wp_update_post(); the mb-user-profile component then directly trusts the 'role' and 'auto_login' shortcode attributes in the injected [mb_user_profile_register] shortcode with no role validation. This makes it possible for unauthenticated attackers to elevate their privileges to Administrator. The standalone plugins Meta Box Frontend Submission (in versions up to 4.5.6) and Meta Box User Profile (versions up to 3.11.0) are also affected.",
     "severity": "critical",
-    "cve_id": "CVE-2026-94099",
-    "cvss_score": 9.9,
+    "cve_id": "CVE-2026-13355",
+    "cvss_score": 9.8,
     "affected_products": [],
     "references": [
-      "https://app.notion.com/p/Netcore-NBR200V2-Vul-7-39f797159f158028ab02c136450d87e4",
-      "https://vuldb.com/cve/CVE-2026-94099",
-      "https://vuldb.com/submit/892992",
-      "https://vuldb.com/vuln/408028",
-      "https://vuldb.com/vuln/408028/cti"
+      "https://metabox.io/changelog/",
+      "https://metabox.io/plugins/meta-box-aio/changelog/",
+      "https://www.wordfence.com/threat-intel/vulnerabilities/id/3b7b6e7e-b944-45f8-a6d8-bfd859bec0d1?source=cve"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-94098",
+    "id": "cve-CVE-2026-94493",
     "source": "NVD CVE",
-    "timestamp": "2026-09-21T01:16:29.800",
-    "title": "CVE-2026-94098 - A vulnerability was identified in Netcore NBR200V2 1.3.241127.071246. This vulnerability affects unk",
-    "description": "A vulnerability was identified in Netcore NBR200V2 1.3.241127.071246. This vulnerability affects unknown code of the file /www/cgi-bin/upgrade of the component Firmware Upgrade CGI Endpoint. Such manipulation of the argument QUERY_STRING leads to command injection. The attack can be executed remotely. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-09-22T01:16:56.437",
+    "title": "CVE-2026-94493 - A vulnerability was detected in Gigatech PDV5701 1.0.31_240305_112640. This issue affects some unkno",
+    "description": "A vulnerability was detected in Gigatech PDV5701 1.0.31_240305_112640. This issue affects some unknown processing of the file /index.html of the component WebSocket Service. The manipulation results in missing authentication. The attack can be launched remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
     "severity": "critical",
-    "cve_id": "CVE-2026-94098",
-    "cvss_score": 9.1,
-    "affected_products": [],
-    "references": [
-      "https://app.notion.com/p/Netcore-NBR200V2-Vul-6-39f797159f1580259aa3cc1d0f512fde",
-      "https://vuldb.com/cve/CVE-2026-94098",
-      "https://vuldb.com/submit/892991",
-      "https://vuldb.com/vuln/408027",
-      "https://vuldb.com/vuln/408027/cti"
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "cve-CVE-2026-94097",
-    "source": "NVD CVE",
-    "timestamp": "2026-09-21T00:16:59.793",
-    "title": "CVE-2026-94097 - A vulnerability was determined in Netcore NBR200V2 1.3.241127.071246. This affects an unknown part o",
-    "description": "A vulnerability was determined in Netcore NBR200V2 1.3.241127.071246. This affects an unknown part of the file /www/cgi-bin/network_tools of the component CGI Diagnostic Endpoint. This manipulation of the argument param/key/val causes command injection. Remote exploitation of the attack is possible. The exploit has been publicly disclosed and may be utilized. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-94097",
+    "cve_id": "CVE-2026-94493",
     "cvss_score": 10,
     "affected_products": [],
     "references": [
-      "https://app.notion.com/p/Netcore-NBR200V2-Vul-5-39f797159f15809dbc06d2d3ae6b1f04",
-      "https://vuldb.com/cve/CVE-2026-94097",
-      "https://vuldb.com/submit/892990",
-      "https://vuldb.com/vuln/408026",
-      "https://vuldb.com/vuln/408026/cti"
+      "https://github.com/CSDVi/cve/issues/2",
+      "https://vuldb.com/cve/CVE-2026-94493",
+      "https://vuldb.com/submit/895425",
+      "https://vuldb.com/vuln/408193",
+      "https://vuldb.com/vuln/408193/cti"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-94096",
+    "id": "cve-CVE-2026-94492",
     "source": "NVD CVE",
-    "timestamp": "2026-09-21T00:16:59.617",
-    "title": "CVE-2026-94096 - A vulnerability was found in Netcore NBR200V2 1.3.241127.071246. Affected by this issue is some unkn",
-    "description": "A vulnerability was found in Netcore NBR200V2 1.3.241127.071246. Affected by this issue is some unknown functionality of the file /usr/bin/network_tools of the component LAN IP Configuration Handler. The manipulation of the argument ipv4 results in command injection. The attack may be launched remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-94096",
-    "cvss_score": 9.9,
+    "timestamp": "2026-09-22T01:16:56.253",
+    "title": "CVE-2026-94492 - A security vulnerability has been detected in Yonyou U8cloud 5.x. This vulnerability affects unknown",
+    "description": "A security vulnerability has been detected in Yonyou U8cloud 5.x. This vulnerability affects unknown code of the file /u8cloud/openapi/so.saleorder.sendaudit of the component OpenAPI. The manipulation of the argument operator leads to sql injection. The attack can be initiated remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-94492",
+    "cvss_score": 6.3,
     "affected_products": [],
     "references": [
-      "https://app.notion.com/p/Netcore-NBR200V2-Vul-4-39f797159f158004b8baf1bbf3b956ca",
-      "https://vuldb.com/cve/CVE-2026-94096",
-      "https://vuldb.com/submit/892988",
-      "https://vuldb.com/vuln/408025",
-      "https://vuldb.com/vuln/408025/cti"
+      "https://github.com/mjh134/--POC/blob/master/exploits/yonyou_u8cloud_so_saleorder_sendaudit_sqli.go",
+      "https://vuldb.com/cve/CVE-2026-94492",
+      "https://vuldb.com/submit/895368",
+      "https://vuldb.com/vuln/408192",
+      "https://vuldb.com/vuln/408192/cti"
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "cve-CVE-2026-94095",
+    "id": "cve-CVE-2026-94491",
     "source": "NVD CVE",
-    "timestamp": "2026-09-21T00:16:59.440",
-    "title": "CVE-2026-94095 - A vulnerability has been found in Netcore NBR200V2 1.3.241127.071246. Affected by this vulnerability",
-    "description": "A vulnerability has been found in Netcore NBR200V2 1.3.241127.071246. Affected by this vulnerability is an unknown functionality of the file /usr/bin/network_tools of the component Traceroute Diagnostic Feature. The manipulation of the argument url leads to command injection. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-94095",
-    "cvss_score": 9.9,
+    "timestamp": "2026-09-22T01:16:56.077",
+    "title": "CVE-2026-94491 - A weakness has been identified in Yonyou KSOA 9.0. This affects an unknown part of the file /cardcas",
+    "description": "A weakness has been identified in Yonyou KSOA 9.0. This affects an unknown part of the file /cardcase/search_list.jsp. Executing a manipulation of the argument address can lead to sql injection. It is possible to launch the attack remotely. The exploit has been made available to the public and could be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "high",
+    "cve_id": "CVE-2026-94491",
+    "cvss_score": 7.3,
     "affected_products": [],
     "references": [
-      "https://app.notion.com/p/Netcore-NBR200V2-Vul-3-39f797159f15802296c7f6e110363435",
-      "https://vuldb.com/cve/CVE-2026-94095",
-      "https://vuldb.com/submit/892986",
-      "https://vuldb.com/vuln/408024",
-      "https://vuldb.com/vuln/408024/cti"
+      "https://vuldb.com/cve/CVE-2026-94491",
+      "https://vuldb.com/submit/895364",
+      "https://vuldb.com/vuln/408191",
+      "https://vuldb.com/vuln/408191/cti",
+      "https://vuldb.com/submit/895364"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-93712",
+    "source": "NVD CVE",
+    "timestamp": "2026-09-22T01:16:55.957",
+    "title": "CVE-2026-93712 - Dancer2 versions from 2.1.0 before 2.2.0 for Perl serve files from outside public_dir via relative p",
+    "description": "Dancer2 versions from 2.1.0 before 2.2.0 for Perl serve files from outside public_dir via relative path segments in the File route handler.\n\nThe handler joins the request path onto public_dir without collapsing relative segments, and checks only that the result is a readable regular file. A request for `/../outside.txt` escapes public_dir, and percent-encoding the dots reaches the same file.\n\nThe handler is off by default. An application is affected once it names File in route_handlers and sets static_handler to 0, which otherwise refuses a dot segment before the route runs.\n\nAny file the worker process can read is served to an unauthenticated request, including the application's config.yml above public_dir.",
+    "severity": "high",
+    "cve_id": "CVE-2026-93712",
+    "cvss_score": 7.5,
+    "affected_products": [],
+    "references": [
+      "https://github.com/PerlDancer/Dancer2/commit/2446a09ffb83fef71cc75c327bd6e4b1f007b885.patch",
+      "https://github.com/PerlDancer/Dancer2/security/advisories/GHSA-6xw8-v24c-m783",
+      "https://metacpan.org/release/CROMEDOME/Dancer2-2.2.0/changes",
+      "http://www.openwall.com/lists/oss-security/2026/09/22/4"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-93711",
+    "source": "NVD CVE",
+    "timestamp": "2026-09-22T01:16:55.847",
+    "title": "CVE-2026-93711 - Dancer2 versions before 2.2.0 for Perl do not strip CR and LF from response header names in headers_",
+    "description": "Dancer2 versions before 2.2.0 for Perl do not strip CR and LF from response header names in headers_to_array.\n\nThe routine removes CR and LF from each header value but not from the name. A name carrying them therefore reaches the PSGI server intact. A server that does not validate keys writes it to the wire, so the bytes after the CRLF arrive as their own header line.\n\nThe application has to derive the header name from request data, not just the value.\n\nAn attacker who controls that data adds their own headers and splits the response.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-93711",
+    "cvss_score": 6.5,
+    "affected_products": [],
+    "references": [
+      "https://github.com/PerlDancer/Dancer2/commit/ff89ac12af7b8899812a79e9924dfea7a5d9833b.patch",
+      "https://github.com/PerlDancer/Dancer2/issues/1822",
+      "https://metacpan.org/release/CROMEDOME/Dancer2-2.2.0/changes",
+      "http://www.openwall.com/lists/oss-security/2026/09/22/3"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-93710",
+    "source": "NVD CVE",
+    "timestamp": "2026-09-22T01:16:55.730",
+    "title": "CVE-2026-93710 - Dancer2 versions from 2.0.0 before 2.2.0 for Perl dispatch a route that a dying hook refused when th",
+    "description": "Dancer2 versions from 2.0.0 before 2.2.0 for Perl dispatch a route that a dying hook refused when the exception handler halts the response in compile_hooks.\n\nA hook that dies fires core.app.hook_exception, then calls cleanup unless the failing hook is the exception handler. A handler that halts does not stop that cleanup, which discards the request, response and session the dispatcher has yet to read, so the refused route runs.\n\nThe handler has to halt the response object by calling its halt method or setting is_halted: the halt keyword unwinds through with_return before cleanup runs.\n\nA check in a before hook is not enforced: the caller gets the refusal, while the route body runs and its writes land.",
+    "severity": "high",
+    "cve_id": "CVE-2026-93710",
+    "cvss_score": 7.5,
+    "affected_products": [],
+    "references": [
+      "https://github.com/PerlDancer/Dancer2/commit/8fd31a32798f9aa25e4fccbd6c7cb9dd3a0c1029.patch",
+      "https://github.com/PerlDancer/Dancer2/security/advisories/GHSA-v527-r4px-7vx7",
+      "https://metacpan.org/release/CROMEDOME/Dancer2-2.2.0/changes",
+      "http://www.openwall.com/lists/oss-security/2026/09/22/2"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-93709",
+    "source": "NVD CVE",
+    "timestamp": "2026-09-22T01:16:55.610",
+    "title": "CVE-2026-93709 - Dancer2 versions before 2.2.0 for Perl serve a layout as a page when an equivalent spelling of its p",
+    "description": "Dancer2 versions before 2.2.0 for Perl serve a layout as a page when an equivalent spelling of its path misses the guard in the AutoPage handler.\n\nThe handler compares the request path against the layout directory name as text, while the lookup that follows canonicalises it. A doubled slash, a dot segment, a percent-encoded slash, or a different capitalisation on a case-insensitive filesystem therefore misses the guard.\n\nThe handler is off by default, enabled with auto_page. The layout wrapping every page is already public, so this discloses one of the application's other layouts.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-93709",
+    "cvss_score": 5.3,
+    "affected_products": [],
+    "references": [
+      "https://github.com/PerlDancer/Dancer2/commit/293fce08812b0928f34ab2d7b9357450707c3630.patch",
+      "https://github.com/PerlDancer/Dancer2/commit/753b385350a54acb8d4b686723890205268634a8.patch",
+      "https://github.com/PerlDancer/Dancer2/issues/1823",
+      "https://metacpan.org/release/CROMEDOME/Dancer2-2.2.0/changes",
+      "http://www.openwall.com/lists/oss-security/2026/09/22/1"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-76974",
+    "source": "NVD CVE",
+    "timestamp": "2026-09-22T01:16:53.837",
+    "title": "CVE-2026-76974 - SAP Fiori Launchpad does not sufficiently validate certain user-controlled input. An unauthenticated",
+    "description": "SAP Fiori Launchpad does not sufficiently validate certain user-controlled input. An unauthenticated attacker could craft a malicious link that, when clicked by an authenticated user, causes the browser to load attacker-controlled content from an external location. This could be used to exfiltrate sensitive information from the victim's session, resulting in a high impact on confidentiality. There is no impact on integrity and availability.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-76974",
+    "cvss_score": 5.3,
+    "affected_products": [],
+    "references": [
+      "https://me.sap.com/notes/3680888",
+      "https://url.sap/sapsecuritypatchday"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-94490",
+    "source": "NVD CVE",
+    "timestamp": "2026-09-22T00:16:32.360",
+    "title": "CVE-2026-94490 - A security flaw has been discovered in OctoPrint 1.0.0. Affected by this issue is the function execu",
+    "description": "A security flaw has been discovered in OctoPrint 1.0.0. Affected by this issue is the function executeSystemCommand of the file src/octoprint/server/api/system.py of the component Command API. Performing a manipulation of the argument command results in os command injection. It is possible to initiate the attack remotely. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-94490",
+    "cvss_score": 4.7,
+    "affected_products": [],
+    "references": [
+      "https://vuldb.com/cve/CVE-2026-94490",
+      "https://vuldb.com/submit/895339",
+      "https://vuldb.com/vuln/408190",
+      "https://vuldb.com/vuln/408190/cti"
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "cve-CVE-2026-94489",
+    "source": "NVD CVE",
+    "timestamp": "2026-09-22T00:16:32.187",
+    "title": "CVE-2026-94489 - A vulnerability was identified in OctoPrint 1.0.0. Affected by this vulnerability is the function _v",
+    "description": "A vulnerability was identified in OctoPrint 1.0.0. Affected by this vulnerability is the function _validate of the file src/octoprint/server/api/files.py of the component File Download API. Such manipulation of the argument filename leads to path traversal. The attack may be performed from remote. The exploit is publicly available and might be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "severity": "medium",
+    "cve_id": "CVE-2026-94489",
+    "cvss_score": 4.3,
+    "affected_products": [],
+    "references": [
+      "https://vuldb.com/cve/CVE-2026-94489",
+      "https://vuldb.com/submit/895338",
+      "https://vuldb.com/vuln/408189",
+      "https://vuldb.com/vuln/408189/cti",
+      "https://vuldb.com/submit/895338"
     ],
     "ai_analysis": null,
     "risk_score": null
