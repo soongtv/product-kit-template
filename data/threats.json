@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1793102237306-1",
+    "id": "twitter-1793123641595-1",
     "source": "Twitter Security",
-    "timestamp": "2026-10-27T11:57:17.306Z",
+    "timestamp": "2026-10-27T17:54:01.595Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1793102237306-1",
+    "id": "hn-1793123641595-1",
     "source": "HackerNews",
-    "timestamp": "2026-10-27T11:57:17.306Z",
+    "timestamp": "2026-10-27T17:54:01.595Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,40 +26,50 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-p555-j79x-v3hw",
+    "id": "gh-GHSA-wf6j-7hvr-gr93",
     "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:59Z",
-    "title": "This issue may allow an IPMI authenticated administrator to execute commands as the operating...",
-    "description": "This issue may allow an IPMI authenticated administrator to execute commands as the operating system root user on the BMC",
+    "timestamp": "2026-10-27T17:08:41Z",
+    "title": "Hydra legacy target blacklist permits unsafe PyYAML loading",
+    "description": "## Summary\n\nHydra's legacy target blacklist omits PyYAML's unsafe loading surfaces. If an\napplication passes attacker-controlled targets and arguments to instantiate(),\na target such as yaml.unsafe_load can execute Python code through a\nconfig-controlled YAML stream containing Python object-construction tags.\n\n## Impact and prerequisites\n\nThe attacker must control the relevant target and arguments that the application\ninstantiates. The configured callable executes with the application's process\n",
+    "severity": "high",
+    "cve_id": null,
+    "ghsa_id": "GHSA-wf6j-7hvr-gr93",
+    "affected_packages": [
+      "hydra-core",
+      "hydra-core"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-6pq8-jhm2-2vcw",
+    "source": "GitHub Security",
+    "timestamp": "2026-10-27T16:10:55Z",
+    "title": "qs : qs.stringify with arrayFormat 'comma' throws an uncaught TypeError on array elements carrying a non-callable own toString (DoS)",
+    "description": "## Summary\n\n`qs.stringify(obj, { arrayFormat: 'comma' })` throws an uncaught `TypeError: Cannot convert object to primitive value` when an array in `obj` contains an element that carries an own, non-callable `toString` property (for example `{ a: [ { toString: 'x' } ] }`). A remote, unauthenticated attacker who can influence an object that the application later re-serializes with the comma array format triggers the throw. In a service that lacks a synchronous error boundary around the serializat",
     "severity": "medium",
-    "cve_id": "CVE-2026-65213",
-    "ghsa_id": "GHSA-p555-j79x-v3hw",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-110816",
+    "ghsa_id": "GHSA-6pq8-jhm2-2vcw",
+    "affected_packages": [
+      "qs"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
       null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-hj69-4738-f2v2",
-    "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:59Z",
-    "title": "The Qode Membership plugin for WordPress is vulnerable to Authentication Bypass leading to...",
-    "description": "The Qode Membership plugin for WordPress is vulnerable to Authentication Bypass leading to Account Takeover in all versions up to, and including, 2.0.6.2 via the qode_membership_check_facebook_user AJAX action. This is due to a typographic error in the Facebook OAuth token verification guard within the qode_membership_login_user_from_social_network function — the guard condition tests an undefined variable ($check_social_useqoder instead of $check_social_user), causing empty() to always return t",
-    "severity": "critical",
-    "cve_id": "CVE-2026-92885",
-    "ghsa_id": "GHSA-hj69-4738-f2v2",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
       null,
       null,
       null,
@@ -69,19 +79,26 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-v4pm-whwg-hg9x",
+    "id": "gh-GHSA-qq8j-7v2v-3rwp",
     "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:59Z",
-    "title": "This issue may allow an authenticated IPMI Administrator to read and write arbitrary BMC physical...",
-    "description": "This issue may allow an authenticated IPMI Administrator to read and write arbitrary BMC physical memory and thereby execute code on the BMC operating system.",
+    "timestamp": "2026-10-27T16:09:45Z",
+    "title": "undici WebSocket client vulnerable to Denial of Service via failed HTTP/2 handshake",
+    "description": "### Impact\n\nundici's experimental WebSocket client (enabled by default via `allowH2: true`) crashes the Node.js process when it connects to a malicious server over HTTP/2. If the server answers the WebSocket upgrade with a response that fails handshake validation, undici aborts the request, but the abort is a no-op because the request is already marked completed, so the underlying `ClientHttp2Stream` is left open with no error listener. When the server then destroys the connection, the orphaned ",
     "severity": "high",
-    "cve_id": "CVE-2026-65211",
-    "ghsa_id": "GHSA-v4pm-whwg-hg9x",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-109855",
+    "ghsa_id": "GHSA-qq8j-7v2v-3rwp",
+    "affected_packages": [
+      "undici"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null
@@ -90,19 +107,25 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-6fhf-89qw-rcm8",
+    "id": "gh-GHSA-8m4g-j4wp-wgcg",
     "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:59Z",
-    "title": "A logic flaw in the BMC IPMI implementation may allow an attacker to send specially crafted RAKP+...",
-    "description": "A logic flaw in the BMC IPMI implementation may allow an attacker to send specially crafted RAKP+ messages and escalate an account to administrator privileges.",
+    "timestamp": "2026-10-27T16:09:22Z",
+    "title": "Authlib accepts an empty HMAC key, allowing JWS/JWT signature forgery (HS256/HS384/HS512)",
+    "description": "Reporter: Cavan Loughran, Celvex Group Inc.\n\nSummary\n\nAuthlib's symmetric (oct) key handling accepts an empty key (empty bytes b'' / empty string '') as a valid HMAC signing and verification key. An empty HMAC key produces a deterministic digest that any party can reproduce, so an attacker who knows (or can cause) the application to verify a token with an empty key can forge arbitrary tokens that pass HS256/HS384/HS512 signature verification. This is the Authlib member of the cross-language empt",
     "severity": "high",
-    "cve_id": "CVE-2026-65220",
-    "ghsa_id": "GHSA-6fhf-89qw-rcm8",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-114616",
+    "ghsa_id": "GHSA-8m4g-j4wp-wgcg",
+    "affected_packages": [
+      "Authlib"
+    ],
     "cwes": [
+      null,
+      null,
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null
@@ -111,124 +134,24 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-xx37-69mm-2gc7",
+    "id": "gh-GHSA-vp88-798v-h67f",
     "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:59Z",
-    "title": "This issue may allow an authenticated IPMI Administrator to read arbitrary files from the BMC...",
-    "description": "This issue may allow an authenticated IPMI Administrator to read arbitrary files from the BMC filesystem, disclosing material well beyond the intended IPMI management role.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-65210",
-    "ghsa_id": "GHSA-xx37-69mm-2gc7",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-4gmh-3v9m-9469",
-    "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:59Z",
-    "title": "The BMC does not correctly enforce integrity and encryption requirements for IPMI commands. An...",
-    "description": "The BMC does not correctly enforce integrity and encryption requirements for IPMI commands. An attacker may be able to craft packets that execute arbitrary commands on an active session.",
-    "severity": "critical",
-    "cve_id": "CVE-2026-18450",
-    "ghsa_id": "GHSA-4gmh-3v9m-9469",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-62qv-rfwm-xjwp",
-    "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:59Z",
-    "title": "An OS command injection vulnerability exists in OnCell G3150A-LTE Series. When the SMS management...",
-    "description": "An OS command injection vulnerability exists in OnCell G3150A-LTE Series. When the SMS management functionality is enabled and configured, a remote attacker with the required privileges could exploit insufficient input validation in the SMS management functionality to execute arbitrary commands on the affected device.",
-    "severity": "high",
-    "cve_id": "CVE-2026-111461",
-    "ghsa_id": "GHSA-62qv-rfwm-xjwp",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-3989-gjgc-5cm8",
-    "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:59Z",
-    "title": "The HTML5 KVM-over-IP console authenticates with a token returned by the web interface....",
-    "description": "The HTML5 KVM-over-IP console authenticates with a token returned by the web interface. Weaknesses in token generation may allow an attacker to guess the session token and take control of the KVM session.",
+    "timestamp": "2026-10-27T16:08:59Z",
+    "title": "rustls: ECH rejection can expose buffered application data to authenticated outer server before `ech_required` alert",
+    "description": "In rustls 0.23.44 and 0.23.45, application data that a client buffers before the handshake completes is sent to the server even when the server rejects Encrypted Client Hello (ECH).\n\nWhen the server rejects ECH, the client completes the handshake with the outer ClientHello and authenticates the server against the ECH config's `public_name`. At the end of the handshake, `start_traffic()` encrypts and queues any plaintext buffered by `ClientConnection::writer()`. It does this *before* checking for",
     "severity": "low",
-    "cve_id": "CVE-2026-18451",
-    "ghsa_id": "GHSA-3989-gjgc-5cm8",
-    "affected_packages": [],
+    "cve_id": null,
+    "ghsa_id": "GHSA-vp88-798v-h67f",
+    "affected_packages": [
+      "rustls",
+      "rustls"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-hjj8-98hq-9pcr",
-    "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:59Z",
-    "title": "A flaw in the BMC RAKP+ implementation may allow an attacker to send a request followed by a...",
-    "description": "A flaw in the BMC RAKP+ implementation may allow an attacker to send a request followed by a specially crafted RAKP message and establish an RMCP+ session, which could then be used to execute commands.",
-    "severity": "high",
-    "cve_id": "CVE-2026-65219",
-    "ghsa_id": "GHSA-hjj8-98hq-9pcr",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-c968-6384-5fxw",
-    "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:58Z",
-    "title": "The Jupiter X Core plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the ...",
-    "description": "The Jupiter X Core plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the 'forget_password_link' parameter in all versions up to, and including, 4.61.0 due to insufficient input sanitization and output escaping. This makes it possible for authenticated attackers, with contributor-level access and above, to inject arbitrary web scripts in pages that will execute whenever a user accesses an injected page.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-10511",
-    "ghsa_id": "GHSA-c968-6384-5fxw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
       null,
       null,
       null,
@@ -241,144 +164,84 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-99v5-r742-mrm9",
+    "id": "gh-GHSA-w44r-93j7-qv28",
     "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:58Z",
-    "title": "Out-of-bounds read in the QAuthenticator NTLM authentication handling in the Qt Network module in...",
-    "description": "Out-of-bounds read in the QAuthenticator NTLM authentication handling in the Qt Network module in Qt Group Qt allows remote attackers to obtain sensitive information (heap memory contents) or cause a denial of service (application crash) via a crafted NTLM challenge sent by a malicious server or proxy, when an application using QNetworkAccessManager or QTcpSocket authenticates with NTLM.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-105946",
-    "ghsa_id": "GHSA-99v5-r742-mrm9",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-g7qx-5gmm-r2gh",
-    "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:58Z",
-    "title": "The TiendaCrypto para WooCommerce WordPress plugin through 1.2.1 does not correctly verify the...",
-    "description": "The TiendaCrypto para WooCommerce WordPress plugin through 1.2.1 does not correctly verify the authenticity of its payment webhook, validating the request signature against a key that is always empty, which allows unauthenticated attackers to forge webhook notifications and mark arbitrary WooCommerce orders as paid on web servers that preserve request header case.",
+    "timestamp": "2026-10-27T16:08:54Z",
+    "title": "rustls: An unauthenticated ServerHello poisons the per-name key-exchange record, so later ClientHellos carry only a classical X25519 share",
+    "description": "## Summary\n\nThe client records the server-selected key-exchange group per server name when it processes the ServerHello, before the server is authenticated. A network attacker can answer one connection attempt for a target name with a ServerHello that selects X25519 and close the connection. Later ClientHellos for that name carry one X25519 share while supported_groups still lists X25519MLKEM768 first. If the server accepts that share instead of sending a HelloRetryRequest, the handshake complet",
     "severity": "low",
-    "cve_id": "CVE-2026-103325",
-    "ghsa_id": "GHSA-g7qx-5gmm-r2gh",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
+    "cve_id": null,
+    "ghsa_id": "GHSA-w44r-93j7-qv28",
+    "affected_packages": [
+      "rustls",
+      "rustls"
     ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-jq7m-wj67-4h5c",
-    "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:58Z",
-    "title": "A improper locking vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.4 through 7.6.6 may allow...",
-    "description": "A improper locking vulnerability in Fortinet FortiOS 8.0.0, FortiOS 7.6.4 through 7.6.6 may allow an unauthenticated attacker with network access to the device to cause a denial of service of the HTTPS management interface via crafted HTTP requests.",
-    "severity": "high",
-    "cve_id": "CVE-2026-106174",
-    "ghsa_id": "GHSA-jq7m-wj67-4h5c",
-    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-563r-v2v8-6c3q",
+    "id": "gh-GHSA-c8m5-c952-6cm4",
     "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:58Z",
-    "title": "The PayDunya WooCommerce Payment Gateway WordPress plugin through 1.1.6 does not verify the...",
-    "description": "The PayDunya WooCommerce Payment Gateway WordPress plugin through 1.1.6 does not verify the authenticity of incoming payment notifications and, until the gateway is configured, authenticates them with a value derived from an empty secret that anyone can compute, allowing unauthenticated attackers to mark arbitrary WooCommerce orders as paid and completed.",
+    "timestamp": "2026-10-27T16:08:47Z",
+    "title": "Rustls: Session Debug formatting exposes TLS master secrets and resumption PSKs",
+    "description": "### Summary\n\nFormatting a client session value with Debug exposes its TLS 1.2 master secret or TLS 1.3 resumption PSK. A custom session store that logs these values can disclose keys to readers of the logs. Ordinary connection and built-in cache diagnostics remain redacted, and the session-store interface already warns that its values are sensitive.\n\n### Details\n\nDerived formatters traverse the session's secret-bearing fields. This conflicts with the project's explicit [key-material redaction po",
     "severity": "medium",
-    "cve_id": "CVE-2026-103359",
-    "ghsa_id": "GHSA-563r-v2v8-6c3q",
-    "affected_packages": [],
-    "cwes": [],
-    "references": [
-      null,
-      null,
-      null
+    "cve_id": null,
+    "ghsa_id": "GHSA-c8m5-c952-6cm4",
+    "affected_packages": [
+      "rustls",
+      "rustls"
     ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-hpv3-4h37-hf99",
-    "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:58Z",
-    "title": "A hard-coded cryptographic key vulnerability exists in the OnCell G3150A-LTE Series. Under...",
-    "description": "A hard-coded cryptographic key vulnerability exists in the OnCell G3150A-LTE Series. Under certain conditions, an unauthenticated remote attacker could obtain shared cryptographic key material and use it to impersonate affected devices that have not regenerated their cryptographic keys, potentially compromising the confidentiality and integrity of management communications.",
-    "severity": "high",
-    "cve_id": "CVE-2026-111460",
-    "ghsa_id": "GHSA-hpv3-4h37-hf99",
-    "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     "ai_analysis": null,
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-vrmg-3792-4rx3",
+    "id": "gh-GHSA-h2v8-394m-p7vv",
     "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:58Z",
-    "title": "An improper certificate validation vulnerability exists in Moxa Remote Connect Suite (MRC Client)...",
-    "description": "An improper certificate validation vulnerability exists in Moxa Remote Connect Suite (MRC Client). Under certain conditions, an unauthenticated attacker with on-path access to the communication between the MRC Client and its server could impersonate a trusted server and conduct a man-in-the-middle attack, potentially compromising the confidentiality and integrity of communications.",
-    "severity": "high",
-    "cve_id": "CVE-2026-111459",
-    "ghsa_id": "GHSA-vrmg-3792-4rx3",
-    "affected_packages": [],
+    "timestamp": "2026-10-27T16:08:36Z",
+    "title": "Rustls: Brotli certificate decompression can allocate an attacker-controlled amount of memory up to 1 GiB before authentication.",
+    "description": "### Summary\n\nThe built-in (but disabled by default) Brotli certificate decoder bounds the output buffer but accepts an input-selected history window. A header of five bytes can specify a 1 GiB window allocation. A peer can abort a process whose allocator cannot satisfy that request. A client must enable Brotli and connect to the peer; a server must enable Brotli and request a client certificate. Neither direction requires a trusted attacker certificate.\n\n### Details\n\nrustls calls `BrotliDecompre",
+    "severity": "low",
+    "cve_id": null,
+    "ghsa_id": "GHSA-h2v8-394m-p7vv",
+    "affected_packages": [
+      "rustls",
+      "rustls"
+    ],
     "cwes": [
       null
     ],
     "references": [
       null,
       null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-rwmh-x2cf-2ccg",
-    "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:58Z",
-    "title": "An OS command injection vulnerability exists because of insufficient input filtering. An attacker...",
-    "description": "An OS command injection vulnerability exists because of insufficient input filtering. An attacker can inject a command payload into a BMC function; the payload may execute when the related service is restarted.",
-    "severity": "high",
-    "cve_id": "CVE-2026-16521",
-    "ghsa_id": "GHSA-rwmh-x2cf-2ccg",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
+      null,
+      null,
+      null,
       null,
       null,
       null
@@ -387,19 +250,25 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-wm2j-33wx-q4cw",
+    "id": "gh-GHSA-x4rv-c3wx-4cr8",
     "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:58Z",
-    "title": "An attacker who obtained the hardcoded key could decrypt domain/service account passwords, task...",
-    "description": "An attacker who obtained the hardcoded key could decrypt domain/service account passwords, task run-as credentials, and sysprep passwords stored in or transmitted by GSS Deployment Server installation.",
+    "timestamp": "2026-10-27T15:39:18Z",
+    "title": "Authlib: Unvalidated request_uri fetch in JWT-secured authorization request (JAR) leading to SSRF",
+    "description": "### Summary\n\nAuthlib's RFC 9101 (JAR) extension passes the attacker-controlled `request_uri` authorization parameter straight to the `get_request_object()` fetch hook with no validation, at a pre-authentication endpoint. Authlib already defines the pre-registration allowlist for this (`request_uris` client metadata and `require_request_uri_registration` server metadata) but the extension never consults it, and both docstrings instruct integrators to implement the hook as an unrestricted `request",
     "severity": "medium",
-    "cve_id": "CVE-2026-101034",
-    "ghsa_id": "GHSA-wm2j-33wx-q4cw",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-114620",
+    "ghsa_id": "GHSA-x4rv-c3wx-4cr8",
+    "affected_packages": [
+      "authlib"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null
@@ -408,19 +277,24 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-v47w-qwhq-fc6f",
+    "id": "gh-GHSA-c5mf-xmp2-59rc",
     "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:58Z",
-    "title": "An out-of-bounds read vulnerability in the QTextCodec TSCII encoding of the Qt 5 Compatibility...",
-    "description": "An out-of-bounds read vulnerability in the QTextCodec TSCII encoding of the Qt 5 Compatibility APIs module (Qt Core in Qt 5 and earlier) impacts Qt. Applications that convert text to the TSCII encoding through QTextCodec may read memory outside the input buffer, which can cause the application to crash or misinterpret the data.",
+    "timestamp": "2026-10-27T15:39:13Z",
+    "title": "Authlib: ID token can disable its own nonce validation via the nonce_supported claim",
+    "description": "### Summary\n\n`OpenIDMixin.parse_id_token()` reads the `nonce_supported` claim from the ID token it is validating. When that claim is boolean `false`, the expected nonce is set to `None` and nonce validation is skipped for that token.\n\nAn ID token that carries this claim is therefore accepted in a session whose nonce does not match. A captured, validly signed ID token belonging to a victim can be replayed into an attacker-controlled session, authenticating the attacker as the victim at the relyin",
     "severity": "medium",
-    "cve_id": "CVE-2026-107472",
-    "ghsa_id": "GHSA-v47w-qwhq-fc6f",
-    "affected_packages": [],
+    "cve_id": "CVE-2026-114617",
+    "ghsa_id": "GHSA-c5mf-xmp2-59rc",
+    "affected_packages": [
+      "authlib"
+    ],
     "cwes": [
+      null,
       null
     ],
     "references": [
+      null,
+      null,
       null,
       null,
       null,
@@ -430,19 +304,298 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-h8gp-mmvv-4j3c",
+    "id": "gh-GHSA-fch4-3c6x-j4gc",
     "source": "GitHub Security",
-    "timestamp": "2026-10-27T09:30:58Z",
-    "title": "The BMC does not correctly enforce integrity and encryption requirements for IPMI commands. An...",
-    "description": "The BMC does not correctly enforce integrity and encryption requirements for IPMI commands. An attacker may be able to craft packets that execute arbitrary commands on an active session.",
-    "severity": "high",
-    "cve_id": "CVE-2026-18449",
-    "ghsa_id": "GHSA-h8gp-mmvv-4j3c",
-    "affected_packages": [],
+    "timestamp": "2026-10-27T15:39:08Z",
+    "title": "Authlib: Default JWT bearer grant accepts assertions for the wrong audience",
+    "description": "## Description\n\n### Summary\n\nAuthlib's default RFC 7523 JWT bearer grant leaves `get_audiences()` empty, so `verify_claims()` only checks that an `aud` claim *exists* instead of requiring it to match the current authorization server's token endpoint. An attacker holding a legitimately issued JWT assertion for *any* audience can present it to a different authorization server sharing the same signing key and obtain an access token.\n\nTo be completely transparent, AI tools helped surface it. However",
+    "severity": "medium",
+    "cve_id": "CVE-2026-114618",
+    "ghsa_id": "GHSA-fch4-3c6x-j4gc",
+    "affected_packages": [
+      "authlib"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-q686-2qmg-hqc7",
+    "source": "GitHub Security",
+    "timestamp": "2026-10-27T15:38:53Z",
+    "title": "Authlib: OpenID implicit grant checks raw scope instead of allowed scope before issuing ID tokens",
+    "description": "## Report metadata\n\n| Field | Value |\n| --- | --- |\n| Package | `authlib` (PyPI, `pkg:pypi/authlib`) |\n| Repository | https://github.com/authlib/authlib |\n| Component | `authlib.oidc.core.grants.implicit.OpenIDImplicitGrant.validate_authorization_request` |\n| Vulnerability class | Authorization bypass: a client's scope restriction is bypassed for OpenID Connect ID token issuance |\n| Verified against | `c529a61af40e3efe05286140e00fbdced07d7987` (v1.8.0). Earlier releases were not checked. |\n| API",
+    "severity": "medium",
+    "cve_id": "CVE-2026-114619",
+    "ghsa_id": "GHSA-q686-2qmg-hqc7",
+    "affected_packages": [
+      "authlib"
+    ],
     "cwes": [
       null
     ],
     "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-7vr2-2fgp-9w7p",
+    "source": "GitHub Security",
+    "timestamp": "2026-10-27T15:38:48Z",
+    "title": "Authlib incomplete algorithm-confusion fix permits HMAC forgery with prefixed public keys",
+    "description": "## Summary\n\n`OctKey.import_key()` carries the only guard that stops an asymmetric public key from being used as an\nHMAC secret in `authlib.jose`. That guard is `raw_key.startswith(POSSIBLE_UNSAFE_KEYS)` — anchored at\nbyte 0 — while the loader that consumes the identical bytes on the asymmetric path\n(`cryptography.hazmat.primitives.serialization.load_pem_public_key` / `load_pem_x509_certificate`)\nskips anything before the `-----BEGIN` line. A PEM public key or X.509 certificate carrying **one\nlea",
+    "severity": "high",
+    "cve_id": "CVE-2026-114615",
+    "ghsa_id": "GHSA-7vr2-2fgp-9w7p",
+    "affected_packages": [
+      "authlib"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-2phh-27fw-q4gc",
+    "source": "GitHub Security",
+    "timestamp": "2026-10-27T15:38:39Z",
+    "title": "PhpSpreadsheet: SSRF whitelist bypass via unre-validated HTTP redirect in Drawing::setPath external image loading",
+    "description": "## Summary\nPhpSpreadsheet's `Worksheet\\Drawing::setPath()` validates an external-image URL against an operator-supplied `isWhitelisted` callback **once**, on the initial URL only, then fetches it with `file_get_contents()` using a stream context that does **not** set `follow_location => 0`. A whitelisted host that returns an HTTP `302 Location:` redirect to an internal target is therefore followed by PHP's HTTP wrapper (default `follow_location=1`, `max_redirects=20`) with **no re-validation of ",
+    "severity": "medium",
+    "cve_id": "CVE-2026-108360",
+    "ghsa_id": "GHSA-2phh-27fw-q4gc",
+    "affected_packages": [
+      "phpoffice/phpspreadsheet",
+      "phpoffice/phpspreadsheet",
+      "phpoffice/phpspreadsheet",
+      "phpoffice/phpspreadsheet",
+      "phpoffice/phpspreadsheet"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-j2w7-387v-m2rq",
+    "source": "GitHub Security",
+    "timestamp": "2026-10-27T15:38:33Z",
+    "title": "PhpSpreadsheet ODS Reader: Unbounded number-rows-repeated → CPU & Memory Exhaustion (DoS)",
+    "description": "## Summary\n\nWhen PhpSpreadsheet loads an OpenDocument Spreadsheet (`.ods`), `Ods::processTableRow()`\nreads the `table:number-rows-repeated` attribute of a `<table:table-row>` with an unchecked \n`(int)` cast, then materialises one cell per repeated row. This value is **completely unbounded**, \nso a **single ~1.4 KB file** can instruct the reader to create up to **millions of cells**, \nexhausting memory (fatal OOM). No authentication, no special configuration, and the default read \nfilter are requ",
+    "severity": "high",
+    "cve_id": "CVE-2026-108359",
+    "ghsa_id": "GHSA-j2w7-387v-m2rq",
+    "affected_packages": [
+      "phpoffice/phpspreadsheet",
+      "phpoffice/phpspreadsheet",
+      "phpoffice/phpspreadsheet",
+      "phpoffice/phpspreadsheet",
+      "phpoffice/phpspreadsheet"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-3x94-m842-937c",
+    "source": "GitHub Security",
+    "timestamp": "2026-10-27T15:38:28Z",
+    "title": "PhpSpreadsheet: XmlScanner Bypass via ISO-2022 Escape Sequences Allows XXE and Denial of Service",
+    "description": "### Summary\nPhpSpreadsheet's `XmlScanner::scan()` uses a regex pattern that only accounts for NULL byte (0x00) interleaving when detecting `<!DOCTYPE`. ISO-2022 escape sequences (0x1B bytes) inserted between the characters of the pattern break the regex match entirely, allowing DOCTYPE declarations with entity definitions to pass through undetected. This enables Denial of Service via quadratic entity expansion on **all PHP versions**, and XXE/SSRF on PHP < 8.0 or when `LIBXML_NOENT` is used. Any",
+    "severity": "high",
+    "cve_id": "CVE-2026-108358",
+    "ghsa_id": "GHSA-3x94-m842-937c",
+    "affected_packages": [
+      "phpoffice/phpspreadsheet",
+      "phpoffice/phpspreadsheet",
+      "phpoffice/phpspreadsheet",
+      "phpoffice/phpspreadsheet",
+      "phpoffice/phpspreadsheet"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-rxj4-h86g-25gc",
+    "source": "GitHub Security",
+    "timestamp": "2026-10-27T15:38:22Z",
+    "title": "PhpSpreadsheet: XmlScanner Bypass via Double-Encoded unentity() TOCTOU Allows XXE and Denial of Service",
+    "description": "### Summary\nThe SpreadsheetML XML reader (`Reader\\Xml`) scans file content **twice** through `XmlScanner::scan()`, and each scan runs an `unentity()` callback that calls `html_entity_decode()` **after** the pattern check. By double-encoding the `<` character as `&#38;#60;`, the first scan decodes `&#38;` to `&` (forming `&#60;`), and the second scan decodes `&#60;` to `<` (forming `<!DOCTYPE`). Neither scan's pattern check detects the `<!DOCTYPE` string because the callback runs after each check",
+    "severity": "high",
+    "cve_id": "CVE-2026-108357",
+    "ghsa_id": "GHSA-rxj4-h86g-25gc",
+    "affected_packages": [
+      "phpoffice/phpspreadsheet",
+      "phpoffice/phpspreadsheet"
+    ],
+    "cwes": [
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-fpmh-frq8-7rj8",
+    "source": "GitHub Security",
+    "timestamp": "2026-10-27T15:38:14Z",
+    "title": "compress zstd: Panic on two-block frames",
+    "description": "### Summary\n\nA crafted ~27 KB two-block zstd frame makes DecodeAll and the streaming decoder panic with an out-of-range slice index instead of returning a decode error. The same bytes decode fine with the reference zstd. Any program that decompresses untrusted zstd input can be crashed by it. Reproduced on v1.20.0 and v1.20.1.\n\nReleased in https://github.com/klauspost/compress/releases/tag/v1.20.2\n\n### Details\n\n The panic is in the FSE decoder that `huff0.ReadTable` uses to read a block's Huffma",
+    "severity": "high",
+    "cve_id": "CVE-2026-116591",
+    "ghsa_id": "GHSA-fpmh-frq8-7rj8",
+    "affected_packages": [
+      "github.com/klauspost/compress/zstd"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-jj7h-c3hg-m23x",
+    "source": "GitHub Security",
+    "timestamp": "2026-10-27T15:37:48Z",
+    "title": "Authlib: is_secure_transport() loopback exemption can be bypassed with a userinfo component, allowing cleartext-HTTP URLs to non-loopback hosts",
+    "description": "### Summary\n`authlib.common.security.is_secure_transport()` is used throughout Authlib to enforce the OAuth 2.0 / OIDC requirement that endpoint and redirect URIs use TLS, with an RFC 8252 §7.3 exemption for loopback `http://` URIs. The check is implemented as a textual `str.startswith` prefix match, so a URL such as `http://localhost:80@evil.example/cb` — whose actual host is `evil.example` and whose scheme is plain `http` — is accepted as \"secure\". An attacker who can supply a URL to any of th",
+    "severity": "low",
+    "cve_id": "CVE-2026-114614",
+    "ghsa_id": "GHSA-jj7h-c3hg-m23x",
+    "affected_packages": [
+      "authlib"
+    ],
+    "cwes": [
+      null,
+      null,
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-45c3-73f7-pv4m",
+    "source": "GitHub Security",
+    "timestamp": "2026-10-27T15:37:37Z",
+    "title": "dnspython dns.name.from_wire_parser() excessive CPU use",
+    "description": "### Impact\nA maliciously crafted DNS message may cause dns.name.from_wire_parser() to use excessive CPU for DNS name decompression.  Applications that process untrusted DNS wire form messages with dnspython may be degraded or DoS'd by the extra CPU use required.\n\n### Patches\nThis problem is fixed in dnspython 2.9.0.\n\n### Workarounds\nThere are no known workarounds.\n\n### Credit\nEvgenios Gkritsis, Department of Informatics, University of Piraeus & Athena Research Center, Greece\nConstantinos Patsaki",
+    "severity": "high",
+    "cve_id": "CVE-2026-114605",
+    "ghsa_id": "GHSA-45c3-73f7-pv4m",
+    "affected_packages": [
+      "dnspython"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
       null,
       null,
       null
