@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🛡️ ThreatPulse AI - Security Intelligence Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .chestnut { color: #8B4513; }
+    .threat-card { transition: all 0.3s ease; }
+    .threat-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+    .severity-critical { border-left: 4px solid #DC2626; }
+    .severity-high { border-left: 4px solid #EA580C; }
+    .severity-medium { border-left: 4px solid #EAB308; }
+    .severity-low { border-left: 4px solid #16A34A; }
+    .risk-meter { transition: width 1s ease-out; }
+    @keyframes pulse-chestnut { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+    .chestnut-animate { animation: pulse-chestnut 2s infinite; }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white shadow-lg">
+    <div class="container mx-auto px-4 py-6">
+      <div class="flex justify-between items-center">
+        <div>
+          <h1 class="text-3xl font-bold">🛡️ ThreatPulse AI</h1>
+          <p class="text-blue-200 mt-1">AI-Powered Security Intelligence Dashboard 🌰</p>
+        </div>
+        <div class="text-right">
+          <p class="text-sm text-blue-200">Last Updated</p>
+          <p id="lastUpdate" class="font-mono">Loading...</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats Overview -->
+  <section class="container mx-auto px-4 -mt-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div class="bg-white rounded-lg shadow p-4">
+        <p class="text-gray-500 text-sm">Total Threats</p>
+        <p id="totalThreats" class="text-3xl font-bold text-gray-800">-</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4">
+        <p class="text-gray-500 text-sm">Avg Risk Score</p>
+        <p id="avgRisk" class="text-3xl font-bold text-orange-600">-</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4">
+        <p class="text-gray-500 text-sm">Critical</p>
+        <p id="criticalCount" class="text-3xl font-bold text-red-600">-</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4">
+        <p class="text-gray-500 text-sm">High</p>
+        <p id="highCount" class="text-3xl font-bold text-orange-600">-</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4">
+        <p class="text-gray-500 text-sm">Sources</p>
+        <p id="sourceCount" class="text-3xl font-bold text-blue-600">-</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters -->
+  <section class="container mx-auto px-4 mt-6">
+    <div class="bg-white rounded-lg shadow p-4">
+      <div class="flex flex-wrap gap-4 items-center">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Filter by Severity</label>
+          <select id="severityFilter" class="border rounded px-3 py-2 text-sm">
+            <option value="all">All Severities</option>
+            <option value="critical">Critical</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Filter by Source</label>
+          <select id="sourceFilter" class="border rounded px-3 py-2 text-sm">
+            <option value="all">All Sources</option>
+            <option value="GitHub Security">GitHub Security</option>
+            <option value="NVD CVE">NVD CVE</option>
+            <option value="Twitter Security">Twitter</option>
+            <option value="HackerNews">HackerNews</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Min Risk Score</label>
+          <input type="range" id="riskFilter" min="0" max="100" value="0" class="w-32">
+          <span id="riskValue" class="text-sm text-gray-600 ml-2">0+</span>
+        </div>
+        <div class="flex-1"></div>
+        <button onclick="exportReport()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
+          📤 Export Report
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Threats List -->
+  <section class="container mx-auto px-4 mt-6 mb-12">
+    <div id="threatsList" class="space-y-4">
+      <!-- Threat cards will be inserted here -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-6 mt-12">
+    <div class="container mx-auto px-4 text-center">
+      <p class="chestnut chestnut-animate">🌰🌰🌰 Powered by GitHub Models & Chestnut Wisdom 🌰🌰🌰</p>
+      <p class="text-gray-400 text-sm mt-2">Built by Fred Zhang (@soongtv) | <a href="https://github.com/soongtv/product-kit-template" class="text-blue-400 hover:underline">View on GitHub</a></p>
+    </div>
+  </footer>
+
+  <script>
+    let allThreats = []
+    let stats = {}
+
+    // Load data
+    async function loadData() {
+      try {
+        const [threatsRes, statsRes] = await Promise.all([
+          fetch('data/threats-analyzed.json'),
+          fetch('data/stats.json')
+        ])
+        
+        allThreats = await threatsRes.json()
+        stats = await statsRes.json()
+        
+        updateStats()
+        renderThreats(allThreats)
+        updateLastUpdated()
+      } catch (error) {
+        console.error('Failed to load data:', error)
+        document.getElementById('threatsList').innerHTML = `
+          <div class="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+            <p class="text-red-600 font-medium">Failed to load threat data</p>
+            <p class="text-red-500 text-sm mt-2">${error.message}</p>
+            <p class="text-gray-500 text-xs mt-4">Run \`npm run fetch\` and \`npm run analyze\` first</p>
+          </div>
+        `
+      }
+    }
+
+    // Update statistics
+    function updateStats() {
+      document.getElementById('totalThreats').textContent = stats.total_threats || 0
+      document.getElementById('avgRisk').textContent = stats.average_risk_score || 0
+      document.getElementById('criticalCount').textContent = stats.by_urgency?.critical || 0
+      document.getElementById('highCount').textContent = stats.by_urgency?.high || 0
+      document.getElementById('sourceCount').textContent = Object.keys(stats.by_source || {}).length
+    }
+
+    // Update last updated time
+    function updateLastUpdated() {
+      const now = new Date()
+      document.getElementById('lastUpdate').textContent = now.toLocaleString('en-US', {
+        month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit'
+      })
+    }
+
+    // Render threat cards
+    function renderThreats(threats) {
+      const container = document.getElementById('threatsList')
+      
+      if (threats.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12">
+            <p class="text-gray-500 text-lg">No threats match your filters</p>
+            <p class="text-gray-400 text-sm mt-2">Try adjusting your filter criteria</p>
+          </div>
+        `
+        return
+      }
+
+      container.innerHTML = threats.map(threat => `
+        <div class="threat-card bg-white rounded-lg shadow p-6 severity-${threat.severity || 'medium'}">
+          <div class="flex justify-between items-start">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="px-2 py-1 text-xs font-semibold rounded bg-gray-100 text-gray-700">${threat.source}</span>
+                ${threat.cve_id ? `<span class="px-2 py-1 text-xs font-mono rounded bg-red-100 text-red-700">${threat.cve_id}</span>` : ''}
+                ${threat.ghsa_id ? `<span class="px-2 py-1 text-xs font-mono rounded bg-blue-100 text-blue-700">${threat.ghsa_id}</span>` : ''}
+              </div>
+              
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">${escapeHtml(threat.title)}</h3>
+              <p class="text-gray-600 text-sm mb-4">${escapeHtml(threat.description?.substring(0, 200) || 'No description')}...</p>
+              
+              ${threat.ai_analysis ? `
+                <div class="bg-gray-50 rounded-lg p-4 mt-4">
+                  <div class="flex items-center gap-2 mb-3">
+                    <span class="text-lg">🤖</span>
+                    <span class="font-semibold text-gray-700">AI Analysis</span>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <div class="flex justify-between text-sm mb-1">
+                      <span class="text-gray-600">Risk Score</span>
+                      <span class="font-semibold ${getRiskColor(threat.risk_score)}">${threat.risk_score}/100</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                      <div class="risk-meter h-2 rounded-full ${getRiskBg(threat.risk_score)}" style="width: ${threat.risk_score}%"></div>
+                    </div>
+                  </div>
+                  
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                    <div>
+                      <span class="text-gray-500">Urgency:</span>
+                      <span class="ml-2 font-medium ${getUrgencyColor(threat.ai_analysis.urgency)}">${threat.ai_analysis.urgency.toUpperCase()}</span>
+                    </div>
+                    <div>
+                      <span class="text-gray-500">Industries:</span>
+                      <span class="ml-2">${threat.ai_analysis.affected_industries?.slice(0, 3).join(', ') || 'General'}</span>
+                    </div>
+                  </div>
+                  
+                  <div class="mt-3">
+                    <p class="text-gray-500 text-xs mb-1">Recommended Actions:</p>
+                    <ul class="text-sm text-gray-700 space-y-1">
+                      ${threat.ai_analysis.recommended_actions?.slice(0, 2).map(action => `
+                        <li class="flex items-start">
+                          <span class="text-green-500 mr-2">✓</span>
+                          ${escapeHtml(action)}
+                        </li>
+                      `).join('') || ''}
+                    </ul>
+                  </div>
+                </div>
+              ` : ''}
+              
+              <div class="flex items-center gap-4 mt-4 text-xs text-gray-500">
+                <span>📅 ${new Date(threat.timestamp).toLocaleDateString()}</span>
+                <span class="capitalize">⚠️ ${threat.severity || 'unknown'} severity</span>
+                ${threat.references?.length ? `<a href="${threat.references[0]}" target="_blank" class="text-blue-600 hover:underline">🔗 Source</a>` : ''}
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('')
+    }
+
+    // Filter threats
+    function filterThreats() {
+      const severity = document.getElementById('severityFilter').value
+      const source = document.getElementById('sourceFilter').value
+      const minRisk = parseInt(document.getElementById('riskFilter').value)
+      
+      let filtered = allThreats
+      
+      if (severity !== 'all') {
+        filtered = filtered.filter(t => t.severity === severity)
+      }
+      
+      if (source !== 'all') {
+        filtered = filtered.filter(t => t.source === source)
+      }
+      
+      if (minRisk > 0) {
+        filtered = filtered.filter(t => (t.risk_score || 0) >= minRisk)
+      }
+      
+      renderThreats(filtered)
+    }
+
+    // Export report
+    function exportReport() {
+      const report = {
+        generated: new Date().toISOString(),
+        stats: stats,
+        threats: allThreats
+      }
+      
+      const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' })
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `threatpulse-report-${Date.now()}.json`
+      a.click()
+      URL.revokeObjectURL(url)
+    }
+
+    // Utility functions
+    function escapeHtml(text) {
+      const div = document.createElement('div')
+      div.textContent = text
+      return div.innerHTML
+    }
+
+    function getRiskColor(score) {
+      if (score >= 75) return 'text-red-600'
+      if (score >= 50) return 'text-orange-600'
+      if (score >= 25) return 'text-yellow-600'
+      return 'text-green-600'
+    }
+
+    function getRiskBg(score) {
+      if (score >= 75) return 'bg-red-500'
+      if (score >= 50) return 'bg-orange-500'
+      if (score >= 25) return 'bg-yellow-500'
+      return 'bg-green-500'
+    }
+
+    function getUrgencyColor(urgency) {
+      const colors = {
+        critical: 'text-red-600 font-bold',
+        high: 'text-orange-600',
+        medium: 'text-yellow-600',
+        low: 'text-green-600'
+      }
+      return colors[urgency] || 'text-gray-600'
+    }
+
+    // Event listeners
+    document.getElementById('severityFilter').addEventListener('change', filterThreats)
+    document.getElementById('sourceFilter').addEventListener('change', filterThreats)
+    document.getElementById('riskFilter').addEventListener('input', (e) => {
+      document.getElementById('riskValue').textContent = e.target.value + '+'
+      filterThreats()
+    })
+
+    // Initialize
+    loadData()
+  </script>
+</body>
+</html>
