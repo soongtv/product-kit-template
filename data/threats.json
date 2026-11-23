@@ -1,8 +1,8 @@
 [
   {
-    "id": "twitter-1795417577715-1",
+    "id": "twitter-1795477400484-1",
     "source": "Twitter Security",
-    "timestamp": "2026-11-23T07:06:17.715Z",
+    "timestamp": "2026-11-23T23:43:20.484Z",
     "title": "New ransomware campaign targeting cloud infrastructure",
     "description": "Security researchers have identified a new ransomware variant specifically designed to target cloud-based infrastructure. The campaign uses compromised CI/CD pipelines to deploy malicious code.",
     "severity": "high",
@@ -13,9 +13,9 @@
     "risk_score": null
   },
   {
-    "id": "hn-1795417577715-1",
+    "id": "hn-1795477400484-1",
     "source": "HackerNews",
-    "timestamp": "2026-11-23T07:06:17.715Z",
+    "timestamp": "2026-11-23T23:43:20.484Z",
     "title": "Show HN: Open-source vulnerability scanner",
     "description": "New tool automatically scans dependencies for known vulnerabilities and suggests patches. Gaining traction in the security community.",
     "severity": "low",
@@ -26,14 +26,104 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-65v7-5m96-v7xg",
+    "id": "gh-GHSA-j44m-77cc-p3cc",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T06:31:27Z",
-    "title": "A vulnerability was identified in Snes9x up to 1.63. The impacted element is the function...",
-    "description": "A vulnerability was identified in Snes9x up to 1.63. The impacted element is the function S9xUnfreezeFromStream of the file snapshot.cpp of the component Save-State Screenshot Restoration. The manipulation leads to out-of-bounds read. The attack must be carried out locally. The exploit is publicly available and might be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "timestamp": "2026-11-23T22:06:28Z",
+    "title": "AVideo API vulnerable to OS command injection through an unescaped FFmpeg process keyword",
+    "description": "### Summary\n\nThe helper `listFFmpegProcesses($keyword)` in `plugin/API/standAlone/functions.php` builds a shell pipeline by interpolating `$keyword` inside single quotes and running it with `exec()`:\n\n```php\n$command .= \" | grep '$keyword'\";\nexec($command, $output, $status);\n```\n\nThe two callers in `plugin/API/standAlone/ffmpeg.json.php` (the `list` mode and the `isKeywordRunning` mode) pass the RAW decrypted `codeToExec` field, not the sanitized `$keyword` variable that the endpoint allowlists ",
+    "severity": "high",
+    "cve_id": "CVE-2026-63492",
+    "ghsa_id": "GHSA-j44m-77cc-p3cc",
+    "affected_packages": [
+      "wwbn/avideo"
+    ],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-4572-383q-qw2g",
+    "source": "GitHub Security",
+    "timestamp": "2026-11-23T21:31:48Z",
+    "title": "A buffer over-read vulnerability in Elasticsearch transport decompression can expose data from...",
+    "description": "A buffer over-read vulnerability in Elasticsearch transport decompression can expose data from other requests. The LZ4 decoder can read beyond the declared compressed block into a shared network buffer. A remote attacker who can reach an affected transport interface can send a specially crafted compressed request and obtain data from outside their own request. Exploitation of the exposed remote-cluster transport interface does not require authentication.",
+    "severity": "high",
+    "cve_id": "CVE-2026-82303",
+    "ghsa_id": "GHSA-4572-383q-qw2g",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-g5v4-pjf8-83v4",
+    "source": "GitHub Security",
+    "timestamp": "2026-11-23T21:31:48Z",
+    "title": "open62541 1.5.0 through 1.5.10 contains a use-after-free and double free vulnerability in the...",
+    "description": "open62541 1.5.0 through 1.5.10 contains a use-after-free and double free vulnerability in the lookupRefType() function in src/util/ua_util.c that allows attackers to corrupt the heap of the server process by supplying a RelativePath string resolved through UA_RelativePath_parseWithServer(). When the path names a ReferenceType with a string or GUID NodeId, the function returns a shallow copy of the browse result's NodeId and frees its identifier, causing the identifier to be freed a second time w",
+    "severity": "medium",
+    "cve_id": "CVE-2026-135472",
+    "ghsa_id": "GHSA-g5v4-pjf8-83v4",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-x3jj-2632-f5fv",
+    "source": "GitHub Security",
+    "timestamp": "2026-11-23T21:31:48Z",
+    "title": "Missing authorization in Kibana Cases alert attachments can allow an authenticated user with...",
+    "description": "Missing authorization in Kibana Cases alert attachments can allow an authenticated user with permission to add case comments or attachments to modify case-link metadata in documents they are not authorized to access. An attacker can add false case links and prevent legitimate case linkage by exhausting the alert's case-link limit. Writes are limited to the kibana.alert.case_ids field in indices that Kibana's internal account can read and update and whose mappings accept that field. One of the tw",
+    "severity": "medium",
+    "cve_id": "CVE-2026-133984",
+    "ghsa_id": "GHSA-x3jj-2632-f5fv",
+    "affected_packages": [],
+    "cwes": [
+      null
+    ],
+    "references": [
+      null,
+      null,
+      null
+    ],
+    "ai_analysis": null,
+    "risk_score": null
+  },
+  {
+    "id": "gh-GHSA-7gr7-qpj9-q87h",
+    "source": "GitHub Security",
+    "timestamp": "2026-11-23T21:31:48Z",
+    "title": "A vulnerability was detected in FredrikNoren ungit 1.5.30. This vulnerability affects unknown...",
+    "description": "A vulnerability was detected in FredrikNoren ungit 1.5.30. This vulnerability affects unknown code of the file source/git-api.js of the component /api/clone. The manipulation of the argument url results in argument injection. The attack can be launched remotely. The exploit is now public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
     "severity": "low",
-    "cve_id": "CVE-2026-134856",
-    "ghsa_id": "GHSA-65v7-5m96-v7xg",
+    "cve_id": "CVE-2026-135128",
+    "ghsa_id": "GHSA-7gr7-qpj9-q87h",
     "affected_packages": [],
     "cwes": [
       null
@@ -52,14 +142,14 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-qch6-gxwx-xj8h",
+    "id": "gh-GHSA-r3wv-8p3h-g54c",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T06:31:27Z",
-    "title": "Insufficient authorization in personal notification rules in Checkmk <2.5.0p20, <2.4.0p41 and 2.3...",
-    "description": "Insufficient authorization in personal notification rules in Checkmk <2.5.0p20, <2.4.0p41 and 2.3.0 (EOL) allows authenticated users to receive notifications for hosts and services they are not a contact of by defining broad personal notification rules.",
+    "timestamp": "2026-11-23T21:31:48Z",
+    "title": "Uncontrolled resource allocation in Elasticsearch mapping updates can lead to denial of service....",
+    "description": "Uncontrolled resource allocation in Elasticsearch mapping updates can lead to denial of service. An authenticated user with index-management privileges can submit specially crafted mapping updates that are expanded into multiple large in-memory representations. The amplification during request parsing and mapping updates can exhaust heap memory and crash an Elasticsearch node.",
     "severity": "medium",
-    "cve_id": "CVE-2026-121480",
-    "ghsa_id": "GHSA-qch6-gxwx-xj8h",
+    "cve_id": "CVE-2026-133919",
+    "ghsa_id": "GHSA-r3wv-8p3h-g54c",
     "affected_packages": [],
     "cwes": [
       null
@@ -73,24 +163,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-w6mx-hmm2-pqqr",
+    "id": "gh-GHSA-w892-fg7g-5f2f",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T06:31:27Z",
-    "title": "A vulnerability was determined in kchapelier qoijs 1.0.0. The affected element is the function...",
-    "description": "A vulnerability was determined in kchapelier qoijs 1.0.0. The affected element is the function decode of the file src/decode.js of the component QOI Decoder. Executing a manipulation of the argument arrayBuffer can lead to uncontrolled memory allocation. The attack can be launched remotely. The exploit has been publicly disclosed and may be utilized. The project was informed of the problem early through an issue report but has not responded yet.",
+    "timestamp": "2026-11-23T21:31:48Z",
+    "title": "An issue was discovered in Kibana where a user with the Synthetics All privilege in one space can...",
+    "description": "An issue was discovered in Kibana where a user with the Synthetics All privilege in one space can access Fleet agent policy metadata from other spaces through a product API endpoint. This could lead to the unauthorized disclosure of operational metadata across spaces the user is not authorized to view.",
     "severity": "medium",
-    "cve_id": "CVE-2026-134855",
-    "ghsa_id": "GHSA-w6mx-hmm2-pqqr",
+    "cve_id": "CVE-2026-133926",
+    "ghsa_id": "GHSA-w892-fg7g-5f2f",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -99,23 +184,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-8252-hc65-7rfp",
+    "id": "gh-GHSA-6g24-vxw9-g96j",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T06:31:27Z",
-    "title": "A vulnerability has been found in vthibault tga-js up to 1.1.1. This issue affects the function...",
-    "description": "A vulnerability has been found in vthibault tga-js up to 1.1.1. This issue affects the function _decodeRLE of the file src/tga.js of the component TgaLoader. Such manipulation leads to uncontrolled memory allocation. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "timestamp": "2026-11-23T21:31:48Z",
+    "title": "Elasticsearch ES|QL data-source and dataset registration can write storage credentials or pre...",
+    "description": "Elasticsearch ES|QL data-source and dataset registration can write storage credentials or pre-signed URL signatures to the audit log in plaintext. In affected versions, request definitions are not appropriately filtered before request-body or URL-query auditing. An attacker with access to these logs can obtain credentials for the customer's external storage. The issue affects deployments with ES|QL federation enabled and audit logging configured to record the affected request information.",
     "severity": "medium",
-    "cve_id": "CVE-2026-134853",
-    "ghsa_id": "GHSA-8252-hc65-7rfp",
+    "cve_id": "CVE-2026-133918",
+    "ghsa_id": "GHSA-6g24-vxw9-g96j",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -124,24 +205,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-wr2v-vp5g-4qx7",
+    "id": "gh-GHSA-wvww-2fq4-fxj2",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T06:31:27Z",
-    "title": "A flaw has been found in shaozilee bmp-js up to 0.1.0. This vulnerability affects the function...",
-    "description": "A flaw has been found in shaozilee bmp-js up to 0.1.0. This vulnerability affects the function BmpDecoder.parseRGBA of the file lib/decoder.js. This manipulation causes uncontrolled memory allocation. It is possible to initiate the attack remotely. The exploit has been published and may be used. The project was informed of the problem early through an issue report but has not responded yet.",
+    "timestamp": "2026-11-23T21:31:48Z",
+    "title": "Unconstrained S3 endpoint settings in Elasticsearch ES|QL data sources can cause requests...",
+    "description": "Unconstrained S3 endpoint settings in Elasticsearch ES|QL data sources can cause requests containing storage credentials to be sent to an attacker-controlled host. A user with data-source management privileges can configure a custom endpoint without the intended host restriction. On opted-in commercial Elastic Cloud Hosted deployments, the issue can also disclose workload-identity tokens and expose customer cloud resources outside Elasticsearch. Self-managed deployments are affected by the stora",
     "severity": "medium",
-    "cve_id": "CVE-2026-134852",
-    "ghsa_id": "GHSA-wr2v-vp5g-4qx7",
+    "cve_id": "CVE-2026-133935",
+    "ghsa_id": "GHSA-wvww-2fq4-fxj2",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -150,24 +226,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-j5mc-v362-2pvq",
+    "id": "gh-GHSA-9ppf-g9mx-m29m",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T06:31:27Z",
-    "title": "A vulnerability was found in andreasgal node-wav up to 0.0.2. Impacted is the function decode of...",
-    "description": "A vulnerability was found in andreasgal node-wav up to 0.0.2. Impacted is the function decode of the file index.js of the component WAV Decoder. Performing a manipulation results in uncontrolled memory allocation. The attack can be initiated remotely. The exploit has been made public and could be used. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-11-23T21:31:48Z",
+    "title": "A relative path traversal vulnerability in Kibana Fleet and Elastic Agent allows an authenticated...",
+    "description": "A relative path traversal vulnerability in Kibana Fleet and Elastic Agent allows an authenticated user with both Fleet Integrations: All and Agent policies: All privileges to distribute a malicious integration policy to managed Elastic Agents. A vulnerable Elastic Agent processing that policy for a component that runs in an isolated unit can modify or delete files outside the component's intended runtime directory with the privileges of the Elastic Agent process. This can cause loss of files or ",
     "severity": "medium",
-    "cve_id": "CVE-2026-134854",
-    "ghsa_id": "GHSA-j5mc-v362-2pvq",
+    "cve_id": "CVE-2026-134059",
+    "ghsa_id": "GHSA-9ppf-g9mx-m29m",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -176,22 +247,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-c2hp-546m-qfw8",
+    "id": "gh-GHSA-463m-vvr5-342h",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T06:31:26Z",
-    "title": "A vulnerability was detected in leonkhoo123 self-hosting-file-uploader up to...",
-    "description": "A vulnerability was detected in leonkhoo123 self-hosting-file-uploader up to 473e38ff8fba494f33a485730c6d95c5d8c536ea. This affects an unknown part of the file routes/generator.js of the component Admin Generator API. The manipulation results in missing authentication. The attack may be performed from remote. This product utilizes a rolling release system for continuous delivery, and as such, version information for affected or updated releases is not disclosed.",
+    "timestamp": "2026-11-23T21:31:48Z",
+    "title": "Uncontrolled resource consumption in Elasticsearch query parsing can lead to denial of service....",
+    "description": "Uncontrolled resource consumption in Elasticsearch query parsing can lead to denial of service. An authenticated user with search permissions can submit a specially crafted query containing an excessive number of clauses. Expanding those clauses in memory before enforcing query complexity limits can exhaust heap memory and crash an Elasticsearch node.",
     "severity": "medium",
-    "cve_id": "CVE-2026-134851",
-    "ghsa_id": "GHSA-c2hp-546m-qfw8",
+    "cve_id": "CVE-2026-133925",
+    "ghsa_id": "GHSA-463m-vvr5-342h",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -200,22 +268,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-8h9j-ccm7-xgpv",
+    "id": "gh-GHSA-qm8q-q48c-v45j",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T06:31:26Z",
-    "title": "A security vulnerability has been detected in aceberg WatchYourLAN up to 2.1.4. Affected by this...",
-    "description": "A security vulnerability has been detected in aceberg WatchYourLAN up to 2.1.4. Affected by this issue is the function getPortState of the file backend/internal/api/api-network.go of the component Web API. The manipulation of the argument addr leads to server-side request forgery. The attack is possible to be carried out remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-11-23T21:31:47Z",
+    "title": "Elasticsearch ES|QL query responses can disclose dataset storage locations and provider identity...",
+    "description": "Elasticsearch ES|QL query responses can disclose dataset storage locations and provider identity details to users who are allowed to query a dataset but cannot read its definition. Storage paths and storage-client error text can appear in read-failure messages or query-profile plan strings. An authenticated dataset reader can obtain this information without permission to view the dataset configuration. This issue does not disclose stored credentials or the dataset contents beyond the caller's qu",
     "severity": "medium",
-    "cve_id": "CVE-2026-134850",
-    "ghsa_id": "GHSA-8h9j-ccm7-xgpv",
+    "cve_id": "CVE-2026-133917",
+    "ghsa_id": "GHSA-qm8q-q48c-v45j",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -224,23 +289,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-9xpw-fv9v-23qj",
+    "id": "gh-GHSA-qrcg-97jc-mp79",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T03:30:24Z",
-    "title": "A security flaw has been discovered in warpdesign pcx-js up to 1.1.1. Affected is the function...",
-    "description": "A security flaw has been discovered in warpdesign pcx-js up to 1.1.1. Affected is the function decode8bpp/decode4bpp of the file js/pcx.js of the component PCX Pixel Buffer Decoder. Performing a manipulation results in uncontrolled memory allocation. Remote exploitation of the attack is possible. The exploit has been released to the public and may be used for attacks. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-11-23T21:31:47Z",
+    "title": "An issue in Kibana allows Elasticsearch transforms in directly uploaded integration packages to...",
+    "description": "An issue in Kibana allows Elasticsearch transforms in directly uploaded integration packages to run with Kibana's internal system identity instead of the installing user's privileges. A user with Integrations: All and Agent policies: All privileges in a single Kibana space could access or modify data they are not authorized to access, including agent policies from other spaces. This could disclose sensitive information or lead to command execution on managed Elastic Agent hosts.",
     "severity": "medium",
-    "cve_id": "CVE-2026-134788",
-    "ghsa_id": "GHSA-9xpw-fv9v-23qj",
+    "cve_id": "CVE-2026-133860",
+    "ghsa_id": "GHSA-qrcg-97jc-mp79",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -249,22 +310,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-c2p3-59hh-mw67",
+    "id": "gh-GHSA-g6cr-8fcj-24g9",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T03:30:24Z",
-    "title": "A weakness has been identified in DumbWareio DumbAssets up to 1.0.11. Affected by this...",
-    "description": "A weakness has been identified in DumbWareio DumbAssets up to 1.0.11. Affected by this vulnerability is an unknown functionality of the file server.js of the component Settings API. Executing a manipulation of the argument appriseUrl can lead to dynamically-determined object attributes. The attack can be executed remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-11-23T21:31:47Z",
+    "title": "Incorrect authorization in Elasticsearch columnar indices can bypass field-level security for...",
+    "description": "Incorrect authorization in Elasticsearch columnar indices can bypass field-level security for geo_shape values. An authenticated user with access to an affected index can obtain denied geometry values through the internal source-geometry representation even when field-level security excludes the corresponding field. This discloses field data that the user is not authorized to read.",
     "severity": "medium",
-    "cve_id": "CVE-2026-134789",
-    "ghsa_id": "GHSA-c2p3-59hh-mw67",
+    "cve_id": "CVE-2026-133891",
+    "ghsa_id": "GHSA-g6cr-8fcj-24g9",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -273,21 +331,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-9rm3-rg57-8xwc",
+    "id": "gh-GHSA-f8hf-h7jm-pv99",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T03:30:23Z",
-    "title": "A vulnerability was found in DumbWareio DumbDrop up to ff8f813f493e89c7da056e7a3101ce2ef48e3960....",
-    "description": "A vulnerability was found in DumbWareio DumbDrop up to ff8f813f493e89c7da056e7a3101ce2ef48e3960. Affected by this vulnerability is the function isPathWithinUploadDir of the file src/routes/files.js of the component Files API. The manipulation results in improper access controls. The attack may be launched remotely. This product operates on a rolling release basis, ensuring continuous delivery. Consequently, there are no version details for either affected or updated releases. The vendor was cont",
+    "timestamp": "2026-11-23T21:31:47Z",
+    "title": "Dynamic Product Gallery for WooCommerce before 3.6.2 contains a stored cross-site scripting...",
+    "description": "Dynamic Product Gallery for WooCommerce before 3.6.2 contains a stored cross-site scripting vulnerability that allows authenticated attackers with Contributor-level access or above to inject arbitrary JavaScript via the product_id attribute of the [wc_product_dgallery] and [wc_product_dynamic_gallery] shortcodes. The parse_shortcode_product_dynamic_gallery() function passes product_id only through esc_attr(), and get_gallery_main() prints it unescaped into the a3-wc-dynamic-gallery-init-inline-s",
     "severity": "medium",
-    "cve_id": "CVE-2026-134784",
-    "ghsa_id": "GHSA-9rm3-rg57-8xwc",
+    "cve_id": "CVE-2026-135471",
+    "ghsa_id": "GHSA-f8hf-h7jm-pv99",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
       null,
       null,
       null,
@@ -297,22 +353,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-6jqh-jhgv-944q",
+    "id": "gh-GHSA-f3xm-6mwj-pg95",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T03:30:23Z",
-    "title": "A vulnerability was identified in Bagisto MangoPay Payment Gateway up to...",
-    "description": "A vulnerability was identified in Bagisto MangoPay Payment Gateway up to c061edcc7973cb37a77a9f9ae523db170c3e28ed. Affected by this vulnerability is the function MangoPayStandardController::success of the file src/Http/Controllers/Shop/MangoPayStandardController.php of the component Success Callback. The manipulation leads to insufficient verification of data authenticity. Remote exploitation of the attack is possible. This product follows a rolling release approach for continuous delivery, so v",
+    "timestamp": "2026-11-23T21:31:47Z",
+    "title": "Missing authorization in Kibana Security AI Assistant conversation deletion can allow an...",
+    "description": "Missing authorization in Kibana Security AI Assistant conversation deletion can allow an authenticated user with access to the assistant to delete other users' conversations in the same space. The delete-all operation can issue a query without an ownership filter using the assistant's internal Elasticsearch client. A user can consequently delete conversation history that they do not own or have permission to modify.",
     "severity": "medium",
-    "cve_id": "CVE-2026-134785",
-    "ghsa_id": "GHSA-6jqh-jhgv-944q",
+    "cve_id": "CVE-2026-115291",
+    "ghsa_id": "GHSA-f3xm-6mwj-pg95",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -321,22 +374,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-6c4m-qvv4-f2pw",
+    "id": "gh-GHSA-mr3p-gcw6-8cq4",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T03:30:23Z",
-    "title": "A vulnerability has been found in xuxueli xxl-job 3.5.0/3.5.1-SNAPSHOT. Affected is the function...",
-    "description": "A vulnerability has been found in xuxueli xxl-job 3.5.0/3.5.1-SNAPSHOT. Affected is the function difyWorkflowJobHandler of the file xxl-job-executor-sample-springboot-ai/src/main/java/com/xxl/job/executor/jobhandler/AIXxlJob.java of the component AI Executor. The manipulation of the argument baseUrl leads to server-side request forgery. The attack may be initiated remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-11-23T21:31:47Z",
+    "title": "Certain Fleet APIs in Kibana expose stored credentials to authenticated users who do not have the...",
+    "description": "Certain Fleet APIs in Kibana expose stored credentials to authenticated users who do not have the Fleet Settings: Read privilege. For example, a user with the Fleet Agent policies: Read privilege can retrieve credentials through Fleet output and agent binary download source APIs. The disclosed credentials could allow the attacker to authenticate to connected backend systems.",
     "severity": "medium",
-    "cve_id": "CVE-2026-134783",
-    "ghsa_id": "GHSA-6c4m-qvv4-f2pw",
+    "cve_id": "CVE-2026-133858",
+    "ghsa_id": "GHSA-mr3p-gcw6-8cq4",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -345,22 +395,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-g225-q2g9-m37g",
+    "id": "gh-GHSA-fv7q-fjj3-hrh7",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T03:30:23Z",
-    "title": "A vulnerability has been found in Xuxueli xxl-job 3.5.0/3.5.1-SNAPSHOT. The affected element is...",
-    "description": "A vulnerability has been found in Xuxueli xxl-job 3.5.0/3.5.1-SNAPSHOT. The affected element is an unknown function of the file JobLogController.java of the component Job Termination Endpoint. The manipulation leads to incorrect authorization. The attack can be initiated remotely. The vendor was contacted early about this disclosure but did not respond in any way.",
+    "timestamp": "2026-11-23T21:31:47Z",
+    "title": "Memory Allocation with Excessive Size Value (CWE-789) in Packetbeat can lead to denial of service...",
+    "description": "Memory Allocation with Excessive Size Value (CWE-789) in Packetbeat can lead to denial of service via a specially crafted, malformed Cassandra protocol message. An unauthenticated attacker who can send traffic on a network segment that Packetbeat monitors can cause Packetbeat to allocate excessive memory and terminate. Elastic Agent is also affected when the Network Packet Capture integration monitors Cassandra traffic, because it uses the same protocol decoder.",
     "severity": "medium",
-    "cve_id": "CVE-2026-134786",
-    "ghsa_id": "GHSA-g225-q2g9-m37g",
+    "cve_id": "CVE-2026-129976",
+    "ghsa_id": "GHSA-fv7q-fjj3-hrh7",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -369,24 +416,17 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-x259-5425-7fcp",
+    "id": "gh-GHSA-jgq5-j58m-28xq",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T03:30:23Z",
-    "title": "A flaw has been found in Open Asset Import Library Assimp up to 6.0.6. This impacts the function...",
-    "description": "A flaw has been found in Open Asset Import Library Assimp up to 6.0.6. This impacts the function Assimp::ColladaLoader::CreateMesh of the file code/AssetLib/Collada/ColladaLoader.cpp. Executing a manipulation can lead to out-of-bounds read. The attack can be launched remotely. The exploit has been published and may be used. The pull request to fix this issue awaits acceptance.",
-    "severity": "low",
-    "cve_id": "CVE-2026-134782",
-    "ghsa_id": "GHSA-x259-5425-7fcp",
+    "timestamp": "2026-11-23T21:31:47Z",
+    "title": "An arbitrary remote code execution vulnerability exists in HPE Morpheus Manager.",
+    "description": "An arbitrary remote code execution vulnerability exists in HPE Morpheus Manager.",
+    "severity": "high",
+    "cve_id": "CVE-2026-95793",
+    "ghsa_id": "GHSA-jgq5-j58m-28xq",
     "affected_packages": [],
-    "cwes": [
-      null
-    ],
+    "cwes": [],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null
@@ -395,125 +435,19 @@
     "risk_score": null
   },
   {
-    "id": "gh-GHSA-f933-p83g-mgr5",
+    "id": "gh-GHSA-3575-m948-cwmr",
     "source": "GitHub Security",
-    "timestamp": "2026-11-23T03:30:23Z",
-    "title": "A vulnerability was identified in code-projects Intern Record System 1.0. This impacts an unknown...",
-    "description": "A vulnerability was identified in code-projects Intern Record System 1.0. This impacts an unknown function of the file /department.sql. Such manipulation leads to file and directory information exposure. The attack may be launched remotely. The exploit is publicly available and might be used.",
+    "timestamp": "2026-11-23T21:31:47Z",
+    "title": "Uncontrolled resource allocation in Kibana exception-list filter creation can lead to denial of...",
+    "description": "Uncontrolled resource allocation in Kibana exception-list filter creation can lead to denial of service. An authenticated user with access to the Security solution can submit a specially crafted request containing a large number of exception-list identifiers. Kibana can create an unbounded number of concurrent operations while resolving those identifiers, exhausting memory and crashing the Kibana process.",
     "severity": "medium",
-    "cve_id": "CVE-2026-134787",
-    "ghsa_id": "GHSA-f933-p83g-mgr5",
+    "cve_id": "CVE-2026-133857",
+    "ghsa_id": "GHSA-3575-m948-cwmr",
     "affected_packages": [],
     "cwes": [
       null
     ],
     "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-8m67-39pm-p7vw",
-    "source": "GitHub Security",
-    "timestamp": "2026-11-23T03:30:22Z",
-    "title": "A vulnerability was detected in Open Asset Import Library Assimp up to 6.0.5. This affects the...",
-    "description": "A vulnerability was detected in Open Asset Import Library Assimp up to 6.0.5. This affects the function Assimp::PretransformVertices::BuildMeshRefCountArray of the file PretransformVertices.cpp. Performing a manipulation results in out-of-bounds write. The attack can be initiated remotely. The exploit is now public and may be used. The vendor was contacted early about this disclosure but did not respond in any way.",
-    "severity": "low",
-    "cve_id": "CVE-2026-134781",
-    "ghsa_id": "GHSA-8m67-39pm-p7vw",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-mw49-4qff-982h",
-    "source": "GitHub Security",
-    "timestamp": "2026-11-23T03:30:22Z",
-    "title": "A security vulnerability has been detected in Open Asset Import Library Assimp up to 6.0.6. The...",
-    "description": "A security vulnerability has been detected in Open Asset Import Library Assimp up to 6.0.6. The impacted element is the function Assimp::JoinVerticesProcess::ProcessMesh of the file code/PostProcessing/JoinVerticesProcess.cpp of the component PostProcessing JoinVerticesProcess. Such manipulation leads to out-of-bounds write. It is possible to launch the attack remotely. The exploit has been disclosed publicly and may be used. The vendor was contacted early about this disclosure but did not respo",
-    "severity": "low",
-    "cve_id": "CVE-2026-134780",
-    "ghsa_id": "GHSA-mw49-4qff-982h",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-jvj4-g439-3qwq",
-    "source": "GitHub Security",
-    "timestamp": "2026-11-23T03:30:22Z",
-    "title": "A weakness has been identified in Open Asset Import Library Assimp up to 6.0.6. The affected...",
-    "description": "A weakness has been identified in Open Asset Import Library Assimp up to 6.0.6. The affected element is the function Assimp::ColladaLoader::CreateAnimation of the file code/AssetLib/Collada/ColladaLoader.cpp of the component Collada Loader. This manipulation of the argument mSize causes out-of-bounds write. It is possible to initiate the attack remotely. The exploit has been made available to the public and could be used for attacks. The pull request to fix this issue awaits acceptance.",
-    "severity": "low",
-    "cve_id": "CVE-2026-134779",
-    "ghsa_id": "GHSA-jvj4-g439-3qwq",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    "ai_analysis": null,
-    "risk_score": null
-  },
-  {
-    "id": "gh-GHSA-8wwm-3w3g-rg9x",
-    "source": "GitHub Security",
-    "timestamp": "2026-11-23T03:30:22Z",
-    "title": "A vulnerability was determined in Webkul Bagisto up to 2.4.12. Affected by this vulnerability is...",
-    "description": "A vulnerability was determined in Webkul Bagisto up to 2.4.12. Affected by this vulnerability is the function Success of the file packages/Webkul/PayU/src/Http/Controllers/PayUController.php of the component Payu Payment Gateway. Executing a manipulation of the argument Status can lead to insufficient verification of data authenticity. It is possible to launch the attack remotely. Upgrading to version 2.4.13 addresses this issue. Upgrading the affected component is recommended.",
-    "severity": "medium",
-    "cve_id": "CVE-2026-134735",
-    "ghsa_id": "GHSA-8wwm-3w3g-rg9x",
-    "affected_packages": [],
-    "cwes": [
-      null
-    ],
-    "references": [
-      null,
-      null,
-      null,
-      null,
       null,
       null,
       null
